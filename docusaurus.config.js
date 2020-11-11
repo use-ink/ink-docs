@@ -9,7 +9,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'ink!',
   onBrokenLinks: 'warn',
-  projectName: 'docs',
+  projectName: 'ink-docs',
   stylesheets: [
     'fonts/fonts.css'
   ],
