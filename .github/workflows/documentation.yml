@@ -48,5 +48,5 @@ jobs:
         run: |
           git config --global user.email "michi@parity.io"
           git config --global user.name "cmichi"
-          npm ci
+          yarn install --frozen-lockfile
           npx docusaurus deploy
