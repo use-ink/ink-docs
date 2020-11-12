@@ -2,6 +2,12 @@
 
 This is a documentation portal for [ink!](https://github.com/paritytech/ink). The latest version is always available at [https://paritytech.github.io/ink-docs](https://paritytech.github.io/ink-docs).
 
+Run it locally via
+
+```
+yarn
+yarn start
+```
 
 ## Help us help others
 
