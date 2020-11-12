@@ -14,6 +14,10 @@ module.exports = {
     'fonts/fonts.css'
   ],
   themeConfig: {
+    prism: {
+      theme: require('prism-react-renderer/themes/duotoneDark'),
+      additionalLanguages: ['rust', 'json']
+    },
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false
@@ -22,8 +26,8 @@ module.exports = {
       title: '',
       logo: {
         alt: 'ink!',
-        src: 'img/logo-white.svg',
-        srcDark: '/img/logo-white.svg'
+        src: 'img/logo-black.svg',
+        srcDark: '/img/logo-white.svg',
       },
       items: [
         {

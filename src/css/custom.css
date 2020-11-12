@@ -26,7 +26,7 @@ h1 {
 }
 
 .docusaurus-highlight-code-line {
-  background-color: #d7b5ff;
+  background-color: #bd83fb;
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
@@ -38,4 +38,11 @@ h1 {
 
 .navbar__logo {
   margin-left: 0.5rem !important;
+}
+
+/* squid, TODO */
+.markdown img {
+  align: left;
+  margin-right: 15px;
+  height: 90px;
 }
