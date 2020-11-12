@@ -28,6 +28,10 @@ module.exports = {
     'Macros & Attributes': [
       'ink-macros/overview',
     ],
+    'Contract Storage': [
+      'storage/spread-packed-layout',
+      'storage/rent',
+    ],
     'Contract Debugging': [
       'debugging/overview',
     ],
