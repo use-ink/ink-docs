@@ -35,3 +35,7 @@ h1 {
 .menu__link {
   outline: none !important;
 }
+
+.navbar__logo {
+  margin-left: 0.5rem !important;
+}

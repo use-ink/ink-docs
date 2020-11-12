@@ -14,11 +14,16 @@ module.exports = {
     'fonts/fonts.css'
   ],
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false
+    },
     navbar: {
-      title: 'ink!',
+      title: '',
       logo: {
         alt: 'ink!',
-        src: 'img/logo.svg',
+        src: 'img/logo-white.svg',
+        srcDark: '/img/logo-white.svg'
       },
       items: [
         {
