@@ -6,7 +6,7 @@ slug: /faq
 ### Who is "Squink"?
 
 <div class="squid-container">
-    <img src="/img/ink-squid.svg" alt="Squink ‒ the ink! mascot" class="squid" />
+    <img src="./img/ink-squid.svg" alt="Squink ‒ the ink! mascot" class="squid" />
     This is Squink
     
     <br/>
