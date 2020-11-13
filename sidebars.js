@@ -21,6 +21,7 @@ module.exports = {
       'basics/reading-values',
       'basics/mutating-values',
       'basics/datastructures',
+      'basics/events',
       'basics/trait-definitions',
       'basics/cross-contract-calling',
       'basics/off-chain-testing',

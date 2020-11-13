@@ -40,11 +40,11 @@ h1 {
   margin-left: 0.5rem !important;
 }
 
-/* squid, TODO */
-.markdown img {
-  align: left;
+.squid {
+  float: left;
   margin-right: 15px;
   height: 90px;
+  vertical-align: middle;
 }
 
 .markdown table td, .markdown table tr, .markdown table th {
