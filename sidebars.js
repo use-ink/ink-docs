@@ -29,8 +29,8 @@ module.exports = {
     'Macros & Attributes': [
       'ink-macros/overview',
     ],
-    'Contract Debugging': [
-      'debugging/overview',
+    'Canvas Test Network': [
+      'canvas/overview',
     ],
     'FAQ': [
       'faq/intro',
