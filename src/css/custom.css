@@ -47,6 +47,10 @@ h1 {
   vertical-align: middle;
 }
 
+.squid-container {
+  clear: both;
+}
+
 .markdown table td, .markdown table tr, .markdown table th {
   border-left: 0px;
   border-right: 0px;
