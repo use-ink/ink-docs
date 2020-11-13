@@ -10,3 +10,5 @@ fn main() {
     let foo = 1;
 }
 ```
+
+## Anonymous Events

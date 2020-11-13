@@ -29,6 +29,9 @@ module.exports = {
     'Macros & Attributes': [
       'ink-macros/overview',
     ],
+    'cargo-contract CLI': [
+      'cargo-contract/overview',
+    ],
     'Canvas Test Network': [
       'canvas/overview',
     ],

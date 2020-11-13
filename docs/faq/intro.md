@@ -3,11 +3,11 @@ title: Frequently Asked Questions
 slug: /faq
 ---
 
-### Who is "Squid"?
+### Who is "Squink"?
 
 <div class="squid-container">
-    <img src="/img/ink-squid.svg" alt="squid ‒ the ink! mascot" class="squid" />
-    This is Squid
+    <img src="/img/ink-squid.svg" alt="Squink ‒ the ink! mascot" class="squid" />
+    This is Squink
     
     <br/>
     todo
