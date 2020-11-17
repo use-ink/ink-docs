@@ -17,10 +17,10 @@ module.exports = {
     ],
     'Basics': [
       'basics/contract-template',
+      'basics/constructors',
       'basics/storing-values',
       'basics/reading-values',
       'basics/mutating-values',
-      'basics/datastructures',
       'basics/events',
       'basics/trait-definitions',
       'basics/cross-contract-calling',
@@ -28,6 +28,12 @@ module.exports = {
     ],
     'Macros & Attributes': [
       'ink-macros/overview',
+    ],
+    'Data Structures': [
+      'datastructures/overview',
+      'datastructures/hashmap',
+      'datastructures/hashmap-impls',
+      'datastructures/custom',
     ],
     'cargo-contract CLI': [
       'cargo-contract/overview',

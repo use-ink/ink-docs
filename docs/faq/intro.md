@@ -31,3 +31,7 @@ TODO
 ### Can a re-entrancy bug occur in ink! contracts?
 
 TODO
+
+### What are chain-extensions?
+
+TODO

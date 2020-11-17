@@ -8,6 +8,32 @@ slug: /cargo-contract-cli
 [`cargo-contract`](https://github.com/paritytech/cargo-contract) is a CLI tool for helping setting up
 and managing WebAssembly smart contracts written with ink!.
 
+The tool has a number of handy capabilities:
+
+```
+cargo-contract 0.7.0
+Utilities to develop Wasm smart contracts
+
+USAGE:
+	cargo contract <SUBCOMMAND>
+
+OPTIONS:
+	-h, --help          Prints help information
+	-V, --version       Prints version information
+
+SUBCOMMANDS:
+	new              	Setup and create a new smart contract project
+	build            	Compiles the smart contract
+	generate-metadata	Generate contract metadata artifacts
+	test             	Test the smart contract off-chain
+	deploy           	Upload the smart contract code to the chain
+	instantiate      	Instantiate a deployed smart contract
+	call             	Arguments required for creating and sending
+                        an extrinsic to a substrate node
+```
+
+## Usage
+
 You can install it this way:
 
 ```
@@ -33,28 +59,3 @@ cargo contract build && cargo contract generate-metadata
 ```
 
 As a result you'll get a file `target/flipper.wasm` and `target/metadata.json`. Those need to be used when deploying the contract.
-
-## Capabilities
-
-```
-cargo-contract 0.7.0
-Utilities to develop Wasm smart contracts
-
-USAGE:
-	cargo contract <SUBCOMMAND>
-
-OPTIONS:
-	-h, --help          Prints help information
-	-V, --version       Prints version information
-
-SUBCOMMANDS:
-	new              	Setup and create a new smart contract project
-	build            	Compiles the smart contract
-	generate-metadata	Generate contract metadata artifacts
-	test             	Test the smart contract off-chain
-	deploy           	Upload the smart contract code to the chain
-	instantiate      	Instantiate a deployed smart contract
-	call             	Arguments required for creating and sending
-                        an extrinsic to a substrate node
-```
-
