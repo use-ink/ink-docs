@@ -3,7 +3,7 @@ title: HashMap Lazy vs. Eager
 slug: /datastructures/hashmap-lazy-eager
 ---
 
-In the follow we explore the differences between the high-level `ink_storage::collections::HashMap`
+In the following we explore the differences between the high-level `ink_storage::collections::HashMap`
 and the low-level `ink_storage::lazy::LazyHashMap`. Both provide very similar functionality in that they map some generic key to some storage entity.
 
 However, their APIs look very different. Whereas the `HashMap` provides a rich and high-level API that is comparable to that of Rust's very own `HashMap`, the `LazyHashMap` provides only a fraction of the API and also operates on `Option<T>` values types instead of `T` directly. It is more similar Solidity mappings than to Rust's `HashMap`.

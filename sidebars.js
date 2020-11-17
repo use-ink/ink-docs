@@ -36,6 +36,9 @@ module.exports = {
       'datastructures/hashmap-impls',
       'datastructures/custom',
     ],
+    'Examples': [
+      'examples/overview',
+    ],
     'cargo-contract CLI': [
       'cargo-contract/overview',
     ],

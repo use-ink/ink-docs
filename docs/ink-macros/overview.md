@@ -5,9 +5,6 @@ slug: /ink-macros-attributes
 
 ## ink! Macros & Attributes
 
-
-
-For ink! 3.0 we have added some more useful ink! specific attributes to the table.
 All of these ink! attributes are available to specify inside an ink! module.
 An ink! module is the module that is flagged by `#[ink::contract]` containing all the ink! definitions:
 ```rust

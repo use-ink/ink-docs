@@ -3,6 +3,10 @@ title: Frequently Asked Questions
 slug: /faq
 ---
 
+### Is it "ink" or "ink!"? What does the "!" stand for?
+
+TODO
+
 ### Who is "Squink"?
 
 <div class="squid-container">
@@ -22,7 +26,7 @@ TODO
 
 ### How to do cross-contract calling?
 
-TODO
+See the [Cross-contract calling](/basics/cross-contract-calling) section.
 
 ### What is a contract's ABI or Metadata?
 

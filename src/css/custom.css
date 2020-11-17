@@ -19,11 +19,14 @@
   --ifm-heading-font-weight: 400;
   --ifm-global-shadow-lw: transparent;
   --ifm-toc-border-color: transparent;
-  --ifm-link-color: #fff;
 }
 
 h1 {
   font-size: var(--ifm-h1-font-size) !important;
+}
+
+.pagination-nav__label {
+  color: #fff;
 }
 
 .docusaurus-highlight-code-line {
