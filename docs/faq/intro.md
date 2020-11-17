@@ -35,3 +35,7 @@ TODO
 ### What are chain-extensions?
 
 TODO
+
+### How can I use ink! with a Substrate chain with a custom chain config?
+
+TODO

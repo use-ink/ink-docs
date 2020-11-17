@@ -18,6 +18,7 @@ module.exports = {
     'Basics': [
       'basics/contract-template',
       'basics/constructors',
+      'basics/chain-types',
       'basics/storing-values',
       'basics/reading-values',
       'basics/mutating-values',

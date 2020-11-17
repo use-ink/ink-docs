@@ -19,6 +19,7 @@
   --ifm-heading-font-weight: 400;
   --ifm-global-shadow-lw: transparent;
   --ifm-toc-border-color: transparent;
+  --ifm-link-color: #fff;
 }
 
 h1 {

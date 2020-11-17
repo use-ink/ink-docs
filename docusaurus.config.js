@@ -37,7 +37,7 @@ module.exports = {
         },
         {
           href: 'https://github.com/paritytech/ink-docs',
-          label: 'ink-docs GitHub',
+          label: 'Docs GitHub',
           position: 'right',
         },
       ],
