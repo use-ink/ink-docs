@@ -37,18 +37,5 @@ Woohoo! You deployed your first smart contract!
 
 ## Moving Forward
 
-We will not go over these setup and deployment steps again, but we will use them throughout the tutorial. You can always come back to this chapter if you need to remember how to do a certain process.
-
-The rest of the tutorial will have **template code** which you will use to walk through the different steps of contract development. Each template comes with a fully designed suite of tests that should pass if you programmed your contract correctly. Before you move on from a section, make sure that you run:
-
-```bash
-cargo +nightly test
-```
-
-and that the tests all execute successfully, without any warnings.
-
-You need not deploy your contract between each section, but if we ask you to deploy your contract, you will need to follow the same steps you have done with the Flipper contract.
-
-
-
-
+If you are looking for a guided tutorial on how to build a more complex 
+smart contract you might want to check out our [ERC-20 tutorial](https://substrate.dev/substrate-contracts-workshop/#/2/introduction).

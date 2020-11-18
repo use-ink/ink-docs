@@ -3,7 +3,7 @@ title: Creating an ink! Project
 slug: /getting-started/creating-an-ink-project
 ---
 
-We are going to use the ink! CLI to generate the files we need for a Substrate smart contract project.
+Use the ink! CLI to generate an initial smart contract with some scaffolding code.
 
 Make sure you are in your working directory, and then run:
 
@@ -35,7 +35,7 @@ The ink CLI automatically generates the source code for the "Flipper" contract, 
 
 [Flipper Example Source Code](https://github.com/paritytech/ink/blob/v3.0.0-rc1/examples/flipper/lib.rs)
 
-The Flipper contract is nothing more than a `bool` which gets flipped from true to false through the `flip()` function. We won't go so deep into the details of this source code because we will be walking you through the steps to build a more advanced contract!
+The Flipper contract is nothing more than a `bool` which gets flipped from true to false through the `flip()` function. 
 
 ## Testing Your Contract
 
@@ -58,6 +58,6 @@ $ cargo +nightly test
     test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
-Now that we are feeling confident things are working, we can actually compile this contract to Wasm.
+Now that we are feeling confident things are working, we can actually compile this contract to Wasm in the next step.
 
 

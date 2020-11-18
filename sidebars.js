@@ -3,22 +3,20 @@ module.exports = {
     'Overview': [
         'intro/intro',
         'intro/why-rust',
+        'intro/why-webassembly',
         'intro/how-it-works'
     ],
     'Getting started': [
       'getting-started/setup',
       'getting-started/creating',
-      'getting-started/building',
+      'getting-started/compiling',
       'getting-started/running',
       'getting-started/deploying',
       'getting-started/calling',
-      'getting-started/testing',
       'getting-started/troubleshooting',
     ],
     'Basics': [
       'basics/contract-template',
-      'basics/constructors',
-      'basics/chain-types',
       'basics/storing-values',
       'basics/reading-values',
       'basics/mutating-values',

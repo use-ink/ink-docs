@@ -3,9 +3,12 @@ title: Running a Substrate Node
 slug: /getting-started/running-substrate
 ---
 
-TODO canvas node
+The [canvas-node](https://github.com/paritytech/canvas-node#note) is a simple Substrate
+blockchain which is configured to include the `contracts` module.
 
-After successfully installing `canvas`, you can start a local development chain by running:
+It's a comfortable option if you want to get a quickstart.
+
+[After successfully installing `canvas`](/getting-started/setup), you can start a local development chain by running:
 
 ```bash
 canvas --dev --tmp
