@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="825mm"
+   height="725mm"
+   viewBox="0 0 825 725"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="sketch.svg">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="marker2343"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2341" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2279"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2277" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker1813"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1811" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#e50000;fill-opacity:1;fill-rule:evenodd;stroke:#e50000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1510" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1507" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker1813-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1811-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker1813-6-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#d8b6ff;fill-opacity:1;fill-rule:evenodd;stroke:#d8b6ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1811-1-1" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.32310716"
+     inkscape:cx="1802.8584"
+     inkscape:cy="1557.2564"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     showguides="true"
+     inkscape:window-width="1918"
+     inkscape:window-height="1055"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#242526;fill-opacity:1;stroke:none;stroke-width:14.5566;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:113.386;stroke-opacity:1"
+       id="rect1440"
+       width="825"
+       height="725"
+       x="1.110223e-16"
+       y="0"
+       ry="0" />
+    <rect
+       style="fill:#5a007e;fill-opacity:1;stroke:#5a007e;stroke-width:8.95916;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2466"
+       width="780.76056"
+       height="300.32495"
+       x="23.509415"
+       y="403.61768"
+       ry="0" />
+    <g
+       id="g3104"
+       transform="translate(4.4385071)"
+       style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+      <rect
+         style="fill:#bc83fb;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect2468"
+         width="376.08414"
+         height="174.50311"
+         x="404.43976"
+         y="489.54254"
+         ry="0" />
+      <g
+         id="g3094"
+         transform="translate(0,3.7041668)"
+         style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:14.1111px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+           x="592.87457"
+           y="596.19843"
+           id="text835-3-7"><tspan
+             sodipodi:role="line"
+             x="592.87457"
+             y="596.19843"
+             style="font-size:14.1111px;text-align:center;text-anchor:middle;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+             id="tspan1091">Substrates module for smart contracts,</tspan><tspan
+             sodipodi:role="line"
+             x="592.87457"
+             y="613.83728"
+             style="font-size:14.1111px;text-align:center;text-anchor:middle;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+             id="tspan1095">which provides functions to execute contracts,</tspan><tspan
+             sodipodi:role="line"
+             x="592.87457"
+             y="631.4762"
+             style="font-size:14.1111px;text-align:center;text-anchor:middle;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+             id="tspan1097">access a contract's storage, etc.</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:25.4px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+           x="474.41205"
+           y="566.8855"
+           id="text1975-0-1"><tspan
+             sodipodi:role="line"
+             id="tspan1973-9-7"
+             x="474.41205"
+             y="566.8855"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">contracts-pallet</tspan></text>
+      </g>
+    </g>
+    <rect
+       style="fill:#d8b6ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.00000003;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:10;stroke-opacity:1"
+       id="rect859"
+       width="326.8931"
+       height="92.220352"
+       x="433.47379"
+       y="442.61938"
+       ry="27.279261" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.1111px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#d8b6ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="589.28522"
+       y="301.81595"
+       id="text835-3-2"><tspan
+         sodipodi:role="line"
+         x="589.28522"
+         y="301.81595"
+         style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#d8b6ff;fill-opacity:1;stroke-width:0.264583"
+         id="tspan1083">The .contract file contains the WebAssembly</tspan><tspan
+         sodipodi:role="line"
+         x="589.28522"
+         y="319.45483"
+         style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#d8b6ff;fill-opacity:1;stroke-width:0.264583"
+         id="tspan2067">Blob and Metadata for the contract. This</tspan><tspan
+         sodipodi:role="line"
+         x="589.28522"
+         y="337.09369"
+         style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#d8b6ff;fill-opacity:1;stroke-width:0.264583"
+         id="tspan2077">information is uploaded to the blockchain.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.875px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="126.84784"
+       y="662.80573"
+       id="text1087"><tspan
+         sodipodi:role="line"
+         id="tspan1085"
+         x="126.84784"
+         y="662.80573"
+         style="font-size:15.875px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583">Substrate</tspan><tspan
+         sodipodi:role="line"
+         x="126.84784"
+         y="682.64948"
+         style="font-size:15.875px;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+         id="tspan2399">Blockchain-Framework</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="489.49722"
+       y="286.95941"
+       id="text1127"><tspan
+         sodipodi:role="line"
+         id="tspan1125"
+         x="489.49722"
+         y="286.95941"
+         style="stroke-width:0.264583" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.1111px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:372.233;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="455.81284"
+       y="231.4695"
+       id="text835-3"
+       transform="translate(-38.525277,281.16582)" />
+    <path
+       d="m 127.61812,634.24433 -0.93635,0.53868 0.16992,0.0976 0.76643,-0.44107 v 0.86767 l 31.15277,-17.98596 v -1.94502 l -31.15277,17.98597 z m 0,-5.91096 -6.05195,3.49596 0.29284,0.16992 5.75911,-3.32243 v 0.73028 l 31.15277,-17.98957 v -1.80402 l -31.15277,17.98596 z m 0,-5.90735 -11.17117,6.44964 0.42298,0.24222 10.74819,-6.2038 v 0.58206 l 31.15277,-17.98596 v -1.65941 l -31.15277,17.98596 z m 31.15277,-41.09837 -0.45914,-0.26392 -24.94535,14.40324 -3.23928,-1.8691 7.58122,-4.37809 v -1.09543 l 16.41693,-9.47923 -0.80259,-0.46275 -15.61434,9.01286 v -0.93997 l -10.14806,5.86035 -3.49958,-2.02094 24.94535,-14.40322 -0.67605,-0.39045 -24.94535,14.40323 -3.40559,-1.96671 5.53137,-3.19228 -1.03397,-0.59652 19.4176,-11.21094 -0.54952,-0.31815 -19.41761,11.21095 -0.98335,-0.5676 -5.54582,3.19228 v 1.14604 l -5.19875,3.00068 -0.37961,-0.21692 -15.386624,8.8791 v 1.51118 l 16.695354,-9.63831 -0.38322,-0.22052 4.64924,-2.68254 v 1.17858 l 3.42004,1.97394 -3.6225,2.08962 -0.25307,-0.14461 -20.505844,11.84362 v 1.36657 l 21.695264,-12.5269 -0.25667,-0.14823 3.61888,-2.08962 3.49958,2.02093 -7.59207,4.38532 v 0.79536 l -20.964984,12.10392 v 1.21834 L 117.39776,599.9969 v 0.93274 l 3.25374,1.87632 -24.215114,13.98024 v 0.52783 l 0.4736,0.27476 24.674254,-14.24415 3.36581,1.94139 -7.54867,4.31664 v 0.99057 l -16.30129,9.41417 0.80259,0.46275 15.4987,-8.94779 v 1.14242 l 10.16252,-5.86757 3.06936,1.77148 -3.01152,1.73894 v 0.29284 l -21.40601,12.35699 0.67605,0.39044 20.72996,-11.96653 v 0.29283 l 4.19733,-2.42223 3.32966,1.92333 -5.43375,3.13805 0.47722,0.27476 -2.57046,1.48226 v 0.44106 l -16.2904,9.40693 0.54952,0.31814 15.73726,-9.08517 v 0.43745 l 3.87919,-2.24146 0.7809,0.4519 5.43375,-3.13082 v -0.90743 l 21.06255,-12.15815 v -1.51118 l -21.06255,12.15815 v -0.55314 l -3.32967,-1.92332 24.3886,-14.08147 v -1.36657 l -25.57441,14.76475 -3.06936,-1.77148 7.58122,-4.37809 v -0.99781 l 21.06255,-12.15815 v -1.21835 l -21.06255,12.15815 v -0.74836 l -3.41282,-1.97032 24.47537,-14.13208 z m -38.79183,18.13057 7.58122,-4.37809 3.23567,1.86909 -3.61166,2.08602 -3.96956,2.29208 z m 15.16244,0 -7.61376,4.3564 -3.37666,-1.94863 3.48512,-2.0137 4.0961,-2.36439 z m -27.51943,-11.68816 31.15277,-17.98596 -0.42298,-0.24584 -31.15278,17.98596 -0.50614,-0.28922 -10.260164,5.92181 v 1.65941 l 11.699054,-6.75333 z m -5.12286,-2.95006 31.16003,-17.98957 -0.29645,-0.17354 -31.16003,17.99319 -0.6363,-0.36514 -5.133684,2.96452 v 1.80402 l 6.702714,-3.86834 z m -5.126464,-2.95006 31.167274,-17.9968 -0.16992,-0.0976 -31.167274,17.99681 -0.7592,-0.43745 -0.0108,0.004 v 1.95224 l 1.70279,-0.98335 z"
+       fill="#ffffff"
+       id="path1210"
+       style="stroke-width:0.0361527" />
+    <path
+       style="fill:none;stroke:#d8b6ff;stroke-width:1.71533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.71533, 1.71533;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1813)"
+       d="m 320.44411,76.100309 h 76.62158"
+       id="path1809" />
+    <g
+       id="g2501">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:14.1111px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#d8b6ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="154.72556"
+         y="107.31559"
+         id="text835"><tspan
+           sodipodi:role="line"
+           x="154.72556"
+           y="107.31559"
+           style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#d8b6ff;fill-opacity:1;stroke-width:0.264583"
+           id="tspan1079">contract is written in our Rust eDSL</tspan></text>
+      <g
+         style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"
+         id="g1956"
+         transform="matrix(0.03362522,0,0,0.03362522,121.27992,44.685213)">
+        <g
+           id="g1942">
+          <path
+             id="inc"
+             d="m 1811.78,748.385 c -50.595,18.311 -78.758,71.865 -62.852,119.517 15.906,47.653 69.897,71.474 120.492,53.164 50.595,-18.311 78.758,-71.865 62.852,-119.518 -15.906,-47.652 -69.897,-71.474 -120.492,-53.163 z M 160.58,264.179 c 13.209,0.001 19.813,6.605 19.813,19.814 v 620.821 c 0,13.209 -6.604,19.813 -19.813,19.814 H 29.811 c -13.209,0 -19.814,-6.605 -19.814,-19.814 V 283.993 c 0,-13.209 6.605,-19.813 19.814,-19.814 z m 537.605,-5.283 c 143.978,0 194.171,97.746 194.171,232.478 v 413.44 c 0,13.209 -6.604,19.813 -19.813,19.814 H 741.774 c -13.209,0 -19.813,-6.605 -19.813,-19.814 V 471.56 c 0,-44.91 -33.022,-60.761 -71.329,-60.761 h -15.85 c -56.799,0 -97.747,23.776 -112.277,47.552 v 446.463 c 0,13.209 -6.604,19.813 -19.813,19.814 H 371.923 c -13.209,0 -19.813,-6.605 -19.813,-19.814 V 283.993 c 0,-13.209 6.604,-19.813 19.813,-19.814 h 130.769 c 13.209,0.001 19.813,6.605 19.813,19.814 v 58.119 c 19.814,-33.022 70.008,-83.216 167.754,-83.216 z M 1201.446,0 c 13.21,0 19.814,6.605 19.814,19.813 V 478.165 L 1408.827,280.03 c 7.925,-9.246 19.813,-15.85 30.381,-15.851 h 136.052 c 17.173,0.001 33.022,19.814 9.246,44.911 l -196.813,211.343 229.836,368.53 c 7.925,14.53 6.604,35.664 -15.851,35.665 h -124.164 c -17.172,0 -33.023,-5.284 -43.59,-23.776 L 1272.775,634.03 1221.26,685.545 v 219.269 c 0,13.209 -6.604,19.813 -19.814,19.814 h -130.768 c -13.209,0 -19.814,-6.605 -19.814,-19.814 V 19.813 C 1050.864,6.605 1057.468,0 1070.678,0 Z M 69.566,31.383 C 19.982,46.375 -9.857,96.406 2.975,143.038 15.808,189.669 66.482,215.357 116.067,200.364 165.652,185.372 195.49,135.341 182.658,88.71 169.826,42.078 119.151,16.391 69.566,31.383 Z"
+             style="fill:#ffffff" />
+          <path
+             d="m 1795.61,594.617 -28.783,-0.213 c -13.209,0 -19.813,-6.605 -19.813,-19.814 V 19.813 C 1747.014,6.605 1753.618,0 1766.827,0 h 134.732 c 13.209,0 19.813,6.605 19.813,19.813 l -0.081,18.721 c -51.238,12.482 -91.137,64.695 -94.329,129.8 -2.564,52.29 19.2,99.658 53.607,126.46 -25.633,17.438 -44.472,46.887 -49.193,82.159 -5.141,38.403 7.648,74.783 31.364,98.837 -23.939,10.508 -45.741,31.983 -58.147,60.301 -8.77,20.019 -11.509,40.408 -8.983,58.526 z"
+             style="fill:#ffffff"
+             id="path1938" />
+          <path
+             d="m 1837.23,549.753 c -9.822,22.417 -2.309,46.088 16.766,52.827 19.074,6.738 42.534,-5.992 52.356,-28.41 9.821,-22.418 2.308,-46.089 -16.766,-52.827 -19.075,-6.739 -42.535,5.992 -52.356,28.41 z m 35.572,-164.125 c -6.558,34.707 11.744,67.29 40.844,72.716 29.1,5.426 58.05,-18.347 64.607,-53.054 6.558,-34.707 -11.744,-67.29 -40.844,-72.716 -29.1,-5.425 -58.05,18.347 -64.607,53.054 z m -7.312,-204.559 c -2.328,47.49 28.18,88.336 68.085,91.158 39.905,2.821 74.194,-33.443 76.522,-80.933 2.329,-47.49 -28.179,-88.336 -68.084,-91.158 -39.906,-2.821 -74.194,33.444 -76.523,80.933 z"
+             style="fill:#ffffff"
+             id="path1940" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g2514">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:14.1111px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#d8b6ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="589.26453"
+         y="107.31559"
+         id="text835-0"><tspan
+           sodipodi:role="line"
+           x="589.26453"
+           y="107.31559"
+           style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#d8b6ff;fill-opacity:1;stroke-width:0.264583"
+           id="tspan1964">compiles the contract's Rust code to Wasm</tspan><tspan
+           sodipodi:role="line"
+           x="589.26453"
+           y="124.95447"
+           style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#d8b6ff;fill-opacity:1;stroke-width:0.264583"
+           id="tspan1075">and generates Metadata information for it</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:25.4px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="482.0444"
+         y="70.174149"
+         id="text1975"><tspan
+           sodipodi:role="line"
+           id="tspan1973"
+           x="482.0444"
+           y="70.174149"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:0.264583">cargo-contract</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:25.4px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="480.38074"
+       y="261.92252"
+       id="text1975-2"><tspan
+         sodipodi:role="line"
+         id="tspan1973-2"
+         x="480.38074"
+         y="261.92252"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#ffffff;stroke-width:0.264583">.contract File</tspan></text>
+    <path
+       style="fill:none;stroke:#d8b6ff;stroke-width:1.71533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.71533, 1.71533;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1813-6)"
+       d="m 585.51052,145.04595 v 76.62158"
+       id="path1809-0" />
+    <path
+       style="fill:none;stroke:#d8b6ff;stroke-width:1.715;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.715, 1.715;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker2343);marker-end:url(#marker1813-6-6)"
+       d="m 590.0387,358.66592 v 76.62159"
+       id="path1809-0-5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.1111px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="596.88245"
+       y="458.71246"
+       id="text835-0-9"><tspan
+         sodipodi:role="line"
+         x="596.88245"
+         y="458.71246"
+         style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         id="tspan1075-9" /><tspan
+         sodipodi:role="line"
+         x="596.88245"
+         y="476.35135"
+         style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         id="tspan2428">The WebAssembly Blob targets a</tspan><tspan
+         sodipodi:role="line"
+         x="596.88245"
+         y="493.9902"
+         style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         id="tspan2430">stable interface exposed by Substrate's</tspan><tspan
+         sodipodi:role="line"
+         x="596.88245"
+         y="511.62909"
+         style="font-size:14.1111px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         id="tspan2432">contracts module.</tspan></text>
+  </g>
+</svg>
