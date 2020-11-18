@@ -3,7 +3,7 @@ title: Events
 slug: /basics/events
 ---
 
-Event Definitions
+## Event Definition
 
 ```rust
 #[ink(event)]
@@ -17,10 +17,14 @@ pub struct Transferred {
 }
 ```
 
-Emitting Events 1
+Add the `#[ink(topic)]` attribute tag to each item in your event that you want to have indexed.
+A good rule of thumb is to ask yourself if somebody might want to search for this topic.
+
+## Emitting Events in a Constructor
+
 ```rust
 #[ink(constructor)]
-pub fn new(initial_supply: Balance) -> Self {
+pub fn new(initial_value: Balance) -> Self {
     let caller = Self::env().caller();
     let mut balances = HashMap::new();
     balances.insert(caller, initial_supply);
@@ -33,7 +37,10 @@ pub fn new(initial_supply: Balance) -> Self {
 }
 ```
 
-Emitting Events 2
+See the ERC20 example.
+
+## Emitting Events from Messages
+
 ```rust
 #[ink(message)]
 pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
@@ -51,3 +58,9 @@ pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
 ```
 
 ## Anonymous Events
+
+`#[ink(anonymous)]`
+
+Applicable to ink! events.
+
+Tells the ink! codegen to treat the ink! event as anonymous which omits the event signature as topic upon emitting. Very similar to anonymous events in Solidity.
