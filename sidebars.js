@@ -25,14 +25,18 @@ module.exports = {
       'basics/trait-definitions',
       'basics/cross-contract-calling',
       'basics/off-chain-testing',
+      'basics/env-functions',
     ],
     'Macros & Attributes': [
       'ink-macros/overview',
     ],
-    'Data Structures': [
+    'Storage & Data Structures': [
       'datastructures/overview',
       'datastructures/hashmap',
       'datastructures/hashmap-impls',
+      'datastructures/spread-packed',
+      'datastructures/opting-out',
+      'datastructures/dynamic-allocation',
       'datastructures/custom',
     ],
     'Examples': [

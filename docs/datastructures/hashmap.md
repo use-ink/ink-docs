@@ -23,7 +23,7 @@ This means that for a given key, you can store a unique instance of a value type
 
 ## Storage HashMap API
 
-You can find the full HashMap API in the [crates/storage/src/collections/hashmap](https://github.com/paritytech/ink/blob/master/crates/storage/src/collections/hashmap/mod.rs) part of ink!.
+You can find the full HashMap API in the [crate documentation](https://paritytech.github.io/ink/ink_storage/collections/hashmap/index.html) part of ink!.
 
 Here are some of the most common functions you might use:
 
@@ -64,7 +64,7 @@ Here are some of the most common functions you might use:
 
 ## Initializing a HashMap
 
-As mentioned, not initializing storage before you use it is a common error that can break your smart contract. For each key in a storage value, the value needs to be set before you can use it. To do this, we will create a private function which handles when the value is set and when it is not, and make sure we never work with uninitialized storage.
+Not initializing storage before you use it is a common error that can break your smart contract. For each key in a storage value, the value needs to be set before you can use it. To do this, we will create a private function which handles when the value is set and when it is not, and make sure we never work with uninitialized storage.
 
 So given `my_number_map`, imagine we wanted the default value for any given key to be `0`. We can build a function like this:
 
@@ -182,13 +182,6 @@ mod mycontract {
 
 Then you can write permissioned functions which checks that the current caller is the owner of the contract.
 
-## Your Turn!
-
-Follow the `ACTION`s in the template code to introduce a storage map to your contract.
-
-Remember to run `cargo +nightly test` to test your work.
-
-
 # Incrementing My Value
 
 The final step in our Incrementer contract is to allow each user to update increment their own value.
@@ -242,10 +235,3 @@ self.my_number_map
     .and_modify(|old_value| old_value += by)
     .or_insert(by);
 ```
-
-
-## Your Turn!
-
-Follow the `ACTION`s to finish your Incrementer smart contract.
-
-Remember to run `cargo +nightly test` to test your work.

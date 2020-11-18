@@ -44,6 +44,10 @@ TODO
 
 TODO
 
+### What does the `#![cfg_attr(not(feature = "std"), no_std)]` at the beginning of each contract mean?
+
+TODO
+
 ### Overflow Safety?
 
 Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
