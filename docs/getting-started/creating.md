@@ -3,6 +3,10 @@ title: Creating an ink! Project
 slug: /getting-started/creating-an-ink-project
 ---
 
+ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) that you can use to write WebAssembly based smart contracts in the Rust programming language.
+
+ink! is just standard Rust in a well defined "contract format" with specialized `#[ink(...)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Substrate compatible Wasm bytecode!
+
 Use the ink! CLI to generate an initial smart contract with some scaffolding code.
 
 Make sure you are in your working directory, and then run:

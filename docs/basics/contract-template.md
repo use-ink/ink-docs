@@ -3,33 +3,21 @@ title: Contract Template
 slug: /basics/contract-template
 ---
 
-Let's take a look at a high level what is available to you when developing a smart contract using ink!.
-
-## ink!
-
-ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) that you can use to write WebAssembly based smart contracts in the Rust programming language.
-
-ink! is just standard Rust in a well defined "contract format" with specialized `#[ink(...)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Substrate compatible Wasm bytecode!
-
-## Your Turn!
-
-Let's start a new project for the Incrementer contract that you will build in this chapter.
-
 Change into your working directory and run:
 
 ```bash
-cargo contract new incrementer
+cargo contract new foobar
 ```
 
-Just like in previous examples, this will create a new project folder named `incrementer` which we will use for the rest of this chapter.
+This will create a new project folder named `foobar`.
 
 ```bash
-cd incrementer/
+cd foobar/
 ```
 
-In the `lib.rs` file, replace the "Flipper" contract source code with the template code provided here.
+In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
 
-Quickly check that it compiles and the trivial test passes with:
+Quickly check that it compiles and the trivial tests pass with:
 
 ```bash
 cargo +nightly test

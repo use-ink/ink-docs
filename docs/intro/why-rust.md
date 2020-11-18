@@ -16,3 +16,5 @@ in most modern text editors.
 * Rust data structures are very compact - in many cases even more compact than in C,
 since the compiler reorders struct fields to make each type as small as possible.
 Size is important in the space-constrained world of blockchains.
+
+* Because ink! follows Rust standards, tools like rustfmt and rust-analyzer already work out of the box.

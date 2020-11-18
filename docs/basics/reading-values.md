@@ -3,7 +3,7 @@ title: Reading Values from Storage
 slug: /basics/reading-values
 ---
 
-Now that we have created and initialized a storage value, we are going to start to interact with it!
+Now that we have created and initialized a storage value, we are going to start interacting with it!
 
 ## Contract Functions
 
@@ -82,9 +82,3 @@ impl MyContract {
 ```
 
 In Rust, if the last expression in a function does not have a semicolon, then it will be the return value.
-
-## Your Turn!
-
-Follow the `ACTION`s on the code template provided.
-
-Remember to run `cargo +nightly test` to test your work.

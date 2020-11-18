@@ -37,8 +37,8 @@ rustup target add wasm32-unknown-unknown --toolchain stable
 ## Installing The Canvas Node
 
 The [canvas-node](https://github.com/paritytech/canvas-node#note) is a simple Substrate
-blockchain which is configured to include the `contracts` module (see [How it Works](/how-ink-works)
-for more).
+blockchain which is configured to include the Substrate module for smart contract
+functionality ‒ the `contracts` pallet (see [How it Works](/how-it-works) for more).
 
 It's a comfortable option if you want to get a quickstart.
 

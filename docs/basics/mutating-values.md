@@ -3,7 +3,7 @@ title: Mutating Storage Values
 slug: /basics/mutating-values
 ---
 
-It's time to let our users modify storage!
+It's time to modify some storage!
 
 ## Mutable and Immutable Functions
 
@@ -57,9 +57,3 @@ impl MyContract {
     }
 }
 ```
-
-## Your Turn
-
-Follow the `ACTION`s in the template code.
-
-Remember to run `cargo +nightly test` to test your work.

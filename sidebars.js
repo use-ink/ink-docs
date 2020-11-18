@@ -21,6 +21,7 @@ module.exports = {
       'basics/reading-values',
       'basics/mutating-values',
       'basics/events',
+      'basics/payable-messages',
       'basics/trait-definitions',
       'basics/cross-contract-calling',
       'basics/off-chain-testing',
@@ -45,6 +46,7 @@ module.exports = {
     ],
     'FAQ': [
       'faq/intro',
+      'faq/ink-vs-solidity',
     ],
   },
 };

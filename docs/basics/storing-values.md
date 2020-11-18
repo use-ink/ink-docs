@@ -3,9 +3,7 @@ title: Storing Values
 slug: /basics/storing-values
 ---
 
-The first thing we are going to do to the contract template is introduce some storage values.
-
-Here is how you would store some simple values in storage:
+Here is how you store some simple values in storage:
 
 ```rust
 #[ink(storage)]
@@ -51,8 +49,9 @@ mod MyContract {
 
 You can find all the supported Substrate types in [`crates/storage/src/lib.rs`](https://github.com/paritytech/ink/blob/master/crates/storage/src/lib.rs).
 
-## Contract Deployment
+## Initializing Storage in Constructors
 
+Constructors are how values get initialized.
 Every ink! smart contract must have a constructor which is run once when a contract is created. ink! smart contracts can have multiple constructors:
 
 ```rust
@@ -88,9 +87,3 @@ mod mycontract {
     }
 }
 ```
-
-## Your Turn!
-
-Follow the `ACTION`s in the template.
-
-Remember to run `cargo +nightly test` to test your work.

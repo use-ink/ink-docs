@@ -3,12 +3,8 @@ title: Trait Definitions
 slug: /basics/trait-definitions
 ---
 
-See e.g. the [`examples/trait-erc20`](https://github.com/paritytech/ink/blob/master/examples/trait-erc20/lib.rs#L49-L51) contract on how to utilize it or [the documentation](https://paritytech.github.io/ink/ink_lang/attr.trait_definition.html) for details.
 
-## Trait Support
-
-One of the most anticipated features of ink! 3.0 is its Rust trait support.
-Through the new `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
+Through the `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
 
 This allows to defined shared smart contract interfaces to different concrete implementations.
 Note that this ink! trait definition can be defined anywhere, even in another crate!
