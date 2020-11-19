@@ -19,6 +19,7 @@ struct Delegator {
 let result = self.adder.inc(by);
 ```
 
-See the [delegator example](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs).
+See the [delegator example](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs)
+for an elaborate code example.
 
 

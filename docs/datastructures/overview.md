@@ -11,7 +11,7 @@ TODO https://paritytech.github.io/ink/ink_storage/collections/
 
 ### Lazy
 
-Data structures provided by the new `ink_storage` crate are inherently lazy. We will explain what this means below!
+Data structures provided by the `ink_storage` crate are inherently lazy. We will explain what this means below!
 
 The `ink_storage` crate provides high-level and low-level lazy data structures.
 The difference between high-level and low-level lies in the distinction in how these data structures are aware
