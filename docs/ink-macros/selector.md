@@ -1,6 +1,6 @@
 ---
 title: #[ink(selector = "..")]
-slug: /ink-macros-attributes/selector
+slug: /docs/docs/ink-macros-attributes/selector
 ---
 
 ### `#[ink(selector = "..")]`

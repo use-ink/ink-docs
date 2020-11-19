@@ -1,6 +1,6 @@
 ---
 title: Payable Messages
-slug: /ink-macros-attributes/payable
+slug: /docs/docs/ink-macros-attributes/payable
 ---
 
 ## `#[ink(payable)]`

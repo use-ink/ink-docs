@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: /cargo-contract-cli
+slug: /docs/docs/cargo-contract-cli
 ---
 
 [![version][m1]][m2]

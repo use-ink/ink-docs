@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: /canvas
+slug: /docs/docs/canvas
 ---
 
 ## What is the Canvas Test Network?

@@ -1,6 +1,6 @@
 ---
 title: Why Rust for Smart Contracts?
-slug: /why-rust-for-smart-contracts
+slug: /docs/docs/why-rust-for-smart-contracts
 ---
 * No overhead: Minimal runtime
 

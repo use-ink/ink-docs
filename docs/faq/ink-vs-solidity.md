@@ -1,6 +1,6 @@
 ---
 title: ink! vs. Solidity
-slug: /ink-vs-solidity
+slug: /docs/docs/ink-vs-solidity
 ---
 
 Rust is an ideal smart contract language. It is type safe, memory safe, and free of undefined behaviors. It generates small binaries because it doesn’t include extra bloat, like a garbage collector, and advanced optimizations and tree shaking remove dead code. Through compiler flags, Rust can automatically protect against integer overflow.

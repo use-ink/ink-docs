@@ -1,6 +1,6 @@
 ---
 title: Storing Values
-slug: /basics/storing-values
+slug: /docs/docs/basics/storing-values
 ---
 
 Here is how you store some simple values in storage:

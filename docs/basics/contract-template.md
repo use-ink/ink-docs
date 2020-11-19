@@ -1,6 +1,6 @@
 ---
 title: Contract Template
-slug: /basics/contract-template
+slug: /docs/docs/basics/contract-template
 ---
 
 Change into your working directory and run:

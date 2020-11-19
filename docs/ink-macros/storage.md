@@ -1,6 +1,6 @@
 ---
 title: #[ink(storage)]
-slug: /ink-macros-attributes/storage
+slug: /docs/docs/ink-macros-attributes/storage
 ---
 
 ## `#[ink(storage)]` 

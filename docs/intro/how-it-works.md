@@ -1,6 +1,6 @@
 ---
 title: How it works ‒ Substrate
-slug: /how-it-works
+slug: /docs/docs/how-it-works
 ---
 
 <img src="./img/how-it-works.svg" alt="How it Works" />

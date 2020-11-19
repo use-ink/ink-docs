@@ -1,6 +1,6 @@
 ---
 title: Events
-slug: /basics/events
+slug: /docs/docs/basics/events
 ---
 
 ## Event Definition

@@ -1,6 +1,6 @@
 ---
 title: Why WebAssembly for Smart Contracts?
-slug: /why-webassembly-for-smart-contracts
+slug: docs/why-webassembly-for-smart-contracts
 ---
 
 * General VM & bytecode

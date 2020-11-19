@@ -1,6 +1,6 @@
 ---
 title: Deploy Your Contract
-slug: /getting-started/deploy-your-contract
+slug: /docs/docs/getting-started/deploy-your-contract
 ---
 
 Now that we have generated the Wasm binary from our source code and started a Canvas node, we want to deploy this contract onto our Substrate blockchain.

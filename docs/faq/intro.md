@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions
-slug: /faq
+slug: /docs/docs/faq
 ---
 
 ### Is it "ink" or "ink!"? What does the "!" stand for?

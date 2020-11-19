@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: /examples
+slug: /docs/docs/examples
 ---
 
 In our <a href="https://github.com/paritytech/ink/tree/master/examples">examples folder</a> you find a number of examples written in ink!.

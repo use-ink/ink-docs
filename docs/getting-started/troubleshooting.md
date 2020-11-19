@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-slug: /getting-started/troubleshooting
+slug: /docs/docs/getting-started/troubleshooting
 ---
 
 Here are solutions to some of the common problem you may come across:

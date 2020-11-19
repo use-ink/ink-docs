@@ -1,6 +1,6 @@
 ---
 title: #[ink(message)]
-slug: /ink-macros-attributes/message
+slug: /docs/docs/ink-macros-attributes/message
 ---
 
 ## `#[ink(message)]`

@@ -1,6 +1,6 @@
 ---
 title: Spread & Packed
-slug: /datastructures/spread-packed-layout
+slug: /docs/docs/datastructures/spread-packed-layout
 ---
 
 ### Spread & Packed Modes

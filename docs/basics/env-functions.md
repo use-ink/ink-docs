@@ -1,6 +1,6 @@
 ---
 title: Environment Functions
-slug: /basics/environment-functions
+slug: /docs/docs/basics/environment-functions
 ---
 
 ## `Self::env()` vs. `self.env()`

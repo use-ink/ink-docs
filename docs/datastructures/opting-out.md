@@ -1,6 +1,6 @@
 ---
 title: Opting out of Storage
-slug: /datastructures/opting-out
+slug: /docs/docs/datastructures/opting-out
 ---
 
 ### Opting-out of Storage

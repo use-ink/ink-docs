@@ -1,6 +1,6 @@
 ---
 title: #[ink(namespace = "..")]
-slug: /ink-macros-attributes/namespace
+slug: /docs/docs/ink-macros-attributes/namespace
 ---
 
 ## `#[ink(namespace = "..")]`
