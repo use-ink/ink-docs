@@ -1,5 +1,5 @@
 ---
-title: Calling Your Contract
+title: Call Your Contract
 slug: /getting-started/calling-your-contract
 ---
 

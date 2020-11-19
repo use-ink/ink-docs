@@ -3,7 +3,7 @@ title: Reading Values from Storage
 slug: /basics/reading-values
 ---
 
-Now that we have created and initialized a storage value, we are going to start interacting with it!
+Reading from storage is where the fun begins!
 
 ## Contract Functions
 

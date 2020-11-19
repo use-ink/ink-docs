@@ -1,5 +1,5 @@
 ---
-title: Compiling Your Contract
+title: Compile Your Contract
 slug: /getting-started/building-your-contract
 ---
 

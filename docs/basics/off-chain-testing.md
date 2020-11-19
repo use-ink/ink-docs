@@ -3,7 +3,6 @@ title: Contract Testing
 slug: /basics/off-chain-testing
 ---
 
-
 Testing contracts off-chain is done by `cargo test` and users can simply use the standard routines
 of creating unit test modules within the ink! project:
 

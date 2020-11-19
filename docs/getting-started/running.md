@@ -1,5 +1,5 @@
 ---
-title: Running a Substrate Node
+title: Run a Substrate Node
 slug: /getting-started/running-substrate
 ---
 
