@@ -1,5 +1,5 @@
 ---
-title: Spread & Packed
+title: Spread vs. Packed
 slug: /datastructures/spread-packed-layout
 ---
 

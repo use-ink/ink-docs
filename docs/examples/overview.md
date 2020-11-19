@@ -14,7 +14,7 @@ Some of the most interesting ones:
 * …and more, just rummage through the folder 🙃.
 
 To build a single example navigate to the root of the example and run:
-```
+```bash
 cargo contract build
 ```
 

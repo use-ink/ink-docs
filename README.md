@@ -4,7 +4,7 @@ This is the documentation portal for [ink!](https://github.com/paritytech/ink). 
 
 Run it locally via
 
-```
+```bash
 yarn
 yarn start
 ```

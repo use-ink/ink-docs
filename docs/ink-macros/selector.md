@@ -20,5 +20,46 @@ impl MyStorage {
     #[ink(message, selector = "0xDEADBEEF")]
     fn my_message(&self) {}
 }
-/// ... then the selector of `my_message` is simply `0xDEADBEEF` since it overrides
-/// the composed selector.
+```
+… then the selector of `my_message` is simply `0xDEADBEEF` since it overrides
+the composed selector.
+
+## Controlling the messages selector
+
+Every ink! message and ink! constructor has a unique selector with which the
+message or constructor can be uniquely identified within the ink! smart contract.
+These selectors are mainly used to drive the contract's dispatch upon calling it.
+
+An ink! smart contract author can control the selector of an ink! message or ink!
+constructor using the `selector` flag. An example is shown below:
+
+```rust
+use ink_lang as ink;
+#[ink::contract]
+mod flipper {
+    #[ink(storage)]
+    pub struct Flipper {
+        value: bool,
+    }
+    impl Flipper {
+        #[ink(constructor)]
+        #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
+        pub fn new(initial_value: bool) -> Self {
+            Flipper { value: false }
+        }
+
+        /// Flips the current value.
+        #[ink(message)]
+        #[ink(selector = "0xCAFEBABE")] // You can either specify selector out-of-line.
+        pub fn flip(&mut self) {
+            self.value = !self.value;
+        }
+        
+        /// Returns the current value.
+        #[ink(message, selector = "0xFEEDBEEF")] // or specify selector inline.
+        pub fn get(&self) -> bool {
+            self.value
+        }
+    }
+}
+```

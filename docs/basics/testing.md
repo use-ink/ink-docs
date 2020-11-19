@@ -32,6 +32,16 @@ See the [flipper example](https://github.com/paritytech/ink/blob/master/examples
 
 ## Off-chain Testing
 
+ink! smart contracts can compile in several different modes.
+There are two main compilation models using either
+- on-chain mode: `no_std` + WebAssembly as target
+- off-chain mode: `std`
+
+We generally use the on-chain mode for actual smart contract deployment
+whereas we use the off-chain mode for smart contract testing using the
+off-chain environment provided by the `ink_env` crate.
+
+
 The `#[ink::test]` proc. macro enables more elaborate off-chain testing.
 
 If you annotate a test with this attribute it will be executed in a simulated
@@ -45,10 +55,79 @@ See the [`examples/erc20`](https://github.com/paritytech/ink/blob/master/example
 At the moment there are some known limitations to our off-chain environment and we are working
 on making it behave as close to the real chain environment as possible.
 
+Defines a unit test that makes use of ink!'s off-chain testing capabilities.
+
+If your unit test does not require the existence of an off-chain environment
+it is fine to not use this macro since it bears some overhead with the test.
+
+Note that this macro is not required to run unit tests that require ink!'s
+off-chain testing capabilities but merely improves code readability.
+
+## How do you find out if your test requires the off-chain environment?
+
+Normally if the test recursively uses or invokes some contract methods that
+call a method defined in `self.env()` or `Self::env()`.
+
+An examples is the following:
+
+```rust
+let caller: AccountId = self.env().caller();
+```
+
+## Example
+
+```rust
+use ink_lang as ink;
+
+#[cfg(test)]
+mod tests {
+    // Conventional unit test that works with assertions.
+    #[ink::test]
+    fn test1() {
+        // test code comes here as usual
+    }
+
+    // Conventional unit test that returns some Result.
+    // The test code can make use of operator-`?`.
+    #[ink::test]
+    fn test2() -> Result<(), ink_env::Error> {
+        // test code that returns a Rust Result type
+    }
+}
+```
+
+
 ## On-chain Testing
 
 The easiest way to do on-chain testing is to
 [run a local substrate node](/getting-started/running-substrate),
 deploy your contract there and interact with it.
 
-TODO answer "How do I print something to the console from the runtime? Is it possible to do `println!("{:?}", foo)`?"
+```rust
+use ink_lang as ink;
+
+#[ink::contract]
+mod greeter {
+    #[ink(storage)]
+    pub struct Greeter;
+
+    impl Greeter {
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            let caller = Self::env().caller();
+            let message = format!("thanks for instantiation {:?}", caller);
+            ink_env::debug_println(&message);
+            Greeter {}
+        }
+
+        #[ink(message, payable)]
+        pub fn fund(&mut self) {
+            let caller = self.env().caller();
+            let value = self.env().transferred_balance();
+            let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
+            ink_env::debug_println(&message);
+        }
+    }
+}
+```
+

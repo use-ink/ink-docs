@@ -7,7 +7,7 @@ Here are solutions to some of the common problem you may come across:
 
 ### Unexpected Epoch Change
 
-There is a known issue with the Substrate block production (BABE) on a running chain. If you stop your node for too long (closing the terminal, putting your computer to sleep, etc...), you will get the following error:
+There is a known issue with the Substrate block production (BABE) on a running chain. If you stop your node for too long (closing the terminal, putting your computer to sleep, etc.), you will get the following error:
 
 ```bash
 ClientImport("Unexpected epoch change")

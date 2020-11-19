@@ -1,6 +1,7 @@
 ---
 title: Frequently Asked Questions
 slug: /faq
+hide_table_of_contents: true
 ---
 
 ### Is it "ink" or "ink!"? What does the "!" stand for?
@@ -20,7 +21,7 @@ TODO
     todo
 </div>
 
-### What's the relationship of Substrate/Polkadot?
+### What's ink!'s relationship to Substrate/Polkadot?
 
 TODO
 
@@ -42,7 +43,9 @@ TODO
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
-TODO
+Please see [the `env_types` argument](https://paritytech.github.io/ink/ink_lang_macro/attr.contract.html#header-arguments)
+for the contract macro. It allows you to specify your environment a la 
+`#[ink::contract(env_types = MyEnvironment)]`.
 
 ### What does the `#![cfg_attr(not(feature = "std"), no_std)]` at the beginning of each contract mean?
 

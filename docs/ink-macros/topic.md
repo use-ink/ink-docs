@@ -3,6 +3,22 @@ title: "#[ink(topic)]"
 slug: /ink-macros-attributes/topic
 ---
 
-Applicate on ink! event field. 
+Applied on fields of ink! event types to indicate that they are topics.
 
-Tells the ink! codegen to provide a topic hash for the given field. Every ink! event can only have a limited number of such topic field. Similar semantics as to indexed event arguments in Solidity. 
+Tells the ink! codegen to provide a topic hash for the given field. Every ink! event can only have a limited number of such topic field.
+The semnatics are similar to indexed event arguments in Solidity. 
+
+## Example
+
+```rust
+#[ink(event)]
+pub struct Transferred {
+    #[ink(topic)]
+    from: Option<AccountId>,
+
+    #[ink(topic)]
+    to: Option<AccountId>,
+
+    amount: Balance
+}
+```

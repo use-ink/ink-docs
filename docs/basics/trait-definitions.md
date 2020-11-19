@@ -88,3 +88,79 @@ assert_eq!(erc20.total_supply(), 1000);
 There are still many limitations to ink! trait definitions and trait implementations.
 For example it is not possible to define associated constants or types or have default implemented methods.
 These limitations exist because of technical intricacies, however, please expect that many of those will be tackled in future ink! releases.
+
+
+
+
+Marks trait definitions to ink! as special ink! trait definitions.
+
+There are some restrictions that apply to ink! trait definitions that
+this macro checks. Also ink! trait definitions are required to have specialized
+structure so that the main [`#[ink::contract]`](`macro@crate::contract`) macro can
+properly generate code for its implementations.
+
+# Example: Definition
+
+```rust
+use ink_lang as ink;
+type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
+
+#[ink::trait_definition]
+pub trait Erc20 {
+    /// Constructs a new ERC-20 compliant smart contract using the initial supply.
+    #[ink(constructor)]
+    fn new(initial_supply: Balance) -> Self;
+
+    /// Returns the total supply of the ERC-20 smart contract.
+    #[ink(message)]
+    fn total_supply(&self) -> Balance;
+
+    // etc.
+}
+```
+
+# Example: Implementation
+
+Given the above trait definition you can implement it as shown below:
+
+```rust
+use ink_lang as ink;
+
+#[ink::contract]
+mod base_erc20 {
+    /// We somehow cannot put the trait in the doc-test crate root due to bugs.
+    #[ink_lang::trait_definition]
+    pub trait Erc20 {
+        Constructors a new ERC-20 compliant smart contract using the initial supply.
+        #[ink(constructor)]
+        fn new(initial_supply: Balance) -> Self;
+
+        /// Returns the total supply of the ERC-20 smart contract.
+        #[ink(message)]
+        fn total_supply(&self) -> Balance;
+    }
+
+    #[ink(storage)]
+    pub struct BaseErc20 {
+        total_supply: Balance,
+        // etc ..
+    }
+
+    impl Erc20 for BaseErc20 {
+        #[ink(constructor)]
+        fn new(initial_supply: Balance) -> Self {
+            Self { total_supply: initial_supply }
+        }
+
+        /// Returns the total supply of the ERC-20 smart contract.
+        #[ink(message)]
+        fn total_supply(&self) -> Balance {
+            self.total_supply
+        }
+
+        // etc ..
+    }
+}
+```
+
+

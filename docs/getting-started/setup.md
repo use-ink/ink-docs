@@ -29,7 +29,7 @@ Follow the
 [official installation steps](https://substrate.dev/docs/en/knowledgebase/getting-started/) from the
 Substrate Developer Hub Knowledge Base to set up all Substrate prerequisites.
 
-```
+```bash
 rustup component add rust-src --toolchain nightly
 rustup target add wasm32-unknown-unknown --toolchain stable
 ```

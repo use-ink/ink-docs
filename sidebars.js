@@ -26,6 +26,7 @@ module.exports = {
       'basics/cross-contract-calling',
       'basics/testing',
       'basics/env-functions',
+      'basics/cargo-toml',
     ],
     'Macros & Attributes': [
       'ink-macros/overview',

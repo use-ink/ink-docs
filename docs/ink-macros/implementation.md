@@ -15,7 +15,7 @@ etc.
 Note that ink! messages and constructors still need to be explicitly
 flagged as such.
 
-#Example
+## Example
 
 An implementation block can be defined as a trait implementation
 for the ink! storage struct using the `#[ink(impl)]` annotation ‒ even
