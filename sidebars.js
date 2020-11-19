@@ -1,10 +1,11 @@
 module.exports = {
   reference: {
     'Overview': [
-        'intro/intro',
-        'intro/why-rust',
-        'intro/why-webassembly',
-        'intro/how-it-works'
+      'intro/intro',
+      'intro/why-rust',
+      'intro/why-webassembly',
+      'intro/how-it-works',
+      'faq/ink-vs-solidity',
     ],
     'Getting started': [
       'getting-started/setup',
@@ -28,6 +29,16 @@ module.exports = {
     ],
     'Macros & Attributes': [
       'ink-macros/overview',
+      'ink-macros/constructor',
+      'ink-macros/message',
+      'ink-macros/event',
+      'ink-macros/anonymous',
+      'ink-macros/implementation',
+      'ink-macros/namespace',
+      'ink-macros/payable',
+      'ink-macros/selector',
+      'ink-macros/storage',
+      'ink-macros/topic',
     ],
     'Storage & Data Structures': [
       'datastructures/overview',
@@ -49,7 +60,6 @@ module.exports = {
     ],
     'FAQ': [
       'faq/intro',
-      'faq/ink-vs-solidity',
     ],
   },
 };

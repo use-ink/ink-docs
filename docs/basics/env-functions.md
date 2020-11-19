@@ -12,3 +12,5 @@ Self::env() vs self.env()
 
 TODO
 
+https://paritytech.github.io/ink/ink_env/#functions
+
