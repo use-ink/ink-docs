@@ -3,7 +3,7 @@ title: How it works ‒ Substrate
 slug: /how-it-works
 ---
 
-<img src="/img/how-it-works.svg" alt="How it Works" />
+<img src="./img/how-it-works.svg" alt="How it Works" />
 
 <br/>&nbsp;<br/>
 
