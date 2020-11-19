@@ -1,5 +1,5 @@
 ---
-title: #[ink(storage)]
+title: "#[ink(storage)]"
 slug: /ink-macros-attributes/storage
 ---
 

@@ -1,9 +1,7 @@
 ---
-title: #[ink(selector = "..")]
+title: "#[ink(selector = \"…\")]"
 slug: /ink-macros-attributes/selector
 ---
-
-### `#[ink(selector = "..")]`
 
 Applicable to ink! messages and ink! constructors.
 

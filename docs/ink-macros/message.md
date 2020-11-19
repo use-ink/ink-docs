@@ -1,9 +1,7 @@
 ---
-title: #[ink(message)]
+title: "#[ink(message)]"
 slug: /ink-macros-attributes/message
 ---
-
-## `#[ink(message)]`
 
 Applicable to methods.
  

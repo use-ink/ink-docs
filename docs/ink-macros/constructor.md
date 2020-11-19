@@ -1,9 +1,7 @@
 ---
-title: #[ink(constructor)]
+title: "#[ink(constructor)]"
 slug: /ink-macros-attributes/constructor
 ---
-
-## `#[ink(constructor)]`
 
 Applicable to method.
 

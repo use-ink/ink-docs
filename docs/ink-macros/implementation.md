@@ -1,9 +1,7 @@
 ---
-title: #[ink(implementation)]
+title: "#[ink(implementation)]"
 slug: /ink-macros-attributes/implementation
 ---
-
-## `#[ink(implementation)]`
 
 Applicable to ink! implementation blocks.
 

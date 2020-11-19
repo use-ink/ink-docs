@@ -1,9 +1,7 @@
 ---
-title: Payable Messages
+title: "#[ink(payable)]"
 slug: /ink-macros-attributes/payable
 ---
-
-## `#[ink(payable)]`
 
 Applicable to ink! messages.
 

@@ -1,9 +1,7 @@
 ---
-title: #[ink(topic)]
+title: "#[ink(topic)]"
 slug: /ink-macros-attributes/topic
 ---
-
-## `#[ink(topic)]` 
 
 Applicate on ink! event field. 
 
