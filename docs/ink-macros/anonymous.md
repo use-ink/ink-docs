@@ -1,6 +1,6 @@
 ---
 title: #[ink(anonymous)]
-slug: /docs/docs/ink-macros-attributes/anonymous
+slug: /ink-macros-attributes/anonymous
 ---
 
 ## `#[ink(anonymous)]`

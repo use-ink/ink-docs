@@ -1,6 +1,6 @@
 ---
 title: Compiling Your Contract
-slug: /docs/docs/getting-started/building-your-contract
+slug: /getting-started/building-your-contract
 ---
 
 Run the following command to compile your smart contract:

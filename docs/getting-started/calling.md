@@ -1,6 +1,6 @@
 ---
 title: Calling Your Contract
-slug: /docs/docs/getting-started/calling-your-contract
+slug: /getting-started/calling-your-contract
 ---
 
 Now that your contract has been fully deployed, we can start to interact with it! Flipper only has two functions, so we will show you what it's like to play with both of them. Click the **"Execute Contract"** button on the confirmation screen that appeared after you deployed the instance of the Flipper contract in the previous step.

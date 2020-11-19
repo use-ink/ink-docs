@@ -1,6 +1,6 @@
 ---
 title: Lazy vs. Eager
-slug: /docs/docs/datastructures/lazy-eager
+slug: /datastructures/lazy-eager
 ---
 
 In the following we explore the differences between the high-level `ink_storage::collections::HashMap`

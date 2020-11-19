@@ -1,6 +1,6 @@
 ---
 title: Contract Testing
-slug: /docs/docs/basics/off-chain-testing
+slug: /basics/off-chain-testing
 ---
 
 

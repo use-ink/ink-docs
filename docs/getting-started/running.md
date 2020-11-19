@@ -1,6 +1,6 @@
 ---
 title: Running a Substrate Node
-slug: /docs/docs/getting-started/running-substrate
+slug: /getting-started/running-substrate
 ---
 
 The [canvas-node](https://github.com/paritytech/canvas-node#note) is a simple Substrate

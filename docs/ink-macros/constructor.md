@@ -1,6 +1,6 @@
 ---
 title: #[ink(constructor)]
-slug: /docs/docs/ink-macros-attributes/constructor
+slug: /ink-macros-attributes/constructor
 ---
 
 ## `#[ink(constructor)]`

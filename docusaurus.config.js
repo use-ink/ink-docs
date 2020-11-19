@@ -1,6 +1,4 @@
-//const BASE_URL = process.env.NODE_ENV === 'development' ? '/' : '/ink-docs/';
-//console.log("BASE_URL: " + BASE_URL)
-const BASE_URL = '/';
+const BASE_URL = process.env.NODE_ENV === 'development' ? '/' : '/ink-docs/';
 
 module.exports = {
   title: 'ink! documentation',
@@ -50,6 +48,7 @@ module.exports = {
       docs: {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/ink-docs/edit/master/',
+        routeBasePath: '/'
       },
       blog: {
         showReadingTime: true,
@@ -60,16 +59,5 @@ module.exports = {
       },
     }],
   ],
-  plugins: [
-    require.resolve('@cmfcmf/docusaurus-search-local')
-  ],
-  plugins: [
-      [
-          require.resolve('@cmfcmf/docusaurus-search-local'), {
-            indexDocs: true,
-            indexPages: false,
-            language: "en",
-        }
-      ]
-  ]
+  plugins: [require.resolve('docusaurus-lunr-search')],
 };

@@ -1,6 +1,6 @@
 ---
 title: Setup
-slug: /docs/docs/getting-started/setup
+slug: /getting-started/setup
 ---
 
 ## Rust & Cargo

@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: /docs/docs/datastructures/custom
+slug: /datastructures/custom
 ---
 
 The `ink_storage` crate acts as the standard storage library for ink! smart contracts.

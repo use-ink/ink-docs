@@ -1,6 +1,6 @@
 ---
 title: Reading Values from Storage
-slug: /docs/docs/basics/reading-values
+slug: /basics/reading-values
 ---
 
 Now that we have created and initialized a storage value, we are going to start interacting with it!

@@ -1,6 +1,6 @@
 ---
 title: Trait Definitions
-slug: /docs/docs/basics/trait-definitions
+slug: /basics/trait-definitions
 ---
 
 

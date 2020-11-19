@@ -1,6 +1,6 @@
 ---
 title: #[ink(topic)]
-slug: /docs/docs/ink-macros-attributes/topic
+slug: /ink-macros-attributes/topic
 ---
 
 ## `#[ink(topic)]` 

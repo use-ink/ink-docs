@@ -1,6 +1,6 @@
 ---
 title: HashMap
-slug: /docs/docs/datastructures/hashmap
+slug: /datastructures/hashmap
 ---
 
 Let's now extend our Incrementer to not only manage one number, but to manage one number per user!

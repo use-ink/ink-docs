@@ -1,6 +1,6 @@
 ---
 title: #[ink(event)]
-slug: /docs/docs/ink-macros-attributes/event
+slug: /ink-macros-attributes/event
 ---
 
 ### `#[ink(event)]` 

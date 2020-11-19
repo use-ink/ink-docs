@@ -1,6 +1,6 @@
 ---
 title: Dynamic Allocation
-slug: /docs/docs/datastructures/dynamic-allocation
+slug: /datastructures/dynamic-allocation
 ---
 
 ### Dynamic Storage Allocator

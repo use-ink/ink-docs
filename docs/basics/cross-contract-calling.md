@@ -1,6 +1,6 @@
 ---
 title: Cross-Contract Calling
-slug: /docs/docs/basics/cross-contract-calling
+slug: /basics/cross-contract-calling
 ---
 
 In ink! contracts it is possible to call ink! messages and ink! constructors. So ink! constructors allow

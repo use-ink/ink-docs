@@ -1,6 +1,6 @@
 ---
 title: #[ink(implementation)]
-slug: /docs/docs/ink-macros-attributes/implementation
+slug: /ink-macros-attributes/implementation
 ---
 
 ## `#[ink(implementation)]`

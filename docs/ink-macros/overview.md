@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: /docs/docs/ink-macros-attributes
+slug: /ink-macros-attributes
 ---
 
 ## ink! Macros & Attributes

@@ -1,6 +1,6 @@
 ---
 title: Your Custom Datastructure
-slug: /docs/docs/datastructures/custom-datastructure
+slug: /datastructures/custom-datastructure
 ---
 
 ### Custom Data Sturctures

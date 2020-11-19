@@ -1,6 +1,6 @@
 ---
 title: Mutating Storage Values
-slug: /docs/docs/basics/mutating-values
+slug: /basics/mutating-values
 ---
 
 It's time to modify some storage!
