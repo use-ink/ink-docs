@@ -1,8 +1,54 @@
 ---
-title: "#[ink(implementation)]"
-slug: /ink-macros-attributes/implementation
+title: "#[ink(impl)]"
+slug: /ink-macros-attributes/impl
 ---
 
-Applicable to ink! implementation blocks.
+This attribute supports a niche case that is rarely needed.
 
-Tells the ink! codegen that some implementation block shall be granted access to ink! internals even without it containing any ink! messages or ink! constructors.
+Can be applied on ink! implementation blocks in order to make ink! aware
+of them. This is useful if such an implementation block doesn't contain
+any other ink! attributes, so it would be flagged by ink! as a Rust item.
+Adding `#[ink(impl)]` on such implementation blocks makes them treated
+as ink! implementation blocks thus allowing to access the environment
+etc.
+
+Note that ink! messages and constructors still need to be explicitly
+flagged as such.
+
+#Example
+
+An implementation block can be defined as a trait implementation
+for the ink! storage struct using the `#[ink(impl)]` annotation ‒ even
+if none of its interior items have any ink! specific attributes on them:
+
+```rust
+use core::convert::TryFrom;
+use ink_lang_ir as ir;
+
+#[ink::contract]
+mod my_module {
+    #[ink(storage)]
+    pub struct MyStorage {
+        /* storage fields */
+    }
+
+    #[ink(impl)]
+    impl MyStorage {
+        fn my_method(&self) -> i32 {
+            /* method implementation */
+        }
+    }
+
+    impl MyStorage {
+      #[ink(constructor)]
+      pub fn my_constructor() -> Self {
+          /* constructor implementation */
+      }
+
+      #[ink(message)]
+      pub fn my_message(&self) {
+          /* message implementation */
+      }
+    }
+}
+```

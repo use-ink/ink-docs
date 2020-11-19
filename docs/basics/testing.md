@@ -1,6 +1,6 @@
 ---
 title: Contract Testing
-slug: /basics/off-chain-testing
+slug: /basics/contract-testing
 ---
 
 ## Unit Tests
@@ -51,3 +51,4 @@ The easiest way to do on-chain testing is to
 [run a local substrate node](/getting-started/running-substrate),
 deploy your contract there and interact with it.
 
+TODO answer "How do I print something to the console from the runtime? Is it possible to do `println!("{:?}", foo)`?"

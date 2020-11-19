@@ -32,6 +32,10 @@ For this reason the `amount` in the exemplary event above was not
 made indexable ‒ there will most probably be a lot of different events with
 differing amounts each.
 
+The signature of the event is by default one of the topics of the event, except
+if you annotate the event with `#[ink(anonymous)]`.
+See [here](/ink-macros-attributes/anonymous) for details on this attribute.
+
 
 ## Emitting Events in a Constructor
 
@@ -72,11 +76,3 @@ pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
     Ok(())
 }
 ```
-
-## Anonymous Events
-
-`#[ink(anonymous)]`
-
-Applicable to ink! events.
-
-Tells the ink! codegen to treat the ink! event as anonymous which omits the event signature as topic upon emitting. Very similar to anonymous events in Solidity.

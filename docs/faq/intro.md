@@ -60,3 +60,7 @@ In ink!, memory refers to computer memory, while storage refers to the on-chain 
 used by a contract instance. Memory is temporary and only lasts until the contract
 execution is done, while storage is persistent and lasts over many contract executions.
 The contract storage is built on top of the runtime storage, and access is considered to be slow.
+
+### How do I print something to the console from the runtime? Is it possible to do `println!("{:?}", foo)`?
+
+TODO
