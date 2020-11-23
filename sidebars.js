@@ -62,7 +62,7 @@ module.exports = {
       'canvas/overview',
     ],
     'FAQ': [
-      'faq/intro',
+      'faq/faq',
     ],
   },
 };
