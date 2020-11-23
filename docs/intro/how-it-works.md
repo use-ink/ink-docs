@@ -7,8 +7,6 @@ slug: /how-it-works
     <img src="../img/how-it-works.svg" alt="How it Works" />
 </div>
 
-<br/>&nbsp;<br/>
-
 Substrate's [Framework for Runtime Aggregation of Modularised Entities (FRAME)](https://substrate.dev/docs/en/next/conceptual/runtime/frame) contains
 a module  which implements an API for typical functions smart contracts need (storage, querying information about accounts, …).
 This module is called the `contracts` pallet,
