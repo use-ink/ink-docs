@@ -72,4 +72,6 @@ mod flipper {
 
 ## Messages Return Value
 
-TODO
+TODO Explain what can be a message return value
+
+TODO Explain that we don't have proper error forwarding yet

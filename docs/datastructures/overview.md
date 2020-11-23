@@ -6,7 +6,7 @@ slug: /datastructures/custom
 The `ink_storage` crate acts as the standard storage library for ink! smart contracts.
 It provides all the necessary tools and data structures to organize and operate the contract's storage intuitively and efficiently.
 
-[Here is the crates documentation for all ink! data structures](https://paritytech.github.io/ink/ink_storage/collections/).
+[You can find the crates documentation for all ink! data structures here.](https://paritytech.github.io/ink/ink_storage/collections/)
 
 At the moment we provide these data structures:
 

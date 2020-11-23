@@ -1,5 +1,5 @@
 ---
-title: How it works ‒ Substrate
+title: How it Works ‒ Substrate
 slug: /how-it-works
 ---
 

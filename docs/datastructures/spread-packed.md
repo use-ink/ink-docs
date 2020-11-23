@@ -5,6 +5,9 @@ slug: /datastructures/spread-packed-layout
 
 ### Storage Organization
 
+The following schema depicts the storage which is exposed
+to ink! by the contracts pallet:
+
 <div class="schema">
     <img src="../img/kv.svg" alt="Storage Organization: Layout" />
 </div>
@@ -20,10 +23,6 @@ The `ink_storage` crate provides the user full control over the strategy or a mi
 
 ### Default: Spreading Mode
 
-<div class="schema">
-    <img src="../img/spread.svg" alt="Storage Organization: Spreading" />
-</div>
-
 By default ink! spreads information to as many cells as possible. For example if you have the following `#[ink(storage)]` struct every field will live in its own single storage cell. Note that for `c` all 32 bytes will share the same cell!
 
 ```rust
@@ -35,12 +34,15 @@ pub struct Spreaded {
 }
 ```
 
-### Packing Storage
+The following schema depicts the storage layout for a vector with three elements,
+persisted to storage in a spreaded layout.
 
 <div class="schema">
-    <img src="../img/packed.svg" alt="Storage Organization: Packing" />
+    <img src="../img/spread.svg" alt="Storage Organization: Spreading" />
 </div>
 
+
+### Packing Storage
 
 We can alter this behaviour by using the `ink_storage::Pack` abstraction:
 
@@ -73,6 +75,14 @@ pub struct Packed {
     c: [u8; 32],
 }
 ```
+
+The following schema depicts the spreaded vector from the previous
+section in a packed layout.
+
+<div class="schema">
+    <img src="../img/packed.svg" alt="Storage Organization: Packing" />
+</div>
+
 
 ### Spreading Array Cells
 

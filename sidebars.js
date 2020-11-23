@@ -54,6 +54,9 @@ module.exports = {
     ],
     'cargo-contract CLI': [
       'cargo-contract/overview',
+      'cargo-contract/deploy',
+      'cargo-contract/instantiate',
+      'cargo-contract/call',
     ],
     'Canvas Test Network': [
       'canvas/overview',
