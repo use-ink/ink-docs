@@ -5,7 +5,7 @@ module.exports = {
       'intro/why-rust',
       'intro/why-webassembly',
       'intro/how-it-works',
-      'faq/ink-vs-solidity',
+      'intro/ink-vs-solidity',
     ],
     'Getting started': [
       'getting-started/setup',
@@ -44,7 +44,6 @@ module.exports = {
     'Storage & Data Structures': [
       'datastructures/overview',
       'datastructures/hashmap',
-      'datastructures/hashmap-impls',
       'datastructures/spread-packed',
       'datastructures/opting-out',
       'datastructures/dynamic-allocation',

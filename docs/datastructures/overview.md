@@ -6,23 +6,27 @@ slug: /datastructures/custom
 The `ink_storage` crate acts as the standard storage library for ink! smart contracts.
 It provides all the necessary tools and data structures to organize and operate the contract's storage intuitively and efficiently.
 
+[Here is the crates documentation for all ink! data structures](https://paritytech.github.io/ink/ink_storage/collections/).
 
-TODO https://paritytech.github.io/ink/ink_storage/collections/
+At the moment we provide these data structures:
 
-### Lazy
+* [`BinaryHeap`](https://paritytech.github.io/ink/ink_storage/collections/struct.BinaryHeap.html):	A priority queue implemented with a binary heap.
+* [`BitStash`](https://paritytech.github.io/ink/ink_storage/collections/struct.BitStash.html) A stash for bits operating on the contract storage.
+* [`Bitvec`](https://paritytech.github.io/ink/ink_storage/collections/struct.Bitvec.html) A storage bit vector.
+* [`HashMap`](https://paritytech.github.io/ink/ink_storage/collections/struct.HashMap.html)	A hash map operating on the contract storage.
+* [`SmallVec`](https://paritytech.github.io/ink/ink_storage/collections/struct.SmallVec.html) A contiguous growable array type.
+* [`Stash`](https://paritytech.github.io/ink/ink_storage/collections/struct.Stash.html)	A stash data structure operating on contract storage.
+* [`Vec`](https://paritytech.github.io/ink/ink_storage/collections/struct.Vec.html)	A contiguous growable array type, written `Vec<T>` but pronounced 'vector'.
 
-Data structures provided by the `ink_storage` crate are inherently lazy. We will explain what this means below!
-
-The `ink_storage` crate provides high-level and low-level lazy data structures.
+Data structures provided by the `ink_storage` crate are inherently lazy;
+they are either high-level lazy or low-level lazy data structures.
 The difference between high-level and low-level lies in the distinction in how these data structures are aware
 of the elements that they operate on.
 
-For high-level data structures they are fully aware about the elements they contain, do all the clean-up by themselves so the user can concentrate on the business logic.
+For <em>high-level</em> data structures they are fully aware about the elements they contain, do all the clean-up by themselves so the user can concentrate on the business logic.
 
-For low-level data structures the responsibility about the elements lies in the hands of the contract author.
+For <em>low-level</em> data structures the responsibility about the elements lies in the hands of the contract author.
 Also they operate on cells (`Option<T>`) instead of entities of type `T`. But what does that mean exactly?
-
-TODO what are high-level and what are low-level data structures
 
 The `ink_storage::Lazy` type caches their entities and acts lazily on the storage.
 This means that a read or write operation is only performed when it really needs to

@@ -1,6 +1,7 @@
 ---
 title: Overview
 slug: /canvas
+hide_title: true
 ---
 
 ## What is the Canvas Test Network?
