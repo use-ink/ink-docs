@@ -27,7 +27,8 @@ impl MyContract {
 
 ## Lazy Storage Values
 
-There is [a `Lazy` type](https://paritytech.github.io/ink/ink_storage/struct.Lazy.html) that can be used for ink! storage values that don't need to be loaded in some or most cases. Because they do not meet this criteria, many simple ink! examples, including those in this workshop, do not require the use `Lazy` values. Since there is some overhead associated with `Lazy` values, they should only be used where required.
+There is [a `Lazy` type](https://paritytech.github.io/ink/ink_storage/struct.Lazy.html) that can be used for ink! storage values that don't need to be loaded in some or most cases. Because they do not meet this criteria, many simple ink! examples
+do not require the use `Lazy` values. Since there is some overhead associated with `Lazy` values, they should only be used where required.
 
 ```rust
 #[ink(storage)]
