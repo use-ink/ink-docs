@@ -15,10 +15,10 @@ TODO
     This is Squink
     
     <br/>
-    todo
+    TODO
     
     <br/>
-    todo
+    TODO
 </div>
 
 ### What's ink!'s relationship to Substrate/Polkadot?

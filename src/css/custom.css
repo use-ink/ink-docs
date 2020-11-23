@@ -59,3 +59,11 @@ h1 {
   border-left: 0px;
   border-right: 0px;
 }
+
+.highlight {
+  color: #bd83fb;
+}
+
+.comparison th,  .comparison table > tbody > tr > td:first-child {
+  color: #bd83fb;
+}
