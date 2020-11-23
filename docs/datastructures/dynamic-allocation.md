@@ -1,9 +1,7 @@
 ---
-title: Dynamic Allocation
+title: Dynamic Storage Allocator
 slug: /datastructures/dynamic-allocation
 ---
-
-### Dynamic Storage Allocator
 
 In the previous section we have seen how the default mode of operation is to spread information
 and how we can opt-in to pack information into single cells via `ink_storage::Packed`.

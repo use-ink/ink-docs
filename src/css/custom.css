@@ -67,3 +67,10 @@ h1 {
 .comparison th,  .comparison table > tbody > tr > td:first-child {
   color: #bd83fb;
 }
+
+.schema {
+  padding: 25px;
+  border: 1px solid  #bd83fb;
+  background-color: #242526;
+  margin-bottom: 25px;
+}

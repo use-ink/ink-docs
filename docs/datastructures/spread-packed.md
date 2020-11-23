@@ -3,6 +3,12 @@ title: Spread vs. Packed
 slug: /datastructures/spread-packed-layout
 ---
 
+### Storage Organization
+
+<div class="schema">
+    <img src="../img/kv.svg" alt="Storage Organization: Layout" />
+</div>
+
 Storing or loading complex data structures to and from contract storage can be done in many different ways. You could store all information into a single storage cell or you could try to store all information into as many different cells as possible. Both strategies have pros and cons under different conditions.
 
 For example it might be a very good idea to store all the information under the same cell if all the information is very compact. For example when we are dealing with a byte vector that is expected to never be larger than approx a thousand elements it would probably be more efficient if we store all those thousand bytes in the same cell and especially if we often access many of those (or all) in our contract messages.
@@ -13,6 +19,10 @@ An example for this use case is if you have a vector of user accounts where each
 The `ink_storage` crate provides the user full control over the strategy or a mix of these two root strategies through some fundamental abstractions that we are briefly presenting to you.
 
 ### Default: Spreading Mode
+
+<div class="schema">
+    <img src="../img/spread.svg" alt="Storage Organization: Spreading" />
+</div>
 
 By default ink! spreads information to as many cells as possible. For example if you have the following `#[ink(storage)]` struct every field will live in its own single storage cell. Note that for `c` all 32 bytes will share the same cell!
 
@@ -26,6 +36,11 @@ pub struct Spreaded {
 ```
 
 ### Packing Storage
+
+<div class="schema">
+    <img src="../img/packed.svg" alt="Storage Organization: Packing" />
+</div>
+
 
 We can alter this behaviour by using the `ink_storage::Pack` abstraction:
 
