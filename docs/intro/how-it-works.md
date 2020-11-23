@@ -4,7 +4,7 @@ slug: /how-it-works
 ---
 
 <div class="schema">
-    <img src="./img/how-it-works.svg" alt="How it Works" />
+    <img src="../img/how-it-works.svg" alt="How it Works" />
 </div>
 
 <br/>&nbsp;<br/>
