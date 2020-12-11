@@ -77,3 +77,7 @@ TODO
 ### Why is Rust's stdlib not available in ink!?
 
 TODO
+
+### Why is `nightly` required for ink!?
+
+TODO
