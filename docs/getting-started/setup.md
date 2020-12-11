@@ -14,7 +14,7 @@ The first tool we will be installing is [`cargo-contract`](https://github.com/pa
 You can install the utility using Cargo with:
 
 ```bash
-cargo install cargo-contract --vers 0.7.1 --force --locked
+cargo install cargo-contract --vers 0.8.0 --force --locked
 ```
 
 Use the `--force` to ensure you are updated to the most recent `cargo-contract` version.
