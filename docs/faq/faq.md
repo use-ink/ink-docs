@@ -81,7 +81,7 @@ or run built-in cryptographic hashing procedures.
 If this basic set of features is not enough for a particular Substrate built blockchain it is possible
 to easily extend this API using the so-called chain extension feature.
 
-See the [Chain Extensions](/basics/cross-contract-calling) section for more information.
+See the [Chain Extensions](/basics/chain-extensions) section for more information.
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
