@@ -62,7 +62,7 @@ invoking `cargo contract build` which outputs a `.contract` file that includes b
 smart contract.
 The metadata is especially important for third party tools such as Polkadot JS Apps or the Canvas UI
 and provides useful information about the contract's constructors, messages, events, function selectors,
-documentation and comments of the aforementioned structures as well as how inputs and output shall
+documentation and comments of the aforementioned structures as well as how inputs and outputs shall
 be encoded and decoded respectively etc.
 
 ### Can a re-entrancy bug occur in ink! contracts?
