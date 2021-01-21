@@ -56,7 +56,7 @@ This feature has not yet been implemented by the Substrate side.
 
 ### What is a contract's ABI or Metadata?
 
-In ink! a smart contracts metadata is retrieved by using the `cargo-contract` CLI tool and
+In ink! a smart contract's metadata is retrieved by using the `cargo-contract` CLI tool and
 invoking `cargo contract build` which outputs a `.contract` file that includes both the compiled
 `.wasm` of the ink! smart contract as well as the so-called metadata information of the same
 smart contract.
