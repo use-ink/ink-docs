@@ -95,7 +95,7 @@ The `#[cfg(..)]` or `#[cfg_attr(..)]` annotations are how Rust does conditional 
 
 ink! smart contracts can be compiled in two different modes.
 
-Through `#![cfg_attr(not(feature = "std"), no_std)]` an ink! smart contracts tells the Rust compiler
+Through `#![cfg_attr(not(feature = "std"), no_std)]` an ink! smart contract tells the Rust compiler
 in which mode they are being compiled. This also plays a significant role in how ink! generates
 the smart contract code.
 
