@@ -204,6 +204,7 @@ pub trait RuntimeReadWrite {
     #[ink(extension = 5, handle_status = false)]
     fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
 }
+
 #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
 pub enum ReadWriteErrorCode {
   InvalidKey,
