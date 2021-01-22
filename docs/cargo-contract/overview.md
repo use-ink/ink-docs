@@ -15,27 +15,25 @@ and here on [crates.io](https://crates.io/crates/cargo-contract).
 
 The tool has a number of handy capabilities:
 
-TODO update the following to 0.8.0
 ```
-cargo-contract 0.7.0
-Utilities to develop Wasm smart contracts
+cargo-contract 0.8.0
+Utilities to develop Wasm smart contracts.
 
 USAGE:
-	cargo contract <SUBCOMMAND>
+    cargo contract <SUBCOMMAND>
 
 OPTIONS:
-	-h, --help          Prints help information
-	-V, --version       Prints version information
+    -h, --help       Prints help information
+    -V, --version    Prints version information
 
 SUBCOMMANDS:
-	new              	Setup and create a new smart contract project
-	build            	Compiles the smart contract
-	generate-metadata	Generate contract metadata artifacts
-	test             	Test the smart contract off-chain
-	deploy           	Upload the smart contract code to the chain
-	instantiate      	Instantiate a deployed smart contract
-	call             	Arguments required for creating and sending
-                        an extrinsic to a substrate node
+    new                  Setup and create a new smart contract project
+    build                Compiles the contract, generates metadata, bundles both together in a '.contract' file
+    check                Check that the code builds as Wasm; does not output any build artifact to the top level `target/` directory
+    test                 Test the smart contract off-chain
+    deploy               Upload the smart contract code to the chain
+    instantiate          Instantiate a deployed smart contract
+    help                 Prints this message or the help of the given subcommand(s)
 ```
 
 ## Installation
