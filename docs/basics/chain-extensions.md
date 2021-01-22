@@ -52,7 +52,7 @@ pub trait MyChainExtension {
 }
 ```
 
-... or as multiple standalone ink! attributes applied to the same item:
+…or as multiple standalone ink! attributes applied to the same item:
 
 ```rust
 type Access = i32;
