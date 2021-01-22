@@ -5,7 +5,7 @@ slug: /basics/chain-extensions
 
 Defines the interface for a chain extension.
 
-# Structure
+## Structure
 
 The interface consists of an error code that indicates lightweight errors
 as well as the definition of some chain extension methods.
@@ -19,7 +19,7 @@ and must have inputs and output that implement SCALE codec. Their return value f
 specific rules that can be altered using the `handle_status` and `returns_result` attributes
 which are described in more detail below.
 
-# Usage
+## Usage
 
 Usually the chain extension definition using this proc. macro is provided
 by the author of the chain extension in a separate crate.
@@ -27,7 +27,7 @@ ink! smart contracts using this chain extension simply depend on this crate
 and use its associated environment definition in order to make use of
 the methods provided by the chain extension.
 
-# Attributes
+## Attributes
 
 There are three different attributes with which the chain extension methods
 can be flagged:
@@ -46,6 +46,7 @@ use ink_lang as ink;
 #[ink::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = i32;
+  
     #[ink(extension = 5, handle_status = false, returns_result = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
@@ -60,6 +61,7 @@ use ink_lang as ink;
 #[ink::chain_extension]
 pub trait MyChainExtension {
   type ErrorCode = i32;
+  
   #[ink(extension = 5)]
   #[ink(handle_status = false)]
   #[ink(returns_result = false)]
@@ -101,7 +103,7 @@ and with `handle_status = true` it will still return a value of type `Result<T, 
 Use both `handle_status = false` and `returns_result = false` for the same chain extension method
 if a call to it may never fail and never returns a `Result` type.
 
-# Combinations
+## Combinations
 
 Due to the possibility to flag a chain extension method with `handle_status` and `returns_result`
 there are 4 different cases with slightly varying semantics:
@@ -113,7 +115,7 @@ there are 4 different cases with slightly varying semantics:
 |`false`|`true` | The chain extension method is required to return a value of type `Result<T, E>`. A call will always assume that the returned status code indicates success and therefore always load and decode the output buffer directly. |
 |`false`|`false`| The chain extension method may return any non-`Result` type. A call will always assume that the returned status code indicates success and therefore always load and decode the output buffer directly. |
 
-# Error Code
+## Error Code
 
 Every chain extension defines exactly one `ErrorCode` using the following syntax:
 
@@ -135,7 +137,7 @@ The `Ok(())` value indicates that the call to the chain extension method was suc
 By convention an error code of `0` represents success.
 However, chain extension authors may use whatever suits their needs.
 
-# Example: Definition
+## Example: Definition
 
 In the below example a chain extension is defined that allows its users to read and write
 from and to the runtime storage using access privileges:
@@ -265,7 +267,7 @@ as well as `scale-info`'s `TypeInfo` trait.
 A full example of the above chain extension definition can be seen
 [here](https://github.com/paritytech/ink/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
 
-# Example: Environment
+## Example: Environment
 
 In order to allow ink! smart contracts to use the above defined chain extension it needs
 to be integrated into an `Environment` definition as shown below:
@@ -295,7 +297,7 @@ Above we defined the `CustomEnvironment` which defaults to ink!'s `DefaultEnviro
 for all constants and types but the `ChainExtension` type which is assigned to our newly
 defined chain extension.
 
-# Example: Usage
+## Example: Usage
 
 An ink! smart contract can use the above defined chain extension through the `Environment`
 definition defined in the last example section using the `env` macro parameter as
@@ -396,6 +398,7 @@ mod read_writer {
              panic!("encountered unexpected invalid SCALE encoding")
          }
     }
+  
     #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
     pub struct UnlockAccessError {
          reason: String,
@@ -438,7 +441,7 @@ mod read_writer {
 }
 ```
 
-# Technical Limitations
+## Technical Limitations
 
 - Due to technical limitations it is not possible to refer to the `ErrorCode` associated type
   using `Self::ErrorCode` anywhere within the chain extension and its defined methods.
