@@ -115,8 +115,6 @@ Being written in Rust, ink! can provide compile-time overflow/underflow safety. 
 
 >Note: There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the Wasm blob. This feature may change or be iterated on in the future.
 
-TODO explain the note above more concretely or provide links.
-
 ### What is the difference between memory and storage?
 
 In ink!, memory refers to computer memory, while storage refers to the on-chain storage

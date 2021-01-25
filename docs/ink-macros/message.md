@@ -32,6 +32,20 @@ pub fn mutates_storage(&mut self, from: AccountId) {
 }
 ```
 
+
+## Messages Return Value
+
+The return value of a message needs to implement `scale::Encode`.
+
+It is notable that the collections under `ink_storage` ‒ such as e.g. `Vec` or `HashMap` ‒
+don't implement `scale::Encode`. This means you can't just return a `Vec` from an ink! message.
+This restriction is intentional ‒ returning a complete data structure with a potentially unbounded
+content is an anti-pattern for smart contracts. Just think about the unpredicatble gas costs.
+
+If you _really really_ need to return a data structure in its entirety then use the ones from
+`ink_prelude` (e.g. `ink_prelude::vec::Vec`). Those implement `scale::Encode`.
+
+
 ## Example
 
 Given the `Flipper` contract definition above we add some `#[ink(message)]` definitions
@@ -68,10 +82,3 @@ mod flipper {
     }
 }
 ```
-
-
-## Messages Return Value
-
-TODO Explain what can be a message return value
-
-TODO Explain that we don't have proper error forwarding yet
