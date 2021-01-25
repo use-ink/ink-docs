@@ -79,7 +79,7 @@ differing amounts each.
 
 The signature of the event is by default one of the topics of the event, except
 if you annotate the event with `#[ink(anonymous)]`.
-See [here](/ink-macros-attributes/anonymous) for details on this attribute.
+See [here](/macros-attributes/anonymous) for details on this attribute.
 
 
 ## Emitting Events in a Constructor

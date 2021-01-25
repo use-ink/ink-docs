@@ -1,6 +1,6 @@
 ---
 title: "#[ink(constructor)]"
-slug: /ink-macros-attributes/constructor
+slug: /macros-attributes/constructor
 ---
 
 Applicable to a method.

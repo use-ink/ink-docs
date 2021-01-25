@@ -1,6 +1,6 @@
 ---
-title: Chain Extensions
-slug: /basics/chain-extensions
+title: "#[ink::chain_extension]"
+slug: /macros-attributes/chain-extension
 ---
 
 Defines the interface for a chain extension.

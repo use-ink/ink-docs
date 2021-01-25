@@ -1,6 +1,6 @@
 ---
 title: "#[ink(storage)]"
-slug: /ink-macros-attributes/storage
+slug: /macros-attributes/storage
 ---
 
 Applicable on `struct` definitions. 

@@ -1,6 +1,6 @@
 ---
 title: "#[ink(namespace = \"…\")]"
-slug: /ink-macros-attributes/namespace
+slug: /macros-attributes/namespace
 ---
 
 Applicable to ink! trait implementation blocks.

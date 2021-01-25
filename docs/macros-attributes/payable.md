@@ -1,6 +1,6 @@
 ---
 title: "#[ink(payable)]"
-slug: /ink-macros-attributes/payable
+slug: /macros-attributes/payable
 ---
 
 Applicable to ink! messages.

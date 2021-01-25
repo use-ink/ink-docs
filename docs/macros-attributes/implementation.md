@@ -1,6 +1,6 @@
 ---
 title: "#[ink(impl)]"
-slug: /ink-macros-attributes/impl
+slug: /macros-attributes/impl
 ---
 
 This attribute supports a niche case that is rarely needed.

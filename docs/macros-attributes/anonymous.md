@@ -1,6 +1,6 @@
 ---
 title: "#[ink(anonymous)]"
-slug: /ink-macros-attributes/anonymous
+slug: /macros-attributes/anonymous
 ---
 
 Applicable to ink! events.

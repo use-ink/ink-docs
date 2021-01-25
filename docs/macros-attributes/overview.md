@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: /ink-macros-attributes
+slug: /macros-attributes
 ---
 
 An ink! module is the module that is flagged by `#[ink::contract]` containing all the ink! definitions.

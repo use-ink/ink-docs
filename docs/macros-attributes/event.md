@@ -1,6 +1,6 @@
 ---
 title: "#[ink(event)]"
-slug: /ink-macros-attributes/event
+slug: /macros-attributes/event
 ---
 
 Applicable on `struct` definitions.

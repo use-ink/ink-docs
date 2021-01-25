@@ -1,6 +1,6 @@
 ---
 title: "#[ink(message)]"
-slug: /ink-macros-attributes/message
+slug: /macros-attributes/message
 ---
 
 Applicable to methods.

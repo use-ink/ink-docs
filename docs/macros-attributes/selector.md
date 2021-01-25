@@ -1,6 +1,6 @@
 ---
 title: "#[ink(selector = \"…\")]"
-slug: /ink-macros-attributes/selector
+slug: /macros-attributes/selector
 ---
 
 Applicable to ink! messages and ink! constructors.

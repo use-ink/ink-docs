@@ -1,6 +1,6 @@
 ---
 title: "#[ink(topic)]"
-slug: /ink-macros-attributes/topic
+slug: /macros-attributes/topic
 ---
 
 Applied on fields of ink! event types to indicate that they are topics.
