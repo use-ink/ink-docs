@@ -41,7 +41,7 @@ SUBCOMMANDS:
 You can install it this way:
 
 ```bash
-cargo install cargo-contract --force
+cargo install cargo-contract --vers 0.8.0 --force --locked
 ```
 
 Use the `--force` to ensure you are updated to the most recent `cargo-contract` version.
@@ -64,6 +64,6 @@ In order to build the contract just execute these commands in the `flipper` fold
 cargo contract build
 ```
 
-As a result you'll get the file `target/ink/flipper.contract`. It's a JSON which bundles the contract's
+As a result you'll get the file `target/flipper.contract`. It's a JSON which bundles the contract's
 metadata and its Wasm blob. This file needs to be used when deploying the contract.
-You additionally get the individual `target/ink/flipper.wasm` and `target/ink/metadata.json` in the folder as well.
+You additionally get the individual `target/flipper.wasm` and `target/metadata.json` in the folder as well.

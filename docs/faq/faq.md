@@ -72,15 +72,6 @@ possible future additions to eliminate re-entrancy attacks.
 
 ### How can my smart contract interact with the runtime?
 
-In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
-via its well defined set of basic smart contract interface. This API already allows a whole variety of
-interaction between the `contracts-pallet` and the executed smart contract. For example it is possible
-to call and instantiate other smart contracts on the same chain, emit events, query context information
-or run built-in cryptographic hashing procedures.
-
-If this basic set of features is not enough for a particular Substrate built blockchain it is possible
-to easily extend this API using the so-called chain extension feature.
-
 See the [Chain Extensions](/macros-attributes/chain-extension) section for more information.
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
