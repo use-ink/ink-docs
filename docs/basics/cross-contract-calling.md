@@ -26,13 +26,13 @@ use other_contract::OtherContract;
 //--snip--
 #[ink(storage)]
 struct MyContract {
-    The other contract.
+    /// The other contract.
     other_contract: Lazy<OtherContract>,
 }
 
 impl MyContract {
-    Instantiate `MyContract with the given
-    sub-contract codes and some initial value.
+    /// Instantiate `MyContract with the given
+    /// sub-contract codes and some initial value.
     #[ink(constructor)]
     pub fn new(
         other_contract_code_hash: Hash,
@@ -47,7 +47,7 @@ impl MyContract {
         }
     }
 
-    Calls the other contract.
+    /// Calls the other contract.
     #[ink(message)]
     pub fn call_other_contract(&self) -> i32 {
         self.other_contract.get_value()
@@ -68,30 +68,29 @@ The `other_contract/Cargo.toml` contains this:
 ink-as-dependency = []
 ```
 
-    Tells the ink! code generator to **always** or **never**
-    compile the smart contract as if it was used as a dependency of another ink!
-    smart contract.
-
+Tells the ink! code generator to **always** or **never**
+compile the smart contract as if it was used as a dependency of another ink!
+smart contract.
 
 The `other_contract/lib.rs`:
 
 ```rust
 #[ink::contract]
 pub mod other_contract {
-    Storage for the other contract.
+    /// Storage for the other contract.
     #[ink(storage)]
     pub struct OtherContract {
         value: i32,
     }
 
     impl OtherContract {
-        Initializes the contract.
+        /// Initializes the contract.
         #[ink(constructor)]
         pub fn new(value: i32) -> Self {
             Self { value }
         }
 
-        Returns the current state.
+        /// Returns the current state.
         #[ink(message)]
         pub fn get_value(&self) -> i32 {
             self.value

@@ -2,9 +2,10 @@
 title: Trait Definitions
 slug: /basics/trait-definitions
 ---
+
 Through the `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
 
-This allows to defined shared smart contract interfaces to different concrete implementations.
+This allows to define shared smart contract interfaces to different concrete implementations.
 Note that this ink! trait definition can be defined anywhere, even in another crate!
 
 See our [`ERC20-Trait example contract`](https://github.com/paritytech/ink/blob/master/examples/trait-erc20/lib.rs) 
