@@ -227,6 +227,7 @@ Some example rules include but are not limited to:
 
      ```rust
      use ink_lang as ink;
+  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
