@@ -21,13 +21,13 @@ In Rust, you can make as many implementations as you want. As a stylistic choice
 
 ```rust
 impl MyContract {
-    Public function
+    /// Public function
     #[ink(message)]
     pub fn my_public_function(&self) {
         /* --snip-- */
     }
 
-    Private function
+    /// Private function
     fn my_private_function(&self) {
         /* --snip-- */
     }
@@ -49,17 +49,17 @@ impl<T> Value<T>
 where
     T: scale::Codec,
 {
-    Returns an immutable reference to the wrapped value.
+    /// Returns an immutable reference to the wrapped value.
     pub fn get(&self) -> &T {
         self.cell.get().unwrap()
     }
 
-    Returns a mutable reference to the wrapped value.
+    /// Returns a mutable reference to the wrapped value.
     pub fn get_mut(&mut self) -> &mut T {
         self.cell.get_mut().unwrap()
     }
 
-    Sets the wrapped value to the given value.
+    /// Sets the wrapped value to the given value.
     pub fn set(&mut self, val: T) {
         self.cell.set(val);
     }
