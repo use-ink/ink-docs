@@ -29,6 +29,7 @@ module.exports = {
     ],
     'Macros & Attributes': [
       'macros-attributes/overview',
+      'macros-attributes/contract',
       'macros-attributes/anonymous',
       'macros-attributes/constructor',
       'macros-attributes/event',

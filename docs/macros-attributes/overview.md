@@ -4,9 +4,7 @@ slug: /macros-attributes
 ---
 
 An ink! module is the module that is flagged by `#[ink::contract]` containing all the ink! definitions.
-All ink! attributes are available to specify inside an ink! module:
-
-A fully detailed documentation for `#[ink::contract]` is available in the [crate docs](https://paritytech.github.io/ink/ink_lang/attr.contract.html).
+All ink! attributes are available to specify inside an ink! module.
 
 ## Merging Attributes
 
