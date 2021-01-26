@@ -53,19 +53,22 @@ within a contract's storage struct definition:
 ```rust
 // A storage vector of storage vectors.
 use ink_storage as storage;
-type Foo = storage::Vec<storage::Vec<i32>>;
+type VectorOfVectors = storage::Vec<storage::Vec<i32>>;
 ```
 
 **Usage Example:**
 ```rust
 use ink_lang as ink;
+
 #[ink::contract(dynamic_storage_allocator = true)]
 mod my_contract {
     #[ink(storage)]
     pub struct MyStorage;
+    
     impl MyStorage {
         #[ink(constructor)]
         pub fn construct() -> Self { MyStorage {} }
+        
         #[ink(message)]
         pub fn message(&self) {}
     }
@@ -93,13 +96,16 @@ Note that it is recommended to make use of the built-in crate feature
 **Usage Example:**
 ```rust
 use ink_lang as ink;
+
 #[ink::contract(compile_as_dependency = true)]
 mod my_contract {
     #[ink(storage)]
     pub struct MyStorage;
+    
     impl MyStorage {
         #[ink(constructor)]
         pub fn construct() -> Self { MyStorage {} }
+        
         #[ink(message)]
         pub fn message(&self) {}
     }
@@ -127,6 +133,7 @@ pub struct MyEnvironment;
 
 impl ink_env::Environment for MyEnvironment {
     const MAX_EVENT_TOPICS: usize = 3;
+    
     type AccountId = u64;
     type Balance = u128;
     type Hash = [u8; 32];
@@ -156,9 +163,11 @@ mod my_contract {
     
     #[ink(storage)]
     pub struct MyStorage;
+    
     impl MyStorage {
         #[ink(constructor)]
         pub fn construct() -> Self { MyStorage {} }
+        
         #[ink(message)]
         pub fn message(&self) {}
     }
@@ -187,15 +196,18 @@ Some example rules include but are not limited to:
 
      ```rust
      use ink_lang as ink;
+  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
          pub struct Flipper {
              value: bool,
          }
+  
          impl Flipper {
              #[ink(constructor)]
              pub fn construct() -> Self { Flipper { value: false } }
+  
              #[ink(message)]
              pub fn message(&self) {}
          }
@@ -221,13 +233,15 @@ Some example rules include but are not limited to:
          pub struct Flipper {
              value: bool,
          }
+  
          impl Flipper {
              #[ink(constructor)]
              pub fn new(initial_value: bool) -> Self {
                  Flipper { value: false }
              }
+  
              #[ink(message)]
-             # pub fn message(&self) {}
+             pub fn message(&self) {}
          }
      }
      ```
@@ -252,17 +266,20 @@ Some example rules include but are not limited to:
 
      ```rust
      use ink_lang as ink;
+  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
          pub struct Flipper {
              value: bool,
          }
+  
          impl Flipper {
              #[ink(constructor)]
              pub fn new(initial_value: bool) -> Self {
                  Flipper { value: false }
              }
+  
              /// Flips the current value.
              #[ink(message)]
              pub fn flip(&mut self) {
@@ -289,17 +306,20 @@ Some example rules include but are not limited to:
 
      ```rust
      use ink_lang as ink;
+  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
          pub struct Flipper {
              value: bool,
          }
+  
          impl Flipper {
              #[ink(constructor)]
              pub fn new(initial_value: bool) -> Self {
                  Flipper { value: false }
              }
+  
              /// Flips the current value.
              #[ink(message)]
              #[ink(payable)] // You can either specify payable out-of-line.
@@ -327,12 +347,14 @@ Some example rules include but are not limited to:
 
      ```rust
      use ink_lang as ink;
+  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
          pub struct Flipper {
              value: bool,
          }
+  
          impl Flipper {
              #[ink(constructor)]
              #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
@@ -362,7 +384,9 @@ The `ink_env` crate provides facitilies to interact with the contract executor t
 connects ink! smart contracts with the outer world.
 
 For example it is possible to query the current call's caller via:
+
 ```rust
+use ink_env;
 ink_env::test::run_test::<ink_env::DefaultEnvironment, _>(|_| {
     let caller = ink_env::caller::<ink_env::DefaultEnvironment>();
     let _caller = caller;
@@ -374,31 +398,31 @@ However, ink! provides a much simpler way to interact with the contract executor
 via its environment accessor. An example below:
 
 ```rust
- use ink_lang as ink;
+use ink_lang as ink;
  
- #[ink::contract]
- mod greeter {
-     #[ink(storage)]
-     pub struct Greeter;
+#[ink::contract]
+mod greeter {
+    #[ink(storage)]
+    pub struct Greeter;
 
-     impl Greeter {
-         #[ink(constructor)]
-         pub fn new() -> Self {
-             let caller = Self::env().caller();
-             let message = format!("thanks for instantiation {:?}", caller);
-             ink_env::debug_println(&message);
-             Greeter {}
-         }
+    impl Greeter {
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            let caller = Self::env().caller();
+            let message = format!("thanks for instantiation {:?}", caller);
+            ink_env::debug_println(&message);
+            Greeter {}
+        }
 
-         #[ink(message, payable)]
-         pub fn fund(&mut self) {
-             let caller = self.env().caller();
-             let value = self.env().transferred_balance();
-             let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
-             ink_env::debug_println(&message);
-         }
-     }
- }
+        #[ink(message, payable)]
+        pub fn fund(&mut self) {
+            let caller = self.env().caller();
+            let value = self.env().transferred_balance();
+            let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
+            ink_env::debug_println(&message);
+        }
+    }
+}
 ```
 
 ## Events
@@ -461,33 +485,33 @@ and allows the user to flip this value using the `Flipper::flip` message
 or retrieve the current value using `Flipper::get`.
 
 ```rust
- use ink_lang as ink;
+use ink_lang as ink;
 
- #[ink::contract]
- pub mod flipper {
-     #[ink(storage)]
-     pub struct Flipper {
-         value: bool,
-     }
+#[ink::contract]
+pub mod flipper {
+    #[ink(storage)]
+    pub struct Flipper {
+        value: bool,
+    }
 
-     impl Flipper {
-         /// Creates a new flipper smart contract initialized with the given value.
-         #[ink(constructor)]
-         pub fn new(init_value: bool) -> Self {
-             Self { value: init_value }
-         }
+    impl Flipper {
+        /// Creates a new flipper smart contract initialized with the given value.
+        #[ink(constructor)]
+        pub fn new(init_value: bool) -> Self {
+            Self { value: init_value }
+        }
 
-         /// Flips the current value of the Flipper's bool.
-         #[ink(message)]
-         pub fn flip(&mut self) {
-             self.value = !self.value;
-         }
+        /// Flips the current value of the Flipper's bool.
+        #[ink(message)]
+        pub fn flip(&mut self) {
+            self.value = !self.value;
+        }
 
-         /// Returns the current value of the Flipper's bool.
-         #[ink(message)]
-         pub fn get(&self) -> bool {
-             self.value
-         }
-     }
- }
+        /// Returns the current value of the Flipper's bool.
+        #[ink(message)]
+        pub fn get(&self) -> bool {
+            self.value
+        }
+    }
+}
 ```
