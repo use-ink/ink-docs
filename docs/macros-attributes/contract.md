@@ -18,7 +18,7 @@ The macro does analysis on the provided smart contract code and generates
 proper code.
 
 ink! smart contracts can compile in several different modes.
-There are two main compilation models using either
+There are two main compilation modes using either
 - on-chain mode: `no_std` + WebAssembly as target
 - off-chain mode: `std`
 
@@ -50,27 +50,25 @@ header arguments:
 
      An example for this is the following type that could potentially be used
      within a contract's storage struct definition:
-     ```
+     ```rust
      // A storage vector of storage vectors.
-     # use ink_storage as storage;
-     # type _unused =
-     storage::Vec<storage::Vec<i32>>
-     # ;
+     use ink_storage as storage;
+     type Foo = storage::Vec<storage::Vec<i32>>;
      ```
 
      **Usage Example:**
-     ```
-     # use ink_lang as ink;
+     ```rust
+     use ink_lang as ink;
      #[ink::contract(dynamic_storage_allocator = true)]
      mod my_contract {
-         # #[ink(storage)]
-         # pub struct MyStorage;
-         # impl MyStorage {
-         #     #[ink(constructor)]
-         #     pub fn construct() -> Self { MyStorage {} }
-         #     #[ink(message)]
-         #     pub fn message(&self) {}
-         # }
+         #[ink(storage)]
+         pub struct MyStorage;
+         impl MyStorage {
+             #[ink(constructor)]
+             pub fn construct() -> Self { MyStorage {} }
+             #[ink(message)]
+             pub fn message(&self) {}
+         }
          // ...
      }
      ```
@@ -93,18 +91,18 @@ header arguments:
      `Cargo.toml` as actual dependencies to ink!.
 
      **Usage Example:**
-     ```
-     # use ink_lang as ink;
+     ```rust
+     use ink_lang as ink;
      #[ink::contract(compile_as_dependency = true)]
      mod my_contract {
-         # #[ink(storage)]
-         # pub struct MyStorage;
-         # impl MyStorage {
-         #     #[ink(constructor)]
-         #     pub fn construct() -> Self { MyStorage {} }
-         #     #[ink(message)]
-         #     pub fn message(&self) {}
-         # }
+         #[ink(storage)]
+         pub struct MyStorage;
+         impl MyStorage {
+             #[ink(constructor)]
+             pub fn construct() -> Self { MyStorage {} }
+             #[ink(message)]
+             pub fn message(&self) {}
+         }
          // ...
      }
      ```
@@ -124,7 +122,7 @@ header arguments:
      **Usage Example:**
 
      Given a custom `Environment` implementation:
-     ```
+     ```rust
      pub struct MyEnvironment;
 
      impl ink_env::Environment for MyEnvironment {
@@ -139,30 +137,30 @@ header arguments:
      ```
      A user might implement their ink! smart contract using the above custom `Environment`
      implementation as demonstrated below:
-     ```
-     # use ink_lang as ink;
+     ```rust
+     use ink_lang as ink;
      #[ink::contract(env = MyEnvironment)]
      mod my_contract {
-         # pub struct MyEnvironment;
-         #
-         # impl ink_env::Environment for MyEnvironment {
-         #     const MAX_EVENT_TOPICS: usize = 3;
-         #     type AccountId = u64;
-         #     type Balance = u128;
-         #     type Hash = [u8; 32];
-         #     type Timestamp = u64;
-         #     type BlockNumber = u32;
-         #     type ChainExtension = ::ink_env::NoChainExtension;
-         # }
-         #
-         # #[ink(storage)]
-         # pub struct MyStorage;
-         # impl MyStorage {
-         #     #[ink(constructor)]
-         #     pub fn construct() -> Self { MyStorage {} }
-         #     #[ink(message)]
-         #     pub fn message(&self) {}
-         # }
+         pub struct MyEnvironment;
+        
+         impl ink_env::Environment for MyEnvironment {
+             const MAX_EVENT_TOPICS: usize = 3;
+             type AccountId = u64;
+             type Balance = u128;
+             type Hash = [u8; 32];
+             type Timestamp = u64;
+             type BlockNumber = u32;
+             type ChainExtension = ::ink_env::NoChainExtension;
+         }
+         
+         #[ink(storage)]
+         pub struct MyStorage;
+         impl MyStorage {
+             #[ink(constructor)]
+             pub fn construct() -> Self { MyStorage {} }
+             #[ink(message)]
+             pub fn message(&self) {}
+         }
          // ...
      }
      ```
@@ -186,20 +184,20 @@ Some example rules include but are not limited to:
 
      **Example:**
 
-     ```
-     # use ink_lang as ink;
+     ```rust
+     use ink_lang as ink;
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
          pub struct Flipper {
              value: bool,
          }
-         # impl Flipper {
-         #     #[ink(constructor)]
-         #     pub fn construct() -> Self { Flipper { value: false } }
-         #     #[ink(message)]
-         #     pub fn message(&self) {}
-         # }
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn construct() -> Self { Flipper { value: false } }
+             #[ink(message)]
+             pub fn message(&self) {}
+         }
      }
      ```
 
@@ -214,23 +212,23 @@ Some example rules include but are not limited to:
      Given the `Flipper` contract definition above we add an `#[ink(constructor)]`
      as follows:
 
-     ```
-     # use ink_lang as ink;
-     # #[ink::contract]
-     # mod flipper {
-         # #[ink(storage)]
-         # pub struct Flipper {
-         #     value: bool,
-         # }
-     impl Flipper {
-         #[ink(constructor)]
-         pub fn new(initial_value: bool) -> Self {
-             Flipper { value: false }
+     ```rust
+     use ink_lang as ink;
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
          }
-         # #[ink(message)]
-         # pub fn message(&self) {}
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
+             #[ink(message)]
+             # pub fn message(&self) {}
+         }
      }
-     # }
      ```
 
 - There must be at least one `#[ink(message)]` defined method.
@@ -251,32 +249,32 @@ Some example rules include but are not limited to:
      Given the `Flipper` contract definition above we add some `#[ink(message)]` definitions
      as follows:
 
-     ```
-     # use ink_lang as ink;
-     # #[ink::contract]
-     # mod flipper {
-         # #[ink(storage)]
-         # pub struct Flipper {
-         #     value: bool,
-         # }
-     impl Flipper {
-         # #[ink(constructor)]
-         # pub fn new(initial_value: bool) -> Self {
-         #     Flipper { value: false }
-         # }
-         /// Flips the current value.
-         #[ink(message)]
-         pub fn flip(&mut self) {
-             self.value = !self.value;
+     ```rust
+     use ink_lang as ink;
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
          }
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
+             /// Flips the current value.
+             #[ink(message)]
+             pub fn flip(&mut self) {
+                 self.value = !self.value;
+             }
 
-         /// Returns the current value.
-         #[ink(message)]
-         pub fn get(&self) -> bool {
-             self.value
+             /// Returns the current value.
+             #[ink(message)]
+             pub fn get(&self) -> bool {
+                 self.value
+             }
          }
      }
-     # }
      ```
 
      **Payable Messages:**
@@ -288,33 +286,33 @@ Some example rules include but are not limited to:
      Note that ink! constructors are always implicitly payable and thus cannot be flagged
      as such.
 
-     ```
-     # use ink_lang as ink;
-     # #[ink::contract]
-     # mod flipper {
-         # #[ink(storage)]
-         # pub struct Flipper {
-         #     value: bool,
-         # }
-     impl Flipper {
-         # #[ink(constructor)]
-         # pub fn new(initial_value: bool) -> Self {
-         #     Flipper { value: false }
-         # }
-         /// Flips the current value.
-         #[ink(message)]
-         #[ink(payable)] // You can either specify payable out-of-line.
-         pub fn flip(&mut self) {
-             self.value = !self.value;
+     ```rust
+     use ink_lang as ink;
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
          }
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
+             /// Flips the current value.
+             #[ink(message)]
+             #[ink(payable)] // You can either specify payable out-of-line.
+             pub fn flip(&mut self) {
+                 self.value = !self.value;
+             }
 
-         /// Returns the current value.
-         #[ink(message, payable)] // ... or specify payable inline.
-         pub fn get(&self) -> bool {
-             self.value
+             /// Returns the current value.
+             #[ink(message, payable)] // ... or specify payable inline.
+             pub fn get(&self) -> bool {
+                 self.value
+             }
          }
      }
-     # }
      ```
 
      **Controlling the messages selector:**
@@ -326,35 +324,35 @@ Some example rules include but are not limited to:
      An ink! smart contract author can control the selector of an ink! message or ink!
      constructor using the `selector` flag. An example is shown below:
 
-     ```
-     # use ink_lang as ink;
-     # #[ink::contract]
-     # mod flipper {
-         # #[ink(storage)]
-         # pub struct Flipper {
-         #     value: bool,
-         # }
-     impl Flipper {
-         #[ink(constructor)]
-         #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
-         pub fn new(initial_value: bool) -> Self {
-             Flipper { value: false }
+     ```rust
+     use ink_lang as ink;
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
          }
+         impl Flipper {
+             #[ink(constructor)]
+             #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
 
-         # /// Flips the current value.
-         # #[ink(message)]
-         # #[ink(selector = "0xCAFEBABE")] // You can either specify selector out-of-line.
-         # pub fn flip(&mut self) {
-         #     self.value = !self.value;
-         # }
-         #
-         /// Returns the current value.
-         #[ink(message, selector = "0xFEEDBEEF")] // ... or specify selector inline.
-         pub fn get(&self) -> bool {
-             self.value
+             /// Flips the current value.
+             #[ink(message)]
+             #[ink(selector = "0xCAFEBABE")] // You can either specify selector out-of-line.
+             pub fn flip(&mut self) {
+                 self.value = !self.value;
+             }
+            
+             /// Returns the current value.
+             #[ink(message, selector = "0xFEEDBEEF")] // ... or specify selector inline.
+             pub fn get(&self) -> bool {
+                 self.value
+             }
          }
      }
-     # }
      ```
 
 ## Interacting with the Contract Executor
@@ -363,20 +361,20 @@ The `ink_env` crate provides facitilies to interact with the contract executor t
 connects ink! smart contracts with the outer world.
 
 For example it is possible to query the current call's caller via:
-```
-# ink_env::test::run_test::<ink_env::DefaultEnvironment, _>(|_| {
-let caller = ink_env::caller::<ink_env::DefaultEnvironment>();
-# let _caller = caller;
-# Ok(())
-# }).unwrap();
+```rust
+ink_env::test::run_test::<ink_env::DefaultEnvironment, _>(|_| {
+    let caller = ink_env::caller::<ink_env::DefaultEnvironment>();
+    let _caller = caller;
+    Ok(())
+}).unwrap();
 ```
 
 However, ink! provides a much simpler way to interact with the contract executor
 via its environment accessor. An example below:
 
-```
- # use ink_lang as ink;
- #
+```rust
+ use ink_lang as ink;
+ 
  #[ink::contract]
  mod greeter {
      #[ink(storage)]
@@ -411,9 +409,9 @@ execution and state.
 The following example ink! contract shows how an event `Transferred` is defined and
 emitted in the `#[ink(constructor)]`.
 
-```
- # use ink_lang as ink;
- #
+```rust
+ use ink_lang as ink;
+ 
  #[ink::contract]
  mod erc20 {
      /// Defines an event that is emitted every time value is transferred.
@@ -461,7 +459,7 @@ It controls a single `bool` value that can be either `false` or `true`
 and allows the user to flip this value using the `Flipper::flip` message
 or retrieve the current value using `Flipper::get`.
 
-```
+```rust
  use ink_lang as ink;
 
  #[ink::contract]
