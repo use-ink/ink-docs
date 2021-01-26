@@ -186,3 +186,22 @@ ink! requires a `nightly` Rust compiler as of 2021-01 since it relies on a few u
 around allocation handlers for `no_std` (no standard library) code.
 
 As soon as the Rust team decides to stabilize these features ink! will be available for stable Rust.
+
+### How do I hash a value?
+
+A number of crypto hashes are built into the [contracts-pallet](./how-it-works) and
+therefore very efficient to use. We currently support a handful of those, you 
+can view the complete list [here](https://paritytech.github.io/ink/ink_env/hash/trait.CryptoHash.html).
+
+If you have the urgent need for another crypto hash you could introduce it through
+[Chain Extensions](/macros-attributes/chain-extension)
+or make a proposal to include it into the default set of the `contracts-pallet`.
+
+Using one of the built-in crypto hashes an be done like this:
+
+```rust
+use ink_env::hash::Blake2x256;
+
+let hashed1: [u8; 32] = self.env().hash_bytes::<Blake2x256>(my_bytes);
+let hashed2: [u8; 32] = self.env().hash_encoded::<Blake2x256>(42);
+```

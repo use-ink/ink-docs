@@ -9,7 +9,8 @@ slug: /how-it-works
 
 Substrate's [Framework for Runtime Aggregation of Modularised Entities (FRAME)](https://substrate.dev/docs/en/next/conceptual/runtime/frame) contains
 a module  which implements an API for typical functions smart contracts need (storage, querying information about accounts, …).
-This module is called the `contracts` pallet,
+This module is called the `contracts` pallet
+(you can find its repository [here](https://github.com/paritytech/substrate/blob/master/frame/contracts/README.md)).
 
 The `contracts` pallet requires smart contracts to be uploaded to the blockchain as a Wasm blob.
 
