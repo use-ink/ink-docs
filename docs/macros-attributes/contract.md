@@ -3,7 +3,7 @@ title: "#[ink::contract]"
 slug: /macros-attributes/contract
 ---
 
-Entry point for writing ink! smart contracts.
+This macro is the entry point for writing ink! smart contracts.
 
 If you are a beginner trying to learn ink! we recommend you to check out
 our extensive [ink! workshop](https://substrate.dev/substrate-contracts-workshop/#/).
@@ -33,139 +33,140 @@ off-chain environment provided by the `ink_env` crate.
 The `#[ink::contract]` macro can be provided with some additional comma-separated
 header arguments:
 
-- `dynamic_storage_allocator: bool`
+### `dynamic_storage_allocator: bool`
 
-     Tells the ink! code generator to allow usage of ink!'s built-in dynamic
-     storage allocator.
-     - `true`: Use the dynamic storage allocator provided by ink!.
-     - `false`: Do NOT use the dynamic storage allocator provided by ink!.
+Tells the ink! code generator to allow usage of ink!'s built-in dynamic
+storage allocator.
+ - `true`: Use the dynamic storage allocator provided by ink!.
+ - `false`: Do NOT use the dynamic storage allocator provided by ink!.
 
-     This feature is generally only needed for smart contracts that try to model
-     their data in a way that contains storage entites within other storage
-     entities.
+This feature is generally only needed for smart contracts that try to model
+their data in a way that contains storage entites within other storage
+entities.
 
-     Contract writers should try to write smart contracts that do not depend on the
-     dynamic storage allocator since enabling it comes at a cost of increased Wasm
-     file size. Although it will enable interesting use cases. Use it with care!
+Contract writers should try to write smart contracts that do not depend on the
+dynamic storage allocator since enabling it comes at a cost of increased Wasm
+file size. Although it will enable interesting use cases. Use it with care!
 
-     An example for this is the following type that could potentially be used
-     within a contract's storage struct definition:
-     ```rust
-     // A storage vector of storage vectors.
-     use ink_storage as storage;
-     type Foo = storage::Vec<storage::Vec<i32>>;
-     ```
+An example for this is the following type that could potentially be used
+within a contract's storage struct definition:
+```rust
+// A storage vector of storage vectors.
+use ink_storage as storage;
+type Foo = storage::Vec<storage::Vec<i32>>;
+```
 
-     **Usage Example:**
-     ```rust
-     use ink_lang as ink;
-     #[ink::contract(dynamic_storage_allocator = true)]
-     mod my_contract {
-         #[ink(storage)]
-         pub struct MyStorage;
-         impl MyStorage {
-             #[ink(constructor)]
-             pub fn construct() -> Self { MyStorage {} }
-             #[ink(message)]
-             pub fn message(&self) {}
-         }
-         // ...
-     }
-     ```
+**Usage Example:**
+```rust
+use ink_lang as ink;
+#[ink::contract(dynamic_storage_allocator = true)]
+mod my_contract {
+    #[ink(storage)]
+    pub struct MyStorage;
+    impl MyStorage {
+        #[ink(constructor)]
+        pub fn construct() -> Self { MyStorage {} }
+        #[ink(message)]
+        pub fn message(&self) {}
+    }
+    // ...
+}
+```
 
-     **Default value:** `false`
+**Default value:** `false`
 
-- `compile_as_dependency: bool`
+### `compile_as_dependency: bool`
 
-     Tells the ink! code generator to **always** or **never**
-     compile the smart contract as if it was used as a dependency of another ink!
-     smart contract.
+Tells the ink! code generator to **always** or **never**
+compile the smart contract as if it was used as a dependency of another ink!
+smart contract.
 
-     Normally this flag is only really useful for ink! developers who
-     want to inspect code generation of ink! smart contracts.
-     The author is not aware of any particular practical use case for users that
-     makes use of this flag but contract writers are encouraged to disprove this.
+Normally this flag is only really useful for ink! developers who
+want to inspect code generation of ink! smart contracts.
+The author is not aware of any particular practical use case for users that
+makes use of this flag but contract writers are encouraged to disprove this.
 
-     Note that it is recommended to make use of the built-in crate feature
-     `ink-as-dependency` to flag smart contract dependencies listed in a contract's
-     `Cargo.toml` as actual dependencies to ink!.
+Note that it is recommended to make use of the built-in crate feature
+`ink-as-dependency` to flag smart contract dependencies listed in a contract's
+`Cargo.toml` as actual dependencies to ink!.
 
-     **Usage Example:**
-     ```rust
-     use ink_lang as ink;
-     #[ink::contract(compile_as_dependency = true)]
-     mod my_contract {
-         #[ink(storage)]
-         pub struct MyStorage;
-         impl MyStorage {
-             #[ink(constructor)]
-             pub fn construct() -> Self { MyStorage {} }
-             #[ink(message)]
-             pub fn message(&self) {}
-         }
-         // ...
-     }
-     ```
+**Usage Example:**
+```rust
+use ink_lang as ink;
+#[ink::contract(compile_as_dependency = true)]
+mod my_contract {
+    #[ink(storage)]
+    pub struct MyStorage;
+    impl MyStorage {
+        #[ink(constructor)]
+        pub fn construct() -> Self { MyStorage {} }
+        #[ink(message)]
+        pub fn message(&self) {}
+    }
+    // ...
+}
+```
 
-     **Default value:** Depends on the crate feature propagation of `Cargo.toml`.
+**Default value:** Depends on the crate feature propagation of `Cargo.toml`.
 
-- `env: impl Environment`
+### `env: impl Environment`
 
-     Tells the ink! code generator which environment to use for the ink! smart contract.
-     The environment must implement the `Environment` (defined in `ink_env`) trait and provides
-     all the necessary fundamental type definitions for `Balance`, `AccountId` etc.
+Tells the ink! code generator which environment to use for the ink! smart contract.
+The environment must implement the `Environment` (defined in `ink_env`) trait and provides
+all the necessary fundamental type definitions for `Balance`, `AccountId` etc.
 
-     When using a custom `Environment` implementation for a smart contract all types
-     that it exposes to the ink! smart contract and the mirrored types used in the runtime
-     must be aligned with respect to SCALE encoding and semantics.
+When using a custom `Environment` implementation for a smart contract all types
+that it exposes to the ink! smart contract and the mirrored types used in the runtime
+must be aligned with respect to SCALE encoding and semantics.
 
-     **Usage Example:**
+**Usage Example:**
 
-     Given a custom `Environment` implementation:
-     ```rust
-     pub struct MyEnvironment;
+Given a custom `Environment` implementation:
+```rust
+pub struct MyEnvironment;
 
-     impl ink_env::Environment for MyEnvironment {
-         const MAX_EVENT_TOPICS: usize = 3;
-         type AccountId = u64;
-         type Balance = u128;
-         type Hash = [u8; 32];
-         type Timestamp = u64;
-         type BlockNumber = u32;
-         type ChainExtension = ::ink_env::NoChainExtension;
-     }
-     ```
-     A user might implement their ink! smart contract using the above custom `Environment`
-     implementation as demonstrated below:
-     ```rust
-     use ink_lang as ink;
-     #[ink::contract(env = MyEnvironment)]
-     mod my_contract {
-         pub struct MyEnvironment;
-        
-         impl ink_env::Environment for MyEnvironment {
-             const MAX_EVENT_TOPICS: usize = 3;
-             type AccountId = u64;
-             type Balance = u128;
-             type Hash = [u8; 32];
-             type Timestamp = u64;
-             type BlockNumber = u32;
-             type ChainExtension = ::ink_env::NoChainExtension;
-         }
-         
-         #[ink(storage)]
-         pub struct MyStorage;
-         impl MyStorage {
-             #[ink(constructor)]
-             pub fn construct() -> Self { MyStorage {} }
-             #[ink(message)]
-             pub fn message(&self) {}
-         }
-         // ...
-     }
-     ```
+impl ink_env::Environment for MyEnvironment {
+    const MAX_EVENT_TOPICS: usize = 3;
+    type AccountId = u64;
+    type Balance = u128;
+    type Hash = [u8; 32];
+    type Timestamp = u64;
+    type BlockNumber = u32;
+    type ChainExtension = ::ink_env::NoChainExtension;
+}
+```
+A user might implement their ink! smart contract using the above custom `Environment`
+implementation as demonstrated below:
 
-     **Default value:** `DefaultEnvironment` defined in `ink_env` crate.
+```rust
+use ink_lang as ink;
+#[ink::contract(env = MyEnvironment)]
+mod my_contract {
+    pub struct MyEnvironment;
+   
+    impl ink_env::Environment for MyEnvironment {
+        const MAX_EVENT_TOPICS: usize = 3;
+        type AccountId = u64;
+        type Balance = u128;
+        type Hash = [u8; 32];
+        type Timestamp = u64;
+        type BlockNumber = u32;
+        type ChainExtension = ::ink_env::NoChainExtension;
+    }
+    
+    #[ink(storage)]
+    pub struct MyStorage;
+    impl MyStorage {
+        #[ink(constructor)]
+        pub fn construct() -> Self { MyStorage {} }
+        #[ink(message)]
+        pub fn message(&self) {}
+    }
+    // ...
+}
+```
+
+**Default value:** `DefaultEnvironment` defined in `ink_env` crate.
 
 ## Anaylsis
 
