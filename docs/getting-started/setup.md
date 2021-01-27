@@ -3,6 +3,9 @@ title: Setup
 slug: /getting-started/setup
 ---
 
+In case you are looking for a guided tutorial directed
+towards beginners please check out our [Guided tutorial ](https://substrate.dev/substrate-contracts-workshop/#/).
+
 ## Rust & Cargo
 
 A prerequisite for compiling smart contracts is to have Rust and Cargo installed. Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
