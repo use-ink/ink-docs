@@ -4,7 +4,7 @@ slug: /getting-started/setup
 ---
 
 In case you are looking for a guided tutorial directed
-towards beginners please check out our [Guided tutorial ](https://substrate.dev/substrate-contracts-workshop/#/).
+towards beginners please check out our [Guided Tutorial](https://substrate.dev/substrate-contracts-workshop/#/).
 
 ## Rust & Cargo
 
