@@ -205,3 +205,15 @@ use ink_env::hash::Blake2x256;
 let hashed1: [u8; 32] = self.env().hash_bytes::<Blake2x256>(my_bytes);
 let hashed2: [u8; 32] = self.env().hash_encoded::<Blake2x256>(42);
 ```
+
+### When to use `Lazy<T>` over just `T` for a contract field?
+
+The `ink_storage::Lazy` type caches their entities and acts lazily on the storage.
+This means that a read or write operation is only performed when it really needs to
+in order to satisfy other inputs.
+
+Data types such as Rust primitives `i32` or Rust's very own `Vec` or data structures
+can also be used to operate on the contract's storage, however, they will load their
+contents eagerly which is often not what you want.
+
+[See this chapter](/datastructures/overview) where we go into more details and provide examples.
