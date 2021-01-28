@@ -229,12 +229,12 @@ libraries used, or even hardware. In order for the nodes in a blockchain network
 to reach agreement on the state of the chain, all operations must be completely
 deterministic. Hence we don't allow floating point data types in ink!.
 
-Subsequently it's not possible to return a decimal number from an ink! message.
+Consequently it's not possible to return a decimal number from an ink! message.
 What you should do instead is to have your user interface denominate the returned
 number to decimals.
 
 Note, that it's typical for blockchains to have the number of available tokens
-defined as a non-floating number and determine the decimal places in the user
-interface. For example, 1 Bitcoin is equivalent to the smallest unit of 100.000.000
+defined as a non-floating number and determine the denomination in the user
+interface. For example, 1 Bitcoin is equivalent to the smallest unit of 100,000,000
 Satoshi and all Bitcoin implementations internally persist account balances in
 Satoshi, not as a decimal number of Bitcoin.
