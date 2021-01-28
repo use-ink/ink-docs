@@ -217,3 +217,24 @@ can also be used to operate on the contract's storage, however, they will load t
 contents eagerly which is often not what you want.
 
 [See this chapter](/datastructures/overview) where we go into more details and provide examples.
+
+
+### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
+
+Floats are cool for all kinds of reasons, but they also have one important
+drawback. Floating point arithmetic is non-deterministic which means that
+different processors compute (slightly) different results for the same
+operation. Although there is an IEEE spec, non-determinism can come from specific
+libraries used, or even hardware. In order for the nodes in a blockchain network
+to reach agreement on the state of the chain, all operations must be completely
+deterministic. Hence we don't allow floating point data types in ink!.
+
+Subsequently it's not possible to return a decimal number from an ink! message.
+What you should do instead is to have your user interface denominate the returned
+number to decimals.
+
+Note, that it's typical for blockchains to have the number of available tokens
+defined as a non-floating number and determine the decimal places in the user
+interface. For example, 1 Bitcoin is equivalent to the smallest unit of 100.000.000
+Satoshi and all Bitcoin implementations internally persist account balances in
+Satoshi, not as a decimal number of Bitcoin.
