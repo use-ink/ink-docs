@@ -217,3 +217,20 @@ can also be used to operate on the contract's storage, however, they will load t
 contents eagerly which is often not what you want.
 
 [See this chapter](/datastructures/overview) where we go into more details and provide examples.
+
+
+### Why can't I just use the standard Rust data collections in ink!?
+
+You can use them! They are exposed via the `ink_prelude` crate (e.g. `ink_prelude::vec::Vec`)
+and you can return them from ink! messages and also persist them to storage.
+
+_However, the Rust stdlib collections are not optimized for smart contract usage!_ So for example,
+if you use them to persist your data on the chain they will always occupy a single storage cell
+and thus always be loaded eagerly, in their entirety. This can be very costly! Just think about
+a `Vec` or a `HashMap` where the smart contract might only need access to a few elements, rather
+than the entire data collection.
+
+Our `ink_storage` data structures on the other hand are optimized for storage and provide a
+differentiation between lazy and eager access.
+
+[See this chapter](/datastructures/overview) where we go into more details and provide examples.
