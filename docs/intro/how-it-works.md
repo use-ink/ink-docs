@@ -4,7 +4,7 @@ slug: /how-it-works
 ---
 
 <div class="schema">
-    <img src="./img/how-it-works.svg" alt="How it Works" />
+    <img src="../img/how-it-works.svg" alt="How it Works" />
 </div>
 
 Substrate's [Framework for Runtime Aggregation of Modularised Entities (FRAME)](https://substrate.dev/docs/en/next/conceptual/runtime/frame) contains
