@@ -167,7 +167,7 @@ mod mycontract {
 
     impl MyContract {
         #[ink(constructor)]
-        pub fn new(init_value: i32) -> Self {
+        pub fn new() -> Self {
             Self {
                 owner: Self::env().caller();
             }
