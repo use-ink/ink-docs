@@ -38,13 +38,20 @@ SUBCOMMANDS:
 
 ## Installation
 
-You can install it this way:
+As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
+
+Many package managers have it available nowadays ‒ e.g. it's a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
+[Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
+
+After you've installed the package execute:
 
 ```bash
-cargo install cargo-contract --vers 0.8.0 --force --locked
+cargo install cargo-contract --vers 0.10.0 --force --locked
 ```
 
 Use the `--force` to ensure you are updated to the most recent `cargo-contract` version.
+
+You can then use `cargo contract --help` to start exploring the commands made available to you.
 
 ## Usage
 
