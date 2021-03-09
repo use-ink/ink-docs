@@ -233,6 +233,6 @@ this type of "upsert" behavior:
 let caller = self.env().caller();
 self.my_number_map
     .entry(caller)
-    .and_modify(|old_value| old_value += by)
+    .and_modify(|old_value| *old_value += by)
     .or_insert(by);
 ```
