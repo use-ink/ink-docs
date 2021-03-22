@@ -259,8 +259,8 @@ differentiation between lazy and eager access.
 
 ### Why am I getting a `ContractTrapped` error when interacting with a contract?
 
-`ContractTapped` is returned in case the contract reached an `unreachable!`
-instruction or an assertion failed.
+`ContractTapped` is returned in case the contract reached an unreachable instruction. 
+This could e.g. be caused by an `unreachable!` instruction, a failed assertion or a `panic!` instruction.
 
-This either constitutes a bug in your contract or in ink!. In case you think
+It either constitutes a bug in your contract or in ink!. In case you think
 this is a bug in ink!, [please create an issue](https://github.com/paritytech/ink/issues/new/choose).
