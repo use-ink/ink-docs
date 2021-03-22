@@ -259,8 +259,18 @@ differentiation between lazy and eager access.
 
 ### Why am I getting a `ContractTrapped` error when interacting with a contract?
 
-`ContractTapped` is returned in case the contract reached an unreachable instruction. 
-This could e.g. be caused by an `unreachable!` instruction, a failed assertion or a `panic!` instruction.
+When it does not constitute a deliberate assertion, like for example a permission check,
+it is most likely a bug in your contract or in ink!. 
 
-It either constitutes a bug in your contract or in ink!. In case you think
-this is a bug in ink!, [please create an issue](https://github.com/paritytech/ink/issues/new/choose).
+A common source of `ContractTrapped` are Integer overflows, those can cause
+your contract to trap as well. 
+There is a [known bug in the Rust compiler](https://github.com/rust-lang/rust/issues/78744)
+with respect to safe math operations. As a workaround for this particular bug
+try to insert `overflow-checks = false` into your `Cargo.toml`.
+This will disable safe math operations altogether, but unfortunately we are currently
+not aware of a better workaround until the bug in the compiler is fixed.
+
+If you don't find the issue you could also ask for help in our public 
+[Element](https://riot.im/app/#/room/#ink:matrix.parity.io) or 
+[Discord](https://discord.gg/ztCASQE) channel.
+
