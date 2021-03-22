@@ -255,3 +255,12 @@ Our `ink_storage` data structures on the other hand are optimized for storage an
 differentiation between lazy and eager access.
 
 [See this chapter](/datastructures/overview) where we go into more details and provide examples.
+
+
+### Why am I getting a `ContractTrapped` error when interacting with a contract?
+
+`ContractTapped` is returned in case the contract reached an `unreachable!`
+instruction or an assertion failed.
+
+This either constitutes a bug in your contract or in ink!. In case you think
+this is a bug in ink!, [please create an issue](https://github.com/paritytech/ink/issues/new/choose).
