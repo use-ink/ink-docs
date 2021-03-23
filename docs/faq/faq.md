@@ -275,7 +275,7 @@ If you don't find the issue you could also ask for help in our public
 [Discord](https://discord.gg/ztCASQE) channel.
 
 
-### What are the `scale::Encode` and `scale::Decode` trait?
+### What are the `scale::Encode` and `scale::Decode` traits?
 
 Substrate-based blockchains use the [SCALE codec](https://www.substrate.io/kb/advanced/codec)
 to encode data.
@@ -308,4 +308,3 @@ is missing:
 #[derive(scale::Encode, scale::Decode)]
 struct MyCustomDataStructure { … }
 ```
-
