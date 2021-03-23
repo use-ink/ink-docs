@@ -291,6 +291,10 @@ For example, you might encounter this error if you try to store a custom data
 structure in the contract's storage. Or e.g. when attempting to return 
 a custom error from an ink! message.
 
+> Note: The error `the trait "WrapperTypeEncode" is not implemented for …` is also
+> a common error when a mismatching version of `parity-scale-codec` is used
+> in the contract opposed to the version used by ink!.
+
 The solution typically is to add a fitting implementation of the trait
 for your data structure:
 
