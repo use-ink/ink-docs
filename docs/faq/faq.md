@@ -274,3 +274,41 @@ If you don't find the issue you could also ask for help in our public
 [Element](https://riot.im/app/#/room/#ink:matrix.parity.io) or 
 [Discord](https://discord.gg/ztCASQE) channel.
 
+
+### What are the `scale::Encode` and `scale::Decode` traits?
+
+Substrate-based blockchains use the [SCALE codec](https://www.substrate.io/kb/advanced/codec)
+to encode data.
+As a consequence the data for every interaction with Substrate needs to
+be SCALE-encodable ‒ i.e. it needs to implement either `scale::Encode`,
+`scale::Decode`, or both. This affects e.g. data you want to return to a caller,
+data that you want to take as input, or data you want to store on-chain.
+
+A common error you might get when a necessary SCALE trait is not implemented
+for a data structure could be along the lines of `the trait "WrapperTypeEncode"
+is not implemented for "Foo"`.
+For example, you might encounter this error if you try to store a custom data
+structure in the contract's storage. Or e.g. when attempting to return 
+a custom error from an ink! message.
+
+> Note: The error `the trait "WrapperTypeEncode" is not implemented for …` is also
+> a common error when a mismatching version of `parity-scale-codec` is used
+> in the contract opposed to the version used by ink!.
+
+The solution typically is to add a fitting implementation of the trait
+for your data structure:
+
+* `Encode` is used for encoding a data structure when it is e.g. returned
+to a caller or when it is persisted to the contracts storage.
+  
+* `Decode` is used for the inverse, e.g. when reading from storage or
+taking an input from a user (or another contract).
+
+It's possible to derive those traits and oftentimes the simplest way
+is to just derive the missing trait for the object for which its implementation
+is missing:
+
+```rust
+#[derive(scale::Encode, scale::Decode)]
+struct MyCustomDataStructure { … }
+```
