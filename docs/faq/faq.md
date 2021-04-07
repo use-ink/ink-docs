@@ -324,5 +324,5 @@ Minimizing storage usage of your contract is a best practice and you
 should only persist items which you need to derive state transitions
 in your contract.
 
-If you still for some reason need to use `String`, then you should use
+If you still, for some reason, need to use `String`, then you should use
 the `String` [from the ink! prelude](https://docs.rs/ink_prelude/latest/ink_prelude/string/struct.String.html).
