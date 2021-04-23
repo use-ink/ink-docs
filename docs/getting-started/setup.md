@@ -51,5 +51,5 @@ functionality ‒ the `contracts` pallet (see [How it Works](/how-it-works) for 
 It's a comfortable option if you want to get a quickstart.
 
 ```bash
-cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.6 --force --locked
+cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.5 --force --locked
 ```
