@@ -197,14 +197,9 @@ If you have the urgent need for another crypto hash you could introduce it throu
 [Chain Extensions](/macros-attributes/chain-extension)
 or make a proposal to include it into the default set of the `contracts-pallet`.
 
-Using one of the built-in crypto hashes an be done like this:
-
-```rust
-use ink_env::hash::Blake2x256;
-
-let hashed1: [u8; 32] = self.env().hash_bytes::<Blake2x256>(my_bytes);
-let hashed2: [u8; 32] = self.env().hash_encoded::<Blake2x256>(42);
-```
+Using one of the built-in crypto hashes can be done as explained here:
+* [`self.env().hash_bytes()`](https://paritytech.github.io/ink/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://paritytech.github.io/ink/ink_env/fn.hash_encoded.html)
 
 ### When to use `Lazy<T>` over just `T` for a contract field?
 
@@ -270,9 +265,9 @@ try to insert `overflow-checks = false` into your `Cargo.toml`.
 This will disable safe math operations altogether, but unfortunately we are currently
 not aware of a better workaround until the bug in the compiler is fixed.
 
-If you don't find the issue you could also ask for help in our public 
+If you don't find the issue you can also ask for help in our public 
 [Element](https://riot.im/app/#/room/#ink:matrix.parity.io) or 
-[Discord](https://discord.gg/ztCASQE) channel.
+[Discord](https://discord.gg/j2DKRRbSJr) channel.
 
 
 ### What are the `scale::Encode` and `scale::Decode` traits?
