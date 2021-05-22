@@ -22,7 +22,7 @@ Open the specially designed **Upload** section of the Canvas UI.
 
 Use the dropdown to select a _deployment account_ with some account balance, like `Alice`. Enter a name for the contract in the input field. Provide the `flipper.contract` file as the bundled Wasm blob and metadata.
 
-![Contracts code page for deploying Flipper](/getting-started/assets/flipper-code-page.png)
+![Contracts code page for deploying Flipper](./assets/flipper-code-page.png)
 
 Click **Upload** and then **Sign & Submit** on the confirmation page.
 
