@@ -19,25 +19,22 @@ This command will create a new project folder named `flipper` with this content:
 
 ```
 flipper
-|
-+-- lib.rs                <-- Contract Source Code
-|
-+-- Cargo.toml            <-- Rust Dependencies and ink! Configuration
-|
-+-- .gitignore
+  └─ lib.rs                <-- Contract Source Code
+  └─ Cargo.toml            <-- Rust Dependencies and ink! Configuration
+  └─ .gitignore
 ```
 
 ## Contract Source Code
 
 The ink CLI automatically generates the source code for the "Flipper" contract, which is about the simplest "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:
 
-[Flipper Example Source Code](https://github.com/paritytech/ink/blob/v3.0.0-rc1/examples/flipper/lib.rs)
+[Flipper Example Source Code](https://github.com/paritytech/ink/blob/v3.0.0-rc3/examples/flipper/lib.rs)
 
-The Flipper contract is nothing more than a `bool` which gets flipped from true to false through the `flip()` function. 
+The Flipper contract is nothing more than a `bool` which gets flipped from `true` to `false` through the `flip()` function. 
 
 ## Testing Your Contract
 
-You will see at the bottom of the source code there is a simple test which verifies the functionality of the contract. We can quickly test that this code is functioning as expected using the **off-chain test environment** that ink! provides.
+You will see at the bottom of the source code there are simple test cases which verify the functionality of the contract. We can quickly test this code is functioning as expected using the **off-chain test environment** that ink! provides.
 
 In your project folder run:
 

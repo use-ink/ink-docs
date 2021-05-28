@@ -8,7 +8,7 @@ towards beginners please check out our [Guided Tutorial](https://substrate.dev/s
 
 ## Rust & Cargo
 
-A prerequisite for compiling smart contracts is to have Rust and Cargo installed. Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+A pre-requisite for compiling smart contracts is to have Rust and Cargo installed. Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 ## ink! CLI
 
@@ -16,8 +16,10 @@ The first tool we will be installing is [`cargo-contract`](https://github.com/pa
 
 As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
 
-Many package managers have it available nowadays ‒ e.g. it's a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
+Many package managers have it available nowadays ‒ e.g. there is a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
 [Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
+
+If there's only an old version in your distributions package manager you can also [download a binary release directly](https://github.com/WebAssembly/binaryen/releases).
 
 After you've installed the package execute:
 
@@ -29,13 +31,13 @@ Use the `--force` to ensure you are updated to the most recent `cargo-contract` 
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
 
-## Substrate Framework Prerequisites
+## Substrate Framework Pre-requisites
 
 With ink! you can write smart contracts for blockchains built on Substrate.
 
 Follow the
 [official installation steps](https://substrate.dev/docs/en/knowledgebase/getting-started/) from the
-Substrate Developer Hub Knowledge Base to set up all Substrate prerequisites.
+Substrate Developer Hub Knowledge Base to set up all Substrate pre-requisites.
 
 ```bash
 rustup component add rust-src --toolchain nightly

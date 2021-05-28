@@ -3,7 +3,7 @@ title: Storing Values
 slug: /basics/storing-values
 ---
 
-Here is how you store some simple values in storage:
+Here is how you store simple values in storage:
 
 ```rust
 #[ink(storage)]
@@ -18,9 +18,12 @@ pub struct MyContract {
 
 ## Supported Types
 
-Contracts may store types that are encodable and decodable with [Parity Codec](https://github.com/paritytech/parity-codec) which includes the most common types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
+Substrate contracts may store types that are encodable and decodable with
+[Parity Codec](https://github.com/paritytech/parity-codec) which includes most Rust common data
+types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
-ink! provides smart contracts Substrate specific types like `AccountId`, `Balance`, and `Hash` as if they were primitive types. Also ink! provides storage types for more elaborate storage interactions through the storage module:
+ink! provides Substrate specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
+they were primitive types. ink! also provides storage types for more elaborate storage interactions through the storage module:
 
 ```rust
 use ink_storage::collections::{Vec, HashMap, Stash, Bitvec};
@@ -47,7 +50,7 @@ mod MyContract {
 }
 ```
 
-You can find all the supported Substrate types in [`crates/storage/src/lib.rs`](https://github.com/paritytech/ink/blob/master/crates/storage/src/lib.rs).
+You can find all the supported Substrate types in the [`ink_storage` crate](https://github.com/paritytech/ink/tree/master/crates/storage).
 
 ## Initializing Storage in Constructors
 

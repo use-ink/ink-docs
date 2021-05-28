@@ -18,30 +18,40 @@ With this pattern, contract code like the ERC20 standard can be put on the block
 
 ## Putting Your Code on the Blockchain
 
-Open the specially designed **Upload** section of the Canvas UI.
+Here we will upload the contract code and instantiate one copy of the contract on the blockchain:
 
-Use the dropdown to select a _deployment account_ with some account balance, like `Alice`. Enter a name for the contract in the input field. Provide the `flipper.contract` file as the bundled Wasm blob and metadata.
+- Click the **Upload & Instantiate Contract** button.
+- Choose an **Instantiation account** (e.g. ALICE).
+- Give the contract a descriptive **Name** (e.g. Flipper Contract).
+- Drag the `flipper.contract` file that contains the bundled Wasm blob and metadata into the drag
+& drop area. You will see the UI parse the metadata and showing what functions the contract contains.
+- Click the **Constructor Details**
 
 ![Contracts code page for deploying Flipper](./assets/flipper-code-page.png)
 
-Click **Upload** and then **Sign & Submit** on the confirmation page.
+Smart contracts exist as an extension of the account system on the blockchain. Thus creating an
+instance of this contract will create a new `AccountId` which will store any balance managed by the
+smart contract and allow us to interact with the contract.
 
-This should emit a `contracts.PutCode` event. If the transaction succeeds you will get an `system.ExtrinsicSuccess` event and your WASM contract will be stored on your Substrate blockchain!
+Now a screen displays the information that represents our smart contract. We are going to
+instantiate a copy of the smart contract:
+
+- Give the contract instance a **Contract Name** (e.g. The First Flipper).
+- Accept the default options for the contract **Instantiation Constructor**.
+- Accept the default options **Endowment** of `1000 Units` to pay the storage rent, and **Max Gas Allowed** of `200000`.
+- Click on `Instantiate`
 
 ![An image of events from Flipper code upload](./assets/flipper-upload-events.png)
 
-## Creating an Instance of Your Contract
+> **Note:** As mentioned earlier, contract creation involves creation of a new account. As such, you
+must be sure to give the contract account at least the existential deposit defined by your
+blockchain. We also need to be able to pay the contract's rent (endowment). If we consume all of
+this deposit, the contract will become a tombstone. We can always refill the contract's balance and
+keep it on chain.
 
-Smart contracts exist as an extension of the account system on the blockchain. Thus creating an instance of this contract will create a new `AccountId` which will store any balance managed by the smart contract and allow us to interact with the contract.
-
-After you uploaded the contract in the previous step, a confirmation screen displays the information that represents our smart contract. We now need to deploy our smart contract to create an **instance**. Press the **"Deploy Code"** button on the confirmation screen.
-
-To instantiate our contract, accept the default options to give this contract account an _endowment_ of `1000 Units` in order to pay the storage rent and set a _maximum gas allowed_ value of `1000000`:
-
-![An image of the Contracts Instance Page](./assets/flipper-instance-page.png)
-
-> **Note:** As mentioned earlier, contract creation involves creation of a new Account. As such, you must be sure to give the contract account at least the existential deposit defined by your blockchain. We also need to be able to pay the contract's rent (_`endowment`_). If we consume all of this deposit, the contract will become invalid. We can always refill the contract's balance and keep it on chain.
-
-When you press **Deploy**, you should see a flurry of events appear including the creation of a new account (`system.NewAccount`) and the instantiation of the contract (`contracts.instantiate`):
+When you click **Instantiate**, and in the next confirmation screen **Sign & Submit**, you should see
+the extrinsic `contracts.instantiateWithCode` is called, and a flurry of events appear including the
+creation of a new account (`system.NewAccount`) and the instantiation of the contract
+(`contracts.Instantiated`):
 
 ![An image of events from instantiation of Flipper](./assets/flipper-instance-events.png)

@@ -6,7 +6,7 @@ slug: /datastructures/hashmap
 In this section we want to demonstrate how to work with ink! datastructures.
 We will do this using the example of our `HashMap`, which allows you to store items in a key-value mapping.
 
-Here is an example of a mapping from user to a number:
+Here is an example of a mapping from a user to a number:
 
 ```rust
 #[ink(storage)]
@@ -16,7 +16,7 @@ pub struct MyContract {
 }
 ```
 
-This means that for a given key, you can store a unique instance of a value type. In this case, each "user" gets their own number, and we can build logic so that only they can modify their own number.
+This means that for a given key, you can store a unique instance of a value type. In this case, each "user" gets their own number, and we can build logic so that only they can modify their own numbers.
 
 ## Storage HashMap API
 
@@ -25,38 +25,38 @@ You can find the full HashMap API in the [crate documentation](https://paritytec
 Here are some of the most common functions you might use:
 
 ```rust
-    /// Inserts a key-value pair into the map.
-    
-    /// Returns the previous value associated with the same key if any.
-    /// If the map did not have this key present, `None` is returned.
-    pub fn insert(&mut self, key: K, new_value: V) -> Option<V> {/* --snip-- */}
+/// Inserts a key-value pair into the map.
 
-    /// Removes the key/value pair from the map associated with the given key.
-    ///
-    /// - Returns the removed value if any.
-    pub fn take<Q>(&mut self, key: &Q) -> Option<V> {/* --snip-- */}
+/// Returns the previous value associated with the same key if any.
+/// If the map did not have this key present, `None` is returned.
+pub fn insert(&mut self, key: K, new_value: V) -> Option<V> {/* --snip-- */}
 
-    /// Returns a shared reference to the value corresponding to the key.
-    ///
-    /// The key may be any borrowed form of the map's key type,
-    /// but `Hash` and `Eq` on the borrowed form must match those for the key type.
-    pub fn get<Q>(&self, key: &Q) -> Option<&V> {/* --snip-- */}
+/// Removes the key/value pair from the map associated with the given key.
+///
+/// - Returns the removed value if any.
+pub fn take<Q>(&mut self, key: &Q) -> Option<V> {/* --snip-- */}
 
-    /// Returns a mutable reference to the value corresponding to the key.
-    ///
-    /// The key may be any borrowed form of the map's key type,
-    /// but `Hash` and `Eq` on the borrowed form must match those for the key type.
-    pub fn get_mut<Q>(&mut self, key: &Q) -> Option<&mut V> {/* --snip-- */}
+/// Returns a shared reference to the value corresponding to the key.
+///
+/// The key may be any borrowed form of the map's key type,
+/// but `Hash` and `Eq` on the borrowed form must match those for the key type.
+pub fn get<Q>(&self, key: &Q) -> Option<&V> {/* --snip-- */}
 
-    /// Returns `true` if there is an entry corresponding to the key in the map.
-    pub fn contains_key<Q>(&self, key: &Q) -> bool {/* --snip-- */}
+/// Returns a mutable reference to the value corresponding to the key.
+///
+/// The key may be any borrowed form of the map's key type,
+/// but `Hash` and `Eq` on the borrowed form must match those for the key type.
+pub fn get_mut<Q>(&mut self, key: &Q) -> Option<&mut V> {/* --snip-- */}
 
-    /// Converts the OccupiedEntry into a mutable reference to the value in the entry
-    /// with a lifetime bound to the map itself.
-    pub fn into_mut(self) -> &'a mut V {/* --snip-- */}
+/// Returns `true` if there is an entry corresponding to the key in the map.
+pub fn contains_key<Q>(&self, key: &Q) -> bool {/* --snip-- */}
 
-    /// Gets the given key's corresponding entry in the map for in-place manipulation.
-    pub fn entry(&mut self, key: K) -> Entry<K, V> {/* --snip-- */}
+/// Converts the OccupiedEntry into a mutable reference to the value in the entry
+/// with a lifetime bound to the map itself.
+pub fn into_mut(self) -> &'a mut V {/* --snip-- */}
+
+/// Gets the given key's corresponding entry in the map for in-place manipulation.
+pub fn entry(&mut self, key: K) -> Entry<K, V> {/* --snip-- */}
 ```
 
 ## Initializing a HashMap
@@ -100,7 +100,7 @@ mod mycontract {
 }
 ```
 
-Here we see that after we `get` the value from `my_number_map` we call `unwrap_or` which will either `unwrap` the value stored in storage, _or_ if there is no value, return some known value. Then, when building functions that interact with this HashMap, you need to always remember to call this function rather than getting the value directly from storage.
+Here we see that after we `get` the reference from `my_number_map` we call `unwrap_or` which will either `unwrap` the reference, _or_ if there is no value, return some known reference. Then, when building functions that interact with this HashMap, you need to always remember to call this function rather than getting the value directly from storage.
 
 Here is an example:
 
@@ -148,7 +148,7 @@ As you might have noticed in the example above, we use a special function called
 
 > **NOTE:** The contract caller is not the same as the origin caller. If a user triggers a contract which then calls a subsequent contract, the `self.env().caller()` in the second contract will be the address of the first contract, not the original user.
 
-`self.env().caller()` can be used a number of different ways. In the examples above, we are basically creating an "access control" layer which allows a user to modify their own value, but no one else. You can also do things like define a contract owner during contract deployment:
+`self.env().caller()` can be used in a number of different ways. In the example above, we are basically creating an "access control" layer which only allows users to access their own values. You can also save the contract owner during contract deployment for future references:
 
 ```rust
 
@@ -212,22 +212,22 @@ impl MyContract {
 }
 ```
 
-Here we have written two kinds of functions which modify a `HashMap`.
-One which simply inserts the value directly into storage, with no need
-to read the value first, and the other which modifies the existing value.
-Note how we can always `insert` the value without worry, as that initialized
-the value in storage, but before you can get or modify anything, we need
-to call `my_number_or_zero` to make sure we are working with a real value.
+Here we have written two kinds of functions which modify a HashMap. One simply inserts the value
+directly into storage, with no need to read the value first, and another one modifies the existing
+value. Note how we can always `insert` the value without worry, as that initialized the value in
+storage, but before you can get or modify anything, we need to call `my_number_or_zero` to make
+sure we are working with a real value.
 
 ## Entry API
 
 We will not always have an existing value on our contract's storage.
-We can take advantage of the Rust `Option<T>` type to help use on this task.
+We can take advantage of the Rust `Option<T>` type to help us.
 If there's no value on the contract storage we will insert a new one; on
 the contrary if there is an existing value we will only update it.
 
-ink! HashMaps expose the well-known `entry` API that we can use to achieve
-this type of "upsert" behavior:
+ink! HashMaps expose the well-known
+[**HashMap Entry API**](https://doc.rust-lang.org/beta/std/collections/hash_map/enum.Entry.html)
+that we can use to achieve this type of "upsert" behavior:
 
 ```rust
 let caller = self.env().caller();
