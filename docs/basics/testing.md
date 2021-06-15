@@ -27,7 +27,7 @@ let contract = MyContract::my_constructor(a, b);
 Messages can simply be called on the returned instance as if `MyContract::my_constructor` returns a
 `Self` instance.
 
-See the [flipper example](https://github.com/paritytech/ink/blob/master/examples/flipper/src/lib.rs).
+See the [flipper example](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
 
 
 ## Off-chain Testing
