@@ -1,8 +1,18 @@
 {
-    "replacementPatterns": [
-        {
-            "pattern": "^/",
-            "replacement": "https://paritytech.github.io/ink-docs/"
-        }
-    ]
+  "replacementPatterns": [
+    {
+      "pattern": "^/",
+      "replacement": "https://paritytech.github.io/ink-docs/"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": [
+        "https://crates.io"
+      ],
+      "headers": {
+        "Accept": "text/html"
+      }
+    }
+  ]
 }
