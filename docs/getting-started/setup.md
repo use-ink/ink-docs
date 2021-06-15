@@ -38,10 +38,11 @@ With ink! you can write smart contracts for blockchains built on Substrate.
 Follow the
 [official installation steps](https://substrate.dev/docs/en/knowledgebase/getting-started/) from the
 Substrate Developer Hub Knowledge Base to set up all Substrate pre-requisites.
+Once you have done this you will also need to run:
 
 ```bash
 rustup component add rust-src --toolchain nightly
-rustup target add wasm32-unknown-unknown --toolchain stable
+rustup target add wasm32-unknown-unknown --toolchain nightly
 ```
 
 ## Installing The Canvas Node
