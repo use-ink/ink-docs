@@ -12,7 +12,7 @@ The main purpose behind this spelling is to have as many dots in its name as pos
 ### Who is "Squink"?
 
 <div class="squid-container">
-<img src="/ink-docs/img/ink-squid.svg" alt="Squink ‒ the ink! mascot" class="squid" />
+<img src="https://paritytech.github.io/ink-docs/img/ink-squid.svg" alt="Squink ‒ the ink! mascot" class="squid" />
 This little cute purle squid is Squink.
 
 Squink is the mascot of ink! and guides new users and adventurers through our presentations
@@ -316,7 +316,7 @@ Smart contracts usually don't use strings; those are typically
 used for user interactions and should live in your UI and not on the chain.
 
 Minimizing storage usage of your contract is a best practice (because of
-[storage rent](/ink-docs/getting-started/troubleshooting#contract-state-rent))
+[storage rent](/getting-started/troubleshooting#contract-state-rent))
 and you should only persist items which you need to derive state transitions
 in your contract.
 
