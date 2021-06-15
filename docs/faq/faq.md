@@ -189,7 +189,7 @@ As soon as the Rust team decides to stabilize these features ink! will be availa
 
 ### How do I hash a value?
 
-A number of crypto hashes are built into the [contracts-pallet](./how-it-works) and
+A number of crypto hashes are built into the [contracts-pallet](/how-it-works) and
 therefore very efficient to use. We currently support a handful of those, you 
 can view the complete list [here](https://paritytech.github.io/ink/ink_env/hash/trait.CryptoHash.html).
 
