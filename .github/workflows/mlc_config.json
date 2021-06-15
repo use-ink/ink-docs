@@ -1,0 +1,8 @@
+{
+    "replacementPatterns": [
+        {
+            "pattern": "^/",
+            "replacement": "https://paritytech.github.io/ink-docs/"
+        }
+    ]
+}
