@@ -272,7 +272,7 @@ If you don't find the issue you can also ask for help in our public
 
 ### What are the `scale::Encode` and `scale::Decode` traits?
 
-Substrate-based blockchains use the [SCALE codec](https://www.substrate.io/kb/advanced/codec)
+Substrate-based blockchains use the [SCALE codec](https://github.com/paritytech/parity-scale-codec)
 to encode data.
 As a consequence the data for every interaction with Substrate needs to
 be SCALE-encodable ‒ i.e. it needs to implement either `scale::Encode`,
