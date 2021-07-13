@@ -134,10 +134,7 @@ In your ink! message or constructor you can write the following:
 ```rust
 #[ink(constructor)]
 fn new() -> Self {
-    ink_env::debug_println!(
-       "created new instance at {}",
-       Self::env().block_number()
-    );
+    ink_env::debug_println!("created new instance at {}", Self::env().block_number());
     Self { }
 }
 
