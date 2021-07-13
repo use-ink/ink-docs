@@ -115,40 +115,40 @@ The contract storage is built on top of the runtime storage, and access is consi
 
 ### How do I print something to the console from the runtime?
 
-In your ink! message or constructor write the following:
+You can use those two macros:
+* [`ink_env::debug_println!`](https://paritytech.github.io/ink/ink_env/macro.debug_println.html)
+* [`ink_env::debug_print!`](https://paritytech.github.io/ink/ink_env/macro.debug_print.html)
+
+They depend on the `seal_debug_message` interface which currently requires the 
+`pallet-contracts/unstable-interface` feature to be enabled in the target runtime.
+For `canvas-node` this is done by default [here](https://github.com/paritytech/canvas-node/blob/master/runtime/Cargo.toml#L87-L91.)
+
+Additionally you have to activate the feature `ink-debug` for the `ink_env` crate.
+`cargo-contract` does this automatically for you (for versions `>= 0.13.0`), except if
+you compile a contract in `--release` mode.
+
+__Important: Debug output is only printed for RPC calls or off-chain tests ‒ not for transactions!__
+
+In your ink! message or constructor you can write the following:
 
 ```rust
 #[ink(constructor)]
-fn print_contents_1(contents: &str) -> Self {
-    Self::env().debug_println(contents);
-    Self { .. }
+fn new() -> Self {
+    ink_env::debug_println!(
+       "created new instance at {}",
+       Self::env().block_number()
+    );
+    Self { }
 }
 
 #[ink(message)]
-fn print_contents_2(&self, contents: &str) {
-    self.env().debug_println(contents);
+fn print(&self) {
+   let caller = self.env().caller();
+   let message = ink_prelude::format!("got a call from {:?}", caller);
+   ink_env::debug_println!(&message);
 }
 ```
 
-Note that this will only print to console if the smart contract is either tested off-chain
-or if it is run on an on-chain with `--dev` (development) configuration. Trying to deploy a smart contract
-that uses `debug_println` will always fail for non `--dev` chains.
-
-### Is it possible to do `println!("{:?}", foo)` on-chain for debugging purposes?
-
-The ink! team has not yet provided a cleaner solution than using `self.env().debug_println(..)` as mentioned
-in the last question.
-The `debug_println` method only takes a static `str` argument which cannot be formatted.
-However, it is possible to use Rust's `format!` macro in order to have the same benefits in the end:
-
-```rust
-#[ink(message)]
-fn print_formatted(&self, contents: &str) {
-    self.env().debug_println(&format!("message: {}", contents));
-}
-```
-
-Note that it might be required to import the `format!` macro from the `ink_prelude` crate first.
 
 ### Why is Rust's standard library (stdlib) not available in ink!?
 
