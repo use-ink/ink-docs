@@ -119,13 +119,20 @@ You can use those two macros:
 * [`ink_env::debug_println!`](https://paritytech.github.io/ink/ink_env/macro.debug_println.html)
 * [`ink_env::debug_print!`](https://paritytech.github.io/ink/ink_env/macro.debug_print.html)
 
-They depend on the `seal_debug_message` interface which currently requires the 
-`pallet-contracts/unstable-interface` feature to be enabled in the target runtime.
-For `canvas-node` this is done by default [here](https://github.com/paritytech/canvas-node/blob/master/runtime/Cargo.toml#L87-L91.)
+There are three things you have to do for the debug messages to show up on the console:
 
-Additionally you have to activate the feature `ink-debug` for the `ink_env` crate.
+1. __Enable the feature `pallet-contracts/unstable-interface` in the target runtime.__<br/>
+For `canvas-node` this is done by default [here](https://github.com/paritytech/canvas-node/blob/master/runtime/Cargo.toml#L87-L91).
+  
+1. __Enable the feature `ink-debug` for the `ink_env` crate.__<br/>
 `cargo-contract` does this automatically for you (for versions `>= 0.13.0`), except if
 you compile a contract in `--release` mode.
+
+1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
+  For example, to have only errors and debug output show up for the `canvas-node`: 
+  ```
+  canvas --dev --tmp -lerror,runtime::contracts=debug
+  ```
 
 __Important: Debug output is only printed for RPC calls or off-chain tests ‒ not for transactions!__
 
