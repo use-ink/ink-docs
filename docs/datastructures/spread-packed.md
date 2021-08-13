@@ -9,7 +9,7 @@ The following schema depicts the storage which is exposed
 to ink! by the contracts pallet:
 
 <div class="schema">
-    <img src="../img/kv.svg" alt="Storage Organization: Layout" />
+    <img src="/ink-docs/img/kv.svg" alt="Storage Organization: Layout" />
 </div>
 
 Storing or loading complex data structures to and from contract storage can be done in many different ways. You could store all information into a single storage cell or you could try to store all information into as many different cells as possible. Both strategies have pros and cons under different conditions.
@@ -38,7 +38,7 @@ The following schema depicts the storage layout for a vector with three elements
 persisted to storage in a spreaded layout.
 
 <div class="schema">
-    <img src="../img/spread.svg" alt="Storage Organization: Spreading" />
+    <img src="/ink-docs/img/spread.svg" alt="Storage Organization: Spreading" />
 </div>
 
 
@@ -80,7 +80,7 @@ The following schema depicts the spreaded vector from the previous
 section in a packed layout.
 
 <div class="schema">
-    <img src="../img/packed.svg" alt="Storage Organization: Packing" />
+    <img src="/ink-docs/img/packed.svg" alt="Storage Organization: Packing" />
 </div>
 
 
