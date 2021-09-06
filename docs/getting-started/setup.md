@@ -45,14 +45,14 @@ rustup component add rust-src --toolchain nightly
 rustup target add wasm32-unknown-unknown --toolchain nightly
 ```
 
-## Installing The Canvas Node
+## Installing The Substrate Smart Contracts Node
 
-The [canvas-node](https://github.com/paritytech/canvas-node#note) is a simple Substrate
+The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) is a simple Substrate
 blockchain which is configured to include the Substrate module for smart contract
 functionality ‒ the `contracts` pallet (see [How it Works](/how-it-works) for more).
 
 It's a comfortable option if you want to get a quickstart.
 
 ```bash
-cargo install canvas-node --git https://github.com/paritytech/canvas-node.git --tag v0.1.9 --force --locked
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.1.0 --force --locked
 ```
