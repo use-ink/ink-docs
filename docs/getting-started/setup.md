@@ -24,7 +24,7 @@ If there's only an old version in your distributions package manager you can als
 After you've installed the package execute:
 
 ```bash
-cargo install cargo-contract --vers ^0.13 --force --locked
+cargo install cargo-contract --vers ^0.14 --force --locked
 ```
 
 Use the `--force` to ensure you are updated to the most recent `cargo-contract` version.
