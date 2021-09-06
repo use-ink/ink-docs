@@ -11,7 +11,7 @@ It's a comfortable option if you want to get a quickstart.
 [After successfully installing `canvas`](/getting-started/setup), you can start a local development chain by running:
 
 ```bash
-canvas --dev --tmp
+substrate-contracts-node --dev --tmp
 ```
 
 ![An image of the terminal starting a Substrate node](./assets/start-substrate-node.png)
