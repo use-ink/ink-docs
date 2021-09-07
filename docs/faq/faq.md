@@ -122,14 +122,14 @@ You can use those two macros:
 There are three things you have to do for the debug messages to show up on the console:
 
 1. __Enable the feature `pallet-contracts/unstable-interface` in the target runtime.__<br/>
-For `canvas-node` this is done by default [here](https://github.com/paritytech/canvas-node/blob/master/runtime/Cargo.toml#L87-L91).
+For `substrate-contracts-node` this is done by default [here](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml#L101-L105).
   
 1. __Enable the feature `ink-debug` for the `ink_env` crate.__<br/>
 `cargo-contract` does this automatically for you (for versions `>= 0.13.0`), except if
 you compile a contract in `--release` mode.
 
 1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
-  For example, to have only errors and debug output show up for the `canvas-node`: 
+  For example, to have only errors and debug output show up for the `substrate-contracts-node`: 
   ```
   substrate-contracts-node --dev --tmp -lerror,runtime::contracts=debug
   ```

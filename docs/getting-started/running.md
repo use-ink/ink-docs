@@ -3,7 +3,7 @@ title: Run a Substrate Node
 slug: /getting-started/running-substrate
 ---
 
-The [canvas-node](https://github.com/paritytech/canvas-node#note) is a simple Substrate
+The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node#note) is a simple Substrate
 blockchain which is configured to include the `contracts` module.
 
 It's a comfortable option if you want to get a quickstart.
@@ -20,7 +20,7 @@ You should start to see blocks being produced by your node in your terminal.
 
 You can interact with your node using the Canvas UI:
 
-https://paritytech.github.io/canvas-ui
+<a href="https://paritytech.github.io/canvas-ui">https://paritytech.github.io/canvas-ui</a>
 
 Now configure the UI to connect to the locally running node:
 
