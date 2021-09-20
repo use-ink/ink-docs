@@ -1,5 +1,5 @@
 ---
-title: "#[ink(selector = \"…\")]"
+title: "#[ink(selector = S:u32)]"
 slug: /macros-attributes/selector
 ---
 
@@ -11,23 +11,28 @@ selector, which identifies a method ‒ method names are no longer available in 
 
 Using this attribute it is possible to speficy a concrete dispatch selector for the flagged entity. This allows a contract author to precisely control the selectors of their APIs making it possible to rename their API without breakage.
 
-A selector must consist of four bytes in hex (e.g. `selector = "0xCAFEBABE"`).
+A selector must be a `u32` decodable integer. For example
+
+- `selector = 0xCAFEBABE`
+- `selector = 42`
 
 ## Examples
 
 ```rust
-impl MyStorage {
-    #[ink(message, selector = "0xDEADBEEF")]
-    fn my_message(&self) {}
-}
+#[ink(message, selector = 0xC0DECAFE)]
+fn my_message_1(&self) {}
+
+#[ink(message, selector = 42)]
+fn my_message_2(&self) {}
 ```
-… then the selector of `my_message` is simply `0xDEADBEEF` since it overrides
-the composed selector.
+… then the selector of `my_message_1` is `[0xC0, 0xDE, 0xCA, 0xFE]` and the selector of `my_message_2` is `[0, 0, 0, 42]`
+since setting the selector manually overrides the automatically generated selector.
 
 ## Controlling the messages selector
 
-Every ink! message and ink! constructor has a unique selector with which the
+Every ink! message and ink! constructor has a selector with which the
 message or constructor can be uniquely identified within the ink! smart contract.
+Non-unique message or constructor selector lead to a compile time error.
 These selectors are mainly used to drive the contract's dispatch upon calling it.
 
 An ink! smart contract author can control the selector of an ink! message or ink!
@@ -35,28 +40,28 @@ constructor using the `selector` flag. An example is shown below:
 
 ```rust
 use ink_lang as ink;
+
 #[ink::contract]
 mod flipper {
     #[ink(storage)]
     pub struct Flipper {
         value: bool,
     }
+
     impl Flipper {
         #[ink(constructor)]
-        #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
+        #[ink(selector = 0xDEADBEEF)] // Works on constructors as well.
         pub fn new(initial_value: bool) -> Self {
-            Flipper { value: false }
+            Flipper { value: initial_value }
         }
 
-        /// Flips the current value.
         #[ink(message)]
-        #[ink(selector = "0xCAFEBABE")] // You can either specify selector out-of-line.
+        #[ink(selector = 0xCAFEBABE)] // You can either specify selector out-of-line.
         pub fn flip(&mut self) {
             self.value = !self.value;
         }
         
-        /// Returns the current value.
-        #[ink(message, selector = "0xFEEDBEEF")] // or specify selector inline.
+        #[ink(message, selector = 0xC0DECAFE)] // .. or specify the selector inline.
         pub fn get(&self) -> bool {
             self.value
         }
