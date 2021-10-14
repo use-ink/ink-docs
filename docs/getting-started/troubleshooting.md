@@ -57,4 +57,4 @@ get it functioning again, however this is beyond the scope of this tutorial.
 
 ### Other Issues
 
-If you run into any other issues during this tutorial, please [report an issue](https://github.com/substrate-developer-hub/substrate-contracts-workshop/issues)!
+If you run into any other issues during this tutorial, please [report an issue](https://github.com/substrate-developer-hub/substrate-docs/issues)!
