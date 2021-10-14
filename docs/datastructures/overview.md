@@ -70,8 +70,8 @@ impl TwoValues {
     #[ink(message)]
     pub fn set(&mut self, which: bool, new_value: i32) {
         match which {
-            true  => { self.a = offset + new_value; },
-            false => { self.b = offset + new_value; },
+            true  => Lazy::set(&self.a, self.offset + new_value),
+            false => Lazy::set(&self.b, self.offset + new_value),
         }
     }
 }
