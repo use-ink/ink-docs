@@ -7,7 +7,7 @@ slug: /how-it-works
     <img src="https://paritytech.github.io/ink-docs/img/how-it-works.svg" alt="How it Works" />
 </div>
 
-Substrate's [Framework for Runtime Aggregation of Modularised Entities (FRAME)](https://substrate.dev/docs/en/knowledgebase/runtime/frame) contains
+Substrate's [Framework for Runtime Aggregation of Modularised Entities (FRAME)](https://docs.substrate.io/v3/runtime/frame/) contains
 a module  which implements an API for typical functions smart contracts need (storage, querying information about accounts, …).
 This module is called the `contracts` pallet,
 you can find its repository [here](https://github.com/paritytech/substrate/blob/master/frame/contracts/README.md).
