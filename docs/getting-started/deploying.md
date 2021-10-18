@@ -45,8 +45,7 @@ instantiate a copy of the smart contract:
 
 > **Note:** As mentioned earlier, contract creation involves creation of a new account. As such, you
 must be sure to give the contract account at least the existential deposit defined by your
-blockchain. We also need to be able to pay the contract's rent (endowment). If we consume all of
-this deposit, the contract will become a tombstone. We can always refill the contract's balance and
+blockchain. If we consume all of this deposit, the contract will be evicted. We can always refill the contract's balance and
 keep it on chain.
 
 When you click **Instantiate**, and in the next confirmation screen **Sign & Submit**, you should see

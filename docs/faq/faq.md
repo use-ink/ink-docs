@@ -319,8 +319,7 @@ In general, you should think twice if you really need `String`.
 Smart contracts usually don't use strings; those are typically
 used for user interactions and should live in your UI and not on the chain.
 
-Minimizing storage usage of your contract is a best practice (because of
-[storage rent](/getting-started/troubleshooting#contract-state-rent))
+Minimizing storage usage of your contract is a best practice
 and you should only persist items which you need to derive state transitions
 in your contract.
 
