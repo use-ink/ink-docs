@@ -2,11 +2,6 @@
 title: Troubleshooting
 slug: /getting-started/troubleshooting
 ---
-#### :heavy_exclamation_mark: ** Important notice** 
-> :warning: **Canvas UI is undergoing technical difficulties and is not functional at the moment** .
-> While we are working on a fix, please use https://polkadot.js.org/apps/ to deploy and interact with your contracts. Same principles apply, the UI differs slightly. 
-> Make sure you are connected to the local node by selecting it from the top left menu and that you navigate to Developer/Contracts page!
-
 
 Here are solutions to some of the common problems you may come across:
 
