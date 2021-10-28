@@ -3,11 +3,6 @@ title: Call Your Contract
 slug: /getting-started/calling-your-contract
 ---
 
-#### :heavy_exclamation_mark: ** Important notice** 
-> :warning: **Canvas UI is undergoing technical difficulties and is not functional at the moment** .
-> While we are working on a fix, please use https://polkadot.js.org/apps/ to deploy and interact with your contracts. Same principles apply, the UI differs slightly. 
-> Make sure you are connected to the local node by selecting it from the top left menu and that you navigate to Developer/Contracts page!
-
 Now that your contract has been fully deployed, we can start interacting with it! Flipper only has
 two functions, `flip()` and `get()` so we will show you what it's like to play with both of them.
 Click the **Execute** button under the contract after you instantiate the Flipper contract in the
