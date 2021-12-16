@@ -6,7 +6,7 @@ hide_title: true
 
 ## What is the Canvas Test Network?
 
-It's a [a demonstration testnet](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fcanvas-rpc.parity.io)
+It's a [a demonstration testnet](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-canvas-rpc.polkadot.io)
 which we have running live.
 The network is running our [canvas-node](https://github.com/paritytech/canvas-node#note) project ‒ a
 simple Substrate blockchain which is configured to include the `contracts` pallet (i.e. smart contract functionality).
