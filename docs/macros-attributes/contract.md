@@ -329,7 +329,7 @@ Some example rules include but are not limited to:
              }
 
              /// Returns the current value.
-             #[ink(message, payable)] // ... or specify payable inline.
+             #[ink(message, payable)] // ...or specify payable inline.
              pub fn get(&self) -> bool {
                  self.value
              }
@@ -371,7 +371,7 @@ Some example rules include but are not limited to:
              }
             
              /// Returns the current value.
-             #[ink(message, selector = "0xFEEDBEEF")] // ... or specify selector inline.
+             #[ink(message, selector = "0xFEEDBEEF")] // ...or specify selector inline.
              pub fn get(&self) -> bool {
                  self.value
              }

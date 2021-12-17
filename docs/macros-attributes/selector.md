@@ -61,7 +61,7 @@ mod flipper {
             self.value = !self.value;
         }
         
-        #[ink(message, selector = 0xC0DECAFE)] // .. or specify the selector inline.
+        #[ink(message, selector = 0xC0DECAFE)] // ...or specify the selector inline.
         pub fn get(&self) -> bool {
             self.value
         }
