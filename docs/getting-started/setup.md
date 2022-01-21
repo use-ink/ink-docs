@@ -24,7 +24,7 @@ If there's only an old version in your distributions package manager you can als
 After you've installed the package execute:
 
 ```bash
-cargo install cargo-contract --vers ^0.15 --force --locked
+cargo install cargo-contract --vers ^0.17 --force --locked
 ```
 
 Use the `--force` to ensure you are updated to the most recent `cargo-contract` version.
@@ -54,5 +54,5 @@ functionality ‒ the `contracts` pallet (see [How it Works](/how-it-works) for 
 It's a comfortable option if you want to get a quickstart.
 
 ```bash
-cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.1.0 --force --locked
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.5.0 --force --locked
 ```
