@@ -54,5 +54,5 @@ functionality ‒ the `contracts` pallet (see [How it Works](/how-it-works) for 
 It's a comfortable option if you want to get a quickstart.
 
 ```bash
-cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.5.0 --force --locked
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.6.0 --force --locked
 ```
