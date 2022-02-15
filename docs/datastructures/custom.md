@@ -1,5 +1,5 @@
 ---
-title: Custom Datastructures
+title: Custom Data Structures
 slug: /datastructures/custom-datastructure
 ---
 
@@ -40,6 +40,5 @@ impl SpreadLayout for Inner {
 }
 
 ```
-You can check what each method does at the [crate's docs](https://paritytech.github.io/ink/src/ink_storage/collections/hashmap/storage.rs.html#113-139). Checking how some data structures are implemented, such as [HashMap](https://paritytech.github.io/ink/src/ink_storage/collections/hashmap/storage.rs.html#113-139), might be useful too.
 
-In the future we plan on providing some more ink! workshops and tutorials guiding the approach to design and implement a custom storage data structure.
+You can check what each method does in the [trait's docs](https://paritytech.github.io/ink/ink_storage/traits/trait.SpreadLayout.html). Check how some data structures are implemented, such as [Mapping](https://paritytech.github.io/ink/src/ink_storage/lazy/mapping.rs.html#131-156).
