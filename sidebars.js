@@ -44,7 +44,7 @@ module.exports = {
     ],
     'Storage & Data Structures': [
       'datastructures/overview',
-      'datastructures/hashmap',
+      'datastructures/mapping',
       'datastructures/spread-storage-layout',
       'datastructures/opting-out',
       'datastructures/dynamic-allocation',
