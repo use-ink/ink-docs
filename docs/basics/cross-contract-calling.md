@@ -20,14 +20,13 @@ into our calling smart contract.
 The calling contract looks like this:
 
 ```rust
-use ink_storage::Lazy;
 use other_contract::OtherContract;
 
 //--snip--
 #[ink(storage)]
 struct MyContract {
     /// The other contract.
-    other_contract: Lazy<OtherContract>,
+    other_contract: OtherContract,
 }
 
 impl MyContract {
