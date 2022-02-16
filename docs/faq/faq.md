@@ -205,19 +205,6 @@ Using one of the built-in crypto hashes can be done as explained here:
 * [`self.env().hash_bytes()`](https://paritytech.github.io/ink/ink_env/fn.hash_bytes.html)
 * [`self.env().hash_encoded()`](https://paritytech.github.io/ink/ink_env/fn.hash_encoded.html)
 
-### When to use `Lazy<T>` over just `T` for a contract field?
-
-The `ink_storage::Lazy` type caches their entities and acts lazily on the storage.
-This means that a read or write operation is only performed when it really needs to
-in order to satisfy other inputs.
-
-Data types such as Rust primitives `i32` or Rust's very own `Vec` or data structures
-can also be used to operate on the contract's storage, however, they will load their
-contents eagerly which is often not what you want.
-
-[See this chapter](/datastructures/overview) where we go into more details and provide examples.
-
-
 ### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
 
 Floats are cool for all kinds of reasons, but they also have one important
@@ -249,12 +236,6 @@ if you use them to persist your data on the chain they will always occupy a sing
 and thus always be loaded eagerly, in their entirety. This can be very costly! Just think about
 a `Vec` or a `HashMap` where the smart contract might only need access to a few elements, rather
 than the entire data collection.
-
-Our `ink_storage` data structures on the other hand are optimized for storage and provide a
-differentiation between lazy and eager access.
-
-[See this chapter](/datastructures/overview) where we go into more details and provide examples.
-
 
 ### Why am I getting a `ContractTrapped` error when interacting with a contract?
 
@@ -311,7 +292,6 @@ is missing:
 #[derive(scale::Encode, scale::Decode)]
 struct MyCustomDataStructure { … }
 ```
-
 
 ### How do I use `String` in my contract?
 

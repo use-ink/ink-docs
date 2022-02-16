@@ -23,11 +23,10 @@ Substrate contracts may store types that are encodable and decodable with
 types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
 ink! provides Substrate specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
-they were primitive types. ink! also provides storage types for more elaborate storage interactions through the storage module:
+they were primitive types. 
 
-```rust
-use ink_storage::collections::{Vec, HashMap, Stash, Bitvec};
-```
+
+ink! also provides a `Mapping` storage type. You can read more about it [here](https://paritytech.github.io/ink-docs/datastructures/mapping).
 
 Here is an example of how you would store an `AccountId` and `Balance`:
 
@@ -50,12 +49,14 @@ mod MyContract {
 }
 ```
 
-You can find all the supported Substrate types in the [`ink_storage` crate](https://github.com/paritytech/ink/tree/master/crates/storage).
-
 ## Initializing Storage in Constructors
 
 Constructors are how values get initialized.
 Every ink! smart contract must have a constructor which is run once when a contract is created. ink! smart contracts can have multiple constructors:
+
+Note that if you have a contract whose storage contains `Mapping'`s you will need to use
+`ink_lang::utils::initialize_contract` in your constructor. See the
+[`Mapping` documentation](https://paritytech.github.io/ink-docs/datastructures/mapping) for more details.
 
 ```rust
 use ink_lang as ink;
