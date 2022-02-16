@@ -12,8 +12,7 @@ So e.g. `Self::env().caller()` or `self.env().caller()`.
 
 Some handy functions include:
 
-* [`caller()`](https://paritytech.github.io/ink/ink_env/fn.caller.html): Returns the address of the caller of the executed contract. An example
-of how to utilize this particular call is [found here](/datastructures/hashmap#contract-caller).
+* [`caller()`](https://paritytech.github.io/ink/ink_env/fn.caller.html): Returns the address of the caller of the executed contract.
 * [`account_id()`](https://paritytech.github.io/ink/ink_env/fn.account_id.html): Returns the account ID of the executed contract.
 * [`balance()`](https://paritytech.github.io/ink/ink_env/fn.balance.html): Returns the balance of the executed contract.
 * [`block_number()`](https://paritytech.github.io/ink/ink_env/fn.block_number.html): Returns the current block number.
