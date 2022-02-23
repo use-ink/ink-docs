@@ -4,12 +4,13 @@ slug: /canvas
 hide_title: true
 ---
 
-## What is the Canvas?
+## What is the Canvas parachain?
 
 Canvas is a [Substrate](https://github.com/paritytech/substrate)
 parachain for smart contracts.
 We configured it to use Substrate's smart contracts module ‒ the
 [`contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts) pallet.
+The code for it can be found [in the `cumulus` repository](https://github.com/paritytech/cumulus/#canvas-).
 
 This `contracts` pallet takes smart contracts as WebAssembly blobs and defines an API
 for everything a smart contract needs (storage access, …).
@@ -26,7 +27,7 @@ This is a list of languages you can currently choose from:
 The following graphic depicts the idea:
 
 <div class="schema">
-    <img src="/ink-docs/img/canvas.svg" alt="Canvas Parachain: Overview" />
+    <img src="/ink-docs/img/canvas.svg" alt="Canvas parachain: Overview" />
 </div>
 
 There are also different user interfaces and command-line tools you can use to deploy
