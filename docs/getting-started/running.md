@@ -8,7 +8,7 @@ blockchain which is configured to include the `contracts` module.
 
 It's a comfortable option if you want to get a quickstart.
 
-[After successfully installing `canvas`](/getting-started/setup), you can start a local development chain by running:
+[After successfully installing `substrate-contracts-node`](/getting-started/setup), you can start a local development chain by running:
 
 ```bash
 substrate-contracts-node --dev --tmp
@@ -18,13 +18,13 @@ substrate-contracts-node --dev --tmp
 
 You should start to see blocks being produced by your node in your terminal.
 
-You can interact with your node using the Canvas UI:
+You can interact with your node using the Contracts UI:
 
-<a href="https://paritytech.github.io/canvas-ui">https://paritytech.github.io/canvas-ui</a>
+<a href="https://github.com/paritytech/contracts-ui">https://github.com/paritytech/contracts-ui</a>
 
 Now configure the UI to connect to the locally running node:
 
-- Click on the dropdown selector at bottom left corner.
-- Choose the "Local Node".
+- Click on the dropdown selector at top left corner.
+- Choose the Local Node.
 
-![An image of the Canvas UI connected to the local node](./assets/canvas-settings.png)
+![Connect to local node](./assets/canvas-connect-to-local.png)
