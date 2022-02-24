@@ -33,7 +33,7 @@ The following graphic depicts the idea:
 There are also different user interfaces and command-line tools you can use to deploy
 or interact with contracts:
 
-* [Canvas UI](https://paritytech.github.io/canvas-ui/)
+* [Contracts UI](https://paritytech.github.io/contracts-ui/)
 * [polkadot-js](https://polkadot.js.org/apps/)
 
 ## Rococo Deployment
