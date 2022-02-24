@@ -27,8 +27,8 @@ and waste space on the blockchain.
 
 ### 1. Upload Contract Code
 
-Here we will upload the contract code and instantiate one copy of the contract on the blockchain (
-which is usually why we upload the contract code in the first place):
+Here we will upload the contract code and instantiate one copy of the contract on the blockchain
+(which is usually why we upload the contract code in the first place):
 
 - Click the **Add New Contract** button in the sidebar.
 - Click the **Upload New Contract Code** button in the Add New Contract page.
