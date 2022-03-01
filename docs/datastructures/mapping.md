@@ -23,7 +23,7 @@ case, each "user" gets their own number.
 
 In order to correctly initialize a `Mapping` we need two things:
 1. An implementation of the [`SpreadAllocate`](https://paritytech.github.io/ink/ink_storage/traits/trait.SpreadAllocate.html) trait on our storage struct
-2. The [`ink_lang::utils::initalize_contract`](https://paritytech.github.io/ink/ink_lang/codegen/fn.initialize_contract.html) initializer
+2. The [`ink_lang::utils::initalize_contract`](https://paritytech.github.io/ink/ink_lang/utils/fn.initialize_contract.html) initializer
 
 Not initializing storage before you use it is a common error that can break your smart
 contract. If you do not initialize your `Mapping`'s correctly you may end up with
