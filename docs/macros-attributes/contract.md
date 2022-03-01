@@ -33,51 +33,6 @@ off-chain environment provided by the `ink_env` crate.
 The `#[ink::contract]` macro can be provided with some additional comma-separated
 header arguments:
 
-### `dynamic_storage_allocator: bool`
-
-Tells the ink! code generator to allow usage of ink!'s built-in dynamic
-storage allocator.
- - `true`: Use the dynamic storage allocator provided by ink!.
- - `false`: Do NOT use the dynamic storage allocator provided by ink!.
-
-This feature is generally only needed for smart contracts that try to model
-their data in a way that contains storage entites within other storage
-entities.
-
-Contract writers should try to write smart contracts that do not depend on the
-dynamic storage allocator since enabling it comes at a cost of increased Wasm
-file size. Although it will enable interesting use cases. Use it with care!
-
-An example for this is the following type that could potentially be used
-within a contract's storage struct definition:
-```rust
-// A storage vector of storage vectors.
-use ink_storage as storage;
-type VectorOfVectors = storage::Vec<storage::Vec<i32>>;
-```
-
-**Usage Example:**
-```rust
-use ink_lang as ink;
-
-#[ink::contract(dynamic_storage_allocator = true)]
-mod my_contract {
-    #[ink(storage)]
-    pub struct MyStorage;
-    
-    impl MyStorage {
-        #[ink(constructor)]
-        pub fn construct() -> Self { MyStorage {} }
-        
-        #[ink(message)]
-        pub fn message(&self) {}
-    }
-    // ...
-}
-```
-
-**Default value:** `false`
-
 ### `compile_as_dependency: bool`
 
 Tells the ink! code generator to **always** or **never**
