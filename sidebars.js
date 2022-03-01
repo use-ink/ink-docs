@@ -46,8 +46,6 @@ module.exports = {
       'datastructures/overview',
       'datastructures/mapping',
       'datastructures/spread-storage-layout',
-      'datastructures/opting-out',
-      'datastructures/dynamic-allocation',
       'datastructures/custom',
     ],
     'Examples': [
