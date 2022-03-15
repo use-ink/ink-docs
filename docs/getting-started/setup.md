@@ -56,5 +56,5 @@ You can [download a binary from our releases page](https://github.com/paritytech
 (Linux and Mac). Alternatively you can build the node by yourself:
 
 ```bash
-cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.9.0 --force --locked
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.10.0 --force --locked
 ```
