@@ -122,7 +122,7 @@ You can use those two macros:
 There are three things you have to do for the debug messages to show up on the console:
 
 1. __Enable the feature `pallet-contracts/unstable-interface` in the target runtime.__<br/>
-For `substrate-contracts-node` this is done by default [here](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml#L101-L105).
+For `substrate-contracts-node` this is done by default [here](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml).
   
 1. __Enable the feature `ink-debug` for the `ink_env` crate.__<br/>
 `cargo-contract` does this automatically for you (for versions `>= 0.13.0`), except if
