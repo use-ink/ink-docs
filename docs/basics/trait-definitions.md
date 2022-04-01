@@ -132,7 +132,7 @@ mod base_erc20 {
     /// We somehow cannot put the trait in the doc-test crate root due to bugs.
     #[ink_lang::trait_definition]
     pub trait Erc20 {
-        Constructors a new ERC-20 compliant smart contract using the initial supply.
+        /// Constructs a new ERC-20 compliant smart contract using the initial supply.
         #[ink(constructor)]
         fn new(initial_supply: Balance) -> Self;
 
