@@ -13,7 +13,7 @@ The main purpose behind this spelling is to have as many dots in its name as pos
 
 <div class="squid-container">
 <img src="https://paritytech.github.io/ink-docs/img/ink-squid.svg" alt="Squink ‒ the ink! mascot" class="squid" />
-This little cute purle squid is Squink.
+This little cute purple squid is Squink.
 
 Squink is the mascot of ink! and guides new users and adventurers through our presentations
 workshops and tutorials. It also has a romance with Rust's mascot, Ferris.
