@@ -9,8 +9,8 @@ the [`Mapping`](https://paritytech.github.io/ink/ink_storage/struct.Mapping.html
 
 The `Mapping` is a mapping of key-value pairs directly to the contract storage. Its main advantage
 is to be simple and lightweight. As such, it does not provide any high-level
-functionality, such as iteration or automatic clean-up. This logic should be implemented by
-smart contract authors.
+functionality, such as iteration or automatic clean-up. Smart contract authors will need
+to implement any high level functionality themselves.
 
 ## Eager Loading
 
