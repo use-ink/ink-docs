@@ -16,10 +16,10 @@ The first tool we will be installing is [`cargo-contract`](https://github.com/pa
 
 As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
 
-[dylint-link](https://github.com/trailofbits/dylint) tool is also required to be installed to help on the rust linting.
+Two other dependencies are needed to lint the ink! contract. This is done to warn users about using e.g. API's in a way that could lead to security issues.
 
 ```bash
-cargo install dylint-link
+cargo install cargo-dylint dylint-link
 ```
 
 Many package managers have it available nowadays ‒ e.g. there is a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
