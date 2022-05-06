@@ -16,6 +16,12 @@ The first tool we will be installing is [`cargo-contract`](https://github.com/pa
 
 As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
 
+[Dylint](https://github.com/trailofbits/dylint) tool is also required to be installed to help on the rust linting.
+
+```bash
+cargo install dylint-link
+```
+
 Many package managers have it available nowadays ‒ e.g. there is a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
 [Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
 
