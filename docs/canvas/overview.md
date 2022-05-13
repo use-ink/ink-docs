@@ -63,4 +63,3 @@ If everything worked out, the teleported ROC tokens will show up under
 Once you have ROC on Canvas you can deploy a contract as you would normally.
 If you're unsure about this, our [guided tutorial](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1/) 
 will clarify that for you in no time.
-
