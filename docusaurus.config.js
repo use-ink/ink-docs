@@ -1,10 +1,8 @@
-const BASE_URL = process.env.NODE_ENV === 'development' ? '/' : '/ink-docs/';
-
 module.exports = {
   title: 'ink! documentation',
   tagline: 'documentation for ink!',
   url: 'https://github.com/paritytech/ink',
-  baseUrl: BASE_URL,
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'paritytech',
