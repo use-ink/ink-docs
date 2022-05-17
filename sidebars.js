@@ -7,6 +7,10 @@ module.exports = {
       'intro/how-it-works',
       'intro/ink-vs-solidity',
     ],
+    'Monthly Update': [
+      'monthly-update/2022/04',
+      'monthly-update/2022/03',
+    ],
     'Getting started': [
       'getting-started/setup',
       'getting-started/creating',
