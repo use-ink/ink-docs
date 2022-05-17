@@ -4,7 +4,7 @@ slug: /how-it-works
 ---
 
 <div class="schema">
-    <img src="https://paritytech.github.io/ink-docs/img/how-it-works.svg" alt="How it Works" />
+    <img src="/img/how-it-works.svg" alt="How it Works" />
 </div>
 
 Substrate's [Framework for Runtime Aggregation of Modularised Entities (FRAME)](https://docs.substrate.io/v3/runtime/frame/) contains
