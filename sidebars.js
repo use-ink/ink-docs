@@ -6,6 +6,7 @@ module.exports = {
       'intro/why-webassembly',
       'intro/how-it-works',
       'intro/ink-vs-solidity',
+      'intro/ink-vs-cosmwasm',
     ],
     'Monthly Update': [
       'monthly-update/overview',
