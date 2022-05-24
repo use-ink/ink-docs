@@ -43,17 +43,6 @@ Instead, ink! makes heavy usage of Rust macros. The main ink! macros are:
 
 There are other ink! macros, for which details can be found at [Macros & Attributes](/macros-attributes).
 
-# Testnets
-
-For CosmWasm development and on-chain testing, `wasmd` can be operated as a local setup
-(single or multiple nodes), or connected to the `cliffnet` public test network.
-
-ink! contracts can be deployed on a few different options:
-- Locally, on a single or multiple node setup of [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
-- [Contracts on Rococo Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer),
-  which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
-- [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
-
 # Unit Testing
 
 Unit testing in CosmWasm is quite similar to ink!. Both use the conventional Rust
@@ -64,6 +53,13 @@ functions, ink! allows for a more generalised approach, where the `#[ink(test)]`
 used for each unit test.
 
 You can read more about ink! unit tests [here](https://ink.substrate.io/basics/contract-testing#unit-tests).
+
+# Compiler
+
+CosmWasm uses [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) as its main
+compiler, while ink! uses [cargo-contract](https://github.com/paritytech/cargo-contract).
+`cargo-contract` is developed by Parity specifically for building, testing, and deploying
+ink! contracts.
 
 # Local Development Network
 
@@ -78,12 +74,16 @@ is the module that adds WebAssembly smart contract functionality to the chain. P
 provides the [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node),
 which is analogous to `wasmd` - a basic template node for smart contract development.
 
-# Compiler
+# Testnets
 
-CosmWasm uses [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) as its main
-compiler, while ink! uses [cargo-contract](https://github.com/paritytech/cargo-contract).
-`cargo-contract` is developed by Parity specifically for building, testing, and deploying
-ink! contracts.
+For CosmWasm development and on-chain testing, `wasmd` can be operated as a local setup
+(single or multiple nodes), or connected to the `cliffnet` public test network.
+
+ink! contracts can be deployed on a few different options:
+- Locally, on a single or multiple node setup of [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
+- [Contracts on Rococo Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer),
+  which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
+- [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
 
 # Development Workflow
 
