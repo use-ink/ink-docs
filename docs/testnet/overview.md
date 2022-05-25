@@ -10,7 +10,7 @@ We have a live testnet named `Contracts` as a parachain on [Rococo](https://wiki
 a testnet for Polkadot and Kusama parachains:
 
 <div class="schema">
-    <img src="/ink-docs/img/contracts-on-polkadot-js.png" alt="Smart contracts parachain on Rococo" />
+    <img src="/img/contracts-on-polkadot-js.png" alt="Smart contracts parachain on Rococo" />
 </div>
 
 You can interact with the network through Polkadot JS Apps,
