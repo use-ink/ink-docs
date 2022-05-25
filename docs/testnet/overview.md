@@ -63,7 +63,7 @@ This is a list of languages you can currently choose from:
 The following graphic depicts the idea:
 
 <div class="schema">
-    <img src="/ink-docs/img/pallet-contracts-overview.svg" alt="`pallet-contracts` Overview" />
+    <img src="/img/pallet-contracts-overview.svg" alt="`pallet-contracts` Overview" />
 </div>
 
 There are also different user interfaces and command-line tools you can use to deploy
