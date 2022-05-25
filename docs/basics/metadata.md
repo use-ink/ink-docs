@@ -19,6 +19,13 @@ Note: The metadata is also contained in your `$contract_name.contract` file. The
 difference is that the `.contract` file also contains the Wasm binary of your contract.
 
 ## metadata.json
+The metadata is defined by the following **required** keys:
+    - `source`: Information about the contract's Wasm code.
+    - `contract`: Metadata about the contract.
+    - `abi`: Raw JSON of the contract's abi metadata, generated during contract compilation.
+
+It may _optionally_ contain the following keys:
+    - `user`: Additional user-defined metadata.
 
 ```json
 {
@@ -42,26 +49,10 @@ difference is that the `.contract` file also contains the Wasm binary of your co
 }
 ```
 
-The metadata is defined by the following **required** keys:
-    - `source`: Information about the contract's Wasm code.
-    - `contract`: Metadata about the contract.
-    - `abi`: Raw JSON of the contract's abi metadata, generated during contract compilation.
-
-It may _optionally_ contain the following keys:
-    - `user`: Additional user-defined metadata.
-
 The following sections will dive deeper into how these sections are made up.
 
 ### `source`
 This object contains information about how the contract was built.
-
-```json
-"source": {
-  "hash": "0x157014494527fee27a82e49bbd9eea10c0713bb0566f6def37f4595db86236ff",
-  "language": "ink! 3.1.0",
-  "compiler": "rustc 1.63.0-nightly"
-}
-```
 
 It consists of the following **required** keys:
     - `hash`: The hash of the contract's Wasm code.
@@ -71,20 +62,19 @@ It consists of the following **required** keys:
 It may _optionally_ include the following keys:
     - `wasm`: The actual Wasm code of the contract, for optionally bundling the code with the metadata.
 
-Code reference from `cargo-contract`: https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127
+```json
+"source": {
+  "hash": "0x157014494527fee27a82e49bbd9eea10c0713bb0566f6def37f4595db86236ff",
+  "language": "ink! 3.1.0",
+  "compiler": "rustc 1.63.0-nightly"
+}
+```
+
+TODO: Code reference from `cargo-contract`: https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127
 
 ### `contract`
 This object contains extra metadata about the contract.
 
-```json
-"contract": {
-  "name": "flipper",
-  "version": "3.1.0",
-  "authors": [
-    "Parity Technologies <admin@parity.io>"
-  ]
-}
-```
 
 The **required** keys include:
     - `name`: The name of the smart contract.
@@ -98,7 +88,17 @@ It can _optionally_ include the following keys:
     - `homepage`: Link to the homepage of the smart contract.
     - `license`: The license of the smart contract.
 
-Code reference from `cargo-contract`: https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395
+```json
+"contract": {
+  "name": "flipper",
+  "version": "3.1.0",
+  "authors": [
+    "Parity Technologies <admin@parity.io>"
+  ]
+}
+```
+
+TODO: Code reference from `cargo-contract`: https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395
 
 ### ABI
 This is the specification of the contract. The "outer" metadata format does not dicate how
@@ -164,9 +164,6 @@ _optional_ keys (depending on what data structures are used by the contract):
           variants.
         - `variants`: The variants of the enum.
 
-TODO: Look at doc comments again and beef up.
-TODO: Talk about type references
-
 ```json
 "storage": {
   "struct": {
@@ -184,6 +181,9 @@ TODO: Talk about type references
   }
 }
 ```
+
+TODO: Look at doc comments again and beef up.
+TODO: Talk about type references
 
 #### `types`
 This object contains the type registry for the smart contract. It consists of an array of
