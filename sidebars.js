@@ -33,6 +33,7 @@ module.exports = {
       'basics/cross-contract-calling',
       'basics/testing',
       'basics/env-functions',
+      'basics/metadata',
     ],
     'Macros & Attributes': [
       'macros-attributes/overview',
