@@ -15,8 +15,12 @@ The ink! metadata is generated when a contract is built using `cargo-contract`, 
 The metadata can be found in your contract's target directory under the name
 `metadata.json`.
 
-Note: The metadata is also contained in your `$contract_name.contract` file. The
-difference is that the `.contract` file also contains the Wasm binary of your contract.
+:::note
+
+The metadata is also contained in your `$contract_name.contract` file. The difference is
+that the `.contract` file also contains the Wasm binary of your contract.
+
+:::
 
 ## metadata.json
 The metadata is defined by the following **required** keys:
@@ -70,11 +74,15 @@ It may _optionally_ include the following keys:
 }
 ```
 
-TODO: Code reference from `cargo-contract`: https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127
+:::info
+
+If you're interested in the code reference from `cargo-contract`
+see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127).
+
+:::
 
 ### `contract`
 This object contains extra metadata about the contract.
-
 
 The **required** keys include:
  - `name`: The name of the smart contract.
@@ -98,18 +106,48 @@ It can _optionally_ include the following keys:
 }
 ```
 
-TODO: Code reference from `cargo-contract`: https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395
+:::info
+
+If you're interested in the code reference from `cargo-contract`
+see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395).
+
+:::
 
 ### ABI
-This is the specification of the contract. The "outer" metadata format does not dicate how
-this looks, and instead will be driven by each smart contracting language. In this
-document we will focus on the ink! ABI.
+This is the specification of the contract.
+
+Unlike the previous metadata sections the structure of the object stored here is not
+defined. Instead, it is up to each programming language (e.g ink!, ask!, Solidity) to
+define their own metadata format which will then be stored here.
+
+In this document we will focus on the ink! ABI.
+
+The ABI starts with the version number of the ink! metadata.
+
+:::note
+The version of the ABI is distinct from any concept of Rust's crate versioning.
+:::
+
+```json
+"V3": {
+  "spec": { ... },
+  "storage": { ... },
+  "types": { ... }
+}
+```
 
 The ink! metadata consists of the following **required** sections
  - `spec`: The description of the contract (e.g constructors, messages, events, etc.).
  - `storage`: The layout of the storage data structure
  - `types`: A read-only registry containing types in their portable form for
    serialization.
+
+:::info
+
+If you're interested in the code reference from `ink!`
+see [here](https://github.com/paritytech/ink/blob/80d302eb9b9cddb726200a9a86c71ae344d1b042/crates/metadata/src/lib.rs#L91).
+
+:::
 
 #### `spec`
 The contract `spec` consists of the following **required** keys:
@@ -135,13 +173,51 @@ The contract `spec` consists of the following **required** keys:
     - `docs`: The event documentation.
 - `docs`: The contract documentation.
 
-Note that while all these keys are required, they may be empty. For example, if a
-contract does not define any events then the `events` key would contain an empty array
-`[]`.
+:::note
+
+While all these keys are required, they may be empty. For example, if a contract does not
+define any events then the `events` key would contain an empty array `[]`.
+
+:::
+
+```json
+"spec": {
+  "constructors": [
+    {
+      "args": [
+        { ... }
+      ],
+      "docs": [
+        "Creates a new flipper smart contract initialized with the given value."
+      ],
+      "label": "new",
+      "payable": false,
+      "selector": "0x9bae9d5e"
+    }
+  ],
+  "docs": [],
+  "events": [],
+  "messages": [
+    {
+      "args": [],
+      "docs": [
+        " Flips the current value of the Flipper's boolean."
+      ],
+      "label": "flip",
+      "mutates": true,
+      "payable": false,
+      "returnType": null,
+      "selector": "0x633aa551"
+    }
+  ]
+}
+```
 
 #### `storage`
 This key describes the storage layout of an ink! contract. It tracks some of the
-different structures which can be placed in storage. It consists of the following
+different structures which can be placed in storage.
+
+It consists of the following
 _optional_ keys (depending on what data structures are used by the contract):
 - `cell`: An encoded cell.
     - `key`: The offset key into the storage.
@@ -181,7 +257,6 @@ _optional_ keys (depending on what data structures are used by the contract):
 ```
 
 TODO: Look at doc comments again and beef up.
-TODO: Talk about type references
 
 #### `types`
 This object contains the type registry for the smart contract. It consists of an array of
@@ -219,3 +294,5 @@ This is an _optional_ field used to add user-defined metadata. Some examples of 
 you may want to include here:
 - `moon_phase`: Phase of the moon during which the smart contract works.
 - `favorite_blockchain`: The favorite blockchain of the contract authors (answer: Polkadot!).
+
+TODO: Talk about type references
