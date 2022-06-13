@@ -53,6 +53,14 @@ It may _optionally_ contain the following keys:
 }
 ```
 
+:::note
+
+Notice that we don't have an `abi` key, but we instead use the metadata version as the name
+of the key (`V3` in this case). You can read more about that in the [ABI documentation](/metadata#abi).
+
+:::
+
+
 The following sections will dive deeper into how these sections are made up.
 
 ### `source`
@@ -122,7 +130,8 @@ define their own metadata format which will then be stored here.
 
 In this document we will focus on the ink! ABI.
 
-The ABI starts with the version number of the ink! metadata.
+The ABI starts with the version number of the ink! metadata. In our example below we are
+using the ink! version 3 metadata, denoted by the `V3` key.
 
 :::note
 The version of the ABI is distinct from any concept of Rust's crate versioning.
@@ -256,8 +265,6 @@ _optional_ keys (depending on what data structures are used by the contract):
 }
 ```
 
-TODO: Look at doc comments again and beef up.
-
 #### `types`
 This object contains the type registry for the smart contract. It consists of an array of
 type objects, each of which is defined as follows:
@@ -289,10 +296,11 @@ not dig into them here. If you are interested in learning more take a look at th
 ]
 ```
 
+Other parts of the metadata, such as the `storage` object, will reference individual
+types from this type registry using the `id` key.
+
 ### `user`
 This is an _optional_ field used to add user-defined metadata. Some examples of things
 you may want to include here:
 - `moon_phase`: Phase of the moon during which the smart contract works.
 - `favorite_blockchain`: The favorite blockchain of the contract authors (answer: Polkadot!).
-
-TODO: Talk about type references
