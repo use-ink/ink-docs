@@ -12,7 +12,7 @@ The main purpose behind this spelling is to have as many dots in its name as pos
 ### Who is "Squink"?
 
 <div class="squid-container">
-<img src="/img/ink-squid.svg" alt="Squink ‒ the ink! mascot" height="90" className="squid" />
+<img src="/img/ink-squink.svg" alt="Squink ‒ the ink! mascot" height="90" className="squid" />
 This little cute purple squid is Squink.
 
 Squink is the mascot of ink! and guides new users and adventurers through our presentations

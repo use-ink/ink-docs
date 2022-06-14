@@ -2,7 +2,7 @@
   "replacementPatterns": [
     {
       "pattern": "^/",
-      "replacement": "https://paritytech.github.io/ink-docs/"
+      "replacement": "https://ink.substrate.io/"
     }
   ],
   "httpHeaders": [
