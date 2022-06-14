@@ -10,6 +10,7 @@ module.exports = {
     ],
     'Monthly Update': [
       'monthly-update/overview',
+      'monthly-update/2022/06',
       'monthly-update/2022/05',
       'monthly-update/2022/04',
       'monthly-update/2022/03',
