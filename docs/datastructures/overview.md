@@ -14,8 +14,11 @@ to implement any high level functionality themselves.
 
 ## Eager Loading
 
-When executing a contract, all the fields of the `#[ink(storage)]` struct will be pulled
+When executing a contract, all* the fields of the `#[ink(storage)]` struct will be pulled
 from storage, regardless of whether or not they are used during the message execution.
+
+Note*: This does **not** apply to `Mapping` fields, though, as key lookups in mappings
+are done directly from contract storage.
 
 Smart contract authors should be aware of this behaviour since it could potentially
 affect their contract performance. For example, consider the following storage struct:
