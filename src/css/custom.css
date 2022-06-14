@@ -74,3 +74,21 @@ h1 {
   background-color: #242526;
   margin-bottom: 25px;
 }
+
+.brand-asset {
+  height: 90px !important;
+}
+
+.white-container {
+  padding: 15px;
+  background-color: white;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.black-container {
+  padding: 15px;
+  background-color: black;
+  display: inline-block;
+  margin-bottom: 5px;
+}

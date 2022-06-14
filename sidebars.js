@@ -69,5 +69,10 @@ module.exports = {
     'FAQ': [
       'faq/faq',
     ],
+    'Brand Assets': [
+      'brand-assets/ink',
+      'brand-assets/community-badges',
+      'brand-assets/cargo-contract',
+    ],
   },
 };
