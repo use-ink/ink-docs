@@ -140,7 +140,7 @@ CosmWasm contracts are deployed and instantiated with help of the `wasmd` execut
 list of step is provided [here](https://docs.cosmwasm.com/docs/1.0/getting-started/interact-with-contract).
 
 It is possible to deploy and interact with ink! contracts using either a CLI
-(`cargo-contract`), or a web UI ([`contracts-ui`](https://paritytech.github.io/contracts-ui/)).
+(`cargo-contract`), or a web UI ([`contracts-ui`](https://contracts-ui.substrate.io/)).
 
 - [Instructions for `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/docs/extrinsics.md)
 - [Instructions for `contracts-ui`](/getting-started/deploy-your-contract)

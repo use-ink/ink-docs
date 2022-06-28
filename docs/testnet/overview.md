@@ -69,5 +69,5 @@ The following graphic depicts the idea:
 There are also different user interfaces and command-line tools you can use to deploy
 or interact with contracts:
 
-* [Contracts UI](https://paritytech.github.io/contracts-ui/)
+* [Contracts UI](https://contracts-ui.substrate.io/)
 * [polkadot-js](https://polkadot.js.org/apps/)
