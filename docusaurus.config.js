@@ -45,12 +45,12 @@ module.exports = {
     ['@docusaurus/preset-classic', {
       docs: {
         sidebarPath: require.resolve('./sidebars.js'),
-        editUrl: 'https://github.com/ink-docs/edit/master/',
+        editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
         routeBasePath: '/'
       },
       blog: {
         showReadingTime: true,
-        editUrl: 'https://github.com/ink-docs/edit/master/',
+        editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
       },
       theme: {
         customCss: [require.resolve('./src/css/custom.css')],
