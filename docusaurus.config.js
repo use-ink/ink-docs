@@ -24,8 +24,8 @@ module.exports = {
       title: '',
       logo: {
         alt: 'ink!',
-        src: 'img/logo-black.svg',
-        srcDark: '/img/logo-white.svg',
+        src: 'img/text-black.svg',
+        srcDark: '/img/text-white.svg',
       },
       items: [
         {
@@ -45,12 +45,12 @@ module.exports = {
     ['@docusaurus/preset-classic', {
       docs: {
         sidebarPath: require.resolve('./sidebars.js'),
-        editUrl: 'https://github.com/ink-docs/edit/master/',
+        editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
         routeBasePath: '/'
       },
       blog: {
         showReadingTime: true,
-        editUrl: 'https://github.com/ink-docs/edit/master/',
+        editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
       },
       theme: {
         customCss: [require.resolve('./src/css/custom.css')],

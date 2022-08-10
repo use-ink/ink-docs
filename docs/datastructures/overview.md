@@ -39,3 +39,10 @@ In `EagerLoading::read_a()` we only read the `a` storage item. However, the `b` 
 item will still be loaded from storage. As a reminder, this means accessing the
 underlying database and SCALE decoding the value. This can incur high costs, especially
 as the number of elements in `b` grows.
+
+:::note
+
+Eager loading does **not** apply to `Mapping` fields, though, as key lookups in mappings
+are done directly from contract storage.
+
+:::

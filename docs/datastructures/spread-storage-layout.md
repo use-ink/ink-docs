@@ -9,7 +9,7 @@ The following schema depicts the storage which is exposed
 to ink! by the contracts pallet:
 
 <div class="schema">
-    <img src="/ink-docs/img/kv.svg" alt="Storage Organization: Layout" />
+    <img src="/img/kv.svg" alt="Storage Organization: Layout" />
 </div>
 
 ink!'s storage operates by storing and loading entries into and from a single storage
@@ -41,5 +41,5 @@ The following schema depicts the storage layout for a vector with three elements
 persisted to storage in a spread layout.
 
 <div class="schema">
-    <img src="/ink-docs/img/spread.svg" alt="Storage Organization: Spreading" />
+    <img src="/img/spread.svg" alt="Storage Organization: Spreading" />
 </div>

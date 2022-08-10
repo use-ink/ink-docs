@@ -6,9 +6,13 @@ module.exports = {
       'intro/why-webassembly',
       'intro/how-it-works',
       'intro/ink-vs-solidity',
+      'intro/ink-vs-cosmwasm',
     ],
     'Monthly Update': [
       'monthly-update/overview',
+      'monthly-update/2022/07',
+      'monthly-update/2022/06',
+      'monthly-update/2022/05',
       'monthly-update/2022/04',
       'monthly-update/2022/03',
     ],
@@ -31,6 +35,7 @@ module.exports = {
       'basics/cross-contract-calling',
       'basics/testing',
       'basics/env-functions',
+      'basics/metadata',
     ],
     'Macros & Attributes': [
       'macros-attributes/overview',
@@ -59,11 +64,16 @@ module.exports = {
     'cargo-contract CLI': [
       'cargo-contract/overview',
     ],
-    'Canvas Test Network': [
-      'canvas/overview',
+    'Live Testnet': [
+      'testnet/overview',
     ],
     'FAQ': [
       'faq/faq',
+    ],
+    'Brand Assets': [
+      'brand-assets/ink',
+      'brand-assets/community-badges',
+      'brand-assets/cargo-contract',
     ],
   },
 };
