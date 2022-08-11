@@ -1,4 +1,5 @@
 {
+  "retryCount": 6,
   "replacementPatterns": [
     {
       "pattern": "^/",
