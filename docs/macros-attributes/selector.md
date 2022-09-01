@@ -16,6 +16,8 @@ A selector must be a `u32` decodable integer. For example
 - `selector = 0xCAFEBABE`
 - `selector = 42`
 
+An exception is the fallback selector `_`, allowing contract calls not matching any of the other message selectors to be dispatched to a fallback message. Fallback messages can be `payable`.
+
 ## Examples
 
 ```rust
@@ -24,6 +26,9 @@ fn my_message_1(&self) {}
 
 #[ink(message, selector = 42)]
 fn my_message_2(&self) {}
+
+#[ink(message, payable, selector = _)]
+fn my_fallback(&self) {}
 ```
 … then the selector of `my_message_1` is `[0xC0, 0xDE, 0xCA, 0xFE]` and the selector of `my_message_2` is `[0, 0, 0, 42]`
 since setting the selector manually overrides the automatically generated selector.
