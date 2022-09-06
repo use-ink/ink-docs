@@ -35,6 +35,7 @@ module.exports = {
       'basics/trait-definitions',
       'basics/cross-contract-calling',
       'basics/upgradeability',
+      'basics/testing',
       'basics/env-functions',
       'basics/metadata',
     ],
