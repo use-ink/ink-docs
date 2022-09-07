@@ -6,8 +6,14 @@ hide_table_of_contents: true
 
 ### Is it "ink" or "ink!"? What does the "!" stand for?
 
-The DSL (domain specific language) is spelled "ink!" with small "i" and an exclamation mark at the end.
-The main purpose behind this spelling is to have as many dots in its name as possible.
+The correct spelling is _ink!_ ‒ with a lowercase "i" and an exclamation mark at the end.
+The history here is that:
+
+* …in the very first iteration ink! was originally a [declarative Rust macro](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming). A contract was invoked by writing `ink!{ … }`.
+* …there is a real-world analogy here of writing a paper contract using ink.
+* …we wanted to have as many DOTs as possible in the name ;-).
+
+So please don't make poor Squink cry having to read !ink, ink, or Ink!.
 
 ### Who is "Squink"?
 
