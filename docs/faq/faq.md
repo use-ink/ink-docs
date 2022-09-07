@@ -13,7 +13,7 @@ The history here is that:
 * …there is a real-world analogy here of writing a paper contract using ink.
 * …we wanted to have as many DOTs as possible in the name 😉.
 
-So please don't make poor Squink cry having to read !ink, ink, or Ink!.
+So please don't make poor Squink cry having to read !ink, ink, Ink!, or Ink.
 
 ### Who is "Squink"?
 
