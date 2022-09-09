@@ -9,19 +9,34 @@ it is often necessary to perform an upgrade of a smart contract.
 The developer may need to fix a critical bug or introduce a new feature.
 
 For this type of scenario, ink! has different upgrade strategies.
+- [Proxy Forwarding](#proxy-forwarding)
+  - [Properties](#properties)
+- [Replacing Contract Code with `set_code_hash()`](#replacing-contract-code-with-set_code_hash)
+  - [Properties](#properties-1)
+  - [Storage Compatibility](#storage-compatibility)
+  - [A little note on the determinism of contract addresses](#a-little-note-on-the-determinism-of-contract-addresses)
+- [Examples](#examples)
 
-# Proxy forwarding
+## Proxy Forwarding
 
 This method relies on the ability of contracts to proxy calls to other contracts.
 
-## Properties:
+### Properties
 
 - Forwards any call that does not match a selector of itself to another contract.
 - The other contract needs to be deployed on-chain.
 - State is stored in the storage of the contract to which calls are forwarded.
 
+```
+User ---- tx ---> Proxy ----------> Implementation_v0
+                     |
+                      ------------> Implementation_v1
+                     |
+                      ------------> Implementation_v2
+```
 
-Our proxy contract should usually have these 2 variables
+
+Our proxy contract will have these 2 storage fields:
 ```rust
 #[ink(storage)]
 pub struct Proxy {
@@ -35,12 +50,11 @@ pub struct Proxy {
 }
 ```
 
-We then need a way to change the address fo a contract to which we forward calls to
+We then need a way to change the address of a contract to which we forward calls to
 and the actual message selector to proxy the call:
 
 ```rust
 impl Proxy {
-
     /// Changes the `AccountId` of the contract where any call that does
     /// not match a selector of this contract is forwarded to.
     #[ink(message)]
@@ -92,16 +106,24 @@ impl Proxy {
 }
 ```
 
+:::tip
+
+Take a look at the selector pattern in the attribute macro: by declaring `selector = _`,
+we specify that all other messages should be handled by this message selector.
+
+:::
+
 Using this pattern, you can introduce other message to your proxy contract.
 Any messages that are not matched on the proxy contract will be forwarded the specified contract address.
 
-# Updating contract code directly
+## Replacing Contract Code with `set_code_hash()`
 
-Following [Substrate's runtime upgradeability](https://docs.substrate.io/tutorials/get-started/forkless-upgrade/) philosophy, ink! also supports an easy way to update your contract code via the special function `set_code_hash()`
+Following [Substrate's runtime upgradeability](https://docs.substrate.io/tutorials/get-started/forkless-upgrade/) 
+philosophy, ink! also supports an easy way to update your contract code via the special function [`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html)
 
-## Properties
+### Properties
 
-- Updates the contract code using set_code_hash. This effectively replaces the code which is executed for the contract address.
+- Updates the contract code using `set_code_hash()`. This effectively replaces the code which is executed for the contract address.
 - The other contract needs to be deployed on-chain.
 - State is stored in the storage of the originally instantiated contract.
 
@@ -124,28 +146,33 @@ pub fn set_code(&mut self, code_hash: [u8; 32]) {
 }
 ```
 
-## Storage compatibility
+### Storage Compatibility
 
 It is developer's responsibility to ensure that the new contract's storage is compatible with the old version.
 
-**You should not change the order in which the contract state variables are declared, nor their type!**
+:::danger Beware
+
+You should not change the order in which the contract state variables are declared, nor their type!
 
 Violating the restriction will not prevent a successful compilation,
 but will result in **the mix-up of values** or **failure to read the storage correctly**.
 This can be a result of severe errors in the application utilizing the contract.
 
+:::
+
 If the storage of your contract looks like this:
 ```rust
-use ink_lang as ink;
 #[ink(storage)]
 pub struct YourContract {
     x: u32,
     y: bool,
 }
 ```
-The procedures listed below will make it ***invalid***:
+
+The procedures listed below will make it ***invalid***
 
 Changing the order of variables:
+
 ```rust
 #[ink(storage)]
 pub struct YourContract {
@@ -178,6 +205,17 @@ pub struct YourContract {
 }
 ```
 
-# Examples
+
+### A little note on the determinism of contract addresses
+
+:::note
+
+If your contract utilizes this approach, it no-longer holds a deterministic address assumption.
+You can no longer assume that a contract address identifies a specific code hash.
+Please refer to [the issue](https://github.com/paritytech/substrate/pull/10690#issuecomment-1025702389) for more details.
+
+:::
+
+## Examples
 
 Examples of upgradable contracts can be found in the [ink! repository](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts)
