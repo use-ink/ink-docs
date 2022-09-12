@@ -57,5 +57,5 @@ module.exports = {
       },
     }],
   ],
-  plugins: [require.resolve('docusaurus-lunr-search')],
+  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
 };
