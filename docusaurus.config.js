@@ -11,6 +11,14 @@ module.exports = {
   stylesheets: [
     'fonts/fonts.css'
   ],
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        indexPages: true,
+      }
+    ]
+  ],
   themeConfig: {
     prism: {
       theme: require('prism-react-renderer/themes/duotoneDark'),
@@ -57,5 +65,4 @@ module.exports = {
       },
     }],
   ],
-  plugins: [require.resolve('docusaurus-lunr-search')],
 };
