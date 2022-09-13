@@ -3,7 +3,7 @@ title: Working with Mapping
 slug: /datastructures/mapping
 ---
 
-In this section we want to demonstrate how to work with ink! [`Mapping`](https://paritytech.github.io/ink/ink_storage/struct.Mapping.html).
+In this section we want to demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/3.3.1/ink_storage/struct.Mapping.html).
 
 Here is an example of a mapping from a user to a number:
 
@@ -22,8 +22,8 @@ case, each "user" gets their own number.
 ## Initializing a Mapping
 
 In order to correctly initialize a `Mapping` we need two things:
-1. An implementation of the [`SpreadAllocate`](https://paritytech.github.io/ink/ink_storage/traits/trait.SpreadAllocate.html) trait on our storage struct
-2. The [`ink_lang::utils::initalize_contract`](https://paritytech.github.io/ink/ink_lang/utils/fn.initialize_contract.html) initializer
+1. An implementation of the [`SpreadAllocate`](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.SpreadAllocate.html) trait on our storage struct
+2. The [`ink_lang::utils::initalize_contract`](https://docs.rs/ink_lang/3.3.1/ink_lang/utils/fn.initialize_contract.html) initializer
 
 Not initializing storage before you use it is a common mistake that can break your smart
 contract. If you do not initialize your `Mapping`'s correctly you may end up with
