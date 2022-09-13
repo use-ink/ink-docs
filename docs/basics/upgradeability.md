@@ -180,14 +180,18 @@ pub struct YourContract {
     x: u32,
 }
 ```
+
 Removing existing variable:
+
 ```rust
 #[ink(storage)]
 pub struct YourContract {
     x: u32,
 }
 ```
+
 Changing type of a variable:
+
 ```rust
 #[ink(storage)]
 pub struct YourContract {
@@ -195,16 +199,17 @@ pub struct YourContract {
     y: bool,
 }
 ```
-Introducing a new variable before any of the existing ones
+
+Introducing a new variable before any of the existing ones:
+
 ```rust
 #[ink(storage)]
 pub struct YourContract {
-    z: Vec[u32],
+    z: Vec<u32>,
     x: u32,
     y: bool,
 }
 ```
-
 
 ### A little note on the determinism of contract addresses
 
