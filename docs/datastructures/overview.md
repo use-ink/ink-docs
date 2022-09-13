@@ -5,7 +5,7 @@ slug: /datastructures/overview
 
 The `ink_storage` crate acts as the standard storage library for ink! smart contracts. At
 the moment it only provides a single low-level primitive for interacting with storage,
-the [`Mapping`](https://paritytech.github.io/ink/ink_storage/struct.Mapping.html).
+the [`Mapping`](https://docs.rs/ink_storage/3.3.1/ink_storage/struct.Mapping.html).
 
 The `Mapping` is a mapping of key-value pairs directly to the contract storage. Its main advantage
 is to be simple and lightweight. As such, it does not provide any high-level

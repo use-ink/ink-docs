@@ -41,4 +41,4 @@ impl SpreadLayout for Inner {
 
 ```
 
-You can check what each method does in the [trait's docs](https://paritytech.github.io/ink/ink_storage/traits/trait.SpreadLayout.html). Check how some data structures are implemented, such as [Mapping](https://paritytech.github.io/ink/src/ink_storage/lazy/mapping.rs.html#131-156).
+You can check what each method does in the [trait's docs](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.SpreadLayout.html). Check how some data structures are implemented, such as [Mapping](https://docs.rs/ink_storage/3.3.1/src/ink_storage/lazy/mapping.rs.html#113).
