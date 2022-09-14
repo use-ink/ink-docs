@@ -114,16 +114,19 @@ we specify that all other messages should be handled by this message selector.
 :::
 
 Using this pattern, you can introduce other message to your proxy contract.
-Any messages that are not matched in the proxy contract will be forwarded to the specified contract address.
+Any messages that are not matched in the proxy contract 
+will be forwarded to the specified contract address.
 
 ## Replacing Contract Code with `set_code_hash()`
 
 Following [Substrate's runtime upgradeability](https://docs.substrate.io/tutorials/get-started/forkless-upgrade/) 
-philosophy, ink! also supports an easy way to update your contract code via the special function [`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html).
+philosophy, ink! also supports an easy way to update your contract code via the special function 
+[`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html).
 
 ### Properties
 
-- Updates the contract code using `set_code_hash()`. This effectively replaces the code which is executed for the contract address.
+- Updates the contract code using `set_code_hash()`. 
+This effectively replaces the code which is executed for the contract address.
 - The other contract needs to be deployed on-chain.
 - State is stored in the storage of the originally instantiated contract.
 
@@ -148,7 +151,8 @@ pub fn set_code(&mut self, code_hash: [u8; 32]) {
 
 ### Storage Compatibility
 
-It is the developer's responsibility to ensure that the new contract's storage is compatible with the storage of the contract that is replaced.
+It is the developer's responsibility to ensure 
+that the new contract's storage is compatible with the storage of the contract that is replaced.
 
 :::danger Beware
 
@@ -218,10 +222,12 @@ pub struct YourContract {
 
 If your contract utilizes this approach, it no-longer holds a deterministic address assumption.
 You can no longer assume that a contract address identifies a specific code hash.
-Please refer to [the issue](https://github.com/paritytech/substrate/pull/10690#issuecomment-1025702389) for more details.
+Please refer to [the issue](https://github.com/paritytech/substrate/pull/10690#issuecomment-1025702389) 
+for more details.
 
 :::
 
 ## Examples
 
-Examples of upgradable contracts can be found in the [ink! repository](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts)
+Examples of upgradable contracts can be found in the 
+[ink! repository](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts)
