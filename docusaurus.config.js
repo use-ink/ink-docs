@@ -46,6 +46,11 @@ module.exports = {
           label: 'Docs GitHub',
           position: 'right',
         },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
       ],
     },
   },
