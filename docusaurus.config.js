@@ -1,7 +1,7 @@
 module.exports = {
   title: 'ink! documentation',
   tagline: 'documentation for ink!',
-  url: 'https://github.com/paritytech/ink',
+  url: 'https://ink.substrate.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
