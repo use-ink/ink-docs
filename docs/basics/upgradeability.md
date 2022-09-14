@@ -35,8 +35,8 @@ User ---- tx ---> Proxy ----------> Implementation_v0
                       ------------> Implementation_v2
 ```
 
-
 Our proxy contract will have these 2 storage fields:
+
 ```rust
 #[ink(storage)]
 pub struct Proxy {
@@ -108,18 +108,18 @@ impl Proxy {
 
 :::tip
 
-Take a look at the selector pattern in the attribute macro: by declaring `selector = _`,
+Take a look at the selector pattern in the attribute macro: by declaring `selector = _`
 we specify that all other messages should be handled by this message selector.
 
 :::
 
 Using this pattern, you can introduce other message to your proxy contract.
-Any messages that are not matched on the proxy contract will be forwarded the specified contract address.
+Any messages that are not matched in the proxy contract will be forwarded to the specified contract address.
 
 ## Replacing Contract Code with `set_code_hash()`
 
 Following [Substrate's runtime upgradeability](https://docs.substrate.io/tutorials/get-started/forkless-upgrade/) 
-philosophy, ink! also supports an easy way to update your contract code via the special function [`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html)
+philosophy, ink! also supports an easy way to update your contract code via the special function [`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html).
 
 ### Properties
 
@@ -127,7 +127,7 @@ philosophy, ink! also supports an easy way to update your contract code via the 
 - The other contract needs to be deployed on-chain.
 - State is stored in the storage of the originally instantiated contract.
 
-Just add the following function to the contract your want to upgrade in future.
+Just add the following function to the contract you want to upgrade in the future.
 
 ```rust 
 /// Modifies the code which is used to execute calls to this contract address (`AccountId`).
@@ -148,7 +148,7 @@ pub fn set_code(&mut self, code_hash: [u8; 32]) {
 
 ### Storage Compatibility
 
-It is developer's responsibility to ensure that the new contract's storage is compatible with the old version.
+It is the developer's responsibility to ensure that the new contract's storage is compatible with the storage of the contract that is replaced.
 
 :::danger Beware
 
@@ -159,6 +159,7 @@ but will result in **the mix-up of values** or **failure to read the storage cor
 This can be a result of severe errors in the application utilizing the contract.
 
 :::
+
 
 If the storage of your contract looks like this:
 ```rust
@@ -181,7 +182,7 @@ pub struct YourContract {
 }
 ```
 
-Removing existing variable:
+Removing an existing variable:
 
 ```rust
 #[ink(storage)]
@@ -190,7 +191,7 @@ pub struct YourContract {
 }
 ```
 
-Changing type of a variable:
+Changing the type of a variable:
 
 ```rust
 #[ink(storage)]
