@@ -59,7 +59,19 @@ module.exports = {
       docs: {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
-        routeBasePath: '/'
+        routeBasePath: '/',
+        lastVersion: 'current',
+        versions: {
+          current: {
+            label: '4.0.0-alpha.1',
+            path: '',
+          },
+          "3.3.1": {
+            label: '3.3.1',
+            path: '3.3.1',
+            banner: 'none',
+          },
+        },
       },
       blog: {
         showReadingTime: true,
