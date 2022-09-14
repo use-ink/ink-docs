@@ -62,13 +62,14 @@ module.exports = {
         routeBasePath: '/',
         lastVersion: 'current',
         versions: {
-          current: {
+          '4.0.0-alpha.1': {
             label: '4.0.0-alpha.1',
-            path: '',
+            path: '4.0.0-alpha.1',
+            banner: 'none',
           },
-          '3.x.x': {
+          current: {
             label: '3.x.x',
-            path: '3.x.x',
+            path: '',
             banner: 'none',
           },
         },
