@@ -34,6 +34,7 @@ module.exports = {
       'basics/events',
       'basics/trait-definitions',
       'basics/cross-contract-calling',
+      'basics/upgradeability',
       'basics/testing',
       'basics/env-functions',
       'basics/metadata',
