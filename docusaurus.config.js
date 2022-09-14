@@ -66,9 +66,9 @@ module.exports = {
             label: '4.0.0-alpha.1',
             path: '',
           },
-          "3.3.1": {
-            label: '3.3.1',
-            path: '3.3.1',
+          '3.x.x': {
+            label: '3.x.x',
+            path: '3.x.x',
             banner: 'none',
           },
         },
