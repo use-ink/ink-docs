@@ -4,7 +4,7 @@ module.exports = {
   url: 'https://ink.substrate.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
   organizationName: 'paritytech',
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
