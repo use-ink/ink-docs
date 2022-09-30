@@ -6,7 +6,7 @@
   "replacementPatterns": [
     {
       "pattern": "^/",
-      "replacement": "https://ink.substrate.io/"
+      "replacement": "https://use.ink/"
     }
   ],
   "httpHeaders": [

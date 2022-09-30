@@ -1,7 +1,7 @@
 module.exports = {
   title: 'ink! documentation',
   tagline: 'documentation for ink!',
-  url: 'https://ink.substrate.io',
+  url: 'https://use.ink',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
