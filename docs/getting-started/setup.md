@@ -16,18 +16,23 @@ The first tool we will be installing is [`cargo-contract`](https://github.com/pa
 
 As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
 
-For example, on Ubuntu or Debian, run the following command:
+To install it on Ubuntu or Debian, run the following command:
 
 ```bash
 sudo apt install binaryen
 ```
-For macOs run
+
+> :warning: **The above installation downloads binaryen v99 which is too old, consider downloading the latest [binaryen](https://github.com/WebAssembly/binaryen/releases) manually.**
+
+For installation on macOs run:
 ```bash
 brew install binaryen
 ```
 For other operating systems, download from [WebAssembly releases](https://github.com/WebAssembly/binaryen/releases).
 
+
 Two other dependencies are needed to lint the ink! contract. This is done to warn users about using e.g. API's in a way that could lead to security issues.
+
 
 ```bash
 cargo install cargo-dylint dylint-link
