@@ -71,7 +71,7 @@ ink! is the smart contract language used in Substrate. It is built from Rust -- 
 
 ## Setup
 
-Follow the [first-smart-contract](https://docs.substrate.io/tutorials/smart-contracts/first-smart-contract/) tutorial.
+Follow the [prepare-your-first-contract](https://docs.substrate.io/tutorials/smart-contracts/prepare-your-first-contract/) tutorial.
 
 ## Converting Solidity Contract to ink!
 
@@ -611,7 +611,7 @@ mod dao {
 }
 ```
 
-This almost works as expected. However, there is still one issue. `SpreadAllocate` (used with `Mapping`) requires that `Vec<Proposal>` implements `PackedAllocate`. To fix this, `Proposal` needs to implement `PackedAllocate`. See [here](https://paritytech.github.io/ink/ink_storage/traits/trait.PackedAllocate.html) for details + examples. See the following for this example:
+This almost works as expected. However, there is still one issue. `SpreadAllocate` (used with `Mapping`) requires that `Vec<Proposal>` implements `PackedAllocate`. To fix this, `Proposal` needs to implement `PackedAllocate`. See [here](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.PackedAllocate.html) for details + examples. See the following for this example:
 
 ```rust
     use ink_primitives::Key;
