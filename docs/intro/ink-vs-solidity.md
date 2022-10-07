@@ -30,9 +30,7 @@ Here is a brief comparison of features between ink! and Solidity:
 
 - [Solidity to ink! Guide](#solidity-to-ink-guide)
 - [Table of Contents](#table-of-contents)
-- [What is ink!](#what-is-ink)
-- [Setup](#setup)
-- [Converting Solidity Contract to ink!](#converting-solidity-contract-to-ink)
+- [Converting a Solidity Contract to ink!](#converting-a-solidity-contract-to-ink)
   - [1. Generate New ink! Contract](#1-generate-new-ink-contract)
   - [2. Build ink! Contract](#2-build-ink-contract)
   - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
@@ -65,19 +63,11 @@ Here is a brief comparison of features between ink! and Solidity:
 - [Troubleshooting Errors](#troubleshooting-errors)
 - [unit testing (off-chain)](#unit-testing-off-chain)
 
-## What is ink!
-
-ink! is the smart contract language used in Substrate. It is built from Rust -- meaning that the great features of Rust are included in ink!. These features are ideal for a smart contract language. Furthermore, ink! is compiled to WebAssembly, which is high-performant, consistent, and very well researched. Furthermore, using Rust allows for inherent [safe math](https://ink.substrate.io/faq#overflow-safety) checks. ink! smart contracts use Rust's no_std. So, some common Rust implementations are not directly supported. However, ink! does have crates that reimplement common Rust code to work in the Substrate runtime.
-
-## Setup
-
-Follow the [prepare-your-first-contract](https://docs.substrate.io/tutorials/smart-contracts/prepare-your-first-contract/) tutorial.
-
-## Converting Solidity Contract to ink!
+## Converting a Solidity Contract to ink!
 
 ### 1. Generate New ink! Contract
 
-Run the following to generate ink! boilerplate code (flipper project)
+Run the following to generate ink! boilerplate code for ink!'s "Hello, World!" (the [`flipper`](https://github.com/paritytech/ink/tree/master/examples/flipper) contract))
 
 ```
 cargo contract new <contract-name>
@@ -183,10 +173,10 @@ A few key differences are:
 ### 4. Convert each function
 
 - Start converting each function one by one.
-  - A recommended approach is to, if possible, skip cross-contract calls (at first) and use mock data instead
+  - A recommended approach is to, if possible, skip cross-contract calls at first and use mock data instead
   - This way offchain unit tests can be written to test the core functionality
-    - unit tests are offchain and do not work with cross-contracßt calls
-  - Once fully tested, start adding in cross-contract calls and perform on-chain manual testing
+    - unit tests are offchain and do not work with cross-contract calls
+  - Once fully tested, start adding in cross-contract calls and perform on-chain manual + integration tests
 - Ensure that function's visibility (public, private) are matched in ink!
 - In Solidity, if a function returns a `bool success`, ink! will use a `Result<()>` instead (`Result::Ok` or `Result::Err`).
 
@@ -208,7 +198,7 @@ A few key differences are:
 ## Best Practices + Tips
 
 - If the Solidity contract uses a `string`, it is recommended to use a `Vec<u8>` to avoid the overhead of a `String`. See [here](https://substrate.stackexchange.com/questions/1174/why-is-it-a-bad-idea-to-use-string-in-an-ink-smart-contract) for more details on why. The smart contract should only contain the information that strictly needs to be placed on the blockchain and go through consensus. The UI should be used for displaying strings.
-- Double check all `.unwrap()` performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
+- Double check all `.unwrap()`s performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
 - Run the contracts node with `substrate-contracts-node --dev -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
 - When passing parameters to a helper, it is recommended to pass references (even for primitives) as Wasm is more efficient with references.
   For example (see [erc20](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) example):
@@ -484,7 +474,9 @@ assert!(caller == owner, "caller is not owner")
 
 #### `require and revert`
 
-In Solidity, `require` is used for general (normal) errors -- such as errors that occur based on user input. `require` does have the option for an error string. `revert` is very similar to `require` except that `revert` will be called in `if ... else` chains. Both `require` and `revert` will revert the chain state. In ink!, `if ... { return Err(Error::SomeError) }` should be used for `require` or `revert`. When an `Result::Err` is returned in ink!, then all state is reverted. In general, returning `Result::Err` should be the most used way to return errors.
+In Solidity, `require` is used for general (normal) errors -- such as errors that occur based on user input. `require` does have the option for an error string. `revert` is very similar to `require` except that `revert` will be called in `if ... else` chains. Both `require` and `revert` will revert the chain state. In ink!, `if ... { return Err(Error::SomeError) }` should be used for `require` or `revert`. When a `Result::Err` is returned in ink!, then all state is reverted.
+
+In general, `Result::Err` should be used when a _calling contract_ needs to know _why_ a function failed. Otherwise, `assert!` should be used as it has less overhead than a `Result`.
 
 ```c++
 // Solidity
@@ -684,7 +676,7 @@ std = [
 ]
 ```
 
-Now, import the cross-contract to the main contract:
+Now, import the cross-called-contract to the main contract:
 
 ```rust
 // example
@@ -693,7 +685,7 @@ use erc20::Erc20Ref;
 
 There are two methods to setup the other contract.
 
-1. Instantiate the cross-contract in the main contract's constructor.  
+1. Instantiate the cross-called-contract in the main contract's constructor.  
    See [here](https://ink.substrate.io/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink/tree/master/examples/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
@@ -716,7 +708,7 @@ Now, to perform the cross-contract call:
 }
 ```
 
-Note: as of now (Jul. 26th, 2022. ink! v3.3.0), when doing cross-contract calling, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/paritytech/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/paritytech/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/paritytech/ink/issues/1134).
+Note: as of now (ink! v3.3.1), when using cross-contract calls, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/paritytech/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/paritytech/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/paritytech/ink/issues/1134).
 
 ### `submit generic transaction / dynamic cross-contract calling`
 
@@ -855,7 +847,7 @@ An easy approach is to use conditional compiling with `#[cfg(test)]` and `#[cfg(
 
 Note: this solution is not ideal. ink! v4.0 will provide much better solutions.
 
-For example, with a read only-exmaple for an erc-20 cross-contract call:
+For example, here is a read-only ERC20 cross-contract call:
 
 ```rust
 //only compiles when *not* running tests
@@ -898,7 +890,7 @@ fn do_some_write(&mut self) {
 }
 ```
 
-- useful code to interact + modify contract enviroment for testing
+- useful code to interact and modify the contract enviroment for testing
 
 [ink_env docs](https://paritytech.github.io/ink/ink_env/test/index.html)
 
