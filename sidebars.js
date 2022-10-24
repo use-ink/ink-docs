@@ -10,6 +10,8 @@ module.exports = {
     ],
     'Monthly Update': [
       'monthly-update/overview',
+      'monthly-update/2022/09',
+      'monthly-update/2022/08',
       'monthly-update/2022/07',
       'monthly-update/2022/06',
       'monthly-update/2022/05',
@@ -33,6 +35,7 @@ module.exports = {
       'basics/events',
       'basics/trait-definitions',
       'basics/cross-contract-calling',
+      'basics/upgradeability',
       'basics/testing',
       'basics/env-functions',
       'basics/metadata',

@@ -1,6 +1,6 @@
 # `ink-docs`
 
-This is the documentation portal for [ink!](https://github.com/paritytech/ink). The latest version is always available at [https://ink.substrate.io](https://ink.substrate.io).
+This is the documentation portal for [ink!](https://github.com/paritytech/ink). The latest version is always available at [https://use.ink](https://use.ink).
 
 Run it locally via
 

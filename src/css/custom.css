@@ -92,3 +92,8 @@ h1 {
   display: inline-block;
   margin-bottom: 5px;
 }
+
+.notFoundImg {
+  text-align: center;
+  margin: 25px 0px;
+}

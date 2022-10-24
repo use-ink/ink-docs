@@ -1,15 +1,23 @@
 module.exports = {
   title: 'ink! documentation',
   tagline: 'documentation for ink!',
-  url: 'https://github.com/paritytech/ink',
+  url: 'https://use.ink',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
   organizationName: 'paritytech',
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [
     'fonts/fonts.css'
+  ],
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        indexPages: true,
+      }
+    ]
   ],
   themeConfig: {
     prism: {
@@ -38,6 +46,11 @@ module.exports = {
           label: 'Docs GitHub',
           position: 'right',
         },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
       ],
     },
   },
@@ -46,7 +59,20 @@ module.exports = {
       docs: {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
-        routeBasePath: '/'
+        routeBasePath: '/',
+        lastVersion: 'current',
+        versions: {
+          '4.0.0-alpha.1': {
+            label: '4.0.0-alpha.1',
+            path: '4.0.0-alpha.1',
+            banner: 'none',
+          },
+          current: {
+            label: '3.x.x',
+            path: '',
+            banner: 'none',
+          },
+        },
       },
       blog: {
         showReadingTime: true,
@@ -57,5 +83,4 @@ module.exports = {
       },
     }],
   ],
-  plugins: [require.resolve('docusaurus-lunr-search')],
 };

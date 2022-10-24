@@ -34,7 +34,7 @@ Instead, ink! makes heavy usage of Rust macros. The main ink! macros are:
   CosmWasm `instantiate` function.
 - `#[ink(storage)]` which annotates a struct that represents the contract's internal
   state.
-- `#[ink(message)]` which marks a function as a publicl dispatchable, meaning that it is
+- `#[ink(message)]` which marks a function as a public dispatchable, meaning that it is
   exposed in the contract interface to the outside world. This macro can make a function
   behave analogously to CosmWasm’s `execute` and `query` functions. This depends on how it
   affects the internal contract state and what the return types.
@@ -52,7 +52,7 @@ While CosmWasm unit tests have different modules for each of the three main entr
 functions, ink! allows for a more generalised approach, where the `#[ink(test)]` macro is
 used for each unit test.
 
-You can read more about ink! unit tests [here](https://ink.substrate.io/basics/contract-testing#unit-tests).
+You can read more about ink! unit tests [here](https://use.ink/basics/contract-testing#unit-tests).
 
 # Compiler
 

@@ -14,7 +14,7 @@ development tool, and the [Contracts parachain](https://github.com/paritytech/cu
 
 If these updates are too high-level for you you can always check out the release notes for
 the various projects:
-- [`ink!`](https://github.com/paritytech/ink/blob/master/RELEASES.md)
+- [`ink!`](https://github.com/paritytech/ink/blob/master/CHANGELOG.md)
 - [`pallet-contracts`](https://github.com/paritytech/substrate/blob/master/frame/contracts/CHANGELOG.md)
 - [`cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/CHANGELOG.md)
 
