@@ -16,12 +16,6 @@ The first tool we will be installing is [`cargo-contract`](https://github.com/pa
 
 As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
 
-Two other dependencies are needed to lint the ink! contract. This is done to warn users about using e.g. API's in a way that could lead to security issues.
-
-```bash
-cargo install cargo-dylint dylint-link
-```
-
 Many package managers have it available nowadays ‒ e.g. there is a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
 [Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
 
@@ -36,6 +30,12 @@ cargo install cargo-contract --force --locked
 Use the `--force` to ensure you are updated to the most recent `cargo-contract` version.
 
 You can then use `cargo contract --help` to start exploring the commands made available to you.
+
+Two other dependencies are needed to lint the ink! contract. This is done to warn users about using e.g. API's in a way that could lead to security issues.
+
+```bash
+cargo install cargo-dylint dylint-link
+```
 
 ## Substrate Framework Pre-requisites
 
