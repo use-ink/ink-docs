@@ -7,7 +7,9 @@ slug: /getting-started/use-openbrush
 
 It provides standard contracts based on [PSPs], as well as useful contracts and Rust macros to help you build ink! smart contracts.
 
-Why use OpenBrush?
+Using OpenBrush is simple, you will only add the dependency to your `Cargo.toml` file. Here is an [example](https://docs.openbrush.io/smart-contracts/overview) of how to do it.
+
+### Why use OpenBrush?
 
 - To make contracts **interoperable** to do **safe** cross-contracts calls (by having the same function's signature among every contract)
 - To ensure the usage of [Polkadot Standards Proposals][PSPs]
@@ -16,7 +18,7 @@ Why use OpenBrush?
 - To **save time** by not writing boilerplate code
 - Useful features which can simplify development
 
-Which standard tokens and useful contracts does it provide?
+### Which standard tokens and useful contracts does it provide?
 
 - **PSP22** - Fungible Token (*ERC20 equivalent*) with extensions
 - **PSP34** - Non-Fungible Token (*ERC721 equivalent*) with extensions
