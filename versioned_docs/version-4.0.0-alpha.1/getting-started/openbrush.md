@@ -56,5 +56,9 @@ Typechain-Polkadot is used to generate Typescript wrappers around your smart-con
 
 [Sol2Ink](https://github.com/727-Ventures/sol2ink) is a useful tool which can help you migrating from Solidity to ink! You will only pass the Solidity code of your smart contract to Sol2Ink and get the ink! contract in return. You can also use Sol2Ink to learn the differences between Solidity and ink! code and use it to help you learning to create ink! smart contracts.
 
+### Questions?
+
+If you have any questions about how to use any of these tools, or just about the ink! smart contracts in general, you can join the [Brushfam element channel](https://matrix.to/#/!utTuYglskDvqRRMQta:matrix.org?via=matrix.org&via=t2bot.io&via=web3.foundation) or ask a question on the [Substrate Stack Exchange](https://substrate.stackexchange.com/).
+
 [OpenBrush]: https://github.com/727-Ventures/openbrush-contracts
 [PSPs]: https://github.com/w3f/PSPs
