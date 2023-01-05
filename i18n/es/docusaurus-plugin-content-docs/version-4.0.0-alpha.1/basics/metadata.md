@@ -5,31 +5,32 @@ slug: /metadata
 
 # ink! Metadata
 
-The ink! metadata is used to describe a contract in a language agnostic way. It is
-intended to be used by third party tools (e.g UIs, block explorers) in order to correctly
-call contract functions and interpret events.
+Los metadatos ink! se utiliza para describir un lenguaje mediante lenguaje agnóstico.
+metadata is used to describe a contract in a language agnostic way. 
+Está destinado a ser utilizado por herramientas de terceros (p.ej UIs, explorador de bloques) 
+para poder llamar correctamente a las funciones de contrato e interpretar eventos.
 
-The ink! metadata is generated when a contract is built using `cargo-contract`, e.g
+Los metadatos ink! son generados cuando un contrato es construido utilizando `cargo-contract`, p.ej
 `cargo +nightly contract build`.
 
-The metadata can be found in your contract's target directory under the name
+Los metadatos se pueden encontrar en tu en el directorio de destino de su contrato bajo el nombre
 `metadata.json`.
 
 :::note
 
-The metadata is also contained in your `$contract_name.contract` file. The difference is
-that the `.contract` file also contains the Wasm binary of your contract.
+Los metadatos también están contenidos en el fichero `$contract_name.contract`. La diferencia
+es que el fichero `.contract` también contiene el binario Wasm de tu contrato.
 
 :::
 
 ## metadata.json
-The metadata is defined by the following **required** keys:
-- `source`: Information about the contract's Wasm code.
-- `contract`: Metadata about the contract.
-- `abi`: Raw JSON of the contract's abi metadata, generated during contract compilation.
+Los metadatos se definen con las siguietes claves **requeridas**:
+- `source`: Información sobre el código Wasm.
+- `contract`: Metadatos sobre el contrato.
+- `abi`: El JSON en "crudo" del metadata abi del contrato, generado durante la compilación del contrato.
 
-It may _optionally_ contain the following keys:
-- `user`: Additional user-defined metadata.
+_Opcionalmente_ puede contener las siguientes claves:
+- `user`: Metadatos adicionales definidos por el usuario.
 
 ```json
 {
@@ -55,24 +56,25 @@ It may _optionally_ contain the following keys:
 
 :::note
 
-Notice that we don't have an `abi` key, but we instead use the metadata version as the name
-of the key (`V3` in this case). You can read more about that in the [ABI documentation](/metadata#abi).
+Tenga en cuenta que no tenemos una clave `abi`, pero en su lugar utilizamos la versión de metadatos como nombre
+de la clave (`V3` en este caso). Puedes leer más sobre esto en la [documentación ABI](/metadata#abi).
 
 :::
 
 
-The following sections will dive deeper into how these sections are made up.
+Las siguientes secciones profundizan en cómo se componen estas secciones.
 
 ### `source`
-This object contains information about how the contract was built.
+Este objecto contiene información sobre como el contrato fue construido.
 
-It consists of the following **required** keys:
-- `hash`: The hash of the contract's Wasm code.
-- `language`: The language used to write the contract.
-- `compiler`: The compiler used to compile the contract.
+Consiste en las siguientes claves **requeridas**:
 
-It may _optionally_ include the following keys:
-- `wasm`: The actual Wasm code of the contract, for optionally bundling the code with the metadata.
+- `hash`: El hash del código Wasm del contrato.
+- `language`: El lenguaje utilizado para escribir el contrato.
+- `compiler`: El compilador utilizado para compilar el contrato.
+
+_Opcionalmente_ podría incluir las siguientes claves:
+- `wasm`: El actual código Wasm del contrato, para empaquetar opcionalmente el código con los metadatos.
 
 ```json
 "source": {
@@ -84,25 +86,25 @@ It may _optionally_ include the following keys:
 
 :::info
 
-If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127).
+Si estas interesado en el código referencia de `cargo-contract`
+mira [aquí](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127).
 
 :::
 
 ### `contract`
-This object contains extra metadata about the contract.
+Este objeto contiene metadatos extra sobre el contrato.
 
-The **required** keys include:
- - `name`: The name of the smart contract.
- - `version`: The version of the smart contract.
- - `authors`: The authors of the smart contract.
+Las claves **requeridas** incluyen:
+ - `name`: El nombre de los smart contract.
+ - `version`: La versión de los smart contract.
+ - `authors`: Los autores de los smart contract.
 
-It can _optionally_ include the following keys:
- - `description`: The description of the smart contract.
- - `documentation`: Link to the documentation of the smart contract.
- - `repository`: Link to the code repository of the smart contract.
- - `homepage`: Link to the homepage of the smart contract.
- - `license`: The license of the smart contract.
+Puede _opcionalmente_ incluir las siguientes claves:
+ - `description`: La descripción de los smart contract.
+ - `documentation`: Link a la documentación de los smart contract.
+ - `repository`: Link al repositorio del código de los smart contract.
+ - `homepage`: Link a la página principal de los smart contract.
+ - `license`: La licencia de los smart contract.
 
 ```json
 "contract": {
@@ -116,25 +118,25 @@ It can _optionally_ include the following keys:
 
 :::info
 
-If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395).
+Si estas interesado en el código referencia de `cargo-contract`
+mira [aquí](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395).
 
 :::
 
 ### ABI
-This is the specification of the contract.
+Esta es la especificación del contrato
 
-Unlike the previous metadata sections the structure of the object stored here is not
-defined. Instead, it is up to each programming language (e.g ink!, ask!, Solidity) to
-define their own metadata format which will then be stored here.
+A diferencia de las secciones de metadatos anteriores, la estructura del objeto almacenado aquí no está definida.
+En su lugar, depende de cada lenguaje de programación (p.ej ink!, ask!, Solidity) para definir
+su propio formato de metadatos que sera almacenado aquí.
 
-In this document we will focus on the ink! ABI.
+En este documento nos centraremos en el ink! ABI.
 
-The ABI starts with the version number of the ink! metadata. In our example below we are
-using the ink! version 3 metadata, denoted by the `V3` key.
+El ABI comienza con el número de versión de los metadatos ink!. En nuestro ejemplo a continuación 
+estamos utilizando la versión 3 de los metadatos ink!, denotado por la clave `V3`.
 
 :::note
-The version of the ABI is distinct from any concept of Rust's crate versioning.
+La versión del ABI es distinto de cualquier concepto del versionado Rust's crate.
 :::
 
 ```json
@@ -145,47 +147,46 @@ The version of the ABI is distinct from any concept of Rust's crate versioning.
 }
 ```
 
-The ink! metadata consists of the following **required** sections
- - `spec`: The description of the contract (e.g constructors, messages, events, etc.).
- - `storage`: The layout of the storage data structure
- - `types`: A read-only registry containing types in their portable form for
-   serialization.
+Los metadatos ink! consisten en  las siguientes secciones **requeridas**
+ - `spec`:La descripción del contrato (p.ej constructores, mensajes, eventos, etc.).
+ - `storage`: El diseño de la estructura de datos de almacenamiento.
+ - `types`: Un registro de solo lectura que contiene tipos en su forma portable para la serialización.
 
 :::info
 
-If you're interested in the code reference from `ink!`
-see [here](https://github.com/paritytech/ink/blob/80d302eb9b9cddb726200a9a86c71ae344d1b042/crates/metadata/src/lib.rs#L91).
+Si estas interesado en el código referencia de`ink!`
+mira [aquí](https://github.com/paritytech/ink/blob/80d302eb9b9cddb726200a9a86c71ae344d1b042/crates/metadata/src/lib.rs#L91).
 
 :::
 
 #### `spec`
-The contract `spec` consists of the following **required** keys:
-- `constructors`: The set of constructors of the contract.
-    - `label`: The label of the constructor. In case of a trait provided constructor the
-      label is prefixed with the trait label.
-    - `selector`: The selector hash of the message.
-    - `payable`: If the constructor accepts any `value` from the caller.
-    - `args`: The parameters of the deployment handler.
-    - `docs`: The deployment handler documentation.
-- `messages`: The external messages of the contract.
-    - `label`: The label of the message. In case of trait provided messages and
-      constructors the prefix by convention in ink! is the label of the trait.
-    - `selector`: The selector hash of the message.
-    - `mutates`: If the message is allowed to mutate the contract state.
-    - `payable`: If the message accepts any `value` from the caller.
-    - `args`: The parameters of the message.
-    - `return_type`: The return type of the message.
-    - `docs`: The message documentation.
-- `events`: The events of the contract.
-    - `label`: The label of the event.
-    - `args`: The event arguments.
-    - `docs`: The event documentation.
-- `docs`: The contract documentation.
+El contrato `spec` consiste en las siguientes claves **requeridas**:
+- `constructors`: El conjunto de constructores del contrato..
+    - `label`: La etiqueta del contructor. En el caso de un trait proporcionado por un constructor a la etiqueta
+      se le pone de prefijo la etiqueta del trait.
+    - `selector`: El hash selector del mensaje.
+    - `payable`: Si el constructor accepta cualquier `valor` de la persona que lo llama.
+    - `args`: Los parámetros del controlador del despliegue.
+    - `docs`: La documentación del controlador del despliegue.
+- `messages`: Los mensajes externos del contrato.
+    - `label`: La etiqueta del mensaje.  En el caso de un trait proporcionado por los mensajes y
+      constructores el prefijo por convención de ink! es la etiqueta del trait.
+    - `selector`: El hash selector del mensaje.
+    - `mutates`: Si se permite que el mensaje cambie el estado del contrato.
+    - `payable`: Si el mensaje acepta cualquier `valor` de la persona que lo llama.
+    - `args`: Los parámetros del mensaje.
+    - `return_type`: El tipo de retorno del mensaje.
+    - `docs`: La documentación del mensaje.
+- `events`: Los eventos del contrato.
+    - `label`: La etiqueta del evento.
+    - `args`: Los argumentos del evento.
+    - `docs`: La documentación del evento.
+- `docs`: La documentación del contrato.
 
 :::note
 
-While all these keys are required, they may be empty. For example, if a contract does not
-define any events then the `events` key would contain an empty array `[]`.
+Si bien todas estas claves son necesarias, es posible que estén vacías. Por ejemplo, si un contrato no define ningún evento, 
+entonces la clave `events` contendra un array vacío `[]`.
 
 :::
 
@@ -223,29 +224,29 @@ define any events then the `events` key would contain an empty array `[]`.
 ```
 
 #### `storage`
-This key describes the storage layout of an ink! contract. It tracks some of the
-different structures which can be placed in storage.
+Esta clave describe el diseño del storage de un contrato ink!
+This key describes the storage layout of an ink! contract. Realiza un seguimiento de algunas de las diferentes estructuras que se pueden almacenar. 
 
-It consists of the following
-_optional_ keys (depending on what data structures are used by the contract):
-- `cell`: An encoded cell.
-    - `key`: The offset key into the storage.
-    - `ty`: The type of the encoded entity.
-- `hash`: A layout that hashes values into the entire storage key space.
-    - `offset`: The key offset used by the strategy.
-    - `strategy`: The hashing strategy to layout the underlying elements.
-    - `layout`: The storage layout of the unbounded layout elements.
-- `array`: An array of associated storage cells encoded with a given type.
-    - `offset`: The offset key of the array layout. This is the same key as the element
-      at index 0 of the array layout.
-    - `len`: The number of elements in the array layout.
-    - `cells_per_elem`: The number of cells each element in the array layout consists of.
-    - `layout`: The layout of the elements stored in the array layout.
-- `struct`: A struct layout with fields of different types.
-    - `fields`: The fields of the struct layout.
-- `enum`: An enum layout with a discriminant telling which variant is layed out.
-    - `dispatch_key`: The key where the discriminant is stored to dispatch the variants.
-    - `variants`: The variants of the enum.
+Consiste en las siguientes claves
+_opcionales_ (dependiendo de qué estructuras de datos se utilizan en el contrato):
+- `cell`: Una celda codificada.
+    - `key`: La clave offset en el storage.
+    - `ty`: El tipo de la entidad codificada.
+- `hash`: El diseño de los valores hashes en todo el espacio de la clave de almacenamiento.
+    - `offset`: La clave offset utilizado por la estrategia.
+    - `strategy`: La estrategia hashing para diseñar los elementos subyacentes.
+    - `layout`: El diseño del storage layout de los elementos de diseño ilimitados.
+- `array`: Un array de celdas de almacenamiento asociadas codificadas con un tipo dado.
+    - `offset`: La clave offset del diseño del array. Esta es la misma clave que el elemento en el índice 0 
+       del diseño del array.
+    - `len`: El número de elementos del diseño del layout.
+    - `cells_per_elem`: El número de celdas de las que consta cada elemento en el diseño del array.
+    - `layout`: El diseño de los elementos almacenados en el diseño del array.
+- `struct`: Un diseño de struct con campos de diferentes tipos..
+    - `fields`: Los campos del diseño del struct.
+- `enum`: Un diseño del enum con un discriminante que indica qué variante se presenta.
+    - `dispatch_key`: La clave donde se almacena el discriminante para despachar las variantes.
+    - `variants`: Las variantes del enum.
 
 ```json
 "storage": {
@@ -266,22 +267,22 @@ _optional_ keys (depending on what data structures are used by the contract):
 ```
 
 #### `types`
-This object contains the type registry for the smart contract. It consists of an array of
-type objects, each of which is defined as follows:
-- `id`: Numerical ID for referencing the type.
-- `ty`: The definition of the type.
-    - `path`: The unique path to the type. Can be empty for built-in types.
-    - `params`: The generic type parameters of the type in use. Empty for non generic
-      types.
-    - `def`: The actual type definition.
-    - `docs`: Documentation.
+Este objecto contiene el registro del tipo de un smart contract. Consiste en un array de 
+tipo objects, cada uno de los cuales se define asi:
 
-The type definition object (`def`) supports the following `primitive` types:
+- `id`: ID númerico para referenciar el tipo.
+- `ty`: La definición del tipo.
+    - `path`: La ruta única del tipo. Puede estar vacío para tipos integrados.
+    - `params`: Los parámetros de tipo genérico del tipo en uso. Vacío para tipos no genéricos.
+    - `def`: La actual definición del tipo.
+    - `docs`: Documentación.
+
+El objeto de definición de tipo (`def`) soporta los siguientes tipos `primitive`:
 - `bool`, `char`, `str`, `u8`, `u16`, `u32`, `u64`, `u128`, `i8`, `i16`, `i32`, `i64`, `i128`.
 
-It also supports a variety of complex built-in and user-defined types. However, we will
-not dig into them here. If you are interested in learning more take a look at the
-[`scale-info`](https://github.com/paritytech/scale-info) crate.
+También admite una variedad de tipos complejos integrados y definidos por el usuario. Sin embargo,
+no lo veremos con mucho detalle aquí. Si estás interesado en aprender más echa un vistazo al crate 
+[`scale-info`](https://github.com/paritytech/scale-info).
 
 ```json
 "types": [
@@ -296,11 +297,11 @@ not dig into them here. If you are interested in learning more take a look at th
 ]
 ```
 
-Other parts of the metadata, such as the `storage` object, will reference individual
-types from this type registry using the `id` key.
+Otras partes de los metadatos, como el objeto `storage`, hará referencia a tipos individuales de este registro de tipo 
+utilizando la clave `id`.
 
 ### `user`
-This is an _optional_ field used to add user-defined metadata. Some examples of things
-you may want to include here:
-- `moon_phase`: Phase of the moon during which the smart contract works.
-- `favorite_blockchain`: The favorite blockchain of the contract authors (answer: Polkadot!).
+Este es un campo _opcional_ utilizado para añadir metadatos definidos por el usuario. Algunos ejemplos de cosas 
+que puedes incluir aquí:
+- `moon_phase`: Fase de la luna durante la cual funciona esmart contract.
+- `favorite_blockchain`: El blockchain favrito del los autores del contrato (answer: Polkadot!).

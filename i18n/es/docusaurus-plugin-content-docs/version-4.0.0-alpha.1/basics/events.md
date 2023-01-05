@@ -1,22 +1,20 @@
 ---
-title: Events
+title: Eventos
 slug: /basics/events
 ---
 
-An ink! smart contract may define events that it can emit during contract execution.
-Emitting events can be used by third party tools to query information about a contract's
-execution and state.
+Un smart contract en ink! puede definir eventos que pueden ser emitidos durante la execución del contrato.
+Emitir eventos puede ser utilizado por herramientas de terceros para consultar información sobre la ejecución y el estado de un contrato.
 
-The following example ink! contract shows how an event `Transferred` is defined and
-emitted in the `#[ink(constructor)]`.
+El siguiente ejemplo de un contrato en ink! muestra como se define un evento `Transferred` y se emite en `#[ink(constructor)]`.
 
 ```rust
 use ink_lang as ink;
 
 #[ink::contract]
 mod erc20 {
-    /// Defines an event that is emitted
-    /// every time value is transferred.
+    /// Definir un evento que es emitido
+    /// cada vez que el valor se transfiere.
     #[ink(event)]
     pub struct Transferred {
         from: Option<AccountId>,
@@ -27,7 +25,7 @@ mod erc20 {
     #[ink(storage)]
     pub struct Erc20 {
         total_supply: Balance,
-        // more fields ...
+        // más campos ...
     }
 
     impl Erc20 {
@@ -50,12 +48,12 @@ mod erc20 {
 }
 ```
 
-See our [`ERC20 example contract`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) 
-for an elaborate example which uses events.
+Vea nuestro [`ERC20 contrato de ejemplo`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) 
+para un elaborado ejemplo que utiliza eventos.
 
-## Event Definition
+## Definición de Eventos
 
-This is how an event definition looks:
+Así es como la definición de eventos se ve:
 
 ```rust
 #[ink(event)]
@@ -71,21 +69,19 @@ pub struct Transferred {
 }
 ```
 
-Add the `#[ink(topic)]` attribute tag to each item in your event that you want to have indexed.
-A good rule of thumb is to ask yourself if somebody might want to search for this topic.
-For this reason the `amount` in the exemplary event above was not
-made indexable ‒ there will most probably be a lot of different events with
-differing amounts each.
+Añade el atributo tag `#[ink(topic)]` para cada elemento en tu evento que quieras tener indexado.
+Una buena regla general es preguntarte si alguien podría querer buscar este tema.
+Por esta razón el `amount` en el evento ejemplo de arriba no esta hecho indexado - probablemente habrá muchos eventos diferentes con
+cantidades diferentes cada uno.
 
-The signature of the event is by default one of the topics of the event, except
-if you annotate the event with `#[ink(anonymous)]`.
-See [here](/macros-attributes/anonymous) for details on this attribute.
+La firma del evento es por defecto uno de los temas del evento, excepto si anotas el evento con `#[ink(anonymous)]`.
+Mira [aquí](/macros-attributes/anonymous) para ver más detalles de este atributo.
 
 
-## Emitting Events in a Constructor
+## Emitir Eventos en un Constructor
 
-In a constructor events are emitted via `Self::env().emit_event()`.
-See this example:
+En un contructor los eventos son emitidos via  `Self::env().emit_event()`.
+Mira este ejemplo:
 
 ```rust
 #[ink(constructor)]
@@ -104,15 +100,15 @@ pub fn new(initial_value: Balance) -> Self {
 }
 ```
 
-## Emitting Events from Messages
+## Emitir Eventos desde Mensajes
 
-In a message events are emitted via `self.env().emit_event()`:
+En un mensaje los eventos se emiten via `self.env().emit_event()`:
 
 ```rust
 #[ink(message)]
 pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
     let from = self.env().caller();
-    // implementation hidden
+    // implementación oculta
     self.env().emit_event(Transferred {
         from: Some(from),
         to: Some(to),

@@ -1,32 +1,31 @@
 ---
-title: Contract Template
+title: Plantilla de un Contrato
 slug: /basics/contract-template
 ---
 
-Change into your working directory and run:
+Cambia tu directorio de trabajo y arranca:
 
 ```bash
 cargo contract new foobar
 ```
 
-This will create a new project folder named `foobar`.
+Esto creara una nueva carpeta para el proyecto llamada `foobar`.
 
 ```bash
 cd foobar/
 ```
 
-In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
+En el fichero `lib.rs` encontraras un código `scaffolded` inicial, que podrás utilizar como punto de inicio.
 
-Quickly check that it compiles and the trivial tests pass with:
+Rápidamente comprueba si compila y pasa los test triviales con:
 
 ```bash
 cargo +nightly test
 ```
 
-Also check that you can build the Wasm file by running:
+Y comprueba que puedes construir el fichero Wasm arrancando:
 
 ```bash
 cargo +nightly contract build
 ```
-
-If everything looks good, then we are ready to start programming!
+Si todo esta bien, entonces estamos preparados para comenzar a programar!
