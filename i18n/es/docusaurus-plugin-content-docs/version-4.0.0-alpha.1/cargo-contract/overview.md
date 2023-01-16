@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Introducción
 slug: /cargo-contract-cli
 ---
 
@@ -8,12 +8,12 @@ slug: /cargo-contract-cli
 [m1]: https://img.shields.io/crates/v/cargo-contract.svg
 [m2]: https://crates.io/crates/cargo-contract
 
-`cargo-contract` is a CLI tool which helps you set up and manage
-WebAssembly smart contracts written with ink!.
-You can find it [here on GitHub](https://github.com/paritytech/cargo-contract)
-and here on [crates.io](https://crates.io/crates/cargo-contract).
+`cargo-contract` es una herramienta CLI tool que te ayuda a configurar y administrar
+WebAssembly smart contracts escritos con ink!.
+Puedes encontrarla [aquí en GitHub](https://github.com/paritytech/cargo-contract)
+y aquí en [crates.io](https://crates.io/crates/cargo-contract).
 
-The tool has a number of handy capabilities:
+La herramienta tiene una serie de capacidades útiles:
 
 ```
 cargo-contract 0.8.0
@@ -36,41 +36,40 @@ SUBCOMMANDS:
     help                 Prints this message or the help of the given subcommand(s)
 ```
 
-## Installation
+## Instalación
 
-As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
+Como prerequisito de la herramienta tienes que instalar el paquete [binaryen](https://github.com/WebAssembly/binaryen), que es utilizado para optimizar el bytecode WebAssembly bytecode del contrato.
 
-Many package managers have it available nowadays ‒ e.g. it's a package for [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
-[Homebrew](https://formulae.brew.sh/formula/binaryen) and [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
+Muchos gestores de paquetes lo tienen disponible hoy en día. ‒ p.ej. es una paquete para [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
+[Homebrew](https://formulae.brew.sh/formula/binaryen) y [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
 
-After you've installed the package execute:
+Después de instalar el paquete ejecuta:
 
 ```bash
 cargo install cargo-contract --force --locked
 ```
 
-Use the `--force` to ensure you are updated to the most recent `cargo-contract` version.
+Utiliza `--force` para asegurarse que estas actualizado con la versión más reciente de `cargo-contract`.
 
-You can then use `cargo contract --help` to start exploring the commands made available to you.
+Después puedes utilizar `cargo contract --help` para comenzar a explorar los comandos que tienes disponibles.
 
-## Usage
+## Uso
 
-In order to initialize a new ink! project you can use:
+Para inicializar un nuevo proyecto de ink! puedes utilizar:
 
 ```bash
 cargo contract new flipper
 ```
 
-This will create a folder `flipper` in your work directory.
-The folder contains a scaffold `Cargo.toml` and a `lib.rs`, which both contain the necessary building blocks for using ink!.
+Esto creara una carpeta `flipper` en tu directorio de trabajo.
+La carpeta contiene un scaffold `Cargo.toml` y un `lib.rs`, ambos contienen los bloques de construcción necesarios para utilizar ink!.
 
-The `lib.rs` contains our hello world contract ‒ the `Flipper`, which we explain in the next section.
+El `lib.rs` contiene nuesto contrato hello world ‒ el `Flipper`, que explicaremos en la siguiente sección.
 
-In order to build the contract just execute these commands in the `flipper` folder:
+Para compilar el contrato simplemente ejecuta estos comandos el la carpeta `flipper`:
 ```bash
 cargo contract build
 ```
-
-As a result you'll get the file `target/flipper.contract`. It's a JSON which bundles the contract's
-metadata and its Wasm blob. This file needs to be used when deploying the contract.
-You additionally get the individual `target/flipper.wasm` and `target/metadata.json` in the folder as well.
+Como resultado generaras el fichero `target/flipper.contract`. Es un JSON que It's a JSON que agrupa los 
+metadatos del contrato y su Wasm blob. Este fichero sera necesario para el despliegue del contrato. 
+Adicionalmente obtendras el  `target/flipper.wasm` y `target/metadata.json` individuales en la carpeta.
