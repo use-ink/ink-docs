@@ -4,56 +4,56 @@ slug: /brand-assets/ink
 hide_table_of_contents: false
 ---
 
-Our primary logo is our squid mascot (named "Squink") plus our text logo.
+Nuestro logo principal es nuestra mascota, el calamar (llamado "Squink") más nuestro logotipo de texto.
 
-Please use this combined logo preferably.
+Por favor, utilice preferentemente el logotipo combinado.
 
-## Black Version
+## Versión en Negro
 
 <div className="white-container">
     <img src="/img/ink-logo-with-squid-black.svg" alt="The ink! logo with Squink" className="brand-asset" />
 </div>
 
-Download here: [`ink-logo-with-squid-black.svg`](/img/ink-logo-with-squid-black.svg).
+Descargar aquí: [`ink-logo-with-squid-black.svg`](/img/ink-logo-with-squid-black.svg).
 
-## White Version
+## Versión en Blanco
 
 <div className="black-container">
     <img src="/img/ink-logo-with-squid-white.svg" alt="The ink! logo with Squink" className="brand-asset" />
 </div>
 
-Download here: [`ink-logo-with-squid-white.svg`](/img/ink-logo-with-squid-white.svg).
+Descargar aquí: [`ink-logo-with-squid-white.svg`](/img/ink-logo-with-squid-white.svg).
 
-## Individual Logo Parts
+## Partes Individuales del Logo
 
-### The ink! mascot: Squink
+### La mascota de ink!: Squink
 
 <div className="black-container">
     <img src="/img/ink-squink.svg" alt="Squink ‒ the ink! mascot" className="brand-asset" />
 </div>
 
-Download here: [`ink-squink.svg`](/img/ink-squink.svg).
+Descargar aquí: [`ink-squink.svg`](/img/ink-squink.svg).
 
-### Text Logo (black)
+### Logotipo de Texto (negro)
 
 <div className="white-container">
     <img src="/img/text-black.svg" alt="ink! logo in black" className="brand-asset" />
 </div>
 
-Download here: [`text-black.svg`](/img/text-black.svg).
+Descargar aquí: [`text-black.svg`](/img/text-black.svg).
 
-### Text Logo (white)
+### Logotipo de Texto (blanco)
 
 <div className="black-container">
     <img src="/img/text-white.svg" alt="ink! logo in white" className="brand-asset" />
 </div>
 
-Download here: [`text-white.svg`](/img/text-white.svg).
+Descargar aquí: [`text-white.svg`](/img/text-white.svg).
 
-### Text Logo (glow)
+### Logotipo de Texto (con resplandor)
 
 <div className="black-container">
     <img src="/img/text-glow.svg" alt="ink! logo glowing" className="brand-asset" />
 </div>
 
-Download here: [`text-glow.svg`](/img/text-glow.svg).
+Descargar aquí: [`text-glow.svg`](/img/text-glow.svg).
