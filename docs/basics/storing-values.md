@@ -48,6 +48,7 @@ mod MyContract {
     /* --snip-- */
 }
 ```
+
 Here is an example of a structure storing `String` and  `Hash` values. 
 
 ```rust
@@ -80,7 +81,9 @@ pub enum Status {
     /// of the winning bids. 
 }
 ```
-The values of enum should be referenced as `Status::OpeningPeriod`
+
+The values of an enum should be referenced as `Status::OpeningPeriod`.
+
 ## Initializing Storage in Constructors
 
 Constructors are how values get initialized.
