@@ -124,3 +124,6 @@ dist
 *.sqlite-journal
 .fuse_*
 .docusaurus
+
+# Mac
+.DS_Store
