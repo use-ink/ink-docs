@@ -1,7 +1,15 @@
 ---
 title: ink! vs. Solidity
+hide_title: true
 slug: /ink-vs-solidity
 ---
+
+<header>
+    <h1 class="customTitle">
+        <img src="/img/icons/interop.svg" />
+        ink! vs. Solidity
+    </h1>
+</header>
 
 Here is a brief comparison of features between ink! and Solidity:
 

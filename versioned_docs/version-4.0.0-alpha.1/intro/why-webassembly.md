@@ -1,7 +1,15 @@
 ---
 title: Why WebAssembly for Smart Contracts?
+hide_title: true
 slug: /why-webassembly-for-smart-contracts
 ---
+
+<header>
+    <h1 class="customTitle">
+        <img src="/img/icons/wasm-circle.svg" />
+        Why WebAssembly for Smart Contracts?
+    </h1>
+</header>
 
 * <span class="highlight">High performance: </span>Wasm is high performance — it’s built to be as close to native machine code as possible while still being platform independent.
 

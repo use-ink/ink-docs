@@ -3,7 +3,6 @@ title: Overview
 slug: /monthly-update/
 ---
 
-## What is this?
 Hey there reader 👋!
 
 This is meant to be a high-level overview of the changes that have taken place as part of
