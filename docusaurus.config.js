@@ -51,6 +51,10 @@ module.exports = {
           position: 'right',
           dropdownActiveClassDisabled: true,
         },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        }
       ],
     },
   },
@@ -83,4 +87,17 @@ module.exports = {
       },
     }],
   ],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-GB',
+        label: 'English'
+      },
+      es: {
+        label: 'Español'
+      }
+    },
+  },
 };
