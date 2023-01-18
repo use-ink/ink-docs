@@ -25,7 +25,6 @@ module.exports = {
     'Getting started': [
       'getting-started/setup',
       'getting-started/creating',
-      'getting-started/openbrush',
       'getting-started/compiling',
       'getting-started/running',
       'getting-started/deploying',
@@ -74,6 +73,9 @@ module.exports = {
     ],
     'Live Testnet': [
       'testnet/overview',
+    ],
+    'Third Party Tools': [
+      'third-party-tools/openbrush'
     ],
     'FAQ': [
       'faq/faq',
