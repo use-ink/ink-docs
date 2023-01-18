@@ -1,9 +1,10 @@
 ---
-title: Use OpenBrush
+title: OpenBrush
 slug: /getting-started/use-openbrush
 ---
 
-[OpenBrush] is a library for smart contract development on ink! mainatined by the [Brushfam](https://brushfam.io) team. OpenBrush is to ink! what OpenZeppellin is to Solidity.
+[OpenBrush] is a library for smart contract development on ink! maintained by the
+[Brushfam](https://brushfam.io) team.
 
 It provides standard contracts based on [PSPs], as well as useful contracts and Rust macros to help you build ink! smart contracts.
 

@@ -31,9 +31,6 @@ ink! also provides a `Mapping` storage type. You can read more about it [here](/
 Here is an example of how you would store an `AccountId` and `Balance`:
 
 ```rust
-// We are importing the default ink! types
-use ink_lang as ink;
-
 #[ink::contract]
 mod MyContract {
 
@@ -95,8 +92,6 @@ Note that if you have a contract whose storage contains `Mapping'`s you will nee
 [`Mapping` documentation](/datastructures/mapping) for more details.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod mycontract {
 

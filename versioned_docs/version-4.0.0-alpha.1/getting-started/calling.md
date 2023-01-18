@@ -4,7 +4,9 @@ slug: /getting-started/calling-your-contract
 ---
 
 Now that your contract has been fully deployed, we can start interacting with it! Flipper only has
-two functions, `flip()` and `get()` so we will show you what it's like to play with both of them.
+two functions: `flip()` and `get()`. We will show you what it's like to play with both of them.
+
+## Using the Contracts UI
 
 ### 1. get() function
 
@@ -30,4 +32,6 @@ If the transaction was successful, we should then be able to go back to the `get
 
 ![An image of Flipper RPC call with true](./assets/flipper-true.png)
 
-Woohoo! You deployed your first smart contract!
+## Using `cargo-contract`
+
+TODO

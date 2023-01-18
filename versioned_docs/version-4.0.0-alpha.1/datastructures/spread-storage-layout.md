@@ -3,6 +3,8 @@ title: Spread Storage Layout
 slug: /datastructures/spread-storage-layout
 ---
 
+**TODO: Beware, this page is no longer up to date for 4.0!**
+
 ### Storage Organization
 
 The following schema depicts the storage which is exposed
