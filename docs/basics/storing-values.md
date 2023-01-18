@@ -53,16 +53,16 @@ Here is an example of a structure storing `String` and  `Hash` values.
 ```rust
 pub struct Auction {
     /// Branded name of the auction event.
-        name: String,
-        /// Some hash identifying the auction subject.
-        subject: Hash,
-         /// Auction status.
-         status: Status, //Enum: Usage shown in next section
-        /// Candle auction can have no winner.
-        /// If auction is finalized, that means that the winner is determined.
-        finalized: bool,
-        /// vector
-        vector: Vec<u8>,
+    name: String,
+    /// Some hash identifying the auction subject.
+    subject: Hash,
+    /// Auction status.
+    status: Status, // Enum: Usage shown in next section
+    /// Candle auction can have no winner.
+    /// If auction is finalized, that means that the winner is determined.
+    finalized: bool,
+    /// vector
+    vector: Vec<u8>,
 }
 ```
 
