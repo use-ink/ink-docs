@@ -37,16 +37,6 @@ module.exports = {
       },
       items: [
         {
-          href: 'https://github.com/paritytech/ink',
-          label: 'ink! GitHub',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/paritytech/ink-docs',
-          label: 'Docs GitHub',
-          position: 'right',
-        },
-        {
           type: 'docsVersionDropdown',
           position: 'right',
           dropdownActiveClassDisabled: true,
