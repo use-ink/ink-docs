@@ -72,13 +72,13 @@ Enum can be used as a datatype in `struct` as depicted above in `struct Auction`
 
 ```rust
 pub enum Status {
-        /// An auction has not started yet.
-        NotStarted,
-        /// We are in the starting period of the auction, collecting initial bids.
-        OpeningPeriod,
-        /// We are in the ending period of the auction, where we are taking snapshots of the winning
-        /// bids. 
-    }
+    /// An auction has not started yet.
+    NotStarted,
+    /// We are in the starting period of the auction, collecting initial bids.
+    OpeningPeriod,
+    /// We are in the ending period of the auction, where we are taking snapshots
+    /// of the winning bids. 
+}
 ```
 The values of enum should be referenced as `Status::OpeningPeriod`
 ## Initializing Storage in Constructors
