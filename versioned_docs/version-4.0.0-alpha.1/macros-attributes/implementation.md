@@ -23,7 +23,6 @@ if none of its interior items have any ink! specific attributes on them:
 
 ```rust
 use core::convert::TryFrom;
-use ink_lang_ir as ir;
 
 #[ink::contract]
 mod my_module {

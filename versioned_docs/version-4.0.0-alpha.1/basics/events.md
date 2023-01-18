@@ -11,8 +11,6 @@ The following example ink! contract shows how an event `Transferred` is defined 
 emitted in the `#[ink(constructor)]`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     /// Defines an event that is emitted

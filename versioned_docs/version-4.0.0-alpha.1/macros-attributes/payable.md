@@ -16,8 +16,6 @@ Note that ink! constructors are always implicitly payable and thus cannot be fla
 as such.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
 

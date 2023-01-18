@@ -3,6 +3,8 @@ title: Custom Data Structures
 slug: /datastructures/custom-datastructure
 ---
 
+**TODO: Beware, this page is no longer up to date for 4.0!**
+
 While the `ink_storage` crate provides tons of useful utilities and data structures to organize and manipulate the contract's storage contract authors are not limited by its capabilities. By implementing the core `SpreadLayout`/`PackedLayout` traits (and the `StorageLayout` trait for supporting the metadata generated for the `.contract` bundle) users are able to define their very own custom storage data structures with their own set of requirement and features that work along the `ink_storage` data structures as long as they fulfill the mere requirements stated by those two traits.
 
 A basic example of a custom struct is shown below:
@@ -41,4 +43,4 @@ impl SpreadLayout for Inner {
 
 ```
 
-You can check what each method does in the [trait's docs](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.SpreadLayout.html). Check how some data structures are implemented, such as [Mapping](https://docs.rs/ink_storage/3.3.1/src/ink_storage/lazy/mapping.rs.html#113).
+You can check what each method does in the [trait's docs](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/traits/trait.SpreadLayout.html). Check how some data structures are implemented, such as [Mapping](https://docs.rs/ink_storage/4.0.0-beta/src/ink_storage/lazy/mapping.rs.html#113).

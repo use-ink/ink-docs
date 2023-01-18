@@ -126,7 +126,7 @@ main repository.
 
 A contract can be compiled from its directory via:
 ``` 
-$ cargo +nightly contract build
+$ cargo contract build
 ```
 
 and tested via:

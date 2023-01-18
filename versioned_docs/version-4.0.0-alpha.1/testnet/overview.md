@@ -34,7 +34,7 @@ If everything worked out, the teleported ROC tokens will show up under
 [the "Accounts" tab for `Contracts`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
 
 Once you have ROC on `Contracts` you can deploy a contract as you would normally.
-If you're unsure about this, our [guided tutorial](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1/)
+If you're unsure about this, our [guided tutorial](https://docs.substrate.io/tutorials/smart-contracts/)
 will clarify that for you in no time.
 
 

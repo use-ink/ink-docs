@@ -25,6 +25,8 @@ With this pattern, contract code like the ERC20 standard can be put on the block
 time, but instantiated any number of times. No need to continually upload the same source code over
 and waste space on the blockchain.
 
+## Using the Contracts UI
+
 ### 1. Upload Contract Code
 
 Here we will upload the contract code and instantiate one copy of the contract on the blockchain
@@ -66,3 +68,7 @@ creation of a new account (`system.NewAccount`) and the instantiation of the con
 You will be redirected to a new page, where you can interact with the newly created contract instance.
 
 ![Flipper Instantiate Success](./assets/flipper-instantiate-04.png)
+
+## Using `cargo-contract`
+
+TODO
