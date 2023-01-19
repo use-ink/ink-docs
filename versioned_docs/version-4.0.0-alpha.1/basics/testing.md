@@ -3,6 +3,11 @@ title: Contract Testing
 slug: /basics/contract-testing
 ---
 
+<img src="/img/testing.png" alt="Smart contracts parachain on Rococo" />
+
+ink! supports different stages of testing for different purposes.
+We'll explain on this page what each stage is about and how to use it.
+
 ## Unit Tests
 
 Testing contracts off-chain is done by `cargo test` and users can simply use the standard routines
@@ -93,7 +98,6 @@ mod tests {
     }
 }
 ```
-
 
 ## End-to-End Testing
 

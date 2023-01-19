@@ -1,8 +1,16 @@
 ---
 title: Frequently Asked Questions
+hide_title: true
 slug: /faq
 hide_table_of_contents: true
 ---
+
+<header>
+    <h1 class="customTitle">
+        <img src="/img/icons/faq.svg" />
+        Frequently Asked Questions
+    </h1>
+</header>
 
 ### Is it "ink" or "ink!"? What does the "!" stand for?
 
