@@ -11,6 +11,12 @@ slug: /ink-vs-solidity
     </h1>
 </header>
 
+:::caution
+TODO
+
+Update this page for ink! 4.0 and fix the formatting in the code.
+:::
+
 Here is a brief comparison of features between ink! and Solidity:
 
 <div class="comparison">
