@@ -37,6 +37,8 @@ See the [flipper example](https://github.com/paritytech/ink/blob/master/examples
 
 ## Off-chain Testing
 
+TODO: mention that only supports `DefaultEnvironment`
+
 ink! smart contracts can compile in several different modes.
 There are two main compilation models using either
 - on-chain mode: `no_std` + WebAssembly as target

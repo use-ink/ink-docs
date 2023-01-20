@@ -3,7 +3,11 @@ title: Working with Mapping
 slug: /datastructures/mapping
 ---
 
-**TODO: Beware, this page is no longer up to date for 4.0!**
+:::caution
+TODO
+
+Beware, this page is no longer up to date for 4.0!
+:::
 
 In this section we want to demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Mapping.html).
 

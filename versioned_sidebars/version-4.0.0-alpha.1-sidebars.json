@@ -65,7 +65,8 @@
       "datastructures/overview",
       "datastructures/mapping",
       "datastructures/spread-storage-layout",
-      "datastructures/custom"
+      "datastructures/custom",
+      "datastructures/storage-in-metadata"
     ],
     "Examples": [
       "examples/overview"
