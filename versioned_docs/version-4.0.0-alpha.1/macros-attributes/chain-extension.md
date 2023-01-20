@@ -3,7 +3,9 @@ title: "#[ink::chain_extension]"
 slug: /macros-attributes/chain-extension
 ---
 
-__TODO: check if this is still up to date for 4.0__
+:::caution
+TODO: update this page for ink! 4.0
+:::
 
 In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
 via its well defined set of basic smart contract interface. This API already allows a whole variety of

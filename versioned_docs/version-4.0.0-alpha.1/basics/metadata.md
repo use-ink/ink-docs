@@ -5,7 +5,9 @@ slug: /metadata
 
 # ink! Metadata
 
-__TODO check if still up-to-date for ink! 4.0__
+:::caution
+TODO: update this page for ink! 4.0
+:::
 
 The ink! metadata is used to describe a contract in a language agnostic way. It is
 intended to be used by third party tools (e.g UIs, block explorers) in order to correctly
