@@ -12,7 +12,7 @@ Here is a brief comparison of features between ink! and Solidity:
 | Virtual Machine       | Any Wasm VM                 | EVM           |
 | Encoding              | Wasm                        | EVM Byte Code |
 | Language              | Rust                        | Standalone    |
-| Overflow Protection   | Enabled by default          | None          |
+| Overflow Protection   | Enabled by default          | Yes           |
 | Constructor Functions | Multiple                    | Single        |
 | Tooling               | Anything that supports Rust | Custom        |
 | Versioning            | Semantic                    | Semantic      |
