@@ -35,8 +35,8 @@ Let's take a look at the structure of the `metadata.json`:
     "messages": [...],
   },
   "storage": {...},
-  "types": [...]
-  "version": "4",
+  "types": [...],
+  "version": "4"
 }
 ```
 
