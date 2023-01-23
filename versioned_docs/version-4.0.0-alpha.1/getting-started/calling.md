@@ -8,7 +8,7 @@ two functions: `flip()` and `get()`. We will show you what it's like to play wit
 
 ## Using the Contracts UI
 
-### 1. get() function
+### 1. `get()` function
 
 We set the initial value of the Flipper contract
 `value` to `false` when we instantiated the contract. Let's check that this is the case.
@@ -20,7 +20,7 @@ Press **"Read"** and confirm that it returns the value `false`:
 
 ![An image of Flipper RPC call with false](./assets/flipper-false.png)
 
-### 2. flip() function
+### 2. `flip()` function
 
 So let's make the value turn `true` now!
 
@@ -34,4 +34,23 @@ If the transaction was successful, we should then be able to go back to the `get
 
 ## Using `cargo-contract`
 
-TODO
+The above can be done via the command-line as well. 
+
+### 1. `get()` function
+
+```bash
+cargo contract build
+cargo contract upload --suri //Alice
+
+cargo contract instantiate --suri //Alice --args true
+# The output of this command will contain the contract address,
+# insert it in the command below.
+
+cargo contract call --contract ... --message get  --dry-run --suri //Alice
+```
+
+### 2. `flip()` function
+
+```bash
+cargo contract call --contract ... --message flip --suri //Alice
+```

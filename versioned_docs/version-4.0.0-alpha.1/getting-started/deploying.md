@@ -71,4 +71,11 @@ You will be redirected to a new page, where you can interact with the newly crea
 
 ## Using `cargo-contract`
 
-TODO
+Contracts can be deployed via the command-line as well. With `cargo-contract`
+it's just a simple sequence of:
+
+```bash
+cargo contract build
+cargo contract upload --suri //Alice
+cargo contract instantiate --suri //Alice --args true
+```
