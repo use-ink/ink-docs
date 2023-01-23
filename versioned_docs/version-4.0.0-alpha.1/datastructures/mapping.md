@@ -20,8 +20,8 @@ case, each "user" gets credited their own balance.
 
 ## A simple working example
 
-The following example constitues a contract where anyone can deposit and withdraw balances. 
-This functionality is realized using the `Mapping`.
+The following example contract utilizes a `Mapping` so that anyone can deposit and withdraw 
+balance for their own account:
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std)]
@@ -37,7 +37,7 @@ mod mycontract {
     }
 
     impl MyContract {
-        /// Constructor that initializes the contract with an empty mapping.
+        /// Constructor to initialize the contract with an empty mapping.
         #[ink(constructor, payable)]
         pub fn new() -> Self {
             let balances = Mapping::default();
@@ -60,7 +60,7 @@ mod mycontract {
             self.balances.insert(caller, &(balance + endowment));
         }
 
-        /// Withdraw any balance from the contract.
+        /// Withdraw all your balance from the contract.
         pub fn withdraw(&mut self) {
             let caller = self.env().caller();
             let balance = self.balances.get(caller).unwrap();
@@ -78,10 +78,10 @@ mod mycontract {
 
 The attentive reader has noticed that accessing mapping values via the `get()` function will
 result in an owned value (a local copy), as opposed to a direct reference into the storage. 
-Changes to this value will not be reflected in the contracts storage "automatically". To 
+Changes to this value won't be reflected in the contracts storage "automatically". To 
 avoid this common pitfall, the value must be inserted again at the same key after it was modified.
 
-### Loading Behaviour
+### Storage loading behaviour
 
 Each mapping value lives under it's own storage key. Briefly, this means that mappings are 
 lazyly loaded in ink!. In other words, if your message does only access a single key of a 
