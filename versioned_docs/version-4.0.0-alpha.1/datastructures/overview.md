@@ -19,4 +19,4 @@ functionality themselves.
 layout of individual types. Conceivably, it may be desirable to change certain aspects
 on how your contract deals with it's storage variables. You can find out more about this
 in the section about the ink!
-[Storage Layout](https://use.ink/datastructures/spread-storage-layout).
+[Storage Layout](https://use.ink/datastructures/storage-layout).

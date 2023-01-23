@@ -1,6 +1,6 @@
 ---
 title: Spread Storage Layout
-slug: /datastructures/spread-storage-layout
+slug: /datastructures/storage-layout
 ---
 
 :::caution
