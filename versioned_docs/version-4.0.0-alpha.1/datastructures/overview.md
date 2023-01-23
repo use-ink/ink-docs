@@ -4,15 +4,16 @@ slug: /datastructures/overview
 ---
 
 The `ink_storage` crate acts as the standard storage library for ink! smart contracts. At
-the moment it only provides a single low-level primitive for interacting with storage,
-the [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Mapping.html).
+the moment it provides two primitives for interacting with storage,
+[`Mapping`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Mapping.html)
+and [`Lazy`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Lazy.html).
 
-The `Mapping` is a mapping of key-value pairs directly to the contract storage. Its main advantage
-is to be simple and lightweight. As such, it does not provide any high-level
-functionality, such as iteration or automatic clean-up. Smart contract authors will need
-to implement any high level functionality themselves.
+The `Mapping` is a mapping of key-value pairs directly to the contract storage. It is very
+similar to a traditional hash table and its main advantage is being simple and lightweight.
+Hence, it does not provide any high-level functionality, such as iteration or automatic
+clean-up. Smart contract authors will need to implement any high level functionality themselves.
 
-## Eager Loading
+## Eager Loading vs. Lazy Loading
 
 When executing a contract, all the fields of the `#[ink(storage)]` struct will be pulled
 from storage, regardless of whether or not they are used during the message execution.
