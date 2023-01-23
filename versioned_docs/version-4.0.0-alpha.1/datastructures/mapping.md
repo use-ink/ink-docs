@@ -3,76 +3,86 @@ title: Working with Mapping
 slug: /datastructures/mapping
 ---
 
-:::caution
-TODO
+In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Mapping.html).
 
-Beware, this page is no longer up to date for 4.0!
-:::
-
-In this section we want to demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Mapping.html).
-
-Here is an example of a mapping from a user to a number:
+Here is an example of a mapping from a user to a `Balance`:
 
 ```rust
 #[ink(storage)]
-#[derive(SpreadAllocate)]
 pub struct MyContract {
-    // Store a mapping from AccountIds to a u32
-    map: ink_storage::Mapping<AccountId, u32>,
+    /// Assign a balance to every account.
+    balances: ink::storage::Mapping<AccountId, Balance>,
 }
 ```
 
 This means that for a given key, you can store a unique instance of a value type. In this
-case, each "user" gets their own number. 
+case, each "user" gets credited their own balance. 
 
-## Initializing a Mapping
+## A simple working example
 
-In order to correctly initialize a `Mapping` we need two things:
-1. An implementation of the [`SpreadAllocate`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/traits/trait.SpreadAllocate.html) trait on our storage struct
-2. The [`ink_lang::utils::initalize_contract`](https://docs.rs/ink_lang/4.0.0-beta/ink_lang/utils/fn.initialize_contract.html) initializer
-
-Not initializing storage before you use it is a common mistake that can break your smart
-contract. If you do not initialize your `Mapping`'s correctly you may end up with
-different `Mapping`'s operating on the same set of storage entries 😱.
+The following example constitues a contract where anyone can deposit and withdraw balances. 
+This functionality is realized using the `Mapping`.
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std)]
 
 #[ink::contract]
 mod mycontract {
-    use ink_storage::traits::SpreadAllocate;
+    use ink::storage::Mapping;
 
     #[ink(storage)]
-    #[derive(SpreadAllocate)]
     pub struct MyContract {
-        // Store a mapping from AccountIds to a u32
-        map: ink_storage::Mapping<AccountId, u32>,
+        /// Assign a balance to every account ID
+        balances: Mapping<AccountId, Balance>,
     }
 
     impl MyContract {
-        #[ink(constructor)]
-        pub fn new(count: u32) -> Self {
-            // This call is required in order to correctly initialize the
-            // `Mapping`s of our contract.
-            ink_lang::utils::initialize_contract(|contract: &mut Self| {
-                let caller = Self::env().caller();
-                contract.map.insert(&caller, &count);
-            })
+        /// Constructor that initializes the contract with an empty mapping.
+        #[ink(constructor, payable)]
+        pub fn new() -> Self {
+            let balances = Mapping::default();
+            Self { balances }
         }
 
-        #[ink(constructor)]
-        pub fn default() -> Self {
-            // Even though we're not explicitly initializing the `Mapping`,
-            // we still need to call this
-            ink_lang::utils::initialize_contract(|_| {})
-        }
-
-        // Grab the number at the caller's AccountID, if it exists
+        /// Retreive the balance of the caller.
         #[ink(message)]
-        pub fn get(&self) -> u32 {
-            let caller = Self::env().caller();
-            self.map.get(&caller).unwrap_or_default()
+        pub fn get_balance(&self) -> Option<Balance> {
+            let caller = self.env().caller();
+            self.balances.get(caller)
+        }
+
+        /// Credit more money to the contract.
+        #[ink(message, payable)]
+        pub fn transfer(&mut self) {
+            let caller = self.env().caller();
+            let balance = self.balances.get(caller).unwrap_or(0);
+            let endowment = self.env().transferred_value();
+            self.balances.insert(caller, &(balance + endowment));
+        }
+
+        /// Withdraw any balance from the contract.
+        pub fn withdraw(&mut self) {
+            let caller = self.env().caller();
+            let balance = self.balances.get(caller).unwrap();
+            self.balances.remove(caller);
+            self.env().transfer(caller, balance).unwrap()
         }
     }
 }
+
 ```
+
+## Considerations when using the `Mapping` type
+
+### Updating values
+
+The attentive reader has noticed that accessing mapping values via the `get()` function will
+result in an owned value (a local copy), as opposed to a direct reference into the storage. 
+Changes to this value will not be reflected in the contracts storage "automatically". To 
+avoid this common pitfall, the value must be inserted again at the same key after it was modified.
+
+### Loading Behaviour
+
+Each mapping value lives under it's own storage key. Briefly, this means that mappings are 
+lazyly loaded in ink!. In other words, if your message does only access a single key of a 
+mapping, it will not load the whole mapping but only the value being accessed.
