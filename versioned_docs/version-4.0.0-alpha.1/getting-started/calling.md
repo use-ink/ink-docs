@@ -85,7 +85,7 @@ cargo contract instantiate --suri //Alice --args true
 # The output of this command will contain the contract address,
 # insert it in the command below.
 
-cargo contract call --contract ... --message get  --dry-run --suri //Alice
+cargo contract call --contract ... --message get --dry-run --suri //Alice
 ```
 
 ### 2. `flip()` function
