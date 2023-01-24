@@ -90,7 +90,7 @@ ink! contracts can be deployed on a few different options:
 ## Dependencies
 
 The first step in CosmWasm development is to
-[install dependencies](https://docs.cosmwasm.com/docs/1.0/getting-started/installation),
+[install dependencies](https://docs.cosmwasm.com/docs/getting-started/installation),
 namely Go, Rust and `wasmd`.
 
 For ink! you can also find [a setup guide](/getting-started/setup) which will help you
@@ -99,7 +99,7 @@ with dependencies, namely Rust, `cargo-contract` and `substrate-contracts-node`.
 ## Environment Setup
 
 The next step in the CosmWasm development workflow is
-[setting up the environment](https://docs.cosmwasm.com/docs/1.0/getting-started/setting-env).
+[setting up the environment](https://docs.cosmwasm.com/docs/getting-started/setting-env).
 That consists mainly of configuring `wasmd` such that it has prefunded accounts that are able
 to interact with the network.
 
@@ -126,7 +126,7 @@ main repository.
 
 A contract can be compiled from its directory via:
 ``` 
-$ cargo +nightly contract build
+$ cargo contract build
 ```
 
 and tested via:
@@ -137,7 +137,7 @@ $ cargo test
 ## Deploy and Interact
 
 CosmWasm contracts are deployed and instantiated with help of the `wasmd` executable. The
-list of step is provided [here](https://docs.cosmwasm.com/docs/1.0/getting-started/interact-with-contract).
+list of step is provided [here](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract).
 
 It is possible to deploy and interact with ink! contracts using either a CLI
 (`cargo-contract`), or a web UI ([`contracts-ui`](https://contracts-ui.substrate.io/)).

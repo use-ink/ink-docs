@@ -1,8 +1,16 @@
 ---
 title: Frequently Asked Questions
+hide_title: true
 slug: /faq
 hide_table_of_contents: true
 ---
+
+<header>
+    <h1 class="customTitle">
+        <img src="/img/icons/faq.svg" />
+        Frequently Asked Questions
+    </h1>
+</header>
 
 ### Is it "ink" or "ink!"? What does the "!" stand for?
 
@@ -82,7 +90,7 @@ See the [Chain Extensions](/macros-attributes/chain-extension) section for more 
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
-Please see [the `env_types` argument](https://docs.rs/ink_lang_macro/3.3.1/ink_lang_macro/attr.contract.html#header-arguments)
+Please see [the `env_types` argument](https://docs.rs/ink_lang_macro/4.0.0-beta/ink_lang_macro/attr.contract.html#header-arguments)
 for the contract macro. It allows you to specify your environment a la 
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -122,8 +130,8 @@ The contract storage is built on top of the runtime storage, and access is consi
 ### How do I print something to the console from the runtime?
 
 You can use those two macros:
-* [`ink_env::debug_println!`](https://docs.rs/ink_env/3.3.1/ink_env/macro.debug_println.html)
-* [`ink_env::debug_print!`](https://docs.rs/ink_env/3.3.1/ink_env/macro.debug_print.html)
+* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_println.html)
+* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_print.html)
 
 There are three things you have to do for the debug messages to show up on the console:
 
@@ -137,7 +145,7 @@ you compile a contract in `--release` mode.
 1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
   For example, to have only errors and debug output show up for the `substrate-contracts-node`: 
   ```
-  substrate-contracts-node --dev --tmp -lerror,runtime::contracts=debug
+  substrate-contracts-node --dev -lerror,runtime::contracts=debug
   ```
 
 __Important: Debug output is only printed for RPC calls or off-chain tests ‒ not for transactions!__
@@ -147,7 +155,7 @@ In your ink! message or constructor you can write the following:
 ```rust
 #[ink(constructor)]
 fn new() -> Self {
-    ink_env::debug_println!("created new instance at {}", Self::env().block_number());
+    ink::env::debug_println!("created new instance at {}", Self::env().block_number());
     Self { }
 }
 
@@ -155,7 +163,7 @@ fn new() -> Self {
 fn print(&self) {
    let caller = self.env().caller();
    let message = ink_prelude::format!("got a call from {:?}", caller);
-   ink_env::debug_println!(&message);
+   ink::env::debug_println!(&message);
 }
 ```
 
@@ -190,26 +198,19 @@ Rust's standard library consists of three different layers:
    tries to provide some common functionality that would otherwise be missing for common smart contract
    operations.
 
-### Why is `nightly` required for ink!?
-
-ink! requires a `nightly` Rust compiler as of 2021-01 since it relies on a few unstable nightly features
-around allocation handlers for `no_std` (no standard library) code.
-
-As soon as the Rust team decides to stabilize these features ink! will be available for stable Rust.
-
 ### How do I hash a value?
 
 A number of crypto hashes are built into the [contracts-pallet](/how-it-works) and
 therefore very efficient to use. We currently support a handful of those, you 
-can view the complete list [here](https://docs.rs/ink_env/3.3.1/ink_env/hash/trait.CryptoHash.html).
+can view the complete list [here](https://docs.rs/ink_env/4.0.0-beta/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
 [Chain Extensions](/macros-attributes/chain-extension)
 or make a proposal to include it into the default set of the `contracts-pallet`.
 
 Using one of the built-in crypto hashes can be done as explained here:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_encoded.html)
 
 ### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
 

@@ -97,3 +97,19 @@ h1 {
   text-align: center;
   margin: 25px 0px;
 }
+
+.customTitle {
+  margin-top: 8px;
+}
+
+.customTitle img {
+  height: 60px;
+  float: left;
+  margin-top: 2px;
+  margin-right: 15px;
+}
+
+.admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module svg {
+  width: 2.2em !important;
+  height: 2.2em !important;
+}

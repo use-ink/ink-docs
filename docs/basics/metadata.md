@@ -46,9 +46,9 @@ It may _optionally_ contain the following keys:
     ]
   },
   "V3": {
-    "spec": { ... },
-    "storage": { ... },
-    "types": { ... }
+    "spec": {...},
+    "storage": {...},
+    "types": {...}
   }
 }
 ```

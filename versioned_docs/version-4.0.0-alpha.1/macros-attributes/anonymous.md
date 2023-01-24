@@ -15,3 +15,15 @@ defined events.
 The signature of the event is by default one of the topics of the event, except
 if you annotate the event with `#[ink(anonymous)]`.
 The attribute implies that it is not possible to filter for specific anonymous events by name.
+
+## Example
+
+```rust
+#[ink(event)]
+#[ink(anonymous)]
+pub struct MyEvent {
+    #[ink(topic)]
+    field_1: i32,
+    field_2: bool,
+}
+```

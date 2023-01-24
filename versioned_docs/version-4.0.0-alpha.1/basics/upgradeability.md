@@ -80,7 +80,7 @@ impl Proxy {
     ///   have any effect whatsoever on the contract we forward to.
     #[ink(message, payable, selector = _)]
     pub fn forward(&self) -> u32 {
-        ink_env::call::build_call::<ink_env::DefaultEnvironment>()
+        ink::env::call::build_call::<ink::env::DefaultEnvironment>()
             .call_type(
                 Call::new()
                     .callee(self.forward_to)
@@ -88,7 +88,7 @@ impl Proxy {
                     .gas_limit(0),
             )
             .call_flags(
-                ink_env::CallFlags::default()
+                ink::env::CallFlags::default()
                     .set_forward_input(true)
                     .set_tail_call(true),
             )
@@ -139,13 +139,13 @@ Just add the following function to the contract you want to upgrade in the futur
 /// can execute this method. In a production contract you would do some authorization here.
 #[ink(message)]
 pub fn set_code(&mut self, code_hash: [u8; 32]) {
-    ink_env::set_code_hash(&code_hash).unwrap_or_else(|err| {
+    ink::env::set_code_hash(&code_hash).unwrap_or_else(|err| {
         panic!(
             "Failed to `set_code_hash` to {:?} due to {:?}",
             code_hash, err
         )
     });
-    ink_env::debug_println!("Switched code hash to {:?}.", code_hash);
+    ink::env::debug_println!("Switched code hash to {:?}.", code_hash);
 }
 ```
 
@@ -230,4 +230,4 @@ for more details.
 ## Examples
 
 Examples of upgradable contracts can be found in the 
-[ink! repository](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts)
+[ink! repository](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts).

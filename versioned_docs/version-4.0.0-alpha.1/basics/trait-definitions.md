@@ -16,8 +16,6 @@ for an elaborate example which uses trait definitions.
 Defined in the `base_erc20.rs` module.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::trait_definition]
 pub trait BaseErc20 {
     /// Creates a new ERC-20 contract and initializes it with the initial supply for the instantiator.
@@ -37,8 +35,6 @@ pub trait BaseErc20 {
 An ink! smart contract definition can then implement this trait definition as follows:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     use base_erc20::BaseErc20;
@@ -97,14 +93,13 @@ Marks trait definitions to ink! as special ink! trait definitions.
 
 There are some restrictions that apply to ink! trait definitions that
 this macro checks. Also ink! trait definitions are required to have specialized
-structure so that the main [`#[ink::contract]`](https://docs.rs/ink_lang/3.3.1/ink_lang/attr.contract.html) macro can
+structure so that the main [`#[ink::contract]`](https://docs.rs/ink_lang/4.0.0-beta/ink_lang/attr.contract.html) macro can
 properly generate code for its implementations.
 
 # Example: Definition
 
 ```rust
-use ink_lang as ink;
-type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
+type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
 
 #[ink::trait_definition]
 pub trait Erc20 {
@@ -125,8 +120,6 @@ pub trait Erc20 {
 Given the above trait definition you can implement it as shown below:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod base_erc20 {
     /// We somehow cannot put the trait in the doc-test crate root due to bugs.

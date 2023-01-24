@@ -10,6 +10,10 @@ module.exports = {
     ],
     'Monthly Update': [
       'monthly-update/overview',
+      'monthly-update/2023/01',
+      'monthly-update/2022/12',
+      'monthly-update/2022/11',
+      'monthly-update/2022/10',
       'monthly-update/2022/09',
       'monthly-update/2022/08',
       'monthly-update/2022/07',
@@ -69,6 +73,9 @@ module.exports = {
     ],
     'Live Testnet': [
       'testnet/overview',
+    ],
+    'Third Party Tools': [
+      'third-party-tools/openbrush'
     ],
     'FAQ': [
       'faq/faq',

@@ -39,18 +39,18 @@ You will see at the bottom of the source code there are simple test cases which 
 In your project folder run:
 
 ```bash
-cargo +nightly test
+cargo test
 ```
 
 To which you should see a successful test completion:
 
 ```bash
-$ cargo +nightly test
-    running 2 tests
-    test flipper::tests::it_works ... ok
-    test flipper::tests::default_works ... ok
+$ cargo test
+running 2 tests
+test flipper::tests::it_works ... ok
+test flipper::tests::default_works ... ok
 
-    test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
 Now that we are feeling confident things are working, we can actually compile this contract to Wasm in the next step.

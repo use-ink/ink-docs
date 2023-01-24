@@ -1,7 +1,15 @@
 ---
-title: How it Works ‒ Substrate
+title: How it Works – Substrate
+hide_title: true
 slug: /how-it-works
 ---
+
+<header>
+    <h1 class="customTitle">
+        <img src="/img/icons/substrate.svg" />
+        How it Works – Substrate
+    </h1>
+</header>
 
 <div class="schema">
     <img src="/img/how-it-works.svg" alt="How it Works" />

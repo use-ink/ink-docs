@@ -5,12 +5,16 @@ slug: /metadata
 
 # ink! Metadata
 
+:::caution
+TODO: update this page for ink! 4.0
+:::
+
 The ink! metadata is used to describe a contract in a language agnostic way. It is
 intended to be used by third party tools (e.g UIs, block explorers) in order to correctly
 call contract functions and interpret events.
 
 The ink! metadata is generated when a contract is built using `cargo-contract`, e.g
-`cargo +nightly contract build`.
+`cargo contract build`.
 
 The metadata can be found in your contract's target directory under the name
 `metadata.json`.
@@ -77,8 +81,8 @@ It may _optionally_ include the following keys:
 ```json
 "source": {
   "hash": "0x157014494527fee27a82e49bbd9eea10c0713bb0566f6def37f4595db86236ff",
-  "language": "ink! 3.1.0",
-  "compiler": "rustc 1.63.0-nightly"
+  "language": "ink! 4.0.0",
+  "compiler": "rustc 1.66.0"
 }
 ```
 

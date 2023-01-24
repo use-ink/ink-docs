@@ -31,9 +31,6 @@ ink! also provides a `Mapping` storage type. You can read more about it [here](/
 Here is an example of how you would store an `AccountId` and `Balance`:
 
 ```rust
-// We are importing the default ink! types
-use ink_lang as ink;
-
 #[ink::contract]
 mod MyContract {
 
@@ -49,6 +46,42 @@ mod MyContract {
 }
 ```
 
+Here is an example of a structure storing `String` and  `Hash` values.
+
+```rust
+pub struct Auction {
+    /// Branded name of the auction event.
+    name: String,
+    /// Some hash identifying the auction subject.
+    subject: Hash,
+    /// Auction status.
+    status: Status, // Enum: Usage shown in next section
+    /// Candle auction can have no winner.
+    /// If auction is finalized, that means that the winner is determined.
+    finalized: bool,
+    /// vector
+    vector: Vec<u8>,
+}
+```
+
+## Use of enum
+
+Enum can be used as a datatype in `struct` as depicted above in `struct Auction`
+
+```rust
+pub enum Status {
+    /// An auction has not started yet.
+    NotStarted,
+    /// We are in the starting period of the auction, collecting initial bids.
+    OpeningPeriod,
+    /// We are in the ending period of the auction, where we are taking snapshots
+    /// of the winning bids. 
+}
+```
+
+The values of an enum should be referenced as `Status::OpeningPeriod`.
+
+
 ## Initializing Storage in Constructors
 
 Constructors are how values get initialized.
@@ -59,8 +92,6 @@ Note that if you have a contract whose storage contains `Mapping'`s you will nee
 [`Mapping` documentation](/datastructures/mapping) for more details.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod mycontract {
 
