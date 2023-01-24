@@ -4,7 +4,7 @@ slug: /datastructures/custom-datastructure
 ---
 
 While the `ink_storage` crate provides useful utilities and data structures to organize and 
-manipulate the contract's storage contract authors are not limited by its capabilities. 
+manipulate the contract's storagem, contract authors are not limited by its capabilities. 
 
 ## Using custom types on storage
 Any custom type wanting to be compatible with ink! storage must implement the 
@@ -35,8 +35,8 @@ pub struct MyContractStorage {
 }
 ```
 
-Even better: there is a macro `#[ink::storage_item]`, which derives all necessary traits for you. Unless you need to implement any behaviour, the above code example can be 
-simplified as follows:
+Even better: there is a macro `#[ink::storage_item]`, which derives all necessary traits for you. If there is no need to implement any special behaviour, the above code example 
+can be simplified further as follows:
 
 ```rust
 /// A custom type on our contract storage
@@ -50,4 +50,66 @@ pub struct SparseArray {
     inner: Inner,
 }
 ```
+
+## Generic storage structs
+
+It is possible to use generic data types in your storage, as long as any generic type 
+satisfies the required storage trait bounds.
+
+Let's say you want a mapping where accessing a non-existant key should just return 
+it's default value, akin to how mappings work in Solidity. Additionally, you want to know 
+how many values there are in the mapping (its length). This could be implemented as a 
+thin wrapper around the ink! `Mapping` as follows: 
+
+
+```rust
+/// Values for this map need to implement the `Default` trait.
+#[ink::storage_item]
+pub struct DefaultMap<K, V: Packed + Default> {
+    values: Mapping<K, V>,
+    length: u32,
+}
+
+impl<K: Encode, V: Packed + Default> DefaultMap<K, V> {
+    /// Accessing non-existant keys will return the default value.
+    pub fn get(&self, key: &K) -> V {
+        self.values.get(key).unwrap_or_default()
+    }
+
+    /// Inserting into the map increases it's length by one.
+    pub fn set<I, E>(&mut self, key: I, value: &E)
+    where
+        I: scale::EncodeLike<K>,
+        E: scale::EncodeLike<V> + Storable,
+    {
+        if self.values.insert(key, value).is_none() {
+            self.length += 1
+        }
+    }
+
+    /// Removing a value from the map decreases it's length by one.
+    pub fn remove(&mut self, key: &K) {
+        if self.values.take(key).is_some() {
+            self.length -= 1
+        }
+    }
+
+    /// Return how many values the mapping contains
+    pub fn len(&self) -> u32 {
+        self.length
+    }
+}
+
+/// `DefaultMap` is compatible with contract storage.
+#[ink(storage)]
+pub struct MyContract {
+    my_map: DefaultMap<BlockNumber, Balance>,
+}
+```
+
+:::caution
+
+Generic data types may substantially increase your contracts overall code size.
+
+:::
 

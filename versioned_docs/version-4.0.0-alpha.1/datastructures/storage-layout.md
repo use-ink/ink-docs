@@ -42,8 +42,8 @@ To solve this problem we need to turn our storage into a `Non-Packed` layout som
 ## Eager Loading vs. Lazy Loading
 With the [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive, 
 ink! provides means of breaking the storage up into smaller pieces, which can be loaded 
-on demand. Wrapping any storage field inside a `Lazy` struct makes the storage 
-`Non-Packed`, preventing it being eagerly loaded by arbitrary storage operations.
+on demand. Wrapping any storage field inside a `Lazy` struct makes the storage also 
+`Non-Packed`, preventing it from being eagerly loaded during arbitrary storage operations.
 
 The following example demonstrates how we can solve the problem introduced in the above 
 section. You'll notice that for the lazily loaded storage field, we now work with getters 

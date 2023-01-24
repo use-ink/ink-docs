@@ -76,13 +76,18 @@ mod mycontract {
 
 ### Updating values
 
-The attentive reader has noticed that accessing mapping values via the `get()` function will
-result in an owned value (a local copy), as opposed to a direct reference into the storage. 
-Changes to this value won't be reflected in the contracts storage "automatically". To 
-avoid this common pitfall, the value must be inserted again at the same key after it was modified.
+The attentive reader may have noticed that accessing mapping values via the `get()` 
+function will result in an owned value (a local copy), as opposed to a direct reference 
+into the storage. Changes to this value won't be reflected in the contracts storage 
+"automatically". To avoid this common pitfall, the value must be inserted again at the same 
+key after it was modified.
 
 ### Storage loading behaviour
 
 Each mapping value lives under it's own storage key. Briefly, this means that mappings are 
 lazyly loaded in ink!. In other words, if your message does only access a single key of a 
 mapping, it will not load the whole mapping but only the value being accessed.
+
+Furthermore, this implies that it is not possible to iterate over the contents of a map. 
+Circumventing this feature by storing populated keys inside a `Vec` is not adviseable 
+as this might result in very high gas costs.
