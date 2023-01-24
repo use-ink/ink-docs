@@ -29,7 +29,7 @@ See [here](https://wiki.polkadot.network/docs/learn-account-generation) for a de
 
 ### (2) Get Testnet Tokens
 
-As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-rococo-tokens).
+As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
 This is a chat room in which you need to write:
 
 ```
