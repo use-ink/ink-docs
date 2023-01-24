@@ -57,4 +57,27 @@ and configure the [Contracts UI](https://github.com/paritytech/contracts-ui) to 
 
 ## Debug vs. Release Build
 
-TODO
+By default, `cargo-contract` builds the contract in debug mode. This means
+that the contract will e.g. print statements like
+
+```rust
+ink::env::debug_println!("magic number: {}", value);
+```
+
+to the node's console if debugging was enabled on the node ([instructions here](/faq#how-do-i-print-something-to-the-console-from-the-runtime)).
+To support functionality like this the debug build of a contract includes some
+heavy-weight logic.
+
+For contracts that are supposed to run in production you should always build the
+contract with `--release`:
+
+```bash
+cargo contract build --release
+```
+
+This will ensure that nothing unnecessary is compiled into the Wasm blob, making
+your contract faster and cheaper to deploy and execute.
+
+:::info
+With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs.
+:::

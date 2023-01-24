@@ -69,7 +69,7 @@ repository acts as the basic template for a generic Cosmos node. With the additi
 [wasmd](https://github.com/CosmWasm/wasmd), the entry point for CosmWasm development.
 
 In terms of Substrate, `substrate-node-template` is a basic generic template of a node.
-Similar to `x/wasm`, [`pallet-contracts`[(https://github.com/paritytech/substrate/tree/master/frame/contracts)
+Similar to `x/wasm`, [`pallet-contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts)
 is the module that adds WebAssembly smart contract functionality to the chain. Parity
 provides the [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node),
 which is analogous to `wasmd` - a basic template node for smart contract development.
