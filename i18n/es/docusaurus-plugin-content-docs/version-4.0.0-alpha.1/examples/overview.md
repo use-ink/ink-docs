@@ -1,26 +1,27 @@
 ---
-title: Overview
+title: Introducción
 slug: /examples
 ---
 
-In our <a href="https://github.com/paritytech/ink/tree/master/examples">examples folder</a> you find a number of examples written in ink!.
+En nuestra <a href="https://github.com/paritytech/ink/tree/master/examples">carpeta de ejemplos</a>  puedes encontrar un buen número de ejemplos
+escritos con ink!.
 
-Some of the most interesting ones:
+Algunos de los más interesantes:
 
-* `delegator` ‒ Implements cross-contract calling.
-* `trait-erc20` ‒ Defines a trait for `Erc20` contracts and implements it.
-* `erc721` ‒ An exemplary implementation of `Erc721` NFT tokens.
-* `dns` ‒  A simple `DomainNameService` smart contract.
-* …and more, just rummage through the folder 🙃.
+* `delegator` ‒ Implementa las llamadas cross-contract.
+* `trait-erc20` ‒ Define un trait para contratos `Erc20` y lo implementa.
+* `erc721` ‒ Un ejemplo de implementación de tokens NFT `Erc721`.
+* `dns` ‒  Un simple smart contract `DomainNameService`.
+* …y más, solo busca en la carpeta 🙃.
 
-To build a single example navigate to the root of the example and run:
+Para compilar un ejemplo navega a la raíz del ejemplo y ejecuta:
 ```bash
 cargo contract build
 ```
 
-As a result you'll get a file `target/flipper.wasm` file, a `metadata.json` file and a `<contract-name>.contract` file in the `target/` folder of your contract.
-The `.contract` file combines the Wasm and metadata into one file and needs to be used when deploying the contract.
+Como resultado obtendras un fichero `target/flipper.wasm`, un fichero `metadata.json` y un fichero `<contract-name>.contract` en la carpeta `target/` de tu contrato.
+El fichero `.contract` combina el Wasm y el metadata en un fichero y necesita ser utilizado cuando despliegues el contrato.
 
-For further information, please have a look at the [Deploy your Contract](/getting-started/deploy-your-contract) section or our [smart contracts workshop](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
+Pra más información, por favor mira la sección [Despliega tu Contrato](/getting-started/deploy-your-contract) de nuestro [smart contracts workshop](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
 
 
