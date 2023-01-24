@@ -56,7 +56,7 @@ values for the other options.
 
 Press **"Read"** and confirm that it returns the value `false`:
 
-![An image of Flipper RPC call with false](./assets/flipper-false.png)
+![An image of Flipper RPC call with false](/img/flipper-false.png)
 
 ### 2. `flip()` function
 
@@ -64,17 +64,18 @@ So let's make the value turn `true` now!
 
 The alternative message to send with the UI is `flip()`. Again, accept the default values for the other options and click **Call**
 
-![An image of a Flipper transaction](./assets/send-as-transaction.png)
+![An image of a Flipper transaction](/img/send-as-transaction.png)
 
 If the transaction was successful, we should then be able to go back to the `get()` function and see our updated storage:
 
-![An image of Flipper RPC call with true](./assets/flipper-true.png)
+![An image of Flipper RPC call with true](/img/flipper-true.png)
 
 ## Using `cargo-contract`
 
-The above can be done via the command-line as well. 
+Calling a contract can also be done via the command-line! 
 
 ### 1. `get()` function
+
 
 ```bash
 cargo contract build
