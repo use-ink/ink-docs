@@ -16,7 +16,7 @@ As a first step, you should create an account. This can be done via command-line
 tools or via a wallet. See [here](https://wiki.polkadot.network/docs/learn-account-generation)
 for a detailed guide.
 
-As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-rococo-tokens).
+As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
 This is a chat room in which you need to write:
 
 ```
