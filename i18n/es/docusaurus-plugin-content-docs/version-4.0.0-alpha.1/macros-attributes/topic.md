@@ -3,12 +3,13 @@ title: "#[ink(topic)]"
 slug: /macros-attributes/topic
 ---
 
-Applied on fields of ink! event types to indicate that they are topics.
+Aplicado a los campos de los tipos de los eventos ink! para indicar que son temas.
 
-Tells the ink! codegen to provide a topic hash for the given field. Every ink! event can only have a limited number of such topic field.
-The semnatics are similar to indexed event arguments in Solidity. 
+Le dice al codegen de ink! que para proporcionar un hash de tema para el campo dado. Cada evento de ink! solo puede tener un número 
+limitado de dicho campo de tema. La semántica es similar a los argumentos de eventos indexados en Solidity.
 
-## Example
+
+## Ejemplo
 
 ```rust
 #[ink(event)]

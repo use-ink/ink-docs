@@ -1,11 +1,11 @@
 ---
-title: Working with Mapping 
+title: Trabajando con Mapping 
 slug: /datastructures/mapping
 ---
 
-In this section we want to demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/3.3.1/ink_storage/struct.Mapping.html).
+En esta sección queremos demostrar como trabajar con ink! [`Mapping`](https://docs.rs/ink_storage/3.3.1/ink_storage/struct.Mapping.html).
 
-Here is an example of a mapping from a user to a number:
+Aquí tenemos un ejemplo de un mapping de un usuario a un número:
 
 ```rust
 #[ink(storage)]
@@ -16,18 +16,18 @@ pub struct MyContract {
 }
 ```
 
-This means that for a given key, you can store a unique instance of a value type. In this
-case, each "user" gets their own number. 
+Esto significa que dada una clave, puedes almacenar una única instancia de un tipo valor. En este
+caso, cada "usuario" obtiene su propio número.
 
-## Initializing a Mapping
+## Inicializar un Mapping
 
-In order to correctly initialize a `Mapping` we need two things:
-1. An implementation of the [`SpreadAllocate`](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.SpreadAllocate.html) trait on our storage struct
-2. The [`ink_lang::utils::initalize_contract`](https://docs.rs/ink_lang/3.3.1/ink_lang/utils/fn.initialize_contract.html) initializer
+Para inicializar correctamente un `Mapping` necesitamos dos cosas:
+1. Una implementación del trait [`SpreadAllocate`](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.SpreadAllocate.html) en nuestro struct storage.
+2. El inicializador [`ink_lang::utils::initalize_contract`](https://docs.rs/ink_lang/3.3.1/ink_lang/utils/fn.initialize_contract.html).
 
-Not initializing storage before you use it is a common mistake that can break your smart
-contract. If you do not initialize your `Mapping`'s correctly you may end up with
-different `Mapping`'s operating on the same set of storage entries 😱.
+No inicializar el storage antes de utilizarlo es un error común que puede romper tu smart contract.
+Si no inicializas tus `Mapping`'s correctamente puedes terminar con unos `Mapping`'s diferentes
+operando en el mismo conjunto de entradas del storage 😱.
 
 ```rust
 
@@ -42,15 +42,15 @@ mod mycontract {
     #[ink(storage)]
     #[derive(SpreadAllocate)]
     pub struct MyContract {
-        // Store a mapping from AccountIds to a u32
+        // Almacena un mapping de AccountIds a u32
         map: ink_storage::Mapping<AccountId, u32>,
     }
 
     impl MyContract {
         #[ink(constructor)]
         pub fn new(count: u32) -> Self {
-            // This call is required in order to correctly initialize the
-            // `Mapping`s of our contract.
+            // Esta llamada es requerida para inicializar correctamente los
+            // `Mapping`s de nuestro contrato.
             ink_lang::utils::initialize_contract(|contract: &mut Self| {
                 let caller = Self::env().caller();
                 contract.map.insert(&caller, &count);
@@ -59,12 +59,12 @@ mod mycontract {
 
         #[ink(constructor)]
         pub fn default() -> Self {
-            // Even though we're not explicitly initializing the `Mapping`,
-            // we still need to call this
+            // A pesar de que no estamos explicitamente inicializando el `Mapping`,
+            // aún necesitamos llamar esto:
             ink_lang::utils::initialize_contract(|_| {})
         }
 
-        // Grab the number at the caller's AccountID, if it exists
+        // Coge el número del AccountID de la persona que llama, si existe
         #[ink(message)]
         pub fn get(&self) -> u32 {
             let caller = Self::env().caller();

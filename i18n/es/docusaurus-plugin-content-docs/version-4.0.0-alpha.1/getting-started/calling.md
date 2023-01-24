@@ -1,33 +1,32 @@
 ---
-title: Call Your Contract
+title: Ejecute su Contrato
 slug: /getting-started/calling-your-contract
 ---
 
-Now that your contract has been fully deployed, we can start interacting with it! Flipper only has
-two functions, `flip()` and `get()` so we will show you what it's like to play with both of them.
+Ahora que se ha desplegado su contrato, podremos interactuar con él! Flipper solo tiene dos funciones,
+ `flip()` y `get()` por lo que vamos a ver como jugar con ambas.
 
-### 1. get() function
+### 1. función get()
 
-We set the initial value of the Flipper contract
-`value` to `false` when we instantiated the contract. Let's check that this is the case.
+Establecemos el valor inicial del contrato Flipper
+`value` a `false` cuendo instanciemos el contrato. Comprobemos que este es el caso.
 
-In the **Message to Send** section, select the "**get(): bool**" message and accept the default
-values for the other options.
+El la sección **Message to Send**, selecciona el mensaje "**get(): bool**" y acepta los valores por defecto para el resto de opciones.
 
-Press **"Read"** and confirm that it returns the value `false`:
+Pulsa **"Read"** y confirma que el valor que te devuelve sea `false`:
 
 ![An image of Flipper RPC call with false](./assets/flipper-false.png)
 
-### 2. flip() function
+### 2. función flip()
 
-So let's make the value turn `true` now!
+Vamos a cambiar el valor a `true` ahora!
 
-The alternative message to send with the UI is `flip()`. Again, accept the default values for the other options and click **Call**
+El mensaje alternativo para enviar con la UI es `flip()`. Otra vez, acepte los valores predeterminados para el resto de opciones y haga clic en **Call**
 
 ![An image of a Flipper transaction](./assets/send-as-transaction.png)
 
-If the transaction was successful, we should then be able to go back to the `get()` function and see our updated storage:
+Si la transacción fue exitosa, deberíamos poder volver a llamar a la función `get()` y ver nuestro almacenamiento actualizado:
 
 ![An image of Flipper RPC call with true](./assets/flipper-true.png)
 
-Woohoo! You deployed your first smart contract!
+Woohoo! Has desplegado tu primer smart contract!

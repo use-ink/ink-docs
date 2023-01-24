@@ -5,9 +5,9 @@ slug: /por-que-rust-para-smart-contracts
 
 ink! no busca crear su nuevo lenguaje de programaciœ, sino que busca adaptarse a un subconjunto de rust para poder cumplir su propósito. Si esto no es suficiente para convencerte, aquí van otras buenas razones:
 
-* <span class="highlight">Rust es un lenguaje ideal para smart contracts:</span> It is type safe, memory safe, and free of undefined behaviors. It generates small binaries because it doesn’t include extra bloat, like a garbage collector, and advanced optimizations and tree shaking remove dead code. Through compiler flags, Rust can automatically protect against integer overflow.
+* <span class="highlight">Rust es un lenguaje ideal para smart contracts:</span> Es type safe, memory safe, y libre de comportamientos indefinidos. Genera pequeños binarios porque no incluye un extra bloat, como garbage collector, y optimizaciones avanzadas y un árbol que elimina el código muerto. A través de indicadores del compilador, Rust puede proteger automáticamente contra el overflow de enteros.
 
-* <span class="highlight">Ecosistema de Rust:</span> You gain from all of support available to the Rust ecosystem for free. As the language develops, ink! will automatically gain access to new features and functionality, improving how you can write smart contracts in the future.
+* <span class="highlight">Ecosistema de Rust:</span> Obtiene de todo el soporte disponible para el ecosistema de Rust de forma gratuita. A medida que se desarrolla el lenguaje, ink! obtendrá automáticamente acceso a nuevas características y funcionalidades, mejorando la forma en que se podran escribir smart contracts en el futuro.
 
 * <span class="highlight">Herramientas:</span> Dado que ink! sigue los estándares de Rust, herramientas como rustfmt, clippy y rust-analyzer funcionen directamente. Lo mismo sucede con sismtemas de resaltado de sintáxis o formateo de código en los editores de texto moderno. Además, Rust tiene test y benchmark incorporados directamente en el runner.
 
