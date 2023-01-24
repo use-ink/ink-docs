@@ -6,12 +6,12 @@ slug: /basics/contract-testing
 <img src="/img/testing.png" alt="Smart contracts parachain on Rococo" />
 
 ink! supports different stages of testing for different purposes.
-We'll explain on this page what each stage is about and how to use it.
+On this page we'll explain what each stage is about and how to use it.
 
 ## Unit Tests
 
-Testing contracts off-chain is done by `cargo test` and users can simply use the standard routines
-of creating unit test modules within the ink! project:
+Testing contracts off-chain is done by `cargo test` and users can simply use the standard Rust
+routines of creating unit test modules within the ink! project:
 
 ```rust
 #[cfg(test)]
@@ -37,7 +37,10 @@ See the [flipper example](https://github.com/paritytech/ink/blob/master/examples
 
 ## Off-chain Testing
 
+:::note
 TODO: mention that only supports `DefaultEnvironment`
+TODO: For integration tests, the test is annotated with our `#[ink::test]` attribute instead. This attribute denotes that the test is then executed in a simulated, mocked blockchain environment. There are functions available to influence how the test environment is configured (e.g. setting a specified balance of an account to simulate how a contract would behave when interacting with it).
+:::
 
 ink! smart contracts can compile in several different modes.
 There are two main compilation models using either
