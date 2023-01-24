@@ -76,7 +76,6 @@ Calling a contract can also be done via the command-line!
 
 ### 1. `get()` function
 
-
 ```bash
 cargo contract build
 cargo contract upload --suri //Alice
