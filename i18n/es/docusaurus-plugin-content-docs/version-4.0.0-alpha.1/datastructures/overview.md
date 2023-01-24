@@ -1,24 +1,24 @@
 ---
-title: Overview
+title: Introducción
 slug: /datastructures/overview
 ---
 
-The `ink_storage` crate acts as the standard storage library for ink! smart contracts. At
-the moment it only provides a single low-level primitive for interacting with storage,
-the [`Mapping`](https://docs.rs/ink_storage/3.3.1/ink_storage/struct.Mapping.html).
+El crate `ink_storage` actua como la librería de storage estándar para ink! smart contracts. En
+este momento solo proporciona una única primitiva de bajo nivel para interactuar con el storage,
+el [`Mapping`](https://docs.rs/ink_storage/3.3.1/ink_storage/struct.Mapping.html).
 
-The `Mapping` is a mapping of key-value pairs directly to the contract storage. Its main advantage
-is to be simple and lightweight. As such, it does not provide any high-level
-functionality, such as iteration or automatic clean-up. Smart contract authors will need
-to implement any high level functionality themselves.
+El `Mapping` es un mapping de pares clave-valor directamente con el storage del contrato. Su principal
+ventaja es que es simple y ligero. Como tal, no proporciona ninguna funcionalidad de alto nivel, 
+como la iteración o la limpieza automática. Los autores de smart contracts deberan implementar
+cualquier funcionalidad de alto nivel ellos mismos.
 
-## Eager Loading
+## Carga impaciente
 
-When executing a contract, all the fields of the `#[ink(storage)]` struct will be pulled
-from storage, regardless of whether or not they are used during the message execution.
+Cuando se ejecuta un contrato, todos los campos del strust `#[ink(storage)]` struct se extraerán del almacenamiento, 
+independientemente de si se utilizan o no durante la ejecución del mensaje.
 
-Smart contract authors should be aware of this behaviour since it could potentially
-affect their contract performance. For example, consider the following storage struct:
+Los autores de smart contract deben ser conscientes de este comportamiento desde que potencialmente
+puede afectar al rendimiento del contrato. Por ejemplo, consideta el siguiente storage struct: 
 
 ```rust
 #[ink(storage)]
@@ -35,14 +35,14 @@ impl EagerLoading {
 }
 ```
 
-In `EagerLoading::read_a()` we only read the `a` storage item. However, the `b` storage
-item will still be loaded from storage. As a reminder, this means accessing the
-underlying database and SCALE decoding the value. This can incur high costs, especially
-as the number of elements in `b` grows.
+En `EagerLoading::read_a()` solo leemos el storage item `a`. Sin embargo, el storage item `b` 
+igualmente sera cargado desde el storage. Como recordatorio, esto significa acceder la base de datos
+subyancente y decodificar con SCALE el valor. Esto puede incurrir en altos costes, especialmente
+a medida que crece el número de elementos en `b`.
 
 :::note
 
-Eager loading does **not** apply to `Mapping` fields, though, as key lookups in mappings
-are done directly from contract storage.
+Carga impaciente **no** aplica a los campos `Mapping`, sin embargo, como las búsquedas clave en las asignaciones 
+se realizan directamente desde el storage del contrato.
 
 :::
