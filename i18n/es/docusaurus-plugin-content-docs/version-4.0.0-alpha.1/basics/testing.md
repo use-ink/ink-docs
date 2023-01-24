@@ -1,12 +1,12 @@
 ---
-title: Contract Testing
+title: Testing del Contrato
 slug: /basics/contract-testing
 ---
 
 ## Unit Tests
 
-Testing contracts off-chain is done by `cargo test` and users can simply use the standard routines
-of creating unit test modules within the ink! project:
+El testing de los contractos off-chain se hace mediante `cargo test` y los usuarios pueden simplemente utilizar las rutinas estándar para 
+crear módulos de unit test dentro del projecto de ink!:
 
 ```rust
 #[cfg(test)]
@@ -18,63 +18,64 @@ mod tests {
 }
 ```
 
-Test instances of contracts can be created with something like:
+Se pueden crear instancias de test de los contratos así:
 
 ```rust
 let contract = MyContract::my_constructor(a, b);
 ```
 
-Messages can simply be called on the returned instance as if `MyContract::my_constructor` returns a
-`Self` instance.
+Los mensajes se pueden llamar simplemente en la instancia devuelta como si `MyContract::my_constructor` devolviese
+una instancia `Self`.
 
-See the [flipper example](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
+Vea el [ejemplo flipper](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
 
 
 ## Off-chain Testing
 
-ink! smart contracts can compile in several different modes.
-There are two main compilation models using either
-- on-chain mode: `no_std` + WebAssembly as target
-- off-chain mode: `std`
+Los ink! smart contracts se pueden compilar de diversas maneras.
+Existen 2 principales modelos de compilación utilizando
+- modo on-chain: `no_std` + WebAssembly as target
+- modo off-chain: `std`
 
-We generally use the on-chain mode for actual smart contract deployment
-whereas we use the off-chain mode for smart contract testing using the
-off-chain environment provided by the `ink_env` crate.
+Generalmente utilizamos el modo on-chain para el despliegue del smart contract mientras que
+utilizamos el modo off-chain para el testing de smart contracts utilizando el entorno off-chain
+proporcionado por el crate `ink_env`.
 
 
-The `#[ink::test]` proc. macro enables more elaborate off-chain testing.
+La proc. macro `#[ink::test]` permite off-chain testing más elaborado.
 
-If you annotate a test with this attribute it will be executed in a simulated
-environment, similar to as it would be run on-chain.
-You then have fine-grained control over how a contract is called; 
-for example you can influence the block advancement, the value transferred to it,
-by which account it is called, which storage it is run with, etc..
+Si anotas un test con este atributo se ejecutara en un entorno simulado, 
+similar a como se ejecutaría on-chain.
+Entonces tienes un control detallado sobre cómo llamar al contrato;
+por ejemplo puedes influir en el avance del bloque, el valor transferido al mismo,
+por qué cuenta se llama, con qué almacenamiento se ejecuta, etc.
 
-See the [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) contract on how to utilize those or [the documentation](https://docs.rs/ink_lang/3.3.1/ink_lang/attr.test.html) for details.
 
-At the moment there are some known limitations to our off-chain environment and we are working
-on making it behave as close to the real chain environment as possible.
+Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/3.3.1/ink_lang/attr.test.html) para más detalles.
 
-Defines a unit test that makes use of ink!'s off-chain testing capabilities.
+En este momento hay algunas limitaciones conocidas para nuestro entorno off-chain y estamos trabajando
+en hacer que el comportamiento sea lo más cercano posible a un entorno de una red real.
 
-If your unit test does not require the existence of an off-chain environment
-it is fine to not use this macro since it bears some overhead with the test.
+Define un unit test que utilice las capacidades del ink! testing off-chain.
 
-Note that this macro is not required to run unit tests that require ink!'s
-off-chain testing capabilities but merely improves code readability.
+Si tu unit test no requiere de la existencia de un entorno off-chain esta bien no 
+utilizar esta macro ya que tiene algunos gastos generales con el test.
 
-## How do you find out if your test requires the off-chain environment?
+Date cuenta que esta macro no es necesaria para ejecutar los unit tests que requieren
+las capacidades del ink! testing off-chain pero simplemente mejora la legibilidad del código.
 
-Normally if the test recursively uses or invokes some contract methods that
-call a method defined in `self.env()` or `Self::env()`.
+## ¿Cómo saber si su test requiere el entorno off-chain?
 
-An examples is the following:
+Normalmente si el test utiliza recursivamente o invoca algunos metodos del contrato que
+llaman a un metodo definido en `self.env()` o `Self::env()`.
+
+Un ejemplo es el siguiente:
 
 ```rust
 let caller: AccountId = self.env().caller();
 ```
 
-## Example
+## Ejemplo
 
 ```rust
 use ink_lang as ink;
@@ -87,11 +88,11 @@ mod tests {
         // test code comes here as usual
     }
 
-    // Conventional unit test that returns some Result.
-    // The test code can make use of operator-`?`.
+    // Unit test convencional que devuelve algún Result.
+    // El código del test puede utilizar el operador-`?`.
     #[ink::test]
     fn test2() -> Result<(), ink_env::Error> {
-        // test code that returns a Rust Result type
+        // El código del test que devuelve un tipo Rust Result
     }
 }
 ```
@@ -99,9 +100,9 @@ mod tests {
 
 ## On-chain Testing
 
-The easiest way to do on-chain testing is to
-[run a local substrate node](/getting-started/running-substrate),
-deploy your contract there and interact with it.
+La manera más sencilla de hacer un test on-chain es
+[ejecutar un nodo substrate local](/getting-started/running-substrate),
+desplegar tu contrato alli e interactuar con el.
 
 ```rust
 use ink_lang as ink;
