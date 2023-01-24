@@ -101,9 +101,49 @@ mod tests {
 }
 ```
 
-## End-to-End Testing
+## End-to-End (E2E) Testing
 
-End-to-End Testing is a possibility of doing on-chain testing of your contract.
-As part of it, your contract will be build, deployed and interacted with.
+E2E testing enables developers to write a test that will not only test the contract in an
+isolated manner; instead the contract will be tested _together_ with all components that
+will be involved on-chain – so from end to end. This way of testing resembles closely
+how the contract will actually behave in production.
 
-TODO
+As part of the test, the contract will be compiled and deployed to a Substrate node that
+is running in the background. ink! offers API functions that enable developers to then
+interact with the contract via transactions that they create and submit to the blockchain.
+
+You as a developer can define assertions on the outcome of their transactions, such as checking
+for state mutations, transaction failures or incurred gas costs.
+
+Your chain configuration will be tested together with the smart contract. And if your
+chain has pallets that are involved with the smart contract execution, those will be
+part of the test execution as well.
+
+ink! does not put any requirements on the Substrate node in the background – for example,
+you can run a node that contains a snapshot of a live network.
+
+```rust
+#[ink_e2e::test]
+async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
+    // given
+    let constructor = FlipperRef::new_default();
+
+    // when
+    let contract_acc_id = client
+        .instantiate("flipper", &ink_e2e::bob(), constructor, 0, None)
+        .await
+        .expect("instantiate failed")
+        .account_id;
+
+    // then
+    let get = build_message::<FlipperRef>(contract_acc_id.clone())
+        .call(|flipper| flipper.get());
+    let get_res = client
+        .call(&ink_e2e::bob(), get, 0, None)
+        .await
+        .expect("get failed");
+    assert!(matches!(get_res.return_value(), false));
+
+    Ok(())
+}
+```
