@@ -51,10 +51,11 @@ pub struct SparseArray {
 }
 ```
 
-## Generic storage structs
+## Generic storage fields
 
 It is possible to use generic data types in your storage, as long as any generic type 
-satisfies the required storage trait bounds.
+satisfies the required storage trait bounds. In fact, we already witnessed this in the 
+previous sections about the `Mapping`.
 
 Let's say you want a mapping where accessing a non-existant key should just return 
 it's default value, akin to how mappings work in Solidity. Additionally, you want to know 
@@ -64,6 +65,8 @@ thin wrapper around the ink! `Mapping` as follows:
 
 ```rust
 /// Values for this map need to implement the `Default` trait.
+/// Naturally, they also must be compatible with contract storage.
+/// Note that the underlying `Mapping` type only supports `Packed` values.
 #[ink::storage_item]
 pub struct DefaultMap<K, V: Packed + Default> {
     values: Mapping<K, V>,
