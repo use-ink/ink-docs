@@ -57,7 +57,6 @@ mod mycontract {
     use ink::prelude::vec::Vec;
     use ink::storage::Lazy;
 
-    /// Simple example of lazily loaded contract storage.
     #[derive(Default)]
     #[ink(storage)]
     pub struct MyContract {
@@ -73,20 +72,21 @@ mod mycontract {
             Self::default()
         }
 
-        /// Because `large_vec` is loaded lazily, this message is always cheap.
+        /// Because `large_vec` is loaded lazyly, this message is always cheap.
         #[ink(message)]
         pub fn get_balance(&self) -> Balance {
             self.tiny_value
         }
 
-        /// Modify `large_vec` via dedicated `get()` and `set()` storage operators.
+        /// Lazy fields like `large_vec` provide `get()` and `set()` storage operators.
         #[ink(message)]
-        pub fn add_balance(&mut self, balance: Balance) {
-            let mut large_vec = self.large_vec.get_or_default();
-            large_vec.push(balance);
-            self.large_vec.set(&large_vec);
+        pub fn add_balance(&mut self, value: Balance) {
+            let mut balances = self.large_vec.get_or_default();
+            balances.push(value);
+            self.large_vec.set(&balances);
         }
     }
+}
 }
 ```
 
