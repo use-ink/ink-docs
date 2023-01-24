@@ -90,7 +90,7 @@ mod mycontract {
 }
 ```
 
-:::note
+:::caution
 
 `Vec` are always loaded as a whole, meaning that all elements of the `Vec` live under a 
 single storage key. Wrapping the `Vec` inside `Lazy`, like the provided example above does, 

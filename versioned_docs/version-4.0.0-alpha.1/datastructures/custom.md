@@ -3,48 +3,51 @@ title: Custom Data Structures
 slug: /datastructures/custom-datastructure
 ---
 
-:::caution
-TODO
+While the `ink_storage` crate provides useful utilities and data structures to organize and 
+manipulate the contract's storage contract authors are not limited by its capabilities. 
 
-Beware, this page is no longer up to date for 4.0!
-:::
+## Using custom types on storage
+Any custom type wanting to be compatible with ink! storage must implement the 
+[`Storable`](https://docs.rs/ink_storage_traits/4.0.0-beta/ink_storage_traits/trait.Storable.html) 
+trait, so it can be SCALE
+[`encoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Encode.html)
+and 
+[`decoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Decode.html).
+Additionaly, the traits 
+[`StorageLayout`](https://docs.rs/ink_storage/latest/ink_storage/traits/trait.StorageLayout.html)
+and [`TypeInfo`](https://docs.rs/scale-info/2.3.1/scale_info/trait.TypeInfo.html)
+are required as well. But don't worry, usually these traits can just be derived:
 
-While the `ink_storage` crate provides tons of useful utilities and data structures to organize and manipulate the contract's storage contract authors are not limited by its capabilities. By implementing the core `SpreadLayout`/`PackedLayout` traits (and the `StorageLayout` trait for supporting the metadata generated for the `.contract` bundle) users are able to define their very own custom storage data structures with their own set of requirement and features that work along the `ink_storage` data structures as long as they fulfill the mere requirements stated by those two traits.
-
-A basic example of a custom struct is shown below:
-
-``` rust
-struct Inner {
-    value: bool
+```rust
+/// A custom type on our contract storage
+#[derive(scale::Decode, scale::Encode, Debug)]
+#[cfg_attr(
+    feature = "std",
+    derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
+)]
+pub struct Inner {
+    value: bool,
 }
 
 #[ink(storage)]
-pub struct MyContract {
-    inner: Inner
+pub struct MyContractStorage {
+    inner: Inner,
 }
 ```
 
-Compiling the above will result in errors. While having an inner struct which holds only a boolean might not be the best idea, it serves well to illustrate how to implement the trait:
+Even better: there is a macro `#[ink::storage_item]`, which derives all necessary traits for you. Unless you need to implement any behaviour, the above code example can be 
+simplified as follows:
 
-``` rust
-impl SpreadLayout for Inner {
-    const FOOTPRINT: u64 = 1;
-
-    fn pull_spread(ptr: &mut KeyPtr) -> Self {
-        Self {
-            value: SpreadLayout::pull_spread(ptr),
-        }
-    }
-
-    fn push_spread(&self, ptr: &mut KeyPtr) {
-        SpreadLayout::push_spread(&self.value, ptr);
-    }
-
-    fn clear_spread(&self, ptr: &mut KeyPtr) {
-        SpreadLayout::clear_spread(&self.value, ptr);
-    }
+```rust
+/// A custom type on our contract storage
+#[ink::storage_item]
+pub struct Inner {
+    value: bool,
 }
 
+#[ink(storage)]
+pub struct SparseArray {
+    inner: Inner,
+}
 ```
 
-You can check what each method does in the [trait's docs](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/traits/trait.SpreadLayout.html). Check how some data structures are implemented, such as [Mapping](https://docs.rs/ink_storage/4.0.0-beta/src/ink_storage/lazy/mapping.rs.html#113).
