@@ -11,6 +11,10 @@ slug: /how-it-works
     </h1>
 </header>
 
+:::note
+TODO Update this page
+:::
+
 <div class="schema">
     <img src="/img/how-it-works.svg" alt="How it Works" />
 </div>
