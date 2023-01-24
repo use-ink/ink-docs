@@ -15,18 +15,28 @@ to ink! by the contracts pallet:
     <img src="/img/kv.svg" alt="Storage Organization: Layout" />
 </div>
 
-ink!'s storage API operates by storing and loading entries into and from a single storage
-cell. Since the storage API does not care about the values at all - a value is just an
-arbitrary byte sequence after all - smart contract authors are given some flexibility in 
+The storage API operates by storing and loading entries into and from a single storage
+cell. Since it does not care about the values at all - a value is just an arbitrary 
+byte sequence after all - smart contract authors are given some flexibility in 
 regards on how they want to organize the storage layout of their contracts.
 
 ## Packed vs Non-Packed layout
-For example, if we have a somewhat small contract storage consisting of only a few tiny 
-fields, loading this vector  the same time can be advantegous - especially if we expect our message to interact
-with most of them in a single call.
+Types that can be stored as a whole under a single storage cell are considered
+[`Packed`](https://paritytech.github.io/ink/ink/storage/traits/trait.Packed.html).
+By default, ink! tries to store all storage struct fields under a single storage cell.
 
-On the other hand, this can be problematic if we're loading a large `Vec` and only
-operating on a few elements.
+Consequentially, with a `Packed` storage layout, any message interacting with the contract 
+storage will always need to operate on the whole storage struct.
+
+For example, if we have a somewhat small contract storage struct consisting of only a few 
+tiny fields, reading (decoding) and writing (encoding) the whole storage struct inside 
+every message is not problematic. It may even be advantegous - especially if we expect most 
+messages to interact with most of the storage fields.
+
+On the other hand, this can get problematic if we're storing a large `Vec` on the
+contract storage but provide messages that do not need to read and write from this `Vec`. 
+In that scenario, each and every contract message bears the runtime gas costs dealing 
+with that `Vec`, regardless whether they access it or not, resulting in extra gas costs. 
 
 ### Eager Loading vs. Lazy Loading
 
