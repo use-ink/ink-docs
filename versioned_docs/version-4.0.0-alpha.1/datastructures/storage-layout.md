@@ -73,7 +73,7 @@ mod mycontract {
             Self::default()
         }
 
-        /// Because `large_vec` is loaded lazyly, this message is always cheap.
+        /// Because `large_vec` is loaded lazily, this message is always cheap.
         #[ink(message)]
         pub fn get_balance(&self) -> Balance {
             self.tiny_value
@@ -88,15 +88,14 @@ mod mycontract {
         }
     }
 }
-}
 ```
 
 :::caution
 
 `Vec` are always loaded as a whole, meaning that all elements of the `Vec` live under a 
 single storage key. Wrapping the `Vec` inside `Lazy`, like the provided example above does, 
-has no influence on its elements. If you are dealing with sparse arrays on contract 
-storage, consider using a `Mapping` instead.
+has no influence on its elements. If you are dealing with large or sparse arrays on 
+contract storage, consider using a `Mapping` instead.
 
 :::
 

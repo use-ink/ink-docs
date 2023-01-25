@@ -11,7 +11,7 @@ Here is an example of a mapping from a user to a `Balance`:
 #[ink(storage)]
 pub struct MyContract {
     /// Assign a balance to every account.
-    balances: ink::storage::Mapping<AccountId, Balance>,
+    map: balances: ink::storage::Mapping<AccountId, Balance>
 }
 ```
 
@@ -85,7 +85,7 @@ key after it was modified.
 ### Storage loading behaviour
 
 Each mapping value lives under it's own storage key. Briefly, this means that mappings are 
-lazyly loaded in ink!. In other words, if your message does only access a single key of a 
+lazily loaded in ink!. In other words, if your message does only access a single key of a 
 mapping, it will not load the whole mapping but only the value being accessed.
 
 Furthermore, this implies that it is not possible to iterate over the contents of a map. 
