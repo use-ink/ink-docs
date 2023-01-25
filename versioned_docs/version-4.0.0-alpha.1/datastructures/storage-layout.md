@@ -3,6 +3,7 @@ title: Storage Layout
 slug: /datastructures/storage-layout
 ---
 
+Smart contract authors are given some flexibility in regards on how they want to organize the storage layout of their contracts.
 Let's dive deeper into the concepts behind ink! storage to get a better understanding 
 of some of its implications and limitations.
 
@@ -15,10 +16,10 @@ to ink! by the contracts pallet:
     <img src="/img/kv.svg" alt="Storage Organization: Layout" />
 </div>
 
-The storage API operates by storing and loading entries into and from a single storage
-cell. Since it does not care about the values at all - a value is just an arbitrary 
-byte sequence after all - smart contract authors are given some flexibility in 
-regards on how they want to organize the storage layout of their contracts.
+Storage data is always encoded with the 
+[`SCALE`](https://docs.substrate.io/reference/scale-codec/) codec.
+The storage API operates by storing and loading entries into and from a single storages cells, where each storage cell is accessed under it's own dedicated storage key. To some 
+extent, the storage API works similar to a traditional key-value database.
 
 ## Packed vs Non-Packed layout
 
@@ -96,6 +97,34 @@ mod mycontract {
 single storage key. Wrapping the `Vec` inside `Lazy`, like the provided example above does, 
 has no influence on its elements. If you are dealing with sparse arrays on contract 
 storage, consider using a `Mapping` instead.
+
+:::
+
+## Manual vs. Automatic Key generation
+
+Per default, keys are calculated automatically for you, thanks to the 
+[`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.AutoKey.html)
+primitive. They'll be generated at compile time and ruled out for conflicts. However, for `Non-Packed` types like `Lazy` or the `Mapping`, the 
+[`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.ManualKey.html)
+primitive allows manual control over the storage key of a field like so:
+
+```rust
+#[ink(storage)]
+pub struct MyContract {
+    /// The storage key for this field is always `0x0000007f`
+    inner: Lazy<bool, ManualKey<127>>,
+}
+```
+
+This may be advantegous: Your storage key will always stay the same, regardless of 
+the version of your contract or ink! itself (note that the key calcualtion algorithm may 
+change with future ink! versions).
+
+:::caution
+
+Using `ManualKey` instead of `AutoKey` might be especially desireable for upgradable 
+contracts, as using `AutoKey` might result in a different storage key for the same field
+in a newer version of the contract. Which will break the contract after an upgrade!
 
 :::
 
