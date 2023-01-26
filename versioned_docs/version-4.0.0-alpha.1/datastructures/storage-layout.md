@@ -38,7 +38,7 @@ On the other hand, this can get problematic if we're storing a large `Vec` on th
 contract storage but provide messages that do not need to read and write from this `Vec`. 
 In that scenario, each and every contract message bears runtime overhead by dealing 
 with that `Vec`, regardless whether they access it or not, resulting in extra gas costs. 
-To solve this problem we need to turn our storage into a `Non-Packed` layout somehow.
+To solve this problem we need to turn our storage into a non-packed layout somehow.
 
 ## Eager Loading vs. Lazy Loading
 With the [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive, 
