@@ -141,6 +141,10 @@ best hope right now is that it could come back with
 [Sassafras](https://wiki.polkadot.network/docs/learn-consensus#badass-babe-sassafras),
 a block production protocol for future versions of Polkadot.
 
+If you're interested in more information on this check out
+[the Substrate PR](https://github.com/paritytech/substrate/pull/13204) which
+deprecated the random interface of `pallet-contracts`.
+
 ## Constructors can now return `Result<Self, MyContractError>`
 
 With [#1446](https://github.com/paritytech/ink/pull/1446) we introduced
@@ -152,7 +156,18 @@ clients/frontends about a failure. In ink! 3.x it was only possible to
 panic in the constructor in case an error occurred, resulting in loss
 of this information.
 
+## Chain extension's `returns_result` removed
+
+The `returns_result` flag has been removed from the `#[ink(extension = …)]` attribute in
+[#1569](https://github.com/paritytech/ink/pull/1569).
+We now infer this information at compile time. If `handle_status` is set to `true`,
+the return type will still be wrapped into `Result` as before.
+
 ## Contract Metadata (ABI)
+
+The most detailed way to grasp what changed is to look at
+[this PR](https://github.com/paritytech/ink-docs/pull/138), which
+updated the metadata page in our documentation.
 
 ### Add support for language level errors (`LangError`)
 
@@ -175,7 +190,7 @@ This change doesn't affect how you write a contract! It affects clients and
 frontends though, since it breaks the API in two ways:
 
 first, all contract messages now have a `Result` return type, and second a new field,
-`lang_err`, will be introduced as part of the contract spec. The second change allows
+`lang_error`, will be introduced as part of the contract spec. The second change allows
 other languages (such as Solang) to use an equivalent `LangError`.
 
 <details><summary>Click here for a snippet of the new metadata for the Flipper contract.</summary>
@@ -266,4 +281,5 @@ After:
 
 The storage layout under the `storage` key changed for v4. If you have an
 application that is using it, please check the documentation of the new 
-format [here](TODO).
+format [here](TODO) and the pull request that updated the documentation:
+[#137](https://github.com/paritytech/ink-docs/pull/137).

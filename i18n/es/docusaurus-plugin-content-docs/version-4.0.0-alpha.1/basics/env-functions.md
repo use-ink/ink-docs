@@ -16,7 +16,6 @@ Algunas funciones útiles incluyen:
 * [`account_id()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.account_id.html): Devuelve el account ID del contrato ejecutado.
 * [`balance()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.balance.html): Devuelve el balance del contrato ejecutado.
 * [`block_number()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.block_number.html): Devuelve el número de bloque actual.
-* [`random()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.random.html): Devuelve una semilla hash aleatoria.
 * [`emit_event(…)`](https://docs.rs/ink_env/3.3.1/ink_env/fn.emit_event.html): Emite un evento con los datos del evento dado.
 * [`transfer(…)`](https://docs.rs/ink_env/3.3.1/ink_env/fn.transfer.html): Transfiere valor desde el contrato hasta el account ID del destino.
 * [`hash_bytes(…)`](https://docs.rs/ink_env/3.3.1/ink_env/fn.hash_bytes.html): Realiza el hash criptográfico de la entrada dada y almacena el resultado en la salida.

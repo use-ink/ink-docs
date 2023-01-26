@@ -23,3 +23,7 @@ Debajo se expone una brefe comparación entre ink! y Solidity:
 |Tiene interfaces?|Si (Traits de Rust)|Si|
 
 </div>
+
+:::note
+TODO
+:::

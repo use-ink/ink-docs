@@ -21,7 +21,7 @@ Debido a esto necesitaras ROC para poder desplegar contratos en nuestra testnet.
 Como primer paso, deber crear una cuenta. Mira [aquí](https://wiki.polkadot.network/docs/learn-account-generation)
 para una guía más detallada.
 
-Como segundo paso, debes obtener tokens ROC para la red de prueba a través de [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-rococo-tokens).
+Como segundo paso, debes obtener tokens ROC para la red de prueba a través de [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
 Esta es una sala de un chat donde tienes que escribir:
 ```
 !drip YOUR_SS_58_ADDRESS:1002
@@ -34,7 +34,7 @@ Si todo ha funcionado bien, los tokens ROC teletransportados se mostraran en
 
 Una vez tengas los ROC en `Contracts` puedes desplegar el contrato como harias normalmente.
 Si e
-Si no estás seguro de esto, nuestro [tutorial guiado](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1/)
+Si no estás seguro de esto, nuestro [tutorial guiado](https://docs.substrate.io/tutorials/smart-contracts//)
 te lo aclarará en poco tiempo.
 
 

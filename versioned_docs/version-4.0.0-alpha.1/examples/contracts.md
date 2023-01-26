@@ -1,11 +1,9 @@
 ---
-title: Overview
-slug: /examples
+title: Smart Contracts
+slug: /examples/smart-contracts
 ---
 
-## Smart Contract Examples
-
-The ink! repository contains an <a href="https://github.com/paritytech/ink/tree/master/examples">examples folder</a> 
+The ink! repository contains an <a href="https://github.com/paritytech/ink/tree/master/examples">examples folder</a>
 in which you find a number of examples written in ink!.
 Some of the most interesting ones:
 
@@ -78,7 +76,7 @@ Some of the most interesting ones:
 
 <div className="row">
     <div className="col text--center">
-        <a href="https://github.com/paritytech/ink/tree/master/examples/delegator"><img src="/img/icons/upgradable.svg" width="100" /></a>
+        <a href="https://github.com/paritytech/ink/tree/master/examples/delegator"><img src="/img/icons/delegator.svg" width="100" /></a>
         <p>
             Cross-contract calls.<br/>
             <a href="https://github.com/paritytech/ink/tree/master/examples/delegator">
@@ -87,7 +85,7 @@ Some of the most interesting ones:
         </p>
     </div>
     <div className="col text--center">
-        <a href="https://github.com/paritytech/ink/tree/master/examples/trait-erc20"><img src="/img/icons/multisig.svg" width="100" /></a>
+        <a href="https://github.com/paritytech/ink/tree/master/examples/trait-erc20"><img src="/img/icons/trait-erc20.svg" width="100" /></a>
         <p>
             Implements an <code>Erc20</code> trait.<br/>
             <a href="https://github.com/paritytech/ink/tree/master/examples/trait-erc20">
@@ -122,13 +120,3 @@ when deploying the contract.
 
 For further information, please have a look at the
 [Deploy your Contract](/getting-started/deploy-your-contract) section.
-
-## Full-stack Example
-
-Check out link! – a URL shortener DApp. It consists of a frontend and an ink! contract.
-You can view an online demo of the Dapp here: https://tiny.ink.
-
-To create new short links you need `ROC` tokens from our testnet.
-See [here](/testnet) for how to get those.
-
-The repository is located here: [https://github.com/paritytech/link](https://github.com/paritytech/link).

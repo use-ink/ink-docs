@@ -16,7 +16,6 @@ Some handy functions include:
 * [`account_id()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.account_id.html): Returns the account ID of the executed contract.
 * [`balance()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.balance.html): Returns the balance of the executed contract.
 * [`block_number()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.block_number.html): Returns the current block number.
-* [`random()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.random.html): Returns a random hash seed.
 * [`emit_event(…)`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.emit_event.html): Emits an event with the given event data.
 * [`transfer(…)`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.transfer.html): Transfers value from the contract to the destination account ID.
 * [`hash_bytes(…)`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html): Conducts the crypto hash of the given input and stores the result in output.

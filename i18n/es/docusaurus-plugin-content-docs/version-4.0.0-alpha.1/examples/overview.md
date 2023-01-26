@@ -22,6 +22,6 @@ cargo contract build
 Como resultado obtendras un fichero `target/flipper.wasm`, un fichero `metadata.json` y un fichero `<contract-name>.contract` en la carpeta `target/` de tu contrato.
 El fichero `.contract` combina el Wasm y el metadata en un fichero y necesita ser utilizado cuando despliegues el contrato.
 
-Pra más información, por favor mira la sección [Despliega tu Contrato](/getting-started/deploy-your-contract) de nuestro [smart contracts workshop](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
+Pra más información, por favor mira la sección [Despliega tu Contrato](/getting-started/deploy-your-contract) de nuestro [smart contracts workshop](https://docs.substrate.io/tutorials/smart-contracts/).
 
 

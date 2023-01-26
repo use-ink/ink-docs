@@ -19,6 +19,6 @@ the various projects:
 - [`cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/CHANGELOG.md)
 
 If you're new here and aren't sure where to get started with ink! check out our
-[guided tutorial for beginners](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1/).
+[guided tutorial for beginners](https://docs.substrate.io/tutorials/smart-contracts//).
 
 This was inspired by the [Polkadot Staking Progress Report](https://gist.github.com/kianenigma/aa835946455b9a3f167821b9d05ba376) ❤️.

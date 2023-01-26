@@ -4,7 +4,7 @@ slug: /getting-started/setup
 ---
 
 In case you are looking for a guided tutorial directed
-towards beginners please check out our [Guided Tutorial](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
+towards beginners please check out our [Guided Tutorial](https://docs.substrate.io/tutorials/smart-contracts/).
 
 ## Rust & Cargo
 
