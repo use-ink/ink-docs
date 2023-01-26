@@ -113,6 +113,7 @@ pub struct MyContract {
 :::caution
 
 Generic data types may substantially increase your contracts overall code size.
+The reason for this is [Rust's monomorphization](https://rustwasm.github.io/twiggy/concepts/generic-functions-and-monomorphization.html).
 
 :::
 
