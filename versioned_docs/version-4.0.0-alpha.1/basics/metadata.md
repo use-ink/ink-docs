@@ -185,7 +185,7 @@ define any events then the `events` key would contain an empty array `[]`.
 :::tip ink! 3.x Compatiblity Note
 
 The `lang_error` field was introduced as part of ink! 4.0. All ink! messages and
-constructors return a `Result` which use this as the `Error` variant.
+constructors return a `Result` which uses this as the `Error` variant.
 
 :::
 
@@ -319,7 +319,7 @@ types from this type registry using the `id` key.
 
 #### `version`
 This indicates the version of the ABI format the generated metadata conforms to. This is
-district from any concept of Rust's crate versioning
+distinct from any concept of Rust's crate versioning.
 
 ```json
 "version": "4"
