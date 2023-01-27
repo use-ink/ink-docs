@@ -89,5 +89,5 @@ lazily loaded in ink!. In other words, if your message only accesses a single ke
 mapping, it will not load the whole mapping but only the value being accessed.
 
 Furthermore, this implies that it is not possible to iterate over the contents of a map. 
-Circumventing this feature by storing populated keys inside a `Vec` is not adviseable 
+Circumventing this feature by storing populated keys inside an `ink_prelude::Vec` is not advisable 
 as this might result in very high gas costs.
