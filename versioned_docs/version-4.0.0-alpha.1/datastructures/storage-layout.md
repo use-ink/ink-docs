@@ -120,7 +120,7 @@ This may be advantegous: Your storage key will always stay the same, regardless 
 the version of your contract or ink! itself (note that the key calcualtion algorithm may 
 change with future ink! versions).
 
-:::caution
+:::tip
 
 Using `ManualKey` instead of `AutoKey` might be especially desireable for upgradable 
 contracts, as using `AutoKey` might result in a different storage key for the same field
