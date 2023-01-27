@@ -23,7 +23,7 @@ extent, the storage API works similar to a traditional key-value database.
 
 ## Packed vs Non-Packed layout
 
-Types that can be stored as a whole under a single storage cell are considered
+Types that can be stored entirely under a single storage cell are considered
 [`Packed`](https://paritytech.github.io/ink/ink/storage/traits/trait.Packed.html).
 By default, ink! tries to store all storage struct fields under a single storage cell.
 Consequentially, with a `Packed` storage layout, any message interacting with the contract 
