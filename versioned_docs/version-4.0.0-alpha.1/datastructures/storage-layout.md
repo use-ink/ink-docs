@@ -34,7 +34,7 @@ tiny fields, pulling everything from the storage inside every message is not
 problematic. It may even be advantegous - especially if we expect most messages to 
 interact with most of the storage fields.
 
-On the other hand, this can get problematic if we're storing a large `Vec` on the
+On the other hand, this can get problematic if we're storing a large `Vec` in the
 contract storage but provide messages that do not need to read and write from this `Vec`. 
 In that scenario, each and every contract message bears runtime overhead by dealing 
 with that `Vec`, regardless whether they access it or not, resulting in extra gas costs. 
