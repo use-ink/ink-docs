@@ -124,7 +124,7 @@ change with future ink! versions).
 
 Using `ManualKey` instead of `AutoKey` might be especially desireable for upgradable 
 contracts, as using `AutoKey` might result in a different storage key for the same field
-in a newer version of the contract. Which will break the contract after an upgrade!
+in a newer version of the contract. This may break your contract after an upgrade 😱!
 
 :::
 
