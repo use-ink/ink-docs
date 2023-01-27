@@ -3,7 +3,7 @@ title: Configuración
 slug: /getting-started/setup
 ---
 
-Si estas buscando un tutorial guiado dirigido a principiantes, por favor echa un vistazo a nuestro [Tutorial](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
+Si estas buscando un tutorial guiado dirigido a principiantes, por favor echa un vistazo a nuestro [Tutorial](https://docs.substrate.io/tutorials/smart-contracts/).
 
 ## Rust & Cargo
 

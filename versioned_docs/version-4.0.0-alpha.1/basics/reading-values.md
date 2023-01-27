@@ -55,4 +55,4 @@ impl MyContract {
 }
 ```
 
-In Rust, if the last expression in a function does not have a semicolon, then it will be the return value.
+In Rust, if the last expression in a function does not have a semicolon it will be the return value.

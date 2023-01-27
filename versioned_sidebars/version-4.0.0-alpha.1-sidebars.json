@@ -36,10 +36,11 @@
       "basics/trait-definitions",
       "basics/cross-contract-calling",
       "basics/upgradeability",
-      "basics/testing",
       "basics/env-functions",
       "basics/environment",
-      "basics/metadata"
+      "basics/metadata",
+      "basics/testing",
+      "basics/debugging"
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
@@ -64,7 +65,8 @@
       "datastructures/storage-in-metadata"
     ],
     "Examples": [
-      "examples/overview"
+      "examples/contracts",
+      "examples/dapps"
     ],
     "Testnet": [
       "testnet/overview"

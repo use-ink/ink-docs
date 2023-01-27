@@ -79,5 +79,6 @@ This will ensure that nothing unnecessary is compiled into the Wasm blob, making
 your contract faster and cheaper to deploy and execute.
 
 :::info
-With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs.
+With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs:
+the `--release` flag has to be passed explicitly to `cargo build`.
 :::

@@ -22,7 +22,7 @@ Due to this you'll need ROC in order to deploy contracts on our testnet.
 As a first step, you should create an account. See [here](https://wiki.polkadot.network/docs/learn-account-generation)
 for a detailed guide.
 
-As a second step, you have to get ROC testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-rococo-tokens).
+As a second step, you have to get ROC testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
 This is a chat room in which you need to write:
 ```
 !drip YOUR_SS_58_ADDRESS:1002
@@ -34,7 +34,7 @@ If everything worked out, the teleported ROC tokens will show up under
 [the "Accounts" tab for `Contracts`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
 
 Once you have ROC on `Contracts` you can deploy a contract as you would normally.
-If you're unsure about this, our [guided tutorial](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1/)
+If you're unsure about this, our [guided tutorial](https://docs.substrate.io/tutorials/smart-contracts//)
 will clarify that for you in no time.
 
 

@@ -6,7 +6,7 @@ slug: /macros-attributes/contract
 Esta macro es el punto de entrada para escribir smart contracts ink!.
 
 Si eres un principiante aprendiendo ink! Le recomendamos que consulte nuestro amplio 
-[workshop de ink! ](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
+[workshop de ink! ](https://docs.substrate.io/tutorials/smart-contracts/).
 
 **Note:** En todos nuestros ejemplos estaremos utilizando el crate `ink_lang` que utilizamos con el alias `ink`.
 Puedes hacerlo tu mismo añadiendo la siguiente línea de código:
