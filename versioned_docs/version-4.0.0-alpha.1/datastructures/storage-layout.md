@@ -100,7 +100,7 @@ contract storage, consider using a `Mapping` instead.
 
 :::
 
-## Manual vs. Automatic Key generation
+## Manual vs. Automatic Key Generation
 
 Per default, keys are calculated automatically for you, thanks to the 
 [`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.AutoKey.html)
