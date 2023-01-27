@@ -117,7 +117,7 @@ pub struct MyContract {
 ```
 
 This may be advantegous: Your storage key will always stay the same, regardless of 
-the version of your contract or ink! itself (note that the key calcualtion algorithm may 
+the version of your contract or ink! itself (note that the key calculation algorithm may 
 change with future ink! versions).
 
 :::tip
