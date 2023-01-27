@@ -37,7 +37,7 @@ interact with most of the storage fields.
 On the other hand, this can get problematic if we're storing a large `Vec` in the
 contract storage but provide messages that do not need to read and write from this `Vec`. 
 In that scenario, each and every contract message bears runtime overhead by dealing 
-with that `Vec`, regardless whether they access it or not, resulting in extra gas costs. 
+with that `Vec`, regardless whether they access it or not. This results in extra gas costs. 
 To solve this problem we need to turn our storage into a non-packed layout somehow.
 
 ## Eager Loading vs. Lazy Loading
