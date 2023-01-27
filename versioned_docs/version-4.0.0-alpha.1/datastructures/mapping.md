@@ -84,7 +84,7 @@ key after it was modified.
 
 ### Storage loading behaviour
 
-Each mapping value lives under it's own storage key. Briefly, this means that mappings are 
+Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s are 
 lazily loaded in ink!. In other words, if your message does only access a single key of a 
 mapping, it will not load the whole mapping but only the value being accessed.
 
