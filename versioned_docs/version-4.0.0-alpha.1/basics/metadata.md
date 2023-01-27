@@ -5,10 +5,6 @@ slug: /metadata
 
 # ink! Metadata
 
-:::caution
-TODO: update this page for ink! 4.0
-:::
-
 The ink! metadata is used to describe a contract in a language agnostic way. It is
 intended to be used by third party tools (e.g UIs, block explorers) in order to correctly
 call contract functions and interpret events.
@@ -49,21 +45,19 @@ It may _optionally_ contain the following keys:
       "..."
     ]
   },
-  "V3": {
-    "spec": { ... },
-    "storage": { ... },
-    "types": { ... }
+  "spec": {
+    "constructors": ["..."],
+    "messages": ["..."]
   }
 }
 ```
 
 :::note
 
-Notice that we don't have an `abi` key, but we instead use the metadata version as the name
-of the key (`V3` in this case). You can read more about that in the [ABI documentation](/metadata#abi).
+Notice that we don't have an `abi` key, but we instead use the `spec` field to specify
+the contract's ABI. You can read more about that in the [ABI documentation](/metadata#abi).
 
 :::
-
 
 The following sections will dive deeper into how these sections are made up.
 
@@ -77,6 +71,7 @@ It consists of the following **required** keys:
 
 It may _optionally_ include the following keys:
 - `wasm`: The actual Wasm code of the contract, for optionally bundling the code with the metadata.
+- `build_info`: Extra information about the environment in which the contract was built.
 
 ```json
 "source": {
@@ -89,7 +84,7 @@ It may _optionally_ include the following keys:
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127).
+see [here](https://github.com/paritytech/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L157).
 
 :::
 
@@ -111,7 +106,7 @@ It can _optionally_ include the following keys:
 ```json
 "contract": {
   "name": "flipper",
-  "version": "3.1.0",
+  "version": "4.0.0-beta.1",
   "authors": [
     "Parity Technologies <admin@parity.io>"
   ]
@@ -121,7 +116,7 @@ It can _optionally_ include the following keys:
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395).
+see [here](https://github.com/paritytech/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L432).
 
 :::
 
@@ -134,31 +129,24 @@ define their own metadata format which will then be stored here.
 
 In this document we will focus on the ink! ABI.
 
-The ABI starts with the version number of the ink! metadata. In our example below we are
-using the ink! version 3 metadata, denoted by the `V3` key.
-
-:::note
-The version of the ABI is distinct from any concept of Rust's crate versioning.
-:::
-
-```json
-"V3": {
-  "spec": { ... },
-  "storage": { ... },
-  "types": { ... }
-}
-```
-
 The ink! metadata consists of the following **required** sections
  - `spec`: The description of the contract (e.g constructors, messages, events, etc.).
  - `storage`: The layout of the storage data structure
  - `types`: A read-only registry containing types in their portable form for
    serialization.
+ - `version`: The version of the ink! metadata.
+
+```json
+"spec": { ... },
+"storage": { ... },
+"types": { ... },
+"version": "..."
+```
 
 :::info
 
 If you're interested in the code reference from `ink!`
-see [here](https://github.com/paritytech/ink/blob/80d302eb9b9cddb726200a9a86c71ae344d1b042/crates/metadata/src/lib.rs#L91).
+see [here](https://github.com/paritytech/ink/blob/c8aa3ee41112b327d4f3cb3959f188945c8ccace/crates/metadata/src/lib.rs#L90).
 
 :::
 
@@ -185,11 +173,23 @@ The contract `spec` consists of the following **required** keys:
     - `args`: The event arguments.
     - `docs`: The event documentation.
 - `docs`: The contract documentation.
+- `lang_error`: The language specific error type.
 
 :::note
 
 While all these keys are required, they may be empty. For example, if a contract does not
 define any events then the `events` key would contain an empty array `[]`.
+
+:::
+
+:::tip ink! 3.x Compatiblity Note
+
+The `lang_error` field was introduced as part of ink! 4.0. This represents an error which
+comes from the smart contracting language itself, and not the contract nor the underlying
+environment (e.g `pallet-contracts`).
+
+All ink! messages and constructors now return a `Result` which uses this as the `Error`
+variant (see the [`LangError`](https://docs.rs/ink/4.0.0-beta.1/ink/enum.LangError.html) docs for more).
 
 :::
 
@@ -210,6 +210,13 @@ define any events then the `events` key would contain an empty array `[]`.
   ],
   "docs": [],
   "events": [],
+  "lang_error": {
+    "displayName": [
+      "ink",
+      "LangError"
+    ],
+    "type": 3
+  },
   "messages": [
     {
       "args": [],
@@ -230,9 +237,13 @@ define any events then the `events` key would contain an empty array `[]`.
 This key describes the storage layout of an ink! contract. It tracks some of the
 different structures which can be placed in storage.
 
-It consists of the following
-_optional_ keys (depending on what data structures are used by the contract):
-- `cell`: An encoded cell.
+It consists of the following _optional_ keys (depending on what data structures are used
+by the contract):
+
+- `root`: The root cell defines the storage key for all sub-trees
+    - `root_key`: The root key of the sub-tree.
+    - `layout`: The storage layout of the unbounded layout elements.
+- `leaf`: The root cell defines the storage key for all sub-trees
     - `key`: The offset key into the storage.
     - `ty`: The type of the encoded entity.
 - `hash`: A layout that hashes values into the entire storage key space.
@@ -243,28 +254,35 @@ _optional_ keys (depending on what data structures are used by the contract):
     - `offset`: The offset key of the array layout. This is the same key as the element
       at index 0 of the array layout.
     - `len`: The number of elements in the array layout.
-    - `cells_per_elem`: The number of cells each element in the array layout consists of.
     - `layout`: The layout of the elements stored in the array layout.
 - `struct`: A struct layout with fields of different types.
+    - `name`: The name of the struct.
     - `fields`: The fields of the struct layout.
 - `enum`: An enum layout with a discriminant telling which variant is layed out.
+    - `name`: The name of the enum.
     - `dispatch_key`: The key where the discriminant is stored to dispatch the variants.
     - `variants`: The variants of the enum.
 
 ```json
 "storage": {
-  "struct": {
-    "fields": [
-      {
-        "layout": {
-          "cell": {
-            "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "ty": 0
+  "root": {
+    "layout": {
+      "struct": {
+        "fields": [
+          {
+            "layout": {
+              "leaf": {
+                "key": "0x00000000",
+                "ty": 0
+              }
+            },
+            "name": "value"
           }
-        },
-        "name": "value"
+        ],
+        "name": "Flipper"
       }
-    ]
+    },
+    "root_key": "0x00000000"
   }
 }
 ```
@@ -302,6 +320,21 @@ not dig into them here. If you are interested in learning more take a look at th
 
 Other parts of the metadata, such as the `storage` object, will reference individual
 types from this type registry using the `id` key.
+
+#### `version`
+This indicates the version of the ABI format the generated metadata conforms to. This is
+distinct from any concept of Rust's crate versioning.
+
+```json
+"version": "4"
+```
+
+:::tip ink! 3.x Compatiblity Note
+
+In version 3 of the ink! metadata the version was specified as a key which wrapped the
+ABI (e.g `"V3": { ... }`). This is no longer the case with version 4.
+
+:::
 
 ### `user`
 This is an _optional_ field used to add user-defined metadata. Some examples of things
