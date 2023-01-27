@@ -117,3 +117,7 @@ h1 {
 .translateTodo {
   color: red !important;
 }
+
+.titlePic {
+  margin-top: 15px;
+}

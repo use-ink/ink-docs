@@ -4,14 +4,11 @@ hide_title: true
 slug: /ink-vs-solidity
 ---
 
-<header>
-    <h1 class="customTitle">
-        <img src="/img/icons/interop.svg" />
-        ink! vs. Solidity
-    </h1>
-</header>
+<img src="/img/title/solidity.svg" className="titlePic" />
 
-Here is a brief comparison of features between ink! and Solidity:
+# ink! vs. Solidity
+
+The following table gives a brief comparison of features between ink! and Solidity:
 
 <div class="comparison">
 

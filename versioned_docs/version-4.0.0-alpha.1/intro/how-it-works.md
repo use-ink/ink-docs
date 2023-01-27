@@ -4,12 +4,9 @@ hide_title: true
 slug: /how-it-works
 ---
 
-<header>
-    <h1 class="customTitle">
-        <img src="/img/icons/substrate.svg" />
-        How it Works – Substrate
-    </h1>
-</header>
+<img src="/img/title/substrate.svg" className="titlePic" />
+
+# How it Works – Substrate
 
 ink! is a programming language for smart contracts; blockchains built with [the Substrate framework](http://substrate.io)
 can choose from a number of smart contract languages which one(s) they want to support.

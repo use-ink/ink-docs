@@ -1,7 +1,10 @@
 ---
 title: Metadata
+hide_title: true
 slug: /metadata
 ---
+
+<img src="/img/title/metadata.svg" className="titlePic" />
 
 # ink! Metadata
 

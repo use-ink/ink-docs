@@ -1,10 +1,13 @@
 ---
 title: Frequently Asked Questions
+hide: true
 slug: /faq
 hide_table_of_contents: true
 ---
 
-<img src="/img/faq.svg" alt="Smart contracts parachain on Rococo" />
+<img src="/img/title/faq.svg" className="titlePic" />
+
+# Frequently Asked Questions
 
 ### Is it "ink" or "ink!"? What does the "!" stand for?
 

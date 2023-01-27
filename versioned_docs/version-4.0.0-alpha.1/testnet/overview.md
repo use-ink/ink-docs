@@ -1,7 +1,12 @@
 ---
 title: Contracts on Rococo
+hide_title: true
 slug: /testnet
 ---
+
+<img src="/img/title/testnet.svg" className="titlePic" />
+
+# Contracts on Rococo
 
 [Rococo](https://wiki.polkadot.network/docs/build-pdk#rococo-testnet) is a testnet for
 Polkadot and Kusama parachains.
