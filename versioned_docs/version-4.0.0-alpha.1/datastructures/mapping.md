@@ -18,7 +18,7 @@ pub struct MyContract {
 This means that for a given key, you can store a unique instance of a value type. In this
 case, each "user" gets credited their own balance. 
 
-## A simple working example
+## Example: Using a `Mapping`
 
 The following example contract utilizes a `Mapping` so that anyone can deposit and withdraw 
 balance for their own account:
