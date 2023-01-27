@@ -76,8 +76,8 @@ mod mycontract {
 
 ### Updating values
 
-The attentive reader may have noticed that accessing mapping values via the `get()` 
-function will result in an owned value (a local copy), as opposed to a direct reference 
+The attentive reader may have noticed that accessing mapping values via the `Mapping::get()` 
+method will result in an owned value (a local copy), as opposed to a direct reference 
 into the storage. Changes to this value won't be reflected in the contracts storage 
 "automatically". To avoid this common pitfall, the value must be inserted again at the same 
 key after it was modified.
