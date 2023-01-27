@@ -93,7 +93,7 @@ mod mycontract {
 
 :::caution
 
-`Vec` are always loaded as a whole, meaning that all elements of the `Vec` live under a 
+`Vec`'s are always loaded in their entirety. This is because all elements of the `Vec` live under a 
 single storage key. Wrapping the `Vec` inside `Lazy`, like the provided example above does, 
 has no influence on its elements. If you are dealing with large or sparse arrays on 
 contract storage, consider using a `Mapping` instead.
