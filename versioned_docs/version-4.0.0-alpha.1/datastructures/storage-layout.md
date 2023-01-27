@@ -27,7 +27,7 @@ Types that can be stored entirely under a single storage cell are considered
 [`Packed`](https://paritytech.github.io/ink/ink/storage/traits/trait.Packed.html).
 By default, ink! tries to store all storage struct fields under a single storage cell.
 Consequentially, with a `Packed` storage layout, any message interacting with the contract 
-storage will always need to operate on the whole storage struct.
+storage will always need to operate on the entire contract storage struct.
 
 For example, if we have a somewhat small contract storage struct consisting of only a few 
 tiny fields, pulling everything from the storage inside every message is not 
