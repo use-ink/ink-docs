@@ -16,8 +16,9 @@ over providing a lot of advanced high-level functionality found in other impleme
 like the `HashMap` type from the Rust `std` library.
 Overall, the ink! `Mapping` will be solid choice for most contracts.
 
-`Lazy` allows smart contract developers fine grained manual control over the storage 
-layout of individual types. Conceivably, it may be desirable to change certain aspects
-on how your contract deals with it's storage variables. You can find out more about this
-in the section about the ink!
+`Lazy` is a wrapper type that can be used over any other storage compatible type. This  allows smart contract developers fine grained manual control over the layout of the 
+contract storage. For example, it can be used to prevent the contract from eagerly 
+loading large storage fields.
+Conceivably, it may be desirable to change certain aspects on how your contract deals with 
+it's storage variables. You can find out more about this in the section about the ink!
 [Storage Layout](https://use.ink/versioned_docs/version-4.0.0-alpha.1/datastructures/storage-layout).
