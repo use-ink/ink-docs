@@ -3,7 +3,8 @@ title: Storage Layout
 slug: /datastructures/storage-layout
 ---
 
-Smart contract authors are given some flexibility in regards on how they want to organize the storage layout of their contracts.
+Smart contract authors are given some flexibility in regards on how they want to organize 
+the storage layout of their contracts.
 Let's dive deeper into the concepts behind ink! storage to get a better understanding 
 of some of its implications and limitations.
 
@@ -17,14 +18,15 @@ to ink! by the contracts pallet:
 </div>
 
 Storage data is always encoded with the 
-[`SCALE`](https://docs.substrate.io/reference/scale-codec/) codec.
-The storage API operates by storing and loading entries into and from a single storages cells, where each storage cell is accessed under it's own dedicated storage key. To some 
+[`SCALE`](https://docs.substrate.io/reference/scale-codec/) codec. 
+The storage API operates by storing and loading entries into and from a single storages 
+cells, where each storage cell is accessed under it's own dedicated storage key. To some 
 extent, the storage API works similar to a traditional key-value database.
 
 ## Packed vs Non-Packed layout
 
 Types that can be stored entirely under a single storage cell are considered
-[`Packed`](https://paritytech.github.io/ink/ink/storage/traits/trait.Packed.html).
+[`Packed`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/trait.Packed.html).
 By default, ink! tries to store all storage struct fields under a single storage cell.
 Consequentially, with a `Packed` storage layout, any message interacting with the contract 
 storage will always need to operate on the entire contract storage struct.
