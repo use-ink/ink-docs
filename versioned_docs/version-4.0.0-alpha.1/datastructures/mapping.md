@@ -114,9 +114,10 @@ for n in 0..5 {
     // It is not possible to "fetch" all key/value pairs directly at once.
     let bar: MyValue = my_mapping.get(n)?;
 }
-
 ```
 
-Furthermore, this implies that it is not possible to iterate over the contents of a map. 
-Circumventing this restriction by storing populated keys inside an `ink_prelude::Vec` is not 
-advisable as this might result in very high gas costs.
+Furthermore, it follows that mapping values do not have a contiguos storage layout and it is
+therefore not possible to iterate over the contents of a map. 
+Circumventing this restriction by storing populated keys inside an `ink_prelude::Vec` might 
+not always be advisable: As accessing a storage cell is relatively expensive, this might 
+result in very high gas costs for large mappings.
