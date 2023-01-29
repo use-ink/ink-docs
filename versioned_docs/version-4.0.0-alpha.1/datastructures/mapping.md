@@ -104,6 +104,19 @@ Each `Mapping` value lives under it's own storage key. Briefly, this means that 
 lazily loaded in ink!. In other words, if your message only accesses a single key of a 
 mapping, it will not load the whole mapping but only the value being accessed.
 
+```rust
+// This causes only a single storage access and the decoding of a single "MyValue" struct,
+// no matter ho many elements there are inside the mapping.
+let foo: MyValue = my_mapping.get(0)?;
+
+for n in 0..5 {
+    // This causes a storage access and a decoding operation for each loop iteration.
+    // It is not possible to "fetch" all key/value pairs directly at once.
+    let bar: MyValue = my_mapping.get(n)?;
+}
+
+```
+
 Furthermore, this implies that it is not possible to iterate over the contents of a map. 
-Circumventing this feature by storing populated keys inside an `ink_prelude::Vec` is not advisable 
-as this might result in very high gas costs.
+Circumventing this restriction by storing populated keys inside an `ink_prelude::Vec` is not 
+advisable as this might result in very high gas costs.
