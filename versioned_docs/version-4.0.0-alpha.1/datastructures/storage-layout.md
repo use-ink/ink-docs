@@ -43,9 +43,10 @@ with that `Vec`, regardless whether they access it or not. This results in extra
 To solve this problem we need to turn our storage into a non-packed layout somehow.
 
 ## Eager Loading vs. Lazy Loading
-With the [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive, 
 ink! provides means of breaking the storage up into smaller pieces, which can be loaded 
-on demand. Wrapping any storage field inside a `Lazy` struct makes the storage
+on demand, with the
+[`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive.
+Wrapping any storage field inside a `Lazy` struct makes the storage
 struct in which that field appears also 
 `Non-Packed`, preventing it from being eagerly loaded during arbitrary storage operations.
 
@@ -95,10 +96,10 @@ mod mycontract {
 
 :::caution
 
-`Vec`'s are always loaded in their entirety. This is because all elements of the `Vec` live under a 
-single storage key. Wrapping the `Vec` inside `Lazy`, like the provided example above does, 
-has no influence on its elements. If you are dealing with large or sparse arrays on 
-contract storage, consider using a `Mapping` instead.
+`Vec`'s are always loaded in their entirety. This is because all elements of the `Vec` live 
+under a single storage key. Wrapping the `Vec` inside `Lazy`, like the provided example 
+above does, has no influence on its inner layout. If you are dealing with large or sparse 
+arrays on contract storage, consider using a `Mapping` instead.
 
 :::
 
@@ -106,7 +107,8 @@ contract storage, consider using a `Mapping` instead.
 
 By default, keys are calculated automatically for you, thanks to the 
 [`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.AutoKey.html)
-primitive. They'll be generated at compile time and ruled out for conflicts. However, for `Non-Packed` types like `Lazy` or the `Mapping`, the 
+primitive. They'll be generated at compile time and ruled out for conflicts. 
+However, for `Non-Packed` types like `Lazy` or the `Mapping`, the 
 [`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.ManualKey.html)
 primitive allows manual control over the storage key of a field like so:
 
