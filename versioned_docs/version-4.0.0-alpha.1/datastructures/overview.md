@@ -11,9 +11,10 @@ and [`Lazy`](https://docs.rs/ink_storage/4.0.0-beta.1/ink_storage/struct.Lazy.ht
 `Mapping` is a mapping of key-value pairs directly to the contract storage. It is very 
 similar to traditional hash tables and comparable to the `mapping` type Solidity offers.
 As a core ingredient to the ink! language, its main advantage is being simple and 
-lightweight. However, it does not provide any high-level functionality, such as iteration 
-or automatic clean-up. Smart contract authors will need to implement any high level 
-functionality themselves.
+lightweight: It favors being efficient in terms of gas costs and code size 
+over providing a lot of advanced high-level functionality found in other implementations 
+like the `HashMap` type from the Rust `std` library.
+Overall, the ink! `Mapping` will be solid choice for most contracts.
 
 `Lazy` allows smart contract developers fine grained manual control over the storage 
 layout of individual types. Conceivably, it may be desirable to change certain aspects
