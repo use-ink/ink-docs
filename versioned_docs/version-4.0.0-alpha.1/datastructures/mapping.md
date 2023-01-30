@@ -76,8 +76,8 @@ mod mycontract {
 
 ### Storage loading behaviour
 
-Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s are 
-lazily loaded in ink!. In other words, if your message only accesses a single key of a 
+Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s 
+are lazily loaded in ink!. In other words, if your message only accesses a single key of a 
 mapping, it will not load the whole mapping but only the value being accessed.
 
 ```rust
@@ -97,6 +97,14 @@ therefore not possible to iterate over the contents of a map.
 Circumventing this restriction by storing populated keys inside an `ink_prelude::Vec` might 
 not always be advisable: As accessing a storage cell is relatively expensive, this might 
 result in very high gas costs for large mappings.
+
+:::note
+
+There are many additional datastructures accessible under `ink::prelude::collections`, such 
+such as `HashMap` or `BTreeMap` (to name a few). Note that these datastructures all exhibit 
+`Packed` storage loading behavior, as opposed to the ink! `Mapping`!
+
+:::
 
 ### Updating values
 
