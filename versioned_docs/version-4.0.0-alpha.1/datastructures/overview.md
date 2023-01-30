@@ -12,9 +12,10 @@ and [`Lazy`](https://docs.rs/ink_storage/4.0.0-beta.1/ink_storage/struct.Lazy.ht
 similar to traditional hash tables and comparable to the `mapping` type Solidity offers.
 As a core ingredient to the ink! language, its main advantage is being simple and 
 lightweight: It favors being efficient in terms of gas costs and code size 
-over providing a lot of advanced high-level functionality found in other implementations 
-like the `ink::prelude::collections::HashMap` type from the standard Rust.
-Overall, the ink! `Mapping` will be solid choice for most contracts.
+over providing a lot of high-level functionality found in other implementations 
+like the `HashMap` type from the Rust `std` library.
+Overall, the ink! `Mapping` will be solid choice for most contracts. Moreover, smart 
+contracts developers can implement advanced features themselves.
 
 `Lazy` is a wrapper type that can be used over any other storage compatible type. 
 This allows smart contract developers fine grained manual control over the layout of 
