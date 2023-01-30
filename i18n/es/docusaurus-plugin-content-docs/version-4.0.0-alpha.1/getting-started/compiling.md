@@ -6,7 +6,7 @@ slug: /getting-started/building-your-contract
 Ejecuta el siguiente comando en tu directorio `flipper` para compilar tu smart contract:
 
 ```bash
-cargo +nightly contract build
+cargo contract build
 ```
 
 Este comando construirá lo siguiente para tu contrato: un binario Wasm, un fichero metadata (el cual el ABI del contrato) y un fichero `.contract` que agrupa a ambos. Este fichero `.contract` puede ser utilizado para desplegar el contrato en una red. Si todo va bien, deberías ver una carpeta `target` que contiene estos ficheros:
@@ -25,7 +25,7 @@ Vamos a ver la estructura de `metadata.json`:
 {
   "metadataVersion": "0.1.0",
   "source": {...},
-  "contracts": {...},
+  "contract": {...},
   "spec": {
     "constructors": [...],
     "docs": [],
@@ -50,3 +50,33 @@ y que es utilizado para enrutar las llamadas de tu contrato a las funciones corr
 
 En la siguiente sección arrancaremos un [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
 y configuraremos el [Contracts UI](https://github.com/paritytech/contracts-ui) para interactuar con el.
+
+<div class="translateTodo">
+## Debug vs. Release Build
+
+By default, `cargo-contract` builds the contract in debug mode. This means
+that the contract will e.g. print statements like
+
+```rust
+ink::env::debug_println!("magic number: {}", value);
+```
+
+to the node's console if debugging was enabled on the node ([instructions here](/faq#how-do-i-print-something-to-the-console-from-the-runtime)).
+To support functionality like this the debug build of a contract includes some
+heavy-weight logic.
+
+For contracts that are supposed to run in production you should always build the
+contract with `--release`:
+
+```bash
+cargo contract build --release
+```
+
+This will ensure that nothing unnecessary is compiled into the Wasm blob, making
+your contract faster and cheaper to deploy and execute.
+
+:::info
+With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs:
+the `--release` flag has to be passed explicitly to `cargo build`.
+:::
+</div>

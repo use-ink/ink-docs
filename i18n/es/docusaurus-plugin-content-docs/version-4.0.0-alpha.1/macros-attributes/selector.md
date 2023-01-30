@@ -45,8 +45,6 @@ Un autor de un smart contract ink! puede controlar el selector de un mensaje o c
 utilizando la marca `selector` flag. Un ejemplo se muestra a continuación:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
     #[ink(storage)]

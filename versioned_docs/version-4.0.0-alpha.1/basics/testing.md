@@ -1,9 +1,12 @@
 ---
 title: Contract Testing
+hide_title: true
 slug: /basics/contract-testing
 ---
 
-<img src="/img/testing.png" alt="Smart contracts parachain on Rococo" />
+<img src="/img/title/testing1.svg" className="titlePic" />
+
+# Contract Testing
 
 ink! supports different stages of testing for different purposes.
 On this page we'll explain what each stage is about and how to use it.

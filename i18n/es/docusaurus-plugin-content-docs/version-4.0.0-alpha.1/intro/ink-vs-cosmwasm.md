@@ -112,7 +112,7 @@ De manera similar, podemos encontrar ejemplos de ink! en el directorio [`example
 
 Un contrato pude ser compilado desde su directorio ejecutando:
 ```
-$ cargo +nightly contract build
+$ cargo contract build
 ```
 
 y realizar tests con:

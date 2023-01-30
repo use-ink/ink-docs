@@ -3,6 +3,8 @@ title: "#[ink::chain_extension]"
 slug: /macros-attributes/chain-extension
 ---
 
+__TODO: check if this is still up to date for 4.0__
+
 En la configuración por defecto del `contracts-pallet` un smart contract solo puede interactuar con el runtime
 via su conjunto bien definido de la interface basica del smart contract. Este API ya permite una gran variedad de
 interacción entre el `contracts-pallet` y el smart contract ejecutado. Por ejemplo es posible llamar e instanciar 
@@ -51,9 +53,9 @@ que pueden marcarse:
 | `ink(returns_result = flag: bool)` | Opcional | `true` | Por defecto en los métodos de extension de cadena se asume que devuelve un `Result<T, E>` en el output buffer. Utilizando `returns_result = false` este check se desactiva y el método de extensión de cadena puede devolver cualquier otro tipo. |
 
 Como en todos los atributos ink! pueden aparecer multiples de ellos en una lista contigua:
+
 ```rust
 type Access = i32;
-use ink_lang as ink;
 
 #[ink::chain_extension]
 pub trait MyChainExtension {
@@ -68,7 +70,6 @@ o como multiples atributos ink! independientes aplicados al mismo item:
 
 ```rust
 type Access = i32;
-use ink_lang as ink;
 
 #[ink::chain_extension]
 pub trait MyChainExtension {
@@ -135,8 +136,6 @@ asume que el código de estado devuelto indica exito por lo tanto siempre cargar
 Cada extensión de cadena define exactamente un `ErrorCode` utilizando la siguiente sintaxis:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = MyErrorCode;
@@ -158,8 +157,6 @@ En el ejemplo a continuación una extensión de cadena se define que se permite 
 leer y escribir en el storage del runtime utilizando privilegios de acceso:
 
 ```rust
-use ink_lang as ink;
-
 /// Custom chain extension to read to and write from the runtime.
 #[ink::chain_extension]
 pub trait RuntimeReadWrite {
@@ -291,7 +288,7 @@ integrarla en una definición `Environment` como se muestra a continuación:
 ```rust
 type RuntimeReadWrite = i32;
 
-use ink_env::{Environment, DefaultEnvironment};
+use ink::env::{Environment, DefaultEnvironment};
 
 pub enum CustomEnvironment {}
 
@@ -322,12 +319,8 @@ Nota que los métodos de extensión de cadena son accesibles a través de `Self:
 `self.extension()`. Por ejemplo en `Self::extension().read(..)` o `self.extension().read(..)`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract(env = CustomEnvironment)]
 mod read_writer {
-    use ink_lang as ink;
-    
     #[ink(storage)]
     pub struct ReadWriter {}
 
@@ -429,7 +422,7 @@ mod read_writer {
          ReadOnly,
          WriteOnly,
     }
-    impl ink_env::chain_extension::FromStatusCode for ReadWriteErrorCode {
+    impl ink::env::chain_extension::FromStatusCode for ReadWriteErrorCode {
          fn from_status_code(status_code: u32) -> Result<(), Self> {
              match status_code {
                  0 => Ok(()),
@@ -441,15 +434,15 @@ mod read_writer {
          }
     }
     pub enum CustomEnvironment {}
-    impl ink_env::Environment for CustomEnvironment {
+    impl ink::env::Environment for CustomEnvironment {
          const MAX_EVENT_TOPICS: usize =
-             <ink_env::DefaultEnvironment as ink_env::Environment>::MAX_EVENT_TOPICS;
+             <ink::env::DefaultEnvironment as ink::env::Environment>::MAX_EVENT_TOPICS;
     
-         type AccountId = <ink_env::DefaultEnvironment as ink_env::Environment>::AccountId;
-         type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
-         type Hash = <ink_env::DefaultEnvironment as ink_env::Environment>::Hash;
-         type BlockNumber = <ink_env::DefaultEnvironment as ink_env::Environment>::BlockNumber;
-         type Timestamp = <ink_env::DefaultEnvironment as ink_env::Environment>::Timestamp;
+         type AccountId = <ink::env::DefaultEnvironment as ink::env::Environment>::AccountId;
+         type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
+         type Hash = <ink::env::DefaultEnvironment as ink::env::Environment>::Hash;
+         type BlockNumber = <ink::env::DefaultEnvironment as ink::env::Environment>::BlockNumber;
+         type Timestamp = <ink::env::DefaultEnvironment as ink::env::Environment>::Timestamp;
     
          type ChainExtension = RuntimeReadWrite;
     }

@@ -18,8 +18,6 @@ ser marcados como tal.
 
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
 

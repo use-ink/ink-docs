@@ -1,73 +1,78 @@
 ---
-title: Overview
-slug: /testnet
+title: Contracts on Rococo
 hide_title: true
+slug: /testnet
 ---
 
-## Rococo Deployment
+<img src="/img/title/testnet.svg" className="titlePic" />
 
-Tenemos una red de prueba llamada `Contracts` en vivo como una parachain en [Rococo](https://wiki.polkadot.network/docs/build-pdk#rococo-testnet) ‒ una red de prueba para parachains de Polkadot y Kusama:
+TODO: Please see [this file](https://github.com/paritytech/ink-docs/blob/7a62015b4ea9c020a175404017bb5492beb24328/i18n/es/docusaurus-plugin-content-docs/version-4.0.0-alpha.1/testnet/overview.md), some content can be recycled.
 
-<div class="schema">
-    <img src="/img/contracts-on-polkadot-js.png" alt="Smart contracts parachain on Rococo" />
-</div>
+# Contracts on Rococo
 
-Puedes interactuar con la red a través de Polkadot JS Apps,
-[haga click aquí para abrir directamente la parachain `Contracts`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer).
+[Rococo](https://wiki.polkadot.network/docs/build-pdk#rococo-testnet) is a testnet for
+Polkadot and Kusama parachains.
+We have a live testnet named `Contracts` as a parachain online there.
 
-Nuestra parachain utiliza el token nativo (ROC) de la relay chain Rococo en lugar de tener su propio token.
-Debido a esto necesitaras ROC para poder desplegar contratos en nuestra testnet.
+<img src="/img/contracts-on-polkadot-js.png" alt="Smart contracts parachain on Rococo" />
 
-Como primer paso, deber crear una cuenta. Mira [aquí](https://wiki.polkadot.network/docs/learn-account-generation)
-para una guía más detallada.
+## What is the `Contracts` parachain?
 
-Como segundo paso, debes obtener tokens ROC para la red de prueba a través de [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
-Esta es una sala de un chat donde tienes que escribir:
+It's a [Substrate](https://github.com/paritytech/substrate) parachain for smart
+contracts. We configured it to use Substrate's smart contracts module – the
+[`contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts)
+pallet – in a default configuration.
+
+The code for this parachain can be found [in the `cumulus` repository](https://github.com/paritytech/cumulus/tree/master/parachains/runtimes/contracts/contracts-rococo).
+Our parachain uses the Rococo relay chain's native token (`ROC`) instead of having its own token.
+Due to this you'll need `ROC` in order to deploy contracts on our testnet.
+
+## How can I use it?
+### (1) Create an Account
+
+As a first step, you should create an account. This can be done via command-line
+tools (e.g. `subxt`) or via a wallet (e.g. with the `polakdot-js` browser extension).
+See [here](https://wiki.polkadot.network/docs/learn-account-generation) for a detailed guide.
+
+### (2) Get Testnet Tokens
+
+As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
+This is a chat room in which you need to write:
+
 ```
 !drip YOUR_SS_58_ADDRESS:1002
 ```
-El número `1002` es el id de la parachain `Contracts` en Rococo, al suministrarlo el faucet teletransportará tokens ROC
-directamente a tu cuenta en la parachain.
 
-Si todo ha funcionado bien, los tokens ROC teletransportados se mostraran en
-[la pestaña "Accounts" de `Contracts`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
+The number `1002` is the parachain id of `Contracts` on Rococo, by supplying it the
+faucet will teleport `ROC` tokens directly to your account on the parachain.
+Teleport is a term
 
-Una vez tengas los ROC en `Contracts` puedes desplegar el contrato como harias normalmente.
-Si e
-Si no estás seguro de esto, nuestro [tutorial guiado](https://docs.substrate.io/tutorials/smart-contracts//)
-te lo aclarará en poco tiempo.
+If everything worked out, the teleported `ROC` tokens will show up in your account.
+In case you are using the `polkadot-js` fronted, you can see them under
+[the "Accounts" tab for `Contracts`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
 
+<img src="/img/roc-in-wallet.png" alt="Rococo testnet tokens in wallet" />
 
-## ¿Qué es la parachain `Contracts`?
+### (3) Deploy Your Contract
 
-Es una [Substrate](https://github.com/paritytech/substrate)
-parachain para smart contracts.
-La hemos configurado para utilizar el módule de Substrate para smart contracts ‒ el 
-pallet [`contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts) ‒ con la 
-configuración por defecto.
+Once you have `ROC` on `Contracts` you can deploy a contract _nearly_ as you would with
+a local developer node.
+The only difference is that you can't use pre-endowed accounts like `Alice` or `Bob`,
+you have to use the one you generated instead.
 
-El código para esta parachain se puede ver [en el repositorio `cumulus`](https://github.com/paritytech/cumulus/tree/master/parachains/runtimes/contracts/contracts-rococo).
+<img src="/img/deployment-acc.png" alt="Deploy a smart contract on Rococo/Polkadot" />
 
-El `pallet-contracts` toma los smart contracts como WebAssembly blobs y define una API
-para todo lo que un smart contract necesita (storage access, …).
-Mientras el lenguaje de programación compile a WebAssembly y exista una implementación para su API en el, 
-puedes escribir un smart contract para este pallet ‒ y por lo tanto para nuestra parachain `Contracts`
-‒ en ese lenguaje.
+You can also deploy your contract from the command-line via `cargo-contract`.
+Make sure you are in the folder of your contract and that it has been
+built recently. Then execute:
 
-Aquí tienes una lista de los lenguajes que actualmente puedes elegir:
+```bash
+cargo contract upload --suri "your twelve or twenty-four words"
+cargo contract instantiate --suri … --constructor new --args true
+```
 
-* [Parity's ink!](https://github.com/paritytech/ink) en Rust
-* [ask!](https://github.com/patractlabs/ask) en Assembly Script
-* El compilador [Solang](https://github.com/hyperledger-labs/solang) para Solidity
+`new` in this case would be a constructor method exposed by the contract,
+`--args` would be any arguments the constructor expects.
 
-El siguiente gráfico representa la idea:
-
-<div class="schema">
-    <img src="/img/pallet-contracts-overview.svg" alt="`pallet-contracts` Overview" />
-</div>
-
-También existen diferentes interfaces de usuario y herramientas de línea de comandos que pueden ser
-utilizados para implementar o interactuar con contratos:
-
-* [Contracts UI](https://contracts-ui.substrate.io/)
-* [polkadot-js](https://polkadot.js.org/apps/)
+See [the `cargo-contract` docs](https://github.com/paritytech/cargo-contract/blob/master/docs/extrinsics.md#commands)
+for a more detailed documentation.

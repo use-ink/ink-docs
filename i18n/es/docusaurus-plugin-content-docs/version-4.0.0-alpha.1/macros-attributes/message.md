@@ -52,8 +52,6 @@ Dada la definición del contrato `Flipper` de arriba añadimos las definiciones 
 como vemos a continuación:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
     #[ink(storage)]

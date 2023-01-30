@@ -22,8 +22,6 @@ Para más información visita la documentación del crate `ink_storage`.
 
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
 

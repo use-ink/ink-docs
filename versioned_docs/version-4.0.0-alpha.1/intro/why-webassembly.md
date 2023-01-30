@@ -4,12 +4,12 @@ hide_title: true
 slug: /why-webassembly-for-smart-contracts
 ---
 
-<header>
-    <h1 class="customTitle">
-        <img src="/img/icons/wasm-circle.svg" />
-        Why WebAssembly for Smart Contracts?
-    </h1>
-</header>
+<img src="/img/title/wasm.svg" className="titlePic" />
+
+# Why WebAssembly for Smart Contracts?
+
+We made a conscious decision for WebAssembly as the target architecture of ink!. 
+Our decision was made up by these reasons:
 
 * <span class="highlight">High performance: </span>Wasm is high performance — it’s built to be as close to native machine code as possible while still being platform independent.
 
