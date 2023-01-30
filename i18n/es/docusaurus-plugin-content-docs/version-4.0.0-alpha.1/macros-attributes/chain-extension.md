@@ -14,10 +14,19 @@ corriendo built-in procedimientos de hashing criptográficos.
 Si este conjunto básico de features no es suficiente para una Blockchain particular construida con Substrate
 es posible extender facilmente su API utilizando la feature de extensión de la cadena.
 
+<center>
+  <img src="/img/venn.png" width="50%" />
+</center>
 
-**Note:** El repositorio ink! contiene [el ejemplo `rand-extension` ](https://github.com/paritytech/ink/tree/master/examples/rand-extension).
+<div class="translateTodo">
+With chain extensions you can expose parts of your runtime logic
+to smart contract developers.
+</div>
+
+:::note
+El repositorio ink! contiene [el ejemplo `rand-extension` ](https://github.com/paritytech/ink/tree/master/examples/rand-extension).
 Este es un ejemplo completo de una extensión de una cadea implementada con ambos ink! y Substrate.
-
+:::
 
 ## Estructura
 

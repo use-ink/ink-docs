@@ -16,9 +16,17 @@ or run built-in cryptographic hashing procedures.
 If this basic set of features is not enough for a particular Substrate built blockchain it is possible
 to easily extend this API using the so-called chain extension feature.
 
-**Note:** The ink! repository contains [the `rand-extension` example](https://github.com/paritytech/ink/tree/master/examples/rand-extension).
-This is a complete example of a chain extension implemented in both ink! and Substrate.
+<center>
+  <img src="/img/venn.png" width="50%" />
+</center>
 
+With chain extensions you can expose parts of your runtime logic
+to smart contract developers.
+
+:::note
+The ink! repository contains [the `rand-extension` example](https://github.com/paritytech/ink/tree/master/examples/rand-extension).
+This is a complete example of a chain extension implemented in both ink! and Substrate.
+:::
 
 ## Structure
 

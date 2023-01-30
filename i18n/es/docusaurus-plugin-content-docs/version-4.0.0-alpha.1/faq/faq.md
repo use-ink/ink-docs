@@ -51,6 +51,8 @@ para ejecutar smart contracts sobre la EVM así como el experimental `actors-pal
 smart contracts escritor en el modelo de programación de estilo actor.
 Con el tiempo la comunidad de Substrate hacer surgir otros pallets para la ejecución de smart contracts. 
 
+Por favor vea nuestra página [Cómo funciona ‒ Substrate](/como-funciona) para más información.
+
 ### ¿Como llamar a otros smart contracts en la misma blockchain?
 
 Mira la sección [Cross-contract calling](/basics/cross-contract-calling).
@@ -109,7 +111,9 @@ configuración del compilador de Rust, puedes específicar si quieres soporte ma
 que entre en pánico durante la ejecución del contrato cuando ocurra un overflows. No es necesario importar continuamente
 las lbrerias "Safe Math", aunque Rust también proporciona [checked integrado, wrapped, y funciones matematicas saturadas](https://doc.rust-lang.org/std/primitive.u32.html).
 
->Nota: Hay algunos problemas conocidos con respecto a la funcionalidad a nivel de los overflows checks en el compilador y el tamaño resultante del Wasm blob. TEsta función podría cambiar o ser iterada en el futuro.
+:::note
+Hay algunos problemas conocidos con respecto a la funcionalidad a nivel de los overflows checks en el compilador y el tamaño resultante del Wasm blob. TEsta función podría cambiar o ser iterada en el futuro.
+:::
 
 ### ¿Cuál es la diferencia entre memoria y storage?
 
@@ -120,44 +124,9 @@ El storage del contrato está construido sobre el storage del runtime, y su acce
 
 ### ¿Cómo imprimo algo en la consola desde el runtime?
 
-Puedes elegir entre estos dos macros:
-* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_println.html)
-* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_print.html)
-
-Tienes que hacer tres cosas para poder mostrar en la consola los mensajes de debug: 
-
-1. __Permitir la feature `pallet-contracts/unstable-interface` en el runtime.__<br/>
-Para `substrate-contracts-node` esto esta hecho por defecto [aquí](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml).
-  
-1. __Permitir la feature `ink-debug` para el crate `ink_env`.__<br/>
-`cargo-contract` hace esto automaticamente para ti (para versiones `>= 0.13.0`), excepto si
-compilas un contrato en modo `--release`.
-
-1. __Establecer el nivel de log de su nodo en `runtime::contracts=debug`.__<br/>
-Por ejemplo, para que aparezcan solo los errores y el output del debug en el `substrate-contracts-node`: 
-  ```
-  substrate-contracts-node --dev --tmp -lerror,runtime::contracts=debug
-  ```
-
-__Importante: El debug output solo se imprime para llamadas RPC o tests off-chain ‒ no para transacciones!__
-
-En tu mensaje o constructor ink! puedes escribir lo siguiente:
-
-```rust
-#[ink(constructor)]
-fn new() -> Self {
-    ink::env::debug_println!("created new instance at {}", Self::env().block_number());
-    Self { }
-}
-
-#[ink(message)]
-fn print(&self) {
-   let caller = self.env().caller();
-   let message = ink_prelude::format!("got a call from {:?}", caller);
-   ink::env::debug_println!(&message);
-}
-```
-
+<div class="translateTodo">
+Please see our page on [Contract Debugging](/es/basics/contract-debugging).
+</div>
 
 ### ¿Por qué la libreria estándar de Rust (stdlib) no está disponible en ink!?
 
@@ -218,7 +187,7 @@ internalmente balances de cuentas en Satoshi, y no como un número decimal de Bi
 
 ### ¿Por qué no puedo simplemente utilizar las colecciones de datos estándars de Rust en ink!?
 
-¡Puedes utilizarlos! Estan expuestos en el crate `ink_prelude` (p.ej. `ink_prelude::vec::Vec`)
+¡Puedes utilizarlos! Estan expuestos en el crate `ink_prelude` (p.ej. `ink::prelude::vec::Vec`)
 y puedes devolverlos desde mensajes ink! y hacer que persistan en el storage.
 
 _Sin embargo, las colleciones stdlib de Rust no están optimizadas para el uso de smart contract!_ 
@@ -226,6 +195,7 @@ Asi que por ejemplo, si quieres utilizarlas para persistir los datos en la caden
 ocupar una única celda del storage y así que se carguen siempre con avidez, en su totalidad.
 ¡Esto puede ser muy costoso! Simplemente piensa en un `Vec` o un `HashMap` donde el smart contract 
 posiblemente solo necesite acceder a algunos elementos, en lugar de a toda la recopilación de datos.
+
 ### ¿Por qué recibo un error `ContractTrapped` cuando interactuo con el contrato?
 
 Cuando no constituye una afirmación deliberada, como por ejemplo una verificación de permisos, 
@@ -258,9 +228,11 @@ Por ejemplo, puedes encontrarte este error si intentantas almacenar una estructu
 datos personalizada en el storage del contrato. O por ejemplo cuando intentes devolver un 
 error personalizado desde un mensaje ink!.
 
-> Nota: El error `the trait "WrapperTypeEncode" is not implemented for …` es también
-> un error común cuando una versión del `parity-scale-codec` es utilizada
-> en el contrato y no coincide con la versión utilizada por ink!.
+:::note
+El error `the trait "WrapperTypeEncode" is not implemented for …` es también
+un error común cuando una versión del `parity-scale-codec` es utilizada
+en el contrato y no coincide con la versión utilizada por ink!.
+:::
 
 La solución generalmente es agregar una implementación adecuada del trait para tu estructura de datos:
 
