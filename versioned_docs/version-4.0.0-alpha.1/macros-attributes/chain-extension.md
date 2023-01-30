@@ -4,7 +4,7 @@ slug: /macros-attributes/chain-extension
 ---
 
 :::caution
-TODO: update this page for ink! 4.0
+TODO: update this page for ink! 4.0 
 :::
 
 In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
