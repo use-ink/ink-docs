@@ -36,20 +36,22 @@ tiny fields, pulling everything from the storage inside every message is not
 problematic. It may even be advantegous - especially if we expect most messages to 
 interact with most of the storage fields.
 
-On the other hand, this can get problematic if we're storing a large `Vec` in the
-contract storage but provide messages that do not need to read and write from this `Vec`. 
-In that scenario, each and every contract message bears runtime overhead by dealing 
-with that `Vec`, regardless whether they access it or not. This results in extra gas costs. 
-To solve this problem we need to turn our storage into a non-packed layout somehow.
+On the other hand, this can get problematic if we're storing a large `ink::prelude::vec::Vec`
+in the contract storage but provide messages that do not need to read and write from this 
+`ink::prelude::vec::Vec`. In that scenario, each and every contract message bears runtime 
+overhead by dealing with that `ink::prelude::vec::Vec`, regardless whether they access it or 
+not. This results in extra gas costs.  To solve this problem we need to turn our storage 
+into a non-packed layout somehow.
 
 :::caution
 
-If any type exhibiting `Packed` layout gets large enough (an ever growing `Vec` migth be 
-a prime candidate for this), it will break your contract. This is because for encoding and 
-decoding storage items, there is a buffer with only limited capacity (around 16KB in the 
-default configuration) available. This means any contract trying to decode more than that 
-will trap! If you are unsure about the potential size a datastructure might get, consider 
-using an ink! `Mapping`, which can store an arbitrary number of elements, instead.
+If any type exhibiting `Packed` layout gets large enough (an ever growing 
+`ink::prelude::vec::Vec` migth be a prime candidate for this), it will break your contract. 
+This is because for encoding and decoding storage items, there is a buffer with only limited 
+capacity (around 16KB in the default configuration) available. This means any contract 
+trying to decode more than that will trap! If you are unsure about the potential size a 
+datastructure might get, consider using an ink! `Mapping`, which can store an arbitrary 
+number of elements, instead.
 
 ::: 
 
@@ -107,10 +109,11 @@ mod mycontract {
 
 :::caution
 
-`Vec`'s are always loaded in their entirety. This is because all elements of the `Vec` live 
-under a single storage key. Wrapping the `Vec` inside `Lazy`, like the provided example 
-above does, has no influence on its inner layout. If you are dealing with large or sparse 
-arrays on contract storage, consider using a `Mapping` instead.
+`ink::prelude::vec::Vec`'s are always loaded in their entirety. This is because all elements 
+of the `ink::prelude::vec::Vec` live under a single storage key. Wrapping the 
+`ink::prelude::vec::Vec` inside `Lazy`, like the 
+provided example above does, has no influence on its inner layout. If you are dealing with 
+large or sparse arrays on contract storage, consider using a `Mapping` instead.
 
 :::
 
