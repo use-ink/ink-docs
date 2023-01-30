@@ -42,8 +42,19 @@ In that scenario, each and every contract message bears runtime overhead by deal
 with that `Vec`, regardless whether they access it or not. This results in extra gas costs. 
 To solve this problem we need to turn our storage into a non-packed layout somehow.
 
+:::caution
+
+If any type exhibiting `Packed` layout gets large enough (an ever growing `Vec` migth be 
+a prime candidate for this), it will break your contract. This is because for encoding and 
+decoding storage items, there is a buffer with only limited capacity (around 16KB in the 
+default configuration) available. This means any contract trying to decode more than that 
+will trap! If you are unsure about the potential size a datastructure might get, consider 
+using an ink! `Mapping`, which can store an arbitrary number of elements, instead.
+
+::: 
+
 ## Eager Loading vs. Lazy Loading
-ink! provides means of breaking the storage up into smaller pieces, which can be loaded 
+ink! provides means of breaking the storage up into ismaller pieces, which can be loaded 
 on demand, with the
 [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive.
 Wrapping any storage field inside a `Lazy` struct makes the storage
