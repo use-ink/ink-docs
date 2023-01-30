@@ -74,30 +74,6 @@ mod mycontract {
 
 ## Considerations when using the `Mapping` type
 
-### Updating values
-
-The attentive reader may have noticed that accessing mapping values via the `Mapping::get()` 
-method will result in an owned value (a local copy), as opposed to a direct reference 
-into the storage. Changes to this value won't be reflected in the contracts storage 
-"automatically". To avoid this common pitfall, the value must be inserted again at the same 
-key after it was modified. The `transfer` function from above example illustrates this:
-
-```rust
-pub fn transfer(&mut self) {
-    let caller = self.env().caller();
-    // `balance` is a local value and not a reference to the value on storage!
-    let balance = self.balances.get(caller).unwrap_or(0);
-    let endowment = self.env().transferred_value();
-    // The following line of code would have no effect to the balance of the 
-    // caller stored in contract storage:
-    //
-    // balance += endowment;
-    //
-    // Instead, we use the `insert` function to write it back like so:
-    self.balances.insert(caller, &(balance + endowment));
-}
-```
-
 ### Storage loading behaviour
 
 Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s are 
@@ -121,3 +97,27 @@ therefore not possible to iterate over the contents of a map.
 Circumventing this restriction by storing populated keys inside an `ink_prelude::Vec` might 
 not always be advisable: As accessing a storage cell is relatively expensive, this might 
 result in very high gas costs for large mappings.
+
+### Updating values
+
+The attentive reader may have noticed that accessing mapping values via the `Mapping::get()` 
+method will result in an owned value (a local copy), as opposed to a direct reference 
+into the storage. Changes to this value won't be reflected in the contracts storage 
+"automatically". To avoid this common pitfall, the value must be inserted again at the same 
+key after it was modified. The `transfer` function from above example illustrates this:
+
+```rust
+pub fn transfer(&mut self) {
+    let caller = self.env().caller();
+    // `balance` is a local value and not a reference to the value on storage!
+    let balance = self.balances.get(caller).unwrap_or(0);
+    let endowment = self.env().transferred_value();
+    // The following line of code would have no effect to the balance of the 
+    // caller stored in contract storage:
+    //
+    // balance += endowment;
+    //
+    // Instead, we use the `insert` function to write it back like so:
+    self.balances.insert(caller, &(balance + endowment));
+}
+```
