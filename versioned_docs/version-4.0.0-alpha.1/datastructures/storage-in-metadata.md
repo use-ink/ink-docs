@@ -4,7 +4,7 @@ slug: /datastructures/storage-in-metadata
 ---
 
 The storage layout of a contract is reflected inside the metadata. It allows third-party 
-tooling to work with contract stroage and can also help to better understand the storage 
+tooling to work with contract storage and can also help to better understand the storage 
 layout of any given contract.
 
 Given a contract with the following storage:
