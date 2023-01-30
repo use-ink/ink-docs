@@ -11,7 +11,7 @@ Here is an example of a mapping from a user to a `Balance`:
 #[ink(storage)]
 pub struct MyContract {
     /// Assign a balance to every account.
-    map: balances: ink::storage::Mapping<AccountId, Balance>
+    balances: ink::storage::Mapping<AccountId, Balance>,
 }
 ```
 
