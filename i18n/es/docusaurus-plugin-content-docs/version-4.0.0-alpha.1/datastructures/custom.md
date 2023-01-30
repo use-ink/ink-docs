@@ -3,6 +3,8 @@ title: Estructuras de Datos Personalizadas
 slug: /datastructures/custom-datastructure
 ---
 
+**TODO: Beware, this page is no longer up to date for 4.0!**
+
 Mientras que el crate `ink_storage` proporciona toneladas de utilidades útiles y estructuras de datos para organizar y manipular el storage del contrato, los
 autores del contrato no están limitados por sus capacidades. Al implementar el núcleo de los traits `SpreadLayout`/`PackedLayout` (y el trait `StorageLayout` 
 para soportar el metadata generado por el bundle `.contract`) los usuarios son capaces de definir sus propias estructuras de datos personalizadas con su conjunto de requerimientos y features que funcionen con las estructuras de datos del `ink_storage` mientras que cumplan los meros requisitos establecidos por esos dos traits.
@@ -43,4 +45,4 @@ impl SpreadLayout for Inner {
 
 ```
 
-Puedes comprobar que hace cada método en los [trait's docs](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.SpreadLayout.html). Comprueba como algunas estructuras de datos están implementadas, como [Mapping](https://docs.rs/ink_storage/3.3.1/src/ink_storage/lazy/mapping.rs.html#113).
+Puedes comprobar que hace cada método en los [trait's docs](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/traits/trait.SpreadLayout.html). Comprueba como algunas estructuras de datos están implementadas, como [Mapping](https://docs.rs/ink_storage/4.0.0-beta/src/ink_storage/lazy/mapping.rs.html#113).

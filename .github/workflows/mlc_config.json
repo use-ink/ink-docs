@@ -1,7 +1,7 @@
 {
   "retryCount": 6,
   "fallbackRetryDelay": "30s",
-  "timeout": "20s",
+  "timeout": "30s",
   "retryOn429": true,
   "replacementPatterns": [
     {

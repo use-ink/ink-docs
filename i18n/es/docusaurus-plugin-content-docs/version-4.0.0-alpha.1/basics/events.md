@@ -9,8 +9,6 @@ Emitir eventos puede ser utilizado por herramientas de terceros para consultar i
 El siguiente ejemplo de un contrato en ink! muestra como se define un evento `Transferred` y se emite en `#[ink(constructor)]`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     /// Definir un evento que es emitido

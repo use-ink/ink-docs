@@ -22,7 +22,6 @@ incluso si ninguno de los items interiores tiene ningún atributo ink! específi
 
 ```rust
 use core::convert::TryFrom;
-use ink_lang_ir as ir;
 
 #[ink::contract]
 mod my_module {

@@ -21,6 +21,7 @@ En Substrate, el proceso de despliegue del contrato se divide en dos pasos:
 Con este patrón, código de un contrato como el estándar ERC20 puede ponerse en la blockchain una sola vez, pero instanciarse muchas veces.
 No es necesario cargar el mismo código fuente continuamente y desperdiciar espacio en la blockchain.
 
+## TODO: Using the Contracts UI
 
 ### 1. Cargar el código del Contrato 
 
@@ -33,7 +34,7 @@ Aquí cargaremos el código del contrato e instanciaremos una copia del contrato
 - Arrastra el fichero `flipper.contract` que contiene el paquete Wasm blob y la metadata en el area de `drag & drop`. Verás la UI analizar los metadatos  y habilitar el botón que te permitira avanzar al siguiente paso.
 - aga clic en el botón **Next**.
 
-![Flipper Instantiate Contract 01](./assets/flipper-instantiate-01.png)
+![Flipper Instantiate Contract 01](/img/contracts-ui-0.png)
 
 ### 2. Instanciar un Contrato en la Blockchain
 
@@ -47,15 +48,28 @@ Ahora una pantalla nos mostrara la información que representa nuestro smart con
 - Aceptar la opción por defecto **Max Gas Allowed** de `200000`.
 - Haga click en `Next`
 
-![Flipper Instantiate Contract 02](./assets/flipper-instantiate-02.png)
+![Flipper Instantiate Contract 02](/img/contracts-ui-1.png)
 
 La transacción ahora está en cola, revisa tus datos y haga clic en  **Upload and Instantiate** o vuelve para modificar tus inputs.
 
-![Flipper Instantiate Contract 03](./assets/flipper-instantiate-03.png)
+![Flipper Instantiate Contract 03](/img/contracts-ui-2.png)
 
 Cuando hagas clic en **Upload and Instantiate** deberías ver que el extrinsic `instantiateWithCode` 
 se está procesando, y aparece una ráfaga de eventos, incluyendo la creación de una nueva cuenta (`system.NewAccount`) 
 y la instanciación del contrato (`contracts.Instantiated`).
 Seras redirigido a una nueva página, donde podrás interactuar con la nueva instancia creada del contrato.
 
-![Flipper Instantiate Success](./assets/flipper-instantiate-04.png)
+![Flipper Instantiate Success](/img/contracts-ui-3.png)
+
+<div class="translateTodo">
+## Using `cargo-contract`
+
+Contracts can be deployed via the command-line as well. With `cargo-contract`
+it's just a simple sequence of:
+
+```bash
+cargo contract build
+cargo contract upload --suri //Alice
+cargo contract instantiate --suri //Alice --args true
+```
+</div>

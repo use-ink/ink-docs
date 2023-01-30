@@ -16,8 +16,6 @@ para un elaborado ejemplo que utiliza definiciones trait.
 Definido en el módulo `base_erc20.rs`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::trait_definition]
 pub trait BaseErc20 {
     /// Crear un nuevo contrato ERC-20 e inicializa con un suministro inicial para el instanciador.
@@ -37,8 +35,6 @@ pub trait BaseErc20 {
 Una definición de un ink! smart contract puede implementar esta definición trait así:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     use base_erc20::BaseErc20;
@@ -96,13 +92,12 @@ Estas limitaciones existen debido a las complejidades técnicas, sin embargo muc
 Marca definiciones trait para ink! como ink! trait definiciones especiales.
 
 Hay algunas restricciones para las definiciones trait de ink! que este macro comprueba. Además las definiciones trait de ink! son necesarias para 
-tener una estructura especializada y que la principial macro [`#[ink::contract]`](https://docs.rs/ink_lang/3.3.1/ink_lang/attr.contract.html) pueda generar correctamente código para su implementación.
+tener una estructura especializada y que la principial macro [`#[ink::contract]`](https://docs.rs/ink_lang/4.0.0-beta/ink_lang/attr.contract.html) pueda generar correctamente código para su implementación.
 
 # Ejemplo: Definición
 
 ```rust
-use ink_lang as ink;
-type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
+type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
 
 #[ink::trait_definition]
 pub trait Erc20 {
@@ -123,8 +118,6 @@ pub trait Erc20 {
 Con la definición trait de arriba puedes implementarla como se muestra a continuación:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod base_erc20 {
     /// De alguna manera no podemos poner el trait el el doc-test crate root debido a bugs.

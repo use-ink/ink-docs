@@ -11,7 +11,7 @@ Está destinado a ser utilizado por herramientas de terceros (p.ej UIs, explorad
 para poder llamar correctamente a las funciones de contrato e interpretar eventos.
 
 Los metadatos ink! son generados cuando un contrato es construido utilizando `cargo-contract`, p.ej
-`cargo +nightly contract build`.
+`cargo contract build`.
 
 Los metadatos se pueden encontrar en tu en el directorio de destino de su contrato bajo el nombre
 `metadata.json`.
@@ -79,8 +79,8 @@ _Opcionalmente_ podría incluir las siguientes claves:
 ```json
 "source": {
   "hash": "0x157014494527fee27a82e49bbd9eea10c0713bb0566f6def37f4595db86236ff",
-  "language": "ink! 3.1.0",
-  "compiler": "rustc 1.63.0-nightly"
+  "language": "ink! 4.0.0",
+  "compiler": "rustc 1.66.0"
 }
 ```
 

@@ -8,27 +8,13 @@ Esta macro es el punto de entrada para escribir smart contracts ink!.
 Si eres un principiante aprendiendo ink! Le recomendamos que consulte nuestro amplio 
 [workshop de ink! ](https://docs.substrate.io/tutorials/smart-contracts/).
 
-**Note:** En todos nuestros ejemplos estaremos utilizando el crate `ink_lang` que utilizamos con el alias `ink`.
-Puedes hacerlo tu mismo añadiendo la siguiente línea de código:
-`use ink_lang as ink;`
-
-# Descripción
+## Descripción
 
 La macro analiza el código del smart contract proporcionado y genera el código adecuado.
 
-Los ink! smart contracts pueden compilarse de varias maneras.
-Hay dos modos de compilacion, utilizando:
-- modo on-chain: `no_std` + WebAssembly como objetivo
-- modo off-chain: `std`
+## Uso
 
-Generalmente utilizamos el modo on-chain para el despliegue del smart contract mientras que
-utilizamos el modo off-chain para el testing de smart contracts utilizando el entorno off-chain
-proporcionado por el crate `ink_env`.
-
-
-# Uso
-
-## Argumentos del Header
+### Argumentos del Header
 
 A la macro `#[ink::contract]` se le puede proporcionar argumentos header adicionales separados por coma:
 
@@ -48,8 +34,6 @@ Date cuenta que se recomienda hacer uso de las feature built-in crate.
 
 **Usage Example:**
 ```rust
-use ink_lang as ink;
-
 #[ink::contract(compile_as_dependency = true)]
 mod my_contract {
     #[ink(storage)]
@@ -84,7 +68,7 @@ Dada la implementación personalizada `Environment`:
 ```rust
 pub struct MyEnvironment;
 
-impl ink_env::Environment for MyEnvironment {
+impl ink::env::Environment for MyEnvironment {
     const MAX_EVENT_TOPICS: usize = 3;
     
     type AccountId = u64;
@@ -92,26 +76,25 @@ impl ink_env::Environment for MyEnvironment {
     type Hash = [u8; 32];
     type Timestamp = u64;
     type BlockNumber = u32;
-    type ChainExtension = ::ink_env::NoChainExtension;
+    type ChainExtension = ::ink::env::NoChainExtension;
 }
 ```
 Un usuario puede implementar su smart contract ink! utilizando la implementación personalizada
 `Environment` de arriba, como se demuestra a continuación:
 
 ```rust
-use ink_lang as ink;
 #[ink::contract(env = MyEnvironment)]
 mod my_contract {
     pub struct MyEnvironment;
    
-    impl ink_env::Environment for MyEnvironment {
+    impl ink::env::Environment for MyEnvironment {
         const MAX_EVENT_TOPICS: usize = 3;
         type AccountId = u64;
         type Balance = u128;
         type Hash = [u8; 32];
         type Timestamp = u64;
         type BlockNumber = u32;
-        type ChainExtension = ::ink_env::NoChainExtension;
+        type ChainExtension = ::ink::env::NoChainExtension;
     }
     
     #[ink(storage)]
@@ -148,8 +131,6 @@ Algunas reglas de ejemplo incluyen pero no se limitan a:
      **Ejemplo:**
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -179,8 +160,6 @@ Algunas reglas de ejemplo incluyen pero no se limitan a:
      como puedes ver:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -219,8 +198,6 @@ Algunas reglas de ejemplo incluyen pero no se limitan a:
      como puedes ver:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -259,8 +236,6 @@ Algunas reglas de ejemplo incluyen pero no se limitan a:
      no puden marcarse como tal.
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -300,8 +275,6 @@ Algunas reglas de ejemplo incluyen pero no se limitan a:
      utilizando el flag `selector` flag. A continuación de muestra un ejemplo:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -341,8 +314,8 @@ Por ejemplo es posible consultar la persona que llama en la llamada actual a tra
 
 ```rust
 use ink_env;
-ink_env::test::run_test::<ink_env::DefaultEnvironment, _>(|_| {
-    let caller = ink_env::caller::<ink_env::DefaultEnvironment>();
+ink::env::test::run_test::<ink::env::DefaultEnvironment, _>(|_| {
+    let caller = ink::env::caller::<ink::env::DefaultEnvironment>();
     let _caller = caller;
     Ok(())
 }).unwrap();
@@ -352,8 +325,6 @@ Sin embargo, ink! provee una manera mucho más simple de interactuar con el ejec
 del contrato a través de su entorno de acceso. Un ejemplo a continuación:
 
 ```rust
-use ink_lang as ink;
- 
 #[ink::contract]
 mod greeter {
     #[ink(storage)]
@@ -364,7 +335,7 @@ mod greeter {
         pub fn new() -> Self {
             let caller = Self::env().caller();
             let message = format!("thanks for instantiation {:?}", caller);
-            ink_env::debug_println(&message);
+            ink::env::debug_println(&message);
             Greeter {}
         }
 
@@ -373,7 +344,7 @@ mod greeter {
             let caller = self.env().caller();
             let value = self.env().transferred_balance();
             let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
-            ink_env::debug_println(&message);
+            ink::env::debug_println(&message);
         }
     }
 }
@@ -389,8 +360,6 @@ El siguiente ejemplo de un contrato ink! muestra como un evento `Transferred` es
 emitido en el `#[ink(constructor)]`.
 
 ```rust
- use ink_lang as ink;
- 
  #[ink::contract]
  mod erc20 {
      /// Define un evento que es emitido cada vez que el valor es transferido.
@@ -438,8 +407,6 @@ y permite al usuario voltear el valor utilizando el mensaje `Flipper::flip`
 o recuperar el valor actual utilizando `Flipper::get`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 pub mod flipper {
     #[ink(storage)]

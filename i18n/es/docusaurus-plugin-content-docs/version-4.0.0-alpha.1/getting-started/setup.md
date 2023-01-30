@@ -13,49 +13,60 @@ Un prerequisito para compilar smart contracts es tener Rust y Cargo instalados. 
 
 La primera herramienta que instalaremos es [`cargo-contract`](https://github.com/paritytech/cargo-contract), una herramienta para la interfaz de la línea de comandos (CLI) para ayudar a configurar y administrar WebAssembly smart contracts escritos en ink!.
 
-Como prerequisito para la herramienta tiene que instalar el paquete [binaryen](https://github.com/WebAssembly/binaryen), que es utilizado para optimizar el WebAssembly bytecode del contrato.
+<div className="translateTodo">
+You can find it [here on GitHub](https://github.com/paritytech/cargo-contract)
+and [here on crates.io](https://crates.io/crates/cargo-contract).
 
-Se necesitan dos dependencias más para analizar los contratos en ink!. Esto se hace para advertir a los usuarios sobre el uso por ejemplo de API's de una manera que podría conducir a problemas de seguridad.
+The tool has a number of handy capabilities:
 
-```bash
-cargo install cargo-dylint dylint-link
+```
+$ cargo contract       
+Utilities to develop Wasm smart contracts
+
+Usage: cargo contract <COMMAND>
+
+Commands:
+  new          Setup and create a new smart contract project
+  build        Compiles the contract, generates metadata, bundles both together in a `<name>.contract` file
+  check        Check that the code builds as Wasm; does not output any `<name>.contract` artifact to the `target/` directory
+  test         Test the smart contract off-chain
+  upload       Upload contract code
+  instantiate  Instantiate a contract
+  call         Call a contract
+  decode       Decodes a contracts input or output data (supplied in hex-encoding)
+  help         Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help information
+  -V, --version  Print version information
 ```
 
-Hoy en día muchos de los gestores de paquetes lo tiene disponible - p. ej. Hay un paquete para [Debian/Ubuntu](https://tracker.debian.org/pkg/binaryen),
-[Homebrew](https://formulae.brew.sh/formula/binaryen) y [Arch Linux](https://archlinux.org/packages/community/x86_64/binaryen/).
+### Installation
 
-Si solo hay una versión antigua en las distribuciones de tu gestor de paquetes también puedes [descargar el binary release directamente](https://github.com/WebAssembly/binaryen/releases).
+Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/paritytech/cargo-contract#installation).
 
-Después de haber instalado el paquete, ejecute:
+If everything worked, `cargo contract --help` should show you the above list of available commands.
 
-```bash
-cargo install cargo-contract --force --locked
-```
+## Installing `substrate-contracts-node`
 
-Utiliza `--force` para asegurarse que tienes la versión más reciente de `cargo-contract`.
+The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) is
+a simple Substrate blockchain which is configured to include the Substrate module for
+smart contract functionality – the `contracts` pallet (see [How it Works](/how-it-works) for more).
+It's a comfortable option if you want to get a quickstart.
 
-A continuación, puede utilizar `cargo contract --help` para comenzar a explorar los comandos disponibles.
+There are two ways of installing the node:
 
-## Prerequisito para el Substrate Framework
+### (1) Download the Binary
+This is the recommended method, you can
+[download a binary from our releases page](https://github.com/paritytech/substrate-contracts-node/releases)
+(Linux and Mac).
 
-Con ink! puedes escribir smart contracts para blockchains construidas con Substrate.
+### (2) Build it yourself
 
-Sigue los [pasos de instalación oficial](https://substrate.dev/docs/en/knowledgebase/getting-started/) del Substrate Developer Hub Knowledge Base para configurar todos los prerequisitos de Substrate.
+Alternatively you can build the node by yourself.
+This can take quite a while though!
 
-Una vez tengas esto hecho deberas ejecutar:
-
-```bash
-rustup component add rust-src --toolchain nightly
-rustup target add wasm32-unknown-unknown --toolchain nightly
-```
-
-## Instalando el Substrate Smart Contracts Node
-
-El [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) es un Substrate blockchain simple configurado para incluir el modulo de Substrate para la funcionalidad de smart contracts - el pallet  `contracts` (Consulta [How it Works](/how-it-works) para más información).
-
-Es una opción cómoda si desea obtener un inicio rápido.
-Puedes [descargar el binario de nuestra página de releases](https://github.com/paritytech/substrate-contracts-node/releases)
-(Linux y Mac). Alternativamente puedes construir tú mismo el nodo: 
 ```bash
 cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.23.0 --force --locked
 ```
+</div>

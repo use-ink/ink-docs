@@ -39,18 +39,18 @@ Al final del código fuente verás un simple test case que verifica la funcional
 En la carpeta de tu proyecto ejecuta:
 
 ```bash
-cargo +nightly test
+cargo test
 ```
 
 Verás la ejecución satisfactoria del test:
 
 ```bash
-$ cargo +nightly test
-    running 2 tests
-    test flipper::tests::it_works ... ok
-    test flipper::tests::default_works ... ok
+$ cargo test
+running 2 tests
+test flipper::tests::it_works ... ok
+test flipper::tests::default_works ... ok
 
-    test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 Ahora que estamos seguros de que todo funciona, podemos compilar este contrato en Wasm en el siguiente paso.
 

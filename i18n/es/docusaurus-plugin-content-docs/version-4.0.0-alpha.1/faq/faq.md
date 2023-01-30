@@ -80,7 +80,7 @@ Mira la sección de las [Chain Extensions](/macros-attributes/chain-extension) p
 
 ### ¿Como puedo utilizar ink! en una cadena de Substrate con una configuración de cadena presonalizada?
 
-Pr favor mira [el argumento `env_types`](https://docs.rs/ink_lang_macro/3.3.1/ink_lang_macro/attr.contract.html#header-arguments)
+Pr favor mira [el argumento `env_types`](https://docs.rs/ink_lang_macro/4.0.0-beta/ink_lang_macro/attr.contract.html#header-arguments)
 para el macro del contrato. Te permite especificar el entorno en la 
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -121,8 +121,8 @@ El storage del contrato está construido sobre el storage del runtime, y su acce
 ### ¿Cómo imprimo algo en la consola desde el runtime?
 
 Puedes elegir entre estos dos macros:
-* [`ink_env::debug_println!`](https://docs.rs/ink_env/3.3.1/ink_env/macro.debug_println.html)
-* [`ink_env::debug_print!`](https://docs.rs/ink_env/3.3.1/ink_env/macro.debug_print.html)
+* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_println.html)
+* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_print.html)
 
 Tienes que hacer tres cosas para poder mostrar en la consola los mensajes de debug: 
 
@@ -146,7 +146,7 @@ En tu mensaje o constructor ink! puedes escribir lo siguiente:
 ```rust
 #[ink(constructor)]
 fn new() -> Self {
-    ink_env::debug_println!("created new instance at {}", Self::env().block_number());
+    ink::env::debug_println!("created new instance at {}", Self::env().block_number());
     Self { }
 }
 
@@ -154,7 +154,7 @@ fn new() -> Self {
 fn print(&self) {
    let caller = self.env().caller();
    let message = ink_prelude::format!("got a call from {:?}", caller);
-   ink_env::debug_println!(&message);
+   ink::env::debug_println!(&message);
 }
 ```
 
@@ -183,26 +183,20 @@ La libreria estándar de Rust consiste en tres diferentes capas:
 
    Desde que el objectivo de compilación Wasm (a.k.a. `wasm32-unknown-unknown`) no soporta libreria estándar de Rust los autores ink! tampoco pueden utilizarlo para sus propios fines. En su lugar el `contracts-pallet`
    intenta proporcionar algunas funcionalidades comunes que de otra manera no estarían disponibles para operaciones comunes de smart contracts.
-### ¿Por qué se requiere de `nightly` en ink!?
-
-ink! requiere el compilador de Rust `nightly` a partir de 2021-01 ya que depende de unas pocas inestables nightly features
-alrededor de los controladores de asignación para el código `no_std` (libreria no estándar).
-
-Tan pronto como el equipo de Rust decida estabilizar estas características, ink! estara disponible para stable Rust.
 
 ### ¿Cómo creo un hash de un valor?
 
 Una serie de hashes criptográficos están integrados en el [contracts-pallet](/how-it-works) y
 por lo tanto son muy eficientes de utilizar. Actualmente soportamos un puñado de esos, puedes
-ver la lista completa [aquí](https://docs.rs/ink_env/3.3.1/ink_env/hash/trait.CryptoHash.html).
+ver la lista completa [aquí](https://docs.rs/ink_env/4.0.0-beta/ink_env/hash/trait.CryptoHash.html).
 
 Si necesitas utilizar urgentemente otro hash criptográfico puedes introducirlo a través de
 [Chain Extensions](/macros-attributes/chain-extension)
 o crear una propuesta para incluirlo en el conjunto por defecto de `contracts-pallet`.
 
 Se puede utilizar uno de los hashes criptográficos que ya están integrados como se explica aqui:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_encoded.html)
 
 ### ¿Por qué no es posible utilizar tipos de datos de coma flotante en ink!? ¿Cómo implemenar el retorno de un número decimal?
 

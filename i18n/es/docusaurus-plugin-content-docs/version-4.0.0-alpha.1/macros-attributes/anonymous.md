@@ -16,3 +16,15 @@ los eventos definidos por los usuarios.
 La firma de los eventos es por defecto uno de los topics del evento, excepto 
 si anotas el evento con `#[ink(anonymous)]`.
 El atributo implica que no es posible filtrar eventos anónimos específicos por el nombre.
+
+## Example
+
+ ```rust
+ #[ink(event)]
+ #[ink(anonymous)]
+ pub struct MyEvent {
+     #[ink(topic)]
+     field_1: i32,
+     field_2: bool,
+ }
+ ```

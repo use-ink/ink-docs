@@ -18,8 +18,6 @@ los usuarios del contrato inicializar el contrato de diferentes maneras.
 ## Ejemplo
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     #[ink(storage)]

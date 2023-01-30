@@ -3,6 +3,11 @@ title: Testing del Contrato
 slug: /basics/contract-testing
 ---
 
+<img src="/img/testing.png" alt="Smart contracts parachain on Rococo" />
+
+TODO: ink! supports different stages of testing for different purposes.
+TODO: We'll explain on this page what each stage is about and how to use it.
+
 ## Unit Tests
 
 El testing de los contractos off-chain se hace mediante `cargo test` y los usuarios pueden simplemente utilizar las rutinas estándar para 
@@ -51,7 +56,7 @@ por ejemplo puedes influir en el avance del bloque, el valor transferido al mism
 por qué cuenta se llama, con qué almacenamiento se ejecuta, etc.
 
 
-Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/3.3.1/ink_lang/attr.test.html) para más detalles.
+Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/4.0.0-beta/ink_lang/attr.test.html) para más detalles.
 
 En este momento hay algunas limitaciones conocidas para nuestro entorno off-chain y estamos trabajando
 en hacer que el comportamiento sea lo más cercano posible a un entorno de una red real.
@@ -64,7 +69,7 @@ utilizar esta macro ya que tiene algunos gastos generales con el test.
 Date cuenta que esta macro no es necesaria para ejecutar los unit tests que requieren
 las capacidades del ink! testing off-chain pero simplemente mejora la legibilidad del código.
 
-## ¿Cómo saber si su test requiere el entorno off-chain?
+### ¿Cómo saber si su test requiere el entorno off-chain?
 
 Normalmente si el test utiliza recursivamente o invoca algunos metodos del contrato que
 llaman a un metodo definido en `self.env()` o `Self::env()`.
@@ -75,11 +80,9 @@ Un ejemplo es el siguiente:
 let caller: AccountId = self.env().caller();
 ```
 
-## Ejemplo
+### Ejemplo
 
 ```rust
-use ink_lang as ink;
-
 #[cfg(test)]
 mod tests {
     // Conventional unit test that works with assertions.
@@ -91,44 +94,57 @@ mod tests {
     // Unit test convencional que devuelve algún Result.
     // El código del test puede utilizar el operador-`?`.
     #[ink::test]
-    fn test2() -> Result<(), ink_env::Error> {
+    fn test2() -> Result<(), ink::env::Error> {
         // El código del test que devuelve un tipo Rust Result
     }
 }
 ```
 
+<div class="translateTodo">
+## End-to-End (E2E) Testing
 
-## On-chain Testing
+E2E testing enables developers to write a test that will not only test the contract in an
+isolated manner; instead the contract will be tested _together_ with all components that
+will be involved on-chain – so from end to end. This way of testing resembles closely
+how the contract will actually behave in production.
 
-La manera más sencilla de hacer un test on-chain es
-[ejecutar un nodo substrate local](/getting-started/running-substrate),
-desplegar tu contrato alli e interactuar con el.
+As part of the test, the contract will be compiled and deployed to a Substrate node that
+is running in the background. ink! offers API functions that enable developers to then
+interact with the contract via transactions that they create and submit to the blockchain.
+
+You as a developer can define assertions on the outcome of their transactions, such as checking
+for state mutations, transaction failures or incurred gas costs.
+
+Your chain configuration will be tested together with the smart contract. And if your
+chain has pallets that are involved with the smart contract execution, those will be
+part of the test execution as well.
+
+ink! does not put any requirements on the Substrate node in the background – for example,
+you can run a node that contains a snapshot of a live network.
 
 ```rust
-use ink_lang as ink;
+#[ink_e2e::test]
+async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
+    // given
+    let constructor = FlipperRef::new_default();
 
-#[ink::contract]
-mod greeter {
-    #[ink(storage)]
-    pub struct Greeter;
+    // when
+    let contract_acc_id = client
+        .instantiate("flipper", &ink_e2e::bob(), constructor, 0, None)
+        .await
+        .expect("instantiate failed")
+        .account_id;
 
-    impl Greeter {
-        #[ink(constructor)]
-        pub fn new() -> Self {
-            let caller = Self::env().caller();
-            let message = format!("thanks for instantiation {:?}", caller);
-            ink_env::debug_println(&message);
-            Greeter {}
-        }
+    // then
+    let get = build_message::<FlipperRef>(contract_acc_id.clone())
+        .call(|flipper| flipper.get());
+    let get_res = client
+        .call(&ink_e2e::bob(), get, 0, None)
+        .await
+        .expect("get failed");
+    assert!(matches!(get_res.return_value(), false));
 
-        #[ink(message, payable)]
-        pub fn fund(&mut self) {
-            let caller = self.env().caller();
-            let value = self.env().transferred_balance();
-            let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
-            ink_env::debug_println(&message);
-        }
-    }
+    Ok(())
 }
 ```
-
+</div>
