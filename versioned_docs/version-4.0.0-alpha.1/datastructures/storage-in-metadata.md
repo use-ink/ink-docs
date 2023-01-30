@@ -73,9 +73,9 @@ A `root_key` is meant to either be used to directly access a `Packed` storage fi
 or to serve as the base key for calculting the actual keys needed to access values in 
 `Non-Packed` fields (such as Mappings).
 
-## Storage key calculation for mappings
+## Storage key calculation for the ink! `Mapping`
 
-Root storage keys are always 4 bytes in size. However, the storage API of the contracts 
+Base storage keys are always 4 bytes in size. However, the storage API of the contracts 
 pallet supports keys of arbitrary length. In order to reach a mapping value, the storage 
 key of said value is calculated at runtime.
 
@@ -89,3 +89,115 @@ S = B + scale::encode(K)
 In words, find the base (root) key of the mapping and concatenate it with the 
 SCALE encoded key of the mapped value to obtain the actual storage key used to 
 access the mapped value.
+
+## Accessing storage items outside the contract
+
+There are two ways to query for storage fields of smart contracts on-chain. This section 
+explains how to do that with [`polkadot-js`](https://polkadot.js.org/apps/).
+
+### With the `contractsApi` runtime call API
+
+The straight forward way to query a contracts storage is via a 
+[`runtime API`](https://polkadot.js.org/apps/#/runtime) call, using the `contractsApi` 
+endpoint provided by the contracts pallet. The endpoint provides a `getStorage` method, 
+which just expects a contract address and a storage key as arguments.
+
+For example, to access the root storage struct under the key `0x00000000` of a contrect, 
+just specify the contracts address and the storage key `0x00000000` as-is. The API call 
+will return the scale-encoded root storage struct of the contract.
+
+### With the `childState` RPC call API
+
+Under the hood, each contract gets it's own
+[child trie](https://paritytech.github.io/substrate/master/frame_support/storage/child/index.html), where its storage items are actually stored.
+
+Additionally, the contracts pallet uses the
+[`Blake2 128 Concat`](https://paritytech.github.io/substrate/master/frame_support/struct.Blake2_128Concat.html) 
+[`Transparent hashing algorithm`](https://docs.substrate.io/build/runtime-storage/#transparent-hashing-algorithms) 
+to calculate storage keys for any stored item inside the child trie.
+You'll need to account for that as well.
+
+With that in mind, to directly access storage items of any on-chain contract using a 
+childState [`RPC call`](https://polkadot.js.org/apps/#/rpc), you'll need the following:
+- The child trie ID of the contract, represented as a `PrefixedStorageKey`
+- The hashed storage key of the storage field
+
+#### Finding the contracts child trie ID
+The chield trie ID is the `Blake2_256` hash of the contracts instantiation nonce
+concatenated to it's `AccountId`. You can find it in [`polkadot-js chainstate query interface`](https://polkadot.js.org/apps/#/chainstate), where you need to execute the
+`contracts_contractInfoOf` state query.
+
+It can also be calculate manually according to the following code snippet. Note that you 
+need to know the instantiation nonce of the contract!
+
+```rust
+use sp_core::crypto::Ss58Codec;
+use parity_scale_codec::Encode;
+
+// Given our contract ID is 5DjcHxSfjAgCTSF9mp6wQBJWBgj9h8uh57c7TNx1mL5hdQp4
+let account: AccountId32 =
+    Ss58Codec::from_string("5DjcHxSfjAgCTSF9mp6wQBJWBgj9h8uh57c7TNx1mL5hdQp4").unwrap();
+// Given our instnatiation nonce was 1
+let nonce: u64 = 1;
+
+// The child trie ID can be calculated as follows:
+let trie_id = (&account, nonce).using_encoded(Blake2_256::hash);
+```
+
+#### Calcualte the `PrefixedStorageKey` from the child trie ID
+A [`PrefixedStorageKey`](https://docs.rs/sp-storage/10.0.0/sp_storage/struct.PrefixedStorageKey.html) 
+can be construct using the 
+[`ChildInfo`](https://docs.rs/sp-storage/10.0.0/sp_storage/enum.ChildInfo.html) primitive as follows:
+
+```rust
+use sp_core::storage::ChildInfo;
+let prefixed_storage_key = ChildInfo::new_default(&trie_id).into_prefixed_storage_key();
+```
+
+#### Calculate the storage key using transparent hashing
+Finally, we need the hashed storage key of the storage item we are wanting to access.
+The algorithm is simple: `Blake2_128` hash the storage key and then concatenate the unhashed 
+key to the hash. Given you want to access the storage item under the `0x00000000`,
+it will look like this in code:
+
+```rust
+use frame_support::Blake2_128Concat;
+
+// The base key is 0x00000000
+let storage_key = Blake2_128Concat::hash(&[0, 0, 0, 0]);
+```
+
+#### A full example
+
+```rust
+use frame_support::{sp_runtime::AccountId32, Blake2_128Concat, Blake2_256, StorageHasher};
+use parity_scale_codec::Encode;
+use sp_core::{crypto::Ss58Codec, storage::ChildInfo};
+use std::ops::Deref;
+
+fn main() {
+    // Find the child storage trie ID
+    let account_id = "5DjcHxSfjAgCTSF9mp6wQBJWBgj9h8uh57c7TNx1mL5hdQp4";
+    let account: AccountId32 = Ss58Codec::from_string(account_id).unwrap();
+    let instantiation_nonce: u64 = 1;
+    let trie_id = (account, instantiation_nonce).using_encoded(Blake2_256::hash);
+    assert_eq!(
+        hex::encode(trie_id),
+        "2fa252b7f996d28fd5d8b11098c09e56295eaf564299c6974421aa5ed887803b"
+    );
+
+    // Calculate the PrefixedStorageKey based on the trie ID
+    let prefixed_storage_key = ChildInfo::new_default(&trie_id).into_prefixed_storage_key();
+    assert_eq!(
+        hex::encode(prefixed_storage_key.deref()),
+        "3a6368696c645f73746f726167653a64656661756c743a2fa252b7f996d28fd5d8b11098c09e56295eaf564299c6974421aa5ed887803b"
+    );
+
+    // Calculate the storage key using transparent hashing
+    let storage_key = Blake2_128Concat::hash(&[0, 0, 0, 0]);
+    assert_eq!(
+        hex::encode(&storage_key),
+        "11d2df4e979aa105cf552e9544ebd2b500000000"
+    );
+}
+```
