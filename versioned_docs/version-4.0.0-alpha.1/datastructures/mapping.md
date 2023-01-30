@@ -74,6 +74,16 @@ mod mycontract {
 
 ## Considerations when using the `Mapping` type
 
+One of the main purposes of the ink! `Mapping` is to allow storing a lot of values. 
+
+:::note
+
+There are many additional datastructures accessible under `ink::prelude::collections`, such 
+such as `HashMap` or `BTreeMap` (to name a few). Note that these datastructures all exhibit 
+`Packed` storage loading behavior, as opposed to the ink! `Mapping`!
+
+:::
+
 ### Storage loading behaviour
 
 Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s 
@@ -98,13 +108,6 @@ Circumventing this restriction by storing populated keys inside an `ink_prelude:
 not always be advisable: As accessing a storage cell is relatively expensive, this might 
 result in very high gas costs for large mappings.
 
-:::note
-
-There are many additional datastructures accessible under `ink::prelude::collections`, such 
-such as `HashMap` or `BTreeMap` (to name a few). Note that these datastructures all exhibit 
-`Packed` storage loading behavior, as opposed to the ink! `Mapping`!
-
-:::
 
 ### Updating values
 
