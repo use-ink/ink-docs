@@ -71,7 +71,7 @@ in order to reach them you'd need fetch and decode the whole storage cell under 
 
 A `root_key` is meant to either be used to directly access a `Packed` storage field 
 or to serve as the base key for calculting the actual keys needed to access values in 
-`Non-Packed` fields (such as Mappings).
+non-`Packed` fields (such as `Mapping`s).
 
 ## Storage key calculation for ink! `Mapping` values
 
