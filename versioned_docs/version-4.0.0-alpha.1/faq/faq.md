@@ -55,7 +55,9 @@ the basic set of features required for executing smart contracts on the blockcha
 However, it is not necessarily the only solution to do exactly that. There is also the `evm-pallet`
 to run smart contracts targeting the EVM as well as the experimental `actors-pallet` that allows to
 execute smart contracts written in the actor style programming model.
-Over time the Substrate community might come up with yet other pallets for smart contracts execution. 
+Over time the Substrate community might come up with yet other pallets for smart contracts execution.
+
+Please see our page [How it Works – Substrate](/how-it-works) for more information.
 
 ### How to call other smart contracts on the same blockchain?
 
@@ -115,7 +117,9 @@ The two modes are as follows:
 
 Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
 
->Note: There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the Wasm blob. This feature may change or be iterated on in the future.
+:::note
+There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the Wasm blob. This feature may change or be iterated on in the future.
+:::
 
 ### What is the difference between memory and storage?
 
@@ -144,7 +148,7 @@ Rust's standard library consists of three different layers:
    such as `fmt`, `rc` (ref-counted pointers) or borrows.
 
    ink! smart contracts allow authors to use Rust's `alloc` crate.
-   By default ink! authors use definitions from the `alloc` crate through `ink_prelude` crate.
+   By default ink! authors use definitions from the `alloc` crate through `ink::prelude` crate.
 
 3. `std` library is what people generally call Rust's standard library.
 
@@ -194,7 +198,7 @@ Satoshi, not as a decimal number of Bitcoin.
 
 ### Why can't I just use the standard Rust data collections in ink!?
 
-You can use them! They are exposed via the `ink_prelude` crate (e.g. `ink_prelude::vec::Vec`)
+You can use them! They are exposed via the `ink_prelude` crate (e.g. `ink::prelude::vec::Vec`)
 and you can return them from ink! messages and also persist them to storage.
 
 _However, the Rust stdlib collections are not optimized for smart contract usage!_ So for example,
@@ -237,9 +241,11 @@ For example, you might encounter this error if you try to store a custom data
 structure in the contract's storage. Or e.g. when attempting to return 
 a custom error from an ink! message.
 
-> Note: The error `the trait "WrapperTypeEncode" is not implemented for …` is also
-> a common error when a mismatching version of `parity-scale-codec` is used
-> in the contract opposed to the version used by ink!.
+:::note
+The error `the trait "WrapperTypeEncode" is not implemented for …` is also
+a common error when a mismatching version of `parity-scale-codec` is used
+in the contract opposed to the version used by ink!.
+:::
 
 The solution typically is to add a fitting implementation of the trait
 for your data structure:

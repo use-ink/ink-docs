@@ -1,9 +1,14 @@
 ---
 title: Arranca un Nodo Substrate
 slug: /getting-started/running-substrate
+hide_title: true
 ---
 
-El [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node#note) es es un Substrate blockchain simple configurado para incluir el módulo `contracts`.
+<img src="/img/title/substrate.svg" className="titlePic" />
+
+# Arranca un Nodo Substrate
+
+El [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node#note) es es un Substrate blockchain simple configurado para incluir el módulo `contracts`.
 
 Es una opción muy cómoda si quieres un inicio rápido.
 

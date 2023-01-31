@@ -1,12 +1,22 @@
 ---
 title: Testing del Contrato
+hide_title: true
 slug: /basics/contract-testing
 ---
 
-<img src="/img/testing.png" alt="Smart contracts parachain on Rococo" />
+# Contract Testing
 
-TODO: ink! supports different stages of testing for different purposes.
-TODO: We'll explain on this page what each stage is about and how to use it.
+ink! supports three different stages of testing: unit, integration
+and end-to-end tests. On this page we'll explain what the purpose
+of each stage is about and how to use it.
+
+<img src="/img/testing.png" />
+
+Generally you can think of those three types of testing as a pyramid
+with the top being the most elaborate test. The End-to-End (E2E)
+tests at the top will test the lower layers of the pyramid as part
+of them.
+
 
 ## Unit Tests
 
@@ -37,17 +47,14 @@ Vea el [ejemplo flipper](https://github.com/paritytech/ink/blob/master/examples/
 
 ## Off-chain Testing
 
-Los ink! smart contracts se pueden compilar de diversas maneras.
-Existen 2 principales modelos de compilación utilizando
-- modo on-chain: `no_std` + WebAssembly as target
-- modo off-chain: `std`
-
-Generalmente utilizamos el modo on-chain para el despliegue del smart contract mientras que
-utilizamos el modo off-chain para el testing de smart contracts utilizando el entorno off-chain
-proporcionado por el crate `ink_env`.
-
-
-La proc. macro `#[ink::test]` permite off-chain testing más elaborado.
+<div class="translateTodo">
+For integration tests, the test is annotated with our `#[ink::test]`
+attribute instead of `#[test]`. Our attribute denotes that
+the test is then executed in a simulated, mocked blockchain environment.
+here are functions available to influence how the test environment
+is configured (e.g. setting a specified balance of an account to
+simulate how a contract would behave when interacting with it).
+</div>
 
 Si anotas un test con este atributo se ejecutara en un entorno simulado, 
 similar a como se ejecutaría on-chain.
@@ -101,7 +108,7 @@ mod tests {
 ```
 
 <div class="translateTodo">
-## End-to-End (E2E) Testing
+## End-to-End (E2E) Tests
 
 E2E testing enables developers to write a test that will not only test the contract in an
 isolated manner; instead the contract will be tested _together_ with all components that
@@ -122,9 +129,19 @@ part of the test execution as well.
 ink! does not put any requirements on the Substrate node in the background – for example,
 you can run a node that contains a snapshot of a live network.
 
+### Example
+
+The following code example illustrates a basic E2E test for the
+[flipper example](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
+
 ```rust
 #[ink_e2e::test]
 async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
+    // When the function is entered, the contract was already
+    // built in the background via `cargo contract build`.
+    // The `client` object exposes an interface to interact
+    // with the Substrate node.
+    
     // given
     let constructor = FlipperRef::new_default();
 
@@ -146,5 +163,24 @@ async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
 
     Ok(())
 }
+```
+
+You can run the above test by going to the `flipper` folder in
+[the ink! examples directory](TODO).
+
+Before you can run the test, you have to start a Substrate
+node with `pallet-contracts` in the background.
+You can use e.g. our [`substrate-contracts-node`](TODO) for this.
+Start the node in one shell session/terminal window via
+
+```
+substrate-contracts-node
+```
+
+Then, while keeping the node running, execute the following command
+in another shell session/terminal window.
+
+```
+cargo test --features e2e-tests
 ```
 </div>
