@@ -3,10 +3,6 @@ title: "#[ink::chain_extension]"
 slug: /macros-attributes/chain-extension
 ---
 
-:::caution
-TODO: update this page for ink! 4.0 
-:::
-
 In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
 via its well defined set of basic smart contract interface. This API already allows a whole variety of
 interaction between the `contracts-pallet` and the executed smart contract. For example it is possible
@@ -39,8 +35,8 @@ The methods are defined as associated trait methods without implementation.
 
 Chain extension methods must not have a `self` receiver such as `&self` or `&mut self`
 and must have inputs and output that implement SCALE codec. Their return value follows
-specific rules that can be altered using the `handle_status` and `returns_result` attributes
-which are described in more detail below.
+specific rules that can be altered using the `handle_status` attribute and 
+alternation between  `Result` and Non-`Result` types which are described in more detail below.
 
 ## Usage
 
@@ -52,14 +48,13 @@ the methods provided by the chain extension.
 
 ## Attributes
 
-There are three different attributes with which the chain extension methods
+There are 2 different attributes with which the chain extension methods
 can be flagged:
 
 | Attribute | Required | Default Value | Description |
 |:----------|:--------:|:--------------|:-----------:|
 | `ink(extension = N: u32)` | Yes | - | Determines the unique function ID of the chain extension method. |
 | `ink(handle_status = flag: bool)` | Optional | `true` | Assumes that the returned status code of the chain extension method always indicates success and therefore always loads and decodes the output buffer of the call. |
-| `ink(returns_result = flag: bool)` | Optional | `true` | By default chain extension methods are assumed to return a `Result<T, E>` in the output buffer. Using `returns_result = false` this check is disabled and the chain extension method may return any other type. |
 
 As with all ink! attributes multiple of them can either appear in a contiguous list:
 
@@ -70,7 +65,7 @@ type Access = i32;
 pub trait MyChainExtension {
     type ErrorCode = i32;
   
-    #[ink(extension = 5, handle_status = false, returns_result = false)]
+    #[ink(extension = 5, handle_status = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
@@ -86,7 +81,6 @@ pub trait MyChainExtension {
   
   #[ink(extension = 5)]
   #[ink(handle_status = false)]
-  #[ink(returns_result = false)]
   fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
@@ -95,7 +89,7 @@ pub trait MyChainExtension {
 
 Default value: `true`
 
-By default all chain extension methods return a `Result<T, E>` where `E: From<Self::ErrorCode>`.
+By default all chain extension methods should return a `Result<T, E>` where `E: From<Self::ErrorCode>`.
 The `Self::ErrorCode` represents the error code of the chain extension.
 This means that a smart contract calling such a chain extension method first queries the returned
 status code of the chain extension method and only loads and decodes the output if the returned
@@ -109,28 +103,20 @@ A chain extension method that is flagged with `handle_status = false` assumes th
 will always indicate success. Therefore it will always load and decode the output buffer and loses
 the `E: From<Self::ErrorCode` constraint for the call.
 
-## Details: `returns_result`
+Note that if a chain extension method does not return `Result<T, E>` where `E: From<Self::ErrorCode>`
+but `handle_status = true` it will still return a value of type `Result<T, Self::ErrorCode>`.
 
-Default value: `true`
+## Usage: `handle_status` + `Result<T, E>` return type
 
-By default chain extension methods are assumed to return a value of type `Result<T, E>` through the
-output buffer. Using `returns_result = false` this check is disabled and the chain extension method may return
-any other type.
-
-Note that if a chain extension method is attributed with `returns_result = false`
-and with `handle_status = true` it will still return a value of type `Result<T, Self::ErrorCode>`.
-
-## Usage: `handle_status` + `returns_result`
-
-Use both `handle_status = false` and `returns_result = false` for the same chain extension method
+Use both `handle_status = false` and non-`Result` return type for the same chain extension method
 if a call to it may never fail and never returns a `Result` type.
 
 ## Combinations
 
-Due to the possibility to flag a chain extension method with `handle_status` and `returns_result`
+Due to the possibility to flag a chain extension method with `handle_status` and return or not `Result<T, E>`
 there are 4 different cases with slightly varying semantics:
 
-| `handle_status` | `returns_result` | Effects |
+| `handle_status` | Returns `Result<T, E>` | Effects |
 |:---------------:|:----------------:|:--------|
 |`true` |`true` | The chain extension method is required to return a value of type `Result<T, E>` where `E: From<Self::ErrorCode>`. A call will always check if the returned status code indicates success and only then will load and decode the value in the output buffer. |
 |`true` |`false`| The chain extension method may return any non-`Result` type. A call will always check if the returned status code indicates success and only then will load and decode the value in the output buffer. The actual return type of the chain extension method is still `Result<T, Self::ErrorCode>` when the chain extension method was defined to return a value of type `T`. |
@@ -198,7 +184,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Actually returns a value of type `Result<(), Self::ErrorCode>`.
-    #[ink(extension = 3, returns_result = false)]
+    #[ink(extension = 3)]
     fn write(key: &[u8], value: &[u8]);
 
     /// Returns the access allowed for the key for the caller.
@@ -206,7 +192,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Assumes to never fail the call and therefore always returns `Option<Access>`.
-    #[ink(extension = 4, returns_result = false, handle_status = false)]
+    #[ink(extension = 4, handle_status = false)]
     fn access(key: &[u8]) -> Option<Access>;
 
     /// Unlocks previously aquired permission to access key.
@@ -380,13 +366,13 @@ mod read_writer {
     #[ink::chain_extension]
     pub trait RuntimeReadWrite {
           type ErrorCode = ReadWriteErrorCode;
-          #[ink(extension = 1, returns_result = false)]
+          #[ink(extension = 1)]
           fn read(key: &[u8]) -> Vec<u8>;
           #[ink(extension = 2)]
           fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
-          #[ink(extension = 3, returns_result = false)]
+          #[ink(extension = 3)]
           fn write(key: &[u8], value: &[u8]);
-          #[ink(extension = 4, returns_result = false, handle_status = false)]
+          #[ink(extension = 4, handle_status = false)]
           fn access(key: &[u8]) -> Option<Access>;
           #[ink(extension = 5, handle_status = false)]
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
