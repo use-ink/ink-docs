@@ -100,7 +100,7 @@ The straight forward way to query a contracts storage is via a
 endpoint provided by the contracts pallet. The endpoint provides a `getStorage` method, 
 which just expects a contract address and a storage key as arguments.
 
-For example, to access the root storage struct under the key `0x00000000` of a contrect, 
+For example, to access the root storage struct under the key `0x00000000` of a contract, 
 just specify the contracts address and the storage key `0x00000000` as-is. The API call 
 will return the scale-encoded root storage struct of the contract.
 
