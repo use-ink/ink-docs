@@ -4,7 +4,7 @@ slug: /datastructures/custom-datastructure
 ---
 
 While the `ink_storage` crate provides useful utilities and data structures to organize and 
-manipulate the contract's storagem, contract authors are not limited by its capabilities. 
+manipulate the contract's storage, contract authors are not limited by its capabilities. 
 
 ## Using custom types on storage
 Any custom type wanting to be compatible with ink! storage must implement the 
