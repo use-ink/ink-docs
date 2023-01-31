@@ -106,7 +106,7 @@ will return the scale-encoded root storage struct of the contract.
 
 ## Accessing storage items with the `childState` RPC call API
 
-Under the hood, each contract gets it's own
+Under the hood, each contract gets its own
 [child trie](https://paritytech.github.io/substrate/master/frame_support/storage/child/index.html), where its storage items are actually stored.
 
 Additionally, the contracts pallet uses the
