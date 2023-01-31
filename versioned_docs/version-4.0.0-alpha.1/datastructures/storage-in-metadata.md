@@ -65,7 +65,7 @@ The storage will be reflected inside the metadata as like follows:
 }
 ```
 
-We observe that the storage is layed out as a tree, where tangible storage values end up 
+We observe that the storage layout is represented as a tree, where tangible storage values end up 
 inside a `leaf`. Because of `Packed` encoding, leafs can share the same storage key, and 
 in order to reach them you'd need fetch and decode the whole storage cell under this key.
 
