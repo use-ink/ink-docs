@@ -80,7 +80,7 @@ mod mycontract {
     pub struct MyContract {
         tiny_value: Balance,
         /// This vector might get large and expensive to work with.
-        /// We want to enforce a `Non-Packed` storage layout.
+        /// We want to enforce a non-`Packed` storage layout.
         large_vec: Lazy<Vec<Balance>>,
     }
 
