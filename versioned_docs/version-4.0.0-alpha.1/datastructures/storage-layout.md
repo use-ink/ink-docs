@@ -155,6 +155,6 @@ or complex storage layouts into reasonably sized distinct storage cells.
 
 :::note
 
-ink! `Mappings` are always `Non-Packed` and loaded lazily, one key-value pair at the time.
+ink! `Mapping`s are always non-`Packed` and loaded lazily, one key-value pair at the time.
 
 :::
