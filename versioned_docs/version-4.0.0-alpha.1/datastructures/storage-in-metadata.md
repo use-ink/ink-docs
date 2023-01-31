@@ -101,7 +101,7 @@ endpoint provided by the contracts pallet. The endpoint provides a `getStorage` 
 which just expects a contract address and a storage key as arguments.
 
 For example, to access the root storage struct under the key `0x00000000` of a contract, 
-just specify the contracts address and the storage key `0x00000000` as-is. The API call 
+just specify the contract's address and the storage key `0x00000000` as-is. The API call 
 will return the scale-encoded root storage struct of the contract.
 
 ## Accessing storage items with the `childState` RPC call API
