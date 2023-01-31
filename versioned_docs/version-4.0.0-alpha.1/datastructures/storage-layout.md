@@ -20,7 +20,7 @@ to ink! by the contracts pallet:
 Storage data is always encoded with the 
 [`SCALE`](https://docs.substrate.io/reference/scale-codec/) codec. 
 The storage API operates by storing and loading entries into and from a single storages 
-cells, where each storage cell is accessed under it's own dedicated storage key. To some 
+cells, where each storage cell is accessed under its own dedicated storage key. To some 
 extent, the storage API works similar to a traditional key-value database.
 
 ## Packed vs Non-Packed layout
