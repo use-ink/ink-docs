@@ -61,7 +61,7 @@ on demand, with the
 [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive.
 Wrapping any storage field inside a `Lazy` struct makes the storage
 struct in which that field appears also 
-`Non-Packed`, preventing it from being eagerly loaded during arbitrary storage operations.
+non-`Packed`, preventing it from being eagerly loaded during arbitrary storage operations.
 
 The following example demonstrates how we can solve the problem introduced in the above 
 section. You'll notice that for the lazily loaded storage field, we now work with getters 
