@@ -10,20 +10,12 @@ TODO: Translate to Spanish.
 [OpenBrush] is a library for smart contract development on ink! maintained by the
 [Brushfam](https://brushfam.io) team.
 
-It provides standard contracts based on [PSPs], as well as useful contracts and Rust macros to help you build ink! smart contracts.
+It provides standard contracts based on [Polkadot Standard Proposals (PSPs)](TODO),
+as well as higher-level contracts and Rust macros that generate ink! code.
 
 Using OpenBrush is simple, you will only add the dependency to your `Cargo.toml` file. Here is an [example](https://docs.openbrush.io/smart-contracts/overview) of how to do it.
 
-### Why use OpenBrush?
-
-- To make contracts **interoperable** to do **safe** cross-contracts calls (by having the same function's signature among every contract)
-- To ensure the usage of [Polkadot Standards Proposals][PSPs]
-- To ensure the usage of the **latest and most secure** implementation
-- Useful contracts that provide custom logic to be implemented in contracts
-- To **save time** by not writing boilerplate code
-- Useful features which can simplify development
-
-### Which standard tokens and useful contracts does it provide?
+### Which standards and contract components does it contain?
 
 - **PSP22** - Fungible Token (*ERC20 equivalent*) with extensions
 - **PSP34** - Non-Fungible Token (*ERC721 equivalent*) with extensions
@@ -53,7 +45,7 @@ Defining a Trait definition is sufficient (a contract that implements that Trait
 
 ## Typechain-Polkadot
 
-Another tool essential for ink! smart contracts development is [Typechain-Polkadot](https://github.com/727-Ventures/typechain-polkadot).
+Another tool helpful for ink! smart contracts development is [Typechain-Polkadot](https://github.com/727-Ventures/typechain-polkadot).
 
 Typechain-Polkadot is used to generate Typescript wrappers around your smart-contract, which can be used in UI or in integration tests of your ink! smart contracts. It uses polkadot-api under the hood, but is especially useful because all calls and queries are typed, therefore the chance of getting some error during a call is mitigated.
 
