@@ -122,7 +122,7 @@ large or sparse arrays on contract storage, consider using a `Mapping` instead.
 By default, keys are calculated automatically for you, thanks to the 
 [`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.AutoKey.html)
 primitive. They'll be generated at compile time and ruled out for conflicts. 
-However, for `Non-Packed` types like `Lazy` or the `Mapping`, the 
+However, for non-`Packed` types like `Lazy` or the `Mapping`, the 
 [`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.ManualKey.html)
 primitive allows manual control over the storage key of a field like so:
 
