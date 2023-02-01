@@ -3,7 +3,7 @@ title: "#[ink::chain_extension]"
 slug: /macros-attributes/chain-extension
 ---
 
-__TODO: check if this is still up to date for 4.0__
+__TODO: Please apply the English changes from [this commit](https://github.com/paritytech/ink-docs/commit/8df53f482a0452cc812d1a490f9a5d42ea277f0d) to this page.__
 
 En la configuración por defecto del `contracts-pallet` un smart contract solo puede interactuar con el runtime
 via su conjunto bien definido de la interface basica del smart contract. Este API ya permite una gran variedad de
