@@ -48,7 +48,7 @@ the methods provided by the chain extension.
 
 ## Attributes
 
-There are 2 different attributes with which the chain extension methods
+There are two different attributes with which the chain extension methods
 can be flagged:
 
 | Attribute | Required | Default Value | Description |
