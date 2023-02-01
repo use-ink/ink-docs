@@ -74,8 +74,6 @@ in order to reach them you'd need fetch and decode the whole storage cell under 
 A `root_key` is meant to either be used to directly access a `Packed` storage field 
 or to serve as the base key for calculating the actual keys needed to access values in 
 non-`Packed` fields (such as `Mapping`s).
-Layouts under a root key can contain `leaf`s directly, but also `struct`, `enum` or `array` 
-layout, which are used 
 
 ## Storage key calculation for ink! `Mapping` values
 
