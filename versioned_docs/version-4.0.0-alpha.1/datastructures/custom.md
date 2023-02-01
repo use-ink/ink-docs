@@ -53,6 +53,9 @@ pub struct Outer {
 }
 ```
 
+Naturally, you can  as well implement any required trait manually. Please directly refer to 
+the relevant trait documentations for more information.
+
 ## Generic storage fields
 
 It is possible to use generic data types in your storage, as long as any generic type 

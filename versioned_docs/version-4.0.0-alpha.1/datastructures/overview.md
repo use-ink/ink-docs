@@ -13,7 +13,7 @@ similar to traditional hash tables and comparable to the `mapping` type Solidity
 As a core ingredient to the ink! language, its main advantage is being simple and 
 lightweight: It favors being efficient in terms of gas costs and code size 
 over providing a lot of high-level functionality found in other implementations 
-like the `HashMap` type from the Rust `std` library.
+like the `ink::prelude::collections::HashMap` type.
 Overall, the ink! `Mapping` will be solid choice for most contracts. Moreover, smart 
 contracts developers can implement advanced features themselves.
 

@@ -103,10 +103,7 @@ for n in 0..5 {
 ```
 
 Furthermore, it follows that mapping values do not have a contiguos storage layout and it is
-therefore not possible to iterate over the contents of a map. 
-Circumventing this restriction by storing populated keys inside an `ink_prelude::Vec` might 
-not always be advisable: As accessing a storage cell is relatively expensive, this might 
-result in very high gas costs for large mappings.
+not possible to iterate over the contents of a map. 
 
 
 ### Updating values
