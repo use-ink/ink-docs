@@ -65,13 +65,17 @@ The storage will be reflected inside the metadata as like follows:
 }
 ```
 
-We observe that the storage layout is represented as a tree, where tangible storage values end up 
-inside a `leaf`. Because of `Packed` encoding, leafs can share the same storage key, and 
+We observe that the storage layout is represented as a tree, where tangible storage values 
+end up inside a `leaf`. Because of 
+[`Packed`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/trait.Packed.html) 
+encoding, leafs can share the same storage key, and 
 in order to reach them you'd need fetch and decode the whole storage cell under this key.
 
 A `root_key` is meant to either be used to directly access a `Packed` storage field 
 or to serve as the base key for calculating the actual keys needed to access values in 
 non-`Packed` fields (such as `Mapping`s).
+Layouts under a root key can contain `leaf`s directly, but also `struct`, `enum` or `array` 
+layout, which are used 
 
 ## Storage key calculation for ink! `Mapping` values
 
@@ -117,7 +121,7 @@ You'll need to account for that as well.
 
 With that in mind, to directly access storage items of any on-chain contract using a 
 childState [`RPC call`](https://polkadot.js.org/apps/#/rpc), you'll need the following:
-- The child trie ID of the contract, represented as a `PrefixedStorageKey`
+- The child trie ID of the contract, represented as a [`PrefixedStorageKey`](https://docs.rs/sp-storage/10.0.0/sp_storage/struct.PrefixedStorageKey.html)
 - The hashed storage key of the storage field
 
 ### Finding the contracts child trie ID
@@ -145,9 +149,8 @@ let trie_id = (&account, nonce).using_encoded(Blake2_256::hash);
 ```
 
 ### Calculate the `PrefixedStorageKey` from the child trie ID
-A [`PrefixedStorageKey`](https://docs.rs/sp-storage/10.0.0/sp_storage/struct.PrefixedStorageKey.html) 
-can be construct using the 
-[`ChildInfo`](https://docs.rs/sp-storage/10.0.0/sp_storage/enum.ChildInfo.html) primitive as follows:
+A `PrefixedStorageKey` based on the child trie ID can be constructed using the `ChildInfo` 
+primitive as follows:
 
 ```rust
 use sp_core::storage::ChildInfo;

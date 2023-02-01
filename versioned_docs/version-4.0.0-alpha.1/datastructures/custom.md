@@ -36,7 +36,8 @@ pub struct MyContractStorage {
 }
 ```
 
-Even better: there is a macro `#[ink::storage_item]`, which derives all necessary traits for you. If there is no need to implement any special behaviour, the above code example 
+Even better: there is a macro `#[ink::storage_item]`, which derives all necessary traits for 
+you. If there is no need to implement any special behaviour, the above code example 
 can be simplified further as follows:
 
 ```rust
@@ -56,7 +57,8 @@ pub struct Outer {
 
 It is possible to use generic data types in your storage, as long as any generic type 
 satisfies the required storage trait bounds. In fact, we already witnessed this in the 
-previous sections about the `Mapping`.
+previous sections about the 
+[`Mapping`](https://docs.rs/ink_storage/4.0.0-beta.1/ink_storage/struct.Mapping.html).
 
 Let's say you want a mapping where accessing a non-existent key should just return 
 it's default value, akin to how mappings work in Solidity. Additionally, you want to know 
@@ -113,7 +115,8 @@ pub struct MyContract {
 
 :::caution
 
-Generic data types may substantially increase your contracts overall code size.
+Generic data types may substantially increase your contracts overall code size, making it 
+more costly to store on-chain.
 The reason for this is [Rust's monomorphization](https://rustwasm.github.io/twiggy/concepts/generic-functions-and-monomorphization.html).
 
 :::
