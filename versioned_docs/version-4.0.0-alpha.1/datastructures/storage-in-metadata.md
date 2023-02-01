@@ -14,7 +14,7 @@ Given a contract with the following storage:
 pub struct MyContract {
     balance: Balance,
     block: BlockNumber,
-    something: Lazy<bool>,
+    lazy: Lazy<bool>,
 }
 ```
 
@@ -55,7 +55,7 @@ The storage will be reflected inside the metadata as like follows:
               "root_key": "0xb1f4904e"
             }
           },
-          "name": "something"
+          "name": "lazy"
         }
       ],
       "name": "MyContract"
@@ -70,7 +70,7 @@ inside a `leaf`. Because of `Packed` encoding, leafs can share the same storage 
 in order to reach them you'd need fetch and decode the whole storage cell under this key.
 
 A `root_key` is meant to either be used to directly access a `Packed` storage field 
-or to serve as the base key for calculting the actual keys needed to access values in 
+or to serve as the base key for calculating the actual keys needed to access values in 
 non-`Packed` fields (such as `Mapping`s).
 
 ## Storage key calculation for ink! `Mapping` values
@@ -127,7 +127,7 @@ concatenated to it's `AccountId`. You can find it in [`polkadot-js chainstate qu
 `contracts_contractInfoOf` state query.
 
 It can also be calculate manually according to the following code snippet. The 
-instantiation note of the contract must be still be know. You can get it using the 
+instantiation note of the contract must be still be known. You can get it using the 
 `contracts_nonce` chain state query in polkadot-js UI.
 
 ```rust
@@ -137,14 +137,14 @@ use parity_scale_codec::Encode;
 // Given our contract ID is 5DjcHxSfjAgCTSF9mp6wQBJWBgj9h8uh57c7TNx1mL5hdQp4
 let account: AccountId32 =
     Ss58Codec::from_string("5DjcHxSfjAgCTSF9mp6wQBJWBgj9h8uh57c7TNx1mL5hdQp4").unwrap();
-// Given our instnatiation nonce was 1
+// Given our instantiation nonce was 1
 let nonce: u64 = 1;
 
 // The child trie ID can be calculated as follows:
 let trie_id = (&account, nonce).using_encoded(Blake2_256::hash);
 ```
 
-### Calcualte the `PrefixedStorageKey` from the child trie ID
+### Calculate the `PrefixedStorageKey` from the child trie ID
 A [`PrefixedStorageKey`](https://docs.rs/sp-storage/10.0.0/sp_storage/struct.PrefixedStorageKey.html) 
 can be construct using the 
 [`ChildInfo`](https://docs.rs/sp-storage/10.0.0/sp_storage/enum.ChildInfo.html) primitive as follows:
@@ -176,7 +176,7 @@ Let's recap the last few paragraphs into a full example. Given:
 * With instantiation nonce of `1`
 * The root storage struct is to be found at base key `0x00000000`
 
-The following rust program demonstrates how to calculate the `PrefixedStorageKey` of the 
+The following Rust program demonstrates how to calculate the `PrefixedStorageKey` of the 
 contracts child trie, as well as the hashed key for the storage struct, which can then be 
 used with the `chilstate` RPC endpoint function `getStorage` in polkadot-js to receive 
 the root storage struct of the contract:

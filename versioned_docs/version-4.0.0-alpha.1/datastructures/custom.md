@@ -3,8 +3,9 @@ title: Custom Data Structures
 slug: /datastructures/custom-datastructure
 ---
 
-While the `ink_storage` crate provides useful utilities and data structures to organize and 
-manipulate the contract's storage, contract authors are not limited by its capabilities. 
+The `ink_storage` crate provides useful utilities and data structures to organize and
+manipulate the contract's storage. However, contract authors should know that they can
+also create their own custom data structures.
 
 ## Using custom types on storage
 Any custom type wanting to be compatible with ink! storage must implement the 
@@ -13,14 +14,14 @@ trait, so it can be SCALE
 [`encoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Encode.html)
 and 
 [`decoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Decode.html).
-Additionaly, the traits 
+Additionally, the traits 
 [`StorageLayout`](https://docs.rs/ink_storage/latest/ink_storage/traits/trait.StorageLayout.html)
 and [`TypeInfo`](https://docs.rs/scale-info/2.3.1/scale_info/trait.TypeInfo.html)
 are required as well. But don't worry, usually these traits can just be derived:
 
 ```rust
-/// A custom type on our contract storage
-#[derive(scale::Decode, scale::Encode, Debug)]
+/// A custom type that we can use in our contract storage
+#[derive(scale::Decode, scale::Encode)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
@@ -39,14 +40,14 @@ Even better: there is a macro `#[ink::storage_item]`, which derives all necessar
 can be simplified further as follows:
 
 ```rust
-/// A custom type on our contract storage
+/// A custom type that we can use in our contract storage
 #[ink::storage_item]
 pub struct Inner {
     value: bool,
 }
 
 #[ink(storage)]
-pub struct SparseArray {
+pub struct Outer {
     inner: Inner,
 }
 ```
@@ -57,7 +58,7 @@ It is possible to use generic data types in your storage, as long as any generic
 satisfies the required storage trait bounds. In fact, we already witnessed this in the 
 previous sections about the `Mapping`.
 
-Let's say you want a mapping where accessing a non-existant key should just return 
+Let's say you want a mapping where accessing a non-existent key should just return 
 it's default value, akin to how mappings work in Solidity. Additionally, you want to know 
 how many values there are in the mapping (its length). This could be implemented as a 
 thin wrapper around the ink! `Mapping` as follows: 
@@ -74,13 +75,13 @@ pub struct DefaultMap<K, V: Packed + Default> {
 }
 
 impl<K: Encode, V: Packed + Default> DefaultMap<K, V> {
-    /// Accessing non-existant keys will return the default value.
+    /// Accessing non-existent keys will return the default value.
     pub fn get(&self, key: &K) -> V {
         self.values.get(key).unwrap_or_default()
     }
 
-    /// Inserting into the map increases it's length by one.
-    pub fn set<I, E>(&mut self, key: I, value: &E)
+    /// Inserting into the map increases its length by one.
+    pub fn set<I, U>(&mut self, key: I, value: &U)
     where
         I: scale::EncodeLike<K>,
         E: scale::EncodeLike<V> + Storable,
@@ -90,7 +91,7 @@ impl<K: Encode, V: Packed + Default> DefaultMap<K, V> {
         }
     }
 
-    /// Removing a value from the map decreases it's length by one.
+    /// Removing a value from the map decreases its length by one.
     pub fn remove(&mut self, key: &K) {
         if self.values.take(key).is_some() {
             self.length -= 1
