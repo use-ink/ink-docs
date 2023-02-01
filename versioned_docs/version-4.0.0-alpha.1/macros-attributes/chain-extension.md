@@ -113,7 +113,8 @@ if a call to it may never fail and never returns a `Result` type.
 
 ## Combinations
 
-Due to the possibility to flag a chain extension method with `handle_status` and return or not `Result<T, E>`
+Due to the possibility to flag a chain extension method with `handle_status` and either (1) return `Result<T, E>`
+or (2) return just `T`
 there are 4 different cases with slightly varying semantics:
 
 | `handle_status` | Returns `Result<T, E>` | Effects |
