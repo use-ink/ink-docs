@@ -4,20 +4,11 @@ hide_title: true
 slug: /ink-vs-solidity
 ---
 
-<header>
-    <h1 class="customTitle">
-        <img src="/img/icons/interop.svg" />
-        ink! vs. Solidity
-    </h1>
-</header>
+<img src="/img/title/solidity.svg" className="titlePic" />
 
-:::caution
-TODO
+# ink! vs. Solidity
 
-Update this page for ink! 4.0 and fix the formatting in the code.
-:::
-
-Here is a brief comparison of features between ink! and Solidity:
+The following table gives a brief comparison of features between ink! and Solidity:
 
 <div class="comparison">
 
@@ -40,7 +31,7 @@ Here is a brief comparison of features between ink! and Solidity:
 
 ## Solidity to ink! Guide
 
-## Table of Contents
+### Table of Contents
 
 - [Solidity to ink! Guide](#solidity-to-ink-guide)
 - [Table of Contents](#table-of-contents)
@@ -79,18 +70,20 @@ Here is a brief comparison of features between ink! and Solidity:
 
 ## Converting a Solidity Contract to ink!
 
-### 1. Generate New ink! Contract
+### 1. Generate a new ink! contract
 
-Run the following to generate ink! boilerplate code for ink!'s "Hello, World!" (the [`flipper`](https://github.com/paritytech/ink/tree/master/examples/flipper) contract))
+Run the following command to generate the skeleton for an ink! contract.
+The command will set up the boilerplate code for ink!'s "Hello, World!"
+(the [`flipper`](https://github.com/paritytech/ink/tree/master/examples/flipper) contract)).
 
 ```
 cargo contract new <contract-name>
 ```
 
-### 2. Build ink! Contract
+### 2. Build the contract
 
 ```
-cargo +nightly contract build
+cargo contract build
 ```
 
 ### 3. Convert Solidity class fields to Rust struct
@@ -113,14 +106,14 @@ contract MyContract {
     }
 
     function setBool(bool newBool) public returns (bool boolChanged) {
-        if _theBool == newBool{
+        if _theBool == newBool {
                boolChanged = false;
-        }else{
+        } else {
             boolChanged = true;
         }
 
         _theBool = newBool;
-        //emit event
+        // emit event
         UpdatedBool(newBool);
     }
 }
@@ -137,12 +130,12 @@ use ink_lang as ink;
 mod mycontract {
     #[ink(storage)]
     pub struct MyContract {
-        the_bool: bool, //class members become struct fields
+        the_bool: bool, // class members become struct fields
     }
 
     #[ink(event)]
     pub struct UpdatedBool {
-        #[ink(topic)] //-> indexed
+        #[ink(topic)] // -> indexed
         the_bool: bool,
     }
 
@@ -153,8 +146,8 @@ mod mycontract {
             Self { the_bool }
         }
 
-        #[ink(message)] //functions become struct implementations
-        pub fn set_bool(&mut self, new_bool: bool) -> bool{
+        #[ink(message)] // functions become struct implementations
+        pub fn set_bool(&mut self, new_bool: bool) -> bool {
             let bool_changed = true;
 
             if self.the_bool == new_bool{
@@ -169,7 +162,7 @@ mod mycontract {
                 the_bool: new_bool
             });
 
-            //return
+            // return
             bool_changed
         }
     }
@@ -188,8 +181,8 @@ A few key differences are:
 
 - Start converting each function one by one.
     - A recommended approach is to, if possible, skip cross-contract calls at first and use mock data instead
-    - This way offchain unit tests can be written to test the core functionality
-        - unit tests are offchain and do not work with cross-contract calls
+    - This way off-chain unit tests can be written to test the core functionality
+        - unit tests are off-chain and do not work with cross-contract calls
     - Once fully tested, start adding in cross-contract calls and perform on-chain manual + integration tests
 - Ensure that function's visibility (public, private) are matched in ink!
 - In Solidity, if a function returns a `bool success`, ink! will use a `Result<()>` instead (`Result::Ok` or `Result::Err`).
@@ -197,14 +190,14 @@ A few key differences are:
   ```rust
   // ink!
 
-  //result type
+  // result type
   pub type Result<T> = core::result::Result<T, Error>;
 
   // ...
 
-  //public function that returns a Result
+  // public function that returns a Result
   #[ink(message)]
-  pub fn my_function(&self) -> Result<()>{
+  pub fn my_function(&self) -> Result<()> {
       Ok(())
   }
   ```
@@ -249,8 +242,8 @@ fn balance_of_impl(&self, owner: &AccountId) -> Balance {
 ```c++
 // solidity
 function fnName() public {}
-//or
-//by default, functions are public
+// or
+// by default, functions are public
 function fnName() {}
 ```
 
@@ -288,7 +281,7 @@ when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in
 ```c++
 // solidity
 
-//insert / update
+// insert / update
 aMap[aKey] = aValue;
 
 // get
@@ -429,7 +422,7 @@ recipient.send(amount)
 ```
 
 ```rust
-//ink!
+// ink!
 if self.env().transfer(recipient, amount).is_err() {
     panic!("error transferring")
 }
@@ -445,7 +438,7 @@ event MyCoolEvent(
     u128 notIndexedValue,
 );
 
-//emit event
+// emit event
 MyCoolEvent (someValue, someOtherValue)
 ```
 
@@ -497,7 +490,7 @@ In general, `Result::Err` should be used when a _calling contract_ needs to know
 function myFunction(bool returnError) public {
     require(!returnError, "my error here");
 
-    //or
+    // or
 
     if returnError {
         revert("my error here");
@@ -506,7 +499,7 @@ function myFunction(bool returnError) public {
 ```
 
 ```rust
-//ink!
+// ink!
 
 #[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
 #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
@@ -519,6 +512,7 @@ pub enum Error {
 pub type Result<T> = core::result::Result<T, Error>;
 
 // ...
+
 #[ink(message)]
 pub fn my_function(&self, return_error: bool) -> Result<()> {
     if return_error{
@@ -526,7 +520,6 @@ pub fn my_function(&self, return_error: bool) -> Result<()> {
     }
     Ok(())
 }
-
 ```
 
 ### `nested mappings + custom / advanced structures`
@@ -620,17 +613,17 @@ mod dao {
 This almost works as expected. However, there is still one issue. `SpreadAllocate` (used with `Mapping`) requires that `Vec<Proposal>` implements `PackedAllocate`. To fix this, `Proposal` needs to implement `PackedAllocate`. See [here](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.PackedAllocate.html) for details + examples. See the following for this example:
 
 ```rust
-    use ink_primitives::Key;
+use ink_primitives::Key;
 
-    pub struct Proposal {
-        voted_yes: BTreeMap<AccountId, bool>,
-    }
+pub struct Proposal {
+    voted_yes: BTreeMap<AccountId, bool>,
+}
 
-    impl ink_storage::traits::PackedAllocate for Proposal {
-        fn allocate_packed(&mut self, at: &Key){
-            PackedAllocate::allocate_packed(&mut *self, at)
-        }
+impl ink_storage::traits::PackedAllocate for Proposal {
+    fn allocate_packed(&mut self, at: &Key){
+        PackedAllocate::allocate_packed(&mut *self, at)
     }
+}
 ```
 
 ### `cross-contract calling`
@@ -642,10 +635,10 @@ In ink!, to do [cross-contract calling](https://ink.substrate.io/basics/cross-co
 
 use ink_lang as ink;
 
-//make the structs visible
+// make the structs visible
 pub use self::erc20::{
     Erc20,
-    //this is necessary
+    // this is necessary
     Erc20Ref,
 };
 
@@ -708,8 +701,9 @@ There are two methods to setup the other contract.
    use my_other_contract::MyOtherContractRef;
    // ...
    fn new(contract_id: AccountId) -> Self {
-        //for already deployed contract
-        let contract_ref: MyOtherContractRef = ink_env::call::FromAccountId::from_account_id(contract_id);
+        // for already deployed contract
+        let contract_ref: MyOtherContractRef =
+            ink_env::call::FromAccountId::from_account_id(contract_id);
         Self {contract_ref}
    }
    ```
@@ -770,12 +764,13 @@ fn invoke_transaction(
     let result = build_call::<<Self as ::ink_lang::reflect::ContractEnv>::Env>()
         .call_type(
             Call::new()
-                .callee(callee) //contract to call
+                .callee(callee) // contract to call
                 .gas_limit(*gas_limit)
-                .transferred_value(transfer_amount), //value to transfer with call
+                .transferred_value(transfer_amount), // value to transfer with call
         )
         .exec_input(
-            ExecutionInput::new(Selector::from(*function_selector)).push_arg(CallInput(transaction_data)), //SCALE encoded parameters
+            ExecutionInput::new(Selector::from(*function_selector))
+                    .push_arg(CallInput(transaction_data)), // SCALE-encoded parameters
         )
         .returns::<()>()
         .fire()
@@ -785,7 +780,7 @@ fn invoke_transaction(
 
 ```
 
-Note: the `function_selector` bytes can be found in the generated `target/ink/metadata.json`
+Note: the `function_selector` bytes can be found in the generated `target/ink/metadata.json`.
 
 ## Limitations of ink! v3
 
@@ -794,7 +789,8 @@ Note: the `function_selector` bytes can be found in the generated `target/ink/me
     - There are alternatives that do add this functionality such as OpenBrush
 - Nested structs and data structures can be difficult to use
 - Cross-contract calling prevents events from being emitted. See [here](https://github.com/paritytech/ink/issues/1000) for details.
-- Cross-contract calling can not be tested offchain with unit tests. On-chain integration tests will need to be used.
+- Cross-contract calling can not be tested off-chain with unit tests.
+  On-chain integration tests will need to be used.
 
 ## Troubleshooting Errors
 
@@ -864,17 +860,17 @@ Note: this solution is not ideal. ink! v4.0 will provide much better solutions.
 For example, here is a read-only ERC20 cross-contract call:
 
 ```rust
-//only compiles when *not* running tests
+// only compiles when *not* running tests
 #[cfg(not(test))]
 fn get_token_balance(&self, caller: &AccountId) -> Balance {
-    //calls the external ERC-20 contract
+    // calls the external ERC-20 contract
     self.token.balance_of(*caller)
 }
 
-//only compiles when running tests
+// only compiles when running tests
 #[cfg(test)]
 fn get_token_balance(&self, _: &AccountId) -> Balance {
-    //arbitrary value
+    // arbitrary value
     1
 }
 ```
@@ -890,14 +886,14 @@ pub struct MyContract {
 
 ...
 
-//on-chain, performs cross-contract call
+// on-chain, performs cross-contract call
 #[cfg(not(test))]
 fn do_some_write(&mut self) {
     self.external_contract.write_to_field(0xDEADBEEF);
 }
 
 
-//testing environment only
+// testing environment only
 #[cfg(test)]
 fn do_some_write(&mut self) {
     self.mock_field.my_fake_storage_item = 0xDEADBEEF;
@@ -916,7 +912,7 @@ accounts.alice //usage example
 // set which account calls the contract
 ink_env::test::set_caller::<ink_env::DefaultEnvironment>(accounts.bob);
 
-//get the contract's address
+// get the contract's address
 let callee = ink_env::account_id::<ink_env::DefaultEnvironment>();
 
 // set the contracts address.
@@ -930,12 +926,12 @@ ink_env::test::set_value_transferred::<ink_env::DefaultEnvironment>(2);
 // this can be placed in a loop to advance the block many times
 ink_env::test::advance_block::<ink_env::DefaultEnvironment>();
 
-//generate arbitrary AccountId
+// generate arbitrary AccountId
 AccountId::from([0x01; 32]);
 
-//generate arbitrary Hash
+// generate arbitrary Hash
 Hash::from([0x01; 32])
 
-//macro for tests that are expected to panic.
+// macro for tests that are expected to panic.
 #[should_panic]
 ```

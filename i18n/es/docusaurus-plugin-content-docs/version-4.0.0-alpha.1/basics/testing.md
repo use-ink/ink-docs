@@ -1,12 +1,27 @@
 ---
-title: Contract Testing
+title: Testing del Contrato
+hide_title: true
 slug: /basics/contract-testing
 ---
 
+# Contract Testing
+
+ink! supports three different stages of testing: unit, integration
+and end-to-end tests. On this page we'll explain what the purpose
+of each stage is about and how to use it.
+
+<img src="/img/testing.png" />
+
+Generally you can think of those three types of testing as a pyramid
+with the top being the most elaborate test. The End-to-End (E2E)
+tests at the top will test the lower layers of the pyramid as part
+of them.
+
+
 ## Unit Tests
 
-Testing contracts off-chain is done by `cargo test` and users can simply use the standard routines
-of creating unit test modules within the ink! project:
+El testing de los contractos off-chain se hace mediante `cargo test` y los usuarios pueden simplemente utilizar las rutinas estándar para 
+crear módulos de unit test dentro del projecto de ink!:
 
 ```rust
 #[cfg(test)]
@@ -18,67 +33,63 @@ mod tests {
 }
 ```
 
-Test instances of contracts can be created with something like:
+Se pueden crear instancias de test de los contratos así:
 
 ```rust
 let contract = MyContract::my_constructor(a, b);
 ```
 
-Messages can simply be called on the returned instance as if `MyContract::my_constructor` returns a
-`Self` instance.
+Los mensajes se pueden llamar simplemente en la instancia devuelta como si `MyContract::my_constructor` devolviese
+una instancia `Self`.
 
-See the [flipper example](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
+Vea el [ejemplo flipper](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
 
 
 ## Off-chain Testing
 
-ink! smart contracts can compile in several different modes.
-There are two main compilation models using either
-- on-chain mode: `no_std` + WebAssembly as target
-- off-chain mode: `std`
+<div class="translateTodo">
+For integration tests, the test is annotated with our `#[ink::test]`
+attribute instead of `#[test]`. Our attribute denotes that
+the test is then executed in a simulated, mocked blockchain environment.
+here are functions available to influence how the test environment
+is configured (e.g. setting a specified balance of an account to
+simulate how a contract would behave when interacting with it).
+</div>
 
-We generally use the on-chain mode for actual smart contract deployment
-whereas we use the off-chain mode for smart contract testing using the
-off-chain environment provided by the `ink_env` crate.
+Si anotas un test con este atributo se ejecutara en un entorno simulado, 
+similar a como se ejecutaría on-chain.
+Entonces tienes un control detallado sobre cómo llamar al contrato;
+por ejemplo puedes influir en el avance del bloque, el valor transferido al mismo,
+por qué cuenta se llama, con qué almacenamiento se ejecuta, etc.
 
 
-The `#[ink::test]` proc. macro enables more elaborate off-chain testing.
+Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/4.0.0-beta/ink_lang/attr.test.html) para más detalles.
 
-If you annotate a test with this attribute it will be executed in a simulated
-environment, similar to as it would be run on-chain.
-You then have fine-grained control over how a contract is called; 
-for example you can influence the block advancement, the value transferred to it,
-by which account it is called, which storage it is run with, etc..
+En este momento hay algunas limitaciones conocidas para nuestro entorno off-chain y estamos trabajando
+en hacer que el comportamiento sea lo más cercano posible a un entorno de una red real.
 
-See the [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) contract on how to utilize those or [the documentation](https://docs.rs/ink_lang/3.3.1/ink_lang/attr.test.html) for details.
+Define un unit test que utilice las capacidades del ink! testing off-chain.
 
-At the moment there are some known limitations to our off-chain environment and we are working
-on making it behave as close to the real chain environment as possible.
+Si tu unit test no requiere de la existencia de un entorno off-chain esta bien no 
+utilizar esta macro ya que tiene algunos gastos generales con el test.
 
-Defines a unit test that makes use of ink!'s off-chain testing capabilities.
+Date cuenta que esta macro no es necesaria para ejecutar los unit tests que requieren
+las capacidades del ink! testing off-chain pero simplemente mejora la legibilidad del código.
 
-If your unit test does not require the existence of an off-chain environment
-it is fine to not use this macro since it bears some overhead with the test.
+### ¿Cómo saber si su test requiere el entorno off-chain?
 
-Note that this macro is not required to run unit tests that require ink!'s
-off-chain testing capabilities but merely improves code readability.
+Normalmente si el test utiliza recursivamente o invoca algunos metodos del contrato que
+llaman a un metodo definido en `self.env()` o `Self::env()`.
 
-## How do you find out if your test requires the off-chain environment?
-
-Normally if the test recursively uses or invokes some contract methods that
-call a method defined in `self.env()` or `Self::env()`.
-
-An examples is the following:
+Un ejemplo es el siguiente:
 
 ```rust
 let caller: AccountId = self.env().caller();
 ```
 
-## Example
+### Ejemplo
 
 ```rust
-use ink_lang as ink;
-
 #[cfg(test)]
 mod tests {
     // Conventional unit test that works with assertions.
@@ -87,47 +98,89 @@ mod tests {
         // test code comes here as usual
     }
 
-    // Conventional unit test that returns some Result.
-    // The test code can make use of operator-`?`.
+    // Unit test convencional que devuelve algún Result.
+    // El código del test puede utilizar el operador-`?`.
     #[ink::test]
-    fn test2() -> Result<(), ink_env::Error> {
-        // test code that returns a Rust Result type
+    fn test2() -> Result<(), ink::env::Error> {
+        // El código del test que devuelve un tipo Rust Result
     }
 }
 ```
 
+<div class="translateTodo">
+## End-to-End (E2E) Tests
 
-## On-chain Testing
+E2E testing enables developers to write a test that will not only test the contract in an
+isolated manner; instead the contract will be tested _together_ with all components that
+will be involved on-chain – so from end to end. This way of testing resembles closely
+how the contract will actually behave in production.
 
-The easiest way to do on-chain testing is to
-[run a local substrate node](/getting-started/running-substrate),
-deploy your contract there and interact with it.
+As part of the test, the contract will be compiled and deployed to a Substrate node that
+is running in the background. ink! offers API functions that enable developers to then
+interact with the contract via transactions that they create and submit to the blockchain.
+
+You as a developer can define assertions on the outcome of their transactions, such as checking
+for state mutations, transaction failures or incurred gas costs.
+
+Your chain configuration will be tested together with the smart contract. And if your
+chain has pallets that are involved with the smart contract execution, those will be
+part of the test execution as well.
+
+ink! does not put any requirements on the Substrate node in the background – for example,
+you can run a node that contains a snapshot of a live network.
+
+### Example
+
+The following code example illustrates a basic E2E test for the
+[flipper example](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
 
 ```rust
-use ink_lang as ink;
+#[ink_e2e::test]
+async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
+    // When the function is entered, the contract was already
+    // built in the background via `cargo contract build`.
+    // The `client` object exposes an interface to interact
+    // with the Substrate node.
+    
+    // given
+    let constructor = FlipperRef::new_default();
 
-#[ink::contract]
-mod greeter {
-    #[ink(storage)]
-    pub struct Greeter;
+    // when
+    let contract_acc_id = client
+        .instantiate("flipper", &ink_e2e::bob(), constructor, 0, None)
+        .await
+        .expect("instantiate failed")
+        .account_id;
 
-    impl Greeter {
-        #[ink(constructor)]
-        pub fn new() -> Self {
-            let caller = Self::env().caller();
-            let message = format!("thanks for instantiation {:?}", caller);
-            ink_env::debug_println(&message);
-            Greeter {}
-        }
+    // then
+    let get = build_message::<FlipperRef>(contract_acc_id.clone())
+        .call(|flipper| flipper.get());
+    let get_res = client
+        .call(&ink_e2e::bob(), get, 0, None)
+        .await
+        .expect("get failed");
+    assert!(matches!(get_res.return_value(), false));
 
-        #[ink(message, payable)]
-        pub fn fund(&mut self) {
-            let caller = self.env().caller();
-            let value = self.env().transferred_balance();
-            let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
-            ink_env::debug_println(&message);
-        }
-    }
+    Ok(())
 }
 ```
 
+You can run the above test by going to the `flipper` folder in
+[the ink! examples directory](TODO).
+
+Before you can run the test, you have to start a Substrate
+node with `pallet-contracts` in the background.
+You can use e.g. our [`substrate-contracts-node`](TODO) for this.
+Start the node in one shell session/terminal window via
+
+```
+substrate-contracts-node
+```
+
+Then, while keeping the node running, execute the following command
+in another shell session/terminal window.
+
+```
+cargo test --features e2e-tests
+```
+</div>

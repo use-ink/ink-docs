@@ -1,9 +1,14 @@
 ---
 title: "#[ink::contract]"
+hide_title: true
 slug: /macros-attributes/contract
 ---
 
-This macro is the entry point for writing ink! smart contracts.
+<img src="/img/title/macro.svg" className="titlePic" />
+
+# \#[ink::contract]
+
+The `#[ink::contract]` macro is the entry point for writing ink! smart contracts.
 
 If you are a beginner trying to learn ink! we recommend you to check out
 our extensive [ink! workshop](https://docs.substrate.io/tutorials/smart-contracts/).

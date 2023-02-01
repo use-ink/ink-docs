@@ -53,10 +53,19 @@ If everything worked, `cargo contract --help` should show you the above list of 
 The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) is
 a simple Substrate blockchain which is configured to include the Substrate module for
 smart contract functionality – the `contracts` pallet (see [How it Works](/how-it-works) for more).
-
 It's a comfortable option if you want to get a quickstart.
-You can [download a binary from our releases page](https://github.com/paritytech/substrate-contracts-node/releases)
-(Linux and Mac). Alternatively you can build the node by yourself:
+
+There are two ways of installing the node:
+
+### (1) Download the Binary
+This is the recommended method, you can
+[download a binary from our releases page](https://github.com/paritytech/substrate-contracts-node/releases)
+(Linux and Mac). 
+
+### (2) Build it yourself
+
+Alternatively you can build the node by yourself.
+This can take quite a while though!
 
 ```bash
 cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.23.0 --force --locked

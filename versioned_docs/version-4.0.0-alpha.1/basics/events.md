@@ -7,6 +7,10 @@ An ink! smart contract may define events that it can emit during contract execut
 Emitting events can be used by third party tools to query information about a contract's
 execution and state.
 
+![Contract execution via transaction](/img/events.png)
+
+## Example
+
 The following example ink! contract shows how an event `Transferred` is defined and
 emitted in the `#[ink(constructor)]`.
 

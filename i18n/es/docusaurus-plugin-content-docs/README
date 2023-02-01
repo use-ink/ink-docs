@@ -1,0 +1,18 @@
+# `ink-docs`
+
+Este es el portal de la documentación en castellano de [ink!](https://github.com/paritytech/ink). La última versión siempre esta disponible [https://use.ink](https://use.ink).
+
+Arrancalo localmente con:
+
+```bash
+yarn
+yarn start --locale es
+```
+
+Aquí queremos proporcionar documentación completa para cualquier cosa con la que necesite trabajar con ink!.
+
+Si detecta lagunas en la información proporcionada o no está seguro acerca de un área específica, por favor <a href="https://github.com/paritytech/ink-docs/issues">abre una issue</a>
+o <a href="https://github.com/paritytech/ink-docs/pulls">crea un pull-request</a>.
+
+Realmente queremos tener una buena documentación aquí y permitir que las personas sean productivas desde el principio.
+

@@ -1,23 +1,24 @@
 ---
-title: Cross-Contract Calling
+title: Llamadas Cross-Contract
 slug: /basics/cross-contract-calling
 ---
 
-In ink! contracts it is possible to call ink! messages and ink! constructors. So ink! constructors allow
-delegation and ink! messages can easily call other ink! messages.
-Given another ink! contract like, we can call any of its functions.
+En contratos ink! es posible llamar a mensajes ink! y constructores ink!. Por lo tanto, constructores ink! permiten delegar y mensajes ink! permiten
+llamar fácilmente a otros mensajes ink!
+Dado otro contrato ink!, es posible llamar a cualquiera de sus funciones.
 
-See our [`delegator example contract`](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs) 
-for an elaborate example which uses cross-contract calling.
 
-### How it Works
+Vea nuestro [`delegator contrato de ejemplo`](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs) 
+para ver un elaborado ejemplo que utiliza llamadas cross-contract.
 
-In order to deploy the delegator smart contract we first
-have to manually put the code of the other contract, receive
-its code hash from the signalled event and put their code hash
-into our calling smart contract.
+### Cómo funciona
 
-The calling contract looks like this:
+Para implementar el smart contract del delegador, primero
+tenemos que añadir manualment el código del otro contrato, recibir 
+el hash del código del evento signalled y poner el hash del código 
+en nuestro smart contract que llamara al anterior.
+
+Nuestro smart contract se ve así:
 
 ```rust
 use other_contract::OtherContract;
@@ -25,13 +26,13 @@ use other_contract::OtherContract;
 //--snip--
 #[ink(storage)]
 struct MyContract {
-    /// The other contract.
+    /// El otro contracto.
     other_contract: OtherContract,
 }
 
 impl MyContract {
-    /// Instantiate `MyContract with the given
-    /// sub-contract codes and some initial value.
+    /// Instanciar `MyContract con lo siguiente
+    /// el código del sub-contract y algún valor inicial.
     #[ink(constructor)]
     pub fn new(
         other_contract_code_hash: Hash,
@@ -55,41 +56,40 @@ impl MyContract {
 //--snip--
 ```
 
-It's `Cargo.toml` contains
+El fichero `Cargo.toml` contiene
 ```toml
 other_contract = { path = "other_contract", default-features = false, features = ["ink-as-dependency"] }
 ```
 
-The `other_contract/Cargo.toml` contains this:
+El `other_contract/Cargo.toml` contiene:
 
 ```toml
 [features]
 ink-as-dependency = []
 ```
 
-Tells the ink! code generator to **always** or **never**
-compile the smart contract as if it was used as a dependency of another ink!
-smart contract.
+Esto le dice al código generador de ink! que  **always** o **never**
+compila el smart contract como si fuese utilizado como una dependencia del otro ink! smart contract
 
-The `other_contract/lib.rs`:
+El `other_contract/lib.rs`:
 
 ```rust
 #[ink::contract]
 pub mod other_contract {
-    /// Storage for the other contract.
+    /// Storage del otro contrato.
     #[ink(storage)]
     pub struct OtherContract {
         value: i32,
     }
 
     impl OtherContract {
-        /// Initializes the contract.
+        /// Inicializa el contrato.
         #[ink(constructor)]
         pub fn new(value: i32) -> Self {
             Self { value }
         }
 
-        /// Returns the current state.
+        /// Devuelve el estado actual.
         #[ink(message)]
         pub fn get_value(&self) -> i32 {
             self.value

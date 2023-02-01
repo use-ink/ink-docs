@@ -1,14 +1,14 @@
 ---
-title: Community Badges
+title: Insignias de la Comunidad
 slug: /brand-assets/community-badges
 hide_table_of_contents: false
 ---
 
-If you have a public repository with an ink! contract it would be awesome
-if you could add one of those!
+Si tienes un repositorio publico con un contrato ink! sería increible que 
+puedas añadir uno de estos!
 
-## Built _with_ ink!
-### Normal Design
+## Construido _con_ ink!
+### Diseño Normal
 
 [![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge.svg)](https://github.com/paritytech/ink)
 
@@ -16,7 +16,7 @@ if you could add one of those!
 [![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge.svg)](https://github.com/paritytech/ink)
 ```
 
-### Flat Design
+### Diseño Plano
 
 [![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge_flat.svg)](https://github.com/paritytech/ink)
 
@@ -24,8 +24,8 @@ if you could add one of those!
 [![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge_flat.svg)](https://github.com/paritytech/ink)
 ```
 
-## Built _for_ ink!
-### Normal Design
+## Construidot _para_ ink!
+### Diseño Normal
 
 [![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/built-for-ink.svg)](https://github.com/paritytech/ink)
 
@@ -33,7 +33,7 @@ if you could add one of those!
 [![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/built-for-ink.svg)](https://github.com/paritytech/ink)
 ```
 
-### Flat Design
+### Diseño Plano
 
 [![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/built-for-ink-flat.svg)](https://github.com/paritytech/ink)
 

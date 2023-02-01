@@ -66,7 +66,7 @@ pub struct Auction {
 
 ## Use of enum
 
-Enum can be used as a datatype in `struct` as depicted above in `struct Auction`
+Enum can be used as a datatype in `struct` as depicted above in `struct Auction`.
 
 ```rust
 pub enum Status {
@@ -80,7 +80,6 @@ pub enum Status {
 ```
 
 The values of an enum should be referenced as `Status::OpeningPeriod`.
-
 
 ## Initializing Storage in Constructors
 

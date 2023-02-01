@@ -1,7 +1,15 @@
 ---
 title: Contract Template
+hide_title: true
 slug: /basics/contract-template
 ---
+
+<img src="/img/title/macro.svg" className="titlePic" />
+
+# Contract Template
+
+On this page we'll go over how to create a basic contract and explain
+its elements.
 
 ## Creating a template
 

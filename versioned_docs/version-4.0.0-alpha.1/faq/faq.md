@@ -1,16 +1,13 @@
 ---
 title: Frequently Asked Questions
-hide_title: true
+hide: true
 slug: /faq
 hide_table_of_contents: true
 ---
 
-<header>
-    <h1 class="customTitle">
-        <img src="/img/icons/faq.svg" />
-        Frequently Asked Questions
-    </h1>
-</header>
+<img src="/img/title/faq.svg" className="titlePic" />
+
+# Frequently Asked Questions
 
 ### Is it "ink" or "ink!"? What does the "!" stand for?
 
@@ -42,23 +39,25 @@ It really is into dots. Stories tell that it demanded the spelling of ink! with 
 - Substrate is a modular framework to build decentralized applications on top of blockchain technology.
 - Polkadot is a layer-0 blockchain built using Substrate that allows to orchestrate an entire
 fleet of other blockchains to join forces and communicate with each other.
-- Blockchains built with Substrate can include the so-called `contracts-pallet` module in order to
+- Blockchains built with Substrate can include the so-called `pallet-contracts` module in order to
 allow instantiating and executing smart contracts.
 
 ink! was built to allow users to write smart contracts in Rust targeting blockchains built by
-Substrate that have the aforementioned `contracts-pallet` included.
+Substrate that have the aforementioned `pallet-contracts` included.
 
 While ink! is currently the most advanced smart contract language targeting Substrate blockchains it is
 not the only possible choice for users. There is also a Solidity to Wasm compiler called Solang that also
 allows to target Substrate chains and there are other languages in plan and discovery phase for the same
 purpose.
 
-On the Substrate side the same is true for the `contracts-pallet`. It is just a module that defines
+On the Substrate side the same is true for the `pallet-contracts`. It is just a module that defines
 the basic set of features required for executing smart contracts on the blockchain that includes it.
 However, it is not necessarily the only solution to do exactly that. There is also the `evm-pallet`
 to run smart contracts targeting the EVM as well as the experimental `actors-pallet` that allows to
 execute smart contracts written in the actor style programming model.
-Over time the Substrate community might come up with yet other pallets for smart contracts execution. 
+Over time the Substrate community might come up with yet other pallets for smart contracts execution.
+
+Please see our page [How it Works – Substrate](/how-it-works) for more information.
 
 ### How to call other smart contracts on the same blockchain?
 
@@ -118,7 +117,9 @@ The two modes are as follows:
 
 Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
 
->Note: There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the Wasm blob. This feature may change or be iterated on in the future.
+:::note
+There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the Wasm blob. This feature may change or be iterated on in the future.
+:::
 
 ### What is the difference between memory and storage?
 
@@ -129,44 +130,7 @@ The contract storage is built on top of the runtime storage, and access is consi
 
 ### How do I print something to the console from the runtime?
 
-You can use those two macros:
-* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_println.html)
-* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_print.html)
-
-There are three things you have to do for the debug messages to show up on the console:
-
-1. __Enable the feature `pallet-contracts/unstable-interface` in the target runtime.__<br/>
-For `substrate-contracts-node` this is done by default [here](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml).
-  
-1. __Enable the feature `ink-debug` for the `ink_env` crate.__<br/>
-`cargo-contract` does this automatically for you (for versions `>= 0.13.0`), except if
-you compile a contract in `--release` mode.
-
-1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
-  For example, to have only errors and debug output show up for the `substrate-contracts-node`: 
-  ```
-  substrate-contracts-node --dev -lerror,runtime::contracts=debug
-  ```
-
-__Important: Debug output is only printed for RPC calls or off-chain tests ‒ not for transactions!__
-
-In your ink! message or constructor you can write the following:
-
-```rust
-#[ink(constructor)]
-fn new() -> Self {
-    ink::env::debug_println!("created new instance at {}", Self::env().block_number());
-    Self { }
-}
-
-#[ink(message)]
-fn print(&self) {
-   let caller = self.env().caller();
-   let message = ink_prelude::format!("got a call from {:?}", caller);
-   ink::env::debug_println!(&message);
-}
-```
-
+Please see our page on [Contract Debugging](/basics/contract-debugging).
 
 ### Why is Rust's standard library (stdlib) not available in ink!?
 
@@ -184,7 +148,7 @@ Rust's standard library consists of three different layers:
    such as `fmt`, `rc` (ref-counted pointers) or borrows.
 
    ink! smart contracts allow authors to use Rust's `alloc` crate.
-   By default ink! authors use definitions from the `alloc` crate through `ink_prelude` crate.
+   By default ink! authors use definitions from the `alloc` crate through `ink::prelude` crate.
 
 3. `std` library is what people generally call Rust's standard library.
 
@@ -194,19 +158,19 @@ Rust's standard library consists of three different layers:
    output systems for files, networking etc.
 
    Since the Wasm (a.k.a. `wasm32-unknown-unknown`) compilation target does not support Rust's
-   standard library ink! authors cannot use it either for their own purposes. Instead the `contracts-pallet`
+   standard library ink! authors cannot use it either for their own purposes. Instead the `pallet-contracts`
    tries to provide some common functionality that would otherwise be missing for common smart contract
    operations.
 
 ### How do I hash a value?
 
-A number of crypto hashes are built into the [contracts-pallet](/how-it-works) and
+A number of crypto hashes are built into the [pallet-contracts](/how-it-works) and
 therefore very efficient to use. We currently support a handful of those, you 
 can view the complete list [here](https://docs.rs/ink_env/4.0.0-beta/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
 [Chain Extensions](/macros-attributes/chain-extension)
-or make a proposal to include it into the default set of the `contracts-pallet`.
+or make a proposal to include it into the default set of the `pallet-contracts`.
 
 Using one of the built-in crypto hashes can be done as explained here:
 * [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html)
@@ -232,10 +196,9 @@ interface. For example, 1 Bitcoin is equivalent to the smallest unit of 100,000,
 Satoshi and all Bitcoin implementations internally persist account balances in
 Satoshi, not as a decimal number of Bitcoin.
 
-
 ### Why can't I just use the standard Rust data collections in ink!?
 
-You can use them! They are exposed via the `ink_prelude` crate (e.g. `ink_prelude::vec::Vec`)
+You can use them! They are exposed via the `ink_prelude` crate (e.g. `ink::prelude::vec::Vec`)
 and you can return them from ink! messages and also persist them to storage.
 
 _However, the Rust stdlib collections are not optimized for smart contract usage!_ So for example,
@@ -278,9 +241,11 @@ For example, you might encounter this error if you try to store a custom data
 structure in the contract's storage. Or e.g. when attempting to return 
 a custom error from an ink! message.
 
-> Note: The error `the trait "WrapperTypeEncode" is not implemented for …` is also
-> a common error when a mismatching version of `parity-scale-codec` is used
-> in the contract opposed to the version used by ink!.
+:::note
+The error `the trait "WrapperTypeEncode" is not implemented for …` is also
+a common error when a mismatching version of `parity-scale-codec` is used
+in the contract opposed to the version used by ink!.
+:::
 
 The solution typically is to add a fitting implementation of the trait
 for your data structure:
