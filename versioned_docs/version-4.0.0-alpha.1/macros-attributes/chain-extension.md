@@ -103,7 +103,7 @@ A chain extension method that is flagged with `handle_status = false` assumes th
 will always indicate success. Therefore it will always load and decode the output buffer and loses
 the `E: From<Self::ErrorCode` constraint for the call.
 
-Note that if a chain extension method does not return `Result<T, E>` where `E: From<Self::ErrorCode>`
+Note that if a chain extension method does not return `Result<T, E>` where `E: From<Self::ErrorCode>`,
 but `handle_status = true` it will still return a value of type `Result<T, Self::ErrorCode>`.
 
 ## Usage: `handle_status` + `Result<T, E>` return type
