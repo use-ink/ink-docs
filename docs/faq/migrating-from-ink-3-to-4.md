@@ -76,7 +76,7 @@ abstractions which determine how contract data is laid out in storage are differ
 
 ### Migration
 - Initialize `Mapping` fields with `Mapping::default()` instead of  `ink_lang::utils::initialize_contract` in
-  constructors. See [`erc20`](./examples/erc20/lib.rs) and other examples which use a `Mapping`.
+  constructors. See [`erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) and other examples which use a `Mapping`.
 - `SpreadAllocate`, `SpreadLayout`, `PackedLayout`, `PackedAllocate` have been removed.
   It's best to see [the documentation](https://github.com/727-Ventures/ink/blob/feature/storage-docs/examples/complex-storage-structures/README.md)
   of the new storage abstration for how to migrate.
