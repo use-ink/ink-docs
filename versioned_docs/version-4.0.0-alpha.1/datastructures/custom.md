@@ -31,7 +31,7 @@ pub struct Inner {
 }
 
 #[ink(storage)]
-pub struct MyContractStorage {
+pub struct ContractStorage {
     inner: Inner,
 }
 ```
@@ -49,7 +49,7 @@ pub struct Inner {
 }
 
 #[ink(storage)]
-pub struct Outer {
+pub struct ContractStorage {
     inner: Inner,
 }
 ```
@@ -68,7 +68,6 @@ Let's say you want a mapping where accessing a non-existent key should just retu
 it's default value, akin to how mappings work in Solidity. Additionally, you want to know 
 how many values there are in the mapping (its length). This could be implemented as a 
 thin wrapper around the ink! `Mapping` as follows: 
-
 
 ```rust
 /// Values for this map need to implement the `Default` trait.
@@ -119,8 +118,9 @@ pub struct MyContract {
 
 :::caution
 
-Generic data types may substantially increase your contracts overall code size, making it 
+Generic data types may substantially increase your contracts overall code size, making it
 more costly to store on-chain.
+
 The reason for this is [Rust's monomorphization](https://rustwasm.github.io/twiggy/concepts/generic-functions-and-monomorphization.html).
 
 :::
