@@ -86,7 +86,8 @@ module.exports = {
         label: 'English'
       },
       es: {
-        label: 'Español'
+        label: 'Español',
+        htmlLang: 'es-ES'
       }
     },
   },

@@ -1,0 +1,50 @@
+{
+  "version.label": {
+    "message": "4.0.0-alpha.1",
+    "description": "The label for version 4.0.0-alpha.1"
+  },
+  "sidebar.reference.category.Overview": {
+    "message": "Overview",
+    "description": "The label for category Overview in sidebar reference"
+  },
+  "sidebar.reference.category.Monthly Update": {
+    "message": "Monthly Update",
+    "description": "The label for category Monthly Update in sidebar reference"
+  },
+  "sidebar.reference.category.Getting started": {
+    "message": "Getting started",
+    "description": "The label for category Getting started in sidebar reference"
+  },
+  "sidebar.reference.category.Basics": {
+    "message": "Basics",
+    "description": "The label for category Basics in sidebar reference"
+  },
+  "sidebar.reference.category.Macros & Attributes": {
+    "message": "Macros & Attributes",
+    "description": "The label for category Macros & Attributes in sidebar reference"
+  },
+  "sidebar.reference.category.Storage & Data Structures": {
+    "message": "Storage & Data Structures",
+    "description": "The label for category Storage & Data Structures in sidebar reference"
+  },
+  "sidebar.reference.category.Examples": {
+    "message": "Examples",
+    "description": "The label for category Examples in sidebar reference"
+  },
+  "sidebar.reference.category.Testnet": {
+    "message": "Testnet",
+    "description": "The label for category Testnet in sidebar reference"
+  },
+  "sidebar.reference.category.Third Party Tools & Libraries": {
+    "message": "Third Party Tools & Libraries",
+    "description": "The label for category Third Party Tools & Libraries in sidebar reference"
+  },
+  "sidebar.reference.category.FAQ": {
+    "message": "FAQ",
+    "description": "The label for category FAQ in sidebar reference"
+  },
+  "sidebar.reference.category.Brand Assets": {
+    "message": "Brand Assets",
+    "description": "The label for category Brand Assets in sidebar reference"
+  }
+}
