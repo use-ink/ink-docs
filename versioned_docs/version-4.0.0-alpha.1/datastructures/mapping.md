@@ -1,5 +1,5 @@
 ---
-title: Working with Mapping 
+title: Working with Mapping
 slug: /datastructures/mapping
 ---
 
@@ -16,11 +16,11 @@ pub struct MyContract {
 ```
 
 This means that for a given key, you can store a unique instance of a value type. In this
-case, each "user" gets credited their own balance. 
+case, each "user" gets credited their own balance.
 
 ## Example: Using a `Mapping`
 
-The following example contract utilizes a `Mapping` so that anyone can deposit and withdraw 
+The following example contract utilizes a `Mapping` so that anyone can deposit and withdraw
 balance for their own account:
 
 ```rust
@@ -74,20 +74,20 @@ mod mycontract {
 
 ## Considerations when using the `Mapping` type
 
-One of the main purposes of the ink! `Mapping` is to allow storing a lot of values. 
+One of the main purposes of the ink! `Mapping` is to allow storing a lot of values.
 
 :::note
 
-There are many additional datastructures accessible under `ink::prelude::collections`, such 
-such as `HashMap` or `BTreeMap` (to name a few). Note that these datastructures all exhibit 
+There are many additional datastructures accessible under `ink::prelude::collections`, such
+such as `HashMap` or `BTreeMap` (to name a few). Note that these datastructures all exhibit
 `Packed` storage loading behavior, as opposed to the ink! `Mapping`!
 
 :::
 
 ### Storage loading behaviour
 
-Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s 
-are lazily loaded in ink!. In other words, if your message only accesses a single key of a 
+Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s
+are lazily loaded in ink!. In other words, if your message only accesses a single key of a
 mapping, it will not load the whole mapping but only the value being accessed.
 
 ```rust
@@ -103,15 +103,15 @@ for n in 0..5 {
 ```
 
 Furthermore, it follows that mapping values do not have a contiguous storage layout and it is
-not possible to iterate over the contents of a map. 
+not possible to iterate over the contents of a map.
 
 
 ### Updating values
 
-The attentive reader may have noticed that accessing mapping values via the `Mapping::get()` 
-method will result in an owned value (a local copy), as opposed to a direct reference 
-into the storage. Changes to this value won't be reflected in the contracts storage 
-"automatically". To avoid this common pitfall, the value must be inserted again at the same 
+The attentive reader may have noticed that accessing mapping values via the `Mapping::get()`
+method will result in an owned value (a local copy), as opposed to a direct reference
+into the storage. Changes to this value won't be reflected in the contracts storage
+"automatically". To avoid this common pitfall, the value must be inserted again at the same
 key after it was modified. The `transfer` function from above example illustrates this:
 
 ```rust
@@ -120,7 +120,7 @@ pub fn transfer(&mut self) {
     // `balance` is a local value and not a reference to the value on storage!
     let balance = self.balances.get(caller).unwrap_or(0);
     let endowment = self.env().transferred_value();
-    // The following line of code would have no effect to the balance of the 
+    // The following line of code would have no effect to the balance of the
     // caller stored in contract storage:
     //
     // balance += endowment;

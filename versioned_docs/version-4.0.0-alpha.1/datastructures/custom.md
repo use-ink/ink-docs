@@ -8,13 +8,13 @@ manipulate the contract's storage. However, contract authors should know that th
 also create their own custom data structures.
 
 ## Using custom types on storage
-Any custom type wanting to be compatible with ink! storage must implement the 
-[`Storable`](https://docs.rs/ink_storage_traits/4.0.0-beta/ink_storage_traits/trait.Storable.html) 
+Any custom type wanting to be compatible with ink! storage must implement the
+[`Storable`](https://docs.rs/ink_storage_traits/4.0.0-beta/ink_storage_traits/trait.Storable.html)
 trait, so it can be SCALE
 [`encoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Encode.html)
-and 
+and
 [`decoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Decode.html).
-Additionally, the traits 
+Additionally, the traits
 [`StorageLayout`](https://docs.rs/ink_storage/latest/ink_storage/traits/trait.StorageLayout.html)
 and [`TypeInfo`](https://docs.rs/scale-info/2.3.1/scale_info/trait.TypeInfo.html)
 are required as well. But don't worry, usually these traits can just be derived:
@@ -36,9 +36,9 @@ pub struct ContractStorage {
 }
 ```
 
-Even better: there is a macro 
-[`#[ink::storage_item`](https://docs.rs/ink_macro/4.0.0-beta.1/ink_macro/attr.storage_item.html), 
-which derives all necessary traits for you. If there is no need to implement any special 
+Even better: there is a macro
+[`#[ink::storage_item`](https://docs.rs/ink_macro/4.0.0-beta.1/ink_macro/attr.storage_item.html),
+which derives all necessary traits for you. If there is no need to implement any special
 behaviour, the above code example can be simplified further as follows:
 
 ```rust
@@ -54,20 +54,20 @@ pub struct ContractStorage {
 }
 ```
 
-Naturally, you can  as well implement any required trait manually. Please directly refer to 
+Naturally, you can  as well implement any required trait manually. Please directly refer to
 the relevant trait documentations for more information.
 
 ## Generic storage fields
 
-It is possible to use generic data types in your storage, as long as any generic type 
-satisfies the required storage trait bounds. In fact, we already witnessed this in the 
-previous sections about the 
+It is possible to use generic data types in your storage, as long as any generic type
+satisfies the required storage trait bounds. In fact, we already witnessed this in the
+previous sections about the
 [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta.1/ink_storage/struct.Mapping.html).
 
-Let's say you want a mapping where accessing a non-existent key should just return 
-it's default value, akin to how mappings work in Solidity. Additionally, you want to know 
-how many values there are in the mapping (its length). This could be implemented as a 
-thin wrapper around the ink! `Mapping` as follows: 
+Let's say you want a mapping where accessing a non-existent key should just return
+it's default value, akin to how mappings work in Solidity. Additionally, you want to know
+how many values there are in the mapping (its length). This could be implemented as a
+thin wrapper around the ink! `Mapping` as follows:
 
 ```rust
 /// Values for this map need to implement the `Default` trait.
