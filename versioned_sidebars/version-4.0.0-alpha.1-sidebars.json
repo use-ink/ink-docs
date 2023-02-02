@@ -59,7 +59,7 @@
     "Storage & Data Structures": [
       "datastructures/overview",
       "datastructures/mapping",
-      "datastructures/spread-storage-layout",
+      "datastructures/storage-layout",
       "datastructures/custom",
       "datastructures/storage-in-metadata"
     ],
