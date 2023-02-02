@@ -58,7 +58,7 @@ module.exports = {
         versions: {
           current: {
             label: '4.x',
-            path: '4.x',
+            path: '',
             banner: 'none',
           },
           '3.x': {
