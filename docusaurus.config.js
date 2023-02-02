@@ -57,7 +57,7 @@ module.exports = {
         lastVersion: 'current',
         versions: {
           current: {
-            label: '4.x',
+            label: '4.0-rc',
             path: '',
             banner: 'none',
           },
