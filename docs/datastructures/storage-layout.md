@@ -1,7 +1,12 @@
 ---
 title: Storage Layout
 slug: /datastructures/storage-layout
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Storage Layout
 
 Smart contract authors are given some flexibility in regards on how they want to organize
 the storage layout of their contracts.

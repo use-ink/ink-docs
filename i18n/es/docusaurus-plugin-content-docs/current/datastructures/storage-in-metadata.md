@@ -1,7 +1,12 @@
 ---
 title: Metadata Format
 slug: /datastructures/storage-in-metadata
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Metadata Format
 
 :::note
 TODO: Translate to Spanish.

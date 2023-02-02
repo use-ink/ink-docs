@@ -1,7 +1,12 @@
 ---
 title: Crear un proyecto ink!
 slug: /getting-started/creating-an-ink-project
+hide_title: true
 ---
+
+<img src="/img/title/heart.svg" className="titlePic" />
+
+# Crear un proyecto ink!
 
 ink! es un [Lenguaje específico de dominio incorporado](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) que puedes utilizar para escribir smart contracts basados en WebAssembly con el lenguage de programación Rust.
 

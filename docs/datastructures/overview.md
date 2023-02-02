@@ -1,7 +1,12 @@
 ---
 title: Overview
 slug: /datastructures/overview
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Overview
 
 The `ink_storage` crate acts as the standard storage library for ink! smart contracts.
 At the moment it provides two primitives for interacting with storage,

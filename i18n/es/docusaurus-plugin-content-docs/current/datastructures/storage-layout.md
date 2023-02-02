@@ -1,7 +1,12 @@
 ---
 title: Storage Layout
 slug: /datastructures/storage-layout
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Storage Layout
 
 :::note
 TODO: Translate to Spanish.

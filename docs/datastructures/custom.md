@@ -1,7 +1,12 @@
 ---
 title: Custom Data Structures
 slug: /datastructures/custom-datastructure
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Custom Data Structures
 
 The `ink_storage` crate provides useful utilities and data structures to organize and
 manipulate the contract's storage. However, contract authors should know that they can

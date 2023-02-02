@@ -1,7 +1,12 @@
 ---
 title: Creating an ink! Project
 slug: /getting-started/creating-an-ink-project
+hide_title: true
 ---
+
+<img src="/img/title/heart.svg" className="titlePic" />
+
+# Creating an ink! Project
 
 ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) that you can use to write WebAssembly based smart contracts in the Rust programming language.
 

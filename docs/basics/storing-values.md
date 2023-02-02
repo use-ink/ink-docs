@@ -1,7 +1,12 @@
 ---
 title: Storing Values
 slug: /basics/storing-values
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Storing Values
 
 Here is how you store simple values in storage:
 

@@ -1,7 +1,12 @@
 ---
 title: Desplega tu Contrato
 slug: /getting-started/deploy-your-contract
+hide_title: true
 ---
+
+<img src="/img/title/rocket.svg" className="titlePic" />
+
+# Desplega tu Contrato
 
 Ahora que hemos generado el binario Wasm desde nuestro código fuente y nos hemos conectado a un nodo local, 
 queremos desplegar este contrato en nuestro Substrate blockchain.

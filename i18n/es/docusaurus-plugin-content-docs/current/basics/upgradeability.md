@@ -1,7 +1,12 @@
 ---
 title: Contratos Actualizables
 slug: /basics/upgradeable-contracts
+hide_title: true
 ---
+
+<img src="/img/title/upgradeable-contract.svg" className="titlePic" />
+
+# Contratos Actualizables
 
 A pesar de que los smart contracts están destinados a ser inmutables por diseño,
 a menudo es necesario realizar una actualización del smart contract.

@@ -1,6 +1,7 @@
 ---
 title: Call Your Contract
 slug: /getting-started/calling-your-contract
+hide_title: true
 ---
 
 Now that your contract has been fully deployed, we can start interacting with it! Flipper only has

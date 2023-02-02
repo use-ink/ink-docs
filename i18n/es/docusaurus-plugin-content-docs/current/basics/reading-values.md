@@ -1,7 +1,12 @@
 ---
 title: Leer Valores del Storage
 slug: /basics/reading-values
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Leer Valores del Storage
 
 Leer los valores almacenados en el storage es ¡es donde comienza la diversión!
 

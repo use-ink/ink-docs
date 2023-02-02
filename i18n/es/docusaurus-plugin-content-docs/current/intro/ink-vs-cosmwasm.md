@@ -1,7 +1,12 @@
 ---
 title: ink! vs. CosmWasm
 slug: /ink-vs-cosmwasm
+hide_title: true
 ---
+
+<img src="/img/title/cosmwasm.svg" className="titlePic" />
+
+# ink! vs. CosmWasm
 
 A continuación, una breve comparación entre [ink!](https://github.com/paritytech/ink/)
 y [CosmWasm](https://github.com/CosmWasm/cosmwasm) enfocada a desarrolladores que vengan

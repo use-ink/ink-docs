@@ -1,7 +1,12 @@
 ---
 title: Setup
 slug: /getting-started/setup
+hide_title: true
 ---
+
+<img src="/img/title/setup.svg" className="titlePic" />
+
+# Setup
 
 In case you are looking for a guided tutorial directed
 towards beginners please check out our [Guided Tutorial](https://docs.substrate.io/tutorials/smart-contracts/).

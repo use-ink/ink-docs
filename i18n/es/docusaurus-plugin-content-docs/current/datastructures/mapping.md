@@ -1,7 +1,12 @@
 ---
 title: Working with Mapping
 slug: /datastructures/mapping
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Working with Mapping
 
 :::note
 TODO: Translate to Spanish.

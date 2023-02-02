@@ -1,7 +1,12 @@
 ---
 title: Almacenando Valores
 slug: /basics/storing-values
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Almacenando Valores
 
 Así es como se almacenan valores simples en el `storage`:
 

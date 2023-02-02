@@ -1,7 +1,12 @@
 ---
 title: Llamadas Cross-Contract
 slug: /basics/cross-contract-calling
+hide_title: true
 ---
+
+<img src="/img/title/cross-contract.svg" className="titlePic" />
+
+# Llamadas Cross-Contract
 
 En contratos ink! es posible llamar a mensajes ink! y constructores ink!. Por lo tanto, constructores ink! permiten delegar y mensajes ink! permiten
 llamar fácilmente a otros mensajes ink!

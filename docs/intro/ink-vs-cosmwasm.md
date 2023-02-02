@@ -1,7 +1,12 @@
 ---
 title: ink! vs. CosmWasm
 slug: /ink-vs-cosmwasm
+hide_title: true
 ---
+
+<img src="/img/title/cosmwasm.svg" className="titlePic" />
+
+# ink! vs. CosmWasm
 
 This is a short comparison between [ink!](https://github.com/paritytech/ink/)
 and [CosmWasm](https://github.com/CosmWasm/cosmwasm) meant to onboard

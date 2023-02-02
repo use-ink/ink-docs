@@ -1,7 +1,12 @@
 ---
 title: Upgradeable Contracts
 slug: /basics/upgradeable-contracts
+hide_title: true
 ---
+
+<img src="/img/title/upgradeable-contract.svg" className="titlePic" />
+
+# Upgradeable Contracts
 
 Even though smart contracts are intended to be immutable by design,
 it is often necessary to perform an upgrade of a smart contract. 

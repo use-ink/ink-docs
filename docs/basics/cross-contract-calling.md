@@ -1,7 +1,12 @@
 ---
 title: Cross-Contract Calling
 slug: /basics/cross-contract-calling
+hide_title: true
 ---
+
+<img src="/img/title/cross-contract.svg" className="titlePic" />
+
+# Cross-Contract Calling
 
 In ink! contracts it is possible to call ink! messages and ink! constructors. So ink! constructors allow
 delegation and ink! messages can easily call other ink! messages.

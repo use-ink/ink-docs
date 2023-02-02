@@ -3,6 +3,10 @@ title: Troubleshooting
 slug: /getting-started/troubleshooting
 ---
 
+<img src="/img/title/magnifying-glass.svg" className="titlePic" />
+
+# Troubleshooting
+
 Aquí están las soluciones para algunos del los problemas más comunes que te puedes encontrar:
 ### Cambio de época inesperado
 

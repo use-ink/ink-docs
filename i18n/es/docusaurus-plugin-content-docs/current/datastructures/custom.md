@@ -1,7 +1,12 @@
 ---
 title: Custom Data Structures
 slug: /datastructures/custom-datastructure
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Custom Data Structures
 
 :::note
 TODO: Translate to Spanish.

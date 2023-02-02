@@ -1,7 +1,12 @@
 ---
 title: Contract Debugging
 slug: /basics/contract-debugging
+hide_title: true
 ---
+
+<img src="/img/title/magnifying-glass.svg" className="titlePic" />
+
+# Contract Debugging
 
 :::note
 TODO: translate

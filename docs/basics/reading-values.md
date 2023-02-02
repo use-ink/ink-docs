@@ -1,7 +1,12 @@
 ---
 title: Reading Values from Storage
 slug: /basics/reading-values
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Reading Values from Storage
 
 Reading from storage is where the fun begins!
 

@@ -1,7 +1,12 @@
 ---
 title: Working with Mapping
 slug: /datastructures/mapping
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Working with Mapping
 
 In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta.1/ink_storage/struct.Mapping.html).
 

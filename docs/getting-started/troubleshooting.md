@@ -1,7 +1,12 @@
 ---
 title: Troubleshooting
 slug: /getting-started/troubleshooting
+hide_title: true
 ---
+
+<img src="/img/title/magnifying-glass.svg" className="titlePic" />
+
+# Troubleshooting
 
 Here are solutions to some of the common problems you may come across:
 

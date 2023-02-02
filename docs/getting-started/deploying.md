@@ -1,7 +1,12 @@
 ---
 title: Deploy Your Contract
 slug: /getting-started/deploy-your-contract
+hide_title: true
 ---
+
+<img src="/img/title/rocket.svg" className="titlePic" />
+
+# Deploy Your Contract
 
 Now that we have generated the Wasm binary from our source code and connected to a local node, we want
 to deploy this contract onto our Substrate blockchain.

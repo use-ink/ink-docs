@@ -1,7 +1,12 @@
 ---
 title: Compile Your Contract
 slug: /getting-started/building-your-contract
+hide_title: true
 ---
+
+<img src="/img/title/cargo-contract.svg" className="titlePic" />
+
+# Compile Your Contract
 
 Run the following command in your `flipper` directory to compile your smart contract:
 

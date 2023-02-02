@@ -1,7 +1,12 @@
 ---
 title: Compilar tu Contrato
 slug: /getting-started/building-your-contract
+hide_title: true
 ---
+
+<img src="/img/title/cargo-contract.svg" className="titlePic" />
+
+# Compilar tu Contrato
 
 Ejecuta el siguiente comando en tu directorio `flipper` para compilar tu smart contract:
 
