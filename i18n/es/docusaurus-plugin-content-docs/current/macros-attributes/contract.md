@@ -3,55 +3,37 @@ title: "#[ink::contract]"
 slug: /macros-attributes/contract
 ---
 
-This macro is the entry point for writing ink! smart contracts.
+Esta macro es el punto de entrada para escribir smart contracts ink!.
 
-If you are a beginner trying to learn ink! we recommend you to check out
-our extensive [ink! workshop](https://docs.substrate.io/tutorials/smart-contracts/).
+Si eres un principiante aprendiendo ink! Le recomendamos que consulte nuestro amplio 
+[workshop de ink! ](https://docs.substrate.io/tutorials/smart-contracts/).
 
-**Note:** In all below examples we will be using `ink_lang` crate aliased as just `ink`.
-You can do this yourself by adding the following line to your code:
-`use ink_lang as ink;`
+## Descripción
 
-# Description
+La macro analiza el código del smart contract proporcionado y genera el código adecuado.
 
-The macro does analysis on the provided smart contract code and generates
-proper code.
+## Uso
 
-ink! smart contracts can compile in several different modes.
-There are two main compilation modes using either
-- on-chain mode: `no_std` + WebAssembly as target
-- off-chain mode: `std`
+### Argumentos del Header
 
-We generally use the on-chain mode for actual smart contract deployment
-whereas we use the off-chain mode for smart contract testing using the
-off-chain environment provided by the `ink_env` crate.
-
-# Usage
-
-## Header Arguments
-
-The `#[ink::contract]` macro can be provided with some additional comma-separated
-header arguments:
+A la macro `#[ink::contract]` se le puede proporcionar argumentos header adicionales separados por coma:
 
 ### `compile_as_dependency: bool`
 
-Tells the ink! code generator to **always** or **never**
-compile the smart contract as if it was used as a dependency of another ink!
-smart contract.
+Le dice al generador de código de ink! que  **siempre** o **nunca**
+compile smart contract como si fuese utilizado como dependencia de otro smart contract de ink!
 
-Normally this flag is only really useful for ink! developers who
-want to inspect code generation of ink! smart contracts.
-The author is not aware of any particular practical use case for users that
-makes use of this flag but contract writers are encouraged to disprove this.
+Normalmente este flag solo es útil para desarrolladores de ink! que
+quieran inspeccionar el la generación de código de los ink! smart contracts.
+El autor no tiene conocimiento de ningún caso de uso práctico particular para los usuarios que hagan uso de este flag, 
+pero se alienta a los redactores de contratos a refutar esto.
 
-Note that it is recommended to make use of the built-in crate feature
-`ink-as-dependency` to flag smart contract dependencies listed in a contract's
-`Cargo.toml` as actual dependencies to ink!.
+Date cuenta que se recomienda hacer uso de las feature built-in crate.
+`ink-as-dependency` para marcar las dependencias del smart contract
+`Cargo.toml` como dependencia actual de ink!.
 
 **Usage Example:**
 ```rust
-use ink_lang as ink;
-
 #[ink::contract(compile_as_dependency = true)]
 mod my_contract {
     #[ink(storage)]
@@ -68,25 +50,25 @@ mod my_contract {
 }
 ```
 
-**Default value:** Depends on the crate feature propagation of `Cargo.toml`.
+**Default value:** Depende de la propagación de la feature del crate de `Cargo.toml`.
 
 ### `env: impl Environment`
 
-Tells the ink! code generator which environment to use for the ink! smart contract.
-The environment must implement the `Environment` (defined in `ink_env`) trait and provides
-all the necessary fundamental type definitions for `Balance`, `AccountId` etc.
+Le dice al generador de código ink! que entorno utilizar para el ink! smart contract.
+El entorno debe implementar el trait `Environment` (definido en `ink_env`) y proporciona
+todas las necesarias definiciones de tipo fundamentales para `Balance`, `AccountId` etc.
 
-When using a custom `Environment` implementation for a smart contract all types
-that it exposes to the ink! smart contract and the mirrored types used in the runtime
-must be aligned with respect to SCALE encoding and semantics.
+Cuando utilizamos la implementación personalizada de  `Environment` para smart contract todos los tipos
+que se exponen en el smart contract ink! y los tipos reflejados utilizados en el runtima
+deben ser alineados con respecto a la codificación y semanticos SCALE. 
 
-**Usage Example:**
+**Ejemplo de Uso:**
 
-Given a custom `Environment` implementation:
+Dada la implementación personalizada `Environment`:
 ```rust
 pub struct MyEnvironment;
 
-impl ink_env::Environment for MyEnvironment {
+impl ink::env::Environment for MyEnvironment {
     const MAX_EVENT_TOPICS: usize = 3;
     
     type AccountId = u64;
@@ -94,26 +76,25 @@ impl ink_env::Environment for MyEnvironment {
     type Hash = [u8; 32];
     type Timestamp = u64;
     type BlockNumber = u32;
-    type ChainExtension = ::ink_env::NoChainExtension;
+    type ChainExtension = ::ink::env::NoChainExtension;
 }
 ```
-A user might implement their ink! smart contract using the above custom `Environment`
-implementation as demonstrated below:
+Un usuario puede implementar su smart contract ink! utilizando la implementación personalizada
+`Environment` de arriba, como se demuestra a continuación:
 
 ```rust
-use ink_lang as ink;
 #[ink::contract(env = MyEnvironment)]
 mod my_contract {
     pub struct MyEnvironment;
    
-    impl ink_env::Environment for MyEnvironment {
+    impl ink::env::Environment for MyEnvironment {
         const MAX_EVENT_TOPICS: usize = 3;
         type AccountId = u64;
         type Balance = u128;
         type Hash = [u8; 32];
         type Timestamp = u64;
         type BlockNumber = u32;
-        type ChainExtension = ::ink_env::NoChainExtension;
+        type ChainExtension = ::ink::env::NoChainExtension;
     }
     
     #[ink(storage)]
@@ -130,28 +111,26 @@ mod my_contract {
 }
 ```
 
-**Default value:** `DefaultEnvironment` defined in `ink_env` crate.
+**Valor por defecto:** `DefaultEnvironment` definido en el crate `ink_env`.
 
-## Anaylsis
+## Análisis
 
-The `#[ink::contract]` macro fully analyses its input smart contract
-against invalid arguments and structure.
+La macro `#[ink::contract]` macro analiza completamente el smart contract
+del input contra argumentos y estructuras no válidas.
 
-Some example rules include but are not limited to:
+Algunas reglas de ejemplo incluyen pero no se limitan a:
 
-- There must be exactly one `#[ink(storage)]` struct.
+- Debe existir exactamente una estructura `#[ink(storage)]`.
 
-     This struct defines the layout of the storage that the ink! smart contract operates on.
-     The user is able to use a variety of built-in facilities, combine them in various ways
-     or even provide their own implementations of storage data structures.
+     Esta estructura define el diseño del storage sobre el que el smart contract de ink! opera.
+     El usuario puede utilizar una variedad de facilidades built-in, combinandolas de diversas maneras
+     o incluso proporcionando su propia implementacions de las estructuras de datos del storage.
 
-     For more information visit the `ink_storage` crate documentation.
+     Para más información visita la documentación del crate `ink_storage`.
 
-     **Example:**
+     **Ejemplo:**
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -169,20 +148,18 @@ Some example rules include but are not limited to:
      }
      ```
 
-- There must be at least one `#[ink(constructor)]` defined method.
+- Tiene que haber al menos un `#[ink(constructor)]` método definido.
 
-     Methods flagged with `#[ink(constructor)]` are special in that they are dispatchable
-     upon contract instantiation. A contract may define multiple such constructors which
-     allow users of the contract to instantiate a contract in multiple different ways.
+     Los métodos marcados con `#[ink(constructor)]` son especiales porque sonson despachables 
+     tras la instanciación del contrato. Un contrato puede definir múltiples constructores 
+     de este tipo que permitan a los usuarios del contrato instanciar un contrato de múltiples maneras diferentes.
 
-     **Example:**
+     **Ejemplo:**
 
-     Given the `Flipper` contract definition above we add an `#[ink(constructor)]`
-     as follows:
+     Dada la definición del contrato `Flipper` de arriba, añadimos un `#[ink(constructor)]`
+     como puedes ver:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -202,27 +179,25 @@ Some example rules include but are not limited to:
      }
      ```
 
-- There must be at least one `#[ink(message)]` defined method.
+- Tiene que haber al menos un `#[ink(message)]` método definido.
 
-     Methods flagged with `#[ink(message)]` are special in that they are dispatchable
-     upon contract invocation. The set of ink! messages defined for an ink! smart contract
-     define its API surface with which users are allowed to interact.
+     Los métodos marcados con `#[ink(message)]` son especiales porque sonson despachables 
+     tras la instanciación del contrato. El conjunto de mensajes ink! definidos por un smart contract
+     ink! define su superficie API con la que los usuarios pueden interactuar.
 
-     An ink! smart contract can have multiple such ink! messages defined.
+     Un ink! smart contract puede tener multiples mensajes ink! definidos.
 
      **Note:**
 
-     - An ink! message with a `&self` receiver may only read state whereas an ink! message
-       with a `&mut self` receiver may mutate the contract's storage.
+     - Un mensaje ink! con un receptor `&self` solo puede leer el estado mientras que un mensaje ink!
+       con un receptor `&mut self` puede mutar el storage del contrato.
 
-     **Example:**
+     **Ejemplo:**
 
-     Given the `Flipper` contract definition above we add some `#[ink(message)]` definitions
-     as follows:
+     Dada la definición del contrato `Flipper` de arriba, añadimos algunas definiciones `#[ink(message)]`
+     como puedes ver:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -253,16 +228,14 @@ Some example rules include but are not limited to:
 
      **Payable Messages:**
 
-     An ink! message by default will reject calls that additional fund the smart contract.
-     Authors of ink! smart contracts can make an ink! message payable by adding the `payable`
-     flag to it. An example below:
+     Un mensaje ink! por defecto rechazara llamadas que adicionalmente financial el smart contract.
+     Autores del smart contract de ink pueden hacer que el mensaje de ink! sea payable añadiendole 
+     la marca `payable`. Un ejemplo a continuación:
 
-     Note that ink! constructors are always implicitly payable and thus cannot be flagged
-     as such.
+     Date cuenta que los constructores ink! son implicitamente siempre payables y por lo tanto
+     no puden marcarse como tal.
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -276,15 +249,15 @@ Some example rules include but are not limited to:
                  Flipper { value: false }
              }
   
-             /// Flips the current value.
+             /// Voltea el valor actual 
              #[ink(message)]
-             #[ink(payable)] // You can either specify payable out-of-line.
+             #[ink(payable)] // Puedes especificar payable out-of-line.
              pub fn flip(&mut self) {
                  self.value = !self.value;
              }
 
-             /// Returns the current value.
-             #[ink(message, payable)] // ...or specify payable inline.
+             /// Devuelve el valor actual
+             #[ink(message, payable)] // ...o especificar payable inline.
              pub fn get(&self) -> bool {
                  self.value
              }
@@ -292,18 +265,16 @@ Some example rules include but are not limited to:
      }
      ```
 
-     **Controlling the messages selector:**
+     **Controlar el selector de mensajes:**
 
-     Every ink! message and ink! constructor has a unique selector with which the
-     message or constructor can be uniquely identified within the ink! smart contract.
-     These selectors are mainly used to drive the contract's dispatch upon calling it.
+     Cada mensaje y constructor de ink! tiene un único selector con el que cada mensaje
+     o constructor puede ser unicamente identificado dentro del smart contract de ink!.
+     Estos selectores se utilizan principalmente para conducir el dispatch del contrato al llamarlo.
 
-     An ink! smart contract author can control the selector of an ink! message or ink!
-     constructor using the `selector` flag. An example is shown below:
+     El autor de un smart contract ink! puede controlar el selector de un mensaje o contructor ink!
+     utilizando el flag `selector` flag. A continuación de muestra un ejemplo:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -313,20 +284,20 @@ Some example rules include but are not limited to:
   
          impl Flipper {
              #[ink(constructor)]
-             #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
+             #[ink(selector = "0xDEADBEEF")] // Funciona en los constructores tambien.
              pub fn new(initial_value: bool) -> Self {
                  Flipper { value: false }
              }
 
-             /// Flips the current value.
+             /// Voltea el valor actual.
              #[ink(message)]
-             #[ink(selector = "0xCAFEBABE")] // You can either specify selector out-of-line.
+             #[ink(selector = "0xCAFEBABE")] //Puedes especificar el selector out-of-line.
              pub fn flip(&mut self) {
                  self.value = !self.value;
              }
             
-             /// Returns the current value.
-             #[ink(message, selector = "0xFEEDBEEF")] // ...or specify selector inline.
+             /// Devuelve el valor actual.
+             #[ink(message, selector = "0xFEEDBEEF")] // ...o puedes especificar el selector inline.
              pub fn get(&self) -> bool {
                  self.value
              }
@@ -334,28 +305,26 @@ Some example rules include but are not limited to:
      }
      ```
 
-## Interacting with the Contract Executor
+## Interactuando con el Ejecutor del Contrato
 
-The `ink_env` crate provides facitilies to interact with the contract executor that
-connects ink! smart contracts with the outer world.
+El crate `ink_env` provee facilidades para interactuar con el ejecutor del contrato
+que conecta el smart contract ink! con el mundo exterior.
 
-For example it is possible to query the current call's caller via:
+Por ejemplo es posible consultar la persona que llama en la llamada actual a través de:
 
 ```rust
 use ink_env;
-ink_env::test::run_test::<ink_env::DefaultEnvironment, _>(|_| {
-    let caller = ink_env::caller::<ink_env::DefaultEnvironment>();
+ink::env::test::run_test::<ink::env::DefaultEnvironment, _>(|_| {
+    let caller = ink::env::caller::<ink::env::DefaultEnvironment>();
     let _caller = caller;
     Ok(())
 }).unwrap();
 ```
 
-However, ink! provides a much simpler way to interact with the contract executor
-via its environment accessor. An example below:
+Sin embargo, ink! provee una manera mucho más simple de interactuar con el ejecutor 
+del contrato a través de su entorno de acceso. Un ejemplo a continuación:
 
 ```rust
-use ink_lang as ink;
- 
 #[ink::contract]
 mod greeter {
     #[ink(storage)]
@@ -366,7 +335,7 @@ mod greeter {
         pub fn new() -> Self {
             let caller = Self::env().caller();
             let message = format!("thanks for instantiation {:?}", caller);
-            ink_env::debug_println(&message);
+            ink::env::debug_println(&message);
             Greeter {}
         }
 
@@ -375,27 +344,25 @@ mod greeter {
             let caller = self.env().caller();
             let value = self.env().transferred_balance();
             let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
-            ink_env::debug_println(&message);
+            ink::env::debug_println(&message);
         }
     }
 }
 ```
 
-## Events
+## Eventos
 
-An ink! smart contract may define events that it can emit during contract execution.
-Emitting events can be used by third party tools to query information about a contract's
-execution and state.
+Un smart contract ink! puede definir eventos que puedan emitir durante la ejecución del contrato.
+Emitir eventos puede ser utilizado por herramientas de terceras partes para consultar información
+acerca de la ejecución y el estado del contrato.
 
-The following example ink! contract shows how an event `Transferred` is defined and
-emitted in the `#[ink(constructor)]`.
+El siguiente ejemplo de un contrato ink! muestra como un evento `Transferred` es definido y 
+emitido en el `#[ink(constructor)]`.
 
 ```rust
- use ink_lang as ink;
- 
  #[ink::contract]
  mod erc20 {
-     /// Defines an event that is emitted every time value is transferred.
+     /// Define un evento que es emitido cada vez que el valor es transferido.
      #[ink(event)]
      pub struct Transferred {
          from: Option<AccountId>,
@@ -406,7 +373,7 @@ emitted in the `#[ink(constructor)]`.
      #[ink(storage)]
      pub struct Erc20 {
          total_supply: Balance,
-         // more fields ...
+         // más campos ...
      }
 
      impl Erc20 {
@@ -429,20 +396,17 @@ emitted in the `#[ink(constructor)]`.
  }
 ```
 
-## Example: Flipper
+## Ejemplo: Flipper
 
-The below code shows the complete implementation of the so-called Flipper
-ink! smart contract.
-For us it acts as the "Hello, World!" of the ink! smart contracts because
-it is minimal while still providing some more or less useful functionality.
+El código a continuación muestra la implementación completa del smart contract ink! Flipper.
+Para nosotros actua como el "Hello, World!" de los smart contracts ink! porque
+es minimo pero a la vez proporciona más o menos una funcionalidad útil.
 
-It controls a single `bool` value that can be either `false` or `true`
-and allows the user to flip this value using the `Flipper::flip` message
-or retrieve the current value using `Flipper::get`.
+Controla un simple valor  `bool` que puede ser tanto `false` como `true`
+y permite al usuario voltear el valor utilizando el mensaje `Flipper::flip` 
+o recuperar el valor actual utilizando `Flipper::get`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 pub mod flipper {
     #[ink(storage)]
@@ -451,19 +415,19 @@ pub mod flipper {
     }
 
     impl Flipper {
-        /// Creates a new flipper smart contract initialized with the given value.
+        /// Crea un nuevo smart contract flipper inicializando el valor dado
         #[ink(constructor)]
         pub fn new(init_value: bool) -> Self {
             Self { value: init_value }
         }
 
-        /// Flips the current value of the Flipper's bool.
+        /// Voltea el valor actual del booleano de Flipper.
         #[ink(message)]
         pub fn flip(&mut self) {
             self.value = !self.value;
         }
 
-        /// Returns the current value of the Flipper's bool.
+        /// Devuelve el valor actual del boolean de Flipper.
         #[ink(message)]
         pub fn get(&self) -> bool {
             self.value

@@ -1,33 +1,33 @@
 ---
-title: Spread Storage Layout
+title: Diseño Extendido del Storage
 slug: /datastructures/spread-storage-layout
 ---
 
-### Storage Organization
+### Organización del Storage
 
-The following schema depicts the storage which is exposed
-to ink! by the contracts pallet:
+El siguiente esquema representa el storage que se expone a ink!
+por el pallet contracts:
 
 <div class="schema">
-    <img src="/img/kv-3.x.svg" alt="Storage Organization: Layout" />
+    <img src="/img/kv.svg" alt="Storage Organization: Layout" />
 </div>
 
-ink!'s storage operates by storing and loading entries into and from a single storage
-cell. At the moment there is no way to customize this behaviour. Depending on the data
-we're dealing with, this can end up being good or bad.
+El storage de ink! opera almacenando y cargando las entradas en y desde una única celda 
+del storage. En este momento no hay manera de personalizar este comportamiento. Dependiendo en 
+los datos que estamos manejando, esto puede terminar siendo bueno o malo.
 
-For example, if we have a somewhat small `ink_prelude::vec::Vec` loading all the elements
-at the same time can be advantegous - especially if we expect our message to interact
-with most of them in a single call.
+Pr ejemplo, si tenemos un pequeño `ink_prelude::vec::Vec` cargando todos los elementos
+a la vez esto puede ser ventajoso - especialmente si esperamos que nuestro mensaje para interactuar
+con la mayoria de ellos en una única llamada.
 
-On the other hand, this can be problematic if we're loading a large `Vec` and only
-operating on a few elements.
+Por otro lado, esto puede ser un problema si estamos cargando un `Vec` largo y solo estamos 
+operando con unos pocos elementos.
 
-### Spreading
+### Propagando
 
-ink! spreads information to as many cells as possible. For example if you have the
-following `#[ink(storage)]` struct every field will live in its own single storage cell.
-Note that for `b` all 32 bytes will share the same cell!
+ink! propaga la información a tantas células como sea posible. Por ejemplo si tienes el
+siguiente struct `#[ink(storage)]` cada campo vivira en su propia única celda del storage.
+Date cuenta que para `b` todos los 32 bytes compratiran la misma celda!
 
 ```rust
 #[ink(storage)]
@@ -37,8 +37,8 @@ pub struct Spread {
 }
 ```
 
-The following schema depicts the storage layout for a vector with three elements,
-persisted to storage in a spread layout.
+El siguiente esquema representa el diseño del storage para un vector con tres elementos,
+persistentes al storage en un diseño extendido.
 
 <div class="schema">
     <img src="/img/spread.svg" alt="Storage Organization: Spreading" />

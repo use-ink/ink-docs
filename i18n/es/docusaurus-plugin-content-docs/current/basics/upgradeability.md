@@ -1,31 +1,29 @@
 ---
-title: Upgradeable Contracts
+title: Contratos Actualizables
 slug: /basics/upgradeable-contracts
 ---
 
-Even though smart contracts are intended to be immutable by design,
-it is often necessary to perform an upgrade of a smart contract. 
+A pesar de que los smart contracts están destinados a ser inmutables por diseño,
+a menudo es necesario realizar una actualización del smart contract.
 
-The developer may need to fix a critical bug or introduce a new feature.
-
-For this type of scenario, ink! has different upgrade strategies.
+Para este escenario, ink! tiene diferentas estrategias de actualización.
 - [Proxy Forwarding](#proxy-forwarding)
-  - [Properties](#properties)
-- [Replacing Contract Code with `set_code_hash()`](#replacing-contract-code-with-set_code_hash)
-  - [Properties](#properties-1)
-  - [Storage Compatibility](#storage-compatibility)
-  - [A little note on the determinism of contract addresses](#a-little-note-on-the-determinism-of-contract-addresses)
-- [Examples](#examples)
+  - [Propiedades](#properties)
+- [Reemplazar el Código del Contrto con `set_code_hash()`](#replacing-contract-code-with-set_code_hash)
+  - [Propiedades](#properties-1)
+  - [Compatibilidad del Storage](#storage-compatibility)
+  - [Una pequeña nota sobre el determinismo de las direcciones de los contratos](#a-little-note-on-the-determinism-of-contract-addresses)
+- [Ejemplos](#examples)
 
 ## Proxy Forwarding
 
-This method relies on the ability of contracts to proxy calls to other contracts.
+Este método se basa en la capacidad de los contratos para hacer llamadas proxy con otros contratos.
 
-### Properties
+### Propiedades
 
-- Forwards any call that does not match a selector of itself to another contract.
-- The other contract needs to be deployed on-chain.
-- State is stored in the storage of the contract to which calls are forwarded.
+- Reenvía cualquier llamada en la que no coincidan  un selector propio con el de otro contrato.
+- El otro contrato necesita ser desplegado on-chain.
+- El estado es almacenado en el storage del contrato en la que se desvían las llamadas.
 
 ```
 User ---- tx ---> Proxy ----------> Implementation_v0
@@ -35,7 +33,7 @@ User ---- tx ---> Proxy ----------> Implementation_v0
                       ------------> Implementation_v2
 ```
 
-Our proxy contract will have these 2 storage fields:
+Nuestro contrato proxy tendra estos dos campos en el storage:
 
 ```rust
 #[ink(storage)]
@@ -50,8 +48,8 @@ pub struct Proxy {
 }
 ```
 
-We then need a way to change the address of a contract to which we forward calls to
-and the actual message selector to proxy the call:
+Necesitamos una manera de cambiar la dirección de un contrato al que desviamos las llamadas
+y el selector de mensajes actual para hacer proxy de la llamada:
 
 ```rust
 impl Proxy {
@@ -80,7 +78,7 @@ impl Proxy {
     ///   have any effect whatsoever on the contract we forward to.
     #[ink(message, payable, selector = _)]
     pub fn forward(&self) -> u32 {
-        ink_env::call::build_call::<ink_env::DefaultEnvironment>()
+        ink::env::call::build_call::<ink::env::DefaultEnvironment>()
             .call_type(
                 Call::new()
                     .callee(self.forward_to)
@@ -88,7 +86,7 @@ impl Proxy {
                     .gas_limit(0),
             )
             .call_flags(
-                ink_env::CallFlags::default()
+                ink::env::CallFlags::default()
                     .set_forward_input(true)
                     .set_tail_call(true),
             )
@@ -106,31 +104,31 @@ impl Proxy {
 }
 ```
 
-:::tip
+:::consejo
 
-Take a look at the selector pattern in the attribute macro: by declaring `selector = _`
-we specify that all other messages should be handled by this message selector.
+Eche un vistazo al patrón selector en el atribut de la macro, declarando `selector = _`
+especificamos que todos los demás mensajes deben ser manejados por este selector de mensajes.
 
 :::
 
-Using this pattern, you can introduce other message to your proxy contract.
-Any messages that are not matched in the proxy contract 
-will be forwarded to the specified contract address.
+Con este patrón, puede introducir otro mensaje en su contrato proxy.
+Cualquier mensaje que no coincida con el contrato proxy
+se reenviará a la dirección del contrato especificada.
 
-## Replacing Contract Code with `set_code_hash()`
+## Reemplazar el Código del Contrto con `set_code_hash()`
 
-Following [Substrate's runtime upgradeability](https://docs.substrate.io/build/upgrade-the-runtime/) 
-philosophy, ink! also supports an easy way to update your contract code via the special function 
+Siguiendo la filosofia de [Substrate's runtime upgradeability](https://docs.substrate.io/build/upgrade-the-runtime/),
+ink! también soporta una manera sencilla de actualizar el código de tus contratos via la función especial
 [`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html).
 
-### Properties
+### Propiedades
 
-- Updates the contract code using `set_code_hash()`. 
-This effectively replaces the code which is executed for the contract address.
-- The other contract needs to be deployed on-chain.
-- State is stored in the storage of the originally instantiated contract.
+- Actualizar el código del contrato con `set_code_hash()`. 
+Esto reemplaza de manera efectiva el código que se ejecuta para la dirección del contrato.
+- El otro contrato necesita ser desplegado on-chain.
+- El estado es almacenado en el storage del contrato instanciado originalmente.
 
-Just add the following function to the contract you want to upgrade in the future.
+Simplemente añade la siguiente función al contrato que quieres actualizar en el futuro.
 
 ```rust 
 /// Modifies the code which is used to execute calls to this contract address (`AccountId`).
@@ -139,33 +137,32 @@ Just add the following function to the contract you want to upgrade in the futur
 /// can execute this method. In a production contract you would do some authorization here.
 #[ink(message)]
 pub fn set_code(&mut self, code_hash: [u8; 32]) {
-    ink_env::set_code_hash(&code_hash).unwrap_or_else(|err| {
+    ink::env::set_code_hash(&code_hash).unwrap_or_else(|err| {
         panic!(
             "Failed to `set_code_hash` to {:?} due to {:?}",
             code_hash, err
         )
     });
-    ink_env::debug_println!("Switched code hash to {:?}.", code_hash);
+    ink::env::debug_println!("Switched code hash to {:?}.", code_hash);
 }
 ```
 
-### Storage Compatibility
+### Compatibilidad del Storage
 
-It is the developer's responsibility to ensure 
-that the new contract's storage is compatible with the storage of the contract that is replaced.
+Es responsabilidad del desarrollador asegurarse que el storage del nuevo contrato es compatible con el storage del contrato que esta siendo reemplazado.
 
-:::danger Beware
+:::danger ¡Atención!
 
-You should not change the order in which the contract state variables are declared, nor their type!
+No deberias cambiar el otden en el que las variables de estado del contrato son declaradas, ni su tipo!
 
-Violating the restriction will not prevent a successful compilation,
-but will result in **the mix-up of values** or **failure to read the storage correctly**.
-This can be a result of severe errors in the application utilizing the contract.
+Violar esta restricción no impedirá una exitosa compilación,
+pero podria resultar en  **el mix-up de valores** o **fallos al leer correctamente el storage**.
+Esto podría resultar en errores severos en la aplicación que utiliza el contrato.
 
 :::
 
 
-If the storage of your contract looks like this:
+Si el storage de tu contrato tiene esta pinta:
 ```rust
 #[ink(storage)]
 pub struct YourContract {
@@ -174,9 +171,9 @@ pub struct YourContract {
 }
 ```
 
-The procedures listed below will make it ***invalid***
+Los procedimientos enumerados a continuación harán que sea ***invalido***
 
-Changing the order of variables:
+Cambiar el orden de las variables:
 
 ```rust
 #[ink(storage)]
@@ -186,7 +183,7 @@ pub struct YourContract {
 }
 ```
 
-Removing an existing variable:
+Eliminar una variable existente:
 
 ```rust
 #[ink(storage)]
@@ -195,7 +192,7 @@ pub struct YourContract {
 }
 ```
 
-Changing the type of a variable:
+Cambiar el tipo de la variable
 
 ```rust
 #[ink(storage)]
@@ -205,7 +202,7 @@ pub struct YourContract {
 }
 ```
 
-Introducing a new variable before any of the existing ones:
+Introducir una nueva variable antes de una de las ya existentes:
 
 ```rust
 #[ink(storage)]
@@ -216,18 +213,18 @@ pub struct YourContract {
 }
 ```
 
-### A little note on the determinism of contract addresses
+### Una pequeña nota sobre el determinismo de las direcciones de los contratos
 
 :::note
 
-If your contract utilizes this approach, it no-longer holds a deterministic address assumption.
-You can no longer assume that a contract address identifies a specific code hash.
-Please refer to [the issue](https://github.com/paritytech/substrate/pull/10690#issuecomment-1025702389) 
-for more details.
+Si tu contato utiliza este enfoque, ya no mantiene la suposición de address determinista.
+Ya no puedes asumir que la dirección del contrato identifica un código hash específico.
+Por favor vaya [al error](https://github.com/paritytech/substrate/pull/10690#issuecomment-1025702389) 
+para más detaller.
 
 :::
 
-## Examples
+## Ejemplos
 
-Examples of upgradable contracts can be found in the 
-[ink! repository](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts)
+Puedes ver ejemplos de actualizaciones de contratos en el  
+[repositorio ink!](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts).

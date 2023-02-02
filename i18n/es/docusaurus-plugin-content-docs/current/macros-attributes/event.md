@@ -3,9 +3,9 @@ title: "#[ink(event)]"
 slug: /macros-attributes/event
 ---
 
-Applicable on `struct` definitions.
+Aplicable a las definiciones `struct`.
 
-Defines an ink! event. A contract can define multiple such ink! events.
+Define un evento ink!. Un contrato puede definir múltipes eventos ink!.
 
 
-[See our section on Events](/basics/events) for a detailed description and examples.
+[Mira nuestra sección en Eventos](/basics/events) para ver una descripción detallada y ejemplos.

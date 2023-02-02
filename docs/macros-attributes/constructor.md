@@ -17,8 +17,6 @@ allow users of the contract to instantiate a contract in multiple different ways
 ## Example
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     #[ink(storage)]

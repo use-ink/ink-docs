@@ -3,26 +3,25 @@ title: "#[ink(storage)]"
 slug: /macros-attributes/storage
 ---
 
-Applicable on `struct` definitions. 
+Aplicable a las definiciones `struct`. 
 
-Applied on `struct` types in order to flag them for being
-the contract's storage definition.
-There can only be one ink! storage definition per contract.
+Aplicado en tipos `struct` para marcarlos por 
+ser la definición del storage del contrato.
+Solo puede ser la definición del storage ink! del contrato.
 
-There must be exactly one `#[ink(storage)]` struct.
 
-This struct defines the layout of the storage that the ink! smart contract operates on.
-The user is able to use a variety of built-in facilities, combine them in various ways
-or even provide their own implementations of storage data structures.
+Tiene que haber exactamente un struct `#[ink(storage)]`.
 
-For more information visit the `ink_storage` crate documentation.
+El struct define el diseño del storage donde el smart contract ink! opera.
+El usuario puede utilizar una variedad de facilidades built-in, combinandolos de varias maneras
+o incluso proveendo sus propias implementaciones de las estructuras de datos del storage.
 
-## Example
+Para más información visita la documentación del crate `ink_storage`.
+
+## Ejemplo
 
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
 

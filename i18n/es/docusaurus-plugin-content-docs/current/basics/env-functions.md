@@ -1,23 +1,22 @@
 ---
-title: Environment Functions
+title: Funciones de Entorno
 slug: /basics/environment-functions
 ---
 
-ink! exposes a number of handy environment functions.
-A full overview [is found here](https://docs.rs/ink_env/3.3.1/ink_env/#functions).
+ink! expone una serie de funciones de entorno.
+Puedes encontrar una descripción completa [aquí](https://docs.rs/ink_env/4.0.0-beta/ink_env/#functions).
 
-In an `#[ink(constructor)]`  use `Self::env()` to access those,
-in an `#[ink(message)]` use `self.env()`.
-So e.g. `Self::env().caller()` or `self.env().caller()`.
+En `#[ink(constructor)]`  utiliza `Self::env()` para acceder a esos,
+en `#[ink(message)]` utiliza `self.env()`.
+Por ejemplo `Self::env().caller()` o `self.env().caller()`.
 
-Some handy functions include:
+Algunas funciones útiles incluyen:
 
-* [`caller()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.caller.html): Returns the address of the caller of the executed contract.
-* [`account_id()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.account_id.html): Returns the account ID of the executed contract.
-* [`balance()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.balance.html): Returns the balance of the executed contract.
-* [`block_number()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.block_number.html): Returns the current block number.
-* [`random()`](https://docs.rs/ink_env/3.3.1/ink_env/fn.random.html): Returns a random hash seed.
-* [`emit_event(…)`](https://docs.rs/ink_env/3.3.1/ink_env/fn.emit_event.html): Emits an event with the given event data.
-* [`transfer(…)`](https://docs.rs/ink_env/3.3.1/ink_env/fn.transfer.html): Transfers value from the contract to the destination account ID.
-* [`hash_bytes(…)`](https://docs.rs/ink_env/3.3.1/ink_env/fn.hash_bytes.html): Conducts the crypto hash of the given input and stores the result in output.
-* […and many more](https://docs.rs/ink_env/3.3.1/ink_env/#functions).
+* [`caller()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.caller.html): Devuelve la dirección de la persona que llama del contrato ejecutado.
+* [`account_id()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.account_id.html): Devuelve el account ID del contrato ejecutado.
+* [`balance()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.balance.html): Devuelve el balance del contrato ejecutado.
+* [`block_number()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.block_number.html): Devuelve el número de bloque actual.
+* [`emit_event(…)`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.emit_event.html): Emite un evento con los datos del evento dado.
+* [`transfer(…)`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.transfer.html): Transfiere valor desde el contrato hasta el account ID del destino.
+* [`hash_bytes(…)`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html): Realiza el hash criptográfico de la entrada dada y almacena el resultado en la salida.
+* […and many more](https://docs.rs/ink_env/4.0.0-beta/ink_env/#functions).

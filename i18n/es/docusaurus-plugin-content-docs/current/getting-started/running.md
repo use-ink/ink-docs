@@ -1,30 +1,34 @@
 ---
-title: Run a Substrate Node
+title: Arranca un Nodo Substrate
 slug: /getting-started/running-substrate
+hide_title: true
 ---
 
-The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node#note) is a simple Substrate
-blockchain which is configured to include the `contracts` module.
+<img src="/img/title/substrate.svg" className="titlePic" />
 
-It's a comfortable option if you want to get a quickstart.
+# Arranca un Nodo Substrate
 
-[After successfully installing `substrate-contracts-node`](/getting-started/setup), you can start a local development chain by running:
+El [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node#note) es es un Substrate blockchain simple configurado para incluir el módulo `contracts`.
+
+Es una opción muy cómoda si quieres un inicio rápido.
+
+[Despues de instalar correctamente `substrate-contracts-node`](/getting-started/setup), puedes arrancar una cadena para el desarrollo local ejecutando:
 
 ```bash
-substrate-contracts-node --dev --tmp
+substrate-contracts-node
 ```
 
-![An image of the terminal starting a Substrate node](./assets/start-substrate-node.png)
+![Una imagen del terminal arrancando el nodo Substrate](/img/substrate-contracts-node.png)
 
-You should start to see blocks being produced by your node in your terminal.
+Deberías comenzar a ver bloques producidos por el nodo en su terminal.
 
-You can interact with your node using the Contracts UI:
+Puede interactuar con el nodo utilizando Contracts UI:
 
-<a href="https://github.com/paritytech/contracts-ui">https://github.com/paritytech/contracts-ui</a>
+<a href="https://contracts-ui.substrate.io">https://github.com/paritytech/contracts-ui</a>
 
-Now configure the UI to connect to the locally running node:
+Ahora configura el UI para conectar al nodo corriendo en local:
 
-- Click on the dropdown selector at top left corner.
-- Choose the Local Node.
+- Haga clic en el selector desplegable en la esquina superior izquierda.
+- Elige el Nodo Local.
 
-![Connect to local node](./assets/canvas-connect-to-local.png)
+![Conecta al nodo local](/img/contracts-ui-local-node.png)

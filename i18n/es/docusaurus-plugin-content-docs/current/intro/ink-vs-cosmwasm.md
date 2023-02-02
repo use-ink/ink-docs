@@ -3,144 +3,128 @@ title: ink! vs. CosmWasm
 slug: /ink-vs-cosmwasm
 ---
 
-This is a short comparison between [ink!](https://github.com/paritytech/ink/)
-and [CosmWasm](https://github.com/CosmWasm/cosmwasm) meant to onboard
-developers coming from the Cosmos ecosystem.
+A continuación, una breve comparación entre [ink!](https://github.com/paritytech/ink/)
+y [CosmWasm](https://github.com/CosmWasm/cosmwasm) enfocada a desarrolladores que vengan
+del ecosistema de Cosmos.
 
-# Architecture
+# Arquitectura
 
-CosmWasm is modular, meaning that any blockchain using the Cosmos SDK can add smart
-contract support to their chain. That is similar to the [Substrate](https://substrate.io/)
-approach, where chains have the option to add `pallet-contracts` to their runtime.
+CosmWasm es modular, de manera que cualquier blockchain que use Cosmos SDK puede añadir
+soporte para smart contracts. Siendo muy similar al enfoque que toma [Substrate](https://substrate.io),
+con el cual cualquier red tiene la opción de añadir el `pallet-conctracts` en su runtime.
 
-Aside from that, the architecture philosophy is likely the point where CosmWasm and ink!
-differ the most. CosmWasm follows the actor model design pattern, while ink! follows a
-synchronous execution model. That means some fundamental differences in how the source
-code is structured.
+Salvo en esto, la filosofía con la que se ha hecho la arquitectura de CosmWasm e ink! es 
+totalmente diferente. El patrón de diseño seguido por CosmWasm es el modelo actor, mientras
+que ink! se construye sobre un modelo de ejecución síncrona. Esto se traduce en diferencias
+fundamentales en como el código fuente es estructurado.
 
-The main entry point functions of CosmWasm contracts are:
-- `instantiate` which bootstraps the initial contract state (assuming it's already been
-  deployed).
-- `execute` which has the actor perform operations to its internal state.
-- `query` which retrieves data from the actor’s internal state.
+El principal punto de entrada de funciones en contratos de CosmWasm son:
+- `instantiate` que inicializa el estrado del contrato (asumiendo que ya ha sido desplegado).
+- `execute` el actor realizará operaciones sobre su estado interno.
+- `query` devuelve información sobre el estado interno del actor.
 
-An ink! contract can have as many public dispatchables as the developer desires, and
-differently from CosmWasm, it doesn’t rely on JSON schemas for defining how the messages
-are structured.
+Un contracto en ink! puede tener tanto dispatchables publicos como el desarrollador desee,
+y de manera diferente a CosmWasm, no depende de JSON schemas para definir la estructura de los
+mensajes.
 
-Instead, ink! makes heavy usage of Rust macros. The main ink! macros are:
-- `#[ink(constructor)]` which is called when the contract is deployed, and is responsible
-  for bootstrapping the initial contract state into the storage. It is analogous to the
-  CosmWasm `instantiate` function.
-- `#[ink(storage)]` which annotates a struct that represents the contract's internal
-  state.
-- `#[ink(message)]` which marks a function as a public dispatchable, meaning that it is
-  exposed in the contract interface to the outside world. This macro can make a function
-  behave analogously to CosmWasm’s `execute` and `query` functions. This depends on how it
-  affects the internal contract state and what the return types.
-- `#[ink(event)]` and `#[ink(topic)]` which annotates a struct and its members as the
-  events and topics that the contract might emit.
+En cambio, ink! hace un uso intensivo de las macros de Rust. Las principales macros usadas en ink! son:
+- `#[ink(constructor)]` la cual es llamada cuando el contrato se despliega, y es responsable
+   de inicializar el estado del contrato. Es analoga a la función `instantiate` de CosmWasm.
+- `#[ink(storage)]` anotará una estrucura que represente el estado interno del contrato.
+- `#[ink(message)]` denota una función como un dispatchable público, esto significa que es expuesta
+   en la interfaz del contrato al resto del mundo. Esta macro hace que una función se comporte
+   analogamente a las funciones `execute` y `query` de CosmWasm.
+- `#[ink(event)]` y `#[ink(topic)]` anotarán estructuras cuyos elementos serán los eventos y topics
+   que el contrato pueda emitir.
 
-There are other ink! macros, for which details can be found at [Macros & Attributes](/macros-attributes).
+Hay más macros usadas en ink!, sus detalles pueden ser encontrados en [Macros & Attributes](/macros-attributes). 
 
-# Unit Testing
+# Tests unitarios
 
-Unit testing in CosmWasm is quite similar to ink!. Both use the conventional Rust
-`#[cfg(test)]` macro and set up a mock on-chain environment.
+Los test unitarios en CosmWasm son bastante similares a ink!. Ambos usan la convencional
+`#[cfg(test)]` macro de Rust y establecen un entonrno mock on-chain.
 
-While CosmWasm unit tests have different modules for each of the three main entry-point
-functions, ink! allows for a more generalised approach, where the `#[ink(test)]` macro is
-used for each unit test.
+Mientras que los tests unitarios de CosmWasm tienen diferentes módules para cada uno de las tres
+posibles funciones de entrada, ink! permite un enfoque más general, `#[ink(test)]` será usado
+para cada test.
 
-You can read more about ink! unit tests [here](https://use.ink/basics/contract-testing#unit-tests).
+Puedes leer más sobre ink! y los test unitarios [aqui](https://ink.substrate.io/basics/contract-testing#unit-tests).
 
-# Compiler
+# Compilador
 
-CosmWasm uses [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) as its main
-compiler, while ink! uses [cargo-contract](https://github.com/paritytech/cargo-contract).
-`cargo-contract` is developed by Parity specifically for building, testing, and deploying
-ink! contracts.
+CosmWasm usa [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) como su principal
+compilador, mientras que ink! usa [cargo-contract](https://github.com/paritytech/cargo-contract).
+`cargo-contract` ha sido desarrollado por Parity específicamente para construir, testear y desplegar
+contractos escritos usando ink!. 
 
-# Local Development Network
+# Desarrollo Local
 
-In terms of local development networks, the [cosmos/gaia](https://github.com/cosmos/gaia)
-repository acts as the basic template for a generic Cosmos node. With the addition of the
-`x/wasm` module and some clean-up, this template repository becomes
-[wasmd](https://github.com/CosmWasm/wasmd), the entry point for CosmWasm development.
+En cuanto a redes para desarrollo local, el repositorio [cosmos/gaia](https://github.com/cosmos/gaia)
+actua como un template básico de un nodo genérico de Cosmos. Con la adición del módulo `x/wasm`
+y algo de reorganización del código, este repositorio se conviernte en [wasmd](https://github.com/CosmWasm/wasmd),
+punto de entrada para el desarrollo con CosmWasm.
 
-In terms of Substrate, `substrate-node-template` is a basic generic template of a node.
-Similar to `x/wasm`, [`pallet-contracts`[(https://github.com/paritytech/substrate/tree/master/frame/contracts)
-is the module that adds WebAssembly smart contract functionality to the chain. Parity
-provides the [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node),
-which is analogous to `wasmd` - a basic template node for smart contract development.
+Con Substrate, `substrate-node-template` es un template genérico de un nodo. Similar a `x/wasm`,
+[`pallet-contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts) es el módulo
+que añade soporte para WebAssembly smart contracts a la red. Parity provee [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node), que es el análogo a `wasmd` - un template de un nodo básico para
+el desarrollo de smart contracts.
 
 # Testnets
 
-For CosmWasm development and on-chain testing, `wasmd` can be operated as a local setup
-(single or multiple nodes), or connected to the `cliffnet` public test network.
+Para el desarrolly on-chain testing con CosmWasm, `wasmd` puede ser usado para lanzar localmente
+(uno o múltiples nodos), o conectados a la testnet pública `cliffnet`.
 
-ink! contracts can be deployed on a few different options:
-- Locally, on a single or multiple node setup of [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
-- [Contracts on Rococo Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer),
-  which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
+Por otro lado, existen varias opciones para desplegar contratos ink!:
+- Localmente, en un único, o múltiples, nodos [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
+- [Contracts Parachain en Rococo](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer), que está contectada a [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
 - [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
 
-# Development Workflow
+# Workflow de Desarrollo
 
-## Dependencies
+## Dependencias
 
-The first step in CosmWasm development is to
-[install dependencies](https://docs.cosmwasm.com/docs/1.0/getting-started/installation),
-namely Go, Rust and `wasmd`.
+El primer paso desarrollando con CosmWasm es [instalar las dependencias](https://docs.cosmwasm.com/docs/1.0/getting-started/installation), como son Go, Rust y `wasmd`.
 
-For ink! you can also find [a setup guide](/getting-started/setup) which will help you
-with dependencies, namely Rust, `cargo-contract` and `substrate-contracts-node`.
+Para ink! también puedes encontrar una [guía de configuración](/getting-started/setup) que te ayudará a instalar
+las dependencias necesarias, como Rust, `cargo-contract` y `substrate-contracts-node`.
 
-## Environment Setup
+## Setup del entorno
 
-The next step in the CosmWasm development workflow is
-[setting up the environment](https://docs.cosmwasm.com/docs/1.0/getting-started/setting-env).
-That consists mainly of configuring `wasmd` such that it has prefunded accounts that are able
-to interact with the network.
+El siguiente paso en el desarrollo con CosmWasm es hacer el [preparar el entorno](https://docs.cosmwasm.com/docs/1.0/getting-started/setting-env). Consiste en configurar `wasmd` de manera que tengamos
+ciertas cuentas con un balance inicial haciendo posible interactuar con la red.
 
-When `substrate-contracts-node` is started with the `--dev` flag, it already contains well
-known pre-funded accounts (`alice`, `bob`, etc.) which are ready to be used for development.
+De manera similar, cuando lanzamos `substrate-contracts-node` con la flag `--dev` obtendremos
+cuentas pre-fundadas (`alice`, `bob`, etc.) que están listas para ser usadas en nuestro desarrollo.
 
-## Compile and Test
+## Compilación y Tests
 
-CosmWasm provides example contracts at the
-[cw-contracts](https://github.com/InterWasm/cw-contracts) repository. After the
-repository is cloned, from the contract directory it can be compiled via:
+CosmWasm provee contratos de ejemplo en el repositorio [cw-contracts](https://github.com/InterWasm/cw-contracts).
+Tras clonar el repositorio, podremos compilalo con:
 ```
 $ cargo wasm
 ```
 
-and tested via:
+y realizar los tests con:
 ```
-$ cargo unit-test
+$ cargo test
 ```
+De manera similar, podemos encontrar ejemplos de ink! en el directorio [`examples`](https://github.com/paritytech/ink/tree/master/examples) del repositorio principal.
 
-Similarly, ink! provides an
-[`examples`](https://github.com/paritytech/ink/tree/master/examples) directory of its
-main repository.
-
-A contract can be compiled from its directory via:
-``` 
-$ cargo +nightly contract build
+Un contrato pude ser compilado desde su directorio ejecutando:
+```
+$ cargo contract build
 ```
 
-and tested via:
+y realizar tests con:
 ```
 $ cargo test
 ```
 
-## Deploy and Interact
+## Despliegue e Interacción
 
-CosmWasm contracts are deployed and instantiated with help of the `wasmd` executable. The
-list of step is provided [here](https://docs.cosmwasm.com/docs/1.0/getting-started/interact-with-contract).
+Los contratos de CosmWasm son deplegados e instanciados con ayuda del ejecutable `wasmd`.
+La lista de pasos a seguir puede encontrarse [aquí](https://docs.cosmwasm.com/docs/1.0/getting-started/interact-with-contract).
 
-It is possible to deploy and interact with ink! contracts using either a CLI
-(`cargo-contract`), or a web UI ([`contracts-ui`](https://contracts-ui.substrate.io/)).
-
-- [Instructions for `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/docs/extrinsics.md)
-- [Instructions for `contracts-ui`](/getting-started/deploy-your-contract)
+Es posible desplegar e interactuar un contrato ink! usando el CLI(`cargo-contract`), o el UI web ([`contracts-ui`](https://contracts-ui.substrate.io/)).
+- [Instrucciones para `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/docs/extrinsics.md)
+- [Instrucciones para `contracts-ui`](/getting-started/deploy-your-contract)

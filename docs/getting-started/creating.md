@@ -28,7 +28,7 @@ flipper
 
 The ink CLI automatically generates the source code for the "Flipper" contract, which is about the simplest "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:
 
-[Flipper Example Source Code](https://github.com/paritytech/ink/blob/v3.0.0-rc8/examples/flipper/lib.rs)
+[Flipper Example Source Code](https://github.com/paritytech/ink/blob/v4.0/examples/flipper/lib.rs)
 
 The Flipper contract is nothing more than a `bool` which gets flipped from `true` to `false` through the `flip()` function. 
 
@@ -39,18 +39,18 @@ You will see at the bottom of the source code there are simple test cases which 
 In your project folder run:
 
 ```bash
-cargo +nightly test
+cargo test
 ```
 
 To which you should see a successful test completion:
 
 ```bash
-$ cargo +nightly test
-    running 2 tests
-    test flipper::tests::it_works ... ok
-    test flipper::tests::default_works ... ok
+$ cargo test
+running 2 tests
+test flipper::tests::it_works ... ok
+test flipper::tests::default_works ... ok
 
-    test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
 Now that we are feeling confident things are working, we can actually compile this contract to Wasm in the next step.

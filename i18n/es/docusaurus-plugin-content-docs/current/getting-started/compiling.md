@@ -1,18 +1,15 @@
 ---
-title: Compile Your Contract
+title: Compilar tu Contrato
 slug: /getting-started/building-your-contract
 ---
 
-Run the following command in your `flipper` directory to compile your smart contract:
+Ejecuta el siguiente comando en tu directorio `flipper` para compilar tu smart contract:
 
 ```bash
-cargo +nightly contract build
+cargo contract build
 ```
 
-This command will build the following for your contract: a Wasm binary, a metadata file (which contains the
-contract's ABI) and a `.contract` file which bundles both. This `.contract` file can be used to
-deploy your contract to a chain. If all goes well, you should see a `target` folder which
-contains these files:
+Este comando construirá lo siguiente para tu contrato: un binario Wasm, un fichero metadata (el cual el ABI del contrato) y un fichero `.contract` que agrupa a ambos. Este fichero `.contract` puede ser utilizado para desplegar el contrato en una red. Si todo va bien, deberías ver una carpeta `target` que contiene estos ficheros:
 
 ```
 target
@@ -22,13 +19,13 @@ target
     └─ metadata.json
 ```
 
-Let's take a look at the structure of the `metadata.json`:
+Vamos a ver la estructura de `metadata.json`:
 
 ```json
 {
   "metadataVersion": "0.1.0",
   "source": {...},
-  "contracts": {...},
+  "contract": {...},
   "spec": {
     "constructors": [...],
     "docs": [],
@@ -40,17 +37,46 @@ Let's take a look at the structure of the `metadata.json`:
 }
 ```
 
-This file describes all the interfaces that can be used to interact with your contract:
+Este fichero describe todas las interfaces que pueden ser utilizadas para interactuar con tu contrato:
 
-* `types` provides the custom **data types** used throughout the rest of the JSON.
-* `storage` defines all the **storage** items managed by your contract and how to ultimately access them.
-* `spec` stores information about the callable functions like **constructors** and **messages** a
-user can call to interact with the contract. It also has helpful information like the **events**
-that are emitted by the contract or any **docs**.
-  
-If you look closely at the constructors and messages, you will also notice a `selector` which
-contains a 4-byte hash of the function name and is used to route your contract calls to the correct
-functions.
+* `types` proporciona el personalizado **data types** utilizado en el resto del fichero JSON.
+* `storage` define todos los items **storage** controlados por tu contrato y como acceder a ellos. 
+* `spec` almacena información sobre las funciones invocables como **constructors** y **messages**, un usuario 
+puede llamarlas para interaccionar con el contrato. También tiene información que puede ayudar como los **events**
+que son emitidos por el contrato o cualquier **docs**.
 
-In the next section we will start a [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
-and configure the [Contracts UI](https://github.com/paritytech/contracts-ui) to interact with it.
+Si miras de cerca a los constructors y los messages también verás un `selector` que contiene un hash de 4-bytes del nombre de la función
+y que es utilizado para enrutar las llamadas de tu contrato a las funciones correctas.
+
+En la siguiente sección arrancaremos un [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
+y configuraremos el [Contracts UI](https://github.com/paritytech/contracts-ui) para interactuar con el.
+
+<div class="translateTodo">
+## Debug vs. Release Build
+
+By default, `cargo-contract` builds the contract in debug mode. This means
+that the contract will e.g. print statements like
+
+```rust
+ink::env::debug_println!("magic number: {}", value);
+```
+
+to the node's console if debugging was enabled on the node ([instructions here](/faq#how-do-i-print-something-to-the-console-from-the-runtime)).
+To support functionality like this the debug build of a contract includes some
+heavy-weight logic.
+
+For contracts that are supposed to run in production you should always build the
+contract with `--release`:
+
+```bash
+cargo contract build --release
+```
+
+This will ensure that nothing unnecessary is compiled into the Wasm blob, making
+your contract faster and cheaper to deploy and execute.
+
+:::info
+With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs:
+the `--release` flag has to be passed explicitly to `cargo build`.
+:::
+</div>
