@@ -57,6 +57,20 @@ pub struct ContractStorage {
 Naturally, you can  as well implement any required trait manually. Please directly refer to
 the relevant trait documentations for more information.
 
+:::note
+
+The `#[ink::storage_item]` macro is responsible for storage key calculation of 
+non-[`Packed`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/trait.Packed.html) 
+types. Without it, the key for non-`Packed` fields will be zero. Using this macro is 
+necessary if you don't plan to use a
+[`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/struct.ManualKey.html) 
+on a non-`Packed` type.
+
+Types with custom implementations of the ink! storage traits can still use this macro only 
+for key calculation by disabling the derives: `#[ink::storage_item(derive = false)]`.
+
+:::
+
 ## Generic storage fields
 
 It is possible to use generic data types in your storage, as long as any generic type
