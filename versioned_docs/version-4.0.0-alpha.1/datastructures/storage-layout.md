@@ -33,7 +33,7 @@ storage will always need to operate on the entire contract storage struct.
 
 For example, if we have a somewhat small contract storage struct consisting of only a few 
 tiny fields, pulling everything from the storage inside every message is not 
-problematic. It may even be advantegous - especially if we expect most messages to 
+problematic. It may even be advantageous - especially if we expect most messages to 
 interact with most of the storage fields.
 
 On the other hand, this can get problematic if we're storing a large `ink::prelude::vec::Vec`
@@ -44,8 +44,8 @@ To solve this problem we need to turn our storage into a non-packed layout someh
 
 :::caution
 
-If any type exhibiting `Packed` layout gets large enough (an ever growing `Vec` migth be a 
-prime candidate for this), it will break your contract. 
+If any type exhibiting `Packed` layout gets large enough (an ever growing `Vec` might be
+a prime candidate for this), it will break your contract. 
 This is because for encoding and decoding storage items, there is a buffer with only limited 
 capacity (around 16KB in the default configuration) available. This means any contract 
 trying to decode more than that will trap! If you are unsure about the potential size a 
@@ -55,7 +55,7 @@ number of elements, instead.
 ::: 
 
 ## Eager Loading vs. Lazy Loading
-ink! provides means of breaking the storage up into ismaller pieces, which can be loaded 
+ink! provides means of breaking the storage up into smaller pieces, which can be loaded 
 on demand, with the
 [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive.
 Wrapping any storage field inside a `Lazy` struct makes the storage
@@ -133,13 +133,13 @@ pub struct MyContract {
 }
 ```
 
-This may be advantegous: Your storage key will always stay the same, regardless of 
+This may be advantageous: Your storage key will always stay the same, regardless of 
 the version of your contract or ink! itself (note that the key calculation algorithm may 
 change with future ink! versions).
 
 :::tip
 
-Using `ManualKey` instead of `AutoKey` might be especially desireable for upgradable 
+Using `ManualKey` instead of `AutoKey` might be especially desirable for upgradable 
 contracts, as using `AutoKey` might result in a different storage key for the same field
 in a newer version of the contract. This may break your contract after an upgrade 😱!
 

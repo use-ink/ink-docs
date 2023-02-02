@@ -125,8 +125,9 @@ childState [`RPC call`](https://polkadot.js.org/apps/#/rpc), you'll need the fol
 ### Finding the contracts child trie ID
 
 The child trie ID is the `Blake2_256` hash of the contracts instantiation nonce
-concatenated to it's `AccountId`. You can find it in [`polkadot-js chainstate query interface`](https://polkadot.js.org/apps/#/chainstate), where you need to execute the
-`contracts_contractInfoOf` state query.
+concatenated to it's `AccountId`. You can find it in
+[`polkadot-js chainstate query interface`](https://polkadot.js.org/apps/#/chainstate),
+where you need to execute the `contracts_contractInfoOf` state query.
 
 It can also be calculate manually according to the following code snippet. The 
 instantiation note of the contract must be still be known. You can get it using the 
