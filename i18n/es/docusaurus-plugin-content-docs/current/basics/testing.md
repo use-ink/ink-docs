@@ -4,6 +4,9 @@ hide_title: true
 slug: /basics/contract-testing
 ---
 
+<img src="/img/title/testing1.svg" className="titlePic" />
+
+<div class="translateTodo">
 # Contract Testing
 
 ink! supports three different stages of testing: unit, integration
@@ -16,6 +19,7 @@ Generally you can think of those three types of testing as a pyramid
 with the top being the most elaborate test. The End-to-End (E2E)
 tests at the top will test the lower layers of the pyramid as part
 of them.
+</div>
 
 
 ## Unit Tests
@@ -63,7 +67,7 @@ por ejemplo puedes influir en el avance del bloque, el valor transferido al mism
 por qué cuenta se llama, con qué almacenamiento se ejecuta, etc.
 
 
-Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/4.0.0-beta/ink_lang/attr.test.html) para más detalles.
+Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/4.0.0-rc/ink_lang/attr.test.html) para más detalles.
 
 En este momento hay algunas limitaciones conocidas para nuestro entorno off-chain y estamos trabajando
 en hacer que el comportamiento sea lo más cercano posible a un entorno de una red real.
@@ -166,12 +170,12 @@ async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
 ```
 
 You can run the above test by going to the `flipper` folder in
-[the ink! examples directory](TODO).
+[the ink! examples directory](https://github.com/paritytech/ink/tree/master/examples).
 
 Before you can run the test, you have to start a Substrate
 node with `pallet-contracts` in the background.
-You can use e.g. our [`substrate-contracts-node`](TODO) for this.
-Start the node in one shell session/terminal window via
+You can use e.g. our [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node)
+for this. Start the node in one shell session/terminal window via
 
 ```
 substrate-contracts-node

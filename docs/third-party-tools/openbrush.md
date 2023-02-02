@@ -6,7 +6,7 @@ slug: /getting-started/use-openbrush
 [OpenBrush] is a library for smart contract development on ink! maintained by the
 [Brushfam](https://brushfam.io) team.
 
-It provides standard contracts based on [Polkadot Standard Proposals (PSPs)](TODO),
+It provides standard contracts based on [Polkadot Standard Proposals (PSPs)](https://github.com/w3f/PSPs),
 as well as higher-level contracts and Rust macros that generate ink! code.
 
 Using OpenBrush is simple, you only add the dependency to your `Cargo.toml` file.

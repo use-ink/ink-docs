@@ -281,5 +281,5 @@ After:
 
 The storage layout under the `storage` key changed for v4. If you have an
 application that is using it, please check the documentation of the new 
-format [here](TODO) and the pull request that updated the documentation:
+format [here](/metadata) and the pull request that updated the documentation:
 [#137](https://github.com/paritytech/ink-docs/pull/137).
