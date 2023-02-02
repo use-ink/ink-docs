@@ -44,7 +44,7 @@ mod mycontract {
             Self { balances }
         }
 
-        /// Retreive the balance of the caller.
+        /// Retrieve the balance of the caller.
         #[ink(message)]
         pub fn get_balance(&self) -> Option<Balance> {
             let caller = self.env().caller();
@@ -92,7 +92,7 @@ mapping, it will not load the whole mapping but only the value being accessed.
 
 ```rust
 // This causes only a single storage access and the decoding of a single "MyValue" struct,
-// no matter ho many elements there are inside the mapping.
+// no matter how many elements there are inside the mapping.
 let foo: MyValue = my_mapping.get(0)?;
 
 for n in 0..5 {
@@ -102,7 +102,7 @@ for n in 0..5 {
 }
 ```
 
-Furthermore, it follows that mapping values do not have a contiguos storage layout and it is
+Furthermore, it follows that mapping values do not have a contiguous storage layout and it is
 not possible to iterate over the contents of a map. 
 
 
