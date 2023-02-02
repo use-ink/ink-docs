@@ -34,6 +34,15 @@ Once you have `ROC` on `Contracts` you can deploy a contract _nearly_ as you wou
 a local developer node.
 The only difference is that you can't use pre-endowed accounts like `Alice` or `Bob`.
 
+### Alternative faucet
+
+You can try an alternative faucet here:
+
+import Faucet from "./Faucet";
+
+<Faucet/>
+
+
 ## What is the `Contracts` parachain?
 
 It's a [Substrate](https://github.com/paritytech/substrate)

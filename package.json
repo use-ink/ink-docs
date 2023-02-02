@@ -33,6 +33,7 @@
     ]
   },
   "dependencies": {
-    "@easyops-cn/docusaurus-search-local": "^0.32.0"
+    "@easyops-cn/docusaurus-search-local": "^0.32.0",
+    "react-google-recaptcha": "^2.1.0"
   }
 }
