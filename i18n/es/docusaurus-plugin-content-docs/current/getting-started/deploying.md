@@ -66,15 +66,13 @@ Seras redirigido a una nueva página, donde podrás interactuar con la nueva ins
 
 ![Flipper Instantiate Success](/img/contracts-ui-3.png)
 
-<div class="translateTodo">
-## Using `cargo-contract`
+## Uso de `cargo-contract`
 
-Contracts can be deployed via the command-line as well. With `cargo-contract`
-it's just a simple sequence of:
+Los contratos también pueden ser desplegados desde la línea de comandos .
+Usando `cargo-contract` simplemente hace falta ejecutar la siguiente secuencia:
 
 ```bash
 cargo contract build
 cargo contract upload --suri //Alice
 cargo contract instantiate --suri //Alice --args true
 ```
-</div>
