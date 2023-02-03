@@ -71,27 +71,25 @@ Si la transacción fue exitosa, deberíamos poder volver a llamar a la función 
 
 Woohoo! Has desplegado tu primer smart contract!
 
-<div class="translateTodo">
-## Using `cargo-contract`
+## Usando `cargo-contract`
 
-Calling a contract can also be done via the command-line!
+¡También es posible llamar a un contrato desde la línea de comandos!
 
-### 1. `get()` function
+### 1. función `get()`
 
 ```bash
 cargo contract build
 cargo contract upload --suri //Alice
 
 cargo contract instantiate --suri //Alice --args true
-# The output of this command will contain the contract address,
-# insert it in the command below.
+# El output de este comando contendrá la dirección del contrato,
+# usa esta dirección en la siguiente instrucción
 
 cargo contract call --contract ... --message get --dry-run --suri //Alice
 ```
 
-### 2. `flip()` function
+### 2. función `flip()`
 
 ```bash
 cargo contract call --contract ... --message flip --suri //Alice
 ```
-</div>
