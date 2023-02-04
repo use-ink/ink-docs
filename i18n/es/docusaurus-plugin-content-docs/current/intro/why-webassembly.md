@@ -8,10 +8,8 @@ hide_title: true
 
 # Por qué WebAssembly para Smart Contracts?
 
-<div class="translateTodo">
-We made a conscious decision for WebAssembly as the target architecture of ink!. 
-Our decision was made up by these reasons:
-</div>
+Tomamos la decisión de utilizar WebAssembly como nuestra arquitectura para ink!.
+Estas fueron las razones por las que tomamos dicha decisión:
 
 * <span class="highlight">Alta performance: </span>Wasm es de alta performance — está desarrollados para estar lo más próximo posible al código nativo de la computadora, aún manteniendo una plataforma independiente.
 
