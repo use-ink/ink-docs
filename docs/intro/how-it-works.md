@@ -40,7 +40,7 @@ We think this design is more future-proof than some architectures found in compe
 
 ## Why include `pallet-contracts` on a parachain?
 
-There are a couple use cases for includig smart contract functionality on a parachain. We distinguish three big ones.
+There are a couple use cases for including smart contract functionality on a parachain. We distinguish three big ones.
 
 ### Use Case 1: Smart Contracts as "first-class citizens"
 The most obvious use case is a parachain which provides smart contracts as a “first-class citizen”, meaning smart contracts are the central value proposition of the chain.
@@ -69,7 +69,7 @@ The time to develop a smart contract and deploy it is shorter than the onboardin
 ## Smart Contracts vs. Parachains
 One of the first questions we typically get when somebody learns about Substrate, Polkadot, or Kusama is when to develop a parachain vs. when to develop a smart contract.
 
-The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically refered to as its _state transition function_) and can persist its modified state in a block. In Substrate terminology this state transition function is called the chain's _runtime_.
+The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Substrate terminology this state transition function is called the chain's _runtime_.
 
 The distinction to other ecosystems here is that, in the context of Polkadot, parachains and smart contracts exist at different layers of the stack: _smart contracts sit on top of parachains_. Parachains would usually be described as layer-1 blockchains ‒ except for that they don't have to build their own security, are upgradable, and interoperable.
 
