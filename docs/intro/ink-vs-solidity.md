@@ -376,7 +376,7 @@ Solidity uses `uint256` and `uint` to represent a 256-bit type.
 
 Solidity is 256-bit / 32-byte word optimized. Meaning, using `uint256` in Solidity contracts will reduce gas usage -- but increase storage usage. The largest size ink! has built in is a `u128`. ink! compiles to Wasm. The largest primitive Wasm has is 64bit (due to most computers using 64bit). So, there is no benefit to using any larger primitive over a collection.
 
-When porting a `uint256` from Solidity to ink!, it is recommended to, with discretion, determine the range of the value, and choose the appropiate size (u8, u16, u32, u64, u128). If a 256-bit hash value is required, ink! has a `Hash` primitive available. In the event a value needs to be 256-bit, it is recommended to use an array (e.g. `[u64; 4]`).
+When porting a `uint256` from Solidity to ink!, it is recommended to, with discretion, determine the range of the value, and choose the appropriate size (u8, u16, u32, u64, u128). If a 256-bit hash value is required, ink! has a `Hash` primitive available. In the event a value needs to be 256-bit, it is recommended to use an array (e.g. `[u64; 4]`).
 
 ### `payable`
 
@@ -671,7 +671,7 @@ Then, In the main contract's Cargo.toml, import the contract that will be cross-
 erc20 = { path = "erc20", default-features = false, features = ["ink-as-dependency"] }
 ```
 
-And make sure to add it to the `std` field of the the .toml file.
+And make sure to add it to the `std` field of the .toml file.
 
 ```rust
 [features]
@@ -836,8 +836,8 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 ## unit testing (off-chain)
 
 - Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
-- To run ink! tests, do _not_ use `cargo +nightly contract test`. Use `cargo +nightly test`. Add the `--nocapture` flag for debug prints to show. See [here](https://substrate.stackexchange.com/questions/3197/how-to-understand-which-test-failed-in-ink) for more info why.
-- From the contract module, make sure to make the the contract struct and anything else that is going to be used in the unit tests public. For example:
+- To run ink! tests, do _not_ use `cargo +nightly contract test`. Use `cargo +nightly test`. Add the `--nocapture` flag for debug prints to show. See [here](https://substrate.stackexchange.com/questions/3197/how-to-understand-which-test-failed-in-ink) for more info on why.
+- From the contract module, make sure to make the contract struct and anything else that is going to be used in the unit tests public. For example:
 
 ```rust
 // top of file
@@ -900,7 +900,7 @@ fn do_some_write(&mut self) {
 }
 ```
 
-- useful code to interact and modify the contract enviroment for testing
+- useful code to interact and modify the contract environment for testing
 
 [ink_env docs](https://paritytech.github.io/ink/ink_env/test/index.html)
 
