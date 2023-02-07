@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@easyops-cn/docusaurus-search-local": "^0.32.0",
+    "@react-oauth/google": "^0.7.0",
     "react-google-recaptcha": "^2.1.0"
   }
 }
