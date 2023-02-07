@@ -315,3 +315,42 @@ If you were using it as a priviledged account:
 You should also now consider dealing with `AccountId`'s as `Option<AccountId>`'s. This is
 more idomatic Rust, and also conveys the meaning of a "null" or "empty" address much
 better.
+
+
+## Updates to the `CallBuilder` and `CreateBuilder` APIs
+There's been several changes to the
+[`CallBuilder`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html) 
+and 
+[`CreateBuilder`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CreateBuilder.html)
+APIs.
+
+In [#1604](https://github.com/paritytech/ink/pull/1604) we renamed the
+`CallBuilder::fire()` method to
+[`CallBuilder::invoke()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.invoke-2).
+This brings more consistency across our APIs which were already using the `invoke`
+terminology.
+
+In [#1512](https://github.com/paritytech/ink/pull/1512) and [#1525](https://github.com/paritytech/ink/pull/1525)
+we added support for handing
+`LangError`s from the `CreateBuilder` and `CallBuilder`, respectively.
+
+If you want to handle errors from either `Builder` you can use the new
+[`CreateBuilder::try_instantiate()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CreateBuilder.html#method.try_instantiate)
+or 
+[`CallBuilder::try_invoke()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.try_invoke-1)
+methods.
+
+Because of the addition of those methods we also removed any error handling from the
+non-`try_` methods in [#1602](https://github.com/paritytech/ink/pull/1602). This means
+that the `CallBuilder::invoke()` and `CreateBuilder::instantiate()` methods return values
+directly, and panic when they encounter an error.
+
+Lastly, in [#1636](https://github.com/paritytech/ink/pull/1636) we added two methods to
+the `CallBuilder` to streamline
+[`Call`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.Call.html)
+and
+[`DelegateCall`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.DelegateCall.html)
+workflows:
+- For `Call` you can use
+  [`CallBuilder::call()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.call) (this replaces `CallBuilder::callee()`)
+- For `DelegateCall` you can use [`CallBuilder::delegate()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.delegate)
