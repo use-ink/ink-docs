@@ -279,7 +279,78 @@ After:
 
 ### The Storage Layout (`storage`)
 
-The storage layout under the `storage` key changed for v4. If you have an
-application that is using it, please check the documentation of the new 
-format [here](/metadata) and the pull request that updated the documentation:
-[#137](https://github.com/paritytech/ink-docs/pull/137).
+The storage layout under the `storage` key changed for v4. If you have an application
+that is using it consider reading the updated documentation:
+- [General storage documentation](/datastructures/overview)
+- [Storage metadata format](/datastructures/storage-in-metadata)
+
+## Removal of `AccountId` `Default` implementation
+In [#1255](https://github.com/paritytech/ink/pull/1255) we removed the `Default` trait
+implementation on `AccountId`s.
+
+The `Default` implementation of `AccountId` returned the zero-address, which is
+problematic since the
+[zero-address in the `sr25519` and `ed25519` curves has a known private key](https://substrate.stackexchange.com/questions/982/why-does-the-all-0-public-key-have-a-known-private-key-in-sr25519-and-ed25519).
+
+Developers commonly reach for defaults, and the zero-address in particular, making it an
+unsafe trait implementation to have given the consequences.
+
+Imagine a developer sending tokens to the zero-address to be burned, only to find that
+they've been stolen because the private key is known.
+
+If you were previously using `AccountId`'s `Default` implementation in your code you
+have a couple of different options for how to move forward. These will depend on what
+exactly you were using the zero-address for.
+
+If you were using it as a burn address:
+- You can pick another address to use, assuming that you've actually picked a random
+  address
+- Consider a solution that involves reducing total issuance, instead of transfering
+  tokens to a random address
+
+If you were using it as a priviledged account:
+- Change the account
+- Add checks to ensure that calls coming from the zero-address are rejected
+
+You should also now consider dealing with `AccountId`'s as `Option<AccountId>`'s. This is
+more idomatic Rust, and also conveys the meaning of a "null" or "empty" address much
+better.
+
+
+## Updates to the `CallBuilder` and `CreateBuilder` APIs
+There's been several changes to the
+[`CallBuilder`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html) 
+and 
+[`CreateBuilder`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CreateBuilder.html)
+APIs.
+
+In [#1604](https://github.com/paritytech/ink/pull/1604) we renamed the
+`CallBuilder::fire()` method to
+[`CallBuilder::invoke()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.invoke-2).
+This brings more consistency across our APIs which were already using the `invoke`
+terminology.
+
+In [#1512](https://github.com/paritytech/ink/pull/1512) and [#1525](https://github.com/paritytech/ink/pull/1525)
+we added support for handing
+`LangError`s from the `CreateBuilder` and `CallBuilder`, respectively.
+
+If you want to handle errors from either `Builder` you can use the new
+[`CreateBuilder::try_instantiate()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CreateBuilder.html#method.try_instantiate)
+or 
+[`CallBuilder::try_invoke()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.try_invoke-1)
+methods.
+
+Because of the addition of those methods we also removed any error handling from the
+non-`try_` methods in [#1602](https://github.com/paritytech/ink/pull/1602). This means
+that the `CallBuilder::invoke()` and `CreateBuilder::instantiate()` methods return values
+directly, and panic when they encounter an error.
+
+Lastly, in [#1636](https://github.com/paritytech/ink/pull/1636) we added two methods to
+the `CallBuilder` to streamline
+[`Call`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.Call.html)
+and
+[`DelegateCall`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.DelegateCall.html)
+workflows:
+- For `Call` you can use
+  [`CallBuilder::call()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.call) (this replaces `CallBuilder::callee()`)
+- For `DelegateCall` you can use [`CallBuilder::delegate()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/call/struct.CallBuilder.html#method.delegate)
