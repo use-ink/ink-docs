@@ -24,7 +24,7 @@ to ink! by the contracts pallet:
 
 Storage data is always encoded with the
 [`SCALE`](https://docs.substrate.io/reference/scale-codec/) codec.
-The storage API operates by storing and loading entries into and from a single storages
+The storage API operates by storing and loading entries into and from a single storage
 cells, where each storage cell is accessed under its own dedicated storage key. To some
 extent, the storage API works similar to a traditional key-value database.
 
@@ -49,12 +49,12 @@ To solve this problem we need to turn our storage into a non-packed layout someh
 
 :::caution
 
-If any type exhibiting `Packed` layout gets large enough (an ever growing `Vec` might be
+If any type exhibiting `Packed` layout gets large enough (an ever-growing `Vec` might be
 a prime candidate for this), it will break your contract.
 This is because for encoding and decoding storage items, there is a buffer with only limited
 capacity (around 16KB in the default configuration) available. This means any contract
 trying to decode more than that will trap! If you are unsure about the potential size a
-datastructure might get, consider using an ink! `Mapping`, which can store an arbitrary
+data structure might get, consider using an ink! `Mapping`, which can store an arbitrary
 number of elements, instead.
 
 :::
@@ -154,7 +154,7 @@ in a newer version of the contract. This may break your contract after an upgrad
 
 It might be worthwhile to think about the desired storage layout of your contract. While
 using a `Packed` layout will keep your contracts overall code size smaller, it can cause
-unnecessarily high gas costs. Thus we consider it a good practice to break up large
+unnecessarily high gas costs. Thus, we consider it a good practice to break up large
 or complex storage layouts into reasonably sized distinct storage cells.
 
 :::note

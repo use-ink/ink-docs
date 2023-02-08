@@ -88,7 +88,7 @@ cargo contract build
 
 ### 3. Convert Solidity class fields to Rust struct
 
-Solidity is an object oriented language, and uses classes. ink! (Rust) does not use classes.
+Solidity is an object-oriented language, and uses classes. ink! (Rust) does not use classes.
 
 An example Solidity class looks like:
 
@@ -274,7 +274,7 @@ pub struct ContractName {
 }
 ```
 
-when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://ink.substrate.io/datastructures/mapping) for more details.
+When using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://ink.substrate.io/datastructures/mapping) for more details.
 
 ### `mapping usage`
 

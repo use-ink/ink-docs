@@ -44,7 +44,7 @@ pub struct ContractStorage {
 Even better: there is a macro
 [`#[ink::storage_item`](https://docs.rs/ink_macro/4.0.0-beta.1/ink_macro/attr.storage_item.html),
 which derives all necessary traits for you. If there is no need to implement any special
-behaviour, the above code example can be simplified further as follows:
+behavior, the above code example can be simplified further as follows:
 
 ```rust
 /// A custom type that we can use in our contract storage
@@ -59,7 +59,7 @@ pub struct ContractStorage {
 }
 ```
 
-Naturally, you can  as well implement any required trait manually. Please directly refer to
+Naturally, you can as well implement any required trait manually. Please directly refer to
 the relevant trait documentations for more information.
 
 :::note
