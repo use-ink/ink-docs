@@ -8,10 +8,12 @@ export const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
   const [address, setAddress] = useState<string>("")
   const [result, setResult] = useState<string>("")
+  const [inProgress, setInProgress] = useState(false)
 
   const handleRequest = async () => {
     try {
       setResult("")
+      setInProgress(true)
       const body = {
         address,
         parachain_id: "1002",
@@ -33,8 +35,9 @@ export const Faucet = () => {
     } catch (e) {
       console.error(e)
       setResult("Request unsuccessful")
+    } finally {
+      setInProgress(false)
     }
-
   }
 
   return (<>
@@ -42,8 +45,20 @@ export const Faucet = () => {
       sitekey={RECAPTCHA_SITE_KEY}
       onChange={setCaptcha}
     />
-    <input type="text" value={address} onChange={(e) => setAddress(e.target.value)}/>
-    <button disabled={!captcha || !address} onClick={handleRequest}>Request</button>
+    <label htmlFor="address-input">Address: </label>
+    <input
+      id="address-input"
+      style={{margin: 5, width: 400}}
+      type="text"
+      value={address}
+      placeholder="Address"
+      onChange={(e) => setAddress(e.target.value)}
+    />
+    <button
+      style={{margin: 5, padding: '5px 10px'}}
+      disabled={inProgress || !captcha || !address}
+      onClick={handleRequest}
+    >Request</button>
     <p>{result}</p>
   </>)
 }
