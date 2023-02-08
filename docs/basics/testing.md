@@ -63,7 +63,7 @@ by which account it is called, which storage it is run with, etc..
 
 See the [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) contract on how to utilize those or [the documentation](https://docs.rs/ink_lang/4.0.0-rc/ink_lang/attr.test.html) for details.
 
-At the moment there are some known limitations to our off-chain environment
+At the moment there are some known limitations to our off-chain environment,
 and we are working on making it behave as close to the real chain environment
 as possible.
 
@@ -79,7 +79,7 @@ See [here](/basics/chain-environment-types) for an explanation of what an enviro
 Normally if the test recursively uses or invokes some contract methods that
 call a method defined in `self.env()` or `Self::env()`.
 
-An examples is the following:
+An example is the following:
 
 ```rust
 let caller: AccountId = self.env().caller();

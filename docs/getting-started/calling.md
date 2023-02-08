@@ -23,7 +23,7 @@ an ERC-20 contract), then this is typically done via RPC. Specifically it is don
 executing a synchronous dry-run of the contract method and returning its result.
 The following schema depicts this.
 
-![Contract dry-run via RPC](/img/rpc.png)
+![Contract dry-run via RPC](/img/rpc.svg)
 
 RPC calls don't require any tokens, they just require a connection to a node in the 
 network. It's important to note that the execution won't result in any state mutations
@@ -43,7 +43,7 @@ event. Typically libraries (like `polkadot-js/api`) provide API functions to do 
 The important take-away is that contract developers have to make sure that events
 are emitted if they want clients to be able to pick up on them.
 
-![Contract execution via transaction](/img/events.png)
+![Contract execution via transaction](/img/events.svg)
 
 ## Using the Contracts UI
 

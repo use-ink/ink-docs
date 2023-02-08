@@ -23,7 +23,7 @@ Overall, the ink! `Mapping` will be solid choice for most contracts. Moreover, s
 contracts developers can implement advanced features themselves.
 
 `Lazy` is a wrapper type that can be used over any other storage compatible type.
-This allows smart contract developers fine grained manual control over the layout of
+This allows smart contract developers fine-grained manual control over the layout of
 the contract storage by assigning a separate storage cell for the field. For example,
 it can be used to prevent the contract from eagerly loading large storage fields
 during each contract call.

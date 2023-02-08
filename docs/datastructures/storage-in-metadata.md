@@ -74,7 +74,7 @@ We observe that the storage layout is represented as a tree, where tangible stor
 end up inside a `leaf`. Because of
 [`Packed`](https://docs.rs/ink_storage_traits/4.0.0-beta.1/ink_storage_traits/trait.Packed.html)
 encoding, leafs can share the same storage key, and
-in order to reach them you'd need fetch and decode the whole storage cell under this key.
+in order to reach them you'd need to fetch and decode the whole storage cell under this key.
 
 A `root_key` is meant to either be used to directly access a `Packed` storage field
 or to serve as the base key for calculating the actual keys needed to access values in

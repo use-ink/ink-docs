@@ -10,11 +10,11 @@ slug: /testnet
 
 [Rococo](https://wiki.polkadot.network/docs/build-pdk#rococo-testnet) is a testnet for
 Polkadot and Kusama parachains.
-We have a live testnet named `Contracts` as a parachain online there.
+We have a live testnet named Contracts as a parachain online there.
 
 <img src="/img/contracts-on-polkadot-js.png" alt="Smart contracts parachain on Rococo" />
 
-## What is the `Contracts` parachain?
+## What is the Contracts parachain?
 
 It's a [Substrate](https://github.com/paritytech/substrate) parachain for smart
 contracts. We configured it to use Substrate's smart contracts module – the
@@ -41,19 +41,19 @@ This is a chat room in which you need to write:
 !drip YOUR_SS_58_ADDRESS:1002
 ```
 
-The number `1002` is the parachain id of `Contracts` on Rococo, by supplying it the
-faucet will teleport `ROC` tokens directly to your account on the parachain.
-Teleport is a term 
+The number `1002` is the parachain ID of Contracts on Rococo, by supplying it you instruct the
+faucet to teleport `ROC` tokens directly to your account on the parachain.
+If you have some tokens on the Rococo relay chain, you can teleport them to the Contracts parachain on your own. Read more on teleporting assets [here](https://wiki.polkadot.network/docs/learn-teleport).
 
 If everything worked out, the teleported `ROC` tokens will show up in your account.
-In case you are using the `polkadot-js` fronted, you can see them under
-[the "Accounts" tab for `Contracts`](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
+In case you are using the `polkadot-js` frontend, you can see them under
+[the "Accounts" tab for Contracts](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
 
 <img src="/img/roc-in-wallet.png" alt="Rococo testnet tokens in wallet" />
 
 ### (3) Deploy Your Contract
 
-Once you have `ROC` on `Contracts` you can deploy a contract _nearly_ as you would with
+Once you have `ROC` on Contracts you can deploy a contract _nearly_ as you would with
 a local developer node.
 The only difference is that you can't use pre-endowed accounts like `Alice` or `Bob`,
 you have to use the one you generated instead.
