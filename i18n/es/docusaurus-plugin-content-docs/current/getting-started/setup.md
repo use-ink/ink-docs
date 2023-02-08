@@ -18,11 +18,10 @@ Un prerequisito para compilar smart contracts es tener Rust y Cargo instalados. 
 
 La primera herramienta que instalaremos es [`cargo-contract`](https://github.com/paritytech/cargo-contract), una herramienta para la interfaz de la línea de comandos (CLI) para ayudar a configurar y administrar WebAssembly smart contracts escritos en ink!.
 
-<div className="translateTodo">
-You can find it [here on GitHub](https://github.com/paritytech/cargo-contract)
-and [here on crates.io](https://crates.io/crates/cargo-contract).
+Puedes encontrarlo [aquí en GitHub](https://github.com/paritytech/cargo-contract)
+y [aquí en crates.io](https://crates.io/crates/cargo-contract).
 
-The tool has a number of handy capabilities:
+La herramienta tiene unas cuantas funcionalidades bastante convenientes:
 
 ```
 $ cargo contract       
@@ -46,32 +45,30 @@ Options:
   -V, --version  Print version information
 ```
 
-### Installation
+### Instalación
 
-Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/paritytech/cargo-contract#installation).
+Por favor vea las instrucciones de instalación en el repositorio `cargo-contract` [aquí](https://github.com/paritytech/cargo-contract#installation).
 
-If everything worked, `cargo contract --help` should show you the above list of available commands.
+Si todo funcionó, `cargo contract --help` debería mostrar una lista con los comandos disponibles similar a la anterior. 
 
-## Installing `substrate-contracts-node`
+## Instalando `substrate-contracts-node`
 
-The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) is
-a simple Substrate blockchain which is configured to include the Substrate module for
-smart contract functionality – the `contracts` pallet (see [How it Works](/how-it-works) for more).
-It's a comfortable option if you want to get a quickstart.
+[substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) es
+una simple blockchain construida con Substrate y configurada para incluir el módulo que añade
+la funcionalidad de smart contracts - el pallet `contracts` (vea [How it Works](/how-it-works) para saber más).
+Es una opción muy cómoda para comenzar rápidamente.
 
-There are two ways of installing the node:
+Hay dos maneras de instalar el nodo:
 
-### (1) Download the Binary
-This is the recommended method, you can
-[download a binary from our releases page](https://github.com/paritytech/substrate-contracts-node/releases)
-(Linux and Mac).
+### (1) Descargar el Binario
+Este es el método recomendado, puedes 
+[descargar el binario de nuestra página de releases](https://github.com/paritytech/substrate-contracts-node/releases)
+(Linux y Mac).
 
-### (2) Build it yourself
-
-Alternatively you can build the node by yourself.
-This can take quite a while though!
+### (2) Compilalo tu mismo
+De manera alternativa, puedes compilar el nodo tu mismo.
+¡Aunque esto puede tardar un poco!
 
 ```bash
 cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.23.0 --force --locked
 ```
-</div>
