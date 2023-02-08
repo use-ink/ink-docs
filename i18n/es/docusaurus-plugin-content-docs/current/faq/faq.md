@@ -86,7 +86,7 @@ Mira la sección de las [Chain Extensions](/macros-attributes/chain-extension) p
 
 ### ¿Como puedo utilizar ink! en una cadena de Substrate con una configuración de cadena presonalizada?
 
-Pr favor mira [el argumento `env_types`](https://docs.rs/ink_lang_macro/4.0.0-beta/ink_lang_macro/attr.contract.html#header-arguments)
+Pr favor mira [el argumento `env_types`](https://docs.rs/ink_lang_macro/4.0.0-rc/ink_lang_macro/attr.contract.html#header-arguments)
 para el macro del contrato. Te permite especificar el entorno en la 
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -161,15 +161,15 @@ La libreria estándar de Rust consiste en tres diferentes capas:
 
 Una serie de hashes criptográficos están integrados en el [contracts-pallet](/how-it-works) y
 por lo tanto son muy eficientes de utilizar. Actualmente soportamos un puñado de esos, puedes
-ver la lista completa [aquí](https://docs.rs/ink_env/4.0.0-beta/ink_env/hash/trait.CryptoHash.html).
+ver la lista completa [aquí](https://docs.rs/ink_env/4.0.0-rc/ink_env/hash/trait.CryptoHash.html).
 
 Si necesitas utilizar urgentemente otro hash criptográfico puedes introducirlo a través de
 [Chain Extensions](/macros-attributes/chain-extension)
 o crear una propuesta para incluirlo en el conjunto por defecto de `contracts-pallet`.
 
 Se puede utilizar uno de los hashes criptográficos que ya están integrados como se explica aqui:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.hash_encoded.html)
 
 ### ¿Por qué no es posible utilizar tipos de datos de coma flotante en ink!? ¿Cómo implemenar el retorno de un número decimal?
 

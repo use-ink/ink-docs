@@ -17,8 +17,8 @@ Actualmente existen tres maneras de debuggear tu contrato ink!:
 ### ¿Cómo imprimo algo en la consola desde el runtime?
 
 Puedes elegir entre estos dos macros:
-* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_println.html)
-* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_print.html)
+* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-rc/ink_env/macro.debug_println.html)
+* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-rc/ink_env/macro.debug_print.html)
 
 Tienes que hacer tres cosas para poder mostrar en la consola los mensajes de debug:
 

@@ -91,7 +91,7 @@ we removed support for it in [#1403](https://github.com/paritytech/ink/pull/1403
 
 As part of [#1233](https://github.com/paritytech/ink/pull/1233)
 the `eth_compatibility` crate was removed. The `ecdsa_to_eth_address()`
-function from it can now be found [in the `ink_env` crate](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.ecdsa_to_eth_address.html).
+function from it can now be found [in the `ink_env` crate](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.ecdsa_to_eth_address.html).
 
 ```rust
 ink_env::ecdsa_to_eth_address(&pub_key, &mut output);
@@ -105,9 +105,9 @@ The return value is the size of the pre-existing value at the specified key if a
 
 Two new useful functions were added:
 
-- [`Mapping::contains(key)`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Mapping.html#method.contains)
+- [`Mapping::contains(key)`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Mapping.html#method.contains)
   in [#1224](https://github.com/paritytech/ink/pull/1224).
-- [`Mapping::take()`](https://docs.rs/ink_storage/4.0.0-beta/ink_storage/struct.Mapping.html#method.take)
+- [`Mapping::take()`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Mapping.html#method.take)
   to get a value while removing it from storage in [#1461](https://github.com/paritytech/ink/pull/1461).
 
 In case you were working around those two functions you can now
@@ -117,10 +117,10 @@ a `get(key).is_none()` instead of `contains(key)`.
 ## Storage functions in `ink_env`
 
 As part of [#1224](https://github.com/paritytech/ink/pull/1224) the return type
-of [`ink_env::set_contract_storage()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.set_contract_storage.html)
+of [`ink_env::set_contract_storage()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.set_contract_storage.html)
 was changed to return an `Option<u32>` instead of `()`.
 
-A new function [`ink_env::take_contract_storage`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.take_contract_storage.html)
+A new function [`ink_env::take_contract_storage`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.take_contract_storage.html)
 was introduced.
 
 ## Removal of `ink_env::random` function
@@ -177,7 +177,7 @@ for constructors `Result<Constructor::Output, LangError>`).
 This happens even if the message/constructor doesn't have a return type,
 we default to the unit type `()` in that case.
 
-A [`LangError`](https://docs.rs/ink/4.0.0-beta/ink/enum.LangError.html)
+A [`LangError`](https://docs.rs/ink/4.0.0-rc/ink/enum.LangError.html)
 is a type of error which doesn't originate from the contract itself,
 nor from the underlying execution environment (so the Contracts pallet
 in this case).

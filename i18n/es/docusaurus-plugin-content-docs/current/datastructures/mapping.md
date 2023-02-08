@@ -12,7 +12,7 @@ hide_title: true
 TODO: Translate to Spanish.
 :::
 
-In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta.1/ink_storage/struct.Mapping.html).
+In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Mapping.html).
 
 Here is an example of a mapping from a user to a `Balance`:
 
