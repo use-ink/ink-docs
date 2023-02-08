@@ -51,6 +51,15 @@ In case you are using the `polkadot-js` fronted, you can see them under
 
 <img src="/img/roc-in-wallet.png" alt="Rococo testnet tokens in wallet" />
 
+### Alternative faucet
+
+You can try an alternative faucet here:
+
+import Faucet from "./Faucet";
+
+<Faucet/>
+
+
 ### (3) Deploy Your Contract
 
 Once you have `ROC` on `Contracts` you can deploy a contract _nearly_ as you would with
