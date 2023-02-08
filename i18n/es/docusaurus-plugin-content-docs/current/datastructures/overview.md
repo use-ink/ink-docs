@@ -33,4 +33,4 @@ it can be used to prevent the contract from eagerly loading large storage fields
 during each contract call.
 Conceivably, it may be desirable to change certain aspects on how your contract deals with
 its storage variables. You can find out more about this in the section about the ink!
-[Storage Layout](https://use.ink/versioned_docs/version-4.0.0-alpha.1/datastructures/storage-layout).
+[Storage Layout](https://use.ink/datastructures/storage-layout).
