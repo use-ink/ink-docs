@@ -4,17 +4,6 @@ slug: /faq
 hide_table_of_contents: true
 ---
 
-### ¿Es "ink" o "ink!"? ¿Qué representa el "!"?
-
-La ortografía correcta es _ink!_ ‒con "i" en miniscula y un simbolo de exclamación al final.
-La historia es que:
-
-* …en la primera iteración ink! era originalmente un [declarative Rust macro](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming). Un contrato se invocaba escribiendo `ink!{ … }`.
-* …hay una analogía del mundo real de escribir un contrato en papel usando tinta.
-* …queriamos tener todos los puntos (DOTs) posibles en el nombre 😉.
-
-Así que por favor no hagan llorar al pobre Squink teniendo que leer !ink, ink, Ink!, or Ink.
-
 ### ¿Quién es "Squink"?
 
 <div class="squid-container">
@@ -28,6 +17,21 @@ Generalmente es muy amigable y abierto a aprender nuevos Rustaceans pero ten cui
 nunca molestarlo quitando puntos de la palabra ink! deletreándolo incorrectamente!
 Realmente es en los puntos. Las historias cuentan que exigía la ortografía de ink! con tantos puntos como sea posible.
 </div>
+
+### ¿Es "ink" o "ink!"? ¿Qué representa el "!"?
+
+La ortografía correcta es _ink!_ ‒con "i" en miniscula y un simbolo de exclamación al final.
+La historia es que:
+
+* …en la primera iteración ink! era originalmente un [declarative Rust macro](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming). Un contrato se invocaba escribiendo `ink!{ … }`.
+* …hay una analogía del mundo real de escribir un contrato en papel usando tinta.
+* …queriamos tener todos los puntos (DOTs) posibles en el nombre 😉.
+
+Así que por favor no hagan llorar al pobre Squink teniendo que leer !ink, ink, Ink!, or Ink.
+
+<center>
+   <img src="/img/sad-squid.svg" alt="Squink ‒ the ink! mascot" width="300" />
+</center>
 
 ### ¿Cual es la relación de ink! con Substrate/Polkadot?
 

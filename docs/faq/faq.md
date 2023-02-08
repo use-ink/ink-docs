@@ -9,6 +9,18 @@ hide_table_of_contents: true
 
 # Frequently Asked Questions
 
+### Who is "Squink"?
+
+<img src="/img/ink-squink.svg" alt="Squink ‒ the ink! mascot" className="squid" />
+This little cute purple squid is Squink.<br/><br/>
+
+Squink is the mascot of ink! and guides new users and adventurers through our presentations
+workshops and tutorials. It also has a romance with Rust's mascot, Ferris.
+
+Generally it is very friendly and open to learning new Rustaceans but be aware to never upset
+it by taking away dots from the word ink! by spelling it incorrectly!
+It really is into dots. Stories tell that it demanded the spelling of ink! with as many dots as possible.
+
 ### Is it "ink" or "ink!"? What does the "!" stand for?
 
 The correct spelling is _ink!_ ‒ with a lowercase "i" and an exclamation mark at the end.
@@ -20,19 +32,9 @@ The history here is that:
 
 So please don't make poor Squink cry having to read !ink, ink, Ink!, or Ink.
 
-### Who is "Squink"?
-
-<div class="squid-container">
-<img src="/img/ink-squink.svg" alt="Squink ‒ the ink! mascot" height="90" className="squid" />
-This little cute purple squid is Squink.
-
-Squink is the mascot of ink! and guides new users and adventurers through our presentations
-workshops and tutorials. It also has a romance with Rust's mascot, Ferris.
-
-Generally it is very friendly and open to learning new Rustaceans but be aware to never upset
-it by taking away dots from the word ink! by spelling it incorrectly!
-It really is into dots. Stories tell that it demanded the spelling of ink! with as many dots as possible.
-</div>
+<center>
+<img src="/img/sad-squid.svg" alt="Squink ‒ the ink! mascot" width="300" />
+</center>
 
 ### What's ink!'s relationship to Substrate/Polkadot?
 
