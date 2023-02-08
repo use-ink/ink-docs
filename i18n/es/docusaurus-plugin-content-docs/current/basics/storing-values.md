@@ -72,17 +72,17 @@ y `Hash`.
 
 Enum puede ser usado como el tipo de un valor dentro de un `struct` como se ha mostrado antes en `struct Auction`.
 
- ```rust
- pub enum Status {
-     /// El auction aún no ha comenzado.
-     NotStarted,
-     /// El auction se encuentra en la parte inicial, acumulando pujas iniciales.
-     OpeningPeriod,
-     /// Nos encontramos en la parte final del auction, tomamos snapshots
-     /// de las pujas ganadoras.
-     EndingPeriod,
- }
- ```
+```rust
+pub enum Status {
+    /// El auction aún no ha comenzado.
+    NotStarted,
+    /// El auction se encuentra en la parte inicial, acumulando pujas iniciales.
+    OpeningPeriod,
+    /// Nos encontramos en la parte final del auction, tomamos snapshots
+    /// de las pujas ganadoras.
+    EndingPeriod,
+}
+```
 Los valores de un enum deben ser referenciados como `Status::OpeningPeriod`.
 
 ## Inicializar Storage en Constructores
