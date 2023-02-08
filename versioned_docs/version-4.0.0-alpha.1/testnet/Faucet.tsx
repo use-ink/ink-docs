@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
+const RECAPTCHA_SITE_KEY = "6LdU5kckAAAAANktvvAKJ0auYUBRP0su94G7WXwe"
+const FAUCET_URL = "https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip"
+
 export const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
   const [address, setAddress] = useState<string>("")
@@ -15,7 +18,7 @@ export const Faucet = () => {
         recaptcha: captcha
       }
 
-      const fetchResult = await fetch("http://localhost:5555/drip", {
+      const fetchResult = await fetch(FAUCET_URL, {
         method: "POST", body: JSON.stringify(body), headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -36,7 +39,7 @@ export const Faucet = () => {
 
   return (<>
     <ReCAPTCHA
-      sitekey="6LdGFkMkAAAAAOaHxPwltZ7BxaFRfyzI-7e9XAW7"
+      sitekey={RECAPTCHA_SITE_KEY}
       onChange={setCaptcha}
     />
     <input type="text" value={address} onChange={(e) => setAddress(e.target.value)}/>
