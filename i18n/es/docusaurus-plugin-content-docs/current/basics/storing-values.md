@@ -48,7 +48,6 @@ mod MyContract {
 }
 ```
 
-<div class="translateTodo">
 A continuación un ejemplo de una estructura almacenando valores `String`
 y `Hash`.
 
@@ -83,6 +82,7 @@ pub enum Status {
     EndingPeriod,
 }
 ```
+
 Los valores de un enum deben ser referenciados como `Status::OpeningPeriod`.
 
 ## Inicializar Storage en Constructores
@@ -90,7 +90,7 @@ Los valores de un enum deben ser referenciados como `Status::OpeningPeriod`.
 Constructores es cómo se inicializan los valores
 Cada ink! smart contract debe tener un constructor que se ejecuta una vez cuando el contrato es creado. Los ink! smart contracts pueden tener múltiples constructores:
 
-Tenga en cuenta que si tiene un contrato cuyo almacenamiento contiene `Mapping'` también puedes utilizar
+Tenga en cuenta que si tiene un contrato cuyo almacenamiento contiene `Mapping` también puedes utilizar
 `ink_lang::utils::initialize_contract` en tu constructor. Mira la
 [documentación de `Mapping`](/datastructures/mapping) para más detalles.
 

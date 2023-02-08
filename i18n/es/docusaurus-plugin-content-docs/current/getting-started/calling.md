@@ -23,7 +23,7 @@ Más espeficicamente se hace ejecutando un dry-run síncrono del método del con
 devolviendo el resultado.
 Es siguiente esquema muestra esto.
 
-![Contract dry-run via RPC](/img/rpc.png)
+![Contract dry-run via RPC](/img/rpc.svg)
 
 Las llamadas RPC no requieren de ninguna token, simplemente una conexión a un nodo
 de la red. Es importante hacer enfasis en que la ejecucón no conllevará ninguna modificación
@@ -43,7 +43,7 @@ Típicamente librerías (como `polkadot-js/api`) proveen APIs que hacen justo es
 Lo importante es que los desarrolladores de contratos tienen que asegurarse de que
 los eventos sean emitidos si quieren que los clientes sean capaces de hacer el seguimiento.
 
-![Contract execution via transaction](/img/events.png)
+![Contract execution via transaction](/img/events.svg)
 
 ## Usando la UI de Contracts
 ### 1. función get()
