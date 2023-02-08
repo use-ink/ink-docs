@@ -3,22 +3,21 @@ title: "#[ink(constructor)]"
 slug: /macros-attributes/constructor
 ---
 
-Applicable to a method.
+Aplicable a un método.
 
-Flags a method (or multiple methods) for the ink! storage struct as constructor making it available to the API for instantiating the contract.
+Marca un método (o múltiples métodos) para el struc del ink! storage como contructor haciendo que este disponible
+para la API de instanciación del contrato.
 
-There must be at least one `#[ink(constructor)]` defined method.
+Tiene que haber al menos un método `#[ink(constructor)]` definido.
 
-Methods flagged with `#[ink(constructor)]` are special in that they are dispatchable
-upon contract instantiation. A contract may define multiple such constructors which
-allow users of the contract to instantiate a contract in multiple different ways.
+Los métodos marcados con `#[ink(constructor)]` son especiales ya que son dispatacble en el momento
+de la instanciación del contrato. Un contrato puede definir múltiples constructores que permite al
+los usuarios del contrato inicializar el contrato de diferentes maneras.
 
 
-## Example
+## Ejemplo
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     #[ink(storage)]

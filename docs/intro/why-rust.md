@@ -1,7 +1,12 @@
 ---
 title: Why Rust for Smart Contracts?
+hide_title: true
 slug: /why-rust-for-smart-contracts
 ---
+
+<img src="/img/title/rust.svg" className="titlePic" />
+
+# Why Rust for Smart Contracts?
 
 ink! chooses not to invent a new programming language, but rather adapt a subset of Rust to serve our purpose.
 If this doesn't already convince you, you find many more good reasons here:

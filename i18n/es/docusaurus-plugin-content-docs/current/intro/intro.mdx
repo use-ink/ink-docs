@@ -1,35 +1,167 @@
 ---
 title: Introducción
+hide_title: true
 slug: /
+hide_table_of_contents: false
 ---
-
-<blockquote>
-    <img src="/img/ink-squink.svg" alt="Squink ‒ the ink! mascot" className="squid" height="90" />
-    <h2>
-        Con ink! podes desarrollar smart contracts en Rust, para Blockchains desarrollados con el
-        framework de <a href="https://github.com/paritytech/substrate">Substrate</a>.
-    </h2>
-</blockquote>
 
 <br/>
 
-[![version][m1]][m2] [![matrix][k1]][k2] [![discord][l1]][l2]
+<img src="/img/title/ink!-4.0.svg" width="800" style={{marginBottom: 10}} />
 
-[k1]: https://img.shields.io/badge/matrix-chat-brightgreen.svg?style=flat
-[k2]: https://riot.im/app/#/room/#ink:matrix.parity.io
-[l1]: https://img.shields.io/discord/722223075629727774?style=flat-square&label=discord
-[l2]: https://discord.gg/j2DKRRbSJ
-[m1]: https://img.shields.io/github/v/release/paritytech/ink?label=ink!%20on%20GitHub
-[m2]: https://github.com/paritytech/ink
+<center>
+    <a href="https://github.com/paritytech/ink">
+        <img style={{height: 25}} src="https://img.shields.io/github/v/release/paritytech/ink?label=ink!%20on%20GitHub&labelColor=white&color=blue&include_prereleases" />
+    </a>
+    &nbsp;
+    <a href="https://substrate.stackexchange.com/questions/tagged/ink?tab=Votes">
+        <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=StackExchange&label=ink!%20Support%20on%20StackExchange&labelColor=white&color=blue" />
+    </a>
+    &nbsp;
+    <a href="https://twitter.com/ink_lang">
+        <img style={{height: 25}} src="https://img.shields.io/twitter/follow/ink_lang?label=Follow" />
+    </a>
+    <br/>
+    <em>
+    <div class="translateTodo">
+    ink! 4.0 was published as a release candidate on Jan 31 '23.<br/>
+    We'll soon publish the full release.
+    </div>
+    </em>
+</center>
 
-En este portal buscamos proveer de documentación exhaustiva para el desarrollo de cualquier proyecto
-con ink!.
+<h3 style={{lineHeight: 1.4 + "em", marginTop: 0.5 + "em"}}>
+<center>
+    <em>ink! es un lenguaje de programación para smart contracts.<br/>
+    Puedes utilizarlo en Blockchains desarrollados con el framework de <a href="https://github.com/paritytech/substrate">Substrate</a>.
+    </em>
+</center>
+</h3>
 
-En caso de necesitar un tutorial paso a paso dedicado para principiantes, por favor dirijirse a nuestro 
-[Tutorial Guiado](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
+## Learn More
 
-De encontrar errores en la documentación provista, o si ciertas áreas son poco claras, por favor déjanoslo
-saber, ya sea <a href="https://github.com/paritytech/ink-docs/issues">creando un issue</a>
-o <a href="https://github.com/paritytech/ink-docs/pulls">haciendo un pull-request</a>.
+<div className="row">
+    <div className="col text--center">
+        <a href="https://www.parity.io/blog/what-is-paritys-ink">
+            <img src="/img/what-is-ink.png" width="250" style={{borderRadius: 10, border: "1px solid slategrey"}} />
+        </a>
+        <p>
+            What is Parity's ink!?<br/>
+            <a href="https://www.parity.io/blog/what-is-paritys-ink">
+                » Ver página
+            </a>
+        </p>
+    </div>
+    <div className="col text--center">
+        <a href="https://docs.substrate.io/tutorials/smart-contracts/">
+            <img src="/img/tutorial.png" width="250" style={{borderRadius: 10, border: "1px solid slategrey"}} />
+        </a>
+        <p>
+            Guided Beginners Tutorial<br/>
+            <a href="https://docs.substrate.io/tutorials/smart-contracts/">
+                » ver tutorial
+            </a>
+        </p>
+    </div>
+</div>
 
-Nuestro objetivo es proveer buena documentación para que los desarrolladores sean lo más productivos posible.
+## Our Pitch
+
+<div className="row">
+    <div className="col text--center">
+        <img src="/img/icons/rust.svg" width="100" />
+        <p>Garantías de seguridad inherentes con el lenguaje de programación Rust.</p>
+    </div>
+    <div className="col text--center">
+        <img src="/img/icons/ecosystem.svg" width="100" />
+        <p>Capacidad para usar todas las herramientas normales de Rust ‒ clippy, crates.io, IDE’s, etc.</p>
+    </div>
+    <div className="col text--center">
+        <img src="/img/icons/interop.svg" width="100" />
+        <p>Interoperabilidad con contratos en Solidity.</p>
+    </div>
+</div>
+
+<br/>&nbsp;<br/>
+
+<div className="row">
+    <div className="col text--center">
+        <img src="/img/icons/migration-path.svg" width="100" />
+        <p>Ruta de migración clara para graduarse a un parachain.</p>
+    </div>
+    <div className="col text--center">
+        <img src="/img/icons/wasm.svg" width="100" />
+        <p>Estándar industrial establecido para el compilador objetivo.</p>
+    </div>
+    <div className="col text--center">
+        <img src="/img/icons/substrate.svg" width="100" />
+        <p>Nativo a Substrate. Complementa perfectamente tu Substrate runtime.</p>
+    </div>
+</div>
+
+## Ejemplos de Smart Contract
+
+<div className="row">
+    <div className="col text--center">
+        <a href="https://github.com/paritytech/ink/tree/master/examples/flipper"><img src="/img/icons/flipper.svg" width="100" /></a>
+        <p>
+            Nuestro "Hello, World!".<br/>
+            <a href="https://github.com/paritytech/ink/tree/master/examples/flipper">
+                » ver ejemplo
+            </a>
+        </p>
+    </div>
+    <div className="col text--center">
+        <a href="https://github.com/paritytech/ink/tree/master/examples/erc20"><img src="/img/icons/erc20.svg" width="100" /></a>
+        <p>
+            Una implementación ERC-20.<br/>
+            <a href="https://github.com/paritytech/ink/tree/master/examples/erc20">
+                » ver ejemplo
+            </a>
+        </p>
+    </div>
+    <div className="col text--center">
+        <a href="https://github.com/paritytech/ink/tree/master/examples/erc721"><img src="/img/icons/nft.svg" width="100" /></a>
+        <p>
+            <a href="https://github.com/paritytech/ink/tree/master/examples/erc721">
+                » ver ERC-721
+            </a>
+            <br/>
+            <a href="https://github.com/paritytech/ink/tree/master/examples/erc1155">
+                » ver ERC-1155
+            </a>
+        </p>
+    </div>
+</div>
+
+<br/>
+
+<div className="row">
+    <div className="col text--center">
+        <a href="https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts"><img src="/img/icons/upgradable.svg" width="100" /></a>
+        <p>
+            Un contrato actualizable.<br/>
+            <a href="https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts">
+                » ver ejemplo
+            </a>
+        </p>
+    </div>
+    <div className="col text--center">
+        <a href="https://github.com/paritytech/ink/tree/master/examples/multisig"><img src="/img/icons/multisig.svg" width="100" /></a>
+        <p>
+            Un wallet multi-firma.<br/>
+            <a href="https://github.com/paritytech/ink/tree/master/examples/multisig">
+                » ver ejemplo
+            </a>
+        </p>
+    </div>
+    <div className="col text--center">
+        <a href="https://github.com/paritytech/ink/tree/master/examples/rand-extension"><img src="/img/icons/rand-extension.svg" width="100" /></a>
+        <p>
+            Permite acceso al runtime.<br/>
+            <a href="https://github.com/paritytech/ink/tree/master/examples/rand-extension">
+                » ver ejemplo
+            </a>
+        </p>
+    </div>
+</div>

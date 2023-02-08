@@ -1,7 +1,12 @@
 ---
 title: Storing Values
 slug: /basics/storing-values
+hide_title: true
 ---
+
+<img src="/img/title/storage.svg" className="titlePic" />
+
+# Storing Values
 
 Here is how you store simple values in storage:
 
@@ -31,9 +36,6 @@ ink! also provides a `Mapping` storage type. You can read more about it [here](/
 Here is an example of how you would store an `AccountId` and `Balance`:
 
 ```rust
-// We are importing the default ink! types
-use ink_lang as ink;
-
 #[ink::contract]
 mod MyContract {
 
@@ -49,7 +51,7 @@ mod MyContract {
 }
 ```
 
-Here is an example of a structure storing `String` and  `Hash` values. 
+Here is an example of a structure storing `String` and  `Hash` values.
 
 ```rust
 pub struct Auction {
@@ -67,9 +69,9 @@ pub struct Auction {
 }
 ```
 
-## Use of enum 
+## Use of enum
 
-Enum can be used as a datatype in `struct` as depicted above in `struct Auction`
+Enum can be used as a datatype in `struct` as depicted above in `struct Auction`.
 
 ```rust
 pub enum Status {
@@ -94,8 +96,6 @@ Note that if you have a contract whose storage contains `Mapping'`s you will nee
 [`Mapping` documentation](/datastructures/mapping) for more details.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod mycontract {
 

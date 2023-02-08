@@ -56,14 +56,14 @@ module.exports = {
         routeBasePath: '/',
         lastVersion: 'current',
         versions: {
-          '4.0.0-alpha.1': {
-            label: '4.0.0-alpha.1',
-            path: '4.0.0-alpha.1',
+          current: {
+            label: '4.0-rc',
+            path: '',
             banner: 'none',
           },
-          current: {
-            label: '3.x.x',
-            path: '',
+          '3.x': {
+            label: '3.x',
+            path: '3.x',
             banner: 'none',
           },
         },
@@ -86,7 +86,8 @@ module.exports = {
         label: 'English'
       },
       es: {
-        label: 'Español'
+        label: 'Español',
+        htmlLang: 'es-ES'
       }
     },
   },

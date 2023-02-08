@@ -1,58 +1,62 @@
 ---
-title: Creating an ink! Project
+title: Crear un proyecto ink!
 slug: /getting-started/creating-an-ink-project
+hide_title: true
 ---
 
-ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) that you can use to write WebAssembly based smart contracts in the Rust programming language.
+<img src="/img/title/heart.svg" className="titlePic" />
 
-ink! is just standard Rust in a well defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Substrate compatible Wasm bytecode!
+# Crear un proyecto ink!
 
-Use the ink! CLI to generate an initial smart contract with some scaffolding code.
+ink! es un [Lenguaje específico de dominio incorporado](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) que puedes utilizar para escribir smart contracts basados en WebAssembly con el lenguage de programación Rust.
 
-Make sure you are in your working directory, and then run:
+ink! es solo estándar Rust con un "formato de contrato" bien definido con attribute macros `#[ink(…)]` especializadas. Estos attribute macros le especifican a ink! que representan las diferentes partes que un smart contract en Rust representan, y finalmente permite a ink! hacer toda la magia necesaria para crear Wasm bytecode compatible con Substrate!
+
+Utiliza ink! CLI para generar un smart contract inicial con código de ejemplo.
+
+Asegurate que estas en tu directorio de trabajo y ejecuta:
 
 ```bash
 cargo contract new flipper
 ```
 
-This command will create a new project folder named `flipper` with this content:
+Este comando crea una nueva carpeta en el proyecto llamada `flipper` con este contenido:
 
 ```
 flipper
-  └─ lib.rs                <-- Contract Source Code
-  └─ Cargo.toml            <-- Rust Dependencies and ink! Configuration
+  └─ lib.rs                <-- Código fuente del Contrato
+  └─ Cargo.toml            <-- Dependencies Rust y Configuración ink! 
   └─ .gitignore
 ```
 
-## Contract Source Code
+## Código fuente del Contrato
 
-The ink CLI automatically generates the source code for the "Flipper" contract, which is about the simplest "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:
+El CLI de ink generara automaticament el código fuente para el contrato "Flipper", que es el smart contract más simple que puedes construir. Puede echar un vistazo a lo que vendrá mirando el código fuente aquí:
 
-[Flipper Example Source Code](https://github.com/paritytech/ink/blob/v3.0.0-rc8/examples/flipper/lib.rs)
+[Flipper Código fuente de ejemplo](https://github.com/paritytech/ink/blob/v3.0.0-rc8/examples/flipper/lib.rs)
 
-The Flipper contract is nothing more than a `bool` which gets flipped from `true` to `false` through the `flip()` function. 
+El contrato Flipper no es más que un `bool` que cambia de `true` a `false` mediante la función `flip()` . 
 
-## Testing Your Contract
+## Prueba tu contracto
 
-You will see at the bottom of the source code there are simple test cases which verify the functionality of the contract. We can quickly test this code is functioning as expected using the **off-chain test environment** that ink! provides.
+Al final del código fuente verás un simple test case que verifica la funcionalidad del contrat. Podemos probar rápidamente que este código esta funcionando como se espera utilizando el **off-chain test environment** que ink! proporciona.
 
-In your project folder run:
-
-```bash
-cargo +nightly test
-```
-
-To which you should see a successful test completion:
+En la carpeta de tu proyecto ejecuta:
 
 ```bash
-$ cargo +nightly test
-    running 2 tests
-    test flipper::tests::it_works ... ok
-    test flipper::tests::default_works ... ok
-
-    test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+cargo test
 ```
 
-Now that we are feeling confident things are working, we can actually compile this contract to Wasm in the next step.
+Verás la ejecución satisfactoria del test:
+
+```bash
+$ cargo test
+running 2 tests
+test flipper::tests::it_works ... ok
+test flipper::tests::default_works ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+```
+Ahora que estamos seguros de que todo funciona, podemos compilar este contrato en Wasm en el siguiente paso.
 
 
