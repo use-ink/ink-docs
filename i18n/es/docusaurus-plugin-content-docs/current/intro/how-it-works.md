@@ -37,7 +37,7 @@ Para desarrolladores de contratos esto quiere decir que pueden utilizar ink! par
 No es dificil añadir nuevos lenguajes. S
 It's not hard to add new languages. Solo se necesita un compilador para el lenguaje a WebAssembly, entonces es posible implementar una API para `pallet-contracts`. En este momento esta API consiste en entre 15-20 funciones para cualquier cosa que un smart contract puede necesitar: acceso al almacenamiento, funcionalidad criptográfica, información del entorno como números de bloque, acceso a funciones para obtener números aleatorios o auto-terminar el contrato, etc. No todas las funcionalidades tienen que ser implementadas en el lenguaje - el ink! "Hello, World!" necesita solo seis funciones API. El siguiente esquema representa esta relación:
 
-![](/img/ink-substrate.png)
+![](/img/es/ink-substrate.png)
 
 Creemos que este diseño está más preparado para el futuro que algunas arquitecturas que se encuentran en ecosistemas competidores.
 No existe tight coupling entre el lenguaje y el entorno de ejecución. WebAssemblyes un estandar de la industria y una hoy en dia una múltitud de lenguajes de programación pueden ser compilados a WebAssembly. Si en por ejemplo diez años, investigadores idean un lenguaje innovador para escribir smart contracts (o un subconjunto de un lenguaje existente) entonces mientras exista un compilador WebAssembly sera sencillo hacer que este lenguaje sea compatible con `pallet-contracts`.
@@ -90,5 +90,5 @@ _Para reafirmar esta importante distinción: desarrollar el runtime de una parac
 La ventaja es que con una parachain uno tiene la libertad de decidir en (prácticamente) todas las reglas que hacen la parachain. Con un smart contract uno está limitado por lo que permite la cadena y los pilares de seguridad que necesariamente tienen que estar en el lugar. Un smart contract nunca puede ser tan rápido como un pallet nativo contruido en el runtime de una parachain ‒ hay demasiada lógica en el medio.
 Por otro lado un smart contract tiene menos fricción para desarrollarlo y desplegarlo. Los desarrolladores no tienen que ocuparse de la gobernanza, la criptoeconomía, etc. Uno solo necesita algunos tokens y puede seguir su camino feliz implementando un contrato inteligente. Es tan simple como eso.
 
-![](/img/smart-contract-vs-parachain.png)
+![](/img/es/smart-contract-vs-parachain.png)
 
