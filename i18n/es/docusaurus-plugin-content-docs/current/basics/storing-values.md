@@ -52,8 +52,8 @@ mod MyContract {
 A continuación un ejemplo de una estructura almacenando valores `String`
 y `Hash`.
 
- ```rust
- pub struct Auction {
+```rust
+pub struct Auction {
      /// Nombre del auction
      name: String,
      /// Un hash que identifica el asunto del auction
@@ -65,8 +65,8 @@ y `Hash`.
      finalized: bool,
      /// vector
      vector: Vec<u8>,
- }
- ```
+}
+```
 
 ## Use of enum
 
