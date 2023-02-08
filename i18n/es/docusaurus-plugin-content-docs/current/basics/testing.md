@@ -62,7 +62,7 @@ por ejemplo puedes influir en el avance del bloque, el valor transferido al mism
 por qué cuenta se llama, con qué almacenamiento se ejecuta, etc.
 
 
-Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/4.0.0-rc/ink_lang/attr.test.html) para más detalles.
+Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink/4.0.0-rc/ink/attr.test.html) para más detalles.
 
 En este momento hay algunas limitaciones conocidas para nuestro entorno off-chain y estamos trabajando
 en hacer que el comportamiento sea lo más cercano posible a un entorno de una red real.
