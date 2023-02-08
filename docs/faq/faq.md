@@ -91,7 +91,7 @@ See the [Chain Extensions](/macros-attributes/chain-extension) section for more 
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
-Please see [the `env_types` argument](https://docs.rs/ink_lang_macro/4.0.0-rc/ink_lang_macro/attr.contract.html#header-arguments)
+Please see [the `env_types` argument](https://docs.rs/ink_macro/4.0.0-rc/ink_macro/attr.contract.html#header-arguments)
 for the contract macro. It allows you to specify your environment a la 
 `#[ink::contract(env = MyEnvironment)]`.
 

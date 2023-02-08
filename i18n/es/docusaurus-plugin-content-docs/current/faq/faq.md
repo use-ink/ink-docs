@@ -86,7 +86,7 @@ Mira la sección de las [Chain Extensions](/macros-attributes/chain-extension) p
 
 ### ¿Como puedo utilizar ink! en una cadena de Substrate con una configuración de cadena presonalizada?
 
-Pr favor mira [el argumento `env_types`](https://docs.rs/ink_lang_macro/4.0.0-rc/ink_lang_macro/attr.contract.html#header-arguments)
+Pr favor mira [el argumento `env_types`](https://docs.rs/ink_macro/4.0.0-rc/ink_macro/attr.contract.html#header-arguments)
 para el macro del contrato. Te permite especificar el entorno en la 
 `#[ink::contract(env = MyEnvironment)]`.
 
