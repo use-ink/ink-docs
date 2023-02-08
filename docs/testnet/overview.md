@@ -51,9 +51,7 @@ In case you are using the `polkadot-js` fronted, you can see them under
 
 <img src="/img/roc-in-wallet.png" alt="Rococo testnet tokens in wallet" />
 
-### Alternative faucet
-
-You can try an alternative faucet here:
+Alternatively, you can try it this faucet here:
 
 import Faucet from "./Faucet";
 
