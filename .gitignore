@@ -82,6 +82,9 @@ web_modules/
 .next
 out
 
+# Docusaurus build output
+build
+
 # Nuxt.js build / generate output
 .nuxt
 dist
