@@ -46,8 +46,9 @@ h1 {
 
 .squid {
   float: left;
-  margin-right: 15px;
-  height: 90px !important;
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 190px !important;
   vertical-align: middle;
 }
 

@@ -4,17 +4,6 @@ slug: /faq
 hide_table_of_contents: true
 ---
 
-### ¿Es "ink" o "ink!"? ¿Qué representa el "!"?
-
-La ortografía correcta es _ink!_ ‒con "i" en miniscula y un simbolo de exclamación al final.
-La historia es que:
-
-* …en la primera iteración ink! era originalmente un [declarative Rust macro](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming). Un contrato se invocaba escribiendo `ink!{ … }`.
-* …hay una analogía del mundo real de escribir un contrato en papel usando tinta.
-* …queriamos tener todos los puntos (DOTs) posibles en el nombre 😉.
-
-Así que por favor no hagan llorar al pobre Squink teniendo que leer !ink, ink, Ink!, or Ink.
-
 ### ¿Quién es "Squink"?
 
 <div class="squid-container">
@@ -28,6 +17,21 @@ Generalmente es muy amigable y abierto a aprender nuevos Rustaceans pero ten cui
 nunca molestarlo quitando puntos de la palabra ink! deletreándolo incorrectamente!
 Realmente es en los puntos. Las historias cuentan que exigía la ortografía de ink! con tantos puntos como sea posible.
 </div>
+
+### ¿Es "ink" o "ink!"? ¿Qué representa el "!"?
+
+La ortografía correcta es _ink!_ ‒con "i" en miniscula y un simbolo de exclamación al final.
+La historia es que:
+
+* …en la primera iteración ink! era originalmente un [declarative Rust macro](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming). Un contrato se invocaba escribiendo `ink!{ … }`.
+* …hay una analogía del mundo real de escribir un contrato en papel usando tinta.
+* …queriamos tener todos los puntos (DOTs) posibles en el nombre 😉.
+
+Así que por favor no hagan llorar al pobre Squink teniendo que leer !ink, ink, Ink!, or Ink.
+
+<center>
+   <img src="/img/sad-squid.svg" alt="Squink ‒ the ink! mascot" width="300" />
+</center>
 
 ### ¿Cual es la relación de ink! con Substrate/Polkadot?
 
@@ -82,7 +86,7 @@ Mira la sección de las [Chain Extensions](/macros-attributes/chain-extension) p
 
 ### ¿Como puedo utilizar ink! en una cadena de Substrate con una configuración de cadena presonalizada?
 
-Pr favor mira [el argumento `env_types`](https://docs.rs/ink_lang_macro/4.0.0-beta/ink_lang_macro/attr.contract.html#header-arguments)
+Pr favor mira [el argumento `env_types`](https://docs.rs/ink_macro/4.0.0-rc/ink_macro/attr.contract.html#header-arguments)
 para el macro del contrato. Te permite especificar el entorno en la 
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -157,15 +161,15 @@ La libreria estándar de Rust consiste en tres diferentes capas:
 
 Una serie de hashes criptográficos están integrados en el [contracts-pallet](/how-it-works) y
 por lo tanto son muy eficientes de utilizar. Actualmente soportamos un puñado de esos, puedes
-ver la lista completa [aquí](https://docs.rs/ink_env/4.0.0-beta/ink_env/hash/trait.CryptoHash.html).
+ver la lista completa [aquí](https://docs.rs/ink_env/4.0.0-rc/ink_env/hash/trait.CryptoHash.html).
 
 Si necesitas utilizar urgentemente otro hash criptográfico puedes introducirlo a través de
 [Chain Extensions](/macros-attributes/chain-extension)
 o crear una propuesta para incluirlo en el conjunto por defecto de `contracts-pallet`.
 
 Se puede utilizar uno de los hashes criptográficos que ya están integrados como se explica aqui:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.hash_encoded.html)
 
 ### ¿Por qué no es posible utilizar tipos de datos de coma flotante en ink!? ¿Cómo implemenar el retorno de un número decimal?
 

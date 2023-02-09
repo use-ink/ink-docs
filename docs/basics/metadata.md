@@ -9,7 +9,7 @@ slug: /metadata
 # ink! Metadata
 
 The ink! metadata is used to describe a contract in a language agnostic way. It is
-intended to be used by third party tools (e.g UIs, block explorers) in order to correctly
+intended to be used by third party tools (e.g. UIs, block explorers) in order to correctly
 call contract functions and interpret events.
 
 The ink! metadata is generated when a contract is built using `cargo-contract`, e.g
@@ -127,7 +127,7 @@ see [here](https://github.com/paritytech/cargo-contract/blob/30ba1ec545d01c0479f
 This is the specification of the contract.
 
 Unlike the previous metadata sections the structure of the object stored here is not
-defined. Instead, it is up to each programming language (e.g ink!, ask!, Solidity) to
+defined. Instead, it is up to each programming language (e.g. ink!, ask!, Solidity) to
 define their own metadata format which will then be stored here.
 
 In this document we will focus on the ink! ABI.
@@ -192,7 +192,7 @@ comes from the smart contracting language itself, and not the contract nor the u
 environment (e.g `pallet-contracts`).
 
 All ink! messages and constructors now return a `Result` which uses this as the `Error`
-variant (see the [`LangError`](https://docs.rs/ink/4.0.0-beta.1/ink/enum.LangError.html) docs for more).
+variant (see the [`LangError`](https://docs.rs/ink/4.0.0-rc/ink/enum.LangError.html) docs for more).
 
 :::
 

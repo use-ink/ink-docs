@@ -48,48 +48,49 @@ mod MyContract {
 }
 ```
 
-<div class="translateTodo">
-Here is an example of a structure storing `String` and  `Hash` values.
+A continuación un ejemplo de una estructura almacenando valores `String`
+y `Hash`.
 
- ```rust
- pub struct Auction {
-     /// Branded name of the auction event.
+```rust
+pub struct Auction {
+     /// Nombre del auction
      name: String,
-     /// Some hash identifying the auction subject.
+     /// Un hash que identifica el asunto del auction
      subject: Hash,
-     /// Auction status.
-     status: Status, // Enum: Usage shown in next section
-     /// Candle auction can have no winner.
-     /// If auction is finalized, that means that the winner is determined.
+     /// Estado del auction
+     status: Status, // Enum: Uso de Enum se muestra más adelante
+     /// Un candle auction puede no tener ganador.
+     /// Si el auction ha terminado, significa que el ganador ha sido elegido.
      finalized: bool,
      /// vector
      vector: Vec<u8>,
- }
- ```
+}
+```
 
 ## Use of enum
 
-Enum can be used as a datatype in `struct` as depicted above in `struct Auction`.
+Enum puede ser usado como el tipo de un valor dentro de un `struct` como se ha mostrado antes en `struct Auction`.
 
- ```rust
- pub enum Status {
-     /// An auction has not started yet.
-     NotStarted,
-     /// We are in the starting period of the auction, collecting initial bids.
-     OpeningPeriod,
-     /// We are in the ending period of the auction, where we are taking snapshots
-     /// of the winning bids. 
- }
- ```
-The values of an enum should be referenced as `Status::OpeningPeriod`.
-</div>
+```rust
+pub enum Status {
+    /// El auction aún no ha comenzado.
+    NotStarted,
+    /// El auction se encuentra en la parte inicial, acumulando pujas iniciales.
+    OpeningPeriod,
+    /// Nos encontramos en la parte final del auction, tomamos snapshots
+    /// de las pujas ganadoras.
+    EndingPeriod,
+}
+```
+
+Los valores de un enum deben ser referenciados como `Status::OpeningPeriod`.
 
 ## Inicializar Storage en Constructores
 
 Constructores es cómo se inicializan los valores
 Cada ink! smart contract debe tener un constructor que se ejecuta una vez cuando el contrato es creado. Los ink! smart contracts pueden tener múltiples constructores:
 
-Tenga en cuenta que si tiene un contrato cuyo almacenamiento contiene `Mapping'` también puedes utilizar
+Tenga en cuenta que si tiene un contrato cuyo almacenamiento contiene `Mapping` también puedes utilizar
 `ink_lang::utils::initialize_contract` en tu constructor. Mira la
 [documentación de `Mapping`](/datastructures/mapping) para más detalles.
 

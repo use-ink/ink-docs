@@ -35,9 +35,9 @@ The following table gives a brief comparison of features between ink! and Solidi
 
 - [Solidity to ink! Guide](#solidity-to-ink-guide)
 - [Table of Contents](#table-of-contents)
-- [Converting a Solidity Contract to ink!](#converting-a-solidity-contract-to-ink)
-    - [1. Generate New ink! Contract](#1-generate-new-ink-contract)
-    - [2. Build ink! Contract](#2-build-ink-contract)
+- [Converting a Solidity contract to ink!](#converting-a-solidity-contract-to-ink)
+    - [1. Generate a new ink! contract](#1-generate-a-new-ink-contract)
+    - [2. Build the contract](#2-build-the-contract)
     - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
     - [4. Convert each function](#4-convert-each-function)
 - [Best Practices + Tips](#best-practices--tips)
@@ -88,7 +88,7 @@ cargo contract build
 
 ### 3. Convert Solidity class fields to Rust struct
 
-Solidity is an object oriented language, and uses classes. ink! (Rust) does not use classes.
+Solidity is an object-oriented language, and uses classes. ink! (Rust) does not use classes.
 
 An example Solidity class looks like:
 
@@ -274,7 +274,7 @@ pub struct ContractName {
 }
 ```
 
-when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://ink.substrate.io/datastructures/mapping) for more details.
+When using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://ink.substrate.io/datastructures/mapping) for more details.
 
 ### `mapping usage`
 

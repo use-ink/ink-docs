@@ -6,47 +6,37 @@ hide_title: true
 
 <img src="/img/title/magnifying-glass.svg" className="titlePic" />
 
-# Contract Debugging
+# Debugging del Contrato
 
-:::note
-TODO: translate
+Actualmente existen tres maneras de debuggear tu contrato ink!:
+* Puedes escribir test utilizando uno de los mecanismos descritos en la página [Testing del Contrato](/basics/contract-testing).
+* Puedes interactuar con tu contrato via UI o línea de comandos. Esto está descrito en 
+  la página [Ejecute su Contrato](/getting-started/calling-your-contract).
+* Puedes imprimir declaraciones de la depuración en su contrato. Estas apareceran en el nodo de Substrate `stdout`. Esto está descrito en esta página.
 
-Please see [this file](https://github.com/paritytech/ink-docs/blob/7a62015b4ea9c020a175404017bb5492beb24328/i18n/es/docusaurus-plugin-content-docs/version-4.0.0-alpha.1/faq/faq.md), some content can be recycled.
-:::
+### ¿Cómo imprimo algo en la consola desde el runtime?
 
-There are three ways to debug your ink! contract currently:
-* You can write tests using one of the mechanisms described on the
-  [Contract Testing](/basics/contract-testing) page.
-* You can interact with your contract via a UI or command-line. This is
-  described on the [Call Your Contract](/getting-started/calling-your-contract) page.
-* You can print debug statements in your contract. Those will appear
-  on the Substrate node's `stdout`. This is described on this page.
+Puedes elegir entre estos dos macros:
+* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-rc/ink_env/macro.debug_println.html)
+* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-rc/ink_env/macro.debug_print.html)
 
-### How do I print to the terminal console from ink!?
+Tienes que hacer tres cosas para poder mostrar en la consola los mensajes de debug:
 
-You can use those two macros:
-* [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_println.html)
-* [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0-beta/ink_env/macro.debug_print.html)
+1. __Permitir la feature `pallet-contracts/unstable-interface` en el runtime.__<br/>
+   Para `substrate-contracts-node` esto esta hecho por defecto [aquí](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml).
 
-There are three things you have to do for the debug messages to show up on the console:
+1. __Permitir la feature `ink-debug` para el crate `ink_env`.__<br/>
+   `cargo-contract` hace esto automaticamente para ti (para versiones `>= 0.13.0`), excepto si compilas un contrato en modo `--release`.
 
-1. __Enable the feature `pallet-contracts/unstable-interface` in the target runtime.__<br/>
-   For `substrate-contracts-node` this is done by default [here](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml).
-
-1. __Enable the feature `ink-debug` for the `ink_env` crate.__<br/>
-   `cargo-contract` does this automatically for you (for versions `>= 0.13.0`), except if
-   you compile a contract in `--release` mode.
-
-1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
-   For example, to have only errors and debug output show up for the `substrate-contracts-node`:
+1. __Establecer el nivel de log de su nodo en `runtime::contracts=debug`.__<br/>
+   Por ejemplo, para que aparezcan solo los errores y el output del debug en el `substrate-contracts-node`:
   ```
   substrate-contracts-node --dev -lerror,runtime::contracts=debug
   ```
 
-## Example
+## Ejemplo
 
-The following code depicts how to print debug statements
-from a message or constructor.
+El siguiente código muestra cómo imprimir declaraciones de depuración desde un mensaje o un constructor.
 
 ```rust
 #[ink(constructor)]
@@ -65,7 +55,7 @@ fn print(&self) {
 
 
 :::note
-Debug output is not printed for transactions!
+El debug output no se imprime para transaciones!
 
-It is only printed for RPC calls or off-chain tests.
+Solo se imprime para llamadas RPC o tests off-chain.
 :::

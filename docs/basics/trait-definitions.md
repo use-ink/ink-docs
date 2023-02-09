@@ -64,7 +64,7 @@ mod erc20 {
 }
 ```
 
-Calling the above `Erc20` explicitely through its trait implementation can be done just as if it was normal Rust code:
+Calling the above `Erc20` explicitly through its trait implementation can be done just as if it was normal Rust code:
 
 ```rust
 // --- Instantiating the ERC-20 contract:
@@ -83,7 +83,7 @@ assert_eq!(erc20.total_supply(), 1000);
 ```
 
 There are still many limitations to ink! trait definitions and trait implementations.
-For example it is not possible to define associated constants or types or have default implemented methods.
+For example, it is not possible to define associated constants or types or have default implemented methods.
 These limitations exist because of technical intricacies, however, please expect that many of those will be tackled in future ink! releases.
 
 
@@ -93,7 +93,7 @@ Marks trait definitions to ink! as special ink! trait definitions.
 
 There are some restrictions that apply to ink! trait definitions that
 this macro checks. Also ink! trait definitions are required to have specialized
-structure so that the main [`#[ink::contract]`](https://docs.rs/ink_lang/4.0.0-rc/ink_lang/attr.contract.html) macro can
+structure so that the main [`#[ink::contract]`](https://docs.rs/ink/4.0.0-rc/ink/attr.contract.html) macro can
 properly generate code for its implementations.
 
 # Example: Definition

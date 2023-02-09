@@ -56,32 +56,28 @@ y que es utilizado para enrutar las llamadas de tu contrato a las funciones corr
 En la siguiente sección arrancaremos un [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
 y configuraremos el [Contracts UI](https://github.com/paritytech/contracts-ui) para interactuar con el.
 
-<div class="translateTodo">
 ## Debug vs. Release Build
 
-By default, `cargo-contract` builds the contract in debug mode. This means
-that the contract will e.g. print statements like
+Por defecto, `cargo-contract` compilará el contrato en modo debug. Esto significa
+wue el contrato imprimirá declaraciones como
 
 ```rust
 ink::env::debug_println!("magic number: {}", value);
 ```
+en la consola del nodo si debugging ha sido activado ([instrucciones aquí](/faq#how-do-i-print-something-to-the-console-from-the-runtime)).
+Para incluir esta funcionalidad la compilación en modo debug de un contrato incluye
+lógica más pesada.
 
-to the node's console if debugging was enabled on the node ([instructions here](/faq#how-do-i-print-something-to-the-console-from-the-runtime)).
-To support functionality like this the debug build of a contract includes some
-heavy-weight logic.
-
-For contracts that are supposed to run in production you should always build the
-contract with `--release`:
+De manera que los contratos que sean ejecutados en producción deberán ser compilados
+con la opción `--release`:
 
 ```bash
 cargo contract build --release
 ```
-
-This will ensure that nothing unnecessary is compiled into the Wasm blob, making
-your contract faster and cheaper to deploy and execute.
+Esto se encargará de que nada que no sea necesario sea compilado en el Wasm blob,
+haciendo el contrato más rápido y barato de desplegar y ejecutar.
 
 :::info
-With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs:
-the `--release` flag has to be passed explicitly to `cargo build`.
+`cargo-contract` imita así el comportamiento de `cargo` con programas Rust:
+la opción `--release` necesita pasarse explicitamente a `cargo build`.
 :::
-</div>

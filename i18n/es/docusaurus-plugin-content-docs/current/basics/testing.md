@@ -6,23 +6,21 @@ slug: /basics/contract-testing
 
 <img src="/img/title/testing1.svg" className="titlePic" />
 
-<div class="translateTodo">
 # Contract Testing
 
-ink! supports three different stages of testing: unit, integration
-and end-to-end tests. On this page we'll explain what the purpose
-of each stage is about and how to use it.
+ink! soporta tres diferentes etapas de testing: unitarios, de integración
+y tests end-to-end. En esta página explicaremos cual es el proposito de cada
+etapa y como utilizarlas.
 
 <img src="/img/testing.png" />
 
-Generally you can think of those three types of testing as a pyramid
-with the top being the most elaborate test. The End-to-End (E2E)
-tests at the top will test the lower layers of the pyramid as part
-of them.
-</div>
+Generalmente puedes pensar en estos tres tipos de testing como una piramide
+donde el top es el más elaborados de los tests. Los tests End-to-End (E2E)
+en el top testearan las capas más bajas de la piramide como parte de ellos.
 
 
-## Unit Tests
+
+## Tests Unitarios
 
 El testing de los contractos off-chain se hace mediante `cargo test` y los usuarios pueden simplemente utilizar las rutinas estándar para 
 crear módulos de unit test dentro del projecto de ink!:
@@ -51,14 +49,11 @@ Vea el [ejemplo flipper](https://github.com/paritytech/ink/blob/master/examples/
 
 ## Off-chain Testing
 
-<div class="translateTodo">
-For integration tests, the test is annotated with our `#[ink::test]`
-attribute instead of `#[test]`. Our attribute denotes that
-the test is then executed in a simulated, mocked blockchain environment.
-here are functions available to influence how the test environment
-is configured (e.g. setting a specified balance of an account to
-simulate how a contract would behave when interacting with it).
-</div>
+Para tests de integración, el test se anota con nuestro atributo `#[ink::test]`
+en lugar del `#[test]`. Nuestro atributo denota que el test se ejecuta
+en un entorno simulado, en un mocked blockchain. Aquí están las funciones disponibles
+para influenciar en como el entorno del test es configurado (por ejemplo configurar un balance específico 
+de una cuenta para simular como el contrato se comportaria al interaccionar con el).
 
 Si anotas un test con este atributo se ejecutara en un entorno simulado, 
 similar a como se ejecutaría on-chain.
@@ -67,7 +62,7 @@ por ejemplo puedes influir en el avance del bloque, el valor transferido al mism
 por qué cuenta se llama, con qué almacenamiento se ejecuta, etc.
 
 
-Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink_lang/4.0.0-rc/ink_lang/attr.test.html) para más detalles.
+Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink/4.0.0-rc/ink/attr.test.html) para más detalles.
 
 En este momento hay algunas limitaciones conocidas para nuestro entorno off-chain y estamos trabajando
 en hacer que el comportamiento sea lo más cercano posible a un entorno de una red real.
@@ -111,52 +106,50 @@ mod tests {
 }
 ```
 
-<div class="translateTodo">
+
 ## End-to-End (E2E) Tests
 
-E2E testing enables developers to write a test that will not only test the contract in an
-isolated manner; instead the contract will be tested _together_ with all components that
-will be involved on-chain – so from end to end. This way of testing resembles closely
-how the contract will actually behave in production.
 
-As part of the test, the contract will be compiled and deployed to a Substrate node that
-is running in the background. ink! offers API functions that enable developers to then
-interact with the contract via transactions that they create and submit to the blockchain.
+El testing E2E permite a los desarroladores escribir un test que no solo testeara el contrato de 
+manera aislada; en su lugar el contrato sera testado _todo junto_ con todos los componentes 
+que están involucrados on-chain – por lo que de extremo a extremo (end to end). De esta manera el testing This way of testing se parece mucho cómo se comportará realmente el contrato en la producción.
 
-You as a developer can define assertions on the outcome of their transactions, such as checking
-for state mutations, transaction failures or incurred gas costs.
+Como parte del test, el contrato sera compilado y desplegado a un nodo Substrate node que este corriendo en el background.
+ink! ofrece funciones API que permiten a los desarrolladores interaccionar con el contrato via transacciones
+que ellos crean y cargan en la blockchain.
 
-Your chain configuration will be tested together with the smart contract. And if your
-chain has pallets that are involved with the smart contract execution, those will be
-part of the test execution as well.
+Tú, como desarrollador, puede definir aserciones sobre el resultado de sus transacciones, como la verificación de mutaciones de estado, transaccione fallidas o costos de gas incurridos.
 
-ink! does not put any requirements on the Substrate node in the background – for example,
-you can run a node that contains a snapshot of a live network.
+La configuración de tu cadena sera testeada junto al smart contract. Y si tu cadena tiene pallets que 
+estan involucrados con la ejecución del smart contract, estos también seran parte de la ejecución del test.
 
-### Example
+ink! no pone ningún requerimiento para el nodo Substrate en el background - por ejemplo,
+puedes correr un nodo que contiene una instantánea de una red en vivo.
 
-The following code example illustrates a basic E2E test for the
-[flipper example](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
+### Ejemplo
+
+El código de ejemplo a continuación ilustra un test básico E2E para el
+[ejemplo flipper](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
 
 ```rust
 #[ink_e2e::test]
 async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
-    // When the function is entered, the contract was already
-    // built in the background via `cargo contract build`.
-    // The `client` object exposes an interface to interact
-    // with the Substrate node.
+    // Cuando se ingresa la función, el contrato ya estaba
+    // construido en el background via `cargo contract build`.
+    // El objeto `client`expone una interfaz para interactuar
+    // con el nodo Substrate.
     
-    // given
+    // dado
     let constructor = FlipperRef::new_default();
 
-    // when
+    // cuando
     let contract_acc_id = client
         .instantiate("flipper", &ink_e2e::bob(), constructor, 0, None)
         .await
         .expect("instantiate failed")
         .account_id;
 
-    // then
+    // entonces
     let get = build_message::<FlipperRef>(contract_acc_id.clone())
         .call(|flipper| flipper.get());
     let get_res = client
@@ -169,22 +162,20 @@ async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
 }
 ```
 
-You can run the above test by going to the `flipper` folder in
-[the ink! examples directory](https://github.com/paritytech/ink/tree/master/examples).
+Puedes correr el test de arriba yendo a la carpeta `flipper` en
+[el directorio ink! examples](https://github.com/paritytech/ink/tree/master/examples).
 
-Before you can run the test, you have to start a Substrate
-node with `pallet-contracts` in the background.
-You can use e.g. our [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node)
-for this. Start the node in one shell session/terminal window via
+Antes de que puedas arrancar el test, tienes que arrancar un nodo Substrate
+con `pallet-contracts` en el background.
+Para esto puedes utilizar por ejemplo nuestro[`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node). Arranca el nodo en una terminal/sesión shell via
 
 ```
 substrate-contracts-node
 ```
 
-Then, while keeping the node running, execute the following command
-in another shell session/terminal window.
+Entonces, mientras el nodo este corriendo ejecuta el siguiente comando
+en otra ventana la terminal/sesión shell con:
 
 ```
 cargo test --features e2e-tests
 ```
-</div>

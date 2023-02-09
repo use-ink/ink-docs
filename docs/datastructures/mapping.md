@@ -8,7 +8,7 @@ hide_title: true
 
 # Working with Mapping
 
-In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-beta.1/ink_storage/struct.Mapping.html).
+In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Mapping.html).
 
 Here is an example of a mapping from a user to a `Balance`:
 
@@ -83,13 +83,13 @@ One of the main purposes of the ink! `Mapping` is to allow storing a lot of valu
 
 :::note
 
-There are many additional datastructures accessible under `ink::prelude::collections`, such
-such as `HashMap` or `BTreeMap` (to name a few). Note that these datastructures all exhibit
+There are many additional data structures accessible under `ink::prelude::collections`,
+such as `HashMap` or `BTreeMap` (to name a few). Note that these data structures all exhibit
 `Packed` storage loading behavior, as opposed to the ink! `Mapping`!
 
 :::
 
-### Storage loading behaviour
+### Storage loading behavior
 
 Each `Mapping` value lives under it's own storage key. Briefly, this means that `Mapping`s
 are lazily loaded in ink!. In other words, if your message only accesses a single key of a
@@ -107,7 +107,7 @@ for n in 0..5 {
 }
 ```
 
-Furthermore, it follows that mapping values do not have a contiguous storage layout and it is
+Furthermore, it follows that mapping values do not have a contiguous storage layout, and it is
 not possible to iterate over the contents of a map.
 
 
@@ -115,7 +115,7 @@ not possible to iterate over the contents of a map.
 
 The attentive reader may have noticed that accessing mapping values via the `Mapping::get()`
 method will result in an owned value (a local copy), as opposed to a direct reference
-into the storage. Changes to this value won't be reflected in the contracts storage
+into the storage. Changes to this value won't be reflected in the contract's storage
 "automatically". To avoid this common pitfall, the value must be inserted again at the same
 key after it was modified. The `transfer` function from above example illustrates this:
 

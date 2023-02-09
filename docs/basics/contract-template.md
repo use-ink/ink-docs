@@ -27,7 +27,7 @@ cd foobar/
 
 In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
 
-Quickly check that it compiles and the trivial tests pass with:
+Quickly check that it compiles, and the trivial tests pass with:
 
 ```bash
 cargo test

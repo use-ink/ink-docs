@@ -9,6 +9,18 @@ hide_table_of_contents: true
 
 # Frequently Asked Questions
 
+### Who is "Squink"?
+
+<img src="/img/ink-squink.svg" alt="Squink ‒ the ink! mascot" className="squid" />
+This little cute purple squid is Squink.<br/><br/>
+
+Squink is the mascot of ink! and guides new users and adventurers through our presentations
+workshops and tutorials. It also has a romance with Rust's mascot, Ferris.
+
+Generally it is very friendly and open to learning new Rustaceans but be aware to never upset
+it by taking away dots from the word ink! by spelling it incorrectly!
+It really is into dots. Stories tell that it demanded the spelling of ink! with as many dots as possible.
+
 ### Is it "ink" or "ink!"? What does the "!" stand for?
 
 The correct spelling is _ink!_ ‒ with a lowercase "i" and an exclamation mark at the end.
@@ -20,19 +32,9 @@ The history here is that:
 
 So please don't make poor Squink cry having to read !ink, ink, Ink!, or Ink.
 
-### Who is "Squink"?
-
-<div class="squid-container">
-<img src="/img/ink-squink.svg" alt="Squink ‒ the ink! mascot" height="90" className="squid" />
-This little cute purple squid is Squink.
-
-Squink is the mascot of ink! and guides new users and adventurers through our presentations
-workshops and tutorials. It also has a romance with Rust's mascot, Ferris.
-
-Generally it is very friendly and open to learning new Rustaceans but be aware to never upset
-it by taking away dots from the word ink! by spelling it incorrectly!
-It really is into dots. Stories tell that it demanded the spelling of ink! with as many dots as possible.
-</div>
+<center>
+<img src="/img/sad-squid.svg" alt="Squink ‒ the ink! mascot" width="300" />
+</center>
 
 ### What's ink!'s relationship to Substrate/Polkadot?
 
@@ -89,7 +91,7 @@ See the [Chain Extensions](/macros-attributes/chain-extension) section for more 
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
-Please see [the `env_types` argument](https://docs.rs/ink_lang_macro/4.0.0-beta/ink_lang_macro/attr.contract.html#header-arguments)
+Please see [the `env_types` argument](https://docs.rs/ink_macro/4.0.0-rc/ink_macro/attr.contract.html#header-arguments)
 for the contract macro. It allows you to specify your environment a la 
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -166,15 +168,15 @@ Rust's standard library consists of three different layers:
 
 A number of crypto hashes are built into the [pallet-contracts](/how-it-works) and
 therefore very efficient to use. We currently support a handful of those, you 
-can view the complete list [here](https://docs.rs/ink_env/4.0.0-beta/ink_env/hash/trait.CryptoHash.html).
+can view the complete list [here](https://docs.rs/ink_env/4.0.0-rc/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
 [Chain Extensions](/macros-attributes/chain-extension)
 or make a proposal to include it into the default set of the `pallet-contracts`.
 
 Using one of the built-in crypto hashes can be done as explained here:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-beta/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0-rc/ink_env/fn.hash_encoded.html)
 
 ### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
 

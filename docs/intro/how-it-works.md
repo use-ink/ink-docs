@@ -18,7 +18,7 @@ ink! is one of them. It is an opinionated language that we have built by extendi
 
 Substrate also ships with a module for smart contracts, this module is called `pallet-contracts`. If a parachain is developed in Substrate it can easily add smart contract functionality by including this pallet.
 
-How does ink! come into play here? ink! is a programming language, specifically it is an embedded domain-specific language for the popular Rust programming language. This means that you can use all the normal Rust syntax plus some specifics that we added to make the language suitable for the smart contract world. The `pallet-contracts` takes these ink! contracts and executes them in a safe manner. So in short: _with ink! you can write smart contracts in Rust for blockchains built with Substrate that include `pallet-contracts`_.
+How does ink! come into play here? ink! is a programming language, specifically it is an embedded domain-specific language for the popular Rust programming language. This means that you can use all the normal Rust syntax plus some specifics that we added to make the language suitable for the smart contract world. The `pallet-contracts` takes these ink! contracts and executes them safely. So in short: _with ink! you can write smart contracts in Rust for blockchains built with Substrate that include `pallet-contracts`_.
 
 ![](/img/ink-pallet-contracts.png)
 
@@ -32,7 +32,7 @@ For contract developers this means they can use ink! for writing smart contracts
 * [ask!](https://github.com/patractlabs/ask) for AssemblyScript.
 * The [Solang](https://github.com/hyperledger-labs/solang) compiler for Solidity.
 
-It's not hard to add new languages. There just needs to be a compiler for the language down to WebAssembly, then it's possible to implement the API of `pallet-contracts`. This API at the moment consists of about 15-20 functions for anything a smart contract may desire: storage access, cryptographic functionality, environmental information like block numbers, access to functions for getting random numbers or self-terminate the contract, etc. Not all of those have to be implemented in the language ‒ the ink! "Hello, World!" requires just six API functions. The following schema depicts this relationship:
+It's not hard to add new languages. There just needs to be a compiler for the language down to WebAssembly, then it's possible to implement the API of `pallet-contracts`. This API at the moment consists of about 50 functions for anything a smart contract may desire: storage access, cryptographic functionality, environmental information like block numbers, access to functions for getting random numbers or self-terminate the contract, etc. Not all of those have to be implemented in the language ‒ the ink! "Hello, World!" requires just six API functions. The following schema depicts this relationship:
 
 ![](/img/ink-substrate.png)
 
@@ -55,7 +55,7 @@ Those chains typically take the off-the-shelf `pallet-contracts` and create some
 ### Use Case 2: Smart Contracts as "second-class citizens"
 There is another not so obvious use case for `pallet-contracts`: smart contracts as “second-class citizens” on an existing chain. By this we mean that the central value proposition of the chain has nothing to do with smart contracts, but it still includes them as an add-on.
 
-We provide an API (called [chain extensions](https://ink.substrate.io/macros-attributes/chain-extension)) with which a parachain can expose certain parts of its business logic to smart contract developers. Through this, smart contract developers can utilize the business logic primitives of the chain to build a new application on top of it. Think for example of a decentralized exchange blockchain. This chain would in its simplest form have an order book to place bids and asks ‒ there is no need for taking untrusted, turing complete, programs from the outside. The parachain could decide to expose the order book into smart contracts though, giving external developers the option of building new applications that utilize the order book. For example, to upload trading algorithms as smart contracts to the chain.
+We provide an API (called [chain extensions](https://ink.substrate.io/macros-attributes/chain-extension)) with which a parachain can expose certain parts of its business logic to smart contract developers. Through this, smart contract developers can utilize the business logic primitives of the chain to build a new application on top of it. Think for example of a decentralized exchange blockchain. This chain would in its simplest form have an order book to place bids and asks ‒ there is no need for taking untrusted, Turing-complete, programs from the outside. The parachain could decide to expose the order book into smart contracts though, giving external developers the option of building new applications that utilize the order book. For example, to upload trading algorithms as smart contracts to the chain.
 
 Smart contracts here are an opportunity to up the user engagement and drive usage of the chain's native token. And the billing for utilizing the chain comes already built-in with the pallet ‒ users have to pay gas fees for the execution of their smart contract.
 
