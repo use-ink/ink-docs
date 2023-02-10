@@ -11,18 +11,114 @@
   --ifm-color-primary-dark: #5a007e;
   --ifm-color-primary-darker: #5a007e;
   --ifm-color-primary-darkest: #5a007e;
+  --ifm-color-primary-medium: #975cd6;
   --ifm-color-primary-light: #bd83fb;
-  --ifm-color-primary-lighter: #bd83fb;
   --ifm-color-primary-lightest: #d7b5ff;
   --ifm-code-font-size: 90%;
   --ifm-font-family-base: 'Nunito Sans', sans-serif;
   --ifm-heading-font-weight: 400;
   --ifm-global-shadow-lw: transparent;
   --ifm-toc-border-color: transparent;
-}
+  --primary-deep-500: #281f70
+ }
 
 h1 {
   font-size: var(--ifm-h1-font-size) !important;
+}
+
+label {
+  font-weight: 500;
+  color: #fafafa;
+}
+
+input {
+  background-color: var(--ifm-color-primary-medium);
+  color: #fafafa;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0 0;
+  border: none;
+  width: 100%;
+}
+
+input:focus-visible {
+  border: none;
+  outline: solid 4px var(--primary-deep-500);
+}
+
+input::-webkit-input-placeholder { /* Edge */
+  color: var(--ifm-color-primary-lightest);
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--ifm-color-primary-lightest);
+}
+
+input::placeholder {
+  color: red;
+  color: var(--ifm-color-primary-lightest);
+}
+
+fieldset {
+  border: none;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--ifm-color-primary-light);
+  color: #fafafa;
+  padding: 2rem;
+  border-radius: 2.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    padding: 1.5rem 1.5rem 2.5rem;
+  }
+}
+
+form, .withHero {
+  border-top: solid 4px var(--ifm-color-primary-medium);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+form > button {
+  background-color: #fafafa;
+  color: var(--ifm-color-primary-medium);
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  transition: 0.3s;
+}
+
+form > button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+form > button:disabled {
+  opacity: 0.8;
+  color: var(--ifm-color-primary-light);
+}
+
+form > button:disabled, button:hover {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+  form > button {
+    width: 100%;
+  }
 }
 
 .pagination-nav__label {
@@ -30,7 +126,7 @@ h1 {
 }
 
 .docusaurus-highlight-code-line {
-  background-color: #bd83fb;
+  background-color: var(--ifm-color-primary-light);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
@@ -71,7 +167,7 @@ h1 {
 
 .schema {
   padding: 25px;
-  border: 1px solid  #bd83fb;
+  border: 1px solid var(--ifm-color-primary-light);
   background-color: #242526;
   margin-bottom: 25px;
 }
