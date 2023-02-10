@@ -42,7 +42,7 @@ pub struct ContractStorage {
 ```
 
 Even better: there is a macro
-[`#[ink::storage_item`](https://docs.rs/ink_macro/4.0.0-rc/ink_macro/attr.storage_item.html),
+[`#[ink::storage_item]`](https://docs.rs/ink_macro/4.0.0-rc/ink_macro/attr.storage_item.html),
 which derives all necessary traits for you. If there is no need to implement any special
 behavior, the above code example can be simplified further as follows:
 

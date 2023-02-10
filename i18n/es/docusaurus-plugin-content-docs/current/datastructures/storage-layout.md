@@ -154,6 +154,18 @@ in a newer version of the contract. This may break your contract after an upgrad
 
 :::
 
+The storage key of the contracts root storage struct defaults to `0x00000000`.  However, 
+contract develepors can set the key to an arbitratry 4 bytes value by providing it a 
+`ManualKey` like so:
+
+```rust
+/// Manually set the root storage key of `MyContract` to be `0xcafebabe`.
+#[ink(storage)]
+pub struct MyContract<KEY: StorageKey = ManualKey<0xcafebabe>> {
+    value: bool,
+}
+```
+
 ## Considerations
 
 It might be worthwhile to think about the desired storage layout of your contract. While
