@@ -1,7 +1,10 @@
 ---
 title: "#[ink(topic)]"
 slug: /macros-attributes/topic
+hide_title: true
 ---
+
+<img src="/img/title/text/topic.svg" className="titlePic" />
 
 Applied on fields of ink! event types to indicate that they are topics.
 

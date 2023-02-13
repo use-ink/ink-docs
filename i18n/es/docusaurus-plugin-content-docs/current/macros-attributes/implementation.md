@@ -1,7 +1,10 @@
 ---
 title: "#[ink(impl)]"
 slug: /macros-attributes/impl
+hide_title: true
 ---
+
+<img src="/img/title/text/impl.svg" className="titlePic" />
 
 El atributo soporta un caso de nicho que rara vez se necesita.
 

@@ -1,7 +1,10 @@
 ---
 title: "#[ink(storage)]"
 slug: /macros-attributes/storage
+hide_title: true
 ---
+
+<img src="/img/title/text/storage.svg" className="titlePic" />
 
 Applicable on `struct` definitions. 
 

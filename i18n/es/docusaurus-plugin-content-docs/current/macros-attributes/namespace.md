@@ -1,7 +1,10 @@
 ---
 title: "#[ink(namespace = \"…\")]"
 slug: /macros-attributes/namespace
+hide_title: true
 ---
+
+<img src="/img/title/text/namespace.svg" className="titlePic" />
 
 Aplicable a los bloque de implementación de ink! trait.
 

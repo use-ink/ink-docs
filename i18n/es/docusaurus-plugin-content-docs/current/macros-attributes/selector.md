@@ -1,7 +1,10 @@
 ---
 title: "#[ink(selector = S:u32)]"
 slug: /macros-attributes/selector
+hide_title: true
 ---
+
+<img src="/img/title/text/selector.svg" className="titlePic" />
 
 Aplicable a los mensajes y constructores ink!.
 

@@ -1,7 +1,10 @@
 ---
 title: "#[ink::chain_extension]"
 slug: /macros-attributes/chain-extension
+hide_title: true
 ---
+
+<img src="/img/title/text/chain-ext.svg" className="titlePic" />
 
 :::note
 TODO: Please apply the English changes from [this commit](https://github.com/paritytech/ink-docs/commit/8df53f482a0452cc812d1a490f9a5d42ea277f0d) to this page.

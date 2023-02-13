@@ -1,7 +1,10 @@
 ---
 title: "#[ink(constructor)]"
 slug: /macros-attributes/constructor
+hide_title: true
 ---
+
+<img src="/img/title/text/constructor.svg" className="titlePic" />
 
 Aplicable a un método.
 

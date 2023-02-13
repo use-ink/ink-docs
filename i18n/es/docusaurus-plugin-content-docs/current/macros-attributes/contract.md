@@ -1,7 +1,10 @@
 ---
 title: "#[ink::contract]"
 slug: /macros-attributes/contract
+hide_title: true
 ---
+
+<img src="/img/title/text/contract.svg" className="titlePic" />
 
 Esta macro es el punto de entrada para escribir smart contracts ink!.
 
