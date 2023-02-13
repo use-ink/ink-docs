@@ -2,11 +2,14 @@
   "name": "ink-docs",
   "version": "0.0.0",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --port 8080",
-    "build": "docusaurus build",
-    "build:release": "ci-ghact-docs",
+    "lint": "yarn eslint .",
+    "fmt": "yarn prettier --write \"docs/**/*.{js,jsx,ts,tsx,mdx}\" \"src/**/*.{js,jsx,ts,tsx,mdx,css}\" && yarn eslint --fix .",
+    "build": "yarn lint && docusaurus build",
+    "build:release": "yarn lint && ci-ghact-docs",
     "docs": "yarn build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -18,10 +21,18 @@
     "@docusaurus/core": "^2.3.1",
     "@docusaurus/preset-classic": "^2.3.1",
     "@mdx-js/react": "^1.6.22",
+    "@types/react-google-recaptcha": "^2.1.5",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
     "clsx": "^1.2.1",
     "cspell": "^6.31.1",
+    "eslint": "^8.34.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "^2.8.4",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "typescript": "^4.9.5"
   },
   "browserslist": {
     "production": [
