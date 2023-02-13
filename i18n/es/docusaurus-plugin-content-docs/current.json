@@ -1,7 +1,7 @@
 {
   "version.label": {
     "message": "4.x",
-    "description": "The label for version 4.x"
+    "description": "The label for version current"
   },
   "sidebar.reference.category.Overview": {
     "message": "Overview",
