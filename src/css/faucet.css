@@ -51,6 +51,11 @@
   margin: 0;
 }
 
+.addressInput {
+  border-radius: 1rem !important;
+  -webkit-border-radius: 1rem !important;
+}
+
 .addressInput::placeholder {
   text-overflow: ellipsis;
 }

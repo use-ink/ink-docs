@@ -44,7 +44,6 @@ input {
 
 input:focus-visible {
   border: none;
-  outline: solid 4px var(--primary-deep-500);
 }
 
 input::-webkit-input-placeholder { /* Edge */
