@@ -9,7 +9,8 @@ module.exports = {
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [
-    'fonts/fonts.css'
+    'fonts/fonts.css',
+    'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap'
   ],
   themes: [
     [
