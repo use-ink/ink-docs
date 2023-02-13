@@ -1,7 +1,7 @@
 ---
 title: Eventos
 slug: /basics/eventos
-hide_title:true
+hide_title: true
 ---
 
 <img src="/img/title/balloons-1.svg" className="titlePic" />
