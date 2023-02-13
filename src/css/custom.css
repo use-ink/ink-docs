@@ -20,11 +20,20 @@
   --ifm-heading-font-weight: 400;
   --ifm-global-shadow-lw: transparent;
   --ifm-toc-border-color: transparent;
-  --primary-deep-500: #281f70
+  --primary-deep-500: #281f70;
+  --secondary-500: #ed6d89;
  }
 
 h1 {
   font-size: var(--ifm-h1-font-size) !important;
+}
+
+.error {
+  color: var(--secondary-500);
+}
+
+.sm {
+  font-size: 12px;
 }
 
 label {
@@ -217,4 +226,13 @@ form > button:disabled, button:hover {
 
 .titlePic {
   margin-top: 15px;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+}
+
+.primary {
+  color: var(--ifm-color-primary);
 }

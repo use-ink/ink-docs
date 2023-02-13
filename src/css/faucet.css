@@ -27,6 +27,10 @@
   position: relative;
 }
 
+.faucetForm {
+  text-overflow: ellipsis;
+}
+
 .faucetPlantContainer {
   display: flex;
   justify-content: space-between;
@@ -46,8 +50,14 @@
   right: -22px;
 }
 
-.faucetResult {
-  padding: 0.5rem;
+.faucetResultContainer {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.faucetResultContainer > p {
+  text-align: center;
+  padding: 0;
   margin: 0;
 }
 
