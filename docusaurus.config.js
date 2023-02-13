@@ -48,7 +48,7 @@ module.exports = {
           items: [
             {
               label: 'English',
-              href: '/',
+              href: 'https://use.ink/',
             },
             {
               label: 'Spanish',
