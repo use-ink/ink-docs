@@ -122,7 +122,7 @@ se reenviará a la dirección del contrato especificada.
 
 ## Reemplazar el Código del Contrto con `set_code_hash()`
 
-Siguiendo la filosofia de [Substrate's runtime upgradeability](https://docs.substrate.io/build/upgrade-the-runtime/),
+Siguiendo la filosofia de [Substrate's runtime upgradeability](https://docs.substrate.io/maintain/runtime-upgrades/),
 ink! también soporta una manera sencilla de actualizar el código de tus contratos via la función especial
 [`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html).
 
