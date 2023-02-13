@@ -14,8 +14,8 @@
     "write-translations": "docusaurus write-translations"
   },
   "devDependencies": {
-    "@docusaurus/core": "^2.3.0",
-    "@docusaurus/preset-classic": "^2.3.0",
+    "@docusaurus/core": "^2.3.1",
+    "@docusaurus/preset-classic": "^2.3.1",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
     "react": "^17.0.2",
