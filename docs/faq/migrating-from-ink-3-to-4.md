@@ -1,6 +1,6 @@
 ---
 title: Migrating from ink! 3.x to 4.0
-slug: /getting-started/migrating-from-ink-3-to-4
+slug: /faq/migrating-from-ink-3-to-4
 ---
 
 We've made a couple of breaking changes from ink! 3.x to ink! 4.0.
