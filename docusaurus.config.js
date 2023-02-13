@@ -52,7 +52,7 @@ module.exports = {
             },
             {
               label: 'Spanish',
-              href: '/es'
+              href: '/es/'
             },
           ],
         },
