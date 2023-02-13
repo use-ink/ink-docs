@@ -22,7 +22,7 @@
   --ifm-toc-border-color: transparent;
   --primary-deep-500: #281f70;
   --secondary-500: #ed6d89;
- }
+}
 
 h1 {
   font-size: var(--ifm-h1-font-size) !important;
@@ -55,11 +55,13 @@ input:focus-visible {
   border: none;
 }
 
-input::-webkit-input-placeholder { /* Edge */
+input::-webkit-input-placeholder {
+  /* Edge */
   color: var(--ifm-color-primary-lightest);
 }
 
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: var(--ifm-color-primary-lightest);
 }
 
@@ -91,7 +93,8 @@ form {
   }
 }
 
-form, .withHero {
+form,
+.withHero {
   border-top: solid 4px var(--ifm-color-primary-medium);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -119,7 +122,8 @@ form > button:disabled {
   color: var(--ifm-color-primary-light);
 }
 
-form > button:disabled, button:hover {
+form > button:disabled,
+button:hover {
   cursor: not-allowed;
   opacity: 0.8;
 }
@@ -161,7 +165,9 @@ form > button:disabled, button:hover {
   clear: both;
 }
 
-.markdown table td, .markdown table tr, .markdown table th {
+.markdown table td,
+.markdown table tr,
+.markdown table th {
   border-left: 0px;
   border-right: 0px;
 }
@@ -170,7 +176,8 @@ form > button:disabled, button:hover {
   color: #bd83fb;
 }
 
-.comparison th,  .comparison table > tbody > tr > td:first-child {
+.comparison th,
+.comparison table > tbody > tr > td:first-child {
   color: #bd83fb;
 }
 
