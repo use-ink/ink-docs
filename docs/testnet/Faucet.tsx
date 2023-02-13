@@ -68,7 +68,10 @@ export const Faucet = () => {
         />
         <button
           disabled={inProgress || !captcha || !address}
-          onClick={handleRequest}
+          onClick={async (e) => {
+            e.preventDefault();
+            await handleRequest();
+          }}
         >
           Request
         </button>
