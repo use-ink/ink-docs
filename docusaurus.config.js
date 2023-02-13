@@ -42,9 +42,20 @@ module.exports = {
           dropdownActiveClassDisabled: true,
         },
         {
-          type: 'localeDropdown',
+          type: 'dropdown',
+          label: 'Language',
           position: 'right',
-        }
+          items: [
+            {
+              label: 'English',
+              href: '/',
+            },
+            {
+              label: 'Spanish',
+              href: '/es'
+            },
+          ],
+        },
       ],
     },
   },
