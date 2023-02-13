@@ -34,8 +34,12 @@ See [here](https://wiki.polkadot.network/docs/learn-account-generation) for a de
 
 ### (2) Get Testnet Tokens
 
-As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
-This is a chat room in which you need to write:
+<img src="/img/chest.svg" alt="image of a treasure chest" className="faucetHeroImage" />
+
+As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](/faucet).
+
+Alternatively, you can use the [Element chat room](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
+You must send a message like this (Note the `:1002` after the wallet address):
 
 ```
 !drip YOUR_SS_58_ADDRESS:1002
@@ -50,12 +54,6 @@ In case you are using the `polkadot-js` frontend, you can see them under
 [the "Accounts" tab for Contracts](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
 
 <img src="/img/roc-in-wallet.png" alt="Rococo testnet tokens in wallet" />
-
-Alternatively, you can try it this faucet here:
-
-import Faucet from "./Faucet";
-
-<Faucet/>
 
 
 ### (3) Deploy Your Contract

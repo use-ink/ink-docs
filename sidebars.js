@@ -68,7 +68,8 @@ module.exports = {
       "examples/dapps"
     ],
     "Testnet": [
-      "testnet/overview"
+      "testnet/overview",
+      "testnet/faucet"
     ],
     "Third Party Tools & Libraries": [
       "third-party-tools/openbrush"
