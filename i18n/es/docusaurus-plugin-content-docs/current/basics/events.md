@@ -1,7 +1,12 @@
 ---
 title: Eventos
-slug: /basics/events
+slug: /basics/eventos
+hide_title:true
 ---
+
+<img src="/img/title/balloons-1.svg" className="titlePic" />
+
+# Eventos
 
 Un smart contract en ink! puede definir eventos que pueden ser emitidos durante la execución del contrato.
 Emitir eventos puede ser utilizado por herramientas de terceros para consultar información sobre la ejecución y el estado de un contrato.

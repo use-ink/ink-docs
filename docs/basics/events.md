@@ -1,7 +1,12 @@
 ---
 title: Events
 slug: /basics/events
+hide_title: true
 ---
+
+<img src="/img/title/balloons-1.svg" className="titlePic" />
+
+# Events
 
 An ink! smart contract may define events that it can emit during contract execution.
 Emitting events can be used by third party tools to query information about a contract's

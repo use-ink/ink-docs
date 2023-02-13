@@ -1,7 +1,10 @@
 ---
 title: Introducción
 slug: /macros-attributes
+hide_title: true
 ---
+
+<img src="/img/title/text/contract.svg" className="titlePic" />
 
 Un módulo ink! es un módulo que está marcado por `#[ink::contract]` y que contiene todas las definiciones de ink!.
 Todos los atributos de ink! están disponibles para especificarlos dentro de un módulo de ink!.

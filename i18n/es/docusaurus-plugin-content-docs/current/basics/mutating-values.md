@@ -1,10 +1,10 @@
 ---
 title: Mutando Valores del Storage
-slug: /basics/mutating-values
+slug: /basics/mutando-valores-del-storage
 hide_title: true
 ---
 
-<img src="/img/title/storage.svg" className="titlePic" />
+<img src="/img/title/storage-mutating.svg" className="titlePic" />
 
 # Mutando Valores del Storage
 

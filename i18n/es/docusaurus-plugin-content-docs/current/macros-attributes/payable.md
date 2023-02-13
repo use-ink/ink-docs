@@ -1,7 +1,10 @@
 ---
 title: "#[ink(payable)]"
 slug: /macros-attributes/payable
+hide_title: true
 ---
+
+<img src="/img/title/text/payable.svg" className="titlePic" />
 
 Aplicable a los mensajes ink!.
 

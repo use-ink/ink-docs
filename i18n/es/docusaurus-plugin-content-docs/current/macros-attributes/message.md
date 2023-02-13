@@ -1,7 +1,10 @@
 ---
 title: "#[ink(message)]"
 slug: /macros-attributes/message
+hide_title: true
 ---
+
+<img src="/img/title/text/message.svg" className="titlePic" />
 
 Aplicable a métodos.
  

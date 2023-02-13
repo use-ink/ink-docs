@@ -1,7 +1,10 @@
 ---
 title: "#[ink(impl)]"
 slug: /macros-attributes/impl
+hide_title: true
 ---
+
+<img src="/img/title/text/impl.svg" className="titlePic" />
 
 This attribute supports a niche case that is rarely needed.
 

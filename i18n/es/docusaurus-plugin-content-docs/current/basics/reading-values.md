@@ -1,10 +1,10 @@
 ---
 title: Leer Valores del Storage
-slug: /basics/reading-values
+slug: /basics/leer-valores-del-storage
 hide_title: true
 ---
 
-<img src="/img/title/storage.svg" className="titlePic" />
+<img src="/img/title/storage-read.svg" className="titlePic" />
 
 # Leer Valores del Storage
 

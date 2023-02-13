@@ -1,7 +1,10 @@
 ---
 title: "#[ink(event)]"
 slug: /macros-attributes/event
+hide_title: true
 ---
+
+<img src="/img/title/text/event.svg" className="titlePic" />
 
 Applicable on `struct` definitions.
 

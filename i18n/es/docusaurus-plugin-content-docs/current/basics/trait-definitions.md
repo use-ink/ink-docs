@@ -1,7 +1,10 @@
 ---
 title: Definiciones Trait
-slug: /basics/trait-definitions
+slug: /basics/definiciones-trait
+hide_title: true
 ---
+
+<img src="/img/title/text/trait.svg" className="titlePic" />
 
 A través del proc. macro `#[ink::trait_definition]` ahora es posible definir tu propia trait definición que se pueden implementar en los ink! smart contracts.
 

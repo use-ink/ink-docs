@@ -1,7 +1,10 @@
 ---
 title: "#[ink(anonymous)]"
 slug: /macros-attributes/anonymous
+hide_title: true
 ---
+
+<img src="/img/title/text/anon.svg" className="titlePic" />
 
 Applicable to ink! events.
 
