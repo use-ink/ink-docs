@@ -43,13 +43,13 @@ module.exports = {
           dropdownActiveClassDisabled: true,
         },
         {
-          to: '../',
+          href: '../',
           label: 'English',
           position: 'right',
           target: '_self',
         },
         {
-          to: '/es/',
+          href: '/es/',
           label: 'Spanish',
           position: 'right',
           target: '_self',
