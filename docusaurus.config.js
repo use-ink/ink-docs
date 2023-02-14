@@ -43,17 +43,22 @@ module.exports = {
           dropdownActiveClassDisabled: true,
         },
         {
-          href: '../',
-          label: 'English',
+          type: 'dropdown',
+          label: 'Language',
           position: 'right',
-          target: '_parent',
-        },
-        {
-          href: '/es/',
-          label: 'Spanish',
-          position: 'right',
-          target: '_parent',
-        },
+          items: [
+            {
+              href: '../',
+              label: 'English',
+              target: '_parent',
+            },
+            {
+              href: '/es/',
+              label: 'Spanish',
+              target: '_parent',
+            },
+          ]
+        }
       ],
     },
   },
