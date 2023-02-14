@@ -49,11 +49,11 @@ module.exports = {
           items: [
             {
               label: 'English',
-              href: 'https://use.ink/',
+              to: '/'
             },
             {
               label: 'Spanish',
-              href: '/es/'
+              to: '/es/'
             },
           ],
         },
