@@ -37,7 +37,7 @@ export const Faucet = () => {
       }
     } catch (e) {
       console.error(e)
-      setError("Hmm... something went wrong.")
+      setError("Hmm... algo salió mal.")
     } finally {
       setInProgress(false)
     }
@@ -45,7 +45,7 @@ export const Faucet = () => {
 
   return (
     <div className="faucetContainer">
-      <h3 className="faucetTitle">Get Testnet Tokens</h3>
+      <h3 className="faucetTitle">Obten Tokens para la Testnet</h3>
       <div className="faucetPlantContainer">
         <img src="/img/plantOne.svg" alt="illustration of a sea grass plant" className="faucetPlantOne" />
         <img src="/img/plantTwo.svg" alt="illustration of a sea plant" className="faucetPlantTwo" />
@@ -55,7 +55,7 @@ export const Faucet = () => {
       </div>
       <form className="withHero">
         <fieldset>
-          <label htmlFor="address-input">Your SS58 Address</label>
+          <label htmlFor="address-input">Tu dirección SS58</label>
           <input
             className="addressInput"
             id="address-input"
@@ -80,17 +80,17 @@ export const Faucet = () => {
             await handleRequest();
           }}
         >
-          {inProgress ? 'Requesting...' : 'Request' }
+          {inProgress ? 'Solicitando...' : 'Solicitado' }
         </button>
       </form>
 
       <div className="faucetResultContainer">
         {hash && (
           <>
-            <p>Your funds have been sent!</p>
+            <p>Sus fondos han sido enviados!</p>
             <p className="sm">
-              <a href={`https://rococo.subscan.io/extrinsic/${hash}`} target="_blank">Click here</a>{' '}
-              to view the transaction.
+              <a href={`https://rococo.subscan.io/extrinsic/${hash}`} target="_blank">Haga clic aquí</a>{' '}
+              para ver la transacción.
             </p>
           </>
         )}
