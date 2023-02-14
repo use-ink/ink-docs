@@ -43,19 +43,16 @@ module.exports = {
           dropdownActiveClassDisabled: true,
         },
         {
-          type: 'dropdown',
-          label: 'Language',
+          to: '../',
+          label: 'English',
           position: 'right',
-          items: [
-            {
-              label: 'English',
-              to: '/'
-            },
-            {
-              label: 'Spanish',
-              to: '/es/'
-            },
-          ],
+          target: '_self',
+        },
+        {
+          to: '/es/',
+          label: 'Spanish',
+          position: 'right',
+          target: '_self',
         },
       ],
     },
