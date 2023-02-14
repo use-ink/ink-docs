@@ -31,6 +31,7 @@
       "linebreak-style": ["error", "unix"],
       "quotes": ["error", "single", { "avoidEscape": true }]
     },
+    "ignorePatterns":["tailwind.config.js"],
     "settings": {
       "react": {
         "version": "detect"

@@ -35,6 +35,7 @@
       "i18n",
       "docs",
       "src",
+      "tailwind.confg.js"
     ],
     "exclude": [
       "node_modules"
