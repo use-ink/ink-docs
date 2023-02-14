@@ -4,7 +4,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 const RECAPTCHA_SITE_KEY = '6LdU5kckAAAAANktvvAKJ0auYUBRP0su94G7WXwe'
 const FAUCET_URL = 'https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip'
 
-export const Faucet = () => {
+const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
   const [address, setAddress] = useState('')
   const [hash, setHash] = useState<string>()
