@@ -1,7 +1,12 @@
 ---
 title: Chain Environment Types
 slug: /basics/chain-environment-types
+hide_title: true
 ---
+
+<img src="/img/title/environment.svg" className="titlePic" />
+
+# Chain Environment Types
 
 :::caution
 ¡ Si escribes un contrato para una cadena que no usa los tipos Substrate
@@ -10,7 +15,9 @@ el contrato!
 :::
 
 ink! define un trait [`Environment`](https://paritytech.github.io/ink/ink_env/trait.Environment.html)
-y también una implementación por defecto del trait - [`DefaultEnvironment`](https://paritytech.github.io/ink/ink_env/enum.DefaultEnvironment.html): 
+y también una implementación por defecto del trait - [`DefaultEnvironment`](https://paritytech.github.io/ink/ink_env/enum.DefaultEnvironment.html). 
+
+Estos son los tipos que utiliza ink! si no se toman medidas explícitas:
 
 ```rust
 /// Los tipos fundamentales de la configuración por defecto.
