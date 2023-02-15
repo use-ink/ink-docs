@@ -86,13 +86,12 @@ export const Faucet = () => {
 
       <div className="faucetResultContainer">
         {hash && (
-          <>
-            <p>Sus fondos han sido enviados!</p>
-            <p className="sm">
-              <a href={`https://rococo.subscan.io/extrinsic/${hash}`} target="_blank">Haga clic aquí</a>{' '}
-              para ver la transacción.
-            </p>
-          </>
+          <button className="faucet-success w-full border-none" onClick={() => window.open(`https://rococo.subscan.io/extrinsic/${hash}`, '_blank')}>
+            <div className="faucet-success-ic">
+              <p className="faucet-success-msg">Sus fondos han sido enviados!</p>
+              <p className="faucet-success-cta">Haga clic aquí para ver la transacción.</p>
+            </div>
+          </button>
         )}
         {error && <p className="error">{error}</p>}
       </div>
