@@ -7,6 +7,9 @@ Run it locally via
 ```bash
 yarn
 yarn start
+
+# For the Spanish page, will be available at http://localhost:8080/es/.
+yarn start --locale es
 ```
 
 We want to provide comprehensive documentation for anything you need to work with ink! here.
