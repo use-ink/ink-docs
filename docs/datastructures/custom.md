@@ -20,7 +20,7 @@ trait, so it can be SCALE
 and
 [`decoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Decode.html).
 Additionally, the traits
-[`StorageLayout`](https://docs.rs/ink_storage/latest/ink_storage/traits/trait.StorageLayout.html)
+[`StorageLayout`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.StorageLayout.html)
 and [`TypeInfo`](https://docs.rs/scale-info/2.3.1/scale_info/trait.TypeInfo.html)
 are required as well. But don't worry, usually these traits can just be derived:
 
