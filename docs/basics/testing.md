@@ -61,7 +61,7 @@ You then have fine-grained control over how a contract is called;
 for example you can influence the block advancement, the value transferred to it,
 by which account it is called, which storage it is run with, etc..
 
-See the [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) contract on how to utilize those or [the documentation](https://docs.rs/ink/4.0.0-rc/ink/attr.test.html) for details.
+See the [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) contract on how to utilize those or [the documentation](https://docs.rs/ink/4.0.0/ink/attr.test.html) for details.
 
 At the moment there are some known limitations to our off-chain environment,
 and we are working on making it behave as close to the real chain environment

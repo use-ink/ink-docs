@@ -95,7 +95,7 @@ Estas limitaciones existen debido a las complejidades técnicas, sin embargo muc
 Marca definiciones trait para ink! como ink! trait definiciones especiales.
 
 Hay algunas restricciones para las definiciones trait de ink! que este macro comprueba. Además las definiciones trait de ink! son necesarias para 
-tener una estructura especializada y que la principial macro [`#[ink::contract]`](https://docs.rs/ink/4.0.0-rc/ink/attr.contract.html) pueda generar correctamente código para su implementación.
+tener una estructura especializada y que la principial macro [`#[ink::contract]`](https://docs.rs/ink/4.0.0/ink/attr.contract.html) pueda generar correctamente código para su implementación.
 
 # Ejemplo: Definición
 
