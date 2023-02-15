@@ -52,13 +52,35 @@
 
 .faucetResultContainer {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
-.faucetResultContainer > p {
+.faucet-success {
+  background-color: var(--warning-500);
+  border-radius: 999px;
+  padding: 8px;
+}
+
+.faucet-success-ic {
+  border-radius: 999px;
   text-align: center;
-  padding: 0;
+  padding: 8px;
+  border: solid 3px var(--warning-700);
+}
+
+.faucet-success-msg {
+  margin: 0 0 4px;
+  color: var(--ifm-color-primary-medium);
+}
+
+.faucet-success-cta {
+  color: white;
   margin: 0;
+}
+
+.faucet-success-ic p {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .addressInput {
@@ -79,6 +101,11 @@
     font-size: 36px;
     margin-bottom: -28px;
   }
+
+  .faucet-success-ic p {
+    font-size: 16px;
+    font-weight: 500;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -95,7 +122,7 @@
     display: none;
   }
 
-.faucetPlantContainer {
-  margin-bottom: 0;
-}
+  .faucetPlantContainer {
+    margin-bottom: 0;
+  }
 }

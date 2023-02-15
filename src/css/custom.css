@@ -22,6 +22,8 @@
   --ifm-toc-border-color: transparent;
   --primary-deep-500: #281f70;
   --secondary-500: #ed6d89;
+  --warning-500: #ffc32b;
+  --warning-700: #e3961b;
  }
 
 h1 {
@@ -52,6 +54,14 @@ input {
 }
 
 input:focus-visible {
+  border: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.border-none {
   border: none;
 }
 
@@ -109,17 +119,13 @@ form > button {
   transition: 0.3s;
 }
 
-form > button:hover {
+button:hover {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.9;
+  transition: ease-in-out;
 }
 
-form > button:disabled {
-  opacity: 0.8;
-  color: var(--ifm-color-primary-light);
-}
-
-form > button:disabled, button:hover {
+button:disabled {
   cursor: not-allowed;
   opacity: 0.8;
 }
