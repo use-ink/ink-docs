@@ -23,7 +23,7 @@ The following schema depicts the storage which is exposed
 to ink! by the contracts pallet:
 
 <div class="schema">
-    <img src="/img/kv.svg" alt="Storage Organization: Layout" />
+    <img src="/img/es/kv.svg" alt="Storage Organization: Layout" />
 </div>
 
 Storage data is always encoded with the
@@ -72,7 +72,7 @@ struct in which that field appears also
 non-`Packed`, preventing it from being eagerly loaded during arbitrary storage operations:
 
 <div class="schema">
-    <img src="/img/storage-layout.svg" alt="Storage Organization: Layout with a Lazy field" />
+    <img src="/img/es/storage-layout.svg" alt="Storage Organization: Layout with a Lazy field" />
 </div>
 
 Note that in above illustration, the key of `0x12345678` just serves as an example; we'll 
