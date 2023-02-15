@@ -215,11 +215,6 @@ form > button:disabled, button:hover {
   margin-right: 15px;
 }
 
-.admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module svg {
-  width: 2.2em !important;
-  height: 2.2em !important;
-}
-
 .translateTodo {
   color: red !important;
 }
