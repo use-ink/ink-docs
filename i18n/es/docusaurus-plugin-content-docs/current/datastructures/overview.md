@@ -10,8 +10,8 @@ hide_title: true
 
 El crate `ink_storage` actúa como la biblioteca de almacenamiento estándar para los smart contracts ink!.
 En este momento proporciona dos primitivas para interactuar con el storage,
-[`Mapping`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Mapping.html)
-y [`Lazy`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Lazy.html).
+[`Mapping`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html)
+y [`Lazy`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Lazy.html).
 
 `Mapping` es un mapeo de pares clave-valor directamente en el storage del contrato. 
 Es muy similar a tablas hash tradicionales y comparable con el tipo `mapping` que ofrece Solidity.

@@ -96,7 +96,7 @@ Marks trait definitions to ink! as special ink! trait definitions.
 
 There are some restrictions that apply to ink! trait definitions that
 this macro checks. Also ink! trait definitions are required to have specialized
-structure so that the main [`#[ink::contract]`](https://docs.rs/ink/4.0.0-rc/ink/attr.contract.html) macro can
+structure so that the main [`#[ink::contract]`](https://docs.rs/ink/4.0.0/ink/attr.contract.html) macro can
 properly generate code for its implementations.
 
 # Example: Definition
