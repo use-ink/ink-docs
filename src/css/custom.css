@@ -237,3 +237,10 @@ button:disabled {
 .primary {
   color: var(--ifm-color-primary);
 }
+
+.chain {
+  height: 50px !important;
+  max-width: 200px !important;
+  margin: 25px 0px 25px 0px;
+  background-color: #1b1b1d;
+}
