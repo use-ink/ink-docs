@@ -6,11 +6,38 @@ hide_title: true
 
 <img src="/img/title/cross-contract.svg" className="titlePic" />
 
-# Cross-Contract Calling
+# Cross-Contract Calls
 
-In ink! contracts it is possible to call ink! messages and ink! constructors. So ink! constructors allow
-delegation and ink! messages can easily call other ink! messages.
+In ink! contracts it is possible to call ink! messages and ink! constructors. So ink!
+constructors allow delegation and ink! messages can easily call other ink! messages.
 Given another ink! contract like, we can call any of its functions.
+
+There are two approaches to cross-contract calls in ink!:
+2. Contract references (i.e `ContractRef`)
+3. Builders (i.e `CreateBuilder` and `CallBuilder`)
+
+A short tl;dr of the trade-offs:
+
+ContractRef Pros
+- Type safe
+- Calls are generated correctly for you
+
+ContractRef Cons
+- Need to instantiate contract yourself
+    - NANDO: Double check to see if we can use `code_hash`es
+
+CallBuiler Pros
+- More flexible call interface
+- Can tune call parameters more finely
+- Ability to use `delegate_call`
+    - NANDO: Double check if we can do this from `ContractRef`s
+- Can use it to call non-ink! contracts (e.g contracts compiled with Solang)
+
+CallBuiler Cons
+- Not type safe
+- Harder to use
+
+## Contract References
 
 See our [`delegator example contract`](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs) 
 for an elaborate example which uses cross-contract calling.
@@ -102,3 +129,129 @@ pub mod other_contract {
     }
 }
 ```
+
+## Builders
+
+The `CreateBuilder` and `CallBuilder` offer low-level, flexible interfaces for performing
+cross-contract calls. The `CreateBuilder` allows you to instantiate already uploaded
+contracts, and the `CallBuilder` allows you to call messages on instantiated contracts.
+
+### CreateBuilder
+
+- Still need the `ContractRef` for the type 
+    - Or is this just for `build_create` helper?
+    - Yeah the `CreateBuilder` still needs a `ContractRef` generic
+
+The `CreateBuilder` allows you to **instantiate** a contract. Note that you'll still need
+this contract to have been previously uploaded. 
+
+_For a refresher on the different between `upload` and `instantiate` see [here](TODO)._
+
+In order to instantiate a contract you need a reference to your contract, just like in
+[previous section](TODO).
+
+```rust
+/// let my_contract: MyContractRef = build_create::<MyContractRef>()
+///     .code_hash(Hash::from([0x42; 32]))
+```
+
+The `CreateBuilder::instantiate()` method returns a contract reference, which you can
+then use to call messages like in the [previous section](TODO).
+
+### CallBuilder
+The `CallBuilder` allows you to call messages on already instantiated contracts.
+
+In case you need a refresher in how to instantiate a contract see [here](TODO).
+
+#### CallBuilder: Call
+Below is an example of how to call a contract using the `CallBuilder`. We will:
+- make a regular `Call`
+- to a contract at the address `0x42...`
+- with no gas limit specified (automatic)
+- sending `10` units of transferred value to the contract instance
+- calling the `flip` message
+- with the following arguments
+    - a `u8` with value `42`
+    - a `bool` with value `true`
+    - an array of 32 `u8` with value `0x10`
+- and we expect it to return a `T`
+
+```rust
+build_call::<DefaultEnvironment>()
+    .call(AccountId::from([0x42; 32]))
+    .gas_limit(5000)
+    .transferred_value(10)
+    .exec_input(
+        ExecutionInput::new(Selector::new([0xDE, 0xAD, 0xBE, 0xEF]))
+            .push_arg(42u8)
+            .push_arg(true)
+            .push_arg(&[0x10u8; 32])
+    )
+    .returns::<()>()
+    .invoke();
+```
+
+Note that we can also specify the selector bytes directly, e.g `Selector::new([0xAB, ...])`
+
+Note: 
+arguments will be encoded in the order in which they are provided to the `CallBuilder`.
+This means that they should match the order (and type) they appear in the function
+signature.
+
+You will not be able to get any feedback about this at at compile time! You will only
+find out your call failed at runtime.
+
+NANDO: What about streamlining methods? E.g `call()` 
+
+#### CallBuilder: Delegate Call
+NANDO: If this is just the codehash, I guess this doesn't need to be `instnatiated` does
+it?
+
+
+You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics. If
+you need a refresher on what delegate calls are, see here [TODO]().
+
+Below is an example of how to delegate call a contract using the `CallBuilder`. We will:
+- make a `DelegateCall`
+- to a contract with a `code_hash` (not contract address!) of `0xabc`
+- with no gas limit specified (automatic)
+- sending `10` units of transferred value to the contract instance
+- calling the `flip` message
+- with the following arguments
+    - a `u8` with value `42`
+    - a `bool` with value `true`
+    - an array of 32 `u8` with value `0x10`
+- and we expect it to return a `T`
+
+```rust
+let my_return_value: i32 = build_call::<DefaultEnvironment>()
+    .delegate(<DefaultEnvironment as Environment>::Hash::CLEAR_HASH)
+    .exec_input(
+        ExecutionInput::new(Selector::new([0xDE, 0xAD, 0xBE, 0xEF]))
+            .push_arg(42u8)
+            .push_arg(true)
+            .push_arg(&[0x10u8; 32])
+    )
+    .returns::<i32>()
+    .invoke();
+```
+
+### Builder Error Handling
+The `CreateBuilder` and the `CallBuilder` both offer error with the `try_instantiate()`
+and `try_invoke()` methods respectively.
+
+These allow contract developers to handle two types of errors:
+1. Errors from the underlying execution environment (e.g the Contracts pallet)
+2. Error from the programming language (e.g `LangError`s)
+
+See the documentation for `try_instantiate`, `try_invoke`, `ink::env::Error` and
+`ink::LangError` for more details on proper error handling.
+
+
+
+Note/Tip: Because the `CallBuilder` operates requires only a contract's `AccountId` and
+message `selector`, this means we can all Solidity contracts compiled using the
+[Solang](TODO) compiler and deployed to a chain which supports the `contracts-pallet.`
+
+The reverse, calls from Solidity to ink! are **not** supported by Solang, but there are
+plans to implement this in the future.
