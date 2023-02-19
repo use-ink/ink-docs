@@ -1,10 +1,8 @@
 ---
 title: Metadata
 hide_title: true
-slug: /metadata
+slug: /basics/metadata
 ---
-
-TODO: Should we change the slug here to `/basics/metadata`?
 
 <img src="/img/title/metadata.svg" className="titlePic" />
 
