@@ -4,6 +4,8 @@ hide_title: true
 slug: /metadata
 ---
 
+TODO: Should we change the slug here to `/basics/metadata`?
+
 <img src="/img/title/metadata.svg" className="titlePic" />
 
 # ink! Metadata
@@ -344,77 +346,3 @@ This is an _optional_ field used to add user-defined metadata. Some examples of 
 you may want to include here:
 - `moon_phase`: Phase of the moon during which the smart contract works.
 - `favorite_blockchain`: The favorite blockchain of the contract authors (answer: Polkadot!).
-
-## Selector Calculations
-TODO: Probably don't want this to live on the metadata page actually, can be its own page
-somewhere in Basics
-
-Selectors in ink! are a language agnostic way of identifying messages. They are four-byte
-hexadecimal strings which look something like: `0x633aa551`.
-
-You can find the selector of an ink! message in your contract metadata by looking for the
-`selector` field of the message you're interested in.
-
-Here is an example of how you can grab the message name and selector from your contract
-metadata using `jq`.
-
-```
-cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
-"flip: 0x633aa551"
-```
-
-If you do not have access to a contract's metadata, you can also calculate it yourself.
-The algorithm ink! uses is fairly straightforward.
-1. Get the _just_ name of the message
-2. Compute the Blake2 hash of the name
-3. Take the first four bytes of the hash as the selector
-
-Let's walk through a short example of what this looks like in practice. Let's consider the
-following message:
-
-```rust
-#[ink(message)]
-fn forbinate(&mut self, for: bool, bi: u32, nate: AccountId) -> bool {
-    unimplemented!()
-}
-```
-
-To calculate the selector we:
-1. Grab the name of the message, `forbinate`
-2. Compute `blake2("forbinate") = 0x00000todo`
-3. Grab the first four bytes, `0x0000todo`
-
-These rules change a bit if you define any messages using the `#[ink::trait_defintion]`
-macro. For our first step, instead of taking _just_ the message name, we now also add the
-_trait name_ to the selector calculation.
-
-```
-cat target/ink/trait-flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
-"Flip::flip: 0xaa97cade"
-```
-
-Let's see what this would look like in practice:
-
-```rust
-#[ink::trait_definition]
-pub trait Forbinate {
-    fn forbinate(&mut self, for: bool, bi: u32, nate: AccountId) -> bool;
-}
-
--- snip --
-
-impl Forbinate for Contract {
-    #[ink(message)]
-    fn forbinate(&mut self, for: bool, bi: u32, nate: AccountId) -> bool {
-        unimplemented!()
-    }
-}
-```
-
-To calculate the selector we:
-1. Grab the name of the trait **and** the name of the message, `Forbinate::forbinate`
-2. Compute `blake2("Forbinate::forbinate") = 0x00000todo`
-3. Grab the first four bytes, `0x00000todo`
-
-If you need a resource for doing the `blake2` computation for you, you can use [Shawn's
-Substrate Utility tool](TODO).
