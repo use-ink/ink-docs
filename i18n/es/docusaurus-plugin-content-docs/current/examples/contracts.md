@@ -9,7 +9,7 @@ TODO: Translate to Spanish.
 Please see [this file](https://github.com/paritytech/ink-docs/blob/7a62015b4ea9c020a175404017bb5492beb24328/i18n/es/docusaurus-plugin-content-docs/version-4.0.0-alpha.1/examples/overview.md), some content can be recycled.
 :::
 
-The ink! repository contains an <a href="https://github.com/paritytech/ink/tree/master/examples">examples folder</a>
+The ink! repository contains an <a href="https://github.com/paritytech/ink-examples/tree/master">examples folder</a>
 in which you find a number of examples written in ink!.
 Some of the most interesting ones:
 

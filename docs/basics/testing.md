@@ -163,7 +163,7 @@ async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
 ```
 
 You can run the above test by going to the `flipper` folder in
-[the ink! examples directory](https://github.com/paritytech/ink/tree/master/examples).
+[the ink! examples directory](https://github.com/paritytech/ink-examples/tree/master).
 
 Before you can run the test, you have to start a Substrate
 node with `pallet-contracts` in the background.
