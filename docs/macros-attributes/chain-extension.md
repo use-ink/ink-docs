@@ -23,7 +23,7 @@ With chain extensions you can expose parts of your runtime logic
 to smart contract developers.
 
 :::note
-The ink! repository contains [the `rand-extension` example](https://github.com/paritytech/ink-examples/tree/master/rand-extension).
+The ink! repository contains [the `rand-extension` example](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
 This is a complete example of a chain extension implemented in both ink! and Substrate.
 :::
 

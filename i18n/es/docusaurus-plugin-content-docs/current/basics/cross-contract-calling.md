@@ -13,7 +13,7 @@ llamar fácilmente a otros mensajes ink!
 Dado otro contrato ink!, es posible llamar a cualquiera de sus funciones.
 
 
-Vea nuestro [`delegator contrato de ejemplo`](https://github.com/paritytech/ink-examples/blob/master/delegator/lib.rs) 
+Vea nuestro [`delegator contrato de ejemplo`](https://github.com/paritytech/ink-examples/blob/main/delegator/lib.rs) 
 para ver un elaborado ejemplo que utiliza llamadas cross-contract.
 
 ### Cómo funciona

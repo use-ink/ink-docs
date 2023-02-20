@@ -51,7 +51,7 @@ mod erc20 {
 }
 ```
 
-Vea nuestro [`ERC20 contrato de ejemplo`](https://github.com/paritytech/ink-examples/blob/master/erc20/lib.rs) 
+Vea nuestro [`ERC20 contrato de ejemplo`](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) 
 para un elaborado ejemplo que utiliza eventos.
 
 ## Definición de Eventos
