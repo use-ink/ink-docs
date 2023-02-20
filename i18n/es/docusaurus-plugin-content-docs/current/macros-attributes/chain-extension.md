@@ -31,7 +31,7 @@ to smart contract developers.
 </div>
 
 :::note
-El repositorio ink! contiene [el ejemplo `rand-extension` ](https://github.com/paritytech/ink/tree/master/examples/rand-extension).
+El repositorio ink! contiene [el ejemplo `rand-extension` ](https://github.com/paritytech/ink-examples/tree/master/rand-extension).
 Este es un ejemplo completo de una extensión de una cadea implementada con ambos ink! y Substrate.
 :::
 

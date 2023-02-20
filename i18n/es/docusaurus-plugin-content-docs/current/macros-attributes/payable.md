@@ -60,4 +60,4 @@ pub fn pay_me(&self) {
 }
 ```
 
-Mira el contrato [`examples/contract-transfer`](https://github.com/paritytech/ink/blob/master/examples/contract-transfer/lib.rs) para un ejemplo más externo.
+Mira el contrato [`examples/contract-transfer`](https://github.com/paritytech/ink-examples/blob/master/contract-transfer/lib.rs) para un ejemplo más externo.
