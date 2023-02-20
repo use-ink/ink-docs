@@ -75,9 +75,9 @@ impl Frobinate for Contract {
 ```
 
 To calculate the selector we:
-1. Grab the name of the trait **and** the name of the message, `Forbinate::frobinate`
-2. Compute `BLAKE2("Forbinate::frobinate") = 0x153eee2e7d585abbfed235e2c10c11dc4f3ab1ce0c2ca033fa065fd1be87d83f`
-3. Grab the first four bytes, `0x153eee2e`
+1. Grab the name of the trait **and** the name of the message, `Frobinate::frobinate`
+2. Compute `BLAKE2("Frobinate::frobinate") = 0x8915412ad772b2a116917cf75df4ba461b5808556a73f729bce582fb79200c5b`
+3. Grab the first four bytes, `0x8915412a`
 
 :::tip
 
