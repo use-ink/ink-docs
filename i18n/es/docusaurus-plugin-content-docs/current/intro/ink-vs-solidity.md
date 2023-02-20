@@ -78,7 +78,7 @@ TODO
 
 Run the following command to generate the skeleton for an ink! contract.
 The command will set up the boilerplate code for ink!'s "Hello, World!"
-(the [`flipper`](https://github.com/paritytech/ink/tree/master/examples/flipper) contract)).
+(the [`flipper`](https://github.com/paritytech/ink-examples/tree/master/flipper) contract)).
 
 ```
 cargo contract new <contract-name>
@@ -212,7 +212,7 @@ A few key differences are:
 - Double check all `.unwrap()`s performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
 - Run the contracts node with `substrate-contracts-node --dev -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
 - When passing parameters to a helper, it is recommended to pass references (even for primitives) as Wasm is more efficient with references.
-  For example (see [erc20](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) example):
+  For example (see [erc20](https://github.com/paritytech/ink-examples/blob/master/erc20/lib.rs) example):
 
 ```rust
 /// Returns the account balance for the specified `owner`.
@@ -697,7 +697,7 @@ use erc20::Erc20Ref;
 There are two methods to setup the other contract.
 
 1. Instantiate the cross-called-contract in the main contract's constructor.  
-   See [here](https://ink.substrate.io/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink/tree/master/examples/delegator) for an example.
+   See [here](https://ink.substrate.io/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/master/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
 
@@ -756,7 +756,7 @@ impl<'a> scale::Encode for CallInput<'a> {
 
 // ...
 
-// see: https://github.com/paritytech/ink/blob/master/examples/multisig/lib.rs#L535
+// see: https://github.com/paritytech/ink-examples/blob/master/multisig/lib.rs#L535
 fn invoke_transaction(
     &mut self,
     callee: AccountId,

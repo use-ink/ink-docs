@@ -44,7 +44,7 @@ let contract = MyContract::my_constructor(a, b);
 Los mensajes se pueden llamar simplemente en la instancia devuelta como si `MyContract::my_constructor` devolviese
 una instancia `Self`.
 
-Vea el [ejemplo flipper](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
+Vea el [ejemplo flipper](https://github.com/paritytech/ink-examples/blob/master/flipper/lib.rs).
 
 
 ## Off-chain Testing
@@ -62,7 +62,7 @@ por ejemplo puedes influir en el avance del bloque, el valor transferido al mism
 por qué cuenta se llama, con qué almacenamiento se ejecuta, etc.
 
 
-Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink/4.0.0/ink/attr.test.html) para más detalles.
+Vea el contrato [`examples/erc20`](https://github.com/paritytech/ink-examples/blob/master/erc20/lib.rs) csobre como utilizarlo o [la documentación](https://docs.rs/ink/4.0.0/ink/attr.test.html) para más detalles.
 
 En este momento hay algunas limitaciones conocidas para nuestro entorno off-chain y estamos trabajando
 en hacer que el comportamiento sea lo más cercano posible a un entorno de una red real.
@@ -129,7 +129,7 @@ puedes correr un nodo que contiene una instantánea de una red en vivo.
 ### Ejemplo
 
 El código de ejemplo a continuación ilustra un test básico E2E para el
-[ejemplo flipper](https://github.com/paritytech/ink/blob/master/examples/flipper/lib.rs).
+[ejemplo flipper](https://github.com/paritytech/ink-examples/blob/master/flipper/lib.rs).
 
 ```rust
 #[ink_e2e::test]
