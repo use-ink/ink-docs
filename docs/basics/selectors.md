@@ -26,7 +26,7 @@ cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
 If you do not have access to a contract's metadata, you can also calculate it yourself.
 
 The algorithm ink! uses is fairly straightforward:
-1. Get the _just_ name of the constructor or message
+1. Get _just_ the name of the constructor or message
 2. Compute the `BLAKE2` hash of the name
 3. Take the first four bytes of the hash as the selector
 
