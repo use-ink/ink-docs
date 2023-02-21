@@ -784,7 +784,7 @@ fn invoke_transaction(
 
 ```
 
-Note: the `function_selector` bytes can be found in the generated `target/ink/metadata.json`.
+Note: the `function_selector` bytes can be found in the generated `target/ink/<contract-name>.json`.
 
 ## Limitations of ink! v3
 

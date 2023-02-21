@@ -119,7 +119,7 @@ the example and run:
 cargo contract build
 ```
 
-As a result you'll get a file `target/<example-name>.wasm` file, a `metadata.json` file
+As a result you'll get a file `target/<example-name>.wasm` file, a `<example-name>.json` file
 and a `<example-name>.contract` file in the `target/` folder of your contract.
 The `.contract` file combines the Wasm and metadata into one file and needs to be used
 when deploying the contract.
