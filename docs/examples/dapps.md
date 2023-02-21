@@ -19,8 +19,8 @@ Two popular libraries for building frontends are:
 
 ## INK!athon
 
-INK!athon is a f full-stack dApp boilerplate project consisting of
-an ink! smart contract and a React frontend using the
+[INK!athon](https://inkathon.xyz/) is a full-stack dApp boilerplate project consisting
+of an ink! smart contract and a React frontend using the
 [useInkathon](https://github.com/scio-labs/use-inkathon) hooks library.
 
 ## link!
