@@ -32,6 +32,7 @@ module.exports = {
       "basics/reading-values",
       "basics/mutating-values",
       "basics/events",
+      "basics/selectors",
       "basics/trait-definitions",
       "basics/cross-contract-calling",
       "basics/upgradeability",
