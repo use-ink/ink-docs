@@ -23,7 +23,7 @@ es que el fichero `.contract` también contiene el binario Wasm de tu contrato.
 
 :::
 
-## <contract-nombre>.json
+## `<contract-nombre>.json`
 Los metadatos se definen con las siguietes claves **requeridas**:
 - `source`: Información sobre el código Wasm.
 - `contract`: Metadatos sobre el contrato.
