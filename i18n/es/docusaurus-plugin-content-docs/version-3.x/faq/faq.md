@@ -137,7 +137,7 @@ you compile a contract in `--release` mode.
 1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
   For example, to have only errors and debug output show up for the `substrate-contracts-node`: 
   ```
-  substrate-contracts-node --dev --tmp -lerror,runtime::contracts=debug
+  substrate-contracts-node --dev -lerror,runtime::contracts=debug
   ```
 
 __Important: Debug output is only printed for RPC calls or off-chain tests ‒ not for transactions!__
