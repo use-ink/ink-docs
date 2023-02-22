@@ -24,10 +24,10 @@ target
   └─ ink
     └─ flipper.contract
     └─ flipper.wasm
-    └─ metadata.json
+    └─ flipper.json
 ```
 
-Let's take a look at the structure of the `metadata.json`:
+Let's take a look at the structure of the `flipper.json`:
 
 ```json
 {

@@ -1,7 +1,12 @@
 ---
 title: Chain Environment Types
 slug: /basics/chain-environment-types
+hide_title: true
 ---
+
+<img src="/img/title/environment.svg" className="titlePic" />
+
+# Chain Environment Types
 
 :::caution
 If you write a contract for a chain that deviates from the default
@@ -10,7 +15,9 @@ Substrate types, you have to make sure to configure that chain's
 :::
 
 ink! defines a trait [`Environment`](https://paritytech.github.io/ink/ink_env/trait.Environment.html)
-and also a default implementation of that trait ‒ [`DefaultEnvironment`](https://paritytech.github.io/ink/ink_env/enum.DefaultEnvironment.html):
+and also a default implementation of that trait ‒ [`DefaultEnvironment`](https://paritytech.github.io/ink/ink_env/enum.DefaultEnvironment.html).
+
+These are the types that ink! uses, if no explicit steps are taken:
 
 ```rust
 /// The fundamental types of the default configuration.

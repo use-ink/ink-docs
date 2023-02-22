@@ -11,7 +11,7 @@ Through the `#[ink::trait_definition]` proc. macro it is now possible to define 
 This allows to define shared smart contract interfaces to different concrete implementations.
 Note that this ink! trait definition can be defined anywhere, even in another crate!
 
-See our [`ERC20-Trait example contract`](https://github.com/paritytech/ink/blob/master/examples/trait-erc20/lib.rs) 
+See our [`ERC20-Trait example contract`](https://github.com/paritytech/ink-examples/blob/main/trait-erc20/lib.rs) 
 for an elaborate example which uses trait definitions.
 
 ### Example
@@ -96,7 +96,7 @@ Marks trait definitions to ink! as special ink! trait definitions.
 
 There are some restrictions that apply to ink! trait definitions that
 this macro checks. Also ink! trait definitions are required to have specialized
-structure so that the main [`#[ink::contract]`](https://docs.rs/ink/4.0.0-rc/ink/attr.contract.html) macro can
+structure so that the main [`#[ink::contract]`](https://docs.rs/ink/4.0.0/ink/attr.contract.html) macro can
 properly generate code for its implementations.
 
 # Example: Definition

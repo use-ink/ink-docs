@@ -31,7 +31,7 @@ extent, the storage API works similar to a traditional key-value database.
 ## Packed vs Non-Packed layout
 
 Types that can be stored entirely under a single storage cell are considered
-[`Packed`](https://docs.rs/ink_storage_traits/4.0.0-rc/ink_storage_traits/trait.Packed.html).
+[`Packed`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.Packed.html).
 By default, ink! tries to store all storage struct fields under a single storage cell.
 Consequentially, with a `Packed` storage layout, any message interacting with the contract
 storage will always need to operate on the entire contract storage struct.
@@ -65,7 +65,15 @@ on demand, with the
 [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive.
 Wrapping any storage field inside a `Lazy` struct makes the storage
 struct in which that field appears also
-non-`Packed`, preventing it from being eagerly loaded during arbitrary storage operations.
+non-`Packed`, preventing it from being eagerly loaded during arbitrary storage operations:
+
+<div class="schema">
+    <img src="/img/storage-layout.svg" alt="Storage Organization: Layout with a Lazy field" />
+</div>
+
+Note that in above illustration, the key of `0x12345678` just serves as an example; we'll 
+learn more about storage key calculation 
+[later in this chapter](/datastructures/storage-layout#manual-vs-automatic-key-generation).
 
 The following example demonstrates how we can solve the problem introduced in the above
 section. You'll notice that for the lazily loaded storage field, we now work with getters
@@ -124,10 +132,10 @@ large or sparse arrays on contract storage, consider using a `Mapping` instead.
 ## Manual vs. Automatic Key Generation
 
 By default, keys are calculated automatically for you, thanks to the
-[`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0-rc/ink_storage_traits/struct.AutoKey.html)
+[`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.AutoKey.html)
 primitive. They'll be generated at compile time and ruled out for conflicts.
 However, for non-`Packed` types like `Lazy` or the `Mapping`, the
-[`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0-rc/ink_storage_traits/struct.ManualKey.html)
+[`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.ManualKey.html)
 primitive allows manual control over the storage key of a field like so:
 
 ```rust

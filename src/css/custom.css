@@ -13,17 +13,29 @@
   --ifm-color-primary-darkest: #5a007e;
   --ifm-color-primary-medium: #975cd6;
   --ifm-color-primary-light: #bd83fb;
+  --ifm-color-primary-lighter: #bd83fb;
   --ifm-color-primary-lightest: #d7b5ff;
   --ifm-code-font-size: 90%;
   --ifm-font-family-base: 'Nunito Sans', sans-serif;
   --ifm-heading-font-weight: 400;
   --ifm-global-shadow-lw: transparent;
   --ifm-toc-border-color: transparent;
-  --primary-deep-500: #281f70
+  --primary-deep-500: #281f70;
+  --secondary-500: #ed6d89;
+  --warning-500: #ffc32b;
+  --warning-700: #e3961b;
  }
 
 h1 {
   font-size: var(--ifm-h1-font-size) !important;
+}
+
+.error {
+  color: var(--secondary-500);
+}
+
+.sm {
+  font-size: 12px;
 }
 
 label {
@@ -43,7 +55,14 @@ input {
 
 input:focus-visible {
   border: none;
-  outline: solid 4px var(--primary-deep-500);
+}
+
+.w-full {
+  width: 100%;
+}
+
+.border-none {
+  border: none;
 }
 
 input::-webkit-input-placeholder { /* Edge */
@@ -100,17 +119,13 @@ form > button {
   transition: 0.3s;
 }
 
-form > button:hover {
+button:hover {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.9;
+  transition: ease-in-out;
 }
 
-form > button:disabled {
-  opacity: 0.8;
-  color: var(--ifm-color-primary-light);
-}
-
-form > button:disabled, button:hover {
+button:disabled {
   cursor: not-allowed;
   opacity: 0.8;
 }
@@ -206,15 +221,34 @@ form > button:disabled, button:hover {
   margin-right: 15px;
 }
 
-.admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module svg {
-  width: 2.2em !important;
-  height: 2.2em !important;
-}
-
 .translateTodo {
   color: red !important;
 }
 
 .titlePic {
   margin-top: 15px;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+}
+
+.primary {
+  color: var(--ifm-color-primary);
+}
+
+.chain {
+  height: 50px !important;
+  max-width: 200px !important;
+  margin: 25px 0px 25px 0px;
+}
+
+.chainHeader {
+  height: 50px !important;
+  margin: 25px 0px -25px 0px;
+}
+
+.mainnetSoon {
+  margin-left: 10px;
 }

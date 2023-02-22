@@ -9,7 +9,8 @@ module.exports = {
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [
-    'fonts/fonts.css'
+    'fonts/fonts.css',
+    'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap'
   ],
   themes: [
     [
@@ -47,15 +48,17 @@ module.exports = {
           position: 'right',
           items: [
             {
+              href: '../',
               label: 'English',
-              href: '/',
+              target: '_parent',
             },
             {
+              href: '/es/',
               label: 'Spanish',
-              href: '/es'
+              target: '_parent',
             },
-          ],
-        },
+          ]
+        }
       ],
     },
   },
@@ -68,7 +71,7 @@ module.exports = {
         lastVersion: 'current',
         versions: {
           current: {
-            label: '4.0-rc',
+            label: '4.0',
             path: '',
             banner: 'none',
           },

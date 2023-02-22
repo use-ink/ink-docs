@@ -7,13 +7,16 @@ const FAUCET_URL = "https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip
 export const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
   const [address, setAddress] = useState("")
-  const [result, setResult] = useState("")
+  const [hash, setHash] = useState<string>()
+  const [error, setError] = useState<string>()
   const [inProgress, setInProgress] = useState(false)
 
   const handleRequest = async () => {
     try {
-      setResult("")
+      setHash(undefined)
+      setError(undefined)
       setInProgress(true)
+
       const body = {
         address,
         parachain_id: "1002",
@@ -28,13 +31,13 @@ export const Faucet = () => {
       })
       const result = await fetchResult.json()
       if ('error' in result) {
-        setResult(result.error)
+        setError(result.error)
       } else {
-        setResult(`Hash: ${result.hash}`)
+        setHash(result.hash)
       }
     } catch (e) {
       console.error(e)
-      setResult("Request unsuccessful")
+      setError("Hmm... something went wrong.")
     } finally {
       setInProgress(false)
     }
@@ -59,7 +62,11 @@ export const Faucet = () => {
             type="text"
             value={address}
             placeholder="e.g. 5HprbfKUFdN4qfweVbgRtqDPHfNtoi8NoWPE45e5bD5AEKiR"
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => {
+              setAddress(e.target.value)
+              setError(undefined);
+              setHash(undefined);
+            }}
           />
         </fieldset>
         <ReCAPTCHA
@@ -68,12 +75,26 @@ export const Faucet = () => {
         />
         <button
           disabled={inProgress || !captcha || !address}
-          onClick={handleRequest}
+          onClick={async (e) => {
+            e.preventDefault();
+            await handleRequest();
+          }}
         >
-          Request
+          {inProgress ? 'Requesting...' : 'Request' }
         </button>
-        {result && <p className="faucetResult">{result}</p>}
       </form>
+
+      <div className="faucetResultContainer">
+        {hash && (
+          <button className="faucet-success w-full border-none" onClick={() => window.open(`https://rococo.subscan.io/extrinsic/${hash}`, '_blank')}>
+            <div className="faucet-success-ic">
+              <p className="faucet-success-msg">Your funds have been sent!</p>
+              <p className="faucet-success-cta">Click here to view the transaction</p>
+            </div>
+          </button>
+        )}
+        {error && <p className="error">{error}</p>}
+      </div>
     </div>
   )
 }

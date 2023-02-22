@@ -6,31 +6,25 @@ hide_title: true
 
 <img src="/img/title/storage.svg" className="titlePic" />
 
-# Overview
+# Introducción
 
-:::note
-TODO: Translate to Spanish.
-:::
+El crate `ink_storage` actúa como la biblioteca de almacenamiento estándar para los smart contracts ink!.
+En este momento proporciona dos primitivas para interactuar con el storage,
+[`Mapping`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html)
+y [`Lazy`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Lazy.html).
 
-The `ink_storage` crate acts as the standard storage library for ink! smart contracts.
-At the moment it provides two primitives for interacting with storage,
-[`Mapping`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Mapping.html)
-and [`Lazy`](https://docs.rs/ink_storage/4.0.0-rc/ink_storage/struct.Lazy.html).
+`Mapping` es un mapeo de pares clave-valor directamente en el storage del contrato. 
+Es muy similar a tablas hash tradicionales y comparable con el tipo `mapping` que ofrece Solidity.
+Como ingrediente central del lenguaje ink!, su principal ventaja es ser simple y ligero:
+Favorece ser eficiente en cuanto a costes de gas y tamaño de código
+en lugar de proporcionar una gran cantidad de funciones de alto nivel que se encuentran en otras implementaciones
+como el tipo `ink::prelude::collections::HashMap`.
+Generalmente, el `Mapping` de ink! será una opción sólida para la mayoría de los contratos. Además, los
+desarrolladores de smart contracts developers pueden implementar ellos mismos funcionalidades avanzadas.
 
-`Mapping` is a mapping of key-value pairs directly to the contract storage. It is very
-similar to traditional hash tables and comparable to the `mapping` type Solidity offers.
-As a core ingredient to the ink! language, its main advantage is being simple and
-lightweight: It favors being efficient in terms of gas costs and code size
-over providing a lot of high-level functionality found in other implementations
-like the `ink::prelude::collections::HashMap` type.
-Overall, the ink! `Mapping` will be solid choice for most contracts. Moreover, smart
-contracts developers can implement advanced features themselves.
-
-`Lazy` is a wrapper type that can be used over any other storage compatible type.
-This allows smart contract developers fine grained manual control over the layout of
-the contract storage by assigning a separate storage cell for the field. For example,
-it can be used to prevent the contract from eagerly loading large storage fields
-during each contract call.
-Conceivably, it may be desirable to change certain aspects on how your contract deals with
-its storage variables. You can find out more about this in the section about the ink!
-[Storage Layout](https://use.ink/datastructures/storage-layout).
+`Lazy` es un tipo wrapper que puede ser utilizado sobre cualquier otro tipo compatible del storage.
+Esto permite a los desarrolladores de smart contract un control manual detallado sobre el diseño del
+storage del contrato asignando una celda separada del storage para esse campo. Por ejemplo, esto puede ser 
+utilizado para prevenir el contrato de la carga ansiosa de grandes campos de almacenamiento durante cada llamada de contrato.
+Posiblemente, puede ser deseable cambiar ciertos aspectos sobre cómo su contrato trata con sus variables del storage.
+Puedes encontrar más información sobre esto en la sección sobre el ink! [Storage Layout](https://use.ink/datastructures/storage-layout).
