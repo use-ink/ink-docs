@@ -94,12 +94,41 @@ The formula to calculate the base storage key `S` used to access a mapping value
 key `K` for a mapping with base key `B` can be expressed as follows:
 
 ```
-S = B + scale::encode(K)
+S = scale::encode(B) + scale::encode(K)
 ```
 
-In words, find the base (root) key of the mapping and concatenate it with the
+Where the base key `B` is the `root_key` (of type `u32`) found in the contract metadata.
+
+In words, SCALE encode the base (root) key of the mapping and concatenate it with the
 SCALE encoded key of the mapped value to obtain the actual storage key used to
 access the mapped value.
+
+Given the following contract storage, which maps accounts to a balance:
+
+```rust
+#[ink(storage)]
+pub struct Contract {
+    roles: Mapping<AccountId, Balance, ManualKey<0x12345678>>,
+}
+```
+
+Now let's suppose we are interested in finding the balance for the account 
+`5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY`. The storage key is calculated as follows:
+
+1. SCALE encode the base key of the mapping (`0x12345678u32`), resulting in `0x78563412`
+2. SCALE encode the `AccountId`, which will be 
+   `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`.
+   Note that you'll need to convert the SS58 into a `AccountId32` first.
+3. Concatenating those two will result in the key 
+   `0x78563412d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`.
+
+```rust
+let account_id = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY";
+let account: AccountId32 = Ss58Codec::from_string(account_id).unwrap();
+let storage_key = &(0x12345678u32, account).encode();
+println!("0x{}", hex::encode(storage_key));
+// 0x78563412d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d
+```
 
 ## Accessing storage items with the `contractsApi` runtime call API
 
