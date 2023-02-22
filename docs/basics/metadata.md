@@ -58,7 +58,7 @@ It may _optionally_ contain the following keys:
 :::note
 
 Notice that we don't have an `abi` key, but we instead use the `spec` field to specify
-the contract's ABI. You can read more about that in the [ABI documentation](/metadata#abi).
+the contract's ABI. You can read more about that in the [ABI documentation](/basics/metadata#abi).
 
 :::
 
