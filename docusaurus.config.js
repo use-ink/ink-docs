@@ -23,7 +23,7 @@ module.exports = {
   themeConfig: {
     prism: {
       theme: require('prism-react-renderer/themes/duotoneDark'),
-      additionalLanguages: ['rust', 'json']
+      additionalLanguages: ['rust', 'json', 'toml']
     },
     colorMode: {
       defaultMode: 'dark',
