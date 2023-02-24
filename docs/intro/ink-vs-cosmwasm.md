@@ -12,7 +12,7 @@ This is a short comparison between [ink!](https://github.com/paritytech/ink/)
 and [CosmWasm](https://github.com/CosmWasm/cosmwasm) meant to onboard
 developers coming from the Cosmos ecosystem.
 
-# Architecture
+## Architecture
 
 CosmWasm is modular, meaning that any blockchain using the Cosmos SDK can add smart
 contract support to their chain. That is similar to the [Substrate](https://substrate.io/)
@@ -48,7 +48,7 @@ Instead, ink! makes heavy usage of Rust macros. The main ink! macros are:
 
 There are other ink! macros, for which details can be found at [Macros & Attributes](/macros-attributes).
 
-# Unit Testing
+## Unit Testing
 
 Unit testing in CosmWasm is quite similar to ink!. Both use the conventional Rust
 `#[cfg(test)]` macro and set up a mock on-chain environment.
@@ -59,7 +59,7 @@ used for each unit test.
 
 You can read more about ink! unit tests [here](https://ink.substrate.io/basics/contract-testing#unit-tests).
 
-# Compiler
+## Compiler
 
 CosmWasm uses [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) as its main
 compiler, while ink! uses [cargo-contract](https://github.com/paritytech/cargo-contract).
@@ -79,7 +79,7 @@ is the module that adds WebAssembly smart contract functionality to the chain. P
 provides the [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node),
 which is analogous to `wasmd` - a basic template node for smart contract development.
 
-# Testnets
+## Testnets
 
 For CosmWasm development and on-chain testing, `wasmd` can be operated as a local setup
 (single or multiple nodes), or connected to the `cliffnet` public test network.
@@ -90,9 +90,9 @@ ink! contracts can be deployed on a few different options:
   which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
 - [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
 
-# Development Workflow
+## Development Workflow
 
-## Dependencies
+### Dependencies
 
 The first step in CosmWasm development is to
 [install dependencies](https://docs.cosmwasm.com/docs/getting-started/installation),
@@ -101,7 +101,7 @@ namely Go, Rust and `wasmd`.
 For ink! you can also find [a setup guide](/getting-started/setup) which will help you
 with dependencies, namely Rust, `cargo-contract` and `substrate-contracts-node`.
 
-## Environment Setup
+### Environment Setup
 
 The next step in the CosmWasm development workflow is
 [setting up the environment](https://docs.cosmwasm.com/docs/getting-started/setting-env).
@@ -111,7 +111,7 @@ to interact with the network.
 When `substrate-contracts-node` is started with the `--dev` flag, it already contains well
 known pre-funded accounts (`alice`, `bob`, etc.) which are ready to be used for development.
 
-## Compile and Test
+### Compile and Test
 
 CosmWasm provides example contracts at the
 [cw-contracts](https://github.com/InterWasm/cw-contracts) repository. After the
@@ -139,7 +139,7 @@ and tested via:
 $ cargo test
 ```
 
-## Deploy and Interact
+### Deploy and Interact
 
 CosmWasm contracts are deployed and instantiated with help of the `wasmd` executable. The
 list of step is provided [here](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract).
