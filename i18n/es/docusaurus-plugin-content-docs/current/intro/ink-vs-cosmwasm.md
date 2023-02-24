@@ -113,7 +113,7 @@ y realizar los tests con:
 ```
 $ cargo test
 ```
-De manera similar, podemos encontrar ejemplos de ink! en el directorio [`examples`](https://github.com/paritytech/ink-examples/tree/master) del repositorio principal.
+De manera similar, podemos encontrar ejemplos de ink! en el directorio [`examples`](https://github.com/paritytech/ink-examples/tree/main) del repositorio principal.
 
 Un contrato pude ser compilado desde su directorio ejecutando:
 ```

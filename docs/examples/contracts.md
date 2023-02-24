@@ -3,8 +3,8 @@ title: Smart Contracts
 slug: /examples/smart-contracts
 ---
 
-The ink! repository contains an <a href="https://github.com/paritytech/ink-examples/tree/master">examples folder</a>
-in which you find a number of examples written in ink!.
+We have a repository <a href="https://github.com/paritytech/ink-examples/tree/main">`ink-examples`</a>,
+in which you find a number of contracts written in ink!.
 Some of the most interesting ones:
 
 <div className="row">

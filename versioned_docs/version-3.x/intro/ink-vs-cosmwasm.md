@@ -121,7 +121,7 @@ $ cargo unit-test
 ```
 
 Similarly, ink! provides an
-[`examples`](https://github.com/paritytech/ink-examples/tree/master) directory of its
+[`examples`](https://github.com/paritytech/ink-examples/tree/main) directory of its
 main repository.
 
 A contract can be compiled from its directory via:
