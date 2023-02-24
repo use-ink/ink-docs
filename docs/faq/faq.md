@@ -21,7 +21,7 @@ Generally it is very friendly and open to learning new Rustaceans but be aware t
 it by taking away dots from the word ink! by spelling it incorrectly!
 It really is into dots. Stories tell that it demanded the spelling of ink! with as many dots as possible.
 
-### Is it "ink" or "ink!"? What does the "!" stand for?
+<h3 id="correct-spelling">Is it "ink" or "ink!"? What does the "!" stand for?</h3>
 
 The correct spelling is _ink!_ ‒ with a lowercase "i" and an exclamation mark at the end.
 The history here is that:
