@@ -12,6 +12,14 @@ module.exports = {
     'fonts/fonts.css',
     'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap'
   ],
+  plugins: [
+    [
+      '@branchup/docusaurus-plugin-simple-analytics',
+      {
+        domain: 'apisa.parity.io',
+      },
+    ],
+  ],
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
