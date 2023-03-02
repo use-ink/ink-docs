@@ -28,6 +28,7 @@ module.exports = {
         ignoreFiles: [
           /3.x/,
         ],
+        language: ["en", "es"]
       }
     ]
   ],
