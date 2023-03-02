@@ -25,6 +25,10 @@ module.exports = {
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         indexPages: true,
+        ignoreFiles: [
+          /3.x/,
+        ],
+        language: ["en", "es"]
       }
     ]
   ],
