@@ -59,5 +59,5 @@ cargo contract build
 
 As a result you'll get the file `target/flipper.contract`. It's a JSON which bundles the contract's
 metadata and its Wasm blob. This file needs to be used when deploying the contract.
-You additionally get the individual `target/flipper.wasm` and `target/metadata.json` in the folder as well.
+You additionally get the individual `target/flipper.wasm` and `target/flipper.json` in the folder as well.
 

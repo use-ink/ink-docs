@@ -12,18 +12,30 @@ module.exports = {
     'fonts/fonts.css',
     'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap'
   ],
+  plugins: [
+    [
+      '@branchup/docusaurus-plugin-simple-analytics',
+      {
+        domain: 'apisa.parity.io',
+      },
+    ],
+  ],
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         indexPages: true,
+        ignoreFiles: [
+          /3.x/,
+        ],
+        language: ["en", "es"]
       }
     ]
   ],
   themeConfig: {
     prism: {
       theme: require('prism-react-renderer/themes/duotoneDark'),
-      additionalLanguages: ['rust', 'json']
+      additionalLanguages: ['rust', 'json', 'toml']
     },
     colorMode: {
       defaultMode: 'dark',

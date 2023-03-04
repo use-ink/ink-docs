@@ -39,7 +39,7 @@ CallBuiler Cons
 
 ## Contract References
 
-See our [`delegator example contract`](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs) 
+See our [`delegator example contract`](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs)
 for an elaborate example which uses cross-contract calling.
 
 ### How it Works

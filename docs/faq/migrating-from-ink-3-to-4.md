@@ -76,7 +76,7 @@ abstractions which determine how contract data is laid out in storage are differ
 
 ### Migration
 - Initialize `Mapping` fields with `Mapping::default()` instead of  `ink_lang::utils::initialize_contract` in
-  constructors. See [`erc20`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) and other examples which use a `Mapping`.
+  constructors. See [`erc20`](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) and other examples which use a `Mapping`.
 - `SpreadAllocate`, `SpreadLayout`, `PackedLayout`, `PackedAllocate` have been removed.
   It's best to see [the documentation](https://github.com/727-Ventures/ink/blob/feature/storage-docs/examples/complex-storage-structures/README.md)
   of the new storage abstration for how to migrate.
@@ -316,7 +316,6 @@ You should also now consider dealing with `AccountId`'s as `Option<AccountId>`'s
 more idomatic Rust, and also conveys the meaning of a "null" or "empty" address much
 better.
 
-
 ## Updates to the `CallBuilder` and `CreateBuilder` APIs
 There's been several changes to the
 [`CallBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html) 
@@ -354,3 +353,31 @@ workflows:
 - For `Call` you can use
   [`CallBuilder::call()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.call) (this replaces `CallBuilder::callee()`)
 - For `DelegateCall` you can use [`CallBuilder::delegate()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.delegate)
+
+## Removal of `[lib.crate-type]` and `[lib.name]` from contract manifest
+Earlier versions of `cargo-contract` required that these two fields were specified in the
+contract manifest explicitly, as follows:
+
+```toml
+[lib]
+name = "flipper"
+path = "lib.rs"
+crate-type = [
+    # Used for normal contract Wasm blobs.
+    "cdylib",
+    # Use to generate ABI
+    "rlib",
+]
+```
+
+However, with with [cargo-contract#929](https://github.com/paritytech/cargo-contract/pull/929) we changed this behaviour to:
+- Use the contract name by default, removing the need for the `name` field
+- Compile contracts as `rlib`s by default, and automatically changing to `cdylib` as
+  needed
+
+This means that your new manifest should look like:
+
+```toml
+[lib]
+path = "lib.rs"
+```

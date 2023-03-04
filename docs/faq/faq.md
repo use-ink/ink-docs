@@ -21,7 +21,7 @@ Generally it is very friendly and open to learning new Rustaceans but be aware t
 it by taking away dots from the word ink! by spelling it incorrectly!
 It really is into dots. Stories tell that it demanded the spelling of ink! with as many dots as possible.
 
-### Is it "ink" or "ink!"? What does the "!" stand for?
+<h3 id="correct-spelling">Is it "ink" or "ink!"? What does the "!" stand for?</h3>
 
 The correct spelling is _ink!_ ‒ with a lowercase "i" and an exclamation mark at the end.
 The history here is that:
@@ -29,6 +29,7 @@ The history here is that:
 * …in the very first iteration ink! was originally a [declarative Rust macro](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming). A contract was invoked by writing `ink!{ … }`.
 * …there is a real-world analogy here of writing a paper contract using ink.
 * …we wanted to have as many DOTs as possible in the name 😉.
+* …the symmetry of the top and bottom dot of i and ! is aesthetically pleasing 🌻.
 
 So please don't make poor Squink cry having to read !ink, ink, Ink!, or Ink.
 

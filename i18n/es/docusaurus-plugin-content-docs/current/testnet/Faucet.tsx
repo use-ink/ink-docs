@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const RECAPTCHA_SITE_KEY = "6LdU5kckAAAAANktvvAKJ0auYUBRP0su94G7WXwe"
-const FAUCET_URL = "https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip"
+const FAUCET_URL = "https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip/web"
 
 export const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
@@ -47,11 +47,11 @@ export const Faucet = () => {
     <div className="faucetContainer">
       <h3 className="faucetTitle">Obten Tokens para la Testnet</h3>
       <div className="faucetPlantContainer">
-        <img src="/img/plantOne.svg" alt="illustration of a sea grass plant" className="faucetPlantOne" />
-        <img src="/img/plantTwo.svg" alt="illustration of a sea plant" className="faucetPlantTwo" />
+        <img src="/img/plantOne.svg" alt="illustración de una alga marina" className="faucetPlantOne" />
+        <img src="/img/plantTwo.svg" alt="illustración de una planta marina" className="faucetPlantTwo" />
       </div>
       <div className="faucetHeroContainer">
-        <img src="/img/chest.svg" alt="image of a treasure chest" className="faucetHeroImage" />
+        <img src="/img/chest.svg" alt="imagen de un cofre del tesoro" className="faucetHeroImage" />
       </div>
       <form className="withHero">
         <fieldset>

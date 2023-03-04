@@ -1,7 +1,7 @@
 ---
 title: Metadata
 hide_title: true
-slug: /metadata
+slug: /basics/metadata
 ---
 
 <img src="/img/title/metadata.svg" className="titlePic" />
@@ -16,16 +16,16 @@ The ink! metadata is generated when a contract is built using `cargo-contract`, 
 `cargo contract build`.
 
 The metadata can be found in your contract's target directory under the name
-`metadata.json`.
+`<contract-name>.json`.
 
 :::note
 
-The metadata is also contained in your `$contract_name.contract` file. The difference is
+The metadata is also contained in your `<contract-name>.contract` file. The difference is
 that the `.contract` file also contains the Wasm binary of your contract.
 
 :::
 
-## metadata.json
+## `<contract-name>.json`
 The metadata is defined by the following **required** keys:
 - `source`: Information about the contract's Wasm code.
 - `contract`: Metadata about the contract.
@@ -58,7 +58,7 @@ It may _optionally_ contain the following keys:
 :::note
 
 Notice that we don't have an `abi` key, but we instead use the `spec` field to specify
-the contract's ABI. You can read more about that in the [ABI documentation](/metadata#abi).
+the contract's ABI. You can read more about that in the [ABI documentation](/basics/metadata#abi).
 
 :::
 

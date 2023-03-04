@@ -232,4 +232,4 @@ para más detaller.
 ## Ejemplos
 
 Puedes ver ejemplos de actualizaciones de contratos en el  
-[repositorio ink!](https://github.com/paritytech/ink/tree/master/examples/upgradeable-contracts).
+[repositorio ink!](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts).

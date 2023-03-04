@@ -14,7 +14,7 @@ Los metadatos ink! son generados cuando un contrato es construido utilizando `ca
 `cargo contract build`.
 
 Los metadatos se pueden encontrar en tu en el directorio de destino de su contrato bajo el nombre
-`metadata.json`.
+`<contrato-nombre>.json`.
 
 :::note
 
@@ -23,7 +23,7 @@ es que el fichero `.contract` también contiene el binario Wasm de tu contrato.
 
 :::
 
-## metadata.json
+## `<contract-nombre>.json`
 Los metadatos se definen con las siguietes claves **requeridas**:
 - `source`: Información sobre el código Wasm.
 - `contract`: Metadatos sobre el contrato.
