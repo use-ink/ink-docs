@@ -8,13 +8,12 @@ hide_title: true
 
 # Cross-Contract Calls
 
-In ink! contracts it is possible to call ink! messages and ink! constructors. So ink!
-constructors allow delegation and ink! messages can easily call other ink! messages.
-Given another ink! contract like, we can call any of its functions.
+In ink! contracts it is possible to call ink! messages and constructors of other
+on-chain contracts.
 
-There are two approaches to cross-contract calls in ink!:
-2. Contract references (i.e `ContractRef`)
-3. Builders (i.e `CreateBuilder` and `CallBuilder`)
+There are a few approaches to performing these cross-contract calls in ink!:
+1. Contract references (i.e `ContractRef`)
+1. Builders (i.e `CreateBuilder` and `CallBuilder`)
 
 A short tl;dr of the trade-offs:
 
@@ -131,103 +130,133 @@ pub mod other_contract {
 ```
 
 ## Builders
-
-The `CreateBuilder` and `CallBuilder` offer low-level, flexible interfaces for performing
-cross-contract calls. The `CreateBuilder` allows you to instantiate already uploaded
-contracts, and the `CallBuilder` allows you to call messages on instantiated contracts.
+The
+[`CreateBuilder`](https://docs.rs/ink_env/latest/ink_env/call/struct.CreateBuilder.html)
+and
+[`CallBuilder`](https://docs.rs/ink_env/latest/ink_env/call/struct.CallBuilder.html)
+offer low-level, flexible interfaces for performing cross-contract calls. The
+`CreateBuilder` allows you to instantiate already uploaded contracts, and the
+`CallBuilder` allows you to call messages on instantiated contracts.
 
 ### CreateBuilder
+The `CreateBuilder` offers an an easy way for you to **instantiate** a contract. Note
+that you'll still need this contract to have been previously uploaded.
 
-- Still need the `ContractRef` for the type 
-    - Or is this just for `build_create` helper?
-    - Yeah the `CreateBuilder` still needs a `ContractRef` generic
+::: note
 
-The `CreateBuilder` allows you to **instantiate** a contract. Note that you'll still need
-this contract to have been previously uploaded. 
+For a refresher on the difference between `upload` and `instantiate`
+[see here](/getting-started/deploy-your-contract).
 
-_For a refresher on the different between `upload` and `instantiate` see [here](TODO)._
+:::
 
 In order to instantiate a contract you need a reference to your contract, just like in
-[previous section](TODO).
+[previous section TODO](TODO).
+
+Below is an example of how to instantiate a contract using the `CreateBuilder`. We will:
+- instantiate the uploaded contract with a `code_hash` of `0x4242...`
+- with no gas limit specified (`0` means "automatic")
+- sending `10` units of transferred value to the contract instance
+- instantiating with the `new` constructor
+- with the following arguments
+    - a `u8` with value `42`
+    - a `bool` with value `true`
+    - an array of 32 `u8` with value `0x10`
+- generate the address (`AccountId`) using the specified `salt_bytes`
+- and we expect it to return a value of type `MyContractRef`
 
 ```rust
-/// let my_contract: MyContractRef = build_create::<MyContractRef>()
-///     .code_hash(Hash::from([0x42; 32]))
+use contract::MyContractRef;
+let my_contract: MyContractRef = build_create::<MyContractRef>()
+    .code_hash(Hash::from([0x42; 32]))
+    .gas_limit(0)
+    .endowment(10)
+    .exec_input(
+        ExecutionInput::new(Selector::new(ink::selector_bytes!("new")))
+            .push_arg(42)
+            .push_arg(true)
+            .push_arg(&[0x10u8; 32])
+    )
+    .salt_bytes(&[0xDE, 0xAD, 0xBE, 0xEF])
+    .returns::<MyContractRef>()
+    .instantiate();
 ```
 
-The `CreateBuilder::instantiate()` method returns a contract reference, which you can
-then use to call messages like in the [previous section](TODO).
+Since `CreateBuilder::instantiate()` method returns a contract reference. we can use this
+contract refernece to call messages just like in the
+[previous section](TODO).
 
 ### CallBuilder
-The `CallBuilder` allows you to call messages on already instantiated contracts.
-
-In case you need a refresher in how to instantiate a contract see [here](TODO).
+The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
+are two main approaches to this: `Call`s and `DelegateCall`s. We will briefly cover both
+here.
 
 #### CallBuilder: Call
+When using `Call`s the `CallBuilder` requires an already instantiated contract.
+
+We saw an example of how to use the `CreateBuilder` to intantiate contracts in the
+[previous section](TODO).
+
 Below is an example of how to call a contract using the `CallBuilder`. We will:
 - make a regular `Call`
-- to a contract at the address `0x42...`
-- with no gas limit specified (automatic)
+- to a contract at the address `0x4242...`
+- with no gas limit specified (`0` means "automatic")
 - sending `10` units of transferred value to the contract instance
 - calling the `flip` message
 - with the following arguments
     - a `u8` with value `42`
     - a `bool` with value `true`
     - an array of 32 `u8` with value `0x10`
-- and we expect it to return a `T`
+- and we expect it to return a value of type `bool`
 
 ```rust
-build_call::<DefaultEnvironment>()
+let my_return_value = build_call::<DefaultEnvironment>()
     .call(AccountId::from([0x42; 32]))
-    .gas_limit(5000)
+    .gas_limit(0)
     .transferred_value(10)
     .exec_input(
-        ExecutionInput::new(Selector::new([0xDE, 0xAD, 0xBE, 0xEF]))
+        ExecutionInput::new(Selector::new(ink::selector_bytes!("flip")))
             .push_arg(42u8)
             .push_arg(true)
             .push_arg(&[0x10u8; 32])
     )
-    .returns::<()>()
+    .returns::<bool>()
     .invoke();
 ```
 
-Note that we can also specify the selector bytes directly, e.g `Selector::new([0xAB, ...])`
+Note:
 
-Note: 
-arguments will be encoded in the order in which they are provided to the `CallBuilder`.
+Message arguments will be encoded in the order in which they are provided to the `CallBuilder`.
 This means that they should match the order (and type) they appear in the function
 signature.
 
-You will not be able to get any feedback about this at at compile time! You will only
-find out your call failed at runtime.
-
-NANDO: What about streamlining methods? E.g `call()` 
+You will not be able to get any feedback about this at at compile time. You will only
+find out your call failed at runtime!
 
 #### CallBuilder: Delegate Call
-NANDO: If this is just the codehash, I guess this doesn't need to be `instnatiated` does
-it?
+You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics.
+If you need a refresher on what delegate calls are,
+[see this article](https://medium.com/coinmonks/delegatecall-calling-another-contract-function-in-solidity-b579f804178c).
 
-
-You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics. If
-you need a refresher on what delegate calls are, see here [TODO]().
+In the case of `DelegateCall`s, we don't require an already instantiated contract.
+We only need the `code_hash` of an uploaded contract.
 
 Below is an example of how to delegate call a contract using the `CallBuilder`. We will:
 - make a `DelegateCall`
-- to a contract with a `code_hash` (not contract address!) of `0xabc`
-- with no gas limit specified (automatic)
+- to a contract with a `code_hash` (not contract address!) of `0x4242...`
+- with no gas limit specified (`0` means "automatic")
 - sending `10` units of transferred value to the contract instance
 - calling the `flip` message
 - with the following arguments
     - a `u8` with value `42`
     - a `bool` with value `true`
     - an array of 32 `u8` with value `0x10`
-- and we expect it to return a `T`
+- and we expect it to return an `i32`
 
 ```rust
-let my_return_value: i32 = build_call::<DefaultEnvironment>()
-    .delegate(<DefaultEnvironment as Environment>::Hash::CLEAR_HASH)
+let my_return_value = build_call::<DefaultEnvironment>()
+    .delegate(ink::primitives::Hash::from([0x42; 32]))
     .exec_input(
-        ExecutionInput::new(Selector::new([0xDE, 0xAD, 0xBE, 0xEF]))
+        ExecutionInput::new(Selector::new(ink::selector_bytes!("flip")))
             .push_arg(42u8)
             .push_arg(true)
             .push_arg(&[0x10u8; 32])
@@ -237,21 +266,28 @@ let my_return_value: i32 = build_call::<DefaultEnvironment>()
 ```
 
 ### Builder Error Handling
-The `CreateBuilder` and the `CallBuilder` both offer error with the `try_instantiate()`
-and `try_invoke()` methods respectively.
+The `CreateBuilder` and the `CallBuilder` both offer error handling with the
+`try_instantiate()` and `try_invoke()` methods respectively.
 
 These allow contract developers to handle two types of errors:
 1. Errors from the underlying execution environment (e.g the Contracts pallet)
 2. Error from the programming language (e.g `LangError`s)
 
-See the documentation for `try_instantiate`, `try_invoke`, `ink::env::Error` and
-`ink::LangError` for more details on proper error handling.
+See the documentation for
+[`try_instantiate`](https://docs.rs/ink_env/latest/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
+[`try_invoke`](https://docs.rs/ink_env/latest/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
+[`ink::env::Error`](https://docs.rs/ink_env/latest/ink_env/enum.Error.html)
+and
+[`ink::LangError`](https://docs.rs/ink/latest/ink/enum.LangError.html)
+for more details on proper error handling.
 
+::: tip
 
+Because the `CallBuilder` requires only a contract's `AccountId` and message `selector`,
+we can call Solidity contracts compiled using the [Solang](TODO) compiler and deployed to
+a chain which supports the `contracts-pallet.`
 
-Note/Tip: Because the `CallBuilder` operates requires only a contract's `AccountId` and
-message `selector`, this means we can all Solidity contracts compiled using the
-[Solang](TODO) compiler and deployed to a chain which supports the `contracts-pallet.`
-
-The reverse, calls from Solidity to ink! are **not** supported by Solang, but there are
+The reverse, calls from Solidity to ink!, are **not** supported by Solang, but there are
 plans to implement this in the future.
+
+:::
