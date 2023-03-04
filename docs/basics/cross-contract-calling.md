@@ -79,10 +79,6 @@ Two things to note here:
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
    our contract's metadata.
 
-#### Uploading `OtherContract`
-
-This can 
-
 #### Wiring `BasicContractRef`
 
 First, we will import the contract reference of `OtherContract`, and declare the
