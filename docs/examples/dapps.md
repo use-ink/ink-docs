@@ -1,34 +1,37 @@
 ---
-title: Aplicaciones Descentralizadas
+title: Dapps
 slug: /examples/dapps
 hide_title: true
 ---
 
 <img src="/img/title/balloons-2.svg" className="titlePic" />
 
-# Aplicaciones Descentralizadas
+# Dapps
 
-Aquí señalaremos algunos ejemplos de aplicaciones descentralizadas 
-full-stack. 
-Estos pueden servir de inspiración para saber cómo crear un frontend 
-para tu contrato inteligente.
+We'll point to a couple full-stack Dapp examples here.
+These can serve as inspiration for how to create a frontend for your
+smart contract.
 
-Dos librerias populares para la construcción de frontends son:
+Two popular libraries for building frontends are:
 
-* [`polkadot-js/api`](https://github.com/polkadot-js/api) una API de Typescript de bajo nivel.
-* [useInkathon](https://github.com/scio-labs/use-inkathon) una librería de hooks para React.
+* [`polkadot-js/api`](https://github.com/polkadot-js/api) a low-level TypeScript API.
+* [useInkathon](https://github.com/scio-labs/use-inkathon) a React hooks library.
 
 ## INK!athon
 
-[INK!athon](https://inkathon.xyz/) es una plantilla de proyecto de una aplicación descentralizada 
-full-stack que consiste en un contrato inteligente ink! y un frontend React usando la librería de hooks [useInkathon](https://github.com/scio-labs/use-inkathon).
+[INK!athon](https://inkathon.xyz/) is a full-stack dApp boilerplate project consisting
+of an ink! smart contract and a React frontend using the
+[useInkathon](https://github.com/scio-labs/use-inkathon) hooks library.
 
 ## link!
 
-link! es una aplicación descentralizada que acorta URLs. Consiste en un frontend y un contrato ink!.
+link! is a URL shortener DApp. It consists of a frontend and an ink! contract.
 
-link! utiliza [`polkadot-js/api`](https://github.com/polkadot-js/api) por detrás. El código fuente completo (contrato + frontend) se encuentra aquí: [https://github.com/paritytech/link](https://github.com/paritytech/link).
+link! uses [`polkadot-js/api`](https://github.com/polkadot-js/api) under the hood.
+The entire source code (contract + frontend) is located here:
+[https://github.com/paritytech/link](https://github.com/paritytech/link).
 
-Puedes ver una demo online de la aplicación aquí: [https://tiny.ink](https://tiny.ink).
+You can view an online demo of the Dapp here: [https://tiny.ink](https://tiny.ink).
 
-Para crear nuevos enlaces cortos necesitarás tokens `ROC` de nuestra testnet. Consulte [aquí](/testnet) para saber cómo conseguirlos.
+To create new short links you need `ROC` tokens from our testnet.
+See [here](/testnet) for how to get those.

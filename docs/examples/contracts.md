@@ -1,28 +1,28 @@
 ---
-title: Contratos Inteligentes
+title: Smart Contracts
 slug: /examples/smart-contracts
 ---
 
-Tenemos un repositorio <a href="https://github.com/paritytech/ink-examples/tree/main">`ink-examples`</a>, 
-en el que encontrará una serie de contratos escritos en ink!. 
-Algunos de los más interesantes son:
+We have a repository <a href="https://github.com/paritytech/ink-examples/tree/main">`ink-examples`</a>,
+in which you find a number of contracts written in ink!.
+Some of the most interesting ones:
 
 <div className="row">
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/flipper"><img src="/img/icons/flipper.svg" width="100" /></a>
         <p>
-            Nuestro "Hola, Mundo!".<br/>
+            Our "Hello, World!".<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/flipper">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/erc20"><img src="/img/icons/erc20.svg" width="100" /></a>
         <p>
-            Una implementación de ERC-20.<br/>
+            An ERC-20 implementation.<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/erc20">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
@@ -30,11 +30,11 @@ Algunos de los más interesantes son:
         <a href="https://github.com/paritytech/ink-examples/tree/main/erc721"><img src="/img/icons/nft.svg" width="100" /></a>
         <p>
             <a href="https://github.com/paritytech/ink-examples/tree/main/erc721">
-                » ver ERC-721
+                » view ERC-721
             </a>
             <br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/erc1155">
-                » ver ERC-1155
+                » view ERC-1155
             </a>
         </p>
     </div>
@@ -46,27 +46,27 @@ Algunos de los más interesantes son:
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts"><img src="/img/icons/upgradable.svg" width="100" /></a>
         <p>
-            Un contrato actualizable.<br/>
+            An upgradeable contract.<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/multisig"><img src="/img/icons/multisig.svg" width="100" /></a>
         <p>
-            Una billetera multi-firma.<br/>
+            A multi-signature wallet.<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/multisig">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/rand-extension"><img src="/img/icons/rand-extension.svg" width="100" /></a>
         <p>
-            Acceso al runtime.<br/>
+            Allow runtime access.<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/rand-extension">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
@@ -78,27 +78,27 @@ Algunos de los más interesantes son:
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/delegator"><img src="/img/icons/delegator.svg" width="100" /></a>
         <p>
-            Comunicación entre contratos.<br/>
+            Cross-contract calls.<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/delegator">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/trait-erc20"><img src="/img/icons/trait-erc20.svg" width="100" /></a>
         <p>
-            Implementación de un trait <code>Erc20</code>.<br/>
+            Implements an <code>Erc20</code> trait.<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/trait-erc20">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
     <div className="col text--center">
         <a href="https://github.com/paritytech/ink-examples/tree/main/dns"><img src="/img/icons/dns.svg" width="100" /></a>
         <p>
-            Un simple <code>DNS</code>.<br/>
+            Simple <code>DomainNameService</code>.<br/>
             <a href="https://github.com/paritytech/ink-examples/tree/main/dns">
-                » ver ejemplo
+                » view example
             </a>
         </p>
     </div>
@@ -106,17 +106,17 @@ Algunos de los más interesantes son:
 
 <br/>
 
-Si no se indica lo contrario en el archivo README, para compilar un único ejemplo navegue 
-hasta la carpeta raíz del ejemplo y ejecute:
+If not noted otherwise in the readme, to build a single example navigate to the root of
+the example and run:
 
 ```bash
 cargo contract build
 ```
 
-Como resultado, obtendrá un archivo `target/<nombre-del-ejemplo>.wasm`, un archivo `metadata.json` 
-y un archivo `<nombre-del-ejemplo>.contract` en la carpeta `target/` de su contrato. 
-El archivo `.contract` combina el Wasm y la metadata en un sólo archivo que debe utilizarse al 
-desplegar el contrato.
+As a result you'll get a file `target/<example-name>.wasm` file, a `<example-name>.json` file
+and a `<example-name>.contract` file in the `target/` folder of your contract.
+The `.contract` file combines the Wasm and metadata into one file and needs to be used
+when deploying the contract.
 
-Para más información, por favor consulte la sección 
-[Despliega tu Contrato”](/getting-started/deploy-your-contract)“.
+For further information, please have a look at the
+[Deploy your Contract](/getting-started/deploy-your-contract) section.

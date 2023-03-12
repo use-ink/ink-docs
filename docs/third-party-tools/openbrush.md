@@ -3,53 +3,67 @@ title: OpenBrush
 slug: /getting-started/use-openbrush
 ---
 
-[OpenBrush] es una librería para el desarrollo de contratos inteligentes en ink! mantenida por el equipo de [Brushfam].
+[OpenBrush] is a library for smart contract development on ink! maintained by the
+[Brushfam](https://brushfam.io) team.
 
-Proporciona contratos estándar basados en las [Propuestas Estándar de Polkadot (PSPs)](https://github.com/w3f/PSPs), así como contratos de más alto nivel y macros de Rust que generan código de ink!.
+It provides standard contracts based on [Polkadot Standard Proposals (PSPs)](https://github.com/w3f/PSPs),
+as well as higher-level contracts and Rust macros that generate ink! code.
 
-Usar OpenBrush es simple, sólo tienes que añadir la dependencia a tu archivo `Cargo.toml`. Puedes encontrar un ejemplo [aquí](https://docs.openbrush.io/smart-contracts/overview).
+Using OpenBrush is simple, you only add the dependency to your `Cargo.toml` file.
+You can find an example [here](https://docs.openbrush.io/smart-contracts/overview).
 
-### ¿Qué estándares y componentes de contrato contiene?
+### Which standards and contract components does it contain?
 
-- **PSP22**: Token fungible (*equivalente a ERC20*) con extensiones.
-- **PSP34**: Token no fungible (*equivalente a ERC721*) con extensiones.
-- **PSP37**: *Equivalente a ERC1155* con extensiones.
-- **Ownable** Restringe el accionar a los que no son propietarios.
-- **Access Control**: Define un conjunto de roles y restringe el acceso a una acción determinada por roles.
-- **Reentrancy Guard**: Previene llamadas reentrantes a una función.
-- **Pausable**: Pausar/Resumir un contrato para deshabilitar/habilitar algunas operaciones.
-- **Timelock Controller**: Ejecuta operaciones con determinado retardo.
-- **Payment Splitter**: Divide la cantidad de tokens nativos entre participantes.
+- **PSP22**: Fungible Token (*ERC20 equivalent*) with extensions.
+- **PSP34**: Non-Fungible Token (*ERC721 equivalent*) with extensions.
+- **PSP37**: *ERC1155 equivalent* with extensions.
+- **Ownable** Restrict access to action for non-owners.
+- **Access Control**: Define a set of roles and restrict access to an action by roles.
+- **Reentrancy Guard**: Prevent reentrant calls to a function.
+- **Pausable**: Pause/Unpause the contract to disable/enable some operations.
+- **Timelock Controller**: Execute transactions with some delay.
+- **Payment Splitter**: Split the amount of native tokens between participants.
 
-### Implementación genérica de Traits
+### Generic Trait Implementation
 
-OpenBrush añade soporte para implementaciones genéricas de Traits. De esta manera podras dividir un Trait y su implementación en diferentes archivos. Esto puede aumentar la legibilidad y mantenibilidad del código de tu contrato inteligente ([descripción detallada](https://github.com/727-Ventures/openbrush-contracts/blob/main/docs/docs/smart-contracts/example/setup_project.md)).
+OpenBrush adds support for generic Trait implementations, so that you can
+split a Trait and its implementation into different files. This can
+increase the readability and maintainability of your smart-contract
+code base ([detailed description](https://github.com/727-Ventures/openbrush-contracts/blob/main/docs/docs/smart-contracts/example/setup_project.md)).
 
-### Wrapper de Traits
+### Wrapper around Traits
 
-OpenBrush simplifica la comunicación entre contratos. No es necesario contar con un contrato que implemente un Trait en particular para poder llamarlo. Un Wrapper permite llamar a métodos de ese Trait referenciando la dirección de algún contrato de la red (hacer una llamada cruzada entre contratos).
+OpenBrush simplifies cross-contract calls, a contract that implements a particular
+Trait is not needed to call it. A wrapper enables calling methods of that Trait
+from some contract in the network (do a cross contract call).
 
-### Documentación
+### Documentation
 
-- [Repositorio Github de OpenBrush](https://github.com/727-Ventures/openbrush-contracts)
-- [Documentación oficial](https://docs.openbrush.io/)
-- [Sitio web de OpenBrush](https://openbrush.io/)
-- [Seminario de Substrate (Youtube)](https://www.youtube.com/watch?v=I5OFGNVvzOc)
-- [Cómo usar modificadores?](https://medium.com/supercolony/how-to-use-modifiers-for-ink-smart-contracts-using-openbrush-7a9e53ba1c76)
+- [OpenBrush Github repo](https://github.com/727-Ventures/openbrush-contracts)
+- [Official Docs](https://docs.openbrush.io/)
+- [OpenBrush website](https://openbrush.io/)
+- [Substrate Seminar (Youtube)](https://www.youtube.com/watch?v=I5OFGNVvzOc)
+- [How to use modifiers](https://medium.com/supercolony/how-to-use-modifiers-for-ink-smart-contracts-using-openbrush-7a9e53ba1c76)
 
 ## Typechain-Polkadot
 
-Otra herramienta útil para el desarrollo de contratos inteligentes ink! es [Typechain-Polkadot](https://github.com/727-Ventures/typechain-polkadot).
+Another tool helpful for ink! smart contracts development is [Typechain-Polkadot](https://github.com/727-Ventures/typechain-polkadot).
 
-Typechain-Polkadot se utiliza para generar wrappers de Typescript de su contrato inteligente. Esto se puede utilizar para el desarrollo de la UI o en las pruebas de integración de sus contratos inteligentes ink!. La librería utiliza [`polkadot-js/api`](https://github.com/polkadot-js/api), pero es especialmente útil porque todas las llamadas y consultas están tipadas, por lo que se mitiga la posibilidad de obtener un error durante una llamada.
+Typechain-Polkadot is used to generate Typescript wrappers around your smart contract.
+This can be used for UI development or in integration tests of your ink! smart contracts.
+The library uses [`polkadot-js/api`](https://github.com/polkadot-js/api) under the hood,
+but is especially useful because all calls and queries are typed, therefore the chance of
+getting some error during a call is mitigated.
 
 ## Sol2Ink
 
-[Sol2Ink](https://github.com/727-Ventures/sol2ink) es una herramienta que permite realizar migraciones de Solidity a ink!. El código en Solidity se envía a Sol2Ink y es convertido en un contrato ink!. La herramienta también puede utilizarse para aprender las diferencias entre el código de Solidity y el de ink!.
+[Sol2Ink](https://github.com/727-Ventures/sol2ink) is a tool which can support migrations
+from Solidity to ink!. Solidity code is passed to Sol2Ink and converted to an ink! contract.
+The tool can also be used to learn the differences between Solidity and ink! code.
 
-### ¿Preguntas?
+### Questions?
 
-Si tienes alguna pregunta sobre cómo utilizar cualquiera de estas herramientas, o simplemente sobre los contratos inteligentes de ink! en general, puede unirse al [canal de Element de Brushfam](https://matrix.to/#/!utTuYglskDvqRRMQta:matrix.org?via=matrix.org&via=t2bot.io&via=web3.foundation) o hacer una pregunta en el [Substrate Stack Exchange](https://substrate.stackexchange.com/).
+If you have any questions about how to use any of these tools, or just about the ink! smart contracts in general, you can join the [Brushfam element channel](https://matrix.to/#/!utTuYglskDvqRRMQta:matrix.org?via=matrix.org&via=t2bot.io&via=web3.foundation) or ask a question on the [Substrate Stack Exchange](https://substrate.stackexchange.com/).
 
 [OpenBrush]: https://github.com/727-Ventures/openbrush-contracts
 [PSPs]: https://github.com/w3f/PSPs
