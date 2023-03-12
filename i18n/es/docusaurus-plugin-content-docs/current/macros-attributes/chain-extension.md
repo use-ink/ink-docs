@@ -45,9 +45,9 @@ El código de error es definido como la definición de un tipo asociado de la de
 Los métodos son definidos como métodos trait asociados sin implementación.
 
 Los métodos de extensión de cadena no deben tener un receptor `self` como `&self` o `&mut self`
-y deben tener inputs y outputs que implementen el codec SCALE. EL valor de retorno sigue
-unas reglas especificas que puede ser alteradas utilizando los atributos `handle_status` y `returns_result` 
-que se describen con más detalles a continuación.
+y deben tener inputs y outputs que implementen el codec SCALE. Su valor de retorno sigue
+unas reglas específicas que pueden ser alteradas utilizando el atributo `handle_status` y la 
+alternancia entre los tipos `Result` y Non-`Result`, que se describen con más detalle a continuación.
 
 ## Uso
 
@@ -59,14 +59,12 @@ de los métodos proporcionados por la extensión de cadena.
 
 ## Atributos
 
-Hay tres atributos diferentes con los métodos de la extensión de cadena
-que pueden marcarse:
+Los métodos de extensión de cadena pueden marcarse con dos atributos diferentes:
 
 | Atributos | Requerido | Valor por Defecto | Descripción |
 |:----------|:--------:|:--------------|:-----------:|
 | `ink(extension = N: u32)` | Si | - | Determina el ID único de la función del método de extensión de cadena |
 | `ink(handle_status = flag: bool)` | Opcional | `true` | Asume que el código de estatus devuelto del método de extensión de la cadena siempre indica exito y por lo tanto siempre carga y decodifica el output buffer de la llamada. |
-| `ink(returns_result = flag: bool)` | Opcional | `true` | Por defecto en los métodos de extension de cadena se asume que devuelve un `Result<T, E>` en el output buffer. Utilizando `returns_result = false` este check se desactiva y el método de extensión de cadena puede devolver cualquier otro tipo. |
 
 Como en todos los atributos ink! pueden aparecer multiples de ellos en una lista contigua:
 
@@ -77,7 +75,7 @@ type Access = i32;
 pub trait MyChainExtension {
     type ErrorCode = i32;
   
-    #[ink(extension = 5, handle_status = false, returns_result = false)]
+    #[ink(extension = 5, handle_status = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
@@ -93,7 +91,6 @@ pub trait MyChainExtension {
   
   #[ink(extension = 5)]
   #[ink(handle_status = false)]
-  #[ink(returns_result = false)]
   fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
@@ -102,7 +99,7 @@ pub trait MyChainExtension {
 
 Valor por defecto: `true`
 
-Por defecto todos los métodos de extensión de cadena devuvelve un `Result<T, E>` donde `E: From<Self::ErrorCode>`.
+Por defecto todos los métodos de extensión de cadena deberían retornar un `Result<T, E>` donde `E: From<Self::ErrorCode>`.
 El `Self::ErrorCode` representa el código de error de la extensión de cadena.
 Esto significa que un smart contract llamando a un método de extensión de cadena primero consulta el 
 código de estado devuelto por el método de extensión de cadena y solo carga y decodifica el output si el 
@@ -116,33 +113,25 @@ Un método de extensión de cadena que es marcado con `handle_status = false` as
 siempre indicara éxito. Por lo tanto siempre cargara y decodificara el buffer output y perdera el
 constraint `E: From<Self::ErrorCode` de la llamada.
 
-## Detalles: `returns_result`
+Tenga en cuenta que si un método de extensión de cadena no retorna `Result<T, E>` where `E: From<Self::ErrorCode>`
+pero con `handle_status = true`, seguirá retornando un valor de tipo `Result<T, Self::ErrorCode>`.
 
-Valor por defecto: `true`
+## Uso: `handle_status` + tipo de retorno `Result<T, E>`
 
-Por defecto se asume que los métodos de extensión de cadena devuelven un valor de tipo `Result<T, E>` a través del
-output buffer. Utilizando `returns_result = false` se desactiva este check y el método de extensión de cadena
-puede devolver cualquier otro tipo.
-
-Nota que si a un método de extensión de cadena se le atribuye con `returns_result = false`
-y con `handle_status = true` seguira devolviendo un valor de tipo `Result<T, Self::ErrorCode>`.
-
-## Uso: `handle_status` + `returns_result`
-
-Utiliza ambos `handle_status = false` y `returns_result = false` para el mismo método de extensión de cadena
+Utiliza ambos `handle_status = false` y tipo de retorno non-`Result` para el mismo método de extensión de cadena
 si una llamada nunca puede fallar y nunca devuelva un tipo `Result`.
 
 ## Combinaciones
 
-Dada la posibilidad de marcar un método de extensión de cadena con `handle_status` y `returns_result`
-hay 4 casos diferentes con semántica ligeramente variable:
+Debido a la posibilidad de marcar un método de extensión de cadena con `handle_status` y (1) devolver `Result<T, E>` o 
+(2) devolver sólo `T`, hay 4 casos diferentes con semántica ligeramente variable:
 
-| `handle_status` | `returns_result` | Efectos |
+| `handle_status` | Retorna `Result<T, E>` | Efectos |
 |:---------------:|:----------------:|:--------|
 |`true` |`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>` donde `E: From<Self::ErrorCode>`. Una llamada siempre
 comprobara si el código de estado devuelto indica exito y solo entonces cargara y decodificara el valor en el buffer output. |
 |`true` |`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre
-comprobara si el código de estado devuelto indica exito y solo entonces cargara y decodificara el valor en el buffer output. El  El tipo de retorno real del método de extensión de la cadena sigue siendo `Result<T, Self::ErrorCode>` cuando el método de extensión de cadena fue definido para devilver un valor de tipo `T`. |
+comprobara si el código de estado devuelto indica exito y solo entonces cargara y decodificara el valor en el buffer output. El tipo de retorno real del método de extensión de la cadena sigue siendo `Result<T, Self::ErrorCode>` cuando el método de extensión de cadena fue definido para devilver un valor de tipo `T`. |
 |`false`|`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>`. Una llamada siempre
 asume que el código de estado devuelto indica exito por lo tanto siempre cargara y decodificara el buffer output directamente. |
 |`false`|`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre
@@ -208,7 +197,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Actually returns a value of type `Result<(), Self::ErrorCode>`.
-    #[ink(extension = 3, returns_result = false)]
+    #[ink(extension = 3)]
     fn write(key: &[u8], value: &[u8]);
 
     /// Returns the access allowed for the key for the caller.
@@ -216,7 +205,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Assumes to never fail the call and therefore always returns `Option<Access>`.
-    #[ink(extension = 4, returns_result = false, handle_status = false)]
+    #[ink(extension = 4, handle_status = false)]
     fn access(key: &[u8]) -> Option<Access>;
 
     /// Unlocks previously aquired permission to access key.
@@ -388,13 +377,13 @@ mod read_writer {
     #[ink::chain_extension]
     pub trait RuntimeReadWrite {
           type ErrorCode = ReadWriteErrorCode;
-          #[ink(extension = 1, returns_result = false)]
+          #[ink(extension = 1)]
           fn read(key: &[u8]) -> Vec<u8>;
           #[ink(extension = 2)]
           fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
-          #[ink(extension = 3, returns_result = false)]
+          #[ink(extension = 3)]
           fn write(key: &[u8], value: &[u8]);
-          #[ink(extension = 4, returns_result = false, handle_status = false)]
+          #[ink(extension = 4, handle_status = false)]
           fn access(key: &[u8]) -> Option<Access>;
           #[ink(extension = 5, handle_status = false)]
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
