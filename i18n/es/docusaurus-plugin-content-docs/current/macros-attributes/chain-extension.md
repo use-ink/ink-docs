@@ -25,10 +25,7 @@ es posible extender facilmente su API utilizando la feature de extensión de la 
   <img src="/img/venn.png" width="50%" />
 </center>
 
-<div class="translateTodo">
-With chain extensions you can expose parts of your runtime logic
-to smart contract developers.
-</div>
+Con las extensiones de cadena puede exponer partes de su lógica de runtime a los desarrolladores de contratos inteligentes.
 
 :::note
 El repositorio ink! contiene [el ejemplo `rand-extension` ](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
