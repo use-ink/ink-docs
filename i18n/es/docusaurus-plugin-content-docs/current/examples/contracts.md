@@ -119,4 +119,4 @@ El archivo `.contract` combina el Wasm y la metadata en un sólo archivo que deb
 desplegar el contrato.
 
 Para más información, por favor consulte la sección 
-[Despliega tu Contrato”](/getting-started/deploy-your-contract)“.
+[Despliega tu Contrato](/getting-started/deploy-your-contract).

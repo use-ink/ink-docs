@@ -3,7 +3,7 @@ title: OpenBrush
 slug: /getting-started/use-openbrush
 ---
 
-[OpenBrush] es una librería para el desarrollo de contratos inteligentes en ink! mantenida por el equipo de [Brushfam].
+[OpenBrush] es una librería para el desarrollo de contratos inteligentes en ink! mantenida por el equipo de [Brushfam](https://brushfam.io/).
 
 Proporciona contratos estándar basados en las [Propuestas Estándar de Polkadot (PSPs)](https://github.com/w3f/PSPs), así como contratos de más alto nivel y macros de Rust que generan código de ink!.
 

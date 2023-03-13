@@ -6,12 +6,6 @@ hide_title: true
 
 <img src="/img/title/text/chain-ext.svg" className="titlePic" />
 
-:::note
-TODO: Please apply the English changes from [this commit](https://github.com/paritytech/ink-docs/commit/8df53f482a0452cc812d1a490f9a5d42ea277f0d) to this page.
-
-Additionally, there is one English sentence on this page (in red, just scroll down).
-:::
-
 En la configuración por defecto del `contracts-pallet` un smart contract solo puede interactuar con el runtime
 via su conjunto bien definido de la interface basica del smart contract. Este API ya permite una gran variedad de
 interacción entre el `contracts-pallet` y el smart contract ejecutado. Por ejemplo es posible llamar e instanciar 
@@ -125,14 +119,10 @@ Debido a la posibilidad de marcar un método de extensión de cadena con `handle
 
 | `handle_status` | Retorna `Result<T, E>` | Efectos |
 |:---------------:|:----------------:|:--------|
-|`true` |`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>` donde `E: From<Self::ErrorCode>`. Una llamada siempre
-comprobara si el código de estado devuelto indica exito y solo entonces cargara y decodificara el valor en el buffer output. |
-|`true` |`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre
-comprobara si el código de estado devuelto indica exito y solo entonces cargara y decodificara el valor en el buffer output. El tipo de retorno real del método de extensión de la cadena sigue siendo `Result<T, Self::ErrorCode>` cuando el método de extensión de cadena fue definido para devilver un valor de tipo `T`. |
-|`false`|`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>`. Una llamada siempre
-asume que el código de estado devuelto indica exito por lo tanto siempre cargara y decodificara el buffer output directamente. |
-|`false`|`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre
-asume que el código de estado devuelto indica exito por lo tanto siempre cargara y decodificara el buffer output directamente. |
+|`true` |`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>` donde `E: From<Self::ErrorCode>`. Una llamada siempre comprobará si el código de estado devuelto indica exito y solo entonces cargara y decodificara el valor en el buffer output. |
+|`true` |`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre comprobará si el código de estado devuelto indica exito y solo entonces cargará y decodificará el valor en el buffer output. El tipo de retorno real del método de extensión de la cadena sigue siendo `Result<T, Self::ErrorCode>` cuando el método de extensión de cadena fue definido para devilver un valor de tipo `T`. |
+|`false`|`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>`. Una llamada siempre asume que el código de estado devuelto indica exito por lo tanto siempre cargará y decodificará el buffer output directamente. |
+|`false`|`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre asume que el código de estado devuelto indica exito por lo tanto siempre cargará y decodificará el buffer output directamente. |
 ## Código de Error
 
 Cada extensión de cadena define exactamente un `ErrorCode` utilizando la siguiente sintaxis:

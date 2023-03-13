@@ -47,13 +47,13 @@ El número `1002` es la identificación de la parachain Contracts en Rococo. Al 
 Si tienes algunos tokens en la relay chain Rococo, puedes transportarlos a la parachain Contracts por tus propios medios. Lee más acerca de transportar activos [aquí](https://wiki.polkadot.network/docs/learn-teleport).
 
 Si todo funcionó bien, los tokenes `ROC` telentransportados van aparecer en tu cuenta. 
-En caso de que estes usando el frontend de `polkadot-js`, los podrás ver en [la pestaña de "Cuentas" para la parachain Contracts](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
+En caso de que estés usando el frontend de `polkadot-js`, los podrás ver en [la pestaña de "Cuentas" para la parachain Contracts](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/accounts).
 
 <img src="/img/roc-in-wallet.png" alt="Tokens de la testnet Rococo en la billetera" />
 
 ### (3) Despliega Tu Contrato
 
-Una vez que tengas tokens `ROC` en la parachain Contracts, puedes desplegar tu contrato casi como si lo harias con un nodo local de desarrollador. 
+Una vez que tengas tokens `ROC` en la parachain Contracts, puedes desplegar tu contrato casi como si lo harías con un nodo local de desarrollador. 
 La única diferencia es que no puedes utilizar cuentas pre-creadas como `Alice` o `Bob`, sino la que tú has generado.
 
 <img src="/img/deployment-acc.png" alt="Despliega un contrato inteligente en Rococo/Polkadot" />
