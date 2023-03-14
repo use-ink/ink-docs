@@ -59,7 +59,7 @@ While CosmWasm unit tests have different modules for each of the three main entr
 functions, ink! allows for a more generalised approach, where the `#[ink(test)]` macro is
 used for each unit test.
 
-You can read more about ink! unit tests [here](https://ink.substrate.io/basics/contract-testing#unit-tests).
+You can read more about ink! unit tests [here](https://use.ink/basics/contract-testing#unit-tests).
 
 ## Compiler
 

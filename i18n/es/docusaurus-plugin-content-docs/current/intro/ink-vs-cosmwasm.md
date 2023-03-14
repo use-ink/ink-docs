@@ -53,7 +53,7 @@ Mientras que los tests unitarios de CosmWasm tienen diferentes módules para cad
 posibles funciones de entrada, ink! permite un enfoque más general, `#[ink(test)]` será usado
 para cada test.
 
-Puedes leer más sobre ink! y los test unitarios [aqui](https://ink.substrate.io/basics/contract-testing#unit-tests).
+Puedes leer más sobre ink! y los test unitarios [aqui](https://use.ink/basics/contract-testing#unit-tests).
 
 ## Compilador
 

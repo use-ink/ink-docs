@@ -2,6 +2,7 @@ module.exports = {
   reference: {
     Overview: [
       "intro/intro",
+      "intro/upcoming-events",
       "intro/why-rust",
       "intro/why-webassembly",
       "intro/how-it-works",
@@ -10,6 +11,8 @@ module.exports = {
     ],
     "Monthly Update": [
       "monthly-update/overview",
+      "monthly-update/2023/03",
+      "monthly-update/2023/02",
       "monthly-update/2023/01",
       "monthly-update/2022/12",
       "monthly-update/2022/11",
