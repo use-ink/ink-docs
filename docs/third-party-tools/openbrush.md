@@ -47,7 +47,7 @@ The benefits of such mechanism is a functional polymorphism.
 Instead of working with the concrete implementation of the trait as a dependency
 in you contract, you only interact with its interface. 
 If you need to update the implementation of the trait within the calling contract,
-you only need to replace the calling contract address.
+you only need to replace the called contract address.
 
 See [example](https://github.com/727-Ventures/openbrush-contracts#wrapper-around-traits)
 for illustration.
