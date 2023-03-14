@@ -36,18 +36,21 @@ code base ([detailed description](https://github.com/727-Ventures/openbrush-cont
 Traditionally, if you want to do a cross-contract calling in ink!,
 you need to import the other contract as a dependency in the calling contract's project. 
 
-OpenBrush simplifies the process with the wrapper around traits. 
+OpenBrush simplifies the process with the wrapper around traits.
 If you know that the other contract implements a trait, 
 you only need that trait definition and the address of the other contract 
 in order to call a method from the deployed third-party contract.
-The wrapper will automatically generate a generic `{Contract}Ref` definition
-which you can use to call methods.
+The wrapper is an attribute macro for traits that can be used to automatically generate 
+a callable `{Contract}Ref` implementation.
 
-The benefits of such mechanism is a functional polymorphism. 
+The benefits of such mechanism is a functional polymorphism.
 Instead of working with the concrete implementation of the trait as a dependency
 in you contract, you only interact with its interface. 
+That means that you do not need to import other contract's as dependencies
+to the calling contract.
 If you need to update the implementation of the trait within the calling contract,
-you only need to replace the called contract address.
+you only need to replace the called contract address. The wrapper does not guarantee
+that the given address refers to a contract that implements the given trait.
 
 See [example](https://github.com/727-Ventures/openbrush-contracts#wrapper-around-traits)
 for illustration.
