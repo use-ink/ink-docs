@@ -1,19 +1,22 @@
 ---
-title: Mutating Storage Values
-slug: /basics/mutating-values
+title: Mutando Valores del Storage
+slug: /basics/mutando-valores-del-storage
+hide_title: true
 ---
 
-It's time to modify some storage!
+<img src="/img/title/storage-mutating.svg" className="titlePic" />
 
-## Mutable and Immutable Functions
+# Mutando Valores del Storage
 
-You may have noticed that the function template included `self` as the first parameter of the
-contract functions. It is through `self` that you gain access to all your contract functions and
-storage items.
+Es hora de modificar el storage!
 
-If you are simply _reading_ from the contract storage, you only need to pass `&self`. But
-if you want to _modify_ storage items, you will need to explicitly mark it as mutable,
-`&mut self`.
+## Funciones Mutables e Inmutables
+
+Te habras dado cuenta que la función plantilla incluye `self` como el primer parámetro de las funciones del contrato.
+Es a través de `self` que tienes acceso a todas las funciones del contrato y los elementos almacenados.
+
+Si simplemente estas _leyendo_ del storage del contrato, solamente tiene que pasar `&self`. Pero si quieres
+_modificar_ elementos del storage, tienes que marcarlo explicitamente como mutable, `&mut self`.
 
 ```rust
 impl MyContract {

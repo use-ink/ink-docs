@@ -1,18 +1,25 @@
 ---
 title: Events
 slug: /basics/events
+hide_title: true
 ---
+
+<img src="/img/title/balloons-1.svg" className="titlePic" />
+
+# Events
 
 An ink! smart contract may define events that it can emit during contract execution.
 Emitting events can be used by third party tools to query information about a contract's
 execution and state.
 
+![Contract execution via transaction](/img/events.svg)
+
+## Example
+
 The following example ink! contract shows how an event `Transferred` is defined and
 emitted in the `#[ink(constructor)]`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     /// Defines an event that is emitted
@@ -50,7 +57,7 @@ mod erc20 {
 }
 ```
 
-See our [`ERC20 example contract`](https://github.com/paritytech/ink/blob/master/examples/erc20/lib.rs) 
+See our [`ERC20 example contract`](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) 
 for an elaborate example which uses events.
 
 ## Event Definition

@@ -1,7 +1,10 @@
 ---
 title: "#[ink(selector = S:u32)]"
 slug: /macros-attributes/selector
+hide_title: true
 ---
+
+<img src="/img/title/text/selector.svg" className="titlePic" />
 
 Applicable to ink! messages and ink! constructors.
 
@@ -44,8 +47,6 @@ An ink! smart contract author can control the selector of an ink! message or ink
 constructor using the `selector` flag. An example is shown below:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
     #[ink(storage)]

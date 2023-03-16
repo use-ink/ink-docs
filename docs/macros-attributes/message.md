@@ -1,7 +1,10 @@
 ---
 title: "#[ink(message)]"
 slug: /macros-attributes/message
+hide_title: true
 ---
+
+<img src="/img/title/text/message.svg" className="titlePic" />
 
 Applicable to methods.
  
@@ -52,8 +55,6 @@ Given the `Flipper` contract definition above we add some `#[ink(message)]` defi
 as follows:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
     #[ink(storage)]

@@ -1,12 +1,17 @@
 ---
 title: Compile Your Contract
 slug: /getting-started/building-your-contract
+hide_title: true
 ---
+
+<img src="/img/title/cargo-contract.svg" className="titlePic" />
+
+# Compile Your Contract
 
 Run the following command in your `flipper` directory to compile your smart contract:
 
 ```bash
-cargo +nightly contract build
+cargo contract build
 ```
 
 This command will build the following for your contract: a Wasm binary, a metadata file (which contains the
@@ -19,16 +24,15 @@ target
   └─ ink
     └─ flipper.contract
     └─ flipper.wasm
-    └─ metadata.json
+    └─ flipper.json
 ```
 
-Let's take a look at the structure of the `metadata.json`:
+Let's take a look at the structure of the `flipper.json`:
 
 ```json
 {
-  "metadataVersion": "0.1.0",
   "source": {...},
-  "contracts": {...},
+  "contract": {...},
   "spec": {
     "constructors": [...],
     "docs": [],
@@ -36,7 +40,8 @@ Let's take a look at the structure of the `metadata.json`:
     "messages": [...],
   },
   "storage": {...},
-  "types": [...]
+  "types": [...],
+  "version": "4"
 }
 ```
 
@@ -54,3 +59,31 @@ functions.
 
 In the next section we will start a [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
 and configure the [Contracts UI](https://github.com/paritytech/contracts-ui) to interact with it.
+
+## Debug vs. Release Build
+
+By default, `cargo-contract` builds the contract in debug mode. This means
+that the contract will e.g. print statements like
+
+```rust
+ink::env::debug_println!("magic number: {}", value);
+```
+
+to the node's console if debugging was enabled on the node ([instructions here](/faq#how-do-i-print-something-to-the-console-from-the-runtime)).
+To support functionality like this the debug build of a contract includes some
+heavy-weight logic.
+
+For contracts that are supposed to run in production you should always build the
+contract with `--release`:
+
+```bash
+cargo contract build --release
+```
+
+This will ensure that nothing unnecessary is compiled into the Wasm blob, making
+your contract faster and cheaper to deploy and execute.
+
+:::info
+With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs:
+the `--release` flag has to be passed explicitly to `cargo build`.
+:::

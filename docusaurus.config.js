@@ -9,20 +9,33 @@ module.exports = {
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [
-    'fonts/fonts.css'
+    'fonts/fonts.css',
+    'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap'
+  ],
+  plugins: [
+    [
+      '@branchup/docusaurus-plugin-simple-analytics',
+      {
+        domain: 'apisa.parity.io',
+      },
+    ],
   ],
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         indexPages: true,
+        ignoreFiles: [
+          /3.x/,
+        ],
+        language: ["en", "es"]
       }
     ]
   ],
   themeConfig: {
     prism: {
       theme: require('prism-react-renderer/themes/duotoneDark'),
-      additionalLanguages: ['rust', 'json']
+      additionalLanguages: ['rust', 'json', 'toml']
     },
     colorMode: {
       defaultMode: 'dark',
@@ -42,8 +55,21 @@ module.exports = {
           dropdownActiveClassDisabled: true,
         },
         {
-          type: 'localeDropdown',
+          type: 'dropdown',
+          label: 'Language',
           position: 'right',
+          items: [
+            {
+              href: '../',
+              label: 'English',
+              target: '_parent',
+            },
+            {
+              href: '/es/',
+              label: 'Spanish',
+              target: '_parent',
+            },
+          ]
         }
       ],
     },
@@ -56,14 +82,14 @@ module.exports = {
         routeBasePath: '/',
         lastVersion: 'current',
         versions: {
-          '4.0.0-alpha.1': {
-            label: '4.0.0-alpha.1',
-            path: '4.0.0-alpha.1',
+          current: {
+            label: '4.0',
+            path: '',
             banner: 'none',
           },
-          current: {
-            label: '3.x.x',
-            path: '',
+          '3.x': {
+            label: '3.x',
+            path: '3.x',
             banner: 'none',
           },
         },
@@ -73,7 +99,7 @@ module.exports = {
         editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
       },
       theme: {
-        customCss: [require.resolve('./src/css/custom.css')],
+        customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/faucet.css')],
       },
     }],
   ],
@@ -86,7 +112,8 @@ module.exports = {
         label: 'English'
       },
       es: {
-        label: 'Español'
+        label: 'Español',
+        htmlLang: 'es-ES'
       }
     },
   },

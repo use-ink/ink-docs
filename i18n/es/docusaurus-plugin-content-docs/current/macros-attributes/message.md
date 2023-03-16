@@ -1,59 +1,60 @@
 ---
 title: "#[ink(message)]"
 slug: /macros-attributes/message
+hide_title: true
 ---
 
-Applicable to methods.
+<img src="/img/title/text/message.svg" className="titlePic" />
+
+Aplicable a métodos.
  
-Flags a method for the ink! storage struct as message making it available to the API for calling the contract. 
+Marca un método para el struct storage de ink! como mensaje haciendo que este disponible para la API al llamar al contrato.
 
-Note that all public functions must use the `#[ink(message)]` attribute
+Date cuenta que todas las funciones públicas deben utilizar el atributo `#[ink(message)]`.
 
-There must be at least one `#[ink(message)]` defined method.
+Al menos debe haber un método `#[ink(message)]` definido.
 
-Methods flagged with `#[ink(message)]` are special in that they are dispatchable
-upon contract invocation. The set of ink! messages defined for an ink! smart contract
-define its API surface with which users are allowed to interact.
+Los métodos marcados con `#[ink(message)]` son especiales de un modo que son dispatchables
+en la invocación del contrato. El conjunto de mensajes de ink! definidos por los smart contract ink!
+defined su superficie API con los usuarios que están permitidos interactuar.
 
-An ink! smart contract can have multiple such ink! messages defined.
+Un smart contract de ink! puede tener multiples mensajes ink! definidos.
 
-An ink! message with a `&self` receiver may only read state whereas an ink! message
-with a `&mut self` receiver may mutate the contract's storage.
+Un mensaje ink! con un receptor  `&self` solo puede leer el estado mientras un mensaje ink!
+con un receptor `&mut self` puede mutar el storage del contrato.
 
 ```rust
 #[ink(message)]
 pub fn purely_reading(&self, from: AccountId) {
-    // actual implementation
+    // implementación actual
 }
 
 #[ink(message)]
 pub fn mutates_storage(&mut self, from: AccountId) {
-    // actual implementation
+    // implementación actual
 }
 ```
 
 
-## Messages Return Value
+## Valor de retorno de los mensajes
 
-The return value of a message needs to implement `scale::Encode`.
+El valor de returno de un mensaje tiene que implementar  `scale::Encode`.
 
-It is notable that the collections under `ink_storage` ‒ such as e.g. `Vec` or `HashMap` ‒
-don't implement `scale::Encode`. This means you can't just return a `Vec` from an ink! message.
-This restriction is intentional ‒ returning a complete data structure with a potentially unbounded
-content is an anti-pattern for smart contracts. Just think about the unpredicatble gas costs.
+Es notable que la colección bajo  `ink_storage` ‒ como por ejemplo `Vec` o `HashMap` ‒
+no implementa `scale::Encode`. Esto quiere decir que no puedes solo retornar un `Vec` desde un mensaje ink!.
+Esta restricción es intencional ‒ devolviendo una estructura de datos completa con un contenido potencialmente ilimitado
+es un anti patrón para smart contracts. Simplemente piensa en como de impredecible serían los costes del gas.
 
-If you _really really_ need to return a data structure in its entirety then use the ones from
-`ink_prelude` (e.g. `ink_prelude::vec::Vec`). Those implement `scale::Encode`.
+Si tu _realmente_ necesitas devolver una estructura de datos entera entonces utiliza un de 
+`ink_prelude` (e.g. `ink_prelude::vec::Vec`). Estas implementan `scale::Encode`.
 
 
-## Example
+## Ejemplo
 
-Given the `Flipper` contract definition above we add some `#[ink(message)]` definitions
-as follows:
+Dada la definición del contrato `Flipper` de arriba añadimos las definiciones `#[ink(message)]`
+como vemos a continuación:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
     #[ink(storage)]
@@ -68,13 +69,13 @@ mod flipper {
             Flipper { value: false }
         }
 
-        /// Flips the current value.
+        /// Voltea el valor actual.
         #[ink(message)]
         pub fn flip(&mut self) {
             self.value = !self.value;
         }
 
-        /// Returns the current value.
+        /// Devuelve el valor actual.
         #[ink(message)]
         pub fn get(&self) -> bool {
             self.value

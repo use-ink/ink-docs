@@ -1,48 +1,30 @@
 ---
 title: Overview
 slug: /datastructures/overview
+hide_title: true
 ---
 
-The `ink_storage` crate acts as the standard storage library for ink! smart contracts. At
-the moment it only provides a single low-level primitive for interacting with storage,
-the [`Mapping`](https://docs.rs/ink_storage/3.3.1/ink_storage/struct.Mapping.html).
+<img src="/img/title/storage.svg" className="titlePic" />
 
-The `Mapping` is a mapping of key-value pairs directly to the contract storage. Its main advantage
-is to be simple and lightweight. As such, it does not provide any high-level
-functionality, such as iteration or automatic clean-up. Smart contract authors will need
-to implement any high level functionality themselves.
+# Introducción
 
-## Eager Loading
+El crate `ink_storage` actúa como la biblioteca de almacenamiento estándar para los smart contracts ink!.
+En este momento proporciona dos primitivas para interactuar con el storage,
+[`Mapping`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html)
+y [`Lazy`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Lazy.html).
 
-When executing a contract, all the fields of the `#[ink(storage)]` struct will be pulled
-from storage, regardless of whether or not they are used during the message execution.
+`Mapping` es un mapeo de pares clave-valor directamente en el storage del contrato. 
+Es muy similar a tablas hash tradicionales y comparable con el tipo `mapping` que ofrece Solidity.
+Como ingrediente central del lenguaje ink!, su principal ventaja es ser simple y ligero:
+Favorece ser eficiente en cuanto a costes de gas y tamaño de código
+en lugar de proporcionar una gran cantidad de funciones de alto nivel que se encuentran en otras implementaciones
+como el tipo `ink::prelude::collections::HashMap`.
+Generalmente, el `Mapping` de ink! será una opción sólida para la mayoría de los contratos. Además, los
+desarrolladores de smart contracts developers pueden implementar ellos mismos funcionalidades avanzadas.
 
-Smart contract authors should be aware of this behaviour since it could potentially
-affect their contract performance. For example, consider the following storage struct:
-
-```rust
-#[ink(storage)]
-pub struct EagerLoading {
-    a: i32,
-    b: ink_prelude::vec::Vec<i32>,
-}
-
-impl EagerLoading {
-    #[ink(message)]
-    pub fn read_a(&self) {
-        let a = self.a;
-    }
-}
-```
-
-In `EagerLoading::read_a()` we only read the `a` storage item. However, the `b` storage
-item will still be loaded from storage. As a reminder, this means accessing the
-underlying database and SCALE decoding the value. This can incur high costs, especially
-as the number of elements in `b` grows.
-
-:::note
-
-Eager loading does **not** apply to `Mapping` fields, though, as key lookups in mappings
-are done directly from contract storage.
-
-:::
+`Lazy` es un tipo wrapper que puede ser utilizado sobre cualquier otro tipo compatible del storage.
+Esto permite a los desarrolladores de smart contract un control manual detallado sobre el diseño del
+storage del contrato asignando una celda separada del storage para esse campo. Por ejemplo, esto puede ser 
+utilizado para prevenir el contrato de la carga ansiosa de grandes campos de almacenamiento durante cada llamada de contrato.
+Posiblemente, puede ser deseable cambiar ciertos aspectos sobre cómo su contrato trata con sus variables del storage.
+Puedes encontrar más información sobre esto en la sección sobre el ink! [Storage Layout](https://use.ink/datastructures/storage-layout).

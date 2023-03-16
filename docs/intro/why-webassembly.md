@@ -1,7 +1,15 @@
 ---
 title: Why WebAssembly for Smart Contracts?
+hide_title: true
 slug: /why-webassembly-for-smart-contracts
 ---
+
+<img src="/img/title/wasm.svg" className="titlePic" />
+
+# Why WebAssembly for Smart Contracts?
+
+We made a conscious decision for WebAssembly as the target architecture of ink!. 
+Our decision was made up by these reasons:
 
 * <span class="highlight">High performance: </span>Wasm is high performance — it’s built to be as close to native machine code as possible while still being platform independent.
 
@@ -24,13 +32,13 @@ Wasm is easily made deterministic by removing floating point operations, which i
 
 * <span class="highlight">Open Standards > Custom Solutions: </span>
 Wasm is a standard for web browsers developed by W3C workgroup that includes Google, Mozilla, and others.
-There’s been many years of work put into Wasm, both by compiler and standardisation teams.
+There’s been many years of work put into Wasm, both by compiler and standardization teams.
 
 * <span class="highlight">Many languages available: </span> Wasm expands the family of languages available to smart contract developers to include Rust, C/C++, C#, Typescript, Haxe, and Kotlin. This means you can write smart contracts in whichever language you’re familiar with, though we’re partial to Rust due to its lack of runtime overhead and inherent security properties.
 
 * <span class="highlight">Memory-safe, sandboxed, and platform-independent.</span>
 
 * <span class="highlight">LLVM support: </span>
-Supported by the LLVM compiler infrastructure project, meaning that Wasm benefits from over a decade of LLVM’s compiler optimisation.
+Supported by the LLVM compiler infrastructure project, meaning that Wasm benefits from over a decade of LLVM’s compiler optimization.
 
 * <span class="highlight">Large companies involved: </span> Continually developed by major companies such as Google, Apple, Microsoft, Mozilla, and Facebook.

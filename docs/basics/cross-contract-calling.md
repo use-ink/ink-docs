@@ -1,13 +1,18 @@
 ---
 title: Cross-Contract Calling
 slug: /basics/cross-contract-calling
+hide_title: true
 ---
+
+<img src="/img/title/cross-contract.svg" className="titlePic" />
+
+# Cross-Contract Calling
 
 In ink! contracts it is possible to call ink! messages and ink! constructors. So ink! constructors allow
 delegation and ink! messages can easily call other ink! messages.
 Given another ink! contract like, we can call any of its functions.
 
-See our [`delegator example contract`](https://github.com/paritytech/ink/blob/master/examples/delegator/lib.rs) 
+See our [`delegator example contract`](https://github.com/paritytech/ink-examples/blob/main/delegator/lib.rs) 
 for an elaborate example which uses cross-contract calling.
 
 ### How it Works

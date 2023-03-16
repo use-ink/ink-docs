@@ -7,6 +7,9 @@ Run it locally via
 ```bash
 yarn
 yarn start
+
+# For the Spanish page, will be available at http://localhost:8080/es/.
+yarn start --locale es
 ```
 
 We want to provide comprehensive documentation for anything you need to work with ink! here.
@@ -18,3 +21,18 @@ or <a href="https://github.com/paritytech/ink-docs/pulls">make a pull-request</a
 We really want to have good documentation here and allow people to be productive
 right from the start.
 
+## Development Notes
+
+If you need to run ReCaptcha on your localhost you will need to add `dev.use.ink` to your `/etc/hosts`.
+
+### Linux
+```sh
+sudo bash -c 'echo "127.0.0.1 dev.use.ink" >> /etc/hosts'
+```
+
+### OSX
+```sh
+sudo bash -c 'echo "::1 dev.use.ink" >> /etc/hosts'
+```
+
+Then visit [http://dev.use.ink:8080/](http://dev.use.ink:8080/) (Don't forget the port number)

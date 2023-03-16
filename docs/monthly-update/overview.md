@@ -1,7 +1,10 @@
 ---
 title: Overview
 slug: /monthly-update/
+hide_title: true
 ---
+
+<img src="/img/title/monthly-update.svg" className="titlePic" />
 
 Hey there reader 👋!
 

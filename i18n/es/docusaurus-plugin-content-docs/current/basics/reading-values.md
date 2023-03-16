@@ -1,24 +1,30 @@
 ---
-title: Reading Values from Storage
-slug: /basics/reading-values
+title: Leer Valores del Storage
+slug: /basics/leer-valores-del-storage
+hide_title: true
 ---
 
-Reading from storage is where the fun begins!
+<img src="/img/title/storage-read.svg" className="titlePic" />
 
-## Contract Functions
+# Leer Valores del Storage
 
-As you can see in the contract template, all of your contract functions are part of your contract module.
+Leer los valores almacenados en el storage es ¡es donde comienza la diversión!
+
+## Funciones del Contrato
+
+Como puedes ver en la plantilla del contrato, todas las funciones del contrato son parte del módulo del contrato.
 
 ```rust
 impl MyContract {
-    // Public and Private functions can go here
+    // Funciones públicas y privadas van aquí
 }
 ```
 
-### Public and Private Functions
+### Funciones Públicas y Privadas
 
-In Rust, you can make as many implementations as you want. As a stylistic choice, we recommend
-breaking up your implementation definitions for your private and public functions:
+En Rust, puede realizar tantas implementaciones como quieras. Como solución más estilística te recomendamos
+dividir las definiciones de implementación para sus funciones públicas y privadas:
+
 
 ```rust
 impl MyContract {
@@ -37,14 +43,14 @@ impl MyContract {
 }
 ```
 
-You can also choose to split things up however is most clear for your project.
+También puede optar por dividir las cosas como sea más claro para tú proyecto.
 
-Note that all public functions must use the `#[ink(message)]` attribute.
+Ten en cuenta que todas las funciones públicas deben utilizar el atributo `#[ink(message)]`.
 
-## Getting a Value
+## Obtener un Valor
 
-We already showed you how to initialize a storage value in the chapter [Storing Values](/basics/storing-values).
-Getting the value is just as simple:
+Ya te hemos mostrado como inicializar un valor en el storage en este capítulo [Almacenando Valores](/basics/storing-values).
+Obtener el valor es así de simple:
 
 ```rust
 impl MyContract {
@@ -55,4 +61,4 @@ impl MyContract {
 }
 ```
 
-In Rust, if the last expression in a function does not have a semicolon, then it will be the return value.
+En Rust, si la última expresion de una función no tiene un punto y coma, entonces es el valor que retornara.

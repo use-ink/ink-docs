@@ -1,24 +1,28 @@
 ---
 title: "#[ink(selector = S:u32)]"
 slug: /macros-attributes/selector
+hide_title: true
 ---
 
-Applicable to ink! messages and ink! constructors.
+<img src="/img/title/text/selector.svg" className="titlePic" />
 
-By default ink! creates a selector for each message and constructor.
-This is necessary since the contract is compiled to a Wasm blob and functions are invoked by invoking the
-selector, which identifies a method ‒ method names are no longer available in these underlying layers.
+Aplicable a los mensajes y constructores ink!.
 
-Using this attribute it is possible to speficy a concrete dispatch selector for the flagged entity. This allows a contract author to precisely control the selectors of their APIs making it possible to rename their API without breakage.
+Por defecto ink! crea un selector para cada mensaje y constructor.
+Esto es necesario ya que el contrato es compilado a un Wasm blob y las funciones son invocadas invocando el
+selector, que identifica un método - los nombres de los métodos ya no están disponibles en estas capas subyacentes.
 
-A selector must be a `u32` decodable integer. For example
+Utilizando este atributo es posible especificar un selector de dispatch concreto para la entidad marcada. Esto permite que el autor de un contrato controle con precisión los selectores de sus APIs, lo que permite cambiar el nombre de su API sin interrupciones.
+
+Un selector debe ser un entero decodificable `u32`. Por ejemplo
 
 - `selector = 0xCAFEBABE`
 - `selector = 42`
 
-An exception is the fallback selector `_`, allowing contract calls not matching any of the other message selectors to be dispatched to a fallback message. Fallback messages can be `payable`.
+Una excepción es el selector fallback `_`, permitiendo que las llamadas a contratos no concuerden con ninguno
+de los otros selectores de mensajes se envíen a un mensaje fallback. Mensajes fallback pueden ser `payable`.
 
-## Examples
+## Ejemplos
 
 ```rust
 #[ink(message, selector = 0xC0DECAFE)]
@@ -30,22 +34,20 @@ fn my_message_2(&self) {}
 #[ink(message, payable, selector = _)]
 fn my_fallback(&self) {}
 ```
-… then the selector of `my_message_1` is `[0xC0, 0xDE, 0xCA, 0xFE]` and the selector of `my_message_2` is `[0, 0, 0, 42]`
-since setting the selector manually overrides the automatically generated selector.
+… Entonces el selector de `my_message_1` es `[0xC0, 0xDE, 0xCA, 0xFE]` y el selector de `my_message_2` es `[0, 0, 0, 42]`
+ya que configurar el selector manualmente anula el selector generado automáticamente.
 
-## Controlling the messages selector
+## Controlar el selector de mensajes
 
-Every ink! message and ink! constructor has a selector with which the
-message or constructor can be uniquely identified within the ink! smart contract.
-Non-unique message or constructor selector lead to a compile time error.
-These selectors are mainly used to drive the contract's dispatch upon calling it.
+Cada mensaje y constructor ink! tiene un selector con el que el mensaje o constructor 
+se puede identificar de forma única dentro del smart contract de ink!.
+Los selectores de mensaje o constructor no único conduce a un error de tiempo de compilación.
+Estos selectores principalmente pueden conducir el dispatch del contrato al llamarlo. 
 
-An ink! smart contract author can control the selector of an ink! message or ink!
-constructor using the `selector` flag. An example is shown below:
+Un autor de un smart contract ink! puede controlar el selector de un mensaje o constructor ink!
+utilizando la marca `selector` flag. Un ejemplo se muestra a continuación:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
     #[ink(storage)]
@@ -55,18 +57,18 @@ mod flipper {
 
     impl Flipper {
         #[ink(constructor)]
-        #[ink(selector = 0xDEADBEEF)] // Works on constructors as well.
+        #[ink(selector = 0xDEADBEEF)] // Funciona en constructores tambien.
         pub fn new(initial_value: bool) -> Self {
             Flipper { value: initial_value }
         }
 
         #[ink(message)]
-        #[ink(selector = 0xCAFEBABE)] // You can either specify selector out-of-line.
+        #[ink(selector = 0xCAFEBABE)] // Puedes específicar el selector out-of-line.
         pub fn flip(&mut self) {
             self.value = !self.value;
         }
         
-        #[ink(message, selector = 0xC0DECAFE)] // ...or specify the selector inline.
+        #[ink(message, selector = 0xC0DECAFE)] // ...o especificar el selector inline.
         pub fn get(&self) -> bool {
             self.value
         }

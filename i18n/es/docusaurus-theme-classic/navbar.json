@@ -1,0 +1,14 @@
+{
+  "item.label.Language": {
+    "message": "La lengua",
+    "description": "Navbar item with label Language"
+  },
+  "item.label.English": {
+    "message": "Inglés",
+    "description": "Navbar item with label English"
+  },
+  "item.label.Spanish": {
+    "message": "Español",
+    "description": "Navbar item with label Spanish"
+  }
+}

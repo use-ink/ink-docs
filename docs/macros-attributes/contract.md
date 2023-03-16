@@ -1,34 +1,26 @@
 ---
 title: "#[ink::contract]"
+hide_title: true
 slug: /macros-attributes/contract
 ---
 
-This macro is the entry point for writing ink! smart contracts.
+<img src="/img/title/text/contract.svg" className="titlePic" />
+
+# \#[ink::contract]
+
+The `#[ink::contract]` macro is the entry point for writing ink! smart contracts.
 
 If you are a beginner trying to learn ink! we recommend you to check out
-our extensive [ink! workshop](https://docs.substrate.io/tutorials/v3/ink-workshop/pt1).
+our extensive [ink! workshop](https://docs.substrate.io/tutorials/smart-contracts/).
 
-**Note:** In all below examples we will be using `ink_lang` crate aliased as just `ink`.
-You can do this yourself by adding the following line to your code:
-`use ink_lang as ink;`
-
-# Description
+## Description
 
 The macro does analysis on the provided smart contract code and generates
 proper code.
 
-ink! smart contracts can compile in several different modes.
-There are two main compilation modes using either
-- on-chain mode: `no_std` + WebAssembly as target
-- off-chain mode: `std`
+## Usage
 
-We generally use the on-chain mode for actual smart contract deployment
-whereas we use the off-chain mode for smart contract testing using the
-off-chain environment provided by the `ink_env` crate.
-
-# Usage
-
-## Header Arguments
+### Header Arguments
 
 The `#[ink::contract]` macro can be provided with some additional comma-separated
 header arguments:
@@ -50,8 +42,6 @@ Note that it is recommended to make use of the built-in crate feature
 
 **Usage Example:**
 ```rust
-use ink_lang as ink;
-
 #[ink::contract(compile_as_dependency = true)]
 mod my_contract {
     #[ink(storage)]
@@ -86,7 +76,7 @@ Given a custom `Environment` implementation:
 ```rust
 pub struct MyEnvironment;
 
-impl ink_env::Environment for MyEnvironment {
+impl ink::env::Environment for MyEnvironment {
     const MAX_EVENT_TOPICS: usize = 3;
     
     type AccountId = u64;
@@ -94,26 +84,25 @@ impl ink_env::Environment for MyEnvironment {
     type Hash = [u8; 32];
     type Timestamp = u64;
     type BlockNumber = u32;
-    type ChainExtension = ::ink_env::NoChainExtension;
+    type ChainExtension = ::ink::env::NoChainExtension;
 }
 ```
 A user might implement their ink! smart contract using the above custom `Environment`
 implementation as demonstrated below:
 
 ```rust
-use ink_lang as ink;
 #[ink::contract(env = MyEnvironment)]
 mod my_contract {
     pub struct MyEnvironment;
    
-    impl ink_env::Environment for MyEnvironment {
+    impl ink::env::Environment for MyEnvironment {
         const MAX_EVENT_TOPICS: usize = 3;
         type AccountId = u64;
         type Balance = u128;
         type Hash = [u8; 32];
         type Timestamp = u64;
         type BlockNumber = u32;
-        type ChainExtension = ::ink_env::NoChainExtension;
+        type ChainExtension = ::ink::env::NoChainExtension;
     }
     
     #[ink(storage)]
@@ -150,8 +139,6 @@ Some example rules include but are not limited to:
      **Example:**
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -181,8 +168,6 @@ Some example rules include but are not limited to:
      as follows:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -221,8 +206,6 @@ Some example rules include but are not limited to:
      as follows:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -261,8 +244,6 @@ Some example rules include but are not limited to:
      as such.
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -302,8 +283,6 @@ Some example rules include but are not limited to:
      constructor using the `selector` flag. An example is shown below:
 
      ```rust
-     use ink_lang as ink;
-  
      #[ink::contract]
      mod flipper {
          #[ink(storage)]
@@ -336,15 +315,15 @@ Some example rules include but are not limited to:
 
 ## Interacting with the Contract Executor
 
-The `ink_env` crate provides facitilies to interact with the contract executor that
+The `ink_env` crate provides facilities to interact with the contract executor that
 connects ink! smart contracts with the outer world.
 
 For example it is possible to query the current call's caller via:
 
 ```rust
 use ink_env;
-ink_env::test::run_test::<ink_env::DefaultEnvironment, _>(|_| {
-    let caller = ink_env::caller::<ink_env::DefaultEnvironment>();
+ink::env::test::run_test::<ink::env::DefaultEnvironment, _>(|_| {
+    let caller = ink::env::caller::<ink::env::DefaultEnvironment>();
     let _caller = caller;
     Ok(())
 }).unwrap();
@@ -354,8 +333,6 @@ However, ink! provides a much simpler way to interact with the contract executor
 via its environment accessor. An example below:
 
 ```rust
-use ink_lang as ink;
- 
 #[ink::contract]
 mod greeter {
     #[ink(storage)]
@@ -366,7 +343,7 @@ mod greeter {
         pub fn new() -> Self {
             let caller = Self::env().caller();
             let message = format!("thanks for instantiation {:?}", caller);
-            ink_env::debug_println(&message);
+            ink::env::debug_println(&message);
             Greeter {}
         }
 
@@ -375,7 +352,7 @@ mod greeter {
             let caller = self.env().caller();
             let value = self.env().transferred_balance();
             let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
-            ink_env::debug_println(&message);
+            ink::env::debug_println(&message);
         }
     }
 }
@@ -391,8 +368,6 @@ The following example ink! contract shows how an event `Transferred` is defined 
 emitted in the `#[ink(constructor)]`.
 
 ```rust
- use ink_lang as ink;
- 
  #[ink::contract]
  mod erc20 {
      /// Defines an event that is emitted every time value is transferred.
@@ -441,8 +416,6 @@ and allows the user to flip this value using the `Flipper::flip` message
 or retrieve the current value using `Flipper::get`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 pub mod flipper {
     #[ink(storage)]

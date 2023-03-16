@@ -1,7 +1,12 @@
 ---
 title: Reading Values from Storage
 slug: /basics/reading-values
+hide_title: true
 ---
+
+<img src="/img/title/storage-read.svg" className="titlePic" />
+
+# Reading Values from Storage
 
 Reading from storage is where the fun begins!
 
@@ -55,4 +60,4 @@ impl MyContract {
 }
 ```
 
-In Rust, if the last expression in a function does not have a semicolon, then it will be the return value.
+In Rust, if the last expression in a function does not have a semicolon it will be the return value.

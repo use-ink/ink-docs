@@ -1,7 +1,12 @@
 ---
 title: Deploy Your Contract
 slug: /getting-started/deploy-your-contract
+hide_title: true
 ---
+
+<img src="/img/title/rocket.svg" className="titlePic" />
+
+# Deploy Your Contract
 
 Now that we have generated the Wasm binary from our source code and connected to a local node, we want
 to deploy this contract onto our Substrate blockchain.
@@ -25,6 +30,8 @@ With this pattern, contract code like the ERC20 standard can be put on the block
 time, but instantiated any number of times. No need to continually upload the same source code over
 and waste space on the blockchain.
 
+## Using the Contracts UI
+
 ### 1. Upload Contract Code
 
 Here we will upload the contract code and instantiate one copy of the contract on the blockchain
@@ -38,7 +45,7 @@ Here we will upload the contract code and instantiate one copy of the contract o
   & drop area. You will see the UI parse the metadata and enabling the button that takes you to the next step.
 - Click the **Next** button
 
-![Flipper Instantiate Contract 01](./assets/flipper-instantiate-01.png)
+![Flipper Instantiate Contract 01](/img/contracts-ui-0.png)
 
 ### 2. Instantiate a Contract on the Blockchain
 
@@ -53,11 +60,11 @@ instantiate a copy of the smart contract:
 - Accept the default options **Max Gas Allowed** of `200000`.
 - Click on `Next`
 
-![Flipper Instantiate Contract 02](./assets/flipper-instantiate-02.png)
+![Flipper Instantiate Contract 02](/img/contracts-ui-1.png)
 
 The transaction is now queued, review your data and click **Upload and Instantiate** or go back and modify your inputs.
 
-![Flipper Instantiate Contract 03](./assets/flipper-instantiate-03.png)
+![Flipper Instantiate Contract 03](/img/contracts-ui-2.png)
 
 When you click **Upload and Instantiate** you should see
 the extrinsic `instantiateWithCode` is processing, and a flurry of events appear including the
@@ -65,4 +72,15 @@ creation of a new account (`system.NewAccount`) and the instantiation of the con
 (`contracts.Instantiated`).
 You will be redirected to a new page, where you can interact with the newly created contract instance.
 
-![Flipper Instantiate Success](./assets/flipper-instantiate-04.png)
+![Flipper Instantiate Success](/img/contracts-ui-3.png)
+
+## Using `cargo-contract`
+
+Contracts can be deployed via the command-line as well. With `cargo-contract`
+it's just a simple sequence of:
+
+```bash
+cargo contract build
+cargo contract upload --suri //Alice
+cargo contract instantiate --suri //Alice --args true
+```

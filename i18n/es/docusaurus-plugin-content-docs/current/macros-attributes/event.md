@@ -1,11 +1,13 @@
 ---
 title: "#[ink(event)]"
-slug: /macros-attributes/event
+slug: /macros-attributes/evento
+hide_title: true
 ---
 
-Applicable on `struct` definitions.
+<img src="/img/title/text/event.svg" className="titlePic" />
 
-Defines an ink! event. A contract can define multiple such ink! events.
+Aplicable a las definiciones `struct`.
 
+Define un evento ink!. Un contrato puede definir múltipes eventos ink!.
 
-[See our section on Events](/basics/events) for a detailed description and examples.
+[Mira nuestra sección en Eventos](/basics/eventos) para ver una descripción detallada y ejemplos.

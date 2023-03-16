@@ -1,7 +1,10 @@
 ---
 title: "#[ink(constructor)]"
 slug: /macros-attributes/constructor
+hide_title: true
 ---
+
+<img src="/img/title/text/constructor.svg" className="titlePic" />
 
 Applicable to a method.
 
@@ -17,8 +20,6 @@ allow users of the contract to instantiate a contract in multiple different ways
 ## Example
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod erc20 {
     #[ink(storage)]

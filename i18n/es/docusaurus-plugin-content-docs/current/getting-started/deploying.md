@@ -1,68 +1,78 @@
 ---
-title: Deploy Your Contract
+title: Desplega tu Contrato
 slug: /getting-started/deploy-your-contract
+hide_title: true
 ---
 
-Now that we have generated the Wasm binary from our source code and connected to a local node, we want
-to deploy this contract onto our Substrate blockchain.
+<img src="/img/title/rocket.svg" className="titlePic" />
 
-Smart contract deployment on Substrate is a little different than on traditional smart contract
-blockchains.
+# Desplega tu Contrato
 
-Whereas a completely new blob of smart contract source code is deployed each time you push a
-contract on other platforms, Substrate opts to optimize this behavior. For example, the standard
-ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the
-initial configuration (through the Solidity `constructor` function). Each of these instances take
-up space on the blockchain equivalent to the contract source code size, even though no code was
-actually changed.
+Ahora que hemos generado el binario Wasm desde nuestro código fuente y nos hemos conectado a un nodo local, 
+queremos desplegar este contrato en nuestro Substrate blockchain.
 
-In Substrate, the contract deployment process is split into two steps:
+El despliegue de los smart contracts en Substrate es un poco diferente que los blockchain smart contracts tradicionales.
 
-1. Putting your contract code on the blockchain
-2. Creating an instance of your contract
+Mientras que en otras plataformas cada vez que se carga un contrato se despliega un nuevo blob del código fuente de los smart contracts,
+Substrate opta por optimizar este comportamiento. Por ejemplo, el token estándar ERC20 se ha desplegado en Ethereum miles de veces, 
+algunas veces solo con cambios en la configuración inicial (mediante la función de Solidity `constructor`). Cada una de estas instancias
+ocupan espacio en la blockchain equivalente al tamaño del código fuente del contrato, aunque en realidad no se modificó ningún código.
 
-With this pattern, contract code like the ERC20 standard can be put on the blockchain one single
-time, but instantiated any number of times. No need to continually upload the same source code over
-and waste space on the blockchain.
+En Substrate, el proceso de despliegue del contrato se divide en dos pasos:
 
-### 1. Upload Contract Code
+1. Poner el código del contrato en la blockchain.
+2. Crear una instancia de tu contrato.
 
-Here we will upload the contract code and instantiate one copy of the contract on the blockchain
-(which is usually why we upload the contract code in the first place):
+Con este patrón, código de un contrato como el estándar ERC20 puede ponerse en la blockchain una sola vez, pero instanciarse muchas veces.
+No es necesario cargar el mismo código fuente continuamente y desperdiciar espacio en la blockchain.
 
-- Click the **Add New Contract** button in the sidebar.
-- Click the **Upload New Contract Code** button in the Add New Contract page.
-- Choose an **Instantiation account** (e.g. ALICE).
-- Give the contract a descriptive **Name** (e.g. Flipper Contract).
-- Drag the `flipper.contract` file that contains the bundled Wasm blob and metadata into the drag
-  & drop area. You will see the UI parse the metadata and enabling the button that takes you to the next step.
-- Click the **Next** button
+## TODO: Using the Contracts UI
 
-![Flipper Instantiate Contract 01](./assets/flipper-instantiate-01.png)
+### 1. Cargar el código del Contrato 
 
-### 2. Instantiate a Contract on the Blockchain
+Aquí cargaremos el código del contrato e instanciaremos una copia del contrato en la blockchain (que suele ser la razón por la que cargamos el código del contrato en primer lugar):
 
-Smart contracts exist as an extension of the account system on the blockchain. Thus creating an
-instance of this contract will create a new `AccountId` which will store any balance managed by the
-smart contract and allow us to interact with the contract.
+- Haga clic en el botón **Add New Contract** de la barra lateral.
+- Haga clic en el botón **Upload New Contract Code** en la página de `Add New Contract`.
+- Elige una **Instantiation account** (e.g. ALICE).
+- Dale una descripción al contrato **Name** (e.g. Flipper Contract).
+- Arrastra el fichero `flipper.contract` que contiene el paquete Wasm blob y la metadata en el area de `drag & drop`. Verás la UI analizar los metadatos  y habilitar el botón que te permitira avanzar al siguiente paso.
+- aga clic en el botón **Next**.
 
-Now a screen displays the information that represents our smart contract. We are going to
-instantiate a copy of the smart contract:
+![Flipper Instantiate Contract 01](/img/contracts-ui-0.png)
 
-- Accept the default options for the contract **Deployment Constructor**.
-- Accept the default options **Max Gas Allowed** of `200000`.
-- Click on `Next`
+### 2. Instanciar un Contrato en la Blockchain
 
-![Flipper Instantiate Contract 02](./assets/flipper-instantiate-02.png)
+Los Smarts contracts existen como una extensión del account system de la blockchain. Por lo tanto, 
+crear una instancia de este contrato creará un nuevo `AccountId` que almacenará cualquier balance gestionado por el
+smart contract y nos permite interactuar con el contrato.
 
-The transaction is now queued, review your data and click **Upload and Instantiate** or go back and modify your inputs.
+Ahora una pantalla nos mostrara la información que representa nuestro smart contract. Vamos a instanciar una copia del smart contract:
 
-![Flipper Instantiate Contract 03](./assets/flipper-instantiate-03.png)
+- Aceptar las opciones por defecto del contrato **Deployment Constructor**.
+- Aceptar la opción por defecto **Max Gas Allowed** de `200000`.
+- Haga click en `Next`
 
-When you click **Upload and Instantiate** you should see
-the extrinsic `instantiateWithCode` is processing, and a flurry of events appear including the
-creation of a new account (`system.NewAccount`) and the instantiation of the contract
-(`contracts.Instantiated`).
-You will be redirected to a new page, where you can interact with the newly created contract instance.
+![Flipper Instantiate Contract 02](/img/contracts-ui-1.png)
 
-![Flipper Instantiate Success](./assets/flipper-instantiate-04.png)
+La transacción ahora está en cola, revisa tus datos y haga clic en  **Upload and Instantiate** o vuelve para modificar tus inputs.
+
+![Flipper Instantiate Contract 03](/img/contracts-ui-2.png)
+
+Cuando hagas clic en **Upload and Instantiate** deberías ver que el extrinsic `instantiateWithCode` 
+se está procesando, y aparece una ráfaga de eventos, incluyendo la creación de una nueva cuenta (`system.NewAccount`) 
+y la instanciación del contrato (`contracts.Instantiated`).
+Seras redirigido a una nueva página, donde podrás interactuar con la nueva instancia creada del contrato.
+
+![Flipper Instantiate Success](/img/contracts-ui-3.png)
+
+## Uso de `cargo-contract`
+
+Los contratos también pueden ser desplegados desde la línea de comandos .
+Usando `cargo-contract` simplemente hace falta ejecutar la siguiente secuencia:
+
+```bash
+cargo contract build
+cargo contract upload --suri //Alice
+cargo contract instantiate --suri //Alice --args true
+```

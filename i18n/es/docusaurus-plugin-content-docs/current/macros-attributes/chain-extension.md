@@ -1,73 +1,80 @@
 ---
 title: "#[ink::chain_extension]"
 slug: /macros-attributes/chain-extension
+hide_title: true
 ---
 
-In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
-via its well defined set of basic smart contract interface. This API already allows a whole variety of
-interaction between the `contracts-pallet` and the executed smart contract. For example it is possible
-to call and instantiate other smart contracts on the same chain, emit events, query context information
-or run built-in cryptographic hashing procedures.
+<img src="/img/title/text/chain-ext.svg" className="titlePic" />
 
-If this basic set of features is not enough for a particular Substrate built blockchain it is possible
-to easily extend this API using the so-called chain extension feature.
+En la configuración por defecto del `contracts-pallet` un smart contract solo puede interactuar con el runtime
+via su conjunto bien definido de la interface basica del smart contract. Este API ya permite una gran variedad de
+interacción entre el `contracts-pallet` y el smart contract ejecutado. Por ejemplo es posible llamar e instanciar 
+otros smart contracts en la misma cadena, emitiendo eventos, consultando información del contexto o
+corriendo built-in procedimientos de hashing criptográficos.
 
-**Note:** The ink! repository contains [the `rand-extension` example](https://github.com/paritytech/ink/tree/master/examples/rand-extension).
-This is a complete example of a chain extension implemented in both ink! and Substrate.
+Si este conjunto básico de features no es suficiente para una Blockchain particular construida con Substrate
+es posible extender facilmente su API utilizando la feature de extensión de la cadena.
 
+<center>
+  <img src="/img/venn.png" width="50%" />
+</center>
 
-## Structure
+Con las extensiones de cadena puede exponer partes de su lógica de runtime a los desarrolladores de contratos inteligentes.
 
-The interface consists of an error code that indicates lightweight errors
-as well as the definition of some chain extension methods.
+:::note
+El repositorio ink! contiene [el ejemplo `rand-extension` ](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
+Este es un ejemplo completo de una extensión de una cadea implementada con ambos ink! y Substrate.
+:::
 
-The overall structure follows that of a simple Rust trait definition.
-The error code is defined as an associated type definition of the trait definition.
-The methods are defined as associated trait methods without implementation.
+## Estructura
 
-Chain extension methods must not have a `self` receiver such as `&self` or `&mut self`
-and must have inputs and output that implement SCALE codec. Their return value follows
-specific rules that can be altered using the `handle_status` and `returns_result` attributes
-which are described in more detail below.
+La interface consiste en un código de error que indica los errores ligeros 
+asi como la definición de algunos métodos de extensión de cadena.
 
-## Usage
+La estructura general sigue una simple definición de un Rust trat.
+El código de error es definido como la definición de un tipo asociado de la definición trait.
+Los métodos son definidos como métodos trait asociados sin implementación.
 
-Usually the chain extension definition using this proc. macro is provided
-by the author of the chain extension in a separate crate.
-ink! smart contracts using this chain extension simply depend on this crate
-and use its associated environment definition in order to make use of
-the methods provided by the chain extension.
+Los métodos de extensión de cadena no deben tener un receptor `self` como `&self` o `&mut self`
+y deben tener inputs y outputs que implementen el codec SCALE. Su valor de retorno sigue
+unas reglas específicas que pueden ser alteradas utilizando el atributo `handle_status` y la 
+alternancia entre los tipos `Result` y Non-`Result`, que se describen con más detalle a continuación.
 
-## Attributes
+## Uso
 
-There are three different attributes with which the chain extension methods
-can be flagged:
+Normalmente la definición de extensión de cadena utilizando este proc. macro 
+la provee el autor de la extensión de cadena en un crate separado.
+Los smart contracts ink! utilizando esta extensión de cadena simplemente dependen en
+de este crate y utilizan su definición de entorno asociado para hacer uso
+de los métodos proporcionados por la extensión de cadena.
 
-| Attribute | Required | Default Value | Description |
+## Atributos
+
+Los métodos de extensión de cadena pueden marcarse con dos atributos diferentes:
+
+| Atributos | Requerido | Valor por Defecto | Descripción |
 |:----------|:--------:|:--------------|:-----------:|
-| `ink(extension = N: u32)` | Yes | - | Determines the unique function ID of the chain extension method. |
-| `ink(handle_status = flag: bool)` | Optional | `true` | Assumes that the returned status code of the chain extension method always indicates success and therefore always loads and decodes the output buffer of the call. |
-| `ink(returns_result = flag: bool)` | Optional | `true` | By default chain extension methods are assumed to return a `Result<T, E>` in the output buffer. Using `returns_result = false` this check is disabled and the chain extension method may return any other type. |
+| `ink(extension = N: u32)` | Si | - | Determina el ID único de la función del método de extensión de cadena |
+| `ink(handle_status = flag: bool)` | Opcional | `true` | Asume que el código de estatus devuelto del método de extensión de la cadena siempre indica exito y por lo tanto siempre carga y decodifica el output buffer de la llamada. |
 
-As with all ink! attributes multiple of them can either appear in a contiguous list:
+Como en todos los atributos ink! pueden aparecer multiples de ellos en una lista contigua:
+
 ```rust
 type Access = i32;
-use ink_lang as ink;
 
 #[ink::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = i32;
   
-    #[ink(extension = 5, handle_status = false, returns_result = false)]
+    #[ink(extension = 5, handle_status = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
 
-…or as multiple standalone ink! attributes applied to the same item:
+o como multiples atributos ink! independientes aplicados al mismo item:
 
 ```rust
 type Access = i32;
-use ink_lang as ink;
 
 #[ink::chain_extension]
 pub trait MyChainExtension {
@@ -75,87 +82,73 @@ pub trait MyChainExtension {
   
   #[ink(extension = 5)]
   #[ink(handle_status = false)]
-  #[ink(returns_result = false)]
   fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
 
-## Details: `handle_status`
+## Detalles: `handle_status`
 
-Default value: `true`
+Valor por defecto: `true`
 
-By default all chain extension methods return a `Result<T, E>` where `E: From<Self::ErrorCode>`.
-The `Self::ErrorCode` represents the error code of the chain extension.
-This means that a smart contract calling such a chain extension method first queries the returned
-status code of the chain extension method and only loads and decodes the output if the returned
-status code indicates a successful call.
-This design was chosen as it is more efficient when no output besides the error
-code is required for a chain extension call. When designing a chain extension try to utilize the
-error code to return errors and only use the output buffer for information that does not fit in
-a single `u32` value.
+Por defecto todos los métodos de extensión de cadena deberían retornar un `Result<T, E>` donde `E: From<Self::ErrorCode>`.
+El `Self::ErrorCode` representa el código de error de la extensión de cadena.
+Esto significa que un smart contract llamando a un método de extensión de cadena primero consulta el 
+código de estado devuelto por el método de extensión de cadena y solo carga y decodifica el output si el 
+código de estado devuelto indica que ha sido una llamada exitosa.
+Se diseño asi para ser más eficiente cuando ningún outputs sin contar con el código de error
+es requerido por la llamada de extensión de cadena. Cuando diseñes la extensión de cadena intenta no utilizar el
+código de error para devolver errores y solo utiliza el buffer output para más información que no encja
+en un único valor `u32`.
 
-A chain extension method that is flagged with `handle_status = false` assumes that the returned error code
-will always indicate success. Therefore it will always load and decode the output buffer and loses
-the `E: From<Self::ErrorCode` constraint for the call.
+Un método de extensión de cadena que es marcado con `handle_status = false` asume que el código de error devuelto
+siempre indicara éxito. Por lo tanto siempre cargara y decodificara el buffer output y perdera el
+constraint `E: From<Self::ErrorCode` de la llamada.
 
-## Details: `returns_result`
+Tenga en cuenta que si un método de extensión de cadena no retorna `Result<T, E>` where `E: From<Self::ErrorCode>`
+pero con `handle_status = true`, seguirá retornando un valor de tipo `Result<T, Self::ErrorCode>`.
 
-Default value: `true`
+## Uso: `handle_status` + tipo de retorno `Result<T, E>`
 
-By default chain extension methods are assumed to return a value of type `Result<T, E>` through the
-output buffer. Using `returns_result = false` this check is disabled and the chain extension method may return
-any other type.
+Utiliza ambos `handle_status = false` y tipo de retorno non-`Result` para el mismo método de extensión de cadena
+si una llamada nunca puede fallar y nunca devuelva un tipo `Result`.
 
-Note that if a chain extension method is attributed with `returns_result = false`
-and with `handle_status = true` it will still return a value of type `Result<T, Self::ErrorCode>`.
+## Combinaciones
 
-## Usage: `handle_status` + `returns_result`
+Debido a la posibilidad de marcar un método de extensión de cadena con `handle_status` y (1) devolver `Result<T, E>` o 
+(2) devolver sólo `T`, hay 4 casos diferentes con semántica ligeramente variable:
 
-Use both `handle_status = false` and `returns_result = false` for the same chain extension method
-if a call to it may never fail and never returns a `Result` type.
-
-## Combinations
-
-Due to the possibility to flag a chain extension method with `handle_status` and `returns_result`
-there are 4 different cases with slightly varying semantics:
-
-| `handle_status` | `returns_result` | Effects |
+| `handle_status` | Retorna `Result<T, E>` | Efectos |
 |:---------------:|:----------------:|:--------|
-|`true` |`true` | The chain extension method is required to return a value of type `Result<T, E>` where `E: From<Self::ErrorCode>`. A call will always check if the returned status code indicates success and only then will load and decode the value in the output buffer. |
-|`true` |`false`| The chain extension method may return any non-`Result` type. A call will always check if the returned status code indicates success and only then will load and decode the value in the output buffer. The actual return type of the chain extension method is still `Result<T, Self::ErrorCode>` when the chain extension method was defined to return a value of type `T`. |
-|`false`|`true` | The chain extension method is required to return a value of type `Result<T, E>`. A call will always assume that the returned status code indicates success and therefore always load and decode the output buffer directly. |
-|`false`|`false`| The chain extension method may return any non-`Result` type. A call will always assume that the returned status code indicates success and therefore always load and decode the output buffer directly. |
+|`true` |`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>` donde `E: From<Self::ErrorCode>`. Una llamada siempre comprobará si el código de estado devuelto indica exito y solo entonces cargara y decodificara el valor en el buffer output. |
+|`true` |`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre comprobará si el código de estado devuelto indica exito y solo entonces cargará y decodificará el valor en el buffer output. El tipo de retorno real del método de extensión de la cadena sigue siendo `Result<T, Self::ErrorCode>` cuando el método de extensión de cadena fue definido para devilver un valor de tipo `T`. |
+|`false`|`true` | El método de extensión de cadena requiere devolver un valor de tipo `Result<T, E>`. Una llamada siempre asume que el código de estado devuelto indica exito por lo tanto siempre cargará y decodificará el buffer output directamente. |
+|`false`|`false`| El método de extensión de cadena puede devolver cualquier tipo non-`Result`. Una llamada siempre asume que el código de estado devuelto indica exito por lo tanto siempre cargará y decodificará el buffer output directamente. |
+## Código de Error
 
-## Error Code
-
-Every chain extension defines exactly one `ErrorCode` using the following syntax:
+Cada extensión de cadena define exactamente un `ErrorCode` utilizando la siguiente sintaxis:
 
 ```rust
-use ink_lang as ink;
-
 #[ink::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = MyErrorCode;
 
-    // more definitions ...
+    // más definiciones ...
 }
 ```
 
-The defined `ErrorCode` must implement `FromStatusCode` which should be implemented as a
-more or less trivial conversion from the `u32` status code to a `Result<(), Self::ErrorCode>`.
-The `Ok(())` value indicates that the call to the chain extension method was successful.
+El definido `ErrorCode` debe implementar `FromStatusCode` que debe ser implementado como una
+conversión más o menos trivial del código de estado `u32` a `Result<(), Self::ErrorCode>`.
+El valor `Ok(())` indica que la llamada al método de extensión de cadena fue un éxito.
 
-By convention an error code of `0` represents success.
-However, chain extension authors may use whatever suits their needs.
+Por convención un código de error de `0` representa éxito.
+Sin embargo, los autores de extensión de cadena pueden utilizar lo que se adapte a sus necesidades.
 
-## Example: Definition
+## Ejemplo: Definición
 
-In the below example a chain extension is defined that allows its users to read and write
-from and to the runtime storage using access privileges:
+En el ejemplo a continuación una extensión de cadena se define que se permite a los usuarios 
+leer y escribir en el storage del runtime utilizando privilegios de acceso:
 
 ```rust
-use ink_lang as ink;
-
 /// Custom chain extension to read to and write from the runtime.
 #[ink::chain_extension]
 pub trait RuntimeReadWrite {
@@ -191,7 +184,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Actually returns a value of type `Result<(), Self::ErrorCode>`.
-    #[ink(extension = 3, returns_result = false)]
+    #[ink(extension = 3)]
     fn write(key: &[u8], value: &[u8]);
 
     /// Returns the access allowed for the key for the caller.
@@ -199,7 +192,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Assumes to never fail the call and therefore always returns `Option<Access>`.
-    #[ink(extension = 4, returns_result = false, handle_status = false)]
+    #[ink(extension = 4, handle_status = false)]
     fn access(key: &[u8]) -> Option<Access>;
 
     /// Unlocks previously aquired permission to access key.
@@ -272,22 +265,22 @@ impl ink_env::chain_extension::FromStatusCode for ReadWriteErrorCode {
 }
 ```
 
-All the error types and other utility types used in the chain extension definition
-above are often required to implement various traits such as SCALE's `Encode` and `Decode`
-as well as `scale-info`'s `TypeInfo` trait.
+Todos los tipos de error y otros tipos de utilizad utilizados en la definición de extensión de cadena de arriba
+son normalmente requeridos para implementar varios traits como los SCALE's `Encode` y `Decode`
+asi como los traits `scale-info`'s `TypeInfo`.
 
-A full example of the above chain extension definition can be seen
-[here](https://github.com/paritytech/ink/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
+Un ejemplo completo de la definición de extensión de cadena de arriba puede verse
+[aquí](https://github.com/paritytech/ink/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
 
-## Example: Environment
+## Ejemplo: Entorno
 
-In order to allow ink! smart contracts to use the above defined chain extension it needs
-to be integrated into an `Environment` definition as shown below:
+Para permitir a los ink! smart contracts utilizar la extensión de cadena definida arriba se necesita
+integrarla en una definición `Environment` como se muestra a continuación:
 
 ```rust
 type RuntimeReadWrite = i32;
 
-use ink_env::{Environment, DefaultEnvironment};
+use ink::env::{Environment, DefaultEnvironment};
 
 pub enum CustomEnvironment {}
 
@@ -305,26 +298,21 @@ impl Environment for CustomEnvironment {
 }
 ```
 
-Above we defined the `CustomEnvironment` which defaults to ink!'s `DefaultEnvironment`
-for all constants and types but the `ChainExtension` type which is assigned to our newly
-defined chain extension.
+Arriba hemos definido el `CustomEnvironment` que por defecto es el ink!'s `DefaultEnvironment`
+para todas las constantes y tipos excepto el tipo`ChainExtension` que es asignado a nuestra nueva
+definición de extensión de cadena.
 
-## Example: Usage
+## Ejemplo: Uso
 
-An ink! smart contract can use the above defined chain extension through the `Environment`
-definition defined in the last example section using the `env` macro parameter as
-shown below.
+Un ink! smart contract puede utilizar la cadena de extensión definida arriba a través de la definición `Environment`
+definida en el ejemplo de la última sección utilizando el parametro de macro `env` como se muestra a continuación.
 
-Note that chain extension methods are accessible through `Self::extension()` or
-`self.extension()`. For example as in `Self::extension().read(..)` or `self.extension().read(..)`.
+Nota que los métodos de extensión de cadena son accesibles a través de `Self::extension()` o
+`self.extension()`. Por ejemplo en `Self::extension().read(..)` o `self.extension().read(..)`.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract(env = CustomEnvironment)]
 mod read_writer {
-    use ink_lang as ink;
-    
     #[ink(storage)]
     pub struct ReadWriter {}
 
@@ -376,13 +364,13 @@ mod read_writer {
     #[ink::chain_extension]
     pub trait RuntimeReadWrite {
           type ErrorCode = ReadWriteErrorCode;
-          #[ink(extension = 1, returns_result = false)]
+          #[ink(extension = 1)]
           fn read(key: &[u8]) -> Vec<u8>;
           #[ink(extension = 2)]
           fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
-          #[ink(extension = 3, returns_result = false)]
+          #[ink(extension = 3)]
           fn write(key: &[u8], value: &[u8]);
-          #[ink(extension = 4, returns_result = false, handle_status = false)]
+          #[ink(extension = 4, handle_status = false)]
           fn access(key: &[u8]) -> Option<Access>;
           #[ink(extension = 5, handle_status = false)]
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
@@ -426,7 +414,7 @@ mod read_writer {
          ReadOnly,
          WriteOnly,
     }
-    impl ink_env::chain_extension::FromStatusCode for ReadWriteErrorCode {
+    impl ink::env::chain_extension::FromStatusCode for ReadWriteErrorCode {
          fn from_status_code(status_code: u32) -> Result<(), Self> {
              match status_code {
                  0 => Ok(()),
@@ -438,26 +426,26 @@ mod read_writer {
          }
     }
     pub enum CustomEnvironment {}
-    impl ink_env::Environment for CustomEnvironment {
+    impl ink::env::Environment for CustomEnvironment {
          const MAX_EVENT_TOPICS: usize =
-             <ink_env::DefaultEnvironment as ink_env::Environment>::MAX_EVENT_TOPICS;
+             <ink::env::DefaultEnvironment as ink::env::Environment>::MAX_EVENT_TOPICS;
     
-         type AccountId = <ink_env::DefaultEnvironment as ink_env::Environment>::AccountId;
-         type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
-         type Hash = <ink_env::DefaultEnvironment as ink_env::Environment>::Hash;
-         type BlockNumber = <ink_env::DefaultEnvironment as ink_env::Environment>::BlockNumber;
-         type Timestamp = <ink_env::DefaultEnvironment as ink_env::Environment>::Timestamp;
+         type AccountId = <ink::env::DefaultEnvironment as ink::env::Environment>::AccountId;
+         type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
+         type Hash = <ink::env::DefaultEnvironment as ink::env::Environment>::Hash;
+         type BlockNumber = <ink::env::DefaultEnvironment as ink::env::Environment>::BlockNumber;
+         type Timestamp = <ink::env::DefaultEnvironment as ink::env::Environment>::Timestamp;
     
          type ChainExtension = RuntimeReadWrite;
     }
 }
 ```
 
-## Technical Limitations
+## Limitaciones técnicas
 
-- Due to technical limitations it is not possible to refer to the `ErrorCode` associated type
-  using `Self::ErrorCode` anywhere within the chain extension and its defined methods.
-  Instead chain extension authors should directly use the error code type when required.
-  This limitation might be lifted in future versions of ink!.
-- It is not possible to declare other chain extension traits as super traits or super
-  chain extensions of another.
+- Por limitaciones técnicas no es posible referirse al tipo asociado `ErrorCode` utilizando
+  `Self::ErrorCode` en cualquier lugar dentro de la extensión de cadena y sus métodos definidos.
+  En su lugar los autores de la extensión de cadena deben utilizar directamente el tipo de código de error cuando se requiera.
+  Esta limitación podría eliminarse en versiones futuras deink!.
+- No es posible declarar otros traits de extensiones de cadenas como super traits o super
+  extensiones de cadenas o otros.

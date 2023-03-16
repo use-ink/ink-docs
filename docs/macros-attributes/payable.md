@@ -1,7 +1,10 @@
 ---
 title: "#[ink(payable)]"
 slug: /macros-attributes/payable
+hide_title: true
 ---
+
+<img src="/img/title/text/payable.svg" className="titlePic" />
 
 Applicable to ink! messages.
 
@@ -16,8 +19,6 @@ Note that ink! constructors are always implicitly payable and thus cannot be fla
 as such.
 
 ```rust
-use ink_lang as ink;
-
 #[ink::contract]
 mod flipper {
 
@@ -57,4 +58,4 @@ pub fn pay_me(&self) {
 }
 ```
 
-See the [`examples/contract-transfer`](https://github.com/paritytech/ink/blob/master/examples/contract-transfer/lib.rs) contract for a more extensive example.
+See the [`examples/contract-transfer`](https://github.com/paritytech/ink-examples/blob/main/contract-transfer/lib.rs) contract for a more extensive example.
