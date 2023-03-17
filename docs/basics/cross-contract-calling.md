@@ -203,7 +203,7 @@ offer low-level, flexible interfaces for performing cross-contract calls. The
 The `CreateBuilder` offers an an easy way for you to **instantiate** a contract. Note
 that you'll still need this contract to have been previously uploaded.
 
-::: note
+:::note
 
 For a refresher on the difference between `upload` and `instantiate`
 [see here](/getting-started/deploy-your-contract).
@@ -342,7 +342,7 @@ and
 [`ink::LangError`](https://docs.rs/ink/latest/ink/enum.LangError.html)
 for more details on proper error handling.
 
-::: tip
+:::tip
 
 Because the `CallBuilder` requires only a contract's `AccountId` and message `selector`,
 we can call Solidity contracts compiled using the [Solang](https://github.com/hyperledger/solang)
