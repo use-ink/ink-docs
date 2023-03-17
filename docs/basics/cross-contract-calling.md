@@ -34,8 +34,8 @@ If you want to interact with a contract that is already on-chain you will need t
 
 ### `BasicContractRef` walkthrough
 
-We will walk through the [`basic_contract_ref`](TODO) example in order to demonstrate how
-cross-contract calls using contract references work.
+We will walk through the [`basic_contract_ref`](https://github.com/paritytech/ink/tree/master/integration-tests/basic_contract_caller)
+example in order to demonstrate how cross-contract calls using contract references work.
 
 The general workflow will be:
 1. Prepare `OtherContract` to be imported to other contracts
@@ -243,8 +243,8 @@ let my_contract: MyContractRef = build_create::<MyContractRef>()
 ```
 
 Since `CreateBuilder::instantiate()` returns a contract reference, we can use this
-contract refernece to call messages just like in the
-[previous section](TODO).
+contract reference to call messages just like in the
+[previous section](/basics/cross-contract-calling#contract-references).
 
 ### CallBuilder
 The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
