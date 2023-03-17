@@ -6,6 +6,11 @@ hide_title: true
 
 <img src="/img/title/cross-contract.svg" className="titlePic" />
 
+<div class="translateTodo">
+This whole page has been written in the English documentation.
+See the changes in https://github.com/paritytech/ink-docs/pull/186.
+</div>
+
 # Llamadas Cross-Contract
 
 En contratos ink! es posible llamar a mensajes ink! y constructores ink!. Por lo tanto, constructores ink! permiten delegar y mensajes ink! permiten
