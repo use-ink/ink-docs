@@ -53,8 +53,8 @@ If you need to update the implementation of the trait within the calling contrac
 you only need to replace the called contract address. The wrapper does not guarantee
 that the given address refers to a contract that implements the given trait.
 
-See [example](https://github.com/727-Ventures/openbrush-contracts#wrapper-around-traits)
-for illustration.
+See [this example](https://github.com/727-Ventures/openbrush-contracts#wrapper-around-traits)
+for more information.
 
 ### Documentation
 
