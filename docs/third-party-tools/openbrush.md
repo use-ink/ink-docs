@@ -36,7 +36,7 @@ code base ([detailed description](https://github.com/727-Ventures/openbrush-cont
 Traditionally, if you want to do a cross-contract calling in ink!,
 you need to import the other contract as a dependency in the calling contract's project. 
 
-OpenBrush simplifies the process with the wrapper around traits.
+OpenBrush simplifies the process with a wrapper around traits.
 If you know that the other contract implements a trait, 
 you only need that trait definition and the address of the other contract 
 in order to call a method from the deployed third-party contract.
