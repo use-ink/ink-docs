@@ -40,7 +40,8 @@ OpenBrush simplifies the process with a wrapper around traits.
 If you know that the other contract implements a trait, 
 you only need that trait definition and the address of the other contract 
 in order to call a method from the deployed third-party contract.
-The wrapper is an attribute macro for traits that can be used to automatically generate 
+The wrapper is an attribute macro named `#[openbrush::wrapper]` for traits.  It can be
+used to automatically generate 
 a callable `{Contract}Ref` implementation.
 
 The benefits of such mechanism is a functional polymorphism.
