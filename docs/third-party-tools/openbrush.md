@@ -47,7 +47,7 @@ a callable `{Contract}Ref` implementation.
 The benefits of such mechanism is a functional polymorphism.
 Instead of working with the concrete implementation of the trait as a dependency
 in you contract, you only interact with its interface. 
-That means that you do not need to import other contract's as dependencies
+That means that you do not need to import other contracts as dependencies
 to the calling contract.
 If you need to update the implementation of the trait within the calling contract,
 you only need to replace the called contract address. The wrapper does not guarantee
