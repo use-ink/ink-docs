@@ -31,7 +31,7 @@ split a Trait and its implementation into different files. This can
 increase the readability and maintainability of your smart-contract
 code base ([detailed description](https://github.com/727-Ventures/openbrush-contracts/blob/main/docs/docs/smart-contracts/example/setup_project.md)).
 
-### Wrapper around Traits
+### Wrapper around Traits: `#[openbrush::wrapper]`
 
 Traditionally, if you want to do a cross-contract calling in ink!,
 you need to import the other contract as a dependency in the calling contract's project. 
