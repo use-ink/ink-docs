@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+/getting-started/swanky/node
 ---
 
 # Swanky Node

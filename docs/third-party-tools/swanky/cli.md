@@ -3,6 +3,7 @@ sidebar_position: 1
 # Display h2 to h5 headings
 toc_min_heading_level: 2
 toc_max_heading_level: 4
+slug: /getting-started/swanky/cli
 ---
 
 import Figure from './figure'
