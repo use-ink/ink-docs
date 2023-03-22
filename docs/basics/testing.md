@@ -165,18 +165,21 @@ async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
 You can run the above test by going to the `flipper` folder in
 [the ink! examples directory](https://github.com/paritytech/ink-examples/tree/main).
 
-Before you can run the test, you have to start a Substrate
-node with `pallet-contracts` in the background.
-You can use e.g. our [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node)
-for this. Start the node in one shell session/terminal window via
+Before you can run the test, you have to install a Substrate
+node with `pallet-contracts`. By default e2e tests require that you install [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node). You do not need to run it in the background since the tests will automatically start the node for each test independently.
+To install the latest version:
 
+```sh
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git
 ```
-substrate-contracts-node
+If you want to run any other node with `pallet-contracts` you need to change `CONTRACTS_NODE` environment variable:
+
+```sh
+export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"
 ```
 
-Then, while keeping the node running, execute the following command
-in another shell session/terminal window.
+And finally execute the following command to start e2e test execution.
 
-```
+```sh
 cargo test --features e2e-tests
 ```
