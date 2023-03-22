@@ -166,7 +166,7 @@ You can run the above test by going to the `flipper` folder in
 [the ink! examples directory](https://github.com/paritytech/ink-examples/tree/main).
 
 Before you can run the test, you have to install a Substrate
-node with `pallet-contracts`. By default e2e tests require that you install [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node). You do not need to run it in the background since the tests will automatically start the node for each test independently.
+node with `pallet-contracts`. By default e2e tests require that you install [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node). You do not need to run it in the background since the node is started for each test independently.
 To install the latest version:
 
 ```sh
