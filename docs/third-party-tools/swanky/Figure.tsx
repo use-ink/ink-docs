@@ -1,7 +1,6 @@
-import React  from "react";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+import React from "react";
 
-export default function Figure({src, caption, width="460px"}) {
+export default function Figure({ src, caption, width = "460px" }) {
   return (
     <center>
       <figure>
@@ -9,5 +8,5 @@ export default function Figure({src, caption, width="460px"}) {
         <figcaption>{caption}</figcaption>
       </figure>
     </center>
-  )
+  );
 }

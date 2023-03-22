@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-/getting-started/swanky/node
+slug: /getting-started/swanky/node
 ---
 
 # Swanky Node

@@ -38,7 +38,7 @@ The actual state deviates slightly from the above diagram as both the cli and th
 
 ## Documentation and resources
 
-This documentation's sub-sections on usage of [Swanky CLI](/docs/build/wasm/swanky-suite/cli) and [Swanky Node](/docs/build/wasm/swanky-suite/node) have great instructions on how to setup the tool and start using it right away.
+This documentation's sub-sections on usage of [Swanky CLI](/docs/third-party-tools/swanky/cli) and [Swanky Node](/docs/third-party-tools/swanky/node) have great instructions on how to setup the tool and start using it right away.
 
 [`swanky` CLI Github repo] with the latest documentation.
 
@@ -46,14 +46,8 @@ This documentation's sub-sections on usage of [Swanky CLI](/docs/build/wasm/swan
 
 [`pallet-contracts`] documentation on Parity Github
 
-[ink! language] repo and specification
-
-[ask! language] documentation
-
 [`pallet-contracts`]: https://github.com/paritytech/substrate/tree/master/frame/contracts
 [`pallet-dapps-staking`]: https://github.com/AstarNetwork/astar-frame/tree/polkadot-v0.9.27/frame/dapps-staking
 [`pallet-assets`]: https://github.com/paritytech/substrate/tree/master/frame/assets
 [`swanky-node` github repo]: https://github.com/AstarNetwork/swanky-node
 [`swanky` cli github repo]: https://github.com/AstarNetwork/swanky-cli
-[ink! language]: https://github.com/paritytech/ink
-[ask! language]: https://ask-lang.github.io/ask-docs/
