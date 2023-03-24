@@ -31,7 +31,7 @@ The easiest method of installation is by downloading and executing a precompiled
 
 #### Build Locally
 
-If you would like to build the source locally, you should first complete the [basic Rust setup instructions](/docs/build/environment/ink_environment#rust-and-cargo).
+If you would like to build the source locally, you should first complete the [basic Rust setup instructions](https://docs.astar.network/docs/build/environment/ink_environment#rust-and-cargo).
 Once Rust is installed and configured, you will be able to build the node with:
 
 ```bash
