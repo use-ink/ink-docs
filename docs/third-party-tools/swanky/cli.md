@@ -6,7 +6,7 @@ toc_max_heading_level: 4
 slug: /getting-started/swanky/cli
 ---
 
-import Figure from './figure'
+import Figure from './Figure'
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
