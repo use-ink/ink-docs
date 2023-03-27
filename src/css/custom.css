@@ -26,6 +26,10 @@
   --warning-700: #e3961b;
  }
 
+body{
+  cursor:url(/img/lambo/cursor.png), auto;
+}
+
 h1 {
   font-size: var(--ifm-h1-font-size) !important;
 }
