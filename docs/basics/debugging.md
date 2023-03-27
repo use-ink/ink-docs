@@ -34,12 +34,12 @@ There are things you could do to enable debug messages on the client console:
   substrate-contracts-node --dev -lerror,runtime::contracts=debug
   ```
 
-1. __Set the log level of your node to `runtime::contracts::strace` to trace host functions calls.
-   These function calls logs will also be displayed in the `Debug message` panel of [contracts-ui](https://contracts-ui.substrate)
+1. __Set the log level of your node to `runtime::contracts::strace` to trace host function calls.
+   These function calls logs will also be displayed in the `Debug message` panel of [contracts-ui](https://contracts-ui.substrate).
    For example, to view these traces in addition to the logs described above:
   ```
   substrate-contracts-node --dev -lerror,runtime::contracts=debug,runtime::contracts::strace=trace
-  ``` 
+  ```
 
 ## Example
 
