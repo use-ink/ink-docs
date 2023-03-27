@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="65.27" height="60.32"><path d="M16.56 51.93C33.12 22.05 21.4 20.39 5.91 34.97M22.33 54.79C41.17 29.11 34.91 6.14 34.91 6.14M27.44 58.82c11.28-21.91 31.19-21.91 31.19-21.91" style="fill:none;stroke:#8d7cf7;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"/><ellipse cx="33.56" cy="4.56" rx="11.65" ry="4" transform="rotate(-11.63 33.565 4.56)" style="fill:#b8aeff"/><ellipse cx="7.02" cy="36.08" rx="3.66" ry="10.67" transform="rotate(-36.69 7.014 36.084)" style="fill:#b8aeff"/><ellipse cx="61.05" cy="37.59" rx="4.16" ry="12.12" transform="rotate(-3.58 60.962 37.618)" style="fill:#b8aeff"/><ellipse cx="44.82" cy="50.85" rx="3.28" ry="9.57" transform="rotate(-28.08 44.815 50.85)" style="fill:#8d7cf7"/><ellipse cx="41.69" cy="21.73" rx="2.47" ry="7.19" transform="rotate(-82.12 41.697 21.725)" style="fill:#8d7cf7"/></svg>
+<svg width="65.27" height="60.32" xmlns="http://www.w3.org/2000/svg">
+ <path d="M16.56 51.93C33.12 22.05 21.4 20.39 5.91 34.97M22.33 54.79C41.17 29.11 34.91 6.14 34.91 6.14M27.44 58.82c11.28-21.91 31.19-21.91 31.19-21.91" fill="none" stroke="#8d7cf7" stroke-linecap="round" stroke-linejoin="round" stroke-width="3px"/>
+ <ellipse transform="rotate(-11.63 33.56 4.56)" cx="33.56" cy="4.56" rx="11.65" ry="4" fill="#b8aeff"/>
+ <ellipse transform="rotate(-36.69 7.014 36.08)" cx="7.02" cy="36.08" rx="3.66" ry="10.67" fill="#b8aeff"/>
+ <ellipse transform="rotate(-3.58 60.96 37.62)" cx="61.05" cy="37.59" rx="4.16" ry="12.12" fill="#b8aeff"/>
+ <ellipse transform="rotate(-28.08 44.82 50.85)" cx="44.82" cy="50.85" rx="3.28" ry="9.57" fill="#8d7cf7"/>
+ <ellipse transform="rotate(-82.12 41.7 21.72)" cx="41.69" cy="21.73" rx="2.47" ry="7.19" fill="#8d7cf7"/>
+</svg>
