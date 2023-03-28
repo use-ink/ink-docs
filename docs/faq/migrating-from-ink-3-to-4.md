@@ -10,7 +10,7 @@ contracts from 3.x to 4.0.
 :::caution
 This migration guide is only for your code base!
 
-If you have an existing contract on-chain you cannot just 
+If you have an existing contract on-chain you cannot just
 upgrade the code on-chain ‒ you also have to migrate your data,
 since the way ink! 4.0 stores data and reads it (i.e. the storage
 layout) changes from ink! 3.x to 4.0.
@@ -305,10 +305,10 @@ exactly you were using the zero-address for.
 If you were using it as a burn address:
 - You can pick another address to use, assuming that you've actually picked a random
   address
-- Consider a solution that involves reducing total issuance, instead of transfering
+- Consider a solution that involves reducing total issuance, instead of transferring
   tokens to a random address
 
-If you were using it as a priviledged account:
+If you were using it as a privileged account:
 - Change the account
 - Add checks to ensure that calls coming from the zero-address are rejected
 
@@ -318,8 +318,8 @@ better.
 
 ## Updates to the `CallBuilder` and `CreateBuilder` APIs
 There's been several changes to the
-[`CallBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html) 
-and 
+[`CallBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html)
+and
 [`CreateBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CreateBuilder.html)
 APIs.
 
@@ -335,7 +335,7 @@ we added support for handing
 
 If you want to handle errors from either `Builder` you can use the new
 [`CreateBuilder::try_instantiate()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CreateBuilder.html#method.try_instantiate)
-or 
+or
 [`CallBuilder::try_invoke()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.try_invoke-1)
 methods.
 

@@ -146,7 +146,7 @@ cargo contract build --manifest-path other_contract/Cargo.toml
 cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice
 ```
 
-If succesful, this will output in a `code_hash` similar to:
+If successful, this will output in a `code_hash` similar to:
 
 ```
 Code hash "0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa"
@@ -167,7 +167,7 @@ cargo contract instantiate \
     --suri //Alice --salt $(date +%s)
 ```
 
-If succesful, this will output in a contract address for `BasicContractRef` similar to:
+If successful, this will output in a contract address for `BasicContractRef` similar to:
 
 ```
 Contract 5CWz6Xnivp9PSoZq6qPRP8xVAShZgtNVGTCLCsq3qzqPV7Rq
