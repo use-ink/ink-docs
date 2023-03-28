@@ -34,7 +34,7 @@ There are three things you have to do for the debug messages to show up on the c
 1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
    For example, to have only errors and debug output show up for the `substrate-contracts-node`:
   ```
-  substrate-contracts-node --dev -lerror,runtime::contracts=debug
+  substrate-contracts-node -lerror,runtime::contracts=debug
   ```
 
 ## Example
