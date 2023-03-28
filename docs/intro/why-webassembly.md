@@ -8,16 +8,16 @@ slug: /why-webassembly-for-smart-contracts
 
 # Why WebAssembly for Smart Contracts?
 
-We made a conscious decision for WebAssembly as the target architecture of ink!. 
+We made a conscious decision for WebAssembly as the target architecture of ink!.
 Our decision was made up by these reasons:
 
 * <span class="highlight">High performance: </span>Wasm is high performance — it’s built to be as close to native machine code as possible while still being platform independent.
 
 * <span class="highlight">Small size: </span>It facilitates small binaries to ship over the internet to devices with potentially slow internet connection.
-This is a great fit for the space-constrainted blockchain world.
+This is a great fit for the space-constrained blockchain world.
 
-* <span class="highlight">General VM & bytecode: </span> 
-It was developed so that code can be deployed in any browser with the same result. 
+* <span class="highlight">General VM & bytecode: </span>
+It was developed so that code can be deployed in any browser with the same result.
 Contrary to the EVM it was not developed towards a very specific use case,
 this has the benefit of a lot of tooling being available and large
 companies putting a lot of resources into furthering Wasm development.
