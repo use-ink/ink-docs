@@ -31,7 +31,7 @@ Tienes que hacer tres cosas para poder mostrar en la consola los mensajes de deb
 1. __Establecer el nivel de log de su nodo en `runtime::contracts=debug`.__<br/>
    Por ejemplo, para que aparezcan solo los errores y el output del debug en el `substrate-contracts-node`:
   ```
-  substrate-contracts-node --dev -lerror,runtime::contracts=debug
+  substrate-contracts-node -lerror,runtime::contracts=debug
   ```
 
 ## Ejemplo

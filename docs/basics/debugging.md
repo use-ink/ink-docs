@@ -31,7 +31,7 @@ There are things you could do to enable debug messages on the client console:
 1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
    For example, to have only errors and debug output show up for the `substrate-contracts-node`:
   ```
-  substrate-contracts-node --dev -lerror,runtime::contracts=debug
+  substrate-contracts-node -lerror,runtime::contracts=debug
   ```
 
 1. __Set the log level of your node to `runtime::contracts::strace` to trace host function calls.
