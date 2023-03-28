@@ -29,7 +29,7 @@ Due to this you'll need `ROC` in order to deploy contracts on our testnet.
 ### (1) Create an Account
 
 As a first step, you should create an account. This can be done via command-line
-tools (e.g. `subxt`) or via a wallet (e.g. with the `polakdot-js` browser extension).
+tools (e.g. `subxt`) or via a wallet (e.g. with the `polkadot-js` browser extension).
 See [here](https://wiki.polkadot.network/docs/learn-account-generation) for a detailed guide.
 
 ### (2) Get Testnet Tokens

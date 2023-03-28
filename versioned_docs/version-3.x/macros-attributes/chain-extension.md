@@ -57,7 +57,7 @@ use ink_lang as ink;
 #[ink::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = i32;
-  
+
     #[ink(extension = 5, handle_status = false, returns_result = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
@@ -72,7 +72,7 @@ use ink_lang as ink;
 #[ink::chain_extension]
 pub trait MyChainExtension {
   type ErrorCode = i32;
-  
+
   #[ink(extension = 5)]
   #[ink(handle_status = false)]
   #[ink(returns_result = false)]
@@ -202,7 +202,7 @@ pub trait RuntimeReadWrite {
     #[ink(extension = 4, returns_result = false, handle_status = false)]
     fn access(key: &[u8]) -> Option<Access>;
 
-    /// Unlocks previously aquired permission to access key.
+    /// Unlocks previously acquired permission to access key.
     ///
     /// # Errors
     ///
@@ -324,7 +324,7 @@ use ink_lang as ink;
 #[ink::contract(env = CustomEnvironment)]
 mod read_writer {
     use ink_lang as ink;
-    
+
     #[ink(storage)]
     pub struct ReadWriter {}
 
@@ -371,7 +371,7 @@ mod read_writer {
                 .unlock_access(&key, access)
         }
     }
-    
+
     /// Custom chain extension to read to and write from the runtime.
     #[ink::chain_extension]
     pub trait RuntimeReadWrite {
@@ -387,14 +387,14 @@ mod read_writer {
           #[ink(extension = 5, handle_status = false)]
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
     }
-    
+
     #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
     pub enum ReadWriteErrorCode {
           InvalidKey,
           CannotWriteToKey,
           CannotReadFromKey,
     }
-    
+
     #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
     pub enum ReadWriteError {
           ErrorCode(ReadWriteErrorCode),
@@ -410,7 +410,7 @@ mod read_writer {
              panic!("encountered unexpected invalid SCALE encoding")
          }
     }
-  
+
     #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
     pub struct UnlockAccessError {
          reason: String,
@@ -441,13 +441,13 @@ mod read_writer {
     impl ink_env::Environment for CustomEnvironment {
          const MAX_EVENT_TOPICS: usize =
              <ink_env::DefaultEnvironment as ink_env::Environment>::MAX_EVENT_TOPICS;
-    
+
          type AccountId = <ink_env::DefaultEnvironment as ink_env::Environment>::AccountId;
          type Balance = <ink_env::DefaultEnvironment as ink_env::Environment>::Balance;
          type Hash = <ink_env::DefaultEnvironment as ink_env::Environment>::Hash;
          type BlockNumber = <ink_env::DefaultEnvironment as ink_env::Environment>::BlockNumber;
          type Timestamp = <ink_env::DefaultEnvironment as ink_env::Environment>::Timestamp;
-    
+
          type ChainExtension = RuntimeReadWrite;
     }
 }

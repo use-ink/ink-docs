@@ -44,7 +44,7 @@ If everything looks good, then we are ready to start programming!
 ## Template Content
 
 The template contains scaffolded code that provides a starting point
-for writing an ink! contract. In the following we'll take a look 
+for writing an ink! contract. In the following we'll take a look
 at what the files contain.
 The files you get locally will look similar, just that we added
 explanatory comments here.
@@ -87,7 +87,7 @@ ink_e2e = { path = "../../crates/e2e" }
 name = "foobar"
 path = "lib.rs"
 
-# This setting typically specifices that you'd like the compiler to
+# This setting typically specifies that you'd like the compiler to
 # create a dynamic system library. For WebAssembly though it specifies
 # that the compiler should create a `*.wasm` without a start function.
 crate-type = [
@@ -157,7 +157,7 @@ pub mod flipper {
 
         /// A state-mutating function that the contract exposes to the
         /// outside world.
-        /// 
+        ///
         /// By default functions are private, they have to be annotated
         /// with `#[ink(message)]` and `pub` to be available from the
         /// outside.
@@ -167,7 +167,7 @@ pub mod flipper {
         }
 
         /// A public contract function that has no side-effects.
-        /// 
+        ///
         /// Note that while purely reading functions can be invoked
         /// by submitting a transaction on-chain, this is usually
         /// not done as they have no side-effects and the transaction

@@ -336,7 +336,7 @@ Some example rules include but are not limited to:
 
 ## Interacting with the Contract Executor
 
-The `ink_env` crate provides facitilies to interact with the contract executor that
+The `ink_env` crate provides facilities to interact with the contract executor that
 connects ink! smart contracts with the outer world.
 
 For example it is possible to query the current call's caller via:

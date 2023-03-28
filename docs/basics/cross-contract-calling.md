@@ -120,7 +120,7 @@ pub fn new(other_contract_code_hash: Hash) -> Self {
 Note that for instantiating a contract we need access to the uploaded on-chain
 `code_hash`. We will get back to this later.
 
-Once we have an instatiated reference to `OtherContract` we can call its messages just
+Once we have an instantiated reference to `OtherContract` we can call its messages just
 like normal Rust methods!
 
 ```rust
@@ -254,7 +254,7 @@ here.
 #### CallBuilder: Call
 When using `Call`s the `CallBuilder` requires an already instantiated contract.
 
-We saw an example of how to use the `CreateBuilder` to intantiate contracts in the
+We saw an example of how to use the `CreateBuilder` to instantiate contracts in the
 [previous section](/basics/cross-contract-calling#contract-references).
 
 Below is an example of how to call a contract using the `CallBuilder`. We will:
