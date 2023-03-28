@@ -38,8 +38,6 @@ The actual state deviates slightly from the above diagram as both the cli and th
 
 ## Documentation and resources
 
-This documentation's sub-sections on usage of [Swanky CLI](/docs/third-party-tools/swanky/cli) and [Swanky Node](/docs/third-party-tools/swanky/node) have great instructions on how to setup the tool and start using it right away.
-
 [`swanky` CLI Github repo] with the latest documentation.
 
 [`swanky-node` Github repo] with the latest documentation.
