@@ -93,7 +93,7 @@ See the [Chain Extensions](/macros-attributes/chain-extension) section for more 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
 Please see [the `env_types` argument](https://docs.rs/ink_macro/4.0.0/ink_macro/attr.contract.html#header-arguments)
-for the contract macro. It allows you to specify your environment a la 
+for the contract macro. It allows you to specify your environment a la
 `#[ink::contract(env = MyEnvironment)]`.
 
 ### What does the `#![cfg_attr(not(feature = "std"), no_std)]` at the beginning of each contract mean?
@@ -168,7 +168,7 @@ Rust's standard library consists of three different layers:
 ### How do I hash a value?
 
 A number of crypto hashes are built into the [pallet-contracts](/how-it-works) and
-therefore very efficient to use. We currently support a handful of those, you 
+therefore very efficient to use. We currently support a handful of those, you
 can view the complete list [here](https://docs.rs/ink_env/4.0.0/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
@@ -213,18 +213,18 @@ than the entire data collection.
 ### Why am I getting a `ContractTrapped` error when interacting with a contract?
 
 When it does not constitute a deliberate assertion, like for example a permission check,
-it is most likely a bug in your contract or in ink!. 
+it is most likely a bug in your contract or in ink!.
 
 A common source of `ContractTrapped` are Integer overflows, those can cause
-your contract to trap as well. 
+your contract to trap as well.
 There is a [known bug in the Rust compiler](https://github.com/rust-lang/rust/issues/78744)
 with respect to safe math operations. As a workaround for this particular bug
 try to insert `overflow-checks = false` into your `Cargo.toml`.
 This will disable safe math operations altogether, but unfortunately we are currently
 not aware of a better workaround until the bug in the compiler is fixed.
 
-If you don't find the issue you can also ask for help in our public 
-[Element](https://riot.im/app/#/room/#ink:matrix.parity.io) or 
+If you don't find the issue you can also ask for help in our public
+[Element](https://riot.im/app/#/room/#ink:matrix.parity.io) or
 [Discord](https://discord.gg/j2DKRRbSJr) channel.
 
 
@@ -241,7 +241,7 @@ A common error you might get when a necessary SCALE trait is not implemented
 for a data structure could be along the lines of `the trait "WrapperTypeEncode"
 is not implemented for "Foo"`.
 For example, you might encounter this error if you try to store a custom data
-structure in the contract's storage. Or e.g. when attempting to return 
+structure in the contract's storage. Or e.g. when attempting to return
 a custom error from an ink! message.
 
 :::note
@@ -255,7 +255,7 @@ for your data structure:
 
 * `Encode` is used for encoding a data structure when it is e.g. returned
 to a caller or when it is persisted to the contracts storage.
-  
+
 * `Decode` is used for the inverse, e.g. when reading from storage or
 taking an input from a user (or another contract).
 

@@ -1,0 +1,12 @@
+{
+  "language": "en",
+  "dictionaries": ["rust", "workspace"],
+  "ignorePaths": ["**/es/**"],
+  "dictionaryDefinitions": [
+    {
+      "name": "workspace",
+      "path": "./workspace.txt",
+      "addWords": true
+    }
+  ]
+}

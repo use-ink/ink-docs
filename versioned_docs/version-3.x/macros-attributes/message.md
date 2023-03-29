@@ -4,8 +4,8 @@ slug: /macros-attributes/message
 ---
 
 Applicable to methods.
- 
-Flags a method for the ink! storage struct as message making it available to the API for calling the contract. 
+
+Flags a method for the ink! storage struct as message making it available to the API for calling the contract.
 
 Note that all public functions must use the `#[ink(message)]` attribute
 
@@ -40,7 +40,7 @@ The return value of a message needs to implement `scale::Encode`.
 It is notable that the collections under `ink_storage` ‒ such as e.g. `Vec` or `HashMap` ‒
 don't implement `scale::Encode`. This means you can't just return a `Vec` from an ink! message.
 This restriction is intentional ‒ returning a complete data structure with a potentially unbounded
-content is an anti-pattern for smart contracts. Just think about the unpredicatble gas costs.
+content is an anti-pattern for smart contracts. Just think about the unpredictable gas costs.
 
 If you _really really_ need to return a data structure in its entirety then use the ones from
 `ink_prelude` (e.g. `ink_prelude::vec::Vec`). Those implement `scale::Encode`.

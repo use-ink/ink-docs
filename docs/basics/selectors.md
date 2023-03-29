@@ -47,7 +47,7 @@ To calculate the selector we:
 
 ## Selector Calculation: ink! Traits
 
-These rules change a bit if you define any messages using the `[ink::trait_defintion]`
+These rules change a bit if you define any messages using the `[ink::trait_definition]`
 [macro](/basics/trait-definitions). For our first step, instead of taking _just_ the
 message name, we now also add the _trait name_ to the selector calculation.
 

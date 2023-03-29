@@ -9,7 +9,7 @@ hide_title: true
 Applied on fields of ink! event types to indicate that they are topics.
 
 Tells the ink! codegen to provide a topic hash for the given field. Every ink! event can only have a limited number of such topic field.
-The semnatics are similar to indexed event arguments in Solidity. 
+The semantics are similar to indexed event arguments in Solidity.
 
 ## Example
 

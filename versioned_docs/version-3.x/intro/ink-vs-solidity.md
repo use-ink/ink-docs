@@ -369,7 +369,7 @@ Solidity uses `uint256` and `uint` to represent a 256-bit type.
 
 Solidity is 256-bit / 32-byte word optimized. Meaning, using `uint256` in Solidity contracts will reduce gas usage -- but increase storage usage. The largest size ink! has built in is a `u128`. ink! compiles to Wasm. The largest primitive Wasm has is 64bit (due to most computers using 64bit). So, there is no benefit to using any larger primitive over a collection.
 
-When porting a `uint256` from Solidity to ink!, it is recommended to, with discretion, determine the range of the value, and choose the appropiate size (u8, u16, u32, u64, u128). If a 256-bit hash value is required, ink! has a `Hash` primitive available. In the event a value needs to be 256-bit, it is recommended to use an array (e.g. `[u64; 4]`).
+When porting a `uint256` from Solidity to ink!, it is recommended to, with discretion, determine the range of the value, and choose the appropriate size (u8, u16, u32, u64, u128). If a 256-bit hash value is required, ink! has a `Hash` primitive available. In the event a value needs to be 256-bit, it is recommended to use an array (e.g. `[u64; 4]`).
 
 ### `payable`
 
@@ -685,7 +685,7 @@ use erc20::Erc20Ref;
 
 There are two methods to setup the other contract.
 
-1. Instantiate the cross-called-contract in the main contract's constructor.  
+1. Instantiate the cross-called-contract in the main contract's constructor.
    See [here](https://ink.substrate.io/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
@@ -798,7 +798,7 @@ This will disable safe math operations, but unfortunately we are currently not
 aware of a better workaround until the bug in the compiler is fixed.
 ```
 
-**Solution**  
+**Solution**
 Add the following to the contract Cargo.toml:
 
 ```
@@ -810,7 +810,7 @@ overflow-checks = false
 
 This happens when trying to import a contract for cross-contract calling.
 
-**Solution**  
+**Solution**
 Ensure that the following is added to Cargo.toml contract import:`
 
 ```
@@ -890,7 +890,7 @@ fn do_some_write(&mut self) {
 }
 ```
 
-- useful code to interact and modify the contract enviroment for testing
+- useful code to interact and modify the contract environment for testing
 
 [ink_env docs](https://paritytech.github.io/ink/ink_env/test/index.html)
 

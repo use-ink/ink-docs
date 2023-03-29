@@ -17,7 +17,7 @@ to implement any high level functionality themselves.
 When executing a contract, all the fields of the `#[ink(storage)]` struct will be pulled
 from storage, regardless of whether or not they are used during the message execution.
 
-Smart contract authors should be aware of this behaviour since it could potentially
+Smart contract authors should be aware of this behavior since it could potentially
 affect their contract performance. For example, consider the following storage struct:
 
 ```rust

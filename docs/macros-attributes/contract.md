@@ -46,11 +46,11 @@ Note that it is recommended to make use of the built-in crate feature
 mod my_contract {
     #[ink(storage)]
     pub struct MyStorage;
-    
+
     impl MyStorage {
         #[ink(constructor)]
         pub fn construct() -> Self { MyStorage {} }
-        
+
         #[ink(message)]
         pub fn message(&self) {}
     }
@@ -78,7 +78,7 @@ pub struct MyEnvironment;
 
 impl ink::env::Environment for MyEnvironment {
     const MAX_EVENT_TOPICS: usize = 3;
-    
+
     type AccountId = u64;
     type Balance = u128;
     type Hash = [u8; 32];
@@ -94,7 +94,7 @@ implementation as demonstrated below:
 #[ink::contract(env = MyEnvironment)]
 mod my_contract {
     pub struct MyEnvironment;
-   
+
     impl ink::env::Environment for MyEnvironment {
         const MAX_EVENT_TOPICS: usize = 3;
         type AccountId = u64;
@@ -104,14 +104,14 @@ mod my_contract {
         type BlockNumber = u32;
         type ChainExtension = ::ink::env::NoChainExtension;
     }
-    
+
     #[ink(storage)]
     pub struct MyStorage;
-    
+
     impl MyStorage {
         #[ink(constructor)]
         pub fn construct() -> Self { MyStorage {} }
-        
+
         #[ink(message)]
         pub fn message(&self) {}
     }
@@ -121,7 +121,7 @@ mod my_contract {
 
 **Default value:** `DefaultEnvironment` defined in `ink_env` crate.
 
-## Anaylsis
+## Analysis
 
 The `#[ink::contract]` macro fully analyses its input smart contract
 against invalid arguments and structure.
@@ -145,11 +145,11 @@ Some example rules include but are not limited to:
          pub struct Flipper {
              value: bool,
          }
-  
+
          impl Flipper {
              #[ink(constructor)]
              pub fn construct() -> Self { Flipper { value: false } }
-  
+
              #[ink(message)]
              pub fn message(&self) {}
          }
@@ -174,13 +174,13 @@ Some example rules include but are not limited to:
          pub struct Flipper {
              value: bool,
          }
-  
+
          impl Flipper {
              #[ink(constructor)]
              pub fn new(initial_value: bool) -> Self {
                  Flipper { value: false }
              }
-  
+
              #[ink(message)]
              pub fn message(&self) {}
          }
@@ -212,13 +212,13 @@ Some example rules include but are not limited to:
          pub struct Flipper {
              value: bool,
          }
-  
+
          impl Flipper {
              #[ink(constructor)]
              pub fn new(initial_value: bool) -> Self {
                  Flipper { value: false }
              }
-  
+
              /// Flips the current value.
              #[ink(message)]
              pub fn flip(&mut self) {
@@ -250,13 +250,13 @@ Some example rules include but are not limited to:
          pub struct Flipper {
              value: bool,
          }
-  
+
          impl Flipper {
              #[ink(constructor)]
              pub fn new(initial_value: bool) -> Self {
                  Flipper { value: false }
              }
-  
+
              /// Flips the current value.
              #[ink(message)]
              #[ink(payable)] // You can either specify payable out-of-line.
@@ -289,7 +289,7 @@ Some example rules include but are not limited to:
          pub struct Flipper {
              value: bool,
          }
-  
+
          impl Flipper {
              #[ink(constructor)]
              #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
@@ -303,7 +303,7 @@ Some example rules include but are not limited to:
              pub fn flip(&mut self) {
                  self.value = !self.value;
              }
-            
+
              /// Returns the current value.
              #[ink(message, selector = "0xFEEDBEEF")] // ...or specify selector inline.
              pub fn get(&self) -> bool {
