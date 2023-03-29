@@ -38,7 +38,7 @@ The methods are defined as associated trait methods without implementation.
 
 Chain extension methods must not have a `self` receiver such as `&self` or `&mut self`
 and must have inputs and output that implement SCALE codec. Their return value follows
-specific rules that can be altered using the `handle_status` attribute and 
+specific rules that can be altered using the `handle_status` attribute and
 alternation between  `Result` and Non-`Result` types which are described in more detail below.
 
 ## Usage
@@ -67,7 +67,7 @@ type Access = i32;
 #[ink::chain_extension]
 pub trait MyChainExtension {
     type ErrorCode = i32;
-  
+
     #[ink(extension = 5, handle_status = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
@@ -81,7 +81,7 @@ type Access = i32;
 #[ink::chain_extension]
 pub trait MyChainExtension {
   type ErrorCode = i32;
-  
+
   #[ink(extension = 5)]
   #[ink(handle_status = false)]
   fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
@@ -199,7 +199,7 @@ pub trait RuntimeReadWrite {
     #[ink(extension = 4, handle_status = false)]
     fn access(key: &[u8]) -> Option<Access>;
 
-    /// Unlocks previously aquired permission to access key.
+    /// Unlocks previously acquired permission to access key.
     ///
     /// # Errors
     ///
@@ -318,7 +318,7 @@ Note that chain extension methods are accessible through `Self::extension()` or
 ```rust
 #[ink::contract(env = CustomEnvironment)]
 mod read_writer {
-    
+
     #[ink(storage)]
     pub struct ReadWriter {}
 
@@ -365,7 +365,7 @@ mod read_writer {
                 .unlock_access(&key, access)
         }
     }
-    
+
     /// Custom chain extension to read to and write from the runtime.
     #[ink::chain_extension]
     pub trait RuntimeReadWrite {
@@ -381,14 +381,14 @@ mod read_writer {
           #[ink(extension = 5, handle_status = false)]
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
     }
-    
+
     #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
     pub enum ReadWriteErrorCode {
           InvalidKey,
           CannotWriteToKey,
           CannotReadFromKey,
     }
-    
+
     #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
     pub enum ReadWriteError {
           ErrorCode(ReadWriteErrorCode),
@@ -404,7 +404,7 @@ mod read_writer {
              panic!("encountered unexpected invalid SCALE encoding")
          }
     }
-  
+
     #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
     pub struct UnlockAccessError {
          reason: String,
@@ -435,13 +435,13 @@ mod read_writer {
     impl ink::env::Environment for CustomEnvironment {
          const MAX_EVENT_TOPICS: usize =
              <ink::env::DefaultEnvironment as ink::env::Environment>::MAX_EVENT_TOPICS;
-    
+
          type AccountId = <ink::env::DefaultEnvironment as ink::env::Environment>::AccountId;
          type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
          type Hash = <ink::env::DefaultEnvironment as ink::env::Environment>::Hash;
          type BlockNumber = <ink::env::DefaultEnvironment as ink::env::Environment>::BlockNumber;
          type Timestamp = <ink::env::DefaultEnvironment as ink::env::Environment>::Timestamp;
-    
+
          type ChainExtension = RuntimeReadWrite;
     }
 }

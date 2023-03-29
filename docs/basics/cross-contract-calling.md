@@ -120,7 +120,7 @@ pub fn new(other_contract_code_hash: Hash) -> Self {
 Note that for instantiating a contract we need access to the uploaded on-chain
 `code_hash`. We will get back to this later.
 
-Once we have an instatiated reference to `OtherContract` we can call its messages just
+Once we have an instantiated reference to `OtherContract` we can call its messages just
 like normal Rust methods!
 
 ```rust
@@ -146,7 +146,7 @@ cargo contract build --manifest-path other_contract/Cargo.toml
 cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice
 ```
 
-If succesful, this will output in a `code_hash` similar to:
+If successful, this will output in a `code_hash` similar to:
 
 ```
 Code hash "0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa"
@@ -167,7 +167,7 @@ cargo contract instantiate \
     --suri //Alice --salt $(date +%s)
 ```
 
-If succesful, this will output in a contract address for `BasicContractRef` similar to:
+If successful, this will output in a contract address for `BasicContractRef` similar to:
 
 ```
 Contract 5CWz6Xnivp9PSoZq6qPRP8xVAShZgtNVGTCLCsq3qzqPV7Rq
@@ -254,7 +254,7 @@ here.
 #### CallBuilder: Call
 When using `Call`s the `CallBuilder` requires an already instantiated contract.
 
-We saw an example of how to use the `CreateBuilder` to intantiate contracts in the
+We saw an example of how to use the `CreateBuilder` to instantiate contracts in the
 [previous section](/basics/cross-contract-calling#contract-references).
 
 Below is an example of how to call a contract using the `CallBuilder`. We will:

@@ -1,5 +1,5 @@
 ---
-title: Working with Mapping 
+title: Working with Mapping
 slug: /datastructures/mapping
 ---
 
@@ -17,13 +17,13 @@ pub struct MyContract {
 ```
 
 This means that for a given key, you can store a unique instance of a value type. In this
-case, each "user" gets their own number. 
+case, each "user" gets their own number.
 
 ## Initializing a Mapping
 
 In order to correctly initialize a `Mapping` we need two things:
 1. An implementation of the [`SpreadAllocate`](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.SpreadAllocate.html) trait on our storage struct
-2. The [`ink_lang::utils::initalize_contract`](https://docs.rs/ink_lang/3.3.1/ink_lang/utils/fn.initialize_contract.html) initializer
+2. The [`ink_lang::utils::initialize_contract`](https://docs.rs/ink_lang/3.3.1/ink_lang/utils/fn.initialize_contract.html) initializer
 
 Not initializing storage before you use it is a common mistake that can break your smart
 contract. If you do not initialize your `Mapping`'s correctly you may end up with

@@ -9,7 +9,7 @@ By default ink! creates a selector for each message and constructor.
 This is necessary since the contract is compiled to a Wasm blob and functions are invoked by invoking the
 selector, which identifies a method ‒ method names are no longer available in these underlying layers.
 
-Using this attribute it is possible to speficy a concrete dispatch selector for the flagged entity. This allows a contract author to precisely control the selectors of their APIs making it possible to rename their API without breakage.
+Using this attribute it is possible to specify a concrete dispatch selector for the flagged entity. This allows a contract author to precisely control the selectors of their APIs making it possible to rename their API without breakage.
 
 A selector must be a `u32` decodable integer. For example
 
@@ -65,7 +65,7 @@ mod flipper {
         pub fn flip(&mut self) {
             self.value = !self.value;
         }
-        
+
         #[ink(message, selector = 0xC0DECAFE)] // ...or specify the selector inline.
         pub fn get(&self) -> bool {
             self.value
