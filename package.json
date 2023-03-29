@@ -11,13 +11,15 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve --port 8080",
-    "write-translations": "docusaurus write-translations"
+    "write-translations": "docusaurus write-translations",
+    "cspell": "cspell \"**/*.{md,mdx}\""
   },
   "devDependencies": {
     "@docusaurus/core": "^2.3.1",
     "@docusaurus/preset-classic": "^2.3.1",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
+    "cspell": "^6.31.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
