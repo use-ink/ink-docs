@@ -33,16 +33,19 @@ code base ([detailed description](https://github.com/727-Ventures/openbrush-cont
 
 ### Wrapper around Traits: `#[openbrush::wrapper]`
 
-Traditionally, if you want to do a cross-contract calling in ink!,
-you need to import the other contract as a dependency in the calling contract's project. 
-
-OpenBrush simplifies the process with a wrapper around traits.
-If you know that the other contract implements a trait, 
+If you know that the other contract implements a trait and 
+the trait is attributed with ` #[openbrush::trait_definition]`
 you only need that trait definition and the address of the other contract 
 in order to call a method from the deployed third-party contract.
-The wrapper is an attribute macro named `#[openbrush::wrapper]` for traits.  It can be
-used to automatically generate 
-a callable `{Contract}Ref` implementation.
+The wrapper is an attribute macro named `#[openbrush::wrapper]` for traits. 
+It will generate a callable structure of the other contract with the name defined
+by a user:
+```rust
+// You can create wrapper in the place where you defined the trait
+// Or if you import **everything** from the file where you define trait
+#[openbrush::wrapper]
+type Trait1Ref = dyn Trait1;
+```
 
 The benefits of such mechanism is a functional polymorphism.
 Instead of working with the concrete implementation of the trait as a dependency
@@ -52,6 +55,9 @@ to the calling contract.
 If you need to update the implementation of the trait within the calling contract,
 you only need to replace the called contract address. The wrapper does not guarantee
 that the given address refers to a contract that implements the given trait.
+
+Additionally, the wrapper supports multiple traits (i.e. `dyn Erc20 + Ownable + Erc721`)
+without losing the syntax highlighting from your favourite IDE.
 
 See [this example](https://github.com/727-Ventures/openbrush-contracts#wrapper-around-traits)
 for more information.
