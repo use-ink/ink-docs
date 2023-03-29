@@ -26,8 +26,22 @@
   --warning-700: #e3961b;
  }
 
-body{
-  cursor:url(/img/lambo/cursor.png), auto;
+ * {
+  cursor: none;
+}
+
+
+.cursor {
+  width: 100px;
+  height: 100px;
+  z-index: 9999;
+
+  /* transition: all 200ms ease-out; */
+  position: fixed;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  transform: translate(calc(-50% + 15px), -50%);
 }
 
 h1 {
