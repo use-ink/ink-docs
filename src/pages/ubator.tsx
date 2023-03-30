@@ -8,10 +8,11 @@ const DESCRIPTION =
 
 const Inkubator = () => (
   <>
-    <Head title={TITLE}>
-      <meta name="twitter:title" content={TITLE} />
+    <Head>
+      <meta name="title" content={TITLE} />
       <meta name="description" content={DESCRIPTION} />
       <meta name="og:image" content="https://use.ink/img/twitter/inkubator-twitter.png" />
+      <meta name="twitter:title" content={TITLE} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content="https://use.ink/img/twitter/inkubator-twitter.png" />
       <meta name="twitter:description" content={DESCRIPTION} />
