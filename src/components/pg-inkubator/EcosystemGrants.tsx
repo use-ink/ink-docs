@@ -26,7 +26,7 @@ const INFRASTRUCTURE_EXAMPLES = [
   { icon: '/img/library.svg', title: 'Libraries' },
   { icon: '/img/analysis.svg', title: 'Static Analysis' },
   { icon: '/img/on-chain-contract.svg', title: 'On-Chain Contract Verification' },
-  { icon: '/img/developer.svg', title: 'Improved Developer Experience' },
+  { icon: '/img/Developer.svg', title: 'Improved Developer Experience' },
   { icon: '/img/code.svg', title: 'Improved Debugging Experience' },
   { icon: '/img/idea.svg', title: 'Your Awesome New Idea' },
 ]
