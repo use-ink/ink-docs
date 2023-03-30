@@ -199,7 +199,7 @@ A few key differences are:
 
 - If the Solidity contract uses a `string`, it is recommended to use a `Vec<u8>` to avoid the overhead of a `String`. See [here](https://substrate.stackexchange.com/questions/1174/why-is-it-a-bad-idea-to-use-string-in-an-ink-smart-contract) for more details on why. The smart contract should only contain the information that strictly needs to be placed on the blockchain and go through consensus. The UI should be used for displaying strings.
 - Double check all `.unwrap()`s performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
-- Run the contracts node with `substrate-contracts-node --dev -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
+- Run the contracts node with `substrate-contracts-node -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
 - When passing parameters to a helper, it is recommended to pass references (even for primitives) as Wasm is more efficient with references.
   For example (see [erc20](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) example):
 
@@ -369,7 +369,7 @@ Solidity uses `uint256` and `uint` to represent a 256-bit type.
 
 Solidity is 256-bit / 32-byte word optimized. Meaning, using `uint256` in Solidity contracts will reduce gas usage -- but increase storage usage. The largest size ink! has built in is a `u128`. ink! compiles to Wasm. The largest primitive Wasm has is 64bit (due to most computers using 64bit). So, there is no benefit to using any larger primitive over a collection.
 
-When porting a `uint256` from Solidity to ink!, it is recommended to, with discretion, determine the range of the value, and choose the appropiate size (u8, u16, u32, u64, u128). If a 256-bit hash value is required, ink! has a `Hash` primitive available. In the event a value needs to be 256-bit, it is recommended to use an array (e.g. `[u64; 4]`).
+When porting a `uint256` from Solidity to ink!, it is recommended to, with discretion, determine the range of the value, and choose the appropriate size (u8, u16, u32, u64, u128). If a 256-bit hash value is required, ink! has a `Hash` primitive available. In the event a value needs to be 256-bit, it is recommended to use an array (e.g. `[u64; 4]`).
 
 ### `payable`
 
@@ -685,7 +685,7 @@ use erc20::Erc20Ref;
 
 There are two methods to setup the other contract.
 
-1. Instantiate the cross-called-contract in the main contract's constructor.  
+1. Instantiate the cross-called-contract in the main contract's constructor.
    See [here](https://ink.substrate.io/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
@@ -798,7 +798,7 @@ This will disable safe math operations, but unfortunately we are currently not
 aware of a better workaround until the bug in the compiler is fixed.
 ```
 
-**Solution**  
+**Solution**
 Add the following to the contract Cargo.toml:
 
 ```
@@ -810,7 +810,7 @@ overflow-checks = false
 
 This happens when trying to import a contract for cross-contract calling.
 
-**Solution**  
+**Solution**
 Ensure that the following is added to Cargo.toml contract import:`
 
 ```
@@ -890,7 +890,7 @@ fn do_some_write(&mut self) {
 }
 ```
 
-- useful code to interact and modify the contract enviroment for testing
+- useful code to interact and modify the contract environment for testing
 
 [ink_env docs](https://paritytech.github.io/ink/ink_env/test/index.html)
 

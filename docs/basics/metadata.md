@@ -185,7 +185,7 @@ define any events then the `events` key would contain an empty array `[]`.
 
 :::
 
-:::tip ink! 3.x Compatiblity Note
+:::tip ink! 3.x Compatibility Note
 
 The `lang_error` field was introduced as part of ink! 4.0. This represents an error which
 comes from the smart contracting language itself, and not the contract nor the underlying
@@ -332,7 +332,7 @@ distinct from any concept of Rust's crate versioning.
 "version": "4"
 ```
 
-:::tip ink! 3.x Compatiblity Note
+:::tip ink! 3.x Compatibility Note
 
 In version 3 of the ink! metadata the version was specified as a key which wrapped the
 ABI (e.g `"V3": { ... }`). This is no longer the case with version 4.

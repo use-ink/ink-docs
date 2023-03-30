@@ -3,7 +3,7 @@ title: "#[ink(storage)]"
 slug: /macros-attributes/storage
 ---
 
-Applicable on `struct` definitions. 
+Applicable on `struct` definitions.
 
 Applied on `struct` types in order to flag them for being
 the contract's storage definition.
@@ -18,7 +18,6 @@ or even provide their own implementations of storage data structures.
 For more information visit the `ink_storage` crate documentation.
 
 ## Example
-
 
 ```rust
 use ink_lang as ink;

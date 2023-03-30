@@ -8,7 +8,7 @@ Through the `#[ink::trait_definition]` proc. macro it is now possible to define 
 This allows to define shared smart contract interfaces to different concrete implementations.
 Note that this ink! trait definition can be defined anywhere, even in another crate!
 
-See our [`ERC20-Trait example contract`](https://github.com/paritytech/ink-examples/blob/main/trait-erc20/lib.rs) 
+See our [`ERC20-Trait example contract`](https://github.com/paritytech/ink-examples/blob/main/trait-erc20/lib.rs)
 for an elaborate example which uses trait definitions.
 
 ### Example
@@ -68,7 +68,7 @@ mod erc20 {
 }
 ```
 
-Calling the above `Erc20` explicitely through its trait implementation can be done just as if it was normal Rust code:
+Calling the above `Erc20` explicitly through its trait implementation can be done just as if it was normal Rust code:
 
 ```rust
 // --- Instantiating the ERC-20 contract:
