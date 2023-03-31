@@ -65,6 +65,7 @@ module.exports = {
       "datastructures/storage-in-metadata",
     ],
     Examples: ["examples/contracts", "examples/dapps"],
+    "ink!ubator": ["inkubator/overview"],
     Testnet: ["testnet/overview", "testnet/faucet"],
     "Third Party Tools & Libraries": [
       "third-party-tools/openbrush",

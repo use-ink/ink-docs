@@ -22,10 +22,7 @@ You can use those two macros:
 * [`ink::env::debug_println!`](https://docs.rs/ink_env/4.0.0/ink_env/macro.debug_println.html)
 * [`ink::env::debug_print!`](https://docs.rs/ink_env/4.0.0/ink_env/macro.debug_print.html)
 
-There are three things you have to do for the debug messages to show up on the console:
-
-1. __Enable the feature `pallet-contracts/unstable-interface` in the target runtime.__<br/>
-   For `substrate-contracts-node` this is done by default [here](https://github.com/paritytech/substrate-contracts-node/blob/master/runtime/Cargo.toml).
+There are things you could do to enable debug messages on the client console:
 
 1. __Enable the feature `ink-debug` for the `ink_env` crate.__<br/>
    `cargo-contract` does this automatically for you (for versions `>= 0.13.0`), except if
@@ -35,6 +32,13 @@ There are three things you have to do for the debug messages to show up on the c
    For example, to have only errors and debug output show up for the `substrate-contracts-node`:
   ```
   substrate-contracts-node --dev -lerror,runtime::contracts=debug
+  ```
+
+1. __Set the log level of your node to `runtime::contracts::strace` to trace host function calls.
+   These function calls logs will also be displayed in the `Debug message` panel of [Contracts UI](https://github.com/paritytech/contracts-ui).
+   For example, to view these traces in addition to the logs described above:
+  ```
+  substrate-contracts-node --dev -lerror,runtime::contracts=debug,runtime::contracts::strace=trace
   ```
 
 ## Example

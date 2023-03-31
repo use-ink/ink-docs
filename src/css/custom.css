@@ -5,6 +5,10 @@
  * work well for content-centric websites.
  */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #bd83fb;
@@ -26,7 +30,8 @@
   --warning-700: #e3961b;
  }
 
- * {
+
+* {
   cursor: none;
 }
 
@@ -45,7 +50,7 @@
 }
 
 h1 {
-  font-size: var(--ifm-h1-font-size) !important;
+  font-size: var(--ifm-h1-font-size);
 }
 
 .error {
@@ -54,6 +59,17 @@ h1 {
 
 .sm {
   font-size: 12px;
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 label {
@@ -87,7 +103,8 @@ input::-webkit-input-placeholder { /* Edge */
   color: var(--ifm-color-primary-lightest);
 }
 
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: var(--ifm-color-primary-lightest);
 }
 
@@ -119,7 +136,8 @@ form {
   }
 }
 
-form, .withHero {
+form,
+.withHero {
   border-top: solid 4px var(--ifm-color-primary-medium);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -185,7 +203,9 @@ button:disabled {
   clear: both;
 }
 
-.markdown table td, .markdown table tr, .markdown table th {
+.markdown table td,
+.markdown table tr,
+.markdown table th {
   border-left: 0px;
   border-right: 0px;
 }
@@ -194,7 +214,8 @@ button:disabled {
   color: #bd83fb;
 }
 
-.comparison th,  .comparison table > tbody > tr > td:first-child {
+.comparison th,
+.comparison table > tbody > tr > td:first-child {
   color: #bd83fb;
 }
 

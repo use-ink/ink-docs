@@ -1,0 +1,4 @@
+node_module
+yarn.lock
+package-lock.json
+static

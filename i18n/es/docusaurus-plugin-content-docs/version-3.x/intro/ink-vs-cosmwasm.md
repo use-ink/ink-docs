@@ -83,7 +83,7 @@ ink! contracts can be deployed on a few different options:
 - Locally, on a single or multiple node setup of [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
 - [Contracts on Rococo Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer),
   which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
-- [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
+- [Astar Network’s Shibuya testnet](https://docs.astar.network/docs/build/wasm).
 
 # Development Workflow
 

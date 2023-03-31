@@ -82,7 +82,7 @@ Para el desarrolly on-chain testing con CosmWasm, `wasmd` puede ser usado para l
 Por otro lado, existen varias opciones para desplegar contratos ink!:
 - Localmente, en un único, o múltiples, nodos [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
 - [Contracts Parachain en Rococo](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer), que está contectada a [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
-- [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
+- [Astar Network’s Shibuya testnet](https://docs.astar.network/docs/build/wasm).
 
 ## Workflow de Desarrollo
 
