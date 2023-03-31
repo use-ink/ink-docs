@@ -1,35 +1,21 @@
 ---
-title: Custom Data Structures
+title: Estructuras de Datos Personalizadas 
 slug: /datastructures/custom-datastructure
 hide_title: true
 ---
 
 <img src="/img/title/storage.svg" className="titlePic" />
 
-# Custom Data Structures
+# Estructuras de Datos Personalizadas 
 
-:::note
-TODO: Translate to Spanish.
-:::
+El crate `ink_storage` provee servicios útiles y estructuras de datos para organizar y manipular el storage del contrato. Sin embargo, los autores de contratos deberían saber que ellos pueden crear sus propias estructuras de datos personalizadas.
 
-The `ink_storage` crate provides useful utilities and data structures to organize and
-manipulate the contract's storage. However, contract authors should know that they can
-also create their own custom data structures.
 
-## Using custom types on storage
-Any custom type wanting to be compatible with ink! storage must implement the
-[`Storable`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.Storable.html)
-trait, so it can be SCALE
-[`encoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Encode.html)
-and
-[`decoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Decode.html).
-Additionally, the traits
-[`StorageLayout`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.StorageLayout.html)
-and [`TypeInfo`](https://docs.rs/scale-info/2.3.1/scale_info/trait.TypeInfo.html)
-are required as well. But don't worry, usually these traits can just be derived:
+## Usando tipos personalizados en storage
+Cualquier tipo personalizado que quiera ser compatible con el  storage de ink! debe implementar el trait [`Storable`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.Storable.html), así puede ser [`codificado`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Encode.html) y [`decodificado`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Decode.html) mediante SCALE. Además, los traits [`StorageLayout`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.StorageLayout.html) y [`TypeInfo`](https://docs.rs/scale-info/2.3.1/scale_info/trait.TypeInfo.html) también son requeridos. Pero no se preocupe, generalmente estos traits pueden ser derivados:
 
 ```rust
-/// A custom type that we can use in our contract storage
+/// Un tipo personalizado que podemos usar en nuestro storage del contrato
 #[derive(scale::Decode, scale::Encode)]
 #[cfg_attr(
     feature = "std",
@@ -45,13 +31,10 @@ pub struct ContractStorage {
 }
 ```
 
-Even better: there is a macro
-[`#[ink::storage_item]`](https://docs.rs/ink_macro/4.0.0/ink_macro/attr.storage_item.html),
-which derives all necessary traits for you. If there is no need to implement any special
-behaviour, the above code example can be simplified further as follows:
+Aún mejor: existe una macro [`#[ink::storage_item]`](https://docs.rs/ink_macro/4.0.0/ink_macro/attr.storage_item.html), que deriva todos los traits necesarios. Si no hay necesidad de implementar un comportamiento especial, el código anterior puede ser simplificado de la siguiente manera:
 
 ```rust
-/// A custom type that we can use in our contract storage
+/// Un tipo personalizado que podemos usar en nuestro storage del contrato
 #[ink::storage_item]
 pub struct Inner {
     value: bool,
@@ -63,39 +46,26 @@ pub struct ContractStorage {
 }
 ```
 
-Naturally, you can  as well implement any required trait manually. Please directly refer to
-the relevant trait documentations for more information.
+Naturalmente, uno además puede implementar cualquier característica manualmente. Por favor, consulte directamente la documentación relevante de traits para más información.
 
 :::note
 
-The `#[ink::storage_item]` macro is responsible for storage key calculation of 
-non-[`Packed`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.Packed.html) 
-types. Without it, the key for non-`Packed` fields will be zero. Using this macro is 
-necessary if you don't plan to use a
-[`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.ManualKey.html) 
-on a non-`Packed` type.
+La macro `#[ink::storage_item]` es responsable del cálculo de la storage key de los tipos non-[`Packed`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.Packed.html). Sin esta, la key para campos non-`Packed` será cero. Usar esta macro es necesario si no se planea usar una [`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.ManualKey.html) en un tipo non-`Packed`.
 
-Types with custom implementations of the ink! storage traits can still use this macro only 
-for key calculation by disabling the derives: `#[ink::storage_item(derive = false)]`.
+Tipos con implementaciones personalizadas de storage de ink! pueden también usar esta macro solo para cálculos de key al habilitar los derivados: `#[ink::storage_item(derive = false)]`.
 
 :::
 
-## Generic storage fields
+## Campos de storage genéricos
 
-It is possible to use generic data types in your storage, as long as any generic type
-satisfies the required storage trait bounds. In fact, we already witnessed this in the
-previous sections about the
-[`Mapping`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html).
+Es posible usar tipos de datos genéricos en su storage, siempre y cuando cualquier tipo genérico satisfaga los limites requeridos del trait storage. De hecho, ya hemos visto esto en anteriores secciones sobre [`Mapping`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html).
 
-Let's say you want a mapping where accessing a non-existent key should just return
-it's default value, akin to how mappings work in Solidity. Additionally, you want to know
-how many values there are in the mapping (its length). This could be implemented as a
-thin wrapper around the ink! `Mapping` as follows:
+Digamos que quiere un mapping que, al acceder a una key no existente, devuelva simplemente su valor predeterminado, similar a como los mappings trabajan en Solidity. Además, debe saber la cantidad de valores que hay en el mapping (la longitud). Esto puede ser implementado como un pequeño wrapper sobre ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html) de la siguiente manera:
 
 ```rust
-/// Values for this map need to implement the `Default` trait.
-/// Naturally, they also must be compatible with contract storage.
-/// Note that the underlying `Mapping` type only supports `Packed` values.
+/// Los valores para este map deben implementar el trait `Default`.
+/// Naturalmente, también deben ser compatibles con el storage del contrato.
+/// Tener en cuenta que el tipo del `Mapping` solo soporta valores `Packed`.
 #[ink::storage_item]
 pub struct DefaultMap<K, V: Packed + Default> {
     values: Mapping<K, V>,
@@ -103,12 +73,12 @@ pub struct DefaultMap<K, V: Packed + Default> {
 }
 
 impl<K: Encode, V: Packed + Default> DefaultMap<K, V> {
-    /// Accessing non-existent keys will return the default value.
+    /// El acceso a keys inexistentes retornará el valor predeterminado.
     pub fn get(&self, key: &K) -> V {
         self.values.get(key).unwrap_or_default()
     }
 
-    /// Inserting into the map increases its length by one.
+    /// La inserción en el map incrementa la longitud en uno.
     pub fn set<I, U>(&mut self, key: I, value: &U)
     where
         I: scale::EncodeLike<K>,
@@ -119,20 +89,20 @@ impl<K: Encode, V: Packed + Default> DefaultMap<K, V> {
         }
     }
 
-    /// Removing a value from the map decreases its length by one.
+    /// La eliminación de un valor del map disminuye la longitud en uno.
     pub fn remove(&mut self, key: &K) {
         if self.values.take(key).is_some() {
             self.length -= 1
         }
     }
 
-    /// Return how many values the mapping contains
+    /// Devuelve la cantidad de valores que contiene el mapping
     pub fn len(&self) -> u32 {
         self.length
     }
 }
 
-/// `DefaultMap` is compatible with contract storage.
+/// `DefaultMap` es compatible con el storage del contrato.
 #[ink(storage)]
 pub struct MyContract {
     my_map: DefaultMap<BlockNumber, Balance>,
@@ -141,10 +111,8 @@ pub struct MyContract {
 
 :::caution
 
-Generic data types may substantially increase your contracts overall code size, making it
-more costly to store on-chain.
+Los tipos de datos genéricos pueden incrementar sustancialmente el tamaño del código de su contrato, generando mayores costos para almacenarlo on-chain.
 
-The reason for this is [Rust's monomorphization](https://rustwasm.github.io/twiggy/concepts/generic-functions-and-monomorphization.html).
+La razón de esto es la ["monomorfización" de Rust](https://rustwasm.github.io/twiggy/concepts/generic-functions-and-monomorphization.html).
 
 :::
-
