@@ -19,8 +19,8 @@ you can start a local development chain by running:
 substrate-contracts-node
 ```
 
-**Note:** `substrate-ontracts-node` use the `--dev` flag by default. 
-Specify this `--dev` flag when you want to run a development chain with another binary (e.g using the Substrate Node Template).
+**Note:** `substrate-contracts-node` uses the `--dev` flag by default. 
+You may need to specify the `--dev` flag when you want to run a development chain with another binary (e.g using the Substrate Node Template).
 
 ![An image of the terminal starting a Substrate node](/img/substrate-contracts-node.png)
 
