@@ -27,8 +27,10 @@ Substrate contracts may store types that are encodable and decodable with
 [Parity Codec](https://github.com/paritytech/parity-codec) which includes most Rust common data
 types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
+However, as ink! operates in a `no_std` environment we need bring our own definitions for data types included in `std` like `String` and `Vec`. The [`ink_prelude`](https://docs.rs/ink_prelude/latest/ink_prelude/index.html) crate offers such definitions for most common `std` data types and can be safely used in an ink! contract.
+
 ink! provides Substrate specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
-they were primitive types. 
+they were primitive types.
 
 
 ink! also provides a `Mapping` storage type. You can read more about it [here](/datastructures/mapping).
@@ -80,7 +82,7 @@ pub enum Status {
     /// We are in the starting period of the auction, collecting initial bids.
     OpeningPeriod,
     /// We are in the ending period of the auction, where we are taking snapshots
-    /// of the winning bids. 
+    /// of the winning bids.
 }
 ```
 
