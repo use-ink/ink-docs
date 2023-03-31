@@ -206,7 +206,7 @@ A few key differences are:
 
 - If the Solidity contract uses a `string`, it is recommended to use a `Vec<u8>` to avoid the overhead of a `String`. See [here](https://substrate.stackexchange.com/questions/1174/why-is-it-a-bad-idea-to-use-string-in-an-ink-smart-contract) for more details on why. The smart contract should only contain the information that strictly needs to be placed on the blockchain and go through consensus. The UI should be used for displaying strings.
 - Double check all `.unwrap()`s performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
-- Run the contracts node with `substrate-contracts-node --dev -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
+- Run the contracts node with `substrate-contracts-node -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
 - When passing parameters to a helper, it is recommended to pass references (even for primitives) as Wasm is more efficient with references.
   For example (see [erc20](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) example):
 

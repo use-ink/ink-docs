@@ -98,7 +98,7 @@ las dependencias necesarias, como Rust, `cargo-contract` y `substrate-contracts-
 El siguiente paso en el desarrollo con CosmWasm es hacer el [preparar el entorno](https://docs.cosmwasm.com/docs/1.0/getting-started/setting-env). Consiste en configurar `wasmd` de manera que tengamos
 ciertas cuentas con un balance inicial haciendo posible interactuar con la red.
 
-De manera similar, cuando lanzamos `substrate-contracts-node` con la flag `--dev` obtendremos
+De manera similar, cuando lanzamos `substrate-contracts-node` obtendremos
 cuentas pre-fundadas (`alice`, `bob`, etc.) que están listas para ser usadas en nuestro desarrollo.
 
 ### Compilación y Tests
