@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import React from 'react'
 import classNames from 'classnames'
@@ -11,8 +11,6 @@ export interface MenuLinkProps extends ClassNameable {
 }
 
 export const DropdownMenu: React.FC<MenuLinkProps> = ({ title, items, className }) => {
-  const [showSpot, setShowSpot] = useState(false)
-
   const linkClasses = classNames(
     'rounded-xl hover:bg-brand-gradient hover:text-white dark:text-white text-black',
     'block px-6 py-4 text-3xl font-montserrat font-semibold hover:no-underline',
@@ -21,11 +19,7 @@ export const DropdownMenu: React.FC<MenuLinkProps> = ({ title, items, className 
   return (
     <Menu as="div" className={classNames('relative inline-block text-left', className)}>
       <div>
-        <Menu.Button
-          onMouseOver={() => setShowSpot(true)}
-          onMouseLeave={() => setShowSpot(false)}
-          className="inline-flex cursor-pointer font-montserrat justify-center border-0 w-full px-4 py-3 text-sm font-medium text-background-800 bg-brand-500 rounded-full hover:bg-brand-500/90 focus:outline-none focus:ring-0"
-        >
+        <Menu.Button className="inline-flex cursor-pointer font-montserrat justify-center border-0 w-full px-4 py-3 text-sm font-medium text-background-800 bg-brand-500 rounded-full hover:bg-brand-500/90 focus:outline-none focus:ring-0">
           {title}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,13 +31,6 @@ export const DropdownMenu: React.FC<MenuLinkProps> = ({ title, items, className 
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
-
-          <div
-            className={classNames(
-              'absolute right-[1px] w-10 h-10 rounded-full bg-[#E6007A] opacity-50 p-2',
-              showSpot ? 'visible' : 'hidden',
-            )}
-          />
         </Menu.Button>
       </div>
 
