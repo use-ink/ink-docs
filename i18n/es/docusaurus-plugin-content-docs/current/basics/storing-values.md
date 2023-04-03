@@ -23,50 +23,108 @@ pub struct MyContract {
 
 ## Tipos Soportados
 
-Los contratos de Substrate pueden almacenar tipos que sean codificables y decodificables con [Parity Codec](https://github.com/paritytech/parity-codec) 
+Los contratos de Substrate pueden almacenar tipos que sean codificables y decodificables con [Parity Codec](https://github.com/paritytech/parity-codec)
 que incluye la mayoría de los tipos de datos comunes de Rust, como `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuplas, y arrays.
 
-ink! proporciona tipos específicos como `AccountId`, `Balance`, y `Hash` para smart contracts como si fuesen tipos primitivos.
+Además, ink! proporciona tipos específicos de [substrate](https://substrate.io/) como `AccountId`, `Balance` y `Hash` a los contratos inteligentes como si fueran tipos primitivos.
 
-ink! también proporciona el tipo de storage `Mapping`. Puedes leer más sobre este tipo [aquí](/datastructures/mapping).
+### String, Vec y más
 
-Aquí tienes un ejemplo de como puedes almacenar un `AccountId` y `Balance`:
+Como ink! opera en un entorno `no_std`, necesitamos traer nuestras propias definiciones para los tipos de datos incluidos en std, como `String` y `Vec`. La caja ink_prelude ofrece tales definiciones para la mayoría de los tipos de datos comunes de std y pueden ser utilizados de manera segura en un contrato ink!.
+
+Puedes utilizar las definiciones del preludio de la siguiente manera:
 
 ```rust
 #[ink::contract]
-mod MyContract {
+mod MyContractWithStringsAndArrays {
+    use ink::prelude::string::String;
+    use ink::prelude::vec::Vec;
 
-    // Our struct will use those default ink! types
     #[ink(storage)]
     pub struct MyContract {
-        // Store some AccountId
-        my_account: AccountId,
-        // Store some Balance
-        my_balance: Balance,
+        // Almacena una cadena
+        my_string: String,
+        // Almacena un u32 en un vector
+        my_vector: Vec<u32>,
     }
     /* --snip-- */
 }
 ```
 
-A continuación un ejemplo de una estructura almacenando valores `String`
-y `Hash`.
+### Mapping
+
+ink! también proporciona el tipo de storage `Mapping`. Puedes leer más sobre este tipo [aquí](/datastructures/mapping).
+
+### Substrate Types
+
+Aquí hay un ejemplo de cómo almacenar los tipos de Substrate `AccountId`, `Balance` y `Hash`:
 
 ```rust
-pub struct Auction {
-     /// Nombre del auction
-     name: String,
-     /// Un hash que identifica el asunto del auction
-     subject: Hash,
-     /// Estado del auction
-     status: Status, // Enum: Uso de Enum se muestra más adelante
-     /// Un candle auction puede no tener ganador.
-     /// Si el auction ha terminado, significa que el ganador ha sido elegido.
-     finalized: bool,
-     /// vector
-     vector: Vec<u8>,
+#[ink::contract]
+mod MyContract {
+
+    // Nuestra estructura utilizará esos tipos de tinta! por defecto
+    #[ink(storage)]
+    pub struct MyContract {
+        // Almacena un AccountId
+        my_account: AccountId,
+        // Almacena un Balance
+        my_balance: Balance,
+        // Almacena un Hash
+        my_hash: Hash,
+    }
+    /* --snip-- */
 }
 ```
 
+### Enum
+
+
+La enumeración también se puede utilizar como tipo de datos. Su uso se muestra en la sección [Struct](#struct).
+
+```rust
+pub enum Status {
+    /// Una subasta aún no ha comenzado.
+    NotStarted,
+    /// Estamos en el período de inicio de la subasta, recopilando ofertas iniciales.
+    OpeningPeriod,
+    /// Estamos en el período final de la subasta, donde estamos tomando instantáneas
+    /// de las ofertas ganadoras.
+}
+```
+
+### Struct
+
+Puede combinar todos los tipos mencionados anteriormente incluso en una estructura personalizada que luego puede almacenar en el almacenamiento de contratos.
+
+```rust
+mod MyContract {
+    use ink::prelude::string::String;
+    use ink::prelude::vec::Vec;
+
+
+    pub struct Auction {
+        /// Nombre de marca del evento de subasta.
+        name: String,
+        /// Algún hash que identifica el tema de la subasta.
+        subject: Hash,
+        /// Estado de la subasta.
+        status: Status, // Enum: Uso mostrado en la siguiente sección
+        /// La subasta de vela no puede tener un ganador.
+        /// Si se finaliza la subasta, eso significa que se determina el ganador.
+        finalized: bool,
+        /// vector
+        vector: Vec<u8>,
+    }
+
+    #[ink(storage)]
+    pub struct MyContract {
+        // Almacena las subastas en un vec
+        auctions: Vec<Auction>,
+    }
+}
+
+```
 ## Use of enum
 
 Enum puede ser usado como el tipo de un valor dentro de un `struct` como se ha mostrado antes en `struct Auction`.

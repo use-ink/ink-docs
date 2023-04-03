@@ -27,13 +27,39 @@ Substrate contracts may store types that are encodable and decodable with
 [Parity Codec](https://github.com/paritytech/parity-codec) which includes most Rust common data
 types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
-ink! provides Substrate specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
-they were primitive types. 
+Futhermore, ink! provides [substrate](https://substrate.io/) specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
+they were primitive types.
 
+### String, Vector and More
+
+As ink! operates in a `no_std` environment we need bring our own definitions for data types included in `std` like `String` and `Vec`. The [`ink_prelude`](https://docs.rs/ink_prelude/latest/ink_prelude/index.html) crate offers such definitions for most common `std` data types and can be safely used in an ink! contract.
+
+You can use the prelude definitions like this:
+
+```rust
+#[ink::contract]
+mod MyContractWithStringsAndArrays {
+    use ink::prelude::string::String;
+    use ink::prelude::vec::Vec;
+
+    #[ink(storage)]
+    pub struct MyContract {
+        // Store some String
+        my_string: String,
+        // Store some u32 in a vec
+        my_vector: Vec<u32>,
+    }
+    /* --snip-- */
+}
+```
+
+### Mapping
 
 ink! also provides a `Mapping` storage type. You can read more about it [here](/datastructures/mapping).
 
-Here is an example of how you would store an `AccountId` and `Balance`:
+### Substrate Types
+
+Here is an example of how you would store substrate types `AccountId`, `Balance` and `Hash`:
 
 ```rust
 #[ink::contract]
@@ -46,32 +72,16 @@ mod MyContract {
         my_account: AccountId,
         // Store some Balance
         my_balance: Balance,
+        // Store some Hash
+        my_hash: Hash,
     }
     /* --snip-- */
 }
 ```
 
-Here is an example of a structure storing `String` and  `Hash` values.
+### Enum
 
-```rust
-pub struct Auction {
-    /// Branded name of the auction event.
-    name: String,
-    /// Some hash identifying the auction subject.
-    subject: Hash,
-    /// Auction status.
-    status: Status, // Enum: Usage shown in next section
-    /// Candle auction can have no winner.
-    /// If auction is finalized, that means that the winner is determined.
-    finalized: bool,
-    /// vector
-    vector: Vec<u8>,
-}
-```
-
-## Use of enum
-
-Enum can be used as a datatype in `struct` as depicted above in `struct Auction`.
+Enum can be used as a datatype as well. It's use in the example in the [Struct](#struct) section.
 
 ```rust
 pub enum Status {
@@ -80,7 +90,39 @@ pub enum Status {
     /// We are in the starting period of the auction, collecting initial bids.
     OpeningPeriod,
     /// We are in the ending period of the auction, where we are taking snapshots
-    /// of the winning bids. 
+    /// of the winning bids.
+}
+```
+
+### Struct
+
+You can combine all the above mentioned types even in a custom `struct` you can than store in the contracts storage.
+
+```rust
+mod MyContract {
+    use ink::prelude::string::String;
+    use ink::prelude::vec::Vec;
+
+
+    pub struct Auction {
+        /// Branded name of the auction event.
+        name: String,
+        /// Some hash identifying the auction subject.
+        subject: Hash,
+        /// Auction status.
+        status: Status, // Enum: Usage shown in next section
+        /// Candle auction can have no winner.
+        /// If auction is finalized, that means that the winner is determined.
+        finalized: bool,
+        /// vector
+        vector: Vec<u8>,
+    }
+
+    #[ink(storage)]
+    pub struct MyContract {
+        // Store Auctions in a vec
+        auctions: Vec<Auction>,
+    }
 }
 ```
 
