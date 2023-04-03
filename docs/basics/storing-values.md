@@ -27,11 +27,10 @@ Substrate contracts may store types that are encodable and decodable with
 [Parity Codec](https://github.com/paritytech/parity-codec) which includes most Rust common data
 types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
-ink! provides Substrate specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
+Futhermore, ink! provides [substrate](https://substrate.io/) specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
 they were primitive types.
 
-
-### Strings and Arrays
+### String, Vector and More
 
 As ink! operates in a `no_std` environment we need bring our own definitions for data types included in `std` like `String` and `Vec`. The [`ink_prelude`](https://docs.rs/ink_prelude/latest/ink_prelude/index.html) crate offers such definitions for most common `std` data types and can be safely used in an ink! contract.
 
@@ -54,15 +53,11 @@ mod MyContractWithStringsAndArrays {
 }
 ```
 
-
-
-### Mappings
+### Mapping
 
 ink! also provides a `Mapping` storage type. You can read more about it [here](/datastructures/mapping).
 
-
 ### Substrate Types
-
 
 Here is an example of how you would store substrate types `AccountId`, `Balance` and `Hash`:
 
@@ -84,11 +79,9 @@ mod MyContract {
 }
 ```
 
+### Enum
 
-
-### Enums
-
-Enum can be used as a datatype as well. It's use in the example in [Structs](#structs) section.
+Enum can be used as a datatype as well. It's use in the example in the [Struct](#struct) section.
 
 ```rust
 pub enum Status {
@@ -101,7 +94,7 @@ pub enum Status {
 }
 ```
 
-### Structs
+### Struct
 
 You can combine all the above mentioned types even in a custom `struct` you can than store in the contracts storage.
 
