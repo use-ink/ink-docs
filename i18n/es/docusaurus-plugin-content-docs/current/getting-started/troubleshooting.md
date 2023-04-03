@@ -16,7 +16,7 @@ poniendo tu ordenador a dormis, etc...), obtendras el siguiente error:
 ```bash
 ClientImport("Unexpected epoch change")
 ```
-Para solucionar esto necesitaras rearrancar el nodo con: `substrate-contracts-node --dev`. En este punto, necesitaras redesplegar 
+Para solucionar esto necesitaras rearrancar el nodo con: `substrate-contracts-node`. En este punto, necesitaras redesplegar 
 cualquier contrato y rehacer todos los pasos que has hecho previamente en tu nodo. Mientras mantengas el nodo corriendo, no deberías encontrarte errores.
 
 ### Viejos Contratos en Local Storage

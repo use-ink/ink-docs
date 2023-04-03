@@ -1,0 +1,6 @@
+build/
+node_modules/
+*.generated.*
+babel.config.js
+docusaurus.config.js
+sidebars.js

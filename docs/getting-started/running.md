@@ -19,6 +19,9 @@ you can start a local development chain by running:
 substrate-contracts-node
 ```
 
+**Note:** `substrate-contracts-node` uses the `--dev` flag by default. 
+You may need to specify the `--dev` flag when you want to run a development chain with another binary (e.g using the Substrate Node Template).
+
 ![An image of the terminal starting a Substrate node](/img/substrate-contracts-node.png)
 
 You can interact with your node using [the Contracts UI](https://contracts-ui.substrate.io).

@@ -1,6 +1,12 @@
-import React from "react";
+import React from 'react'
 
-export default function Figure({ src, caption, width = "460px" }) {
+type Props = {
+  src: string
+  caption: string
+  width?: string
+}
+
+const Figure: React.FC<Props> = ({ src, caption, width = '460px' }) => {
   return (
     <center>
       <figure>
@@ -8,5 +14,7 @@ export default function Figure({ src, caption, width = "460px" }) {
         <figcaption>{caption}</figcaption>
       </figure>
     </center>
-  );
+  )
 }
+
+export default Figure

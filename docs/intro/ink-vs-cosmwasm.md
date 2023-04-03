@@ -111,7 +111,7 @@ The next step in the CosmWasm development workflow is
 That consists mainly of configuring `wasmd` such that it has prefunded accounts that are able
 to interact with the network.
 
-When `substrate-contracts-node` is started with the `--dev` flag, it already contains well
+When `substrate-contracts-node` is started, it already contains well
 known pre-funded accounts (`alice`, `bob`, etc.) which are ready to be used for development.
 
 ### Compile and Test

@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
+      "alwaysStrict": true,
+      "baseUrl": "./",
+      "declaration": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "isolatedModules": true,
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "es2017",
+        "esnext"
+      ],
+      "jsx": "react",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "useUnknownInCatchVariables": false,
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noEmit": true,
+      "strictNullChecks": true,
+      "target": "es5",
+      "noImplicitThis": true
+    },
+    "include": [
+      "i18n",
+      "docs",
+      "src",
+      "tailwind.confg.js"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }
