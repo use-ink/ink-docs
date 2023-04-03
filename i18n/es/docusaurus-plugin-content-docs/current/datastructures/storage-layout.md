@@ -1,87 +1,56 @@
 ---
-title: Storage Layout
+title: Estructura del storage
 slug: /datastructures/storage-layout
 hide_title: true
 ---
 
 <img src="/img/title/storage.svg" className="titlePic" />
 
-# Storage Layout
+# Estructura del storage
 
-:::note
-TODO: Translate to Spanish.
-:::
+A los autores de smart contracts se les da cierta flexibilidad respecto a cómo ellos quieren organizar la estructura de storage de sus smart contracts.
+Profundicemos sobre los conceptos detrás del storage de ink! para comprender mejor algunas de sus implicaciones y limitaciones.
 
-Smart contract authors are given some flexibility in regards on how they want to organize
-the storage layout of their contracts.
-Let's dive deeper into the concepts behind ink! storage to get a better understanding
-of some of its implications and limitations.
+## Organización del storage
 
-## Storage Organization
-
-The following schema depicts the storage which is exposed
-to ink! by the contracts pallet:
+El siguiente esquema representa el storage que es expuesto a ink! por el contract pallet:
 
 <div class="schema">
-    <img src="/img/es/kv.svg" alt="Storage Organization: Layout" />
+    <img src="/img/kv.svg" alt="Organización del storage: estructura" />
 </div>
 
-Storage data is always encoded with the
-[`SCALE`](https://docs.substrate.io/reference/scale-codec/) codec.
-The storage API operates by storing and loading entries into and from a single storages
-cells, where each storage cell is accessed under its own dedicated storage key. To some
-extent, the storage API works similar to a traditional key-value database.
+Los datos de storage siempre se codifican con el codec
+[`SCALE`](https://docs.substrate.io/reference/scale-codec/).
+La API de storage funciona guardando y cargando registros en y desde celdas de storage únicas, donde se accede a cada celda de storage con su propia storage key. Hasta cierto punto, la API del storage funciona de manera similar a una base de datos key-value tradicional.
 
-## Packed vs Non-Packed layout
+## Estructura Packed vs Non-Packed
 
-Types that can be stored entirely under a single storage cell are considered
-[`Packed`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.Packed.html).
-By default, ink! tries to store all storage struct fields under a single storage cell.
-Consequentially, with a `Packed` storage layout, any message interacting with the contract
-storage will always need to operate on the entire contract storage struct.
+Los tipos que se pueden guardar completamente en una sola celda de storage se consideran [`Packed`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/trait.Packed.html).
+Por default, ink! intenta guardar todos los campos de struct de storage en una única celda de storage.
+En consecuencia, con una estructura de storage `Packed`, cualquier mensaje que interactúe con el storage del contrato siempre necesitará operar en todo el struct de storage del contrato.
 
-For example, if we have a somewhat small contract storage struct consisting of only a few
-tiny fields, pulling everything from the storage inside every message is not
-problematic. It may even be advantageous - especially if we expect most messages to
-interact with most of the storage fields.
+Por ejemplo, si tenemos un struct de storage relativamente pequeño que consiste de unos pocos campos diminutos, obtener todo desde el storage en cada mensaje no es problemático. Quizás hasta sea favorable - especialmente si esperamos que la mayoría de los mensajes interactúen con la mayoría de los campos del storage.
 
-On the other hand, this can get problematic if we're storing a large `ink::prelude::vec::Vec`
-in the contract storage but provide messages that do not need to read and write from this
-`Vec`. In that scenario, each and every contract message bears runtime overhead by dealing
-with that `Vec`, regardless whether they access it or not. This results in extra gas costs.
-To solve this problem we need to turn our storage into a non-packed layout somehow.
+Por otro lado, esto puede ser problemático si estamos guardando un gran `ink::prelude::vec::Vec` en el storage del contrato pero provee mensajes que no necesitan ser leídos y escritos de este `Vec`. En ese escenario, todos y cada uno de los mensajes del contrato sufre de un overhead de ejecución al tratar con ese `Vec`, independientemente de si acceden a él o no. Esto resulta en costos de gas extra. Para resolver este problema necesitamos transformar nuestro storage en una estructura non-packed de algún modo.
 
 :::caution
 
-If any type exhibiting `Packed` layout gets large enough (an ever growing `Vec` might be
-a prime candidate for this), it will break your contract.
-This is because for encoding and decoding storage items, there is a buffer with only limited
-capacity (around 16KB in the default configuration) available. This means any contract
-trying to decode more than that will trap! If you are unsure about the potential size a
-datastructure might get, consider using an ink! `Mapping`, which can store an arbitrary
-number of elements, instead.
+Si algún tipo que muestra estructura `Packed` se hace lo suficientemente grande (un `Vec` en crecimiento constante podría ser un candidato perfecto para esto), romperá el contrato. Esto sucede porque para codificar y decodificar elementos del storage, hay un buffer con solamente capacidad limitada (alrededor de 16KB en la configuración por default) disponible. Esto significa que cada contrato que intente decodificar más que eso lanzará un error. Si uno no está seguro del tamaño potencial que pueda adquirir una estructura de datos, se debería considerar usar un ink! `Mapping`, que puede guardar un número arbitrario de elementos en cambio.
 
 :::
 
 ## Eager Loading vs. Lazy Loading
-ink! provides means of breaking the storage up into smaller pieces, which can be loaded
-on demand, with the
-[`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive.
-Wrapping any storage field inside a `Lazy` struct makes the storage
-struct in which that field appears also
-non-`Packed`, preventing it from being eagerly loaded during arbitrary storage operations:
+
+ink! provee medios para dividir el storage en partes más pequeñas, que pueden ser cargadas a demanda, con la primitiva [`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html). Envolver cualquier campo dentro de un struct `Lazy` hace que el struct de storage en el cual ese campo aparezca también sea non-`Packed`, evitando que sea cargado anticipadamente durante operaciones de storage arbitrarias:
 
 <div class="schema">
-    <img src="/img/es/storage-layout.svg" alt="Storage Organization: Layout with a Lazy field" />
+    <img src="/img/storage-layout.svg" alt="Organización del storage: estructura con un campo lazy" />
 </div>
 
-Note that in above illustration, the key of `0x12345678` just serves as an example; we'll 
-learn more about storage key calculation 
-[later in this chapter](/es/datastructures/storage-layout#manual-vs-automatic-key-generation).
+Tener en cuenta que en la ilustración de arriba, la key `0x12345678` sólo sirve como ejemplo, aprenderemos más sobre cálculo de storage key
+[en este capítulo](/datastructures/storage-layout#generación-de-key-manual-vs-automática).
 
-The following example demonstrates how we can solve the problem introduced in the above
-section. You'll notice that for the lazily loaded storage field, we now work with getters
-and setters to access and modify the underlying storage value:
+El siguiente ejemplo demuestra cómo podemos resolver el problema presentado en la sección anterior. Se verá que para el campo de storage cargado de manera lazy, ahora trabajamos con getters y setters para tener acceso y modificar el valor de storage interno:
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std)]
@@ -95,8 +64,8 @@ mod mycontract {
     #[ink(storage)]
     pub struct MyContract {
         tiny_value: Balance,
-        /// This vector might get large and expensive to work with.
-        /// We want to enforce a non-`Packed` storage layout.
+        /// Este vector puede volverse grande y caro para utilizarlo.
+        /// Queremos forzar una estructura de storage non-`Packed`
         large_vec: Lazy<Vec<Balance>>,
     }
 
@@ -106,13 +75,13 @@ mod mycontract {
             Self::default()
         }
 
-        /// Because `large_vec` is loaded lazily, this message is always cheap.
+        /// Este mensaje siempre es barato ya que `large_vec` es cargado de forma lazy.
         #[ink(message)]
         pub fn get_balance(&self) -> Balance {
             self.tiny_value
         }
 
-        /// Lazy fields like `large_vec` provide `get()` and `set()` storage operators.
+        /// Los campos lazy como `large_vec` proveen los operadores de storage `get()` y `set()`. 
         #[ink(message)]
         pub fn add_balance(&mut self, value: Balance) {
             let mut balances = self.large_vec.get_or_default();
@@ -125,64 +94,47 @@ mod mycontract {
 
 :::caution
 
-`ink::prelude::vec::Vec`'s are always loaded in their entirety. This is because all elements
-of the `ink::prelude::vec::Vec` live under a single storage key. Wrapping the
-`ink::prelude::vec::Vec` inside `Lazy`, like the
-provided example above does, has no influence on its inner layout. If you are dealing with
-large or sparse arrays on contract storage, consider using a `Mapping` instead.
+Los `ink::prelude::vec::Vec` son siempre cargados en su totalidad. Esto sucede porque todos los elementos del `ink::prelude::vec::Vec` existen en una sola storage key. Si se envuelve el `ink::prelude::vec::Vec` dentro del `Lazy`, como muestra el ejemplo de arriba, no tiene influencia en su estructura interior. Si se está tratando con arrays grandes o dispersos en storage de contratos, se debería considerar usar un `Mapping` en cambio.
 
 :::
 
-## Manual vs. Automatic Key Generation
+## Generación de key Manual vs. Automática 
 
-By default, keys are calculated automatically for you, thanks to the
-[`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.AutoKey.html)
-primitive. They'll be generated at compile time and ruled out for conflicts.
-However, for non-`Packed` types like `Lazy` or the `Mapping`, the
-[`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.ManualKey.html)
-primitive allows manual control over the storage key of a field like so:
+Por defecto, las keys son calculadas automáticamente, gracias a la primitiva [`AutoKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.AutoKey.html). Estas serán generadas en tiempo de compilación y descartadas de conflictos.
+Sin embargo, para tipos non-`Packed` como `Lazy` o `Mapping`, la primitiva [`ManualKey`](https://docs.rs/ink_storage_traits/4.0.0/ink_storage_traits/struct.ManualKey.html) permite un control manual sobre la storage key de un campo, así:
 
 ```rust
 #[ink(storage)]
 pub struct MyContract {
-    /// The storage key for this field is always `0x0000007f`
+    /// La storage key para este campo siempre es `0x0000007f`
     inner: Lazy<bool, ManualKey<127>>,
 }
 ```
 
-This may be advantageous: Your storage key will always stay the same, regardless of
-the version of your contract or ink! itself (note that the key calculation algorithm may
-change with future ink! versions).
+Esto puede ser ventajoso: Su key de storage será siempre la misma, independientemente de la versión de su contrato o de ink! en sí mismo (Tenga en cuenta que el algoritmo de cálculo de la key puede cambiar con futuras versiones de ink!).
 
 :::tip
 
-Using `ManualKey` instead of `AutoKey` might be especially desirable for upgradable
-contracts, as using `AutoKey` might result in a different storage key for the same field
-in a newer version of the contract. This may break your contract after an upgrade 😱!
+El uso de una `ManualKey` en vez de una `AutoKey` puede ser específicamente deseable para contratos actualizables, ya que usar `AutoKey` puede resultar en una storage key diferente para el mismo campo en una nueva versión de contrato. Esto puede romper su contrato luego de una actualización 😱!
 
 :::
 
-The storage key of the contracts root storage struct defaults to `0x00000000`.  However, 
-contract develepors can set the key to an arbitratry 4 bytes value by providing it a 
-`ManualKey` like so:
+La key del storage de la struct del storage raíz del contrato tiene como valor default `0x00000000`. Sin embargo, los desarrolladores pueden definir la key como un valor arbitrario de 4 bytes al proveer una `ManualKey` así: 
 
 ```rust
-/// Manually set the root storage key of `MyContract` to be `0xcafebabe`.
+/// Definición manual de la root storage key de `MyContract` para que sea `0xcafebabe`.
 #[ink(storage)]
 pub struct MyContract<KEY: StorageKey = ManualKey<0xcafebabe>> {
     value: bool,
 }
 ```
 
-## Considerations
+## Consideraciones
 
-It might be worthwhile to think about the desired storage layout of your contract. While
-using a `Packed` layout will keep your contracts overall code size smaller, it can cause
-unnecessarily high gas costs. Thus we consider it a good practice to break up large
-or complex storage layouts into reasonably sized distinct storage cells.
+Sería conveniente pensar cual es la estructura de storage deseada para un contrato. Si usamos una estructura `Packed` se mantendrá el tamaño del código general del contrato más pequeño lo cual puede ocasionar altos costos de gas innecesarios. Por lo tanto, consideramos una buena práctica dividir estructuras de storage grandes o complejas en distintas celdas de storage de tamaño razonable.
 
 :::note
 
-ink! `Mapping`s are always non-`Packed` and loaded lazily, one key-value pair at the time.
+Los `Mapping` de ink! son siempre non-`Packed` y cargados de manera lazy, un par key-value por vez.
 
 :::
