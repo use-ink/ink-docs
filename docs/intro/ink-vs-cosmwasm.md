@@ -24,6 +24,7 @@ synchronous execution model. That means some fundamental differences in how the 
 code is structured.
 
 The main entry point functions of CosmWasm contracts are:
+
 - `instantiate` which bootstraps the initial contract state (assuming it's already been
   deployed).
 - `execute` which has the actor perform operations to its internal state.
@@ -34,6 +35,7 @@ differently from CosmWasm, it doesn’t rely on JSON schemas for defining how th
 are structured.
 
 Instead, ink! makes heavy usage of Rust macros. The main ink! macros are:
+
 - `#[ink(constructor)]` which is called when the contract is deployed, and is responsible
   for bootstrapping the initial contract state into the storage. It is analogous to the
   CosmWasm `instantiate` function.
@@ -85,10 +87,11 @@ For CosmWasm development and on-chain testing, `wasmd` can be operated as a loca
 (single or multiple nodes), or connected to the `cliffnet` public test network.
 
 ink! contracts can be deployed on a few different options:
+
 - Locally, on a single or multiple node setup of [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
 - [Contracts on Rococo Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer),
   which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
-- [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
+- [Astar Network’s Shibuya testnet](https://docs.astar.network/docs/build/Introduction/astar_family/#shibuya).
 
 ## Development Workflow
 
@@ -108,7 +111,7 @@ The next step in the CosmWasm development workflow is
 That consists mainly of configuring `wasmd` such that it has prefunded accounts that are able
 to interact with the network.
 
-When `substrate-contracts-node` is started with the `--dev` flag, it already contains well
+When `substrate-contracts-node` is started, it already contains well
 known pre-funded accounts (`alice`, `bob`, etc.) which are ready to be used for development.
 
 ### Compile and Test
@@ -116,11 +119,13 @@ known pre-funded accounts (`alice`, `bob`, etc.) which are ready to be used for 
 CosmWasm provides example contracts at the
 [cw-contracts](https://github.com/InterWasm/cw-contracts) repository. After the
 repository is cloned, from the contract directory it can be compiled via:
+
 ```
 $ cargo wasm
 ```
 
 and tested via:
+
 ```
 $ cargo unit-test
 ```
@@ -130,11 +135,13 @@ Similarly, ink! provides an
 main repository.
 
 A contract can be compiled from its directory via:
-``` 
+
+```
 $ cargo contract build
 ```
 
 and tested via:
+
 ```
 $ cargo test
 ```

@@ -1,12 +1,12 @@
 module.exports = {
-  "reference": {
-    "Overview": [
+  reference: {
+    Overview: [
       "intro/intro",
       "intro/why-rust",
       "intro/why-webassembly",
       "intro/how-it-works",
       "intro/ink-vs-solidity",
-      "intro/ink-vs-cosmwasm"
+      "intro/ink-vs-cosmwasm",
     ],
     "Monthly Update": [
       "monthly-update/overview",
@@ -15,7 +15,7 @@ module.exports = {
       "monthly-update/2022/11",
       "monthly-update/2022/10",
       "monthly-update/2022/09",
-      "monthly-update/archive"
+      "monthly-update/archive",
     ],
     "Getting started": [
       "getting-started/setup",
@@ -24,9 +24,9 @@ module.exports = {
       "getting-started/running",
       "getting-started/deploying",
       "getting-started/calling",
-      "getting-started/troubleshooting"
+      "getting-started/troubleshooting",
     ],
-    "Basics": [
+    Basics: [
       "basics/contract-template",
       "basics/storing-values",
       "basics/reading-values",
@@ -40,7 +40,7 @@ module.exports = {
       "basics/environment",
       "basics/metadata",
       "basics/testing",
-      "basics/debugging"
+      "basics/debugging",
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
@@ -55,34 +55,39 @@ module.exports = {
       "macros-attributes/selector",
       "macros-attributes/storage",
       "macros-attributes/topic",
-      "macros-attributes/chain-extension"
+      "macros-attributes/chain-extension",
     ],
     "Storage & Data Structures": [
       "datastructures/overview",
       "datastructures/mapping",
       "datastructures/storage-layout",
       "datastructures/custom",
-      "datastructures/storage-in-metadata"
+      "datastructures/storage-in-metadata",
     ],
-    "Examples": [
-      "examples/contracts",
-      "examples/dapps"
-    ],
-    "Testnet": [
-      "testnet/overview",
-      "testnet/faucet"
-    ],
+    Examples: ["examples/contracts", "examples/dapps"],
+    "ink!ubator": ["inkubator/overview"],
+    Testnet: ["testnet/overview", "testnet/faucet"],
     "Third Party Tools & Libraries": [
-      "third-party-tools/openbrush"
+      "third-party-tools/openbrush",
+      {
+        type: "category",
+        label: "Swanky suite",
+        items: [
+          "third-party-tools/swanky/cli",
+          "third-party-tools/swanky/node",
+        ],
+        link: {
+          type: "doc",
+          id: "third-party-tools/swanky/index",
+        },
+      },
+      // { "Swanky suite": ["third-party-tools/swanky/cli"] },
     ],
-    "FAQ": [
-      "faq/faq",
-      "faq/migrating-from-ink-3-to-4"
-    ],
+    FAQ: ["faq/faq", "faq/migrating-from-ink-3-to-4"],
     "Brand Assets": [
       "brand-assets/ink",
       "brand-assets/community-badges",
-      "brand-assets/cargo-contract"
-    ]
-  }
+      "brand-assets/cargo-contract",
+    ],
+  },
 };

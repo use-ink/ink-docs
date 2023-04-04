@@ -13,11 +13,11 @@ to ink! by the contracts pallet:
 </div>
 
 ink!'s storage operates by storing and loading entries into and from a single storage
-cell. At the moment there is no way to customize this behaviour. Depending on the data
+cell. At the moment there is no way to customize this behavior. Depending on the data
 we're dealing with, this can end up being good or bad.
 
 For example, if we have a somewhat small `ink_prelude::vec::Vec` loading all the elements
-at the same time can be advantegous - especially if we expect our message to interact
+at the same time can be advantageous - especially if we expect our message to interact
 with most of them in a single call.
 
 On the other hand, this can be problematic if we're loading a large `Vec` and only

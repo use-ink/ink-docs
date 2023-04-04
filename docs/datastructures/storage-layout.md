@@ -71,8 +71,8 @@ non-`Packed`, preventing it from being eagerly loaded during arbitrary storage o
     <img src="/img/storage-layout.svg" alt="Storage Organization: Layout with a Lazy field" />
 </div>
 
-Note that in above illustration, the key of `0x12345678` just serves as an example; we'll 
-learn more about storage key calculation 
+Note that in above illustration, the key of `0x12345678` just serves as an example; we'll
+learn more about storage key calculation
 [later in this chapter](/datastructures/storage-layout#manual-vs-automatic-key-generation).
 
 The following example demonstrates how we can solve the problem introduced in the above
@@ -158,8 +158,8 @@ in a newer version of the contract. This may break your contract after an upgrad
 
 :::
 
-The storage key of the contracts root storage struct defaults to `0x00000000`.  However, 
-contract develepors can set the key to an arbitratry 4 bytes value by providing it a 
+The storage key of the contracts root storage struct defaults to `0x00000000`.  However,
+contract developers can set the key to an arbitrary 4 bytes value by providing it a
 `ManualKey` like so:
 
 ```rust

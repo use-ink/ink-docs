@@ -82,7 +82,7 @@ Para el desarrolly on-chain testing con CosmWasm, `wasmd` puede ser usado para l
 Por otro lado, existen varias opciones para desplegar contratos ink!:
 - Localmente, en un único, o múltiples, nodos [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
 - [Contracts Parachain en Rococo](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer), que está contectada a [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
-- [Astar Network’s Shibuya testnet](https://docs.astar.network/maintain/collator/shibuya-network/).
+- [Astar Network’s Shibuya testnet](https://docs.astar.network/docs/build/wasm).
 
 ## Workflow de Desarrollo
 
@@ -98,7 +98,7 @@ las dependencias necesarias, como Rust, `cargo-contract` y `substrate-contracts-
 El siguiente paso en el desarrollo con CosmWasm es hacer el [preparar el entorno](https://docs.cosmwasm.com/docs/1.0/getting-started/setting-env). Consiste en configurar `wasmd` de manera que tengamos
 ciertas cuentas con un balance inicial haciendo posible interactuar con la red.
 
-De manera similar, cuando lanzamos `substrate-contracts-node` con la flag `--dev` obtendremos
+De manera similar, cuando lanzamos `substrate-contracts-node` obtendremos
 cuentas pre-fundadas (`alice`, `bob`, etc.) que están listas para ser usadas en nuestro desarrollo.
 
 ### Compilación y Tests
