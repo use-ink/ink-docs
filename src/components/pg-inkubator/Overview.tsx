@@ -13,7 +13,7 @@ export const Overview: React.FC = () => {
             What is <b className="text-brand-500 pr-2">ink!ubator</b>?
           </h2>
           <p className="text-lg dark:text-white/70 text-center mx-auto max-w-2xl">
-            ink!ubator is an initiative funded by the Web3 Foundation&apos;s Bounty Program. It is designed to kickstart
+            ink!ubator is an initiative funded by the Polkadot Treasury&apos;s Bounty Program. It is designed to kickstart
             the ink! ecosystem on Polkadot, Kusama, and other Substrate chains in the following areas
           </p>
         </hgroup>
