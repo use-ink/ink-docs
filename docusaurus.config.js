@@ -40,6 +40,7 @@ module.exports = {
         language: ['en', 'es'],
       },
     ],
+    'docusaurus-theme-frontmatter',
   ],
   themeConfig: {
     prism: {
