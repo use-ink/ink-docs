@@ -19,7 +19,7 @@ function AlternateLangHeaders() {
   // See https://www.searchviu.com/en/multiple-hreflang-tags-one-url/
   return (
     <Head>
-      {/* {Object.entries(localeConfigs).map(([locale, { htmlLang }]) => (
+      {Object.entries(localeConfigs).map(([locale, { htmlLang }]) => (
         <link
           key={locale}
           rel="alternate"
@@ -29,7 +29,7 @@ function AlternateLangHeaders() {
           })}
           hrefLang={htmlLang}
         />
-      ))} */}
+      ))}
       <link
         rel="alternate"
         href={alternatePageUtils.createUrl({
@@ -83,7 +83,9 @@ export default function SiteMetadata() {
 
       <CanonicalUrlHeaders />
 
-      <AlternateLangHeaders />
+      {/* Not use here anymore, moved to Wrapped MDXContent as we need the document Frontmatter */}
+      {/* https://github.com/paritytech/ink-docs/issues/211 */}
+      {/* <AlternateLangHeaders /> */}
 
       <SearchMetadata tag={DEFAULT_SEARCH_TAG} locale={currentLocale} />
 
