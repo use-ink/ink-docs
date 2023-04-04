@@ -4,6 +4,14 @@ hide_title: true
 slug: /why-rust-for-smart-contracts
 ---
 
+<head>
+<link
+          rel="alternate"
+          href="/es/por-que-rust-para-smart-contracts"
+          hrefLang="es-ES"
+        />
+</head>
+
 <img src="/img/title/rust.svg" className="titlePic" />
 
 # Why Rust for Smart Contracts?
@@ -27,7 +35,7 @@ Also, Rust has an integrated test and benchmark runner,
 
 * <span class="highlight">1st class Wasm:</span> Rust provides the first class support for the WebAssembly.
 
-* <span class="highlight">Small Size:</span> In the space-constrained blockchain world size is important. 
-The Rust compiler is a great help for that, since it reorders struct fields in order 
+* <span class="highlight">Small Size:</span> In the space-constrained blockchain world size is important.
+The Rust compiler is a great help for that, since it reorders struct fields in order
 to make each type as small as possible. Thus, Rust data structures are very compact,
 in many cases even more compact than in C.
