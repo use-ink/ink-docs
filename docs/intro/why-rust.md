@@ -5,7 +5,6 @@ slug: /why-rust-for-smart-contracts
 slug.es: /por-que-rust-para-smart-contracts
 ---
 
-
 <img src="/img/title/rust.svg" className="titlePic" />
 
 # Why Rust for Smart Contracts?
