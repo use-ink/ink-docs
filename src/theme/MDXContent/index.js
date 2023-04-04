@@ -1,18 +1,22 @@
 import Head from '@docusaurus/Head'
-import { useAlternatePageUtils, useDoc } from '@docusaurus/theme-common/internal'
+import { useAlternatePageUtils } from '@docusaurus/theme-common/internal'
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import MDXContent from '@theme-original/MDXContent'
-import React from 'react'
+import useFrontMatter from '@theme/useFrontMatter'
+import { default as React } from 'react'
 
 // Adapted version from ejected SiteMetadata.js to allow for custom local slugs
 // https://github.com/paritytech/ink-docs/issues/211
 function AlternateLangHeaders() {
   const alternatePageUtils = useAlternatePageUtils()
   const {
-    i18n: { defaultLocale, localeConfigs },
+    siteConfig: { url },
+    i18n: { defaultLocale, localeConfigs, currentLocale },
   } = useDocusaurusContext()
-  const { frontMatter } = useDoc()
+  const { withBaseUrl } = useBaseUrlUtils()
 
+  const frontMatter = useFrontMatter()
   const availableSlugs = React.useMemo(
     () =>
       Object.entries(frontMatter)
@@ -20,7 +24,7 @@ function AlternateLangHeaders() {
         .map(([key, value]) => {
           const locale = key.split('.')[1]
           if (locale) return [locale, value]
-          return [defaultLocale, value]
+          return [currentLocale, value]
         })
         .reduce((acc, [locale, value]) => {
           acc[locale] = value
@@ -29,6 +33,12 @@ function AlternateLangHeaders() {
     [frontMatter],
   )
 
+  const defaultLocaleUrl = availableSlugs[defaultLocale]
+    ? url + availableSlugs[defaultLocale]
+    : alternatePageUtils.createUrl({
+        locale: defaultLocale,
+        fullyQualified: true,
+      })
   return (
     <Head>
       {Object.entries(localeConfigs).map(([locale, { htmlLang }]) => {
@@ -37,20 +47,17 @@ function AlternateLangHeaders() {
           fullyQualified: true,
         })
 
-        const customSlug = availableSlugs[locale] || availableSlugs[htmlLang]
-
-        if (customSlug) href = href.replace(new RegExp(`(.*${locale})(.*)`), `$1${customSlug}`)
-
+        const translatedSlug = availableSlugs[locale]
+        if (translatedSlug) {
+          if (locale === defaultLocale) {
+            href = url + translatedSlug
+          } else {
+            href = href.replace(new RegExp(`(.*${locale})(.*)`), `$1${translatedSlug}`)
+          }
+        }
         return <link key={locale} rel="alternate" href={href} hrefLang={htmlLang} />
       })}
-      <link
-        rel="alternate"
-        href={alternatePageUtils.createUrl({
-          locale: defaultLocale,
-          fullyQualified: true,
-        })}
-        hrefLang="x-default"
-      />
+      <link rel="alternate" href={defaultLocaleUrl} hrefLang="x-default" />
     </Head>
   )
 }
