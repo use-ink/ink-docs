@@ -1,9 +1,7 @@
 import Head from '@docusaurus/Head'
 import { useAlternatePageUtils, useDoc } from '@docusaurus/theme-common/internal'
-
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import MDXContent from '@theme-original/MDXContent'
-import useFrontMatter from '@theme/useFrontMatter'
 import React from 'react'
 
 // Adapted version from ejected SiteMetadata.js to allow for custom local slugs
