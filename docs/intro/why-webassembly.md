@@ -2,6 +2,7 @@
 title: Why WebAssembly for Smart Contracts?
 hide_title: true
 slug: /why-webassembly-for-smart-contracts
+slug.es: /por-que-webassembly-para-smart-contracts
 ---
 
 <img src="/img/title/wasm.svg" className="titlePic" />

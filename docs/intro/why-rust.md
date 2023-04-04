@@ -2,15 +2,9 @@
 title: Why Rust for Smart Contracts?
 hide_title: true
 slug: /why-rust-for-smart-contracts
+slug.es: /por-que-rust-para-smart-contracts
 ---
 
-<head>
-<link
-          rel="alternate"
-          href="/es/por-que-rust-para-smart-contracts"
-          hrefLang="es-ES"
-        />
-</head>
 
 <img src="/img/title/rust.svg" className="titlePic" />
 

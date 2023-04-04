@@ -1,7 +1,8 @@
 ---
 title: Por qué WebAssembly para Smart Contracts?
-slug: /por-que-webassembly-para-smart-contracts
 hide_title: true
+slug: /por-que-webassembly-para-smart-contracts
+slug.en: /why-webassembly-for-smart-contracts
 ---
 
 <img src="/img/title/wasm.svg" className="titlePic" />
@@ -13,10 +14,10 @@ Estas fueron las razones por las que tomamos dicha decisión:
 
 * <span class="highlight">Alta performance: </span>Wasm es de alta performance — está desarrollados para estar lo más próximo posible al código nativo de la computadora, aún manteniendo una plataforma independiente.
 
-* <span class="highlight">Tamaño compacto: </span>Facilita un binario compacto que puede enviarse a través de internet a dispositivos con, potencialmente, conexiones lentas. 
+* <span class="highlight">Tamaño compacto: </span>Facilita un binario compacto que puede enviarse a través de internet a dispositivos con, potencialmente, conexiones lentas.
 Esto lo hace ideal para sistemas con restricciones de espacio, como los Blockchains.
 
-* <span class="highlight">Máquina Virtual (VM) General & bytecode: </span> 
+* <span class="highlight">Máquina Virtual (VM) General & bytecode: </span>
 Fue desarrollado para que el código pueda ser deployado en cualquier browser con el mismo resultado.
 Contrario a EVM que no fue desarrollado para un caso particular, Wasm tiene el befecio de contar con una gran cantidad de herramientas disponibles y de una gran canditat de compañías que dedican recursos en el desarrollo futuro de Wasm.
 

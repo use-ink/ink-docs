@@ -2,6 +2,7 @@
 title: How it Works – Substrate
 hide_title: true
 slug: /how-it-works
+slug.es: /como-funciona
 ---
 
 <img src="/img/title/substrate.svg" className="titlePic" />
