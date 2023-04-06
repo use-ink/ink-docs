@@ -1,59 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 75 75" style="enable-background:new 0 0 75 75;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFFFFF;}
+<svg enable-background="new 0 0 75 75" version="1.1" viewBox="0 0 75 75" xmlns="http://www.w3.org/2000/svg">
+ <style type="text/css">.st0{fill:#FFFFFF;}
 	.st1{fill-rule:evenodd;clip-rule:evenodd;}
-	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#BC83FB;}
-</style>
-<g>
-	<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -15.533 37.5)" class="st0" cx="37.5" cy="37.5" rx="38.92" ry="36.03"/>
-	<g>
-		<g>
-			<g>
-				<g>
-					<path class="st1" d="M39.1,54.14L20.83,35.89c-1.86-1.86-1.86-4.88,0-6.74L39.1,10.9c1.86-1.86,4.88-1.86,6.74,0L64.1,29.15
-						c1.86,1.86,1.86,4.88,0,6.74L45.83,54.14C43.97,56,40.96,56,39.1,54.14z"/>
-				</g>
-			</g>
-			<g>
-				<g>
-					<ellipse class="st2" cx="55.11" cy="32.52" rx="3.35" ry="3.12"/>
-				</g>
-			</g>
-			<g>
-				<g>
-					<ellipse class="st2" cx="42.47" cy="19.87" rx="3.35" ry="3.12"/>
-				</g>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st2" d="M44.1,61.5H18.27c-2.63,0-4.77-2.13-4.77-4.76V30.93c0-2.63,2.13-4.76,4.77-4.76H44.1
-					c2.63,0,4.77,2.13,4.77,4.76v25.81C48.87,59.37,46.74,61.5,44.1,61.5z"/>
-			</g>
-			<g>
-				<g>
-					<g>
-						
-							<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -13.3688 38.6832)" class="st1" cx="40.01" cy="35.48" rx="3.35" ry="3.12"/>
-					</g>
-				</g>
-				<g>
-					<g>
-						
-							<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -21.9546 35.1224)" class="st1" cx="31.42" cy="44.06" rx="3.35" ry="3.12"/>
-					</g>
-				</g>
-				<g>
-					<g>
-						
-							<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -30.5404 31.5616)" class="st1" cx="22.83" cy="52.65" rx="3.35" ry="3.12"/>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-</g>
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#BC83FB;}</style>
+ <ellipse class="st0" transform="matrix(.7071 -.7071 .7071 .7071 -15.53 37.5)" cx="37.5" cy="37.5" rx="38.92" ry="36.03"/>
+ <path class="st1" d="m39.1 54.14-18.27-18.25c-1.86-1.86-1.86-4.88 0-6.74l18.27-18.25c1.86-1.86 4.88-1.86 6.74 0l18.26 18.25c1.86 1.86 1.86 4.88 0 6.74l-18.27 18.25c-1.86 1.86-4.87 1.86-6.73 0z"/>
+ <ellipse class="st2" cx="55.11" cy="32.52" rx="3.35" ry="3.12"/>
+ <ellipse class="st2" cx="42.47" cy="19.87" rx="3.35" ry="3.12"/>
+ <path class="st2" d="m44.1 61.5h-25.83c-2.63 0-4.77-2.13-4.77-4.76v-25.81c0-2.63 2.13-4.76 4.77-4.76h25.83c2.63 0 4.77 2.13 4.77 4.76v25.81c0 2.63-2.13 4.76-4.77 4.76z"/>
+ <ellipse class="st1" transform="matrix(.7071 -.7071 .7071 .7071 -13.37 38.68)" cx="40.01" cy="35.48" rx="3.35" ry="3.12"/>
+ <ellipse class="st1" transform="matrix(.7071 -.7071 .7071 .7071 -21.95 35.12)" cx="31.42" cy="44.06" rx="3.35" ry="3.12"/>
+ <ellipse class="st1" transform="matrix(.7071 -.7071 .7071 .7071 -30.54 31.56)" cx="22.83" cy="52.65" rx="3.35" ry="3.12"/>
 </svg>
