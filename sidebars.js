@@ -5,6 +5,7 @@ module.exports = {
       "intro/upcoming-events",
       "intro/why-rust",
       "intro/why-webassembly",
+      "intro/polkadot",
       "intro/how-it-works",
       "intro/ink-vs-solidity",
       "intro/ink-vs-cosmwasm",
