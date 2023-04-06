@@ -31,11 +31,36 @@ split a Trait and its implementation into different files. This can
 increase the readability and maintainability of your smart-contract
 code base ([detailed description](https://github.com/727-Ventures/openbrush-contracts/blob/main/docs/docs/smart-contracts/example/setup_project.md)).
 
-### Wrapper around Traits
+### Wrapper around Traits: `#[openbrush::wrapper]`
 
-OpenBrush simplifies cross-contract calls, a contract that implements a particular
-Trait is not needed to call it. A wrapper enables calling methods of that Trait
-from some contract in the network (do a cross contract call).
+If you know that the other contract implements a trait and 
+the trait is attributed with ` #[openbrush::trait_definition]`
+you only need that trait definition and the address of the other contract 
+in order to call a method from the deployed third-party contract.
+The wrapper is an attribute macro named `#[openbrush::wrapper]` for traits. 
+It will generate a callable structure of the other contract with the name defined
+by a user:
+```rust
+// You can create wrapper in the place where you defined the trait
+// Or if you import **everything** from the file where you define trait
+#[openbrush::wrapper]
+type Trait1Ref = dyn Trait1;
+```
+
+The benefits of such mechanism is a functional polymorphism.
+Instead of working with the concrete implementation of the trait as a dependency
+in you contract, you only interact with its interface. 
+That means that you do not need to import other contracts as dependencies
+to the calling contract.
+If you need to update the implementation of the trait within the calling contract,
+you only need to replace the called contract address. The wrapper does not guarantee
+that the given address refers to a contract that implements the given trait.
+
+Additionally, the wrapper supports multiple traits (i.e. `dyn Erc20 + Ownable + Erc721`)
+without losing the syntax highlighting from your favourite IDE.
+
+See [this example](https://github.com/727-Ventures/openbrush-contracts#wrapper-around-traits)
+for more information.
 
 ### Documentation
 
