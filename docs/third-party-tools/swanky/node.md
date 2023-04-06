@@ -98,7 +98,7 @@ To print errors and contract debug output to the console log, supply `-lerror,ru
 
 Important: Debug output is only printed for RPC calls or off-chain tests ‒ not for transactions.
 
-See the ink! [FAQ](https://ink.substrate.io/faq/#how-do-i-print-something-to-the-console-from-the-runtime) for more details: How do I print something to the console from the runtime?.
+See the ink! [FAQ](https://use.ink/faq/#how-do-i-print-something-to-the-console-from-the-runtime) for more details: How do I print something to the console from the runtime?.
 
 ### Connect with Polkadot.js Apps Portal
 
