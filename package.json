@@ -53,6 +53,7 @@
     "@lottiefiles/lottie-player": "^1.7.1",
     "autoprefixer": "^10.4.14",
     "classnames": "^2.3.2",
+    "docusaurus-plugin-simple-analytics": "1.1.2",
     "lottie-react": "^2.4.0",
     "postcss": "^8.4.21",
     "react-google-recaptcha": "^2.1.0",

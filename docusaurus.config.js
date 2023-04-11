@@ -15,6 +15,12 @@ module.exports = {
   scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
   plugins: [
     [
+      'docusaurus-plugin-simple-analytics',
+      {
+        domain: 'apisa.parity.io',
+      },
+    ],
+    [
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
