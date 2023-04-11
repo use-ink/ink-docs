@@ -12,13 +12,8 @@ module.exports = {
     'fonts/fonts.css',
     'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap',
   ],
+  scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
   plugins: [
-    [
-      '@branchup/docusaurus-plugin-simple-analytics',
-      {
-        domain: 'apisa.parity.io',
-      },
-    ],
     [
       '@docusaurus/plugin-client-redirects',
       {
