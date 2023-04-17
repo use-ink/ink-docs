@@ -160,6 +160,7 @@ The contract `spec` consists of the following **required** keys:
       label is prefixed with the trait label.
     - `selector`: The selector hash of the message.
     - `payable`: If the constructor accepts any `value` from the caller.
+    - `default`: If the constructor is marked as default, useful for UIs.
     - `args`: The parameters of the deployment handler.
     - `docs`: The deployment handler documentation.
 - `messages`: The external messages of the contract.
@@ -168,6 +169,7 @@ The contract `spec` consists of the following **required** keys:
     - `selector`: The selector hash of the message.
     - `mutates`: If the message is allowed to mutate the contract state.
     - `payable`: If the message accepts any `value` from the caller.
+    - `default`: If the message is marked as default, useful for UIs.
     - `args`: The parameters of the message.
     - `return_type`: The return type of the message.
     - `docs`: The message documentation.
@@ -208,6 +210,7 @@ variant (see the [`LangError`](https://docs.rs/ink/4.0.0/ink/enum.LangError.html
       ],
       "label": "new",
       "payable": false,
+      "default": false,
       "selector": "0x9bae9d5e"
     }
   ],
@@ -229,6 +232,7 @@ variant (see the [`LangError`](https://docs.rs/ink/4.0.0/ink/enum.LangError.html
       "label": "flip",
       "mutates": true,
       "payable": false,
+      "default": false,
       "returnType": null,
       "selector": "0x633aa551"
     }
