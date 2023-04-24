@@ -12,10 +12,10 @@ Contract verification is the process of matching a deployed ink! contract
 with the source code and metadata generated when it was built. 
 
 The verification process for WASM-based smart contract languages is more 
-complex then EVM-based languages such as Solidity due to the Rust 
+complex than EVM-based languages such as Solidity due to the Rust 
 compiler not providing deterministic builds of contracts. 
 
-In order to verify an ink! or any WASM-smart contract the verification 
+In order to verify an ink! or any Wasm smart contract the verification 
 process must rebuild the contract in an identical environment to which it 
 was originally built. For ink! this can be achieved by using a Docker 
 container.
@@ -155,7 +155,7 @@ The verification process entails the following steps:
    - There is enough host resources to start a new verification
 1. The server downloads the pristine WASM byte code correspondening to the 
    provided network and code hash
-1. The server streams the archive if is a compressed archive
+1. The server streams the archive if it is a compressed archive
 1. The server moves the staging files to the processing directory
 1. The server runs a container process for the verifier image to verify the 
    package in processing. See source code verification workflow for details
