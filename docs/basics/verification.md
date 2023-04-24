@@ -11,13 +11,13 @@ hide_title: true
 Contract verification is the process of matching a deployed ink! contract 
 with the source code and metadata generated when it was built. 
 
-The verification process for WASM-based smart contract languages is more 
+The verification process for Wasm-based smart contract languages is more
 complex than EVM-based languages such as Solidity due to the Rust 
 compiler not providing deterministic builds of contracts. 
 
-In order to verify an ink! or any Wasm smart contract the verification 
-process must rebuild the contract in an identical environment to which it 
-was originally built. For ink! this can be achieved by using a Docker 
+In order to verify an ink! or Wasm smart contract the verification
+process must recompile the contract in an identical host environment to
+which it was originally built. The simplest way to do this is using a Docker
 container.
 
 As this will not be possible with existing smart contracts, a fallback 
@@ -114,7 +114,7 @@ build-verifiable-ink -t develop .
 ```
 
 There will now be a package zipfile available which contains the contract 
-source code, metadata and WASM binary:
+source code, metadata and Wasm binary:
 ```
 tree -L 3
 .
@@ -137,7 +137,8 @@ order to verify it.
 ### Using the verification service web app
 
 The [ink! Verification Service](https://github.com/web3labs/ink-verifier-server)
-is a RESTful web service created for verifying smart contracts deployed to WASM.
+is a RESTful web service created for verifying smart contracts deployed using
+[pallet-contracts](https://crates.io/crates/pallet-contracts).
 
 Web3 Labs host a public instance of the service at 
 [ink-verifier.sirato.xyz](https://ink-verifier.sirato.xyz/). A Swagger interface 
@@ -153,7 +154,7 @@ The verification process entails the following steps:
    - The source code for the network and code hash is not already verified or 
      being verified
    - There is enough host resources to start a new verification
-1. The server downloads the pristine WASM byte code correspondening to the 
+1. The server downloads the pristine Wasm byte code correspondening to the
    provided network and code hash
 1. The server streams the archive if it is a compressed archive
 1. The server moves the staging files to the processing directory
