@@ -45,6 +45,7 @@ module.exports = {
       "basics/metadata",
       "basics/testing",
       "basics/debugging",
+      "basics/verification",
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
