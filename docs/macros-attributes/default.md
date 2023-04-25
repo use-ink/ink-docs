@@ -4,8 +4,7 @@ slug: /macros-attributes/default
 hide_title: true
 ---
 
-//todo: change image
-<img src="/img/title/text/payable.svg" className="titlePic" />
+<img src="/img/title/text/default.svg" className="titlePic" />
 
 Applicable to ink! messages and constructors.
 
