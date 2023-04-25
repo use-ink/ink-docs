@@ -171,6 +171,15 @@ The contract `spec` consists of the following **required** keys:
     - `args`: The parameters of the message.
     - `return_type`: The return type of the message.
     - `docs`: The message documentation.
+- `environment`: Configuration of the types that the host blockchain operates with. 
+You can check default types in [Environment](https://use.ink/basics/chain-environment-types) section
+  - `accountId`: The type describing an account address
+  - `balance`: The type describing balance values
+  - `blockNumber`: The type describing a block number 
+  - `chainExtension`: The type describing the chain extension for the environment. 
+For more information about usage and definition check [this section](https://use.ink/macros-attributes/chain-extension).
+  - `maxEventTopics`: The maximum number of supported event topics provided by the runtime.
+  - `timestamp`: the type describing a timestamp.
 - `events`: The events of the contract.
     - `label`: The label of the event.
     - `args`: The event arguments.
