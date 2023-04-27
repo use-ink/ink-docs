@@ -52,6 +52,7 @@ module.exports = {
       "macros-attributes/contract",
       "macros-attributes/anonymous",
       "macros-attributes/constructor",
+      "macros-attributes/default",
       "macros-attributes/event",
       "macros-attributes/implementation",
       "macros-attributes/message",
