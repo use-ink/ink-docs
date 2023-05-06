@@ -1,0 +1,103 @@
+---
+title: toNotificationLevel
+description: An utility function to convert transaction status to notification severity level
+---
+
+# toNotificationLevel
+
+An opinionated utility function to convert nofication `type` to a simplified severity
+level. There are four levels: `info`, `warning`, `success`, and `error`. This function is
+useful for mapping transaction status to colors in your UI.
+
+Note that for transactions the `Finalized` status will convert to `success`, but this does
+not necessarily mean that the transaction was successful in the user's eyes. It means that
+the transaction has been processed, gas has been removed from the caller's balance, and
+the block has been finalized.
+
+```ts
+import { MyCustomSnackbar } from './MyCustomSnackbar'
+import { useNotifications } from 'useink/notifications'
+
+export const MyNotifications = ({ children }) => {
+  const { notifications } = useNotifications()
+
+  return (
+    <ul>
+      {notifications.map((n) => (
+        <li key={n.id}>
+          <MyCustomSnackbar
+            message={n.message}
+            type={
+              // e.g. `info` might have a blue background, and `error` a red one.
+              toNotificationLevel(n.type)
+            } 
+          /> 
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+## Notification `type` Conversion List
+
+```ts
+case 'None':
+  return 'info';
+
+case 'DryRun':
+  return 'info';
+
+case 'PendingSignature':
+  return 'info';
+
+case 'Future':
+  return 'info';
+
+case 'Ready':
+  return 'info';
+
+case 'Broadcast':
+  return 'info';
+
+// We optomistically assume that `InBlock` means that the transaction is `success`. 
+// This will almost always end up reaching `Finalized` status.
+case 'InBlock':
+  return 'success';
+
+case 'Retracted':
+  return 'warning';
+
+case 'FinalityTimeout':
+  return 'error';
+
+case 'Finalized':
+  return 'success';
+
+case 'Usurped':
+  return 'error';
+
+case 'Dropped':
+  return 'error';
+
+case 'Invalid':
+  return 'warning';
+
+case 'Errored':
+  return 'error';
+
+case 'WalletConnected':
+  return 'info';
+
+case 'WalletDisconnected':
+  return 'info';
+
+default:
+  return 'info';
+```
+
+## Return Type
+
+```ts
+type NotificationLevel = 'success' | 'error' | 'warning' | 'info';
+```

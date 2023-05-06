@@ -1,0 +1,35 @@
+---
+title: useTxNotifications
+description: A utility hook to display notifications for a transaction
+---
+
+# useNotifications
+
+A utility hook to display status notifications for a transaction. Status `None` and
+`Ready` are omitted.
+
+```ts
+import { useContract, useTx } from 'useink'
+import { useTxNotifications, useNotifications } from 'useink/notifications'
+
+export const MyNotifications = ({ children }) => {
+  const contract = useContract('..address', metadata)
+  const tx = useTx<number>(contract, 'myFavoriteInt')
+  useTxNotifications(tx)
+  const { notifications } = useNotifications()
+
+  return (
+    <div>
+      <button onClick={() => tx.signAndSend(123) }>
+        Submit
+      </button>
+
+      <ul>
+        {notifications.map((n) => (
+          <li key={n.id}>{n.message}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+```

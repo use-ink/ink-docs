@@ -1,0 +1,72 @@
+---
+title: useNotifications
+description: A hook containing tools to add, remove, and fetch transient notification state.
+---
+
+# useNotifications
+
+A hook containing tools to add, remove, and fetch notifications.
+
+```ts
+import { useNotifications } from 'useink/notifications'
+
+export const MyNotifications = ({ children }) => {
+  const { notifications, addNotification, removeNotification } = useNotifications()
+
+  return (
+    <div>
+      <button
+        onClick={() => {
+          addNotification({ message: 'hello from the ink! team 🦑', type: 'None' })
+        }}
+      >
+        Say hello
+      </button>
+
+      <ul>
+        {notifications.map((n) => (
+          <li key={n.id} onClick={() => removeNotification(n.id)}>
+            {n.message}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+```
+
+## Return Type
+
+```ts
+// Returns
+interface UseNotifications {
+  notifications: {
+    id: string;
+    createdAt: number;
+    type: NotificationType;
+    message: string;
+    // Raw types from PolkadotJs
+    result?: Codec | ISubmittableResult;
+    chain?: ChainId; 
+  }[];
+  addNotification: (payload: AddNotificationPayload) => void;
+  removeNotification: (id: string) => void;
+}
+
+interface AddNotificationPayload {
+  type: NotificationType;
+  message: string;
+  result?: Codec | ISubmittableResult;
+  chain?: ChainId;
+}
+
+type NotificationType =
+  | 'None'
+  | 'WalletConnected'
+  | 'WalletDisconnected'
+  | 'DryRun'
+  | 'PendingSignature'
+  | 'Errored' // Used for custom JavaScript errors
+     // Potential transaction statuses
+  | 'Future' | 'Ready' | 'Broadcast' | 'InBlock' | 'Retracted' | 'FinalityTimeout' | 'Finalized' | 'Usurped' | 'Dropped' | 'Invalid';
+```

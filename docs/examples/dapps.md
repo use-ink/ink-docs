@@ -12,8 +12,9 @@ We'll point to a couple full-stack Dapp examples here.
 These can serve as inspiration for how to create a frontend for your
 smart contract.
 
-Two popular libraries for building frontends are:
+Three popular libraries for building frontends are:
 
+* [`useink`](/frontend/overview) an ergonomic React hooks library for interacting with Wasm contracts and Substrate.
 * [`polkadot-js/api`](https://github.com/polkadot-js/api) a low-level TypeScript API.
 * [useInkathon](https://github.com/scio-labs/use-inkathon) a React hooks library.
 

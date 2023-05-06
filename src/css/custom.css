@@ -32,6 +32,7 @@
 
 h1 {
   font-size: var(--ifm-h1-font-size);
+  margin-top: 1rem;
 }
 
 .error {
