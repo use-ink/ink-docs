@@ -52,4 +52,4 @@ You can learn more about [chain configuration here](/frontend/configuration).
 
 ### You can now use all the features of useink
 
-Next, let's learn how to connect to a browser wallet extension...
+Next, you can learn how to [connect to a browser wallet extension](/frontend/connect-wallet), or [see an example dApp](https://github.com/paritytech/useink-kitchen-sink/blob/master/frontend/src/components/pg-home/HomePage.tsx).
