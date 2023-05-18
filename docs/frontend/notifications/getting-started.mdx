@@ -1,0 +1,71 @@
+---
+title: Getting Started
+slug: /frontend/notifications
+description: Add notifications for transaction state changes.
+---
+
+# Notifications
+
+`useink/notifications` is an extension of `useink` that provides an opinionated state
+management system for tracking the changing states of a transaction status. When you add a
+notification it will live until the configured time to live has expired then will
+automatically be removed from state. This is useful for temporarily displaying a
+notification then having it removed in the view. `useink/notifications` does not contain
+any UI elements. It only tracks state. You can use this in combination with UI libraries
+or components of your choice.
+
+## Installation
+
+You must first [install useink](/frontend/getting-started#installation).
+`useink/notifications` has its own import path in the
+
+## Add NotificationsProvider
+
+Notification state management is not in useink by default. You must wrap your application
+with `<NotificationsProvider>`.
+
+```tsx
+import { NotificationsProvider } from 'useink/notifications'
+
+const FIVE_SECONDS = 5000
+const HALF_A_SECOND = 500
+
+function App({ children }) {
+  return (
+    <NotificationsProvider config={{
+      expiration: FIVE_SECONDS, // default. This can be omitted
+      checkInterval: : HALF_A_SECOND, // default. This can be omitted
+    }}>
+      <MyRoutes />
+    </NotificationsProvider>
+  )
+}
+
+export default App
+```
+
+## Configuring Notifications
+
+If you want Notifications to live in state for ever, or until you remove them you can set the
+
+```tsx
+import { NotificationsProvider } from 'useink/notifications'
+
+const FIVE_SECONDS = 5000
+const HALF_A_SECOND = 500
+
+function App({ children }) {
+  return (
+    <NotificationsProvider config={{
+      expiration: FIVE_SECONDS, // default. This can be omitted
+      checkInterval: : HALF_A_SECOND, // default. This can be omitted
+    }}>
+      <MyRoutes />
+    </NotificationsProvider>
+  )
+}
+
+export default App
+```
+
+See [configuration](/frontend/notifications/configuration) to learn about custom and default settings.

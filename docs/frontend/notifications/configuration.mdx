@@ -1,0 +1,20 @@
+---
+title: Configuration
+description: Notification configuration and default values
+---
+
+# Configuration
+
+`NotificationsProvider` takes `config` props with the following interface.
+
+```ts
+interface Config {
+  // The time to live in miliseconds before being removed from state
+  // Defaults to 5000 (5 seconds).
+  // Set to 0 to avoid having notifications removed
+  expiration?: number
+  // How often to check for notifications that have expired. Time in miliseconds
+  // Defaults to 500 (half a second)
+  checkInterval?: number
+}
+```
