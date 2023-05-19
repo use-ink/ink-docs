@@ -24,6 +24,24 @@ yarn add useink
 
 ## Configuration
 
+### tsconfig.json
+
+You must set `moduleResolution` to `nodenext`. This feature allows your application to
+discover multiple import paths defined in the **useink** `package.json`. You do not need
+this if you only plan to use the core `useink` features, but is it required to use
+features defined in [useink/notifications](/frontend/notifications) and
+[useink/utils](/frontend/utils).
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+  }
+}
+```
+
+### Adding `<UseInkProvider />`
+
 React uses *Providers* to make state accessible to any child component no matter how deeply nested a component is. To make `useink` features available to your application you must wrap your application with `UseInkProvider`. 
 
 ```tsx

@@ -7,7 +7,7 @@ description: Add notifications for transaction state changes.
 # Notifications
 
 `useink/notifications` is an extension of `useink` that provides an opinionated state
-management system for tracking the changing states of a transaction status. When you add a
+management system for tracking the changing status of a transaction. When you add a
 notification it will live until the configured time to live has expired then will
 automatically be removed from state. This is useful for temporarily displaying a
 notification then having it removed in the view. `useink/notifications` does not contain
@@ -18,6 +18,19 @@ or components of your choice.
 
 You must first [install useink](/frontend/getting-started#installation).
 `useink/notifications` has its own import path in the
+
+## Configure tsconfig.json
+
+You must set `moduleResolution` to `nodenext`. This feature allows your application to
+discover the `useink/notifications` import paths defined in the **useink** `package.json`.
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+  }
+}
+```
 
 ## Add NotificationsProvider
 
