@@ -47,7 +47,7 @@ React uses *Providers* to make state accessible to any child component no matter
 import { UseInkProvider } from 'useink';
 import { RococoContractsTestnet, ShibuyaTestnet } from 'useink/chains';
 
-function App({ children }) {
+function App() {
   return (
     <UseInkProvider 
       config={{ 
