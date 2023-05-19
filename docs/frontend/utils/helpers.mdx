@@ -7,13 +7,13 @@ description: General utility functions to make your life better
 
 ## pickDecoded
 
-`pickDecoded` picks a decoded value or undefined from `DecodedContractResult` returned
+`pickDecoded` picks a decoded value or `undefined` from `DecodedContractResult` returned
 by [useCall](/frontend/core/hooks/contracts/use-call), and similar hooks.
 
 ```ts
 const get = useCall<number>(flipper, 'get')
 
-pickDecoded(get) // returns number or undefined
+pickDecoded(get) // returns number or `undefined`
 ```
 
 ## pickError
@@ -25,12 +25,12 @@ from `DecodedContractResult` returned by
 ```ts
 const get = useCall<number>(flipper, 'get')
 
-pickError(get) // returns a Dispatch Error or undefined
+pickError(get) // returns a Dispatch Error or `undefined`
 ```
 
 ## pickResultOk
 
-`pickResultOk` picks the decoded Ok value or undefined if a contract returns a `Result<T,
+`pickResultOk` picks the decoded Ok value or `undefined` if a contract returns a `Result<T,
 E>`. Can be used with [useCall](/frontend/core/hooks/contracts/use-call) and similar
 hooks.
 
@@ -47,12 +47,12 @@ interface Response = { Ok?: SuccessStructInContract, Err?: SomeErrorEnumInContra
 
 const get = useCall<Response>(flipper, 'get')
 
-pickResultOk(get)?.Cool // returns a SuccessStructInContract object or undefined
+pickResultOk(get)?.Cool // returns a SuccessStructInContract object or `undefined`
 ```
 
 ## pickResultErr
 
-`pickResultErr` picks the decoded Err value or undefined if a contract returns a `Result<T,
+`pickResultErr` picks the decoded Err value or `undefined` if a contract returns a `Result<T,
 E>`. Can be used with [useCall](/frontend/core/hooks/contracts/use-call) and similar
 hooks.
 
@@ -69,5 +69,43 @@ interface Response = { Ok?: SuccessStructInContract, Err?: SomeErrorEnumInContra
 
 const get = useCall<Response>(flipper, 'get')
 
-pickResultErr(get)?.NotCool // returns a SomeErrorEnumInContract object or undefined
+pickResultErr(get)?.NotCool // returns a SomeErrorEnumInContract object or `undefined`
+```
+
+## pickCallInfo
+
+`pickCallInfo` picks the `CallInfo` or `undefined` from a message result. Can be used with
+[useCall](/frontend/core/hooks/contracts/use-call) and similar hooks.
+
+```ts
+const get = useCall(flipper, 'get')
+
+pickCallInfo(get.result)
+
+// Returns undefined or CallInfo
+interface CallInfo {
+  gasRequired: Weight;
+  gasConsumed: Weight;
+  storageDeposit: StorageDeposit;
+}
+```
+
+## pickTxInfo
+
+`pickTxInfo` picks the `TxInfo` or `undefined` from a tx or dry run result. Can be used with
+[useTx](/frontend/core/hooks/contracts/use-tx),
+[useDryRun](/frontend/core/hooks/contracts/use-dry-run), and similar hooks.
+
+```ts
+const flip = useTx(flipper, 'flip')
+
+pickTxInfo(flip.result)
+
+// Returns undefined or Info
+interface TxInfo {
+  gasRequired: Weight;
+  gasConsumed: Weight;
+  storageDeposit: StorageDeposit;
+  partialFee: Balance;
+}
 ```

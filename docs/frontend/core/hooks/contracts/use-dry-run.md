@@ -11,10 +11,14 @@ Weight amount a transaction will need to succeed. This hook is used under the ho
 [useTx](/frontend/core/hooks/contracts/use-tx), so you should only use this if you wish to
 display Dry Run information to the user before triggering a transaction.
 
+See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+well with this hook. 
+
 ## Usage
 
 ```tsx
 import { useDryRun, useContract } from 'useink'
+import { pickTxInfo } from 'useink/utils'
 
 export const MyContractView: React.FC = () => {
   const contract = useContract('...address', metadata, 'zeitgeist')
@@ -22,9 +26,14 @@ export const MyContractView: React.FC = () => {
   const get = useDryRun<boolean>(contract, 'get')
 
   return (
-    <button onClick={() => get.send()}>
-      {get.result.ok ? get.result.value.partialFee : '--'}
-    </div>
+    <>
+      <button onClick={() => get.send()}>
+        {get.isSubmitting ? 'Send Dry Run' : 'Sending...'}
+      </div>
+
+      <h2>Get the fee the hard way: {get.result.ok ? get.result.value.partialFee : '--'}</h2>
+      <h2>Or the easy way: {pickTxInfo(get.result)?.partialFee || '--'}</h2>
+    </>
   )
 }
 ```

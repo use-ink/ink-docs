@@ -12,10 +12,14 @@ function in the response. The contract message will automatically be called on e
 block. See [useCall](/frontend/core/hooks/contracts/use-call) to learn about more shared
 features.
 
+See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+well with this hook. 
+
 ## Usage
 
 ```tsx
 import { useCallSubscription } from 'useink'
+import { pickDecoded } from 'useink/utils'
 import metadata from 'contract/metadata.json'
 
 const CONTRACT_ADDRESS = '...'
@@ -30,7 +34,12 @@ export const CallGetOnNewBlocks: React.FC = () => {
   const args = ['arg-1', 2]
   const get = useCallSubscription<SuccessfulResponse>(contract, 'get', args)
 
-  return <h1>Result: {get.result?.ok ? get.result.value.decoded.foo : '--'}</h1>
+  return (
+    <>
+      <h2>Get the Result the hard way: {get.result?.ok ? get.result.value.decoded.foo : '--'}</h2>
+      <h2>Or the easy way: {pickDecoded(get.result)?.foo || '--'}</h2>
+    </>
+  )
 }
 ```
 
