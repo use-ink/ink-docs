@@ -117,7 +117,7 @@ module.exports = {
       "frontend/configuration",
       {
         type: "category",
-        label: "Utils",
+        label: "Helpers",
         items: [
           "frontend/core/utils/contracts/decodeError",
           "frontend/core/utils/contracts/txUtils",
@@ -131,6 +131,13 @@ module.exports = {
           "frontend/notifications/configuration",
           "frontend/notifications/useNotifications",
           "frontend/notifications/toNotificationLevel",
+        ]
+      },
+      {
+        type: "category",
+        label: "useink / utils",
+        items: [
+          "frontend/utils/getting-started",
         ]
       },
     ],
