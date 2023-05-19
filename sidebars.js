@@ -125,6 +125,15 @@ module.exports = {
       },
       {
         type: "category",
+        label: "useink / chains",
+        items: [
+          "frontend/chains/getting-started",
+          "frontend/chains/configurations",
+          "frontend/chains/chain-id",
+        ]
+      },
+      {
+        type: "category",
         label: "useink / notifications",
         items: [
           "frontend/notifications/getting-started",

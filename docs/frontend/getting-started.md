@@ -27,10 +27,9 @@ yarn add useink
 ### tsconfig.json
 
 You must set `moduleResolution` to `nodenext`. This feature allows your application to
-discover multiple import paths defined in the **useink** `package.json`. You do not need
-this if you only plan to use the core `useink` features, but is it required to use
-features defined in [useink/notifications](/frontend/notifications) and
-[useink/utils](/frontend/utils).
+discover multiple import paths defined in the **useink** `package.json`. This is required
+to use various features defined in paths such as
+[useink/notifications](/frontend/notifications) and [useink/utils](/frontend/utils).
 
 ```json
 {
