@@ -9,10 +9,14 @@ A hook for sending a transaction for a contract and decoding successful response
 receiving errors. This hook is used in combination with the result of
 [useContract](/frontend/core/hooks/contracts/use-contract).
 
+See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+well with this hook. 
+
 ## Basic Usage
 
 ```tsx
 import { useTx, useContract, shouldDisable } from 'useink'
+import { pickDecoded } from 'useink/utils'
 import metadata from './metadata.json'
 
 interface Result {
@@ -25,9 +29,14 @@ export const MyContractView: React.FC = () => {
   const args = ['blue']
 
   return (
-    <button onClick={() => setColor.signAndSend(args)} disable={shouldDisable(setColor)}>
-      {setColor.result?.ok ? setColor.result.value.decoded.color : '--'}
-    </button>
+    <>
+      <button onClick={() => setColor.signAndSend(args)} disable={shouldDisable(setColor)}>
+        {shouldDisable(setColor) ? 'Changing Color...' : 'Change Color'}
+      </button>
+
+      <h2>Get the result the hard way: {setColor.result.ok ? setColor.result.value.decoded.color : '--'}</h2>
+      <h2>Or the easy way: {pickDecoded(get.result)?.color || '--'}</h2>
+    </>
   )
 }
 ```

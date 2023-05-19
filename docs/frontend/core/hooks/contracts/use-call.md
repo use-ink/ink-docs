@@ -12,10 +12,14 @@ use the correct RPC url and call the correct chain. See
 [useContract](/frontend/core/hooks/contracts/use-contract) for more information on
 creating contract instances and multi-chain support.
 
+See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+well with this hook. 
+
 ## Usage
 
 ```tsx
 import { useCall } from 'useink'
+import { pickDecoded } from 'useink/utils'
 import metadata from 'contract/metadata.json'
 
 const CONTRACT_ADDRESS = '...'
@@ -32,7 +36,8 @@ export const MyContractView: React.FC = () => {
 
   return (
     <>
-      <h1>Result: {get.result?.ok ? get.result.value.decoded.foo : '--'}</h1>
+      <h1>Get the Result the hard way: {get.result?.ok ? get.result.value.decoded.foo : '--'}</h1>
+      <h1>Or the easy way: {pickDecoded(get.result)?.foo || '--'}</h1>
 
       <button disabled={get.isSubmitting} onClick={() => get.send(args)}>
         Get Result
