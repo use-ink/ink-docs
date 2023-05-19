@@ -1,0 +1,73 @@
+---
+title: Helpers
+description: General utility functions to make your life better
+---
+
+# Helpers
+
+## pickDecoded
+
+`pickDecoded` picks a decoded value or undefined from `DecodedContractResult` returned
+by [useCall](/frontend/core/hooks/contracts/use-call), and similar hooks.
+
+```ts
+const get = useCall<number>(flipper, 'get')
+
+pickDecoded(get) // returns number or undefined
+```
+
+## pickError
+
+`pickError` picks a `DispatchError` (thrown in one of many possible pallets) undefined
+from `DecodedContractResult` returned by
+[useCall](/frontend/core/hooks/contracts/use-call), and similar hooks.
+
+```ts
+const get = useCall<number>(flipper, 'get')
+
+pickError(get) // returns a Dispatch Error or undefined
+```
+
+## pickResultOk
+
+`pickResultOk` picks the decoded Ok value or undefined if a contract returns a `Result<T,
+E>`. Can be used with [useCall](/frontend/core/hooks/contracts/use-call) and similar
+hooks.
+
+```ts
+interface SuccessStructInContract {
+  Cool: string;
+}
+
+interface SomeErrorEnumInContract {
+  NotCool: string;
+}
+
+interface Response = { Ok?: SuccessStructInContract, Err?: SomeErrorEnumInContract }
+
+const get = useCall<Response>(flipper, 'get')
+
+pickResultOk(get)?.Cool // returns a SuccessStructInContract object or undefined
+```
+
+## pickResultErr
+
+`pickResultErr` picks the decoded Err value or undefined if a contract returns a `Result<T,
+E>`. Can be used with [useCall](/frontend/core/hooks/contracts/use-call) and similar
+hooks.
+
+```ts
+interface SuccessStructInContract {
+  Cool: string;
+}
+
+interface SomeErrorEnumInContract {
+  NotCool: string;
+}
+
+interface Response = { Ok?: SuccessStructInContract, Err?: SomeErrorEnumInContract }
+
+const get = useCall<Response>(flipper, 'get')
+
+pickResultErr(get)?.NotCool // returns a SomeErrorEnumInContract object or undefined
+```

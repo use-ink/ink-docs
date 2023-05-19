@@ -147,6 +147,7 @@ module.exports = {
         label: "useink / utils",
         items: [
           "frontend/utils/getting-started",
+          "frontend/utils/helpers",
         ]
       },
     ],
