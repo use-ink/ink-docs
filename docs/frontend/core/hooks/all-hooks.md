@@ -32,5 +32,5 @@ description: A list of all useink hooks
 ## Substrate Runtime
 
 * [useApi](/frontend/core/hooks/substrate/use-api) - get the api client instance configured for a specific chain. This contains RPC information, and is used in many other hooks.
-* [useBalance](/frontend/core/hooks/substrate/usebalance) - get an account's balance for a given chain.
-* [useBlockHeaders](/frontend/core/hooks/substrate/useblockheaders) - get block header information for a chain on each new block.
+* [useBalance](/frontend/core/hooks/substrate/use-balance) - get an account's balance for a given chain.
+* [useBlockHeader](/frontend/core/hooks/substrate/use-block-header) - get block header information for a chain on each new block.
