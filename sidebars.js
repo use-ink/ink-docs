@@ -175,6 +175,7 @@ module.exports = {
       "brand-assets/ink",
       "brand-assets/community-badges",
       "brand-assets/cargo-contract",
+      "brand-assets/stickers",
     ],
   },
 };

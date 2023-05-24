@@ -212,6 +212,10 @@ button:disabled {
   height: 90px !important;
 }
 
+.brand-asset-sticker {
+  height: 600px !important;
+}
+
 .white-container {
   padding: 15px;
   background-color: white;
