@@ -12,8 +12,16 @@ import { UseInkProvider } from 'useink';
 import { RococoContractsTestnet } from 'useink/chains';
 
 function App({ children }) {
+  const config = {
+    chains: [RococoContractsTestnet],
+    caller: {
+      // An optional default caller address to be used before a user connects their wallet.
+      default: "5EyR7vEk7DtvEWeefGcXXMV6hKwB8Ex5uvjHufm466mbjJkR", 
+    }
+  }
+
   return (
-    <UseInkProvider config={{ chains: [RococoContractsTestnet] }}>
+    <UseInkProvider config={config}>
       <MyRoutes />
     </UseInkProvider>
   );
@@ -31,7 +39,19 @@ export type ConfigProps = {
   dappName?: string; 
   // chains: see `useink/chains` for more chain configurations. 
   chains: ArrayOneOrMore<Chain>; 
-  // events: contract emitted events 
+  // caller: If you want to read from the blockchain before a user connect's their wallet 
+  // then you can set a default caller address globally or on a per chain basis. When making 
+  // a call to a contract the priority level of which address to use will be:
+  // 1. The address of the user's connected wallet
+  // 2. The address for the chain specified in this config for the chainId. e.g. { astar: '5E.....' }
+  // 3. The address for the chain specified in `caller.default` in this config.
+  // If this `caller` is omitted in the config then a user must connect their wallet before they can 
+  // call a contract message. 
+  // NOTE: Default caller addresses cannot be used for transactions, which require a signature.
+  // See https://use.ink/frontend/react/hooks/contracts/use-call and related hooks for examples.
+  caller?: {
+    default?: string; // Set the default for all chains that do not have a 
+  } & Partial<Result<ChainId, string>>;
   events?: { 
     // expiration: Time in miliseconds before an event is removed from state.
     // This is used in the useEvent() hook for contracts

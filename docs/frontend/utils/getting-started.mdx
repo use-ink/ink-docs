@@ -22,14 +22,14 @@ for a list of all utility functions.
 
 ## Configure tsconfig.json
 
-You must set `moduleResolution` to `nodenext` inside of your `tsconfig.json`. This feature
-allows your application to discover the `useink/utils` import paths defined in the
-**useink** `package.json`. 
+You must set `moduleResolution` to `nodenext` or `bundler` inside of your `tsconfig.json`.
+This feature allows your application to discover the `useink/utils` import paths defined
+in the **useink** `package.json`. 
 
 ```json
 {
   "compilerOptions": {
-    "moduleResolution": "nodenext",
+    "moduleResolution": "nodenext", // or `bundler`
   }
 }
 ```

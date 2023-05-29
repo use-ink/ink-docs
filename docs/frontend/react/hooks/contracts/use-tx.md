@@ -9,7 +9,7 @@ A hook for sending a transaction for a contract and decoding successful response
 receiving errors. This hook is used in combination with the result of
 [useContract](/frontend/core/hooks/contracts/use-contract).
 
-See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+See [useink/utils helpers](/frontend/utils/pick) for compatible functions that work
 well with this hook. 
 
 ## Basic Usage
@@ -88,5 +88,5 @@ export type Status =
 
 ## Common Patterns With useTx
 
-See [shouldDisable](/frontend/core/utils/contracts/txUtils#shoulddisable) and
-[shouldDisableStrict](/frontend/core/utils/contracts/txUtils#shoulddisablestrict).
+See [shouldDisable](/frontend/utils/tx-utils#shoulddisable) and
+[shouldDisableStrict](/frontend/utils/tx-utils#shoulddisablestrict).

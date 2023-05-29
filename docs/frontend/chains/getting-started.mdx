@@ -25,14 +25,14 @@ You must first [install useink](/frontend/getting-started#installation).
 
 ## Configure tsconfig.json
 
-Set `moduleResolution` to `nodenext`  inside of your `tsconfig.json`. This feature allows
-your application to discover the `useink/chains` import paths defined in the **useink**
-`package.json`.
+Set `moduleResolution` to `nodenext` or `bundler` inside of your `tsconfig.json`. This
+feature allows your application to discover the `useink/chains` import paths defined in
+the **useink** `package.json`.
 
 ```json
 {
   "compilerOptions": {
-    "moduleResolution": "nodenext",
+    "moduleResolution": "nodenext", // or `bundler`
   }
 }
 ```

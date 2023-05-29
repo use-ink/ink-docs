@@ -11,7 +11,7 @@ Weight amount a transaction will need to succeed. This hook is used under the ho
 [useTx](/frontend/core/hooks/contracts/use-tx), so you should only use this if you wish to
 display Dry Run information to the user before triggering a transaction.
 
-See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+See [useink/utils helpers](/frontend/utils/pick) for compatible functions that work
 well with this hook. 
 
 ## Usage
@@ -36,6 +36,17 @@ export const MyContractView: React.FC = () => {
     </>
   )
 }
+```
+
+## Calling with a default caller address
+
+You must first define a default caller in [configuration](/frontend/configuration#configprops), then call the contract with options:
+
+```tsx
+const dryRun = useDryRun(cRococoContract, 'flip');
+const args = [];
+
+dryRun.send(args, { defaultCaller: true });
 ```
 
 ## Return Value

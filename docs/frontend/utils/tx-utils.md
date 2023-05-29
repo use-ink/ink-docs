@@ -1,13 +1,13 @@
 ---
-title: Transaction State Helpers
+title: tx Helpers
 hide_title: true
 description: Helper functions for checking the state of a transaction.
 ---
 
-# Transaction State Helpers
+# tx Helpers
 
 There are a number of helper functions to check the status of a transaction. See
-[useTx](/frontend/core/hooks/contracts/use-tx#transaction-state) for a full list of
+[useTx](/frontend/react/hooks/contracts/use-tx#transaction-state) for a full list of
 Transaction state values and descriptions.
 
 ## shouldDisable
