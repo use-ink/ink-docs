@@ -12,7 +12,7 @@ function in the response. The contract message will automatically be called on e
 block. See [useCall](/frontend/core/hooks/contracts/use-call) to learn about more shared
 features.
 
-See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+See [useink/utils helpers](/frontend/utils/pick) for compatible functions that work
 well with this hook. 
 
 ## Usage
@@ -41,6 +41,15 @@ export const CallGetOnNewBlocks: React.FC = () => {
     </>
   )
 }
+```
+
+## Calling with a default caller address
+
+You must first define a default caller in [configuration](/frontend/configuration#configprops), then call the contract with options:
+
+```tsx
+const args = ['blue pill'];
+const callSub = useCallSubscription(contract, 'get', args, { defaultCaller: true });
 ```
 
 ## Return Value

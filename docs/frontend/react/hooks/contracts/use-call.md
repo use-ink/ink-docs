@@ -6,13 +6,7 @@ description: 'A React hook for calling a contract message and decoding the resul
 # useCall
 
 A hook for calling a contract message and decoding a successful response or receiving an
-error. `useCall` requires a `ContractPromise` object created with the `useContract` hook.
-These contract objects "know" which chain they live on, so `useCall` will automatically
-use the correct RPC url and call the correct chain. See
-[useContract](/frontend/core/hooks/contracts/use-contract) for more information on
-creating contract instances and multi-chain support.
-
-See [useink/utils helpers](/frontend/utils/helpers) for compatible functions that work
+error. See [useink/utils helpers](/frontend/utils/pick) for compatible functions that work
 well with this hook. 
 
 ## Usage
@@ -47,11 +41,22 @@ export const MyContractView: React.FC = () => {
 }
 ```
 
+## Calling with a default caller address
+
+You must first define a default caller in [configuration](/frontend/configuration#configprops), then call the contract with options:
+
+```tsx
+const call = useCall(contract, 'get');
+const args = [];
+
+call.send(args, { defaultCaller: true })
+```
+
 ## Handling `Result<T, E>` responses from an ink! contract
 
 One of the benefits of using ink! is ability to return meaningful errors with `Result<T,
-E>`. In this example we will distinguish between two kinds of errors and a successful
-result. Let's say that you have the following ink! code in your contract.
+E>` (since ink! v4.0.0). In this example we will distinguish between two kinds of errors
+and a successful result. Let's say that you have the following ink! code in your contract.
 
 ```rust
     use ink::prelude::string::String;

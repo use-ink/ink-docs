@@ -26,7 +26,7 @@ yarn add useink
 
 ### tsconfig.json
 
-You must set `moduleResolution` to `nodenext`. This feature allows your application to
+You must set `moduleResolution` to `nodenext` or `bundler`. This feature allows your application to
 discover multiple import paths defined in the **useink** `package.json`. This is required
 to use various features defined in paths such as
 [useink/notifications](/frontend/notifications) and [useink/utils](/frontend/utils).
@@ -34,7 +34,7 @@ to use various features defined in paths such as
 ```json
 {
   "compilerOptions": {
-    "moduleResolution": "nodenext",
+    "moduleResolution": "nodenext", // or `bundler`
   }
 }
 ```

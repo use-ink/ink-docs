@@ -21,13 +21,14 @@ You must first [install useink](/frontend/getting-started#installation).
 
 ## Configure tsconfig.json
 
-You must set `moduleResolution` to `nodenext`. This feature allows your application to
-discover the `useink/notifications` import paths defined in the **useink** `package.json`.
+You must set `moduleResolution` to `nodenext` or `bundler`. This feature allows your
+application to discover the `useink/notifications` import paths defined in the **useink**
+`package.json`.
 
 ```json
 {
   "compilerOptions": {
-    "moduleResolution": "nodenext",
+    "moduleResolution": "nodenext", // or `bundler`
   }
 }
 ```

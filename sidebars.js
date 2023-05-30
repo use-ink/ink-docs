@@ -78,38 +78,38 @@ module.exports = {
         type: "category",
         label: "🪝 Hooks",
         items: [
-          "frontend/core/hooks/all-hooks",
+          "frontend/react/hooks/all-hooks",
           {
             type: "category",
             label: "Contracts",
             items: [
-              "frontend/core/hooks/contracts/use-call",
-              "frontend/core/hooks/contracts/use-call-subscription",
-              "frontend/core/hooks/contracts/use-contract",
-              "frontend/core/hooks/contracts/use-dry-run",
-              "frontend/core/hooks/contracts/use-event-subscription",
-              "frontend/core/hooks/contracts/use-events",
-              "frontend/core/hooks/contracts/use-tx",
-              "frontend/core/hooks/contracts/use-tx-payment-info",
+              "frontend/react/hooks/contracts/use-call",
+              "frontend/react/hooks/contracts/use-call-subscription",
+              "frontend/react/hooks/contracts/use-contract",
+              "frontend/react/hooks/contracts/use-dry-run",
+              "frontend/react/hooks/contracts/use-event-subscription",
+              "frontend/react/hooks/contracts/use-events",
+              "frontend/react/hooks/contracts/use-tx",
+              "frontend/react/hooks/contracts/use-tx-payment-info",
             ]
           },
           {
             type: "category",
             label: "Wallets",
             items: [
-              "frontend/core/hooks/wallets/use-wallet",
-              "frontend/core/hooks/wallets/use-all-wallets",
-              "frontend/core/hooks/wallets/use-installed-wallets",
-              "frontend/core/hooks/wallets/use-uninstalled-wallets",
+              "frontend/react/hooks/wallets/use-wallet",
+              "frontend/react/hooks/wallets/use-all-wallets",
+              "frontend/react/hooks/wallets/use-installed-wallets",
+              "frontend/react/hooks/wallets/use-uninstalled-wallets",
             ]
           },
           {
             type: "category",
             label: "Substrate",
             items: [
-              "frontend/core/hooks/substrate/use-api",
-              "frontend/core/hooks/substrate/use-balance",
-              "frontend/core/hooks/substrate/use-block-header",
+              "frontend/react/hooks/substrate/use-api",
+              "frontend/react/hooks/substrate/use-balance",
+              "frontend/react/hooks/substrate/use-block-header",
             ]
           },
         ],
@@ -117,10 +117,20 @@ module.exports = {
       "frontend/configuration",
       {
         type: "category",
-        label: "Helpers",
+        label: "useink / core",
         items: [
-          "frontend/core/utils/contracts/decodeError",
-          "frontend/core/utils/contracts/txUtils",
+          "frontend/core/overview",
+          {
+            type: "category",
+            label: "Contracts",
+            items: [
+              "frontend/core/contracts/call",
+              "frontend/core/contracts/decode-call-result",
+              "frontend/core/contracts/decode-error",
+              "frontend/core/contracts/get-registry-error",
+              "frontend/core/contracts/to-contract-abi-message",
+            ]
+          },
         ],
       },
       {
@@ -147,7 +157,9 @@ module.exports = {
         label: "useink / utils",
         items: [
           "frontend/utils/getting-started",
-          "frontend/utils/helpers",
+          "frontend/utils/pick",
+          "frontend/utils/tx-utils",
+          "frontend/utils/types",
         ]
       },
     ],

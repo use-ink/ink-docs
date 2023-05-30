@@ -1,9 +1,11 @@
 ---
-title: Helpers
-description: General utility functions to make your life better
+title: ⛏️ Pick Helpers
+description: Utility functions to easily "pick" deeply nested values or undefined
 ---
 
-# Helpers
+# Pick Helpers
+
+Utility functions to easily "pick" deeply nested values or undefined
 
 ## pickDecoded
 
@@ -18,7 +20,7 @@ pickDecoded(get) // returns number or `undefined`
 
 ## pickError
 
-`pickError` picks a `DispatchError` (thrown in one of many possible pallets) undefined
+`pickError` picks a `DispatchError` (thrown in one of many possible pallets) or undefined
 from `DecodedContractResult` returned by
 [useCall](/frontend/core/hooks/contracts/use-call), and similar hooks.
 
@@ -27,6 +29,32 @@ const get = useCall<number>(flipper, 'get')
 
 pickError(get) // returns a Dispatch Error or `undefined`
 ```
+
+## pickDecodedError
+
+`pickDecodedError` picks a `DispatchError` (thrown in one of many possible pallets) or
+undefined from `DecodedContractResult` and returns a string error message. This is a
+wrapper around [decodeError](/frontend/core/contracts/decode-error).
+
+```ts
+const get = useCall<number>(flipper, 'get')
+
+const errMessage = pickDecodedError(
+  get,
+  flipper, 
+  { ContractTrapped: 'This is a custom message. There was a panic in the contract!' }, 
+  'Something went wrong... This is a default error message',
+);
+
+console.error(errMessage); // string or undefined
+```
+
+// export function pickDecodedError(
+//   call: CallResult | undefined,
+//   contract: Contract,
+//   moduleMessages?: Record<RegistryErrorMethod, string>,
+//   defaultMessage?: string,
+// ): string | undefined {
 
 ## pickResultOk
 

@@ -1,0 +1,16 @@
+---
+title: Types
+description: Common types for front end development
+---
+
+# Types
+
+## RustResult<T, E>
+
+This type models a `Result<T, E>` message response in ink! contracts starting in v4.0.0.
+Prior to ink! v4.0.0 any contract that returned a `Result<T, E>` in Rust would return `T`
+or undefined. See [pickResultOk](/frontend/utils/pick#pickresultok) and
+[pickResultErr](/frontend/utils/pick#pickresultErr), which can be used with contracts that
+return a `Result<T, E>`.
+
+`type RustResult<T, E> = { Ok?: T; Err?: E };`

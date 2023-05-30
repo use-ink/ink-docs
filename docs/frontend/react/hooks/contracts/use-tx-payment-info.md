@@ -5,7 +5,9 @@ description: 'React hook for getting the payment information and gas price of a 
 
 # useTxPaymentInfo
 
-A hook for getting the partial fee and weight for a transaction before signing and sending.
+A hook for getting the partial fee and weight for a transaction before signing and
+sending. See [useink/utils helpers](/frontend/utils/pick#picktxinfo) for compatible
+functions that work well with this hook. 
 
 ## Usage
 
@@ -24,6 +26,17 @@ export const MyContractView: React.FC = () => {
     </button>
   )
 }
+```
+
+## Calling with a default caller address
+
+You must first define a default caller in [configuration](/frontend/configuration#configprops), then call the contract with options:
+
+```tsx
+const paymentInfo = useTxPaymentInfo(cRococoContract, 'flip');
+const args = [];
+
+paymentInfo.send(args, { defaultCaller: true });
 ```
 
 ## Return Value
