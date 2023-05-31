@@ -27,6 +27,10 @@
     "message": "Storage & Estructuras de Datos",
     "description": "La etiqueta para la categoría Storage & Estructura de Datos en la referencia de la barra lateral"
   },
+  "sidebar.reference.category.Frontend Development": {
+    "message": "Desarrollo Frontend",
+    "description": "La etiqueta para la categoría Desarrollo Frontend en la referencia de la barra lateral"
+  },
   "sidebar.reference.category.Examples": {
     "message": "Ejemplos",
     "description": "La etiqueta para la categoría Ejemplos en la referencia de la barra lateral"
