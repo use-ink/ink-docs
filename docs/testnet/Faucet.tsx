@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 const RECAPTCHA_SITE_KEY = '6LdU5kckAAAAANktvvAKJ0auYUBRP0su94G7WXwe'
@@ -6,7 +6,11 @@ const FAUCET_URL = 'https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip
 
 const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
-  const [address, setAddress] = useState('')
+  const acc = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('acc') || undefined;
+  }, [])
+  const [address, setAddress] = useState<string | undefined>(acc)
   const [hash, setHash] = useState<string>()
   const [error, setError] = useState<string>()
   const [inProgress, setInProgress] = useState(false)
