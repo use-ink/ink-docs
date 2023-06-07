@@ -165,7 +165,7 @@ module.exports = {
             type: "category",
             label: "Substrate",
             items: [
-              "frontend/utils/substrate/bnToBalance",
+              "frontend/utils/substrate/bn-to-balance",
             ]
           },
         ]
