@@ -7,8 +7,9 @@ const FAUCET_URL = 'https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip
 const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
   const acc = useMemo(() => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('acc') || undefined;
+    if (typeof window === 'undefined') return '';
+    const params = new URLSearchParams(window?.location?.search);
+    return params?.get('acc') || undefined;
   }, [])
   const [address, setAddress] = useState<string | undefined>(acc)
   const [hash, setHash] = useState<string>()
