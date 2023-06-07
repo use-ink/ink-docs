@@ -18,6 +18,10 @@ export const MyContractView: React.FC = () => {
   const contract = useContract('..address', metadata, 'astar')
   const get = useTxPaymentInfo<boolean>(contract, 'get')
 
+  useEffect(() => { 
+    get.send();
+  }, [get.send]);
+
   return (
     <button onClick={get.send} disabled={get.isSubmitting}>
       {get.result?.paritalFee ? (
