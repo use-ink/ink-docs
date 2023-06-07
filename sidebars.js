@@ -129,6 +129,7 @@ module.exports = {
               "frontend/core/contracts/decode-error",
               "frontend/core/contracts/get-registry-error",
               "frontend/core/contracts/to-contract-abi-message",
+              "frontend/core/contracts/tx-payment-info",
             ]
           },
         ],
@@ -160,6 +161,13 @@ module.exports = {
           "frontend/utils/pick",
           "frontend/utils/tx-utils",
           "frontend/utils/types",
+          {
+            type: "category",
+            label: "Substrate",
+            items: [
+              "frontend/utils/substrate/bnToBalance",
+            ]
+          },
         ]
       },
     ],
