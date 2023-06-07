@@ -7,9 +7,9 @@ description: 'React hook for calling a contract message on every new block.'
 
 A React hook for calling a contract message on each new block and decoding a successful
 response or receiving an error. This is similar to
-[useCall](/frontend/core/hooks/contracts/use-call), except that there is no `send()`
+[useCall](/frontend/react/hooks/contracts/use-call), except that there is no `send()`
 function in the response. The contract message will automatically be called on each new
-block. See [useCall](/frontend/core/hooks/contracts/use-call) to learn about more shared
+block. See [useCall](/frontend/react/hooks/contracts/use-call) to learn about more shared
 features.
 
 See [useink/utils helpers](/frontend/utils/pick) for compatible functions that work

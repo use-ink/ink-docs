@@ -127,7 +127,7 @@ tree -L 3
 ```
 
 Now that you have created the verified build, you can 
-[deploy your contract](getting-started/deploy-your-contract).
+[deploy your contract](/getting-started/deploy-your-contract).
 
 Once deployed, you will need to make a note of the contract's code hash in 
 order to verify it.

@@ -7,7 +7,7 @@ description: 'A React hook for signing and sending a transaction for a contract 
 
 A hook for sending a transaction for a contract and decoding successful responses or
 receiving errors. This hook is used in combination with the result of
-[useContract](/frontend/core/hooks/contracts/use-contract).
+[useContract](/frontend/react/hooks/contracts/use-contract).
 
 See [useink/utils helpers](/frontend/utils/pick) for compatible functions that work
 well with this hook. 
