@@ -6,7 +6,7 @@ description: 'React hook for fetching contract events from state'
 # useEvents
 
 A hook for fetching contract events from state after you have subscribed by calling
-[useEventSubscription](/frontend/core/hooks/contracts/use-event-subscription). You can
+[useEventSubscription](/frontend/react/hooks/contracts/use-event-subscription). You can
 filter for specific events by passing in a case-sensitive array of event names. 
 
 ## Usage

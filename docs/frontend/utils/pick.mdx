@@ -10,7 +10,7 @@ Utility functions to easily "pick" deeply nested values or undefined
 ## pickDecoded
 
 `pickDecoded` picks a decoded value or `undefined` from `DecodedContractResult` returned
-by [useCall](/frontend/core/hooks/contracts/use-call), and similar hooks.
+by [useCall](/frontend/react/hooks/contracts/use-call), and similar hooks.
 
 ```ts
 const get = useCall<number>(flipper, 'get')
@@ -22,7 +22,7 @@ pickDecoded(get) // returns number or `undefined`
 
 `pickError` picks a `DispatchError` (thrown in one of many possible pallets) or undefined
 from `DecodedContractResult` returned by
-[useCall](/frontend/core/hooks/contracts/use-call), and similar hooks.
+[useCall](/frontend/react/hooks/contracts/use-call), and similar hooks.
 
 ```ts
 const get = useCall<number>(flipper, 'get')
@@ -59,7 +59,7 @@ console.error(errMessage); // string or undefined
 ## pickResultOk
 
 `pickResultOk` picks the decoded Ok value or `undefined` if a contract returns a `Result<T,
-E>`. Can be used with [useCall](/frontend/core/hooks/contracts/use-call) and similar
+E>`. Can be used with [useCall](/frontend/react/hooks/contracts/use-call) and similar
 hooks.
 
 ```ts
@@ -81,7 +81,7 @@ pickResultOk(get)?.Cool // returns a SuccessStructInContract object or `undefine
 ## pickResultErr
 
 `pickResultErr` picks the decoded Err value or `undefined` if a contract returns a `Result<T,
-E>`. Can be used with [useCall](/frontend/core/hooks/contracts/use-call) and similar
+E>`. Can be used with [useCall](/frontend/react/hooks/contracts/use-call) and similar
 hooks.
 
 ```ts
@@ -103,7 +103,7 @@ pickResultErr(get)?.NotCool // returns a SomeErrorEnumInContract object or `unde
 ## pickCallInfo
 
 `pickCallInfo` picks the `CallInfo` or `undefined` from a message result. Can be used with
-[useCall](/frontend/core/hooks/contracts/use-call) and similar hooks.
+[useCall](/frontend/react/hooks/contracts/use-call) and similar hooks.
 
 ```ts
 const get = useCall(flipper, 'get')
@@ -121,8 +121,8 @@ interface CallInfo {
 ## pickTxInfo
 
 `pickTxInfo` picks the `TxInfo` or `undefined` from a tx or dry run result. Can be used with
-[useTx](/frontend/core/hooks/contracts/use-tx),
-[useDryRun](/frontend/core/hooks/contracts/use-dry-run), and similar hooks.
+[useTx](/frontend/react/hooks/contracts/use-tx),
+[useDryRun](/frontend/react/hooks/contracts/use-dry-run), and similar hooks.
 
 ```ts
 const flip = useTx(flipper, 'flip')

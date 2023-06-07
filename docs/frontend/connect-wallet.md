@@ -51,4 +51,4 @@ export const ConnectWallet = ({ children }) => {
 ```
 
 After a wallet has been connected any changes made in permissions in the wallet will automatically update in the React application.
-`useWallet` has many more features including tools for switching between accounts. You can [learn more about useWallet here](/frontend/core/hooks/wallets/use-wallet).
+`useWallet` has many more features including tools for switching between accounts. You can [learn more about useWallet here](/frontend/react/hooks/wallets/use-wallet).

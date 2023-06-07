@@ -8,7 +8,7 @@ description: 'A React hook for calling a transaction as a dry run.'
 A hook for calling a transaction as a dry run - a transction without spending any gas. Dry
 runs are useful to test if a transaction will be successful and for querying the exact
 Weight amount a transaction will need to succeed. This hook is used under the hood in
-[useTx](/frontend/core/hooks/contracts/use-tx), so you should only use this if you wish to
+[useTx](/frontend/react/hooks/contracts/use-tx), so you should only use this if you wish to
 display Dry Run information to the user before triggering a transaction.
 
 See [useink/utils helpers](/frontend/utils/pick) for compatible functions that work

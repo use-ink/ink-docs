@@ -117,8 +117,8 @@ The resulting folder structure should look something like this:
 
 _Resources:_
 
-- [_`swanky init` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-init-projectname)
-- [_available templates_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/templates)
+- [_`swanky init` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#quick-start)
+- [_available templates_](https://github.com/AstarNetwork/swanky-cli/tree/master/src/templates)
 
 ### Check dependencies and compatibility
 
@@ -134,7 +134,7 @@ This command will be updated to fix that, and provide more useful information.
 
 _Resources:_
 
-- [_`swanky check` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-check)
+- [_`swanky check` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-compile-contractname)
 
 ### Manage accounts
 
@@ -156,7 +156,8 @@ Newly generated accounts that are not the preconfigured dev accounts (Alice, Bob
 
 _Resources:_
 
-- [_`swanky account` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-account-create)
+- [_`swanky account` command usage manual_](https://github.com/AstarNetwork/swanky-cli#swanky-account-create)
+                                            
 
 ### Interact with contracts
 
@@ -182,7 +183,7 @@ Likewise, if you're compiling for production, you need to pass the `--prod` flag
 
 _Resources:_
 
-- [_`swanky account` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-contract-compile-contractname)
+- [_`swanky account` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-compile-contractname)
 
 #### Get detailed contract description
 
@@ -194,7 +195,7 @@ Swanky provides `contract explain CONTRACT_NAME` command to get a more human fri
 
 _Resources:_
 
-- [_`contract compile` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-contract-compile-contractname)
+- [_`contract compile` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-compile-contractname)
 
 #### Run E2E tests
 
@@ -236,7 +237,7 @@ serve PATH_TO_REPORTS
 
 _Resources:_
 
-- [_`swanky contract test` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-contract-test-contractname)
+- [_`swanky contract test` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-test-contractname)
 
 #### Deploy your contract
 
@@ -252,7 +253,7 @@ Successfully running the `deploy` command will print out the address your contra
 
 _Resources:_
 
-- [_`swanky contract deploy` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-contract-deploy-contractname)
+- [_`swanky contract deploy` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-deploy-contractname)
 
 #### Run queries and transactions
 
@@ -281,8 +282,8 @@ Keep in mind that the transaction will fail if you provide too low a value.
 
 _Resources:_
 
-- [_`swanky contract query` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-contract-query-contractname-messagename)
-- [_`swanky contract tx` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-contract-tx-contractname-messagename)
+- [_`swanky contract query` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-query-contractname-messagename)
+- [_`swanky contract tx` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-tx-contractname-messagename)
 
 #### Add a new contract from template
 
@@ -294,7 +295,7 @@ The contract will be referred by `name` when using the relevant contract command
 
 _Resources:_
 
-- [_`swanky contract new` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-contract-new-contractname)
+- [_`swanky contract new` command usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-contract-new-contractname)
 
 ### Interact with a local node
 
@@ -318,7 +319,7 @@ This can be solved by passing a custom array of whitelisted urls using the `--rp
 
 _Resources:_
 
-- [_`swanky node` commands usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-node-purge)
+- [_`swanky node` commands usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-node-purge)
 
 ## Using plugins
 
@@ -332,4 +333,4 @@ If you are interested in developing a plugin, you can refer to the Phala example
 
 _Resources:_
 
-- [_`swanky plugin` commands usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master/packages/cli#swanky-plugins)
+- [_`swanky plugin` commands usage manual_](https://github.com/AstarNetwork/swanky-cli/tree/master#swanky-plugins)
