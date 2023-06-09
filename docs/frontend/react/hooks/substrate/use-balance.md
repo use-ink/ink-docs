@@ -24,8 +24,8 @@ function Balances() {
 
   return (
     <ul>
-      <li>Default Chain Balance: {balance ? balance.freeBalance : '--'}</li>
-      <li>Phala Balance: {balance ? balance.freeBalance : '--'}</li>
+      <li>Default Chain Balance: {balance ? planckToDecimalFormatted(balance.freeBalance, api, { decimals: 4 }) : '--'}</li>
+      <li>Phala Balance: {balance ? planckToDecimalFormatted(phalaBalance.freeBalance, phalaApi, { decimals: 4 }) : '--'}</li>
     </ul>
   )
 }

@@ -109,9 +109,20 @@ module.exports = {
             items: [
               "frontend/react/hooks/substrate/use-api",
               "frontend/react/hooks/substrate/use-balance",
+              "frontend/react/hooks/substrate/use-transfer",
               "frontend/react/hooks/substrate/use-block-header",
+              "frontend/react/hooks/substrate/use-timestamp-date",
+              "frontend/react/hooks/substrate/use-timestamp-now",
+              "frontend/react/hooks/substrate/use-timestamp-query",
             ]
           },
+          {
+            type: "category",
+            label: "Helpers",
+            items: [
+              "frontend/react/hooks/helpers/use-unix-mili-to-date",
+            ]
+          }
         ],
       },
       "frontend/configuration",
@@ -131,6 +142,19 @@ module.exports = {
               "frontend/core/contracts/to-contract-abi-message",
               "frontend/core/contracts/tx-payment-info",
             ]
+          },
+          {
+            type: "category",
+            label: "Substrate",
+            items: [
+              "frontend/core/substrate/get-balance",
+              "frontend/core/substrate/get-timestamp-query",
+              "frontend/core/substrate/get-timestamp-now",
+              "frontend/core/substrate/get-timestamp-date",
+              "frontend/core/substrate/transfer",
+              "frontend/core/substrate/chain-decimals",
+              "frontend/core/substrate/chain-token-symbol",
+            ],
           },
         ],
       },
@@ -166,6 +190,15 @@ module.exports = {
             label: "Substrate",
             items: [
               "frontend/utils/substrate/bn-to-balance",
+            ]
+          },
+          {
+            type: "category",
+            label: "Helpers",
+            items: [
+              "frontend/utils/helpers/planck-to-decimal",
+              "frontend/utils/helpers/planck-to-decimal-formatted",
+              "frontend/utils/helpers/decimal-to-planck",
             ]
           },
         ]
