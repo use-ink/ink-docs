@@ -26,7 +26,7 @@ yarn add useink
 
 ### tsconfig.json
 
-Deberás modificar `moduleResolution` a `nodenext` o `bundler`. Esta funcionalidad le permite a su aplicación
+Deberás modificar la propiedad `moduleResolution` a `nodenext` o `bundler`. Esta funcionalidad le permite a su aplicación
 descubrir multiples rutas de importación definidas en el `package.json` de **useink**. Esto es requerido
 para utilizar multiples funcionalidades definidas en rutas como
 [useink/notifications](/frontend/notifications) y [useink/utils](/frontend/utils).
