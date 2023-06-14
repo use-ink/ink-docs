@@ -21,5 +21,5 @@ console.log(symbol); // e.g. 12
 ## Returns
 
 ```ts
-string | undefined
+number | undefined
 ```

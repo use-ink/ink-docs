@@ -38,7 +38,9 @@ description: A list of all useink hooks
 * [useTimestampDate](/frontend/react/hooks/substrate/use-timestamp-date) - get block date on each new block.
 * [useTimestampNow](/frontend/react/hooks/substrate/use-timestamp-now) - get block unix timestamp in milliseconds on each new block.
 * [useTimestampQuery](/frontend/react/hooks/substrate/use-timestamp-query) - get a function that can be used to query timestamp info for a chain.
+* [useTokenSymbol](/frontend/react/hooks/substrate/use-token-symbol) - get the native token's symbol. e.g. `ROC`
+* [useChainDecimals](/frontend/react/hooks/substrate/use-chain-decimals) - get the decimal count for a chain. e.g. `12`
 
 ## Helpers
 
-* [useUnixmilliToDate](/frontend/react/hooks/help/use-unix-milli-to-date) - convert a unix timestamp in milliseconds to a JavaScript Date object.
+* [useUnixMilliToDate](/frontend/react/hooks/helpers/use-unix-milli-to-date) - convert a unix timestamp in milliseconds to a JavaScript Date object.
