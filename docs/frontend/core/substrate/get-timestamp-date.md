@@ -1,10 +1,10 @@
 ---
-title: getTimestampNow
+title: getTimestampDate
 hide_title: true
 description: Get the unix timestamp of a chain in milliseconds.
 ---
 
-# getTimestampQuery
+# getTimestampDate
 
 Get the unix timestamp of a chain in milliseconds.
 
