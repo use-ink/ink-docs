@@ -1,11 +1,11 @@
 ---
 title: useTimestampNow
-description: A React hook for getting the unix timestamp in miliseconds on each new block.
+description: A React hook for getting the unix timestamp in milliseconds on each new block.
 ---
 
 # useTimestampNow
 
-A React hook for getting the unix timestamp in miliseconds on each new block.
+A React hook for getting the unix timestamp in milliseconds on each new block.
 
 ## Usage
 
@@ -22,5 +22,5 @@ function Now() {
 ## Return Value
 
 ```ts
-number | undefined // number is a unix timestamp in miliseconds
+number | undefined // number is a unix timestamp in milliseconds
 ```

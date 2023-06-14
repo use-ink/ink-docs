@@ -120,7 +120,7 @@ module.exports = {
             type: "category",
             label: "Helpers",
             items: [
-              "frontend/react/hooks/helpers/use-unix-mili-to-date",
+              "frontend/react/hooks/helpers/use-unix-milli-to-date",
             ]
           }
         ],

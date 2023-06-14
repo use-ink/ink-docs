@@ -1,12 +1,12 @@
 ---
 title: getTimestampNow
 hide_title: true
-description: Get the unix timestamp of a chain in miliseconds.
+description: Get the unix timestamp of a chain in milliseconds.
 ---
 
 # getTimestampQuery
 
-Get the unix timestamp of a chain in miliseconds.
+Get the unix timestamp of a chain in milliseconds.
 
 ## Basic Usage
 
@@ -19,5 +19,5 @@ const now = await getTimestampNow(apiPromise); // e.g. 1686775494865
 ## Returns
 
 ```ts
-Promise<number> // unix time in miliseconds.
+Promise<number> // unix time in milliseconds.
 ```
