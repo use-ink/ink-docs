@@ -53,7 +53,7 @@ export type ConfigProps = {
     default?: string; // Set the default for all chains that do not have a 
   } & Partial<Result<ChainId, string>>;
   events?: { 
-    // expiration: Time in miliseconds before an event is removed from state.
+    // expiration: Time in milliseconds before an event is removed from state.
     // This is used in the useEvent() hook for contracts
     // Set to 0 to prevent events from being removed from state
     // Default: 5000 (5 seconds)

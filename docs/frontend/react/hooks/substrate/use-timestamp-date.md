@@ -1,11 +1,11 @@
 ---
 title: useTimestampDate
-description: A React hook for getting the unix timestamp in miliseconds on each new block.
+description: A React hook for getting the unix timestamp in milliseconds on each new block.
 ---
 
 # useTimestampDate
 
-A React hook for getting the unix timestamp in miliseconds on each new block.
+A React hook for getting the unix timestamp in milliseconds on each new block.
 
 ## Usage
 

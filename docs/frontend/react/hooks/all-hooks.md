@@ -36,9 +36,9 @@ description: A list of all useink hooks
 * [useTransfer](/frontend/react/hooks/substrate/use-transfer) - transfer funds to another account.
 * [useBlockHeader](/frontend/react/hooks/substrate/use-block-header) - get block header information for a chain on each new block.
 * [useTimestampDate](/frontend/react/hooks/substrate/use-timestamp-date) - get block date on each new block.
-* [useTimestampNow](/frontend/react/hooks/substrate/use-timestamp-now) - get block unix timestamp in miliseconds on each new block.
+* [useTimestampNow](/frontend/react/hooks/substrate/use-timestamp-now) - get block unix timestamp in milliseconds on each new block.
 * [useTimestampQuery](/frontend/react/hooks/substrate/use-timestamp-query) - get a function that can be used to query timestamp info for a chain.
 
 ## Helpers
 
-* [useUnixMiliToDate](/frontend/react/hooks/help/use-unix-mili-to-date) - convert a unix timestamp in miliseconds to a JavaScript Date object.
+* [useUnixmilliToDate](/frontend/react/hooks/help/use-unix-milli-to-date) - convert a unix timestamp in milliseconds to a JavaScript Date object.

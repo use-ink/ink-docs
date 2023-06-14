@@ -1,12 +1,12 @@
 ---
 title: getTimestampNow
 hide_title: true
-description: Get the unix timestamp of a chain in miliseconds.
+description: Get the unix timestamp of a chain in milliseconds.
 ---
 
 # getTimestampQuery
 
-Get the unix timestamp of a chain in miliseconds.
+Get the unix timestamp of a chain in milliseconds.
 
 ## Basic Usage
 
