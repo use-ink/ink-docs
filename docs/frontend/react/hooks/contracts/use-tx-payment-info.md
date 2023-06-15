@@ -7,7 +7,7 @@ description: 'React hook for getting the payment information and gas price of a 
 
 A hook for getting the partial fee and weight for a transaction before signing and
 sending. See [useink/utils helpers](/frontend/utils/pick#picktxinfo) for compatible
-functions that work well with this hook. 
+functions that work well with this hook.
 
 ## Usage
 
@@ -18,14 +18,14 @@ export const MyContractView: React.FC = () => {
   const contract = useContract('..address', metadata, 'astar')
   const get = useTxPaymentInfo<boolean>(contract, 'get')
 
-  useEffect(() => { 
+  useEffect(() => {
     get.send();
   }, [get.send]);
 
   return (
     <button onClick={get.send} disabled={get.isSubmitting}>
-      {get.result?.paritalFee ? (
-          `Gas price: ${get.result?.paritialFee.toString()}`
+      {get.result?.partialFee ? (
+          `Gas price: ${get.result?.partialFee.toString()}`
         ) : '--'}
     </button>
   )
@@ -47,11 +47,11 @@ paymentInfo.send(args, { defaultCaller: true });
 
 ```ts
 interface DispatchInfo {
-  readonly weight: Weight; 
+  readonly weight: Weight;
   readonly partialFee: Balance;
 }
 
-// useTxPaymentInfo retun type
+// useTxPaymentInfo return type
 interface PaymentInfoResult {
   isSubmitting: boolean;
   result?: DispatchInfo;
