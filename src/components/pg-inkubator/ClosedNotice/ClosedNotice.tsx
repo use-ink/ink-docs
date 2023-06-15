@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 import { ClassNameable } from 'src/components/types'
 
-const notices = ['First Cohort Full', 'Future Cohorts Available']
+const notices = ['First Cohort Full']
 
 export const ClosedNotice: React.FC<ClassNameable> = ({ className }) => {
   return (
