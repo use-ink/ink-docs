@@ -6,6 +6,7 @@ import CuttingEdge from '../../../static/animations/ecosystem-cutting-edge.json'
 import Canary from '../../../static/animations/ecosystem-canary.json'
 import Infrastructure from '../../../static/animations/ecosystem-infra.json'
 import { Config } from './config'
+import { ClosedNotice } from './ClosedNotice'
 
 const CANARY_EXAMPLES = [
   { icon: '/img/DEX.svg', title: 'DEX' },
@@ -36,7 +37,8 @@ export const EcosystemGrants: React.FC = () => {
     <section className="md:mt-28 mt-16">
       <div className="px-4">
         <div className="max-w-biggest mx-auto">
-          <div className="text-center">
+          <div className="text-center w-full">
+            <ClosedNotice className="mb-2 mx-auto justify-center" />
             <h3 className="text-base uppercase font-bold font-montserrat w-full">Track 3</h3>
             <h2 className="text-5xl font-semibold font-montserrat w-full text-brand-500">
               <i className="font-bold text-black dark:text-white">Ecosystem</i> Grants

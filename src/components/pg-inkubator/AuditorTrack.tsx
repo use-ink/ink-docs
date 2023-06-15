@@ -5,6 +5,7 @@ import { BigCTA } from '../BigCTA'
 import { Terrain } from '../icons'
 import { ScrollPlayer } from '../ScrollPlayer'
 import { Config } from './config'
+import { ClosedNotice } from './ClosedNotice'
 
 export const AuditorTrack: React.FC = () => {
   const { scrollY } = useWindow()
@@ -15,6 +16,7 @@ export const AuditorTrack: React.FC = () => {
         <div className="max-w-biggest mx-auto">
           <div className="lg:flex-row flex-col flex justify-between w-full">
             <div className="lg:max-w-2xl lg:mb-[-7%] z-10">
+              <ClosedNotice className="mb-2" />
               <h3 className="text-base uppercase font-bold font-montserrat w-full">Track 2 • 3 - 6 months</h3>
               <h2 className="text-5xl font-semibold font-montserrat w-full text-brand-500">
                 The <i className="font-bold text-black dark:text-white">Auditor</i> Track
