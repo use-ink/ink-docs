@@ -1,1 +1,1 @@
-export * from "./ClosedNotice";
+export * from './ClosedNotice';
