@@ -1,11 +1,11 @@
 ---
 title: 2. Conectar Wallet
-description: 'Conectar una wallet a través de una extensión de navegador'
+description: 'Conectar una wallet mediante una extensión de navegador'
 ---
 
 # Conectar Wallet
 
-Un usuario primero debe dar permiso a una wallet a través de una extensión de navegador para que su dApp pueda leer información de cuentas o solicitar una firma para una transacción. `useWallet()` le da todo lo necesario para realizar esto. `useAllWallets()` devuelve una lista de las extensiones soportadas para que el usuario pueda elegir qué wallet le gustaría conectar. e.g. Talisman, PolkadotJS, Subwallet, etc.
+Un usuario primero debe dar permiso a una wallet mediante una extensión de navegador para que su dApp pueda leer información de cuentas o solicitar una firma para una transacción. `useWallet()` le da todo lo necesario para realizar esto. `useAllWallets()` devuelve una lista de las extensiones soportadas para que el usuario pueda elegir qué wallet le gustaría conectar. e.g. Talisman, PolkadotJS, Subwallet, etc.
 
 ## useWallet()
 

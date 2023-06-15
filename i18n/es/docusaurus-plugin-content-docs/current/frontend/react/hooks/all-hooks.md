@@ -27,7 +27,7 @@ description: Una lista de todos los hooks de useink
 - [useAllWallets](/frontend/react/hooks/wallets/use-all-wallets) - obtiene una lista de todas las wallets soportadas incluyendo Talisman, PolkadotJs, y más.
 - [useInstalledWallets](/frontend/react/hooks/wallets/use-installed-wallets) - obtiene una lista de todas las wallets soportadas que están instaladas en las extensiones de navegador del usuario.
 - [useUnInstalledWallets](/frontend/react/hooks/wallets/use-uninstalled-wallets) - obtiene una lista de todas las wallets soportadas que **NO** están instaladas en las extensiones de navegador del usuario.
-- [useWallet](/frontend/react/hooks/wallets/use-wallet) - conecta una wallet a través de una extensión de navegador y obtiene información de la cuenta.
+- [useWallet](/frontend/react/hooks/wallets/use-wallet) - conecta una wallet mediante una extensión de navegador y obtiene información de la cuenta.
 
 ## Runtime de Substrate
 

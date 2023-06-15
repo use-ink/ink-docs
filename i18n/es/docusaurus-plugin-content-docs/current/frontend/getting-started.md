@@ -69,4 +69,4 @@ Puedes aprender más sobre [configuración de cadenas aquí](/frontend/configura
 
 ### Ahora puede usar todas las funcionalidades de useink
 
-A continuación puede aprender como [conectar una wallet provista por una extensión de navegador](/frontend/connect-wallet), o [ ver un ejemplo de dApp](https://github.com/paritytech/useink-kitchen-sink/blob/master/frontend/src/components/pg-home/HomePage.tsx).
+A continuación puede aprender como [conectar una wallet mediante una extensión de navegador](/frontend/connect-wallet), o [ ver un ejemplo de dApp](https://github.com/paritytech/useink-kitchen-sink/blob/master/frontend/src/components/pg-home/HomePage.tsx).
