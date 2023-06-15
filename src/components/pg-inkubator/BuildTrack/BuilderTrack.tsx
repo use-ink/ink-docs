@@ -3,6 +3,7 @@ import React from 'react'
 import { Waves } from '../../Waves'
 import { BuilderTrackPhases } from './BuildTrackPhases'
 import { ScrollPlayer } from '../../ScrollPlayer'
+import { ClosedNotice } from '../ClosedNotice'
 
 export const BuilderTrack: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const BuilderTrack: React.FC = () => {
 
           <div className="md:flex-row flex flex-col justify-between w-full">
             <div className="md:max-w-2xl w-full">
+              <ClosedNotice className="mb-2" />
               <h3 className="text-base uppercase font-bold font-montserrat w-full">Track 1 • 3 - 6 months</h3>
               <h2 className="text-5xl font-semibold font-montserrat w-full text-brand-500">
                 The <i className="font-bold text-black dark:text-white">Builder</i> Track

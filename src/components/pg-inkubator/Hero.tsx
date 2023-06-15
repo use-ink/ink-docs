@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { ClassNameable } from '../types'
 import { Link } from 'react-router-dom'
 import { ScrollPlayer } from '../ScrollPlayer'
+import { ClosedNotice } from './ClosedNotice'
 
 export interface InkubatorHeroProps extends ClassNameable {
   withLinkCTA?: boolean
@@ -37,11 +38,16 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
             </span>
           </h1>
           <div className="md:max-w-md lg:pt-8">
-            <h2 className="text-2xl dark:text-white/70 md:mb-10">
-              <span className="bg-light-background dark:bg-dark-background">
-                ink!ubator connects you with core developers and extensive resources.
-              </span>
-            </h2>
+            <hgroup className="md:mb-10">
+              <h2 className="text-2xl dark:text-white/70 mb-2">
+                <span className="bg-light-background dark:bg-dark-background">
+                  ink!ubator connects you with core developers and extensive resources.
+                </span>
+              </h2>
+              <h3 className="text-brand-500/80 font-semibold text-md italic">
+                The first cohort is closed. We are accepting applications for future cohorts.
+              </h3>
+            </hgroup>
             {withLinkCTA && (
               <div className="md:mb-0 mb-10">
                 <Link
