@@ -8,19 +8,19 @@ description: Una lista de todos los hooks de useink
 # Todos los hooks de `useink` 🪝
 
 1. Te gusta lo que ves? Por favor [dale una estrella ⭐](https://github.com/paritytech/useink)
-2. No ves una función que necesitas? [Crea un pedido de función](https://github.com/paritytech/useink/issues).
+2. No ves una función que necesitas? [Crea una solicitud de funcionalidad](https://github.com/paritytech/useink/issues).
 3. Tienes una duda? Únete al [chat Element de useink](https://matrix.to/#/%23useink:parity.io).
 
-## Contracts
+## Contratos
 
 - [useCall](/frontend/react/hooks/contracts/use-call) - llama a un contrato y obtiene el resultado decodificado o un error.
 - [useCallSubscription](/frontend/react/hooks/contracts/use-call-subscription) - llama a un contrato y obtiene el resultado decodificado o un error en cada nuevo bloque.
 - [useContract](/frontend/react/hooks/contracts/use-contract) - crea una instancia del contrato en el cliente que contenga la metadata y la dirección del contrato.
-- [useDryRun](/frontend/react/hooks/contracts/use-dry-run) - envía un simulacro de una transacción para validar si va a ejecutarse correctamente y determinar los costos de gas.
+- [useDryRun](/frontend/react/hooks/contracts/use-dry-run) - ejecuta una simulación de una transacción para validar si va a ejecutarse correctamente y determinar los costos de gas.
 - [useEvents](/frontend/react/hooks/contracts/use-events) - obtiene los eventos de un contrato desde el estado. Opcionalmente filtra por el nombre del evento.
 - [useEventSubscription](/frontend/react/hooks/contracts/use-event-subscription) - subscribe a los eventos emitidos por un contrato.
 - [useTx](/frontend/react/hooks/contracts/use-tx) - firma y envía una transacción de un contrato y obtiene el resultado decodificado o un error.
-- [useTxPaymentInfo](/frontend/react/hooks/contracts/use-tx-payment-info) - envía un simulacro de una transacción y obtiene la información del pago total requerido.
+- [useTxPaymentInfo](/frontend/react/hooks/contracts/use-tx-payment-info) - ejecuta una simulación de una transacción y obtiene la información del pago total requerido.
 
 ## Wallets
 

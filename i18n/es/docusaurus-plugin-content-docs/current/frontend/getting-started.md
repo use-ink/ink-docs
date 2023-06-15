@@ -41,7 +41,7 @@ para utilizar multiples funcionalidades definidas en rutas como
 
 ### Agregando `<UseInkProvider />`
 
-React usa _Proveedores_ para que cualquier componente hijo, sin importar que tan profundamente anidado este, sea accesible al estado. Para hacer que las funcionalidades de `useink` esten disponibles para toda la aplicación debemos envolverla con `UseInkProvider`.
+React usa _Providers_ para que cualquier componente hijo pueda acceder al estado, sin importar que tan profundamente anidado esté. Para hacer que las funcionalidades de `useink` esten disponibles para toda la aplicación debemos envolverla con `UseInkProvider`.
 
 ```tsx
 import { UseInkProvider } from 'useink'
@@ -63,10 +63,10 @@ function App() {
 export default App
 ```
 
-Hay dos campos en el ejemplo de arriba que debemos tener en cuenta: `dappName` y `chains`. `dappName` es el nombre que va a ser presentado al usuario cuando se les solicite conectar su wallet por primera vez. `chains` es la lista de configuraciones de cadenas que su aplicación va a soportar. Solo las cadenas que esten configuradas aquí van a ser accesibles para nuestra aplicación. `useink` provee configuraciones para cientos de cadenas existentes que puedes importar desde `useink/chains`.
+En el ejemplo de arriba hay dos campos que debemos tener en cuenta: `dappName` y `chains`. `dappName` es el nombre que va a ser presentado al usuario cuando se les solicite conectar su wallet por primera vez. `chains` es la lista de configuraciones de cadenas que su aplicación va a soportar. Solo las cadenas que estén configuradas aquí van a ser accesibles para nuestra aplicación. `useink` provee configuraciones para cientos de cadenas existentes que puedes importar desde `useink/chains`.
 
-Puedes aprender more sobre [configuración de cadenas aquí](/frontend/configuration).
+Puedes aprender más sobre [configuración de cadenas aquí](/frontend/configuration).
 
 ### Ahora puede usar todas las funcionalidades de useink
 
-A continuación puede aprender como [conectar a una wallet provista por una extensión de navegador](/frontend/connect-wallet), o [ ver un ejemplo de dApp](https://github.com/paritytech/useink-kitchen-sink/blob/master/frontend/src/components/pg-home/HomePage.tsx).
+A continuación puede aprender como [conectar una wallet provista por una extensión de navegador](/frontend/connect-wallet), o [ ver un ejemplo de dApp](https://github.com/paritytech/useink-kitchen-sink/blob/master/frontend/src/components/pg-home/HomePage.tsx).
