@@ -304,8 +304,6 @@ We only need the `code_hash` of an uploaded contract.
 Below is an example of how to delegate call a contract using the `CallBuilder`. We will:
 - make a `DelegateCall`
 - to a contract with a `code_hash` (not contract address!) of `0x4242...`
-- with no gas limit specified (`0` means "automatic")
-- sending `10` units of transferred value to the contract instance
 - calling the `flip` message
 - with the following arguments
     - a `u8` with value `42`
