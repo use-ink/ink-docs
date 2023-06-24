@@ -1,100 +1,96 @@
 ---
 title: ink! vs. Solidity
-slug: /ink-vs-solidity
 hide_title: true
+slug: /ink-vs-solidity
 ---
 
 <img src="/img/title/solidity.svg" className="titlePic" />
 
 # ink! vs. Solidity
 
-Debajo se expone una brefe comparación entre ink! y Solidity:
+La siguiente tabla muestra una breve comparación de características entre ink! y Solidity:
 
 <div class="comparison">
 
-||ink!|Solidity|
-|:---|:---|:--------------|
-|Máquina Virtual|Cualquier Máquina Virtual EVM           M) Wasm| EVM           |
-|Encoding|Wasm| EVM Byte Code |
-|Lenguaje|Rust| Propio        |
-|Protección de Overflow|Incluído por default| Si            |
-|Funciones de Constructor|Múltiples| Una única     |
-|Herramientas|Todas las soportadas por Rust| Propia        |
-|Sistema de versiones|Semantica| Semantica     |
-|Tiene Metadata?|Si| Si            |
-|Proyecto de múltiples archivos|Planeado| Si            |
-|Entradas de Guardado|Variable| 256 bits      |
-|Tipos Soportados|Docs| Docs          |
-|Tiene interfaces?|Si (Traits de Rust)| Si            |
+|                                  | ink!                        | Solidity      |
+| :------------------------------- | :-------------------------- | :------------ |
+| Máquina virtual                  | Cualquier VM Wasm           | EVM           |
+| Codificación                     | Wasm                        | EVM Byte Code |
+| Lenguaje                         | Rust                        | Standalone    |
+| Protección contra desbordamiento | Habilitado por default      | Sí            |
+| Funciones de constructor         | Multiple                    | Single        |
+| Herramientas                     | Cualquiera que soporte Rust | Custom        |
+| Versionado                       | Semántico                   | Semántico     |
+| Contiene Metadata?               | Sí                          | Sí            |
+| Proyecto de archivos múltiples   | Planeado                    | Sí            |
+| Entradas de  Storage             | Variable                    | 256 bits      |
+| Tipos soportados                 | Docs                        | Docs          |
+| Contiene Interfaces?             | Sí (Traits de Rust)         | Sí            |
 
 </div>
 
-:::note
-TODO
-:::
+## Guía Solidity a ink!
 
-## Solidity to ink! Guide
+### Tabla de Contenidos
 
-### Table of Contents
 
-- [Solidity to ink! Guide](#solidity-to-ink-guide)
-- [Table of Contents](#table-of-contents)
-- [Converting a Solidity Contract to ink!](#converting-a-solidity-contract-to-ink)
-    - [1. Generate New ink! Contract](#1-generate-new-ink-contract)
-    - [2. Build ink! Contract](#2-build-ink-contract)
-    - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
-    - [4. Convert each function](#4-convert-each-function)
-- [Best Practices + Tips](#best-practices--tips)
-- [Syntax Equivalencies](#syntax-equivalencies)
-    - [`public function`](#public-function)
-    - [`mapping declaration`](#mapping-declaration)
-    - [`mapping usage`](#mapping-usage)
+- [ink! vs. Solidity](#ink-vs-solidity)
+  - [Guía Solidity a ink!](#guía-solidity-a-ink)
+    - [Tabla de Contenidos](#tabla-de-contenidos)
+  - [Convertir un contrato de Solidity a ink!](#convertir-un-contrato-de-solidity-a-ink)
+    - [1. Generar un nuevo contrato de ink!](#1-generar-un-nuevo-contrato-de-ink)
+    - [2. Compilar el contrato](#2-compilar-el-contrato)
+    - [3. Convertir campos de clase de Solidity a Struct de Rust](#3-convertir-campos-de-clase-de-solidity-a-struct-de-rust)
+    - [4. Convertir cada función](#4-convertir-cada-función)
+  - [Mejores prácticas + Tips](#mejores-prácticas--tips)
+  - [Equivalencias de sintaxis](#equivalencias-de-sintaxis)
+    - [`función pública`](#función-pública)
+    - [`declaración de mapping `](#declaración-de-mapping-)
+    - [`uso de mapping`](#uso-de-mapping)
     - [`struct`](#struct)
     - [`assertions / requires`](#assertions--requires)
     - [`timestamp`](#timestamp)
-    - [`contract caller`](#contract-caller)
-    - [`contract's address`](#contracts-address)
+    - [`caller del contrato`](#caller-del-contrato)
+    - [`dirección de contrato`](#dirección-de-contrato)
     - [`bytes`](#bytes)
     - [`uint256`](#uint256)
     - [`payable`](#payable)
-    - [`received deposit / payment`](#received-deposit--payment)
-    - [`contract balance`](#contract-balance)
-    - [`transfer tokens from contract`](#transfer-tokens-from-contract)
-    - [`events & indexed`](#events--indexed)
-    - [`errors and returning`](#errors-and-returning)
-        - [`throw`](#throw)
-        - [`assert`](#assert)
-        - [`require and revert`](#require-and-revert)
-    - [`nested mappings + custom / advanced structures`](#nested-mappings--custom--advanced-structures)
-    - [`cross-contract calling`](#cross-contract-calling)
-    - [`submit generic transaction / dynamic cross-contract calling`](#submit-generic-transaction--dynamic-cross-contract-calling)
-- [Limitations of ink! v3](#limitations-of-ink-v3)
-- [Troubleshooting Errors](#troubleshooting-errors)
-- [unit testing (off-chain)](#unit-testing-off-chain)
+    - [`depósito recibido / pago`](#depósito-recibido--pago)
+    - [`balance del contrato`](#balance-del-contrato)
+    - [`transferir tokens desde el contrato`](#transferir-tokens-desde-el-contrato)
+    - [`eventos e indexado`](#eventos-e-indexado)
+    - [`errores y returns`](#errores-y-returns)
+      - [`throw`](#throw)
+      - [`assert`](#assert)
+      - [`require y revert`](#require-y-revert)
+    - [`mappings anidados + estructuras custom / avanzadas`](#mappings-anidados--estructuras-custom--avanzadas)
+    - [`llamadas entre contratos`](#llamadas-entre-contratos)
+    - [`enviar transacción genérica / llamadas dinámicas entre contratos`](#enviar-transacción-genérica--llamadas-dinámicas-entre-contratos)
+  - [Limitaciones de ink! v3](#limitaciones-de-ink-v3)
+  - [Solución de problemas y errores](#solución-de-problemas-y-errores)
+  - [unit testing (off-chain)](#unit-testing-off-chain)
 
-## Converting a Solidity Contract to ink!
+## Convertir un contrato de Solidity a ink!
 
-### 1. Generate a new ink! contract
+### 1. Generar un nuevo contrato de ink! 
 
-Run the following command to generate the skeleton for an ink! contract.
-The command will set up the boilerplate code for ink!'s "Hello, World!"
-(the [`flipper`](https://github.com/paritytech/ink-examples/tree/main/flipper) contract)).
+Ejecutar el siguiente comando para crear la estructura de un contrato de ink! El comando instalará el código repetitivo para ink! "Hola, Mundo!" (el contrato [`flipper`](https://github.com/paritytech/ink-examples/tree/main/flipper))
 
 ```
 cargo contract new <contract-name>
 ```
 
-### 2. Build the contract
+### 2. Compilar el contrato
 
 ```
 cargo contract build
 ```
 
-### 3. Convert Solidity class fields to Rust struct
+### 3. Convertir campos de clase de Solidity a Struct de Rust
 
-Solidity is an object oriented language, and uses classes. ink! (Rust) does not use classes.
+Solidity es un lenguaje orientado a objetos y utiliza clases. ink! (Rust) no utiliza clases. 
 
-An example Solidity class looks like:
+Un ejemplo de clase de Solidity se ve así:
 
 <!-- Markdown syntax highlighting does not support Solidity. C++ seems to be the best match -->
 
@@ -123,7 +119,7 @@ contract MyContract {
 }
 ```
 
-And the equivalent contract in ink! looks like:
+Y el equivalente en un contrato de ink! se ve así:
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std)]
@@ -134,7 +130,7 @@ use ink_lang as ink;
 mod mycontract {
     #[ink(storage)]
     pub struct MyContract {
-        the_bool: bool, // class members become struct fields
+        the_bool: bool, // las properties de clase se convierten en campos del struct
     }
 
     #[ink(event)]
@@ -150,7 +146,7 @@ mod mycontract {
             Self { the_bool }
         }
 
-        #[ink(message)] // functions become struct implementations
+        #[ink(message)] // las funciones se vuelven implementaciones del struct
         pub fn set_bool(&mut self, new_bool: bool) -> bool {
             let bool_changed = true;
 
@@ -173,23 +169,23 @@ mod mycontract {
 }
 ```
 
-A few key differences are:
+Algunas diferencias clave son:
 
-- Solidity class variables / members will be placed in the contract struct in ink!
-- All class methods in Solidity are `impl`emented for the contract struct in ink!
-- Solidity frequently prefixes variables with an underscore (`_name`). ink! / Rust only prefixes with an underscore for _unused_ variables.
-- Solidity uses camelCase. ink! uses snake_case.
-- In Solidity, the variable type comes before the variable name (e.g. bool myVar). While ink! specifies var type after the var name (e.g. my_var: bool)
+- Las variables de clase / miembros de Solidity se colocarán en el struct del contrato de ink!
+- Todos lo métodos de clase en Solidity son `impl`ementados para el struct del contrato en ink!
+- Solidity frecuentemente prefija variables con un guión bajo (`_name`). ink! / Rust solamente prefija con un guión bajo a las variables _no usadas_.
+- Solidity usa camelCase. ink! usa snake_case.
+- En Solidity, el tipo de variable aparece antes del nombre de la variable (Por ejemplo: bool myVar). Mientras que ink! especifica el tipo de var después del nombre de var (Por ejemplo: my_var: bool)
 
-### 4. Convert each function
+### 4. Convertir cada función 
 
-- Start converting each function one by one.
-    - A recommended approach is to, if possible, skip cross-contract calls at first and use mock data instead
-    - This way off-chain unit tests can be written to test the core functionality
-        - unit tests are off-chain and do not work with cross-contract calls
-    - Once fully tested, start adding in cross-contract calls and perform on-chain manual + integration tests
-- Ensure that function's visibility (public, private) are matched in ink!
-- In Solidity, if a function returns a `bool success`, ink! will use a `Result<()>` instead (`Result::Ok` or `Result::Err`).
+- Comenzar a convertir cada función una por una.
+    - Un enfoque recomendado es, de ser posible, evitar las llamadas cross-contract al principio y en su lugar utilizar datos simulados.
+    - Este modo de prueba de unidad off-chain puede ser escrito para probar la funcionalidad básica.
+        - las unidades de prueba son off-chain y no funcionan con llamadas cross-contract.
+    - Una vez que se haya probado por completo, se comienza a agregar las llamadas cross-contract y se llevan a cabo pruebas on-chain manuales y de integración.
+- Asegurarse que la función de visibilidad (pública y privada) se corresponda en ink!
+- Si en Solidity una función devuelve `bool success`, ink! utilizará un `Result<()>` (`Result::Ok` o `Result::Err`).
 
   ```rust
   // ink!
@@ -199,55 +195,55 @@ A few key differences are:
 
   // ...
 
-  // public function that returns a Result
+  // función pública que devuelve un Result 
   #[ink(message)]
   pub fn my_function(&self) -> Result<()> {
       Ok(())
   }
   ```
 
-## Best Practices + Tips
+## Mejores prácticas + Tips
 
-- If the Solidity contract uses a `string`, it is recommended to use a `Vec<u8>` to avoid the overhead of a `String`. See [here](https://substrate.stackexchange.com/questions/1174/why-is-it-a-bad-idea-to-use-string-in-an-ink-smart-contract) for more details on why. The smart contract should only contain the information that strictly needs to be placed on the blockchain and go through consensus. The UI should be used for displaying strings.
-- Double check all `.unwrap()`s performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
-- Run the contracts node with `substrate-contracts-node -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
-- When passing parameters to a helper, it is recommended to pass references (even for primitives) as Wasm is more efficient with references.
-  For example (see [erc20](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) example):
+- Si el contrato de Solidity utiliza un `string`, se recomienda utilizar un `Vec<u8>` para evitar la sobrecarga de un `String`. Ver [aquí](https://substrate.stackexchange.com/questions/1174/why-is-it-a-bad-idea-to-use-string-in-an-ink-smart-contract) para más detalles del porqué. El smart contract debería contener solamente la información que estrictamente necesita ubicarse en la blockchain y alcanzar un consenso. La UI (interfaz de usuario) debería usarse para visualizar strings.
+- Comprobar todos los `.unwrap()`s ejecutados. Solidity no tiene un control tan estricto como ink! Por ejemplo, se puede acceder a un campo de mapping  tan simple como `myMapping[someKey]`. ink!, sin embargo, requiere de `self.my_mapping.get(some_key).unwrap()`. Un modo útil para manipular casos `None` es utilizar  `.unwrap_or(some_val)`.
+- Ejecutar el nodo de los contratos con `substrate-contracts-node -lerror,runtime::contracts=debug` para que las impresiones depuradas y los errores se vizualicen en la consola de nodos.
+- Al pasar parámetros a un helper, se recomienda pasar referencias (incluso para las primitivas) ya que Wasm es más eficiente con referencias.
+  Por ejemplo (ver [erc20](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) ejemplo):
 
 ```rust
-/// Returns the account balance for the specified `owner`.
+/// Devuelve el balance de la cuenta para el `owner` especificado.
 ///
-/// Returns `0` if the account is non-existent.
+/// Devuelve `0` si es una cuenta inexistente.
 #[ink(message)]
 pub fn balance_of(&self, owner: AccountId) -> Balance {
     self.balance_of_impl(&owner)
 }
 
-/// Returns the account balance for the specified `owner`.
+/// Devuelve el balance de la cuenta para el `owner` especificado. 
 ///
-/// Returns `0` if the account is non-existent.
+/// Regresa a `0` si es una cuenta inexistente.
 ///
-/// # Note
+/// # Nota
 ///
-/// Prefer to call this method over `balance_of` since this
-/// works using references which are more efficient in Wasm.
+/// Es preferible llamar a este método antes que `balance_of` ya que este 
+/// funciona usando referencias que son más eficientes en Wasm.
 #[inline]
 fn balance_of_impl(&self, owner: &AccountId) -> Balance {
     self.balances.get(owner).unwrap_or_default()
 }
 ```
 
-- Just as in Solidity, ink! does not have floating point numbers due to the non-deterministic nature. Instead, the frontend should add decimal points as needed.
+- Al igual que en Solidity, ink! no tiene números de punto flotante debido al carácter no determinista. En cambio el frontend debería agregar decimales de ser necesario.
 
-## Syntax Equivalencies
+## Equivalencias de sintaxis
 
-### `public function`
+### `función pública`
 
 ```c++
 // solidity
 function fnName() public {}
-// or
-// by default, functions are public
+// o
+// por default, las funciones son públicas
 function fnName() {}
 ```
 
@@ -257,7 +253,7 @@ function fnName() {}
 pub fn fn_name(&self) {}
 ```
 
-### `mapping declaration`
+### `declaración de mapping `
 
 ```c++
 // solidity
@@ -278,27 +274,27 @@ pub struct ContractName {
 }
 ```
 
-when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://use.ink/datastructures/mapping) for more details.
+Cuando se usa un map en ink!, `ink_lang::utils::initialize_contract` se debe usar en el constructor. Ver [aquí](https://use.ink/datastructures/mapping) para más detalles.
 
-### `mapping usage`
+### `uso de mapping`
 
 ```c++
 // solidity
 
-// insert / update
+// insertar / actualizar
 aMap[aKey] = aValue;
 
-// get
+// obtener
 aMap[aKey]
 ```
 
 ```rust
 // ink!
 
-//insert / update
+// insertar / actualizar
 self.a_map.insert(&a_key, &a_value);
 
-// get
+// obtener
 self.a_map.get(a_key).unwrap()
 ```
 
@@ -346,7 +342,7 @@ now
 self.env().block_timestamp()
 ```
 
-### `contract caller`
+### `caller del contrato`
 
 ```c++
 // solidity
@@ -358,7 +354,7 @@ address caller = msg.sender;
 let caller: AccountId = self.env().caller();
 ```
 
-### `contract's address`
+### `dirección de contrato`
 
 ```c++
 // solidity
@@ -372,15 +368,15 @@ self.env().account_id()
 
 ### `bytes`
 
-Solidity has a type `bytes`. `bytes` is (essentially) equivalent to an array of uint8. So, `bytes` in Solidity => `Vec<u8>` or `[u8; ...]` in ink!. See [here](https://ethereum.stackexchange.com/questions/91119/difference-between-byte-and-uint8-datatypes-in-solidity) for more details. If desired, a `bytes` struct can be created in ink! to replicate the `bytes` type in Solidity.
+Solidity tiene un tipo `bytes`. `bytes` es (esencialmente) equivalente a un array de uint8. Por lo tanto `bytes` en Solidity => `Vec<u8>` o `[u8; ...]` en ink!. Ver [aquí](https://ethereum.stackexchange.com/questions/91119/difference-between-byte-and-uint8-datatypes-in-solidity) para más detalles. Si se desea, un struct de `bytes` puede ser creado en ink! para replicar el tipo `bytes` en Solidity.
 
 ### `uint256`
 
-Solidity uses `uint256` and `uint` to represent a 256-bit type.
+Solidity utiliza `uint256` y `uint` para representar un tipo de 256 bits.
 
-Solidity is 256-bit / 32-byte word optimized. Meaning, using `uint256` in Solidity contracts will reduce gas usage -- but increase storage usage. The largest size ink! has built in is a `u128`. ink! compiles to Wasm. The largest primitive Wasm has is 64bit (due to most computers using 64bit). So, there is no benefit to using any larger primitive over a collection.
+Solidity está optimizado para words de 256 bits / 32 bytes. Esto significa que si usamos `uint256` en los contratos Solidity se reducirá el uso de gas -- pero aumentará el uso del storage. El mayor tamaño que tiene ink! es un `u128`. ink! compila a Wasm. El mayor tamaño de primitiva de Wasm es 64bit(debido a que la mayoría de las computadoras usan 64bit). Por lo tanto no hay ningún beneficio en usar una primitiva más grande sobre una colección.
 
-When porting a `uint256` from Solidity to ink!, it is recommended to, with discretion, determine the range of the value, and choose the appropiate size (u8, u16, u32, u64, u128). If a 256-bit hash value is required, ink! has a `Hash` primitive available. In the event a value needs to be 256-bit, it is recommended to use an array (e.g. `[u64; 4]`).
+Cuando se transfiere un `uint256` de Solidity a ink!, se recomienda  determinar a discreción el rango del valor y elegir el tamaño adecuado (u8, u16, u32, u64, u128). Si se requiere un valor de hash de 256 bits, ink! tiene una primitiva de `Hash` disponible. En el caso que un valor necesite ser de 256 bits, se recomienda utilizar un array (ejemplo: `[u64; 4]`).
 
 ### `payable`
 
@@ -394,7 +390,7 @@ function myFunction() payable returns (uint64) {}
 pub fn my_function() -> (u64) {}
 ```
 
-### `received deposit / payment`
+### `depósito recibido / pago`
 
 ```C++
 // solidity
@@ -406,7 +402,7 @@ msg.value
 self.env().transferred_value()
 ```
 
-### `contract balance`
+### `balance del contrato`
 
 ```c++
 // solidity
@@ -418,7 +414,7 @@ this.balance
 self.env().balance()
 ```
 
-### `transfer tokens from contract`
+### `transferir tokens desde el contrato`
 
 ```c++
 // solidity
@@ -432,7 +428,7 @@ if self.env().transfer(recipient, amount).is_err() {
 }
 ```
 
-### `events & indexed`
+### `eventos e indexado`
 
 ```c++
 // solidity
@@ -442,7 +438,7 @@ event MyCoolEvent(
     u128 notIndexedValue,
 );
 
-// emit event
+// emitir evento
 MyCoolEvent (someValue, someOtherValue)
 ```
 
@@ -457,44 +453,44 @@ pub struct MyCoolEvent {
     not_indexed_value: u128,
 }
 
-// emit event
+// emitir evento
 self.env().emit_event(MyCoolEvent {
     indexed_value: some_value,
     not_indexed_value: some_other_value
 });
 ```
 
-### `errors and returning`
+### `errores y returns`
 
-Solidity has several error handling mechanisms: `assert`, `require`, `revert`, and `throw`. Each of these will revert the changed state when called. See [this article](https://medium.com/blockchannel/the-use-of-revert-assert-and-require-in-solidity-and-the-new-revert-opcode-in-the-evm-1a3a7990e06e) for details on these.
+Solidity tiene varios mecanismos de manejo de errores: `assert`, `require`, `revert`, y `throw`. Cada uno de los cuales revertirá el estado modificado cuando sea solicitado. Ver [este artículo](https://medium.com/blockchannel/the-use-of-revert-assert-and-require-in-solidity-and-the-new-revert-opcode-in-the-evm-1a3a7990e06e) para detalles sobre esto. 
 
-ink! uses a `Result` enum (`Ok(T)`, `Err(E)`), `assert!` and `panic!`. [This Stack Exchange](https://substrate.stackexchange.com/questions/2391/panic-in-ink-smart-contracts) answer and [GitHub discussion](https://github.com/paritytech/ink/issues/641) provide more details on these.
+ink! usa un enum `Result` (`Ok(T)`, `Err(E)`), `assert!` y `panic!`. [Esta respuesta de Stack Exchange](https://substrate.stackexchange.com/questions/2391/panic-in-ink-smart-contracts) y [discusión de GitHub](https://github.com/paritytech/ink/issues/641) brindan más detalles sobre esto.
 
 #### `throw`
 
-Throw is deprecated in Solidity and would throw an invalid opcode error (no details) and revert the state. As an alternative to the `if...{throw;}` pattern in Solidity, a `Result::Err` should be returned for expected errors, and an `assert!` should be used for errors that should not occur.
+Throw está deprecado en Solidity y daría un error de invalid opcode (sin detalles) y revertiría el estado. Como una alternativa para el patrón `if...{throw;}` en Solidity, un `Result::Err` debería ser devuelto para errores esperados, y un `assert!` debería ser usado para errores que no deberían ocurrir.
 
 #### `assert`
 
-In Solidity, `assert` is used as internal guards against errors in the _code_. In general, properly functioning code should never hit a failing assert. `assert` in Solidity does not have error strings. In ink!, use `assert!`. `assert!` will `panic!` if it evaluates to _false_. The state will be reverted, and a `CalleeTrapped` will be returned. The (optional) error string will be printed to the debug buffer.
+En Solidity, `assert` se utiliza como un protector interno contra errores en el _código_. En general, un código que esté funcionando correctamente nunca debería tener un assert fallido. `assert` en Solidity no tiene strings de error. En ink!, usar `assert!`. `assert!` dará como resultado `panic!` si se evalúa como _falso_. El estado se revertirá, y se devolverá un `CalleeTrapped`. El string de error (opcional) se imprimirá en el búfer de depuración.
 
 ```rust
 // ink!
 assert!(caller == owner, "caller is not owner")
 ```
 
-#### `require and revert`
+#### `require y revert`
 
-In Solidity, `require` is used for general (normal) errors -- such as errors that occur based on user input. `require` does have the option for an error string. `revert` is very similar to `require` except that `revert` will be called in `if ... else` chains. Both `require` and `revert` will revert the chain state. In ink!, `if ... { return Err(Error::SomeError) }` should be used for `require` or `revert`. When a `Result::Err` is returned in ink!, then all state is reverted.
+En Solidity, `require` se usa para errores generales (normales) -- por ejemplo errores que ocurren basados en el input del usuario. `require` no tiene la opción para un string de error. `revert` es muy similar a `require` excepto que `revert` será llamado en cadenas `if ... else`. Ambos `require` y `revert` revertirán el estado de la chain. En ink!, `if ... { return Err(Error::SomeError) }` debería usarse para `require` o `revert`. Cuando un `Result::Err` se devuelve en ink! todo el estado se revierte.
 
-In general, `Result::Err` should be used when a _calling contract_ needs to know _why_ a function failed. Otherwise, `assert!` should be used as it has less overhead than a `Result`.
+En general, `Result::Err` debería usarse cuando un _calling contract_ necesita saber _por qué_ una función falló. De otro modo, `assert!` debería usarse ya que tiene menos sobrecarga que un `Result`.
 
 ```c++
 // Solidity
 function myFunction(bool returnError) public {
     require(!returnError, "my error here");
 
-    // or
+    // o
 
     if returnError {
         revert("my error here");
@@ -508,11 +504,11 @@ function myFunction(bool returnError) public {
 #[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
 #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
 pub enum Error {
-    /// Provide a detailed comment on the error
+    /// Proveer un comentario detallado sobre el error
     MyError,
 }
 
-// result type
+// tipo Result
 pub type Result<T> = core::result::Result<T, Error>;
 
 // ...
@@ -526,11 +522,11 @@ pub fn my_function(&self, return_error: bool) -> Result<()> {
 }
 ```
 
-### `nested mappings + custom / advanced structures`
+### `mappings anidados + estructuras custom / avanzadas`
 
-In Solidity, it is easy to do nested mappings. It is not as straightforward in ink!.
+En Solidity, es fácil crear mappings anidados. En ink! no es tan sencillo.
 
-imagine the following scenario
+imaginemos el siguiente escenario 
 
 ```c++
 // solidity
@@ -544,7 +540,7 @@ contract Dao {
 }
 ```
 
-in ink! this _seems_ like it could be represented like so:
+en ink! esto _parece_ como si se pudiera representar así:
 
 ```rust
 #[ink::contract]
@@ -565,16 +561,16 @@ mod dao {
     impl Dao{
         #[ink(constructor)]
         pub fn new(/*...*/) -> Self {
-            //required for mappings
+            //requerido para mappings
             ink_lang::utils::initialize_contract(|contract| {/*...*/})
         }
     }
 }
 ```
 
-However, this will cause an error due to the nested mapping. [This answer](https://substrate.stackexchange.com/questions/1659/how-to-have-a-mapping-in-a-custom-structure-inside-an-ink-contract) explains in detail why nested mappings are not allowed
+Sin embargo, esto originará un error debido al mapping anidado.[Esta respuesta](https://substrate.stackexchange.com/questions/1659/how-to-have-a-mapping-in-a-custom-structure-inside-an-ink-contract) explica en detalle por qué no se permiten los mappings anidados.
 
-So, as of now, to get around this issue an alternate data structure will need to be used. A data-structure that can be interchanged with the `Mapping` syntax and with minimal additional implementations is the `BTreeMap`. `BTreeMap` is less efficient than `Mapping`, but is an easy workaround until nested mappings are allowed. This will be used in the nested struct. Additional `derive`s will need to be added to be compatible with the #[ink(storage)] struct (see below).
+Por lo tanto desde ahora será necesaria una estructura de datos alternativa para solucionar este problema. Una estructura de datos que puede ser intercambiable con la sintaxis de `Mapping` y con las implementaciones mínimas adicionales es el `BTreeMap`. `BTreeMap` es menos eficiente que `Mapping`, pero es una solución simple hasta que se permitan los mappings anidados. Esto se utilizará en el struct anidado. `derive`s adicionales deberán usarse para que sean compatibles con el struct #[ink(storage)] (ver abajo)
 
 ```rust
 #[ink::contract]
@@ -607,14 +603,14 @@ mod dao {
     impl Dao{
         #[ink(constructor)]
         pub fn new(/*...*/) -> Self {
-            //required for mappings
+            //requerido para mappings
             ink_lang::utils::initialize_contract(|contract| {/*...*/})
         }
     }
 }
 ```
 
-This almost works as expected. However, there is still one issue. `SpreadAllocate` (used with `Mapping`) requires that `Vec<Proposal>` implements `PackedAllocate`. To fix this, `Proposal` needs to implement `PackedAllocate`. See [here](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.PackedAllocate.html) for details + examples. See the following for this example:
+Esto funciona casi como sería de esperar. Sin embargo aún existe un problema. `SpreadAllocate` (usado con `Mapping`) requiere que `Vec<Proposal>` implemente `PackedAllocate`. Para solucionarlo, `Proposal` necesita implementar `PackedAllocate`. Ver [aquí](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.PackedAllocate.html) para detalles + ejemplos. Ver lo siguiente para este ejemplo:
 
 ```rust
 use ink_primitives::Key;
@@ -630,19 +626,19 @@ impl ink_storage::traits::PackedAllocate for Proposal {
 }
 ```
 
-### `cross-contract calling`
+### `llamadas entre contratos`
 
-In ink!, to do [cross-contract calling](https://use.ink/basics/cross-contract-calling), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
+En ink!, para hacer [llamadas entre contratos](https://use.ink/basics/cross-contract-calling), se necesitará que el contrato sea agregado al proyecto. Asegurarse que el contrato esté exportando adecuadamente sus Structs. Ver el ejemplo de contrato `erc20`:
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_lang as ink;
 
-// make the structs visible
+// hacer visibles los structs
 pub use self::erc20::{
     Erc20,
-    // this is necessary
+    // esto es necesario
     Erc20Ref,
 };
 
@@ -650,16 +646,16 @@ pub use self::erc20::{
 pub mod erc20 {}
 ```
 
-In the new cross-called contract's Cargo.toml, add (or edit) the following:
+En el Cargo.toml del nuevo contrato llamado, agregar (o editar) lo siguiente:
 
 ```
 [lib]
 name = "erc20"
 path = "lib.rs"
 crate-type = [
-	# Used for normal contract Wasm blobs.
+	# Usado para blobs Wasm de contrato normal.
 	"cdylib",
-    # Used for ABI generation. Necessary for importing as a dependency
+    # Usado para generación de ABI. Necesario para importar como dependencia
     "rlib",
 ]
 
@@ -667,15 +663,15 @@ crate-type = [
 ink-as-dependency = []
 ```
 
-`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](https://use.ink/basics/cross-contract-calling)).
+`ink-as-dependency` "le dice al generador de código ink! que siempre o nunca compile el smart contract como si fuera usado como dependencia de otro smart contract de ink!" ([fuente](https://use.ink/basics/cross-contract-calling)).
 
-Then, In the main contract's Cargo.toml, import the contract that will be cross-called.
+Entonces, en el Cargo.toml del contrato principal, importar el contrato al que se llamará.
 
 ```rust
 erc20 = { path = "erc20", default-features = false, features = ["ink-as-dependency"] }
 ```
 
-And make sure to add it to the `std` field of the the .toml file.
+Y asegurarse de agregarlo al campo `std` del archivo .toml.
 
 ```rust
 [features]
@@ -687,32 +683,32 @@ std = [
 ]
 ```
 
-Now, import the cross-called-contract to the main contract:
+Ahora, importar el contrato llamado al contrato principal:
 
 ```rust
-// example
+// ejemplo
 use erc20::Erc20Ref;
 ```
 
-There are two methods to setup the other contract.
+Hay dos métodos para configurar el otro contrato.
 
-1. Instantiate the cross-called-contract in the main contract's constructor.  
-   See [here](https://use.ink/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/delegator) for an example.
-2. Or, add the `AccountId` of an already deployed contract.
-   Here is an example constructor to set this up:
+1. Instanciar el contrato llamado en el constructor del contrato principal.  
+   Ver [aquí](https://use.ink/basics/cross-contract-calling/) para un tutorial, y [aquí](https://github.com/paritytech/ink-examples/tree/main/delegator) para un ejemplo.
+2. O agregar el `AccountId` de un contrato ya deployado.
+   Aquí hay un ejemplo de constructor para configurar esto:
 
    ```rust
    use my_other_contract::MyOtherContractRef;
    // ...
    fn new(contract_id: AccountId) -> Self {
-        // for already deployed contract
+        // para un contrato ya deployado
         let contract_ref: MyOtherContractRef =
             ink_env::call::FromAccountId::from_account_id(contract_id);
         Self {contract_ref}
    }
    ```
 
-Now, to perform the cross-contract call:
+Ahora para realizar la llamada de contratos:
 
 ```rust
 {
@@ -720,14 +716,14 @@ Now, to perform the cross-contract call:
 }
 ```
 
-Note: as of now (ink! v3.3.1), when using cross-contract calls, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/paritytech/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/paritytech/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/paritytech/ink/issues/1134).
+Nota: a partir de ahora (ink! v3.3.1), cuando se está haciendo llamadas entre contratos, emitir eventos no funcionará y ocurrirán errores de compilación. Ver [issue #1000](https://github.com/paritytech/ink/issues/1000). Además el compilador dará error diciendo (por ejemplo) Erc20Ref no implementa `SpreadAllocate`. Este [issue #1149](https://github.com/paritytech/ink/issues/1149) explica más y tiene una solución. Estos problemas serán resueltos en [issue #1134](https://github.com/paritytech/ink/issues/1134).
 
-### `submit generic transaction / dynamic cross-contract calling`
+### `enviar transacción genérica / llamadas dinámicas entre contratos`
 
 ```c++
 // solidity
 
-// invokes function found at`addr`, sends the `_amount` to the `addr`, and the `_transactionData` payload.
+// invoca una función encontrada en `addr`, envía el `_amount` al `addr` y el payload de la `_transactionData`.
 addr.call.value(_amount)(_transactionData)
 ```
 
@@ -743,9 +739,9 @@ use ink_env::call::{
     Selector,
 };
 
-/// A wrapper that allows us to encode a blob of bytes.
+/// Un wrapper que nos permite codificar un blob de bytes.
 ///
-/// We use this to pass the set of untyped (bytes) parameters to the `CallBuilder`.
+/// Usamos esto para pasar el conjunto de parámetros no tipados (bytes) al `CallBuilder`.
 struct CallInput<'a>(&'a [u8]);
 
 impl<'a> scale::Encode for CallInput<'a> {
@@ -756,7 +752,7 @@ impl<'a> scale::Encode for CallInput<'a> {
 
 // ...
 
-// see: https://github.com/paritytech/ink-examples/blob/main/multisig/lib.rs#L535
+// ver: https://github.com/paritytech/ink-examples/blob/main/multisig/lib.rs#L535
 fn invoke_transaction(
     &mut self,
     callee: AccountId,
@@ -768,13 +764,13 @@ fn invoke_transaction(
     let result = build_call::<<Self as ::ink_lang::reflect::ContractEnv>::Env>()
         .call_type(
             Call::new()
-                .callee(callee) // contract to call
+                .callee(callee) // contrato a llamar
                 .gas_limit(*gas_limit)
-                .transferred_value(transfer_amount), // value to transfer with call
+                .transferred_value(transfer_amount), // valor a transferir con la llamada
         )
         .exec_input(
             ExecutionInput::new(Selector::from(*function_selector))
-                    .push_arg(CallInput(transaction_data)), // SCALE-encoded parameters
+                    .push_arg(CallInput(transaction_data)), // parámetros SCALE-encoded
         )
         .returns::<()>()
         .fire()
@@ -784,19 +780,19 @@ fn invoke_transaction(
 
 ```
 
-Note: the `function_selector` bytes can be found in the generated `target/ink/<contract-name>.json`.
+Nota: los bytes de `function_selector` pueden encontrarse en el `target/ink/<contract-name>.json` generado.
 
-## Limitations of ink! v3
+## Limitaciones de ink! v3
 
-- Multi-file projects are not supported with pure ink!
-    - implementing traits / interfaces will not work
-    - There are alternatives that do add this functionality such as OpenBrush
-- Nested structs and data structures can be difficult to use
-- Cross-contract calling prevents events from being emitted. See [here](https://github.com/paritytech/ink/issues/1000) for details.
-- Cross-contract calling can not be tested off-chain with unit tests.
-  On-chain integration tests will need to be used.
+- Los proyectos multi archivo no son soportados con ink! puro.
+    - implementar traits / interfaces no funcionará 
+    - Hay alternativas que agregarán esta funcionalidad tal como OpenBrush 
+- Structs anidados y estructuras de datos serán difíciles de usar.
+- Las llamadas entre contratos evitarán que los eventos sean emitidos. Ver [aquí](https://github.com/paritytech/ink/issues/1000) para detalles. 
+- Las llamadas entre contratos no pueden ser testeadas off-chain con tests unitarios.
+ Se necesitará utilizar tests de integración On-chain.
 
-## Troubleshooting Errors
+## Solución de problemas y errores
 
 - `ERROR: Validation of the Wasm failed.`
 
@@ -812,8 +808,8 @@ This will disable safe math operations, but unfortunately we are currently not
 aware of a better workaround until the bug in the compiler is fixed.
 ```
 
-**Solution**  
-Add the following to the contract Cargo.toml:
+**Solución**  
+Agregar lo siguiente al Cargo.toml del contrato:
 
 ```
 [profile.release]
@@ -822,16 +818,16 @@ overflow-checks = false
 
 - `"failed to load bitcode of module '...' "`
 
-This happens when trying to import a contract for cross-contract calling.
+Esto sucede cuando se está intentando importar un contrato para llamadas entre contratos.
 
-**Solution**  
-Ensure that the following is added to Cargo.toml contract import:`
+**Solución**  
+Asegurarse que lo siguiente se agregue a la importación del Cargo.toml del contrato:
 
 ```
 features = ["ink-as-dependency"]
 ```
 
-so the import would look like:
+por lo tanto la importación se vería así:
 
 ```
 mycontract = { path = "mycontract/", default-features = false, features = ["ink-as-dependency"]}
@@ -839,12 +835,13 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 
 ## unit testing (off-chain)
 
-- Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
-- To run ink! tests, do _not_ use `cargo +nightly contract test`. Use `cargo +nightly test`. Add the `--nocapture` flag for debug prints to show. See [here](https://substrate.stackexchange.com/questions/3197/how-to-understand-which-test-failed-in-ink) for more info why.
-- From the contract module, make sure to make the the contract struct and anything else that is going to be used in the unit tests public. For example:
+- Los unit tests son una parte integral del desarrollo de un smart contract y garantizan que el código funciona off-chain antes de testearlo on-chain. 
+- Para ejecutar tests de ink!, _no_ usar `cargo +nightly contract test`. Usar `cargo +nightly test`. Agregar el indicador `--nocapture` para mostrar los prints de debug. Ver [aquí](https://substrate.stackexchange.com/questions/3197/how-to-understand-which-test-failed-in-ink) para más información sobre las razones.
+- Desde el módulo del contrato, asegurarse que se hace público el struct del contrato y cualquier otra cosa que se use en el test de unidad.
+   Por ejemplo:
 
 ```rust
-// top of file
+// tope del archivo
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use ink_lang as ink;
@@ -854,88 +851,88 @@ pub use self::mycontract::{
 };
 ```
 
-- Off-chain unit tests will not work with cross-contract calls.
-  One workaround to ensure unit tests are still passing is to provide mock data.
+- Los unit tests Off-chain no funcionarán con las llamadas entre contratos. 
+  Una solución para asegurarse que los unit tests están pasando es proveer datos simulados.
 
-An easy approach is to use conditional compiling with `#[cfg(test)]` and `#[cfg(not(test))]`.
+Un enfoque sencillo es usar una compilación condicional con `#[cfg(test)]` y `#[cfg(not(test))]`.
 
-Note: this solution is not ideal. ink! v4.0 will provide much better solutions.
+Nota: Esta solución no es ideal. ink! v4.0 proveerá soluciones mucho mejores.
 
-For example, here is a read-only ERC20 cross-contract call:
+Por ejemplo, aquí hay una llamada entre contratos ERC20 sólo modo lectura:
 
 ```rust
-// only compiles when *not* running tests
+// sólo compila cuando no está ejecutando tests
 #[cfg(not(test))]
 fn get_token_balance(&self, caller: &AccountId) -> Balance {
-    // calls the external ERC-20 contract
+    // llama al contrato externo ERC-20 
     self.token.balance_of(*caller)
 }
 
-// only compiles when running tests
+// sólo compila cuando está ejecutando tests
 #[cfg(test)]
 fn get_token_balance(&self, _: &AccountId) -> Balance {
-    // arbitrary value
+    // valor arbitrario
     1
 }
 ```
 
-And if the cross-contract call _writes_ to storage, a mock field can be added to the contract struct. For example:
+Y si la llamada entre contratos _escribe_ en el storage, un campo simulado puede agregase al struct del contrato. Por ejemplo:
 
 ```rust
 #[ink(storage)]
 pub struct MyContract {
     #[cfg(test)]
-    mock_field: SomeStruct, // will serve as a fake storage
+    mock_field: SomeStruct, // servirá como un storage falso
 }
 
 ...
 
-// on-chain, performs cross-contract call
+// on-chain, ejecuta llamadas entre contratos 
 #[cfg(not(test))]
 fn do_some_write(&mut self) {
     self.external_contract.write_to_field(0xDEADBEEF);
 }
 
 
-// testing environment only
+// sólo para ambiente de testing
 #[cfg(test)]
 fn do_some_write(&mut self) {
     self.mock_field.my_fake_storage_item = 0xDEADBEEF;
 }
 ```
 
-- useful code to interact and modify the contract enviroment for testing
+- código útil para interactuar y modificar el ambiente del contrato para testing
 
 [ink_env docs](https://paritytech.github.io/ink/ink_env/test/index.html)
 
 ```rust
-// get the default accounts (alice, bob, ...)
+// obtener las cuentas default (alice, bob, ...)
 let accounts = ink_env::test::default_accounts::<ink_env::DefaultEnvironment>();
-accounts.alice //usage example
+accounts.alice //ejemplo de uso
 
-// set which account calls the contract
+// establecer cuál cuenta llama al contrato
 ink_env::test::set_caller::<ink_env::DefaultEnvironment>(accounts.bob);
 
-// get the contract's address
+// obtener la dirección del contrato
 let callee = ink_env::account_id::<ink_env::DefaultEnvironment>();
 
-// set the contracts address.
-// by default, this is alice's account
+// establecer la dirección del contrato
+// por default, ésta es la cuenta de alice
 ink_env::test::set_callee::<ink_env::DefaultEnvironment>(callee);
 
-// transfer native currency to the contract
+// transferir la moneda nativa al contrato 
 ink_env::test::set_value_transferred::<ink_env::DefaultEnvironment>(2);
 
-// increase block number (and block timestamp).
-// this can be placed in a loop to advance the block many times
+// aumentar el número de bloque (y el timestamp del bloque).
+// esto puede ser colocado en un bucle para adelantar el bloque varias veces
 ink_env::test::advance_block::<ink_env::DefaultEnvironment>();
 
-// generate arbitrary AccountId
+// generar un AccountId arbitrario
 AccountId::from([0x01; 32]);
 
-// generate arbitrary Hash
+// generar un Hash arbitrario 
 Hash::from([0x01; 32])
 
-// macro for tests that are expected to panic.
+// macro para tests que se espera que entren en panic.
 #[should_panic]
 ```
