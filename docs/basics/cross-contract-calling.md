@@ -290,7 +290,7 @@ Message arguments will be encoded in the order in which they are provided to the
 This means that they should match the order (and type) they appear in the function
 signature.
 
-You will not be able to get any feedback about this at at compile time. You will only
+You will not be able to get any feedback about this at compile time. You will only
 find out your call failed at runtime!
 
 #### CallBuilder: Delegate Call
