@@ -85,10 +85,15 @@ module.exports = {
             items: [
               "frontend/react/hooks/contracts/use-call",
               "frontend/react/hooks/contracts/use-call-subscription",
+              "frontend/react/hooks/contracts/use-code-hash",
               "frontend/react/hooks/contracts/use-contract",
+              "frontend/react/hooks/contracts/use-deployer",
               "frontend/react/hooks/contracts/use-dry-run",
               "frontend/react/hooks/contracts/use-event-subscription",
               "frontend/react/hooks/contracts/use-events",
+              "frontend/react/hooks/contracts/use-tx-events",
+              "frontend/react/hooks/contracts/use-metadata",
+              "frontend/react/hooks/contracts/use-salter",
               "frontend/react/hooks/contracts/use-tx",
               "frontend/react/hooks/contracts/use-tx-payment-info",
             ]
@@ -190,6 +195,25 @@ module.exports = {
             label: "Substrate",
             items: [
               "frontend/utils/substrate/bn-to-balance",
+            ]
+          },
+          {
+            type: "category",
+            label: "Events",
+            items: [
+              "frontend/utils/events/format-event-name",
+              { type: "category",
+                label: "Contracts",
+                items: [
+                  "frontend/utils/events/contracts/instantiated",
+                ]
+              },
+              { type: "category",
+                label: "System",
+                items: [
+                  "frontend/utils/events/system/extrinsic-failed",
+                ]
+              },
             ]
           },
           {
