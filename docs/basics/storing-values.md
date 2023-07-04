@@ -96,7 +96,7 @@ pub enum Status {
 
 ### Struct
 
-You can combine all the above mentioned types even in a custom `struct` you can than store in the contracts storage.
+You can even combine all the above mentioned types in a custom `struct` which you can then store in the contract's storage.
 
 ```rust
 mod MyContract {
