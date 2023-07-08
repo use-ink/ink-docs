@@ -43,7 +43,7 @@ export const ConnectWallet = ({ children }) => {
       <p>You are connected as {account?.name || account.address}</p>
 
       <button onClick={disconnect}>
-        Disonnect Wallet
+        Disconnect Wallet
       </button>
     </>
   )
