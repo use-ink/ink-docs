@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 const RECAPTCHA_SITE_KEY = '6LdU5kckAAAAANktvvAKJ0auYUBRP0su94G7WXwe'
-const FAUCET_URL = 'https://ink-docs-rococo-faucet.parity-testnet.parity.io/drip/web'
+const FAUCET_URL = 'https://rococo-faucet.parity-testnet.parity.io/drip/web'
 
 const Faucet = () => {
   const [captcha, setCaptcha] = useState<string | null>(null)
