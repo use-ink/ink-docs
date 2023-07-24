@@ -54,7 +54,7 @@ mod flipper {
 ```rust
 #[ink(message, payable)]
 pub fn pay_me(&self) {
-    let _transferred = self.env().transferred_balance();
+    let _transferred = self.env().transferred_value();
 }
 ```
 
