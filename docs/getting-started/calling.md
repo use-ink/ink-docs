@@ -63,7 +63,7 @@ Press **"Read"** and confirm that it returns the value `false`:
 
 So let's make the value turn `true` now!
 
-The alternative message to send with the UI is `flip()`. Again, accept the default values for the other options and click **Call**
+The alternative message to send with the UI is `flip()`. Again, accept the default values for the other options and click **Call contract**
 
 ![An image of a Flipper transaction](/img/send-as-transaction.png)
 
