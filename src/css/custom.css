@@ -269,6 +269,10 @@ button:disabled {
   margin: 25px 0px 25px 0px;
 }
 
+.wallet {
+  max-width: 200px;
+}
+
 .chainHeader {
   height: 50px !important;
   margin: 25px 0px -25px 0px;
