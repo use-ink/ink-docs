@@ -631,9 +631,7 @@ impl ink_storage::traits::PackedAllocate for Proposal {
 In ink!, to do [cross-contract calling](https://use.ink/basics/cross-contract-calling), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
 
 ```rust
-#![cfg_attr(not(feature = "std"), no_std)]
-
-use ink_lang as ink;
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 // make the structs visible
 pub use self::erc20::{
