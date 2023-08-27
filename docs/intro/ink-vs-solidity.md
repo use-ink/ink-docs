@@ -187,20 +187,69 @@ A few key differences are:
 - Ensure that function's visibility (public, private) are matched in ink!
 - In Solidity, if a function returns a `bool success`, ink! will use a `Result<()>` instead (`Result::Ok` or `Result::Err`).
 
-  ```rust
-  // ink!
+Solidity return example:
+```c++
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
 
-  // result type
-  pub type Result<T> = core::result::Result<T, Error>;
+contract Example {
+    uint128 public data;
 
-  // ...
+    constructor(){}
 
-  // public function that returns a Result
-  #[ink(message)]
-  pub fn my_function(&self) -> Result<()> {
-      Ok(())
-  }
-  ```
+    function setData(uint128 newData) public returns (
+        bool success, 
+        string memory reason
+        ) {
+
+        if (newData == 0) {
+            return (false, "Data should not be zero");
+        }
+
+        data = newData;
+        return (true, "");
+    }
+}
+```
+
+The equivalent contract in ink!:
+```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+
+#[ink::contract]
+mod example {
+    #[ink(storage)]
+    pub struct Example {
+        data: u128,
+    }
+
+    #[derive(Debug, scale::Encode, scale::Decode, PartialEq, Eq)]
+    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    pub enum Error {
+        DataShouldNotBeZero,
+    }
+
+    pub type Result<T> = core::result::Result<T, Error>;
+
+    impl Example {
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            Self { data: 0 }
+        }
+
+        #[ink(message)]
+        pub fn set_data(&mut self, new_data: u128) -> Result<()> {
+            if new_data == 0 {
+                return Err(Error::DataShouldNotBeZero);
+            }
+
+            self.data = new_data;
+            Ok(())
+        }
+    }
+}
+```
+
 
 ## Best Practices + Tips
 
