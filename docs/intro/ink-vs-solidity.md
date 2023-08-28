@@ -382,8 +382,6 @@ assert!(some_value < 10, "some_value is not less than 10");
 ```c++
 // solidity
 block.timestamp
-// or
-now
 ```
 
 ```rust
@@ -436,7 +434,7 @@ function myFunction() payable returns (uint64) {}
 
 ```rust
 #[ink(message, payable)]
-pub fn my_function() -> (u64) {}
+pub fn my_function(&self) -> u64 {}
 ```
 
 ### `received deposit / payment`
@@ -455,7 +453,7 @@ self.env().transferred_value()
 
 ```c++
 // solidity
-this.balance
+address(this).balance
 ```
 
 ```rust
@@ -488,7 +486,7 @@ event MyCoolEvent(
 );
 
 // emit event
-MyCoolEvent (someValue, someOtherValue)
+emit MyCoolEvent(someValue, someOtherValue);
 ```
 
 ```rust
@@ -536,7 +534,7 @@ In general, `Result::Err` should be used when a _calling contract_ needs to know
 
 ```c++
 // Solidity
-function myFunction(bool returnError) public {
+function myFunction(bool returnError) public pure {
     require(!returnError, "my error here");
 
     // or
