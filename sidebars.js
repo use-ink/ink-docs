@@ -247,6 +247,7 @@ module.exports = {
       },
       // { "Swanky suite": ["third-party-tools/swanky/cli"] },
       "third-party-tools/ink-analyzer",
+      "third-party-tools/subwallet",
     ],
     FAQ: ["faq/faq", "faq/migrating-from-ink-3-to-4"],
     "Brand Assets": [
