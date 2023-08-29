@@ -4,7 +4,7 @@ slug: /getting-started/use-openbrush
 ---
 
 [OpenBrush] is a library for smart contract development on ink! maintained by the
-[Brushfam](https://brushfam.io) team.
+[Brushfam](https://github.com/Supercolony-net) team.
 
 It provides standard contracts based on [Polkadot Standard Proposals (PSPs)](https://github.com/w3f/PSPs),
 as well as higher-level contracts and Rust macros that generate ink! code.
