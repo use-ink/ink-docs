@@ -44,10 +44,10 @@ Algunos de los más interesantes son:
 
 <div className="row">
     <div className="col text--center">
-        <a href="https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts"><img src="/img/icons/upgradable.svg" width="100" /></a>
+        <a href="https://github.com/paritytech/ink/tree/master/integration-tests/upgradeable-contracts"><img src="/img/icons/upgradable.svg" width="100" /></a>
         <p>
             Un contrato actualizable.<br/>
-            <a href="https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts">
+            <a href="https://github.com/paritytech/ink/tree/master/integration-tests/upgradeable-contracts">
                 » ver ejemplo
             </a>
         </p>

@@ -235,4 +235,4 @@ for more details.
 ## Examples
 
 Examples of upgradable contracts can be found in the 
-[ink! repository](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts).
+[ink! repository](https://github.com/paritytech/ink/tree/master/integration-tests/upgradeable-contracts).
