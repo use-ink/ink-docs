@@ -187,20 +187,69 @@ A few key differences are:
 - Ensure that function's visibility (public, private) are matched in ink!
 - In Solidity, if a function returns a `bool success`, ink! will use a `Result<()>` instead (`Result::Ok` or `Result::Err`).
 
-  ```rust
-  // ink!
+Solidity return example:
+```c++
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
 
-  // result type
-  pub type Result<T> = core::result::Result<T, Error>;
+contract Example {
+    uint128 public data;
 
-  // ...
+    constructor(){}
 
-  // public function that returns a Result
-  #[ink(message)]
-  pub fn my_function(&self) -> Result<()> {
-      Ok(())
-  }
-  ```
+    function setData(uint128 newData) public returns (
+        bool success, 
+        string memory reason
+        ) {
+
+        if (newData == 0) {
+            return (false, "Data should not be zero");
+        }
+
+        data = newData;
+        return (true, "");
+    }
+}
+```
+
+The equivalent contract in ink!:
+```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+
+#[ink::contract]
+mod example {
+    #[ink(storage)]
+    pub struct Example {
+        data: u128,
+    }
+
+    #[derive(Debug, scale::Encode, scale::Decode, PartialEq, Eq)]
+    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    pub enum Error {
+        DataShouldNotBeZero,
+    }
+
+    pub type Result<T> = core::result::Result<T, Error>;
+
+    impl Example {
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            Self { data: 0 }
+        }
+
+        #[ink(message)]
+        pub fn set_data(&mut self, new_data: u128) -> Result<()> {
+            if new_data == 0 {
+                return Err(Error::DataShouldNotBeZero);
+            }
+
+            self.data = new_data;
+            Ok(())
+        }
+    }
+}
+```
+
 
 ## Best Practices + Tips
 
@@ -333,8 +382,6 @@ assert!(some_value < 10, "some_value is not less than 10");
 ```c++
 // solidity
 block.timestamp
-// or
-now
 ```
 
 ```rust
@@ -387,7 +434,7 @@ function myFunction() payable returns (uint64) {}
 
 ```rust
 #[ink(message, payable)]
-pub fn my_function() -> (u64) {}
+pub fn my_function(&self) -> u64 {}
 ```
 
 ### `received deposit / payment`
@@ -406,7 +453,7 @@ self.env().transferred_value()
 
 ```c++
 // solidity
-this.balance
+address(this).balance
 ```
 
 ```rust
@@ -439,7 +486,7 @@ event MyCoolEvent(
 );
 
 // emit event
-MyCoolEvent (someValue, someOtherValue)
+emit MyCoolEvent(someValue, someOtherValue);
 ```
 
 ```rust
@@ -487,7 +534,7 @@ In general, `Result::Err` should be used when a _calling contract_ needs to know
 
 ```c++
 // Solidity
-function myFunction(bool returnError) public {
+function myFunction(bool returnError) public pure {
     require(!returnError, "my error here");
 
     // or
@@ -546,13 +593,17 @@ in ink! this _seems_ like it could be represented like so:
 #[ink::contract]
 mod dao {
 
-    #[derive(SpreadAllocate)]
+    use ink::{
+        prelude::vec::Vec,
+        storage::Mapping,
+    };
+
+    #[ink(storage)]
     pub struct Proposal {
         voted_yes: Mapping<AccountId, bool>,
     }
 
     #[ink(storage)]
-    #[derive(SpreadAllocate)]
     pub struct Dao {
         proposals: Vec<Proposal>,
         is_whitelisted: Mapping<AccountId, bool>,
@@ -560,9 +611,11 @@ mod dao {
 
     impl Dao{
         #[ink(constructor)]
-        pub fn new(/*...*/) -> Self {
-            //required for mappings
-            ink_lang::utils::initialize_contract(|contract| {/*...*/})
+        pub fn new() -> Self {
+            Self { 
+                is_whitelisted: Mapping::default(),
+                proposals: Vec::new(),
+            }
         }
     }
 }
@@ -573,28 +626,34 @@ However, this will cause an error due to the nested mapping. [This answer](https
 So, as of now, to get around this issue an alternate data structure will need to be used. A data-structure that can be interchanged with the `Mapping` syntax and with minimal additional implementations is the `BTreeMap`. `BTreeMap` is less efficient than `Mapping`, but is an easy workaround until nested mappings are allowed. This will be used in the nested struct. Additional `derive`s will need to be added to be compatible with the #[ink(storage)] struct (see below).
 
 ```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+
 #[ink::contract]
 mod dao {
 
-    use ink_prelude::collections::BTreeMap;
+    use ink::{
+        prelude::{
+            collections::BTreeMap,
+            vec::Vec,
+        },
+        storage::Mapping,
+    };
 
     #[derive(
         scale::Encode,
         scale::Decode,
-        SpreadLayout,
-        PackedLayout,
-        SpreadAllocate,
+        Debug,
     )]
     #[cfg_attr(
         feature = "std",
-        derive(scale_info::TypeInfo, ink_storage::traits::StorageLayout)
+        derive(scale_info::TypeInfo)
     )]
     pub struct Proposal {
         voted_yes: BTreeMap<AccountId, bool>,
     }
 
     #[ink(storage)]
-    #[derive(SpreadAllocate)]
+    #[derive(Debug)]
     pub struct Dao {
         proposals: Vec<Proposal>,
         is_whitelisted: Mapping<AccountId, bool>,
@@ -602,26 +661,38 @@ mod dao {
 
     impl Dao{
         #[ink(constructor)]
-        pub fn new(/*...*/) -> Self {
-            //required for mappings
-            ink_lang::utils::initialize_contract(|contract| {/*...*/})
+        pub fn new() -> Self {
+            Self { 
+                is_whitelisted: Mapping::default(),
+                proposals: Vec::new(),
+            }
         }
-    }
-}
-```
 
-This almost works as expected. However, there is still one issue. `SpreadAllocate` (used with `Mapping`) requires that `Vec<Proposal>` implements `PackedAllocate`. To fix this, `Proposal` needs to implement `PackedAllocate`. See [here](https://docs.rs/ink_storage/3.3.1/ink_storage/traits/trait.PackedAllocate.html) for details + examples. See the following for this example:
+        #[ink(message)]
+        pub fn add_proposal(&mut self) {
+            self.proposals.push(Proposal {
+                voted_yes: BTreeMap::new(),
+            });
+        }
 
-```rust
-use ink_primitives::Key;
+        #[ink(message)]
+        pub fn vote(&mut self, proposal_id: u32, vote: bool) {
+            let proposal = self.proposals
+                .get_mut(proposal_id as usize)
+                .unwrap();
+            
+            proposal.voted_yes
+                .insert(Self::env().caller(), vote);
+        }        
 
-pub struct Proposal {
-    voted_yes: BTreeMap<AccountId, bool>,
-}
-
-impl ink_storage::traits::PackedAllocate for Proposal {
-    fn allocate_packed(&mut self, at: &Key){
-        PackedAllocate::allocate_packed(&mut *self, at)
+        #[ink(message)]
+        pub fn get_proposal(&self, proposal_id: u32) -> BTreeMap<AccountId, bool> {
+            self.proposals
+                .get(proposal_id as usize)
+                .unwrap()
+                .voted_yes
+                .clone()
+        }
     }
 }
 ```
@@ -631,9 +702,7 @@ impl ink_storage::traits::PackedAllocate for Proposal {
 In ink!, to do [cross-contract calling](https://use.ink/basics/cross-contract-calling), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
 
 ```rust
-#![cfg_attr(not(feature = "std"), no_std)]
-
-use ink_lang as ink;
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 // make the structs visible
 pub use self::erc20::{
