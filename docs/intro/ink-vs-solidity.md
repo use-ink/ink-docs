@@ -905,14 +905,13 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 ## unit testing (off-chain)
 
 - Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
-- To run ink! tests, do _not_ use `cargo +nightly contract test`. Use `cargo +nightly test`. Add the `--nocapture` flag for debug prints to show. See [here](https://substrate.stackexchange.com/questions/3197/how-to-understand-which-test-failed-in-ink) for more info on why.
+- To run ink! tests, use the command `cargo test`. Add the `--nocapture` flag for debug prints to show. 
 - From the contract module, make sure to make the contract struct and anything else that is going to be used in the unit tests public. For example:
 
 ```rust
 // top of file
-#![cfg_attr(not(feature = "std"), no_std)]
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
-use ink_lang as ink;
 
 pub use self::mycontract::{
     MyContract
@@ -924,7 +923,7 @@ pub use self::mycontract::{
 
 An easy approach is to use conditional compiling with `#[cfg(test)]` and `#[cfg(not(test))]`.
 
-Note: this solution is not ideal. ink! v4.0 will provide much better solutions.
+Note: This solution may not be the best option. A more effective approach can be found in our current E2E test. Please refer to [the showcased example here](https://github.com/paritytech/ink-examples/tree/main/multi-contract-caller).
 
 For example, here is a read-only ERC20 cross-contract call:
 
@@ -971,29 +970,29 @@ fn do_some_write(&mut self) {
 
 - useful code to interact and modify the contract environment for testing
 
-[ink_env docs](https://paritytech.github.io/ink/ink_env/test/index.html)
+[ink_env docs](https://docs.rs/ink_env/4.3.0/ink_env/index.html)
 
 ```rust
 // get the default accounts (alice, bob, ...)
-let accounts = ink_env::test::default_accounts::<ink_env::DefaultEnvironment>();
+let accounts = ink::env::test::default_accounts::<ink::env::DefaultEnvironment>();
 accounts.alice //usage example
 
 // set which account calls the contract
-ink_env::test::set_caller::<ink_env::DefaultEnvironment>(accounts.bob);
+ink::env::test::set_caller::<ink::env::DefaultEnvironment>(accounts.bob);
 
 // get the contract's address
-let callee = ink_env::account_id::<ink_env::DefaultEnvironment>();
+let callee = ink::env::account_id::<ink::env::DefaultEnvironment>();
 
 // set the contracts address.
 // by default, this is alice's account
-ink_env::test::set_callee::<ink_env::DefaultEnvironment>(callee);
+ink::env::test::set_callee::<ink::env::DefaultEnvironment>(callee);
 
 // transfer native currency to the contract
-ink_env::test::set_value_transferred::<ink_env::DefaultEnvironment>(2);
+ink::env::test::set_value_transferred::<ink::env::DefaultEnvironment>(2);
 
 // increase block number (and block timestamp).
 // this can be placed in a loop to advance the block many times
-ink_env::test::advance_block::<ink_env::DefaultEnvironment>();
+ink::env::test::advance_block::<ink::env::DefaultEnvironment>();
 
 // generate arbitrary AccountId
 AccountId::from([0x01; 32]);
