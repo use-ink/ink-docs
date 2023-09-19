@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
-const RECAPTCHA_SITE_KEY = '6LdU5kckAAAAANktvvAKJ0auYUBRP0su94G7WXwe'
+const RECAPTCHA_SITE_KEY = '6LcgFI4nAAAAAATrEMoJ6zBacsx5udc1UhGFXemH'
 const FAUCET_URL = 'https://rococo-faucet.parity-testnet.parity.io/drip/web'
 
 const Faucet = () => {
