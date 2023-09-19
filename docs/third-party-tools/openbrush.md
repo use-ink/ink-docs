@@ -10,7 +10,7 @@ It provides standard contracts based on [Polkadot Standard Proposals (PSPs)](htt
 as well as higher-level contracts and Rust macros that generate ink! code.
 
 Using OpenBrush is simple, you only add the dependency to your `Cargo.toml` file.
-You can find an example [here](https://docs.openbrush.io/smart-contracts/overview).
+You can find an example [here](https://learn.brushfam.io/docs/OpenBrush/smart-contracts/overview).
 
 ### Which standards and contract components does it contain?
 
@@ -29,7 +29,7 @@ You can find an example [here](https://docs.openbrush.io/smart-contracts/overvie
 OpenBrush adds support for generic Trait implementations, so that you can
 split a Trait and its implementation into different files. This can
 increase the readability and maintainability of your smart-contract
-code base ([detailed description](https://github.com/727-Ventures/openbrush-contracts/blob/main/docs/docs/smart-contracts/example/setup_project.md)).
+code base ([detailed description](https://learn.brushfam.io/docs/OpenBrush/smart-contracts/example/setup_project)).
 
 ### Wrapper around Traits: `#[openbrush::wrapper]`
 
@@ -65,7 +65,7 @@ for more information.
 ### Documentation
 
 - [OpenBrush Github repo](https://github.com/727-Ventures/openbrush-contracts)
-- [Official Docs](https://docs.openbrush.io/)
+- [Official Docs](https://learn.brushfam.io/docs/openbrush)
 - [OpenBrush website](https://openbrush.io/)
 - [Substrate Seminar (Youtube)](https://www.youtube.com/watch?v=I5OFGNVvzOc)
 - [How to use modifiers](https://medium.com/supercolony/how-to-use-modifiers-for-ink-smart-contracts-using-openbrush-7a9e53ba1c76)

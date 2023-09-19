@@ -7,7 +7,7 @@ slug: /getting-started/use-openbrush
 
 Proporciona contratos estándar basados en las [Propuestas Estándar de Polkadot (PSPs)](https://github.com/w3f/PSPs), así como contratos de más alto nivel y macros de Rust que generan código de ink!.
 
-Usar OpenBrush es simple, sólo tienes que añadir la dependencia a tu archivo `Cargo.toml`. Puedes encontrar un ejemplo [aquí](https://docs.openbrush.io/smart-contracts/overview).
+Usar OpenBrush es simple, sólo tienes que añadir la dependencia a tu archivo `Cargo.toml`. Puedes encontrar un ejemplo [aquí](https://learn.brushfam.io/docs/OpenBrush/smart-contracts/overview).
 
 ### ¿Qué estándares y componentes de contrato contiene?
 
@@ -23,7 +23,7 @@ Usar OpenBrush es simple, sólo tienes que añadir la dependencia a tu archivo `
 
 ### Implementación genérica de Traits
 
-OpenBrush añade soporte para implementaciones genéricas de Traits. De esta manera podras dividir un Trait y su implementación en diferentes archivos. Esto puede aumentar la legibilidad y mantenibilidad del código de tu contrato inteligente ([descripción detallada](https://github.com/727-Ventures/openbrush-contracts/blob/main/docs/docs/smart-contracts/example/setup_project.md)).
+OpenBrush añade soporte para implementaciones genéricas de Traits. De esta manera podras dividir un Trait y su implementación en diferentes archivos. Esto puede aumentar la legibilidad y mantenibilidad del código de tu contrato inteligente ([descripción detallada](https://learn.brushfam.io/docs/OpenBrush/smart-contracts/example/setup_project)).
 
 ### Wrapper de Traits
 
@@ -32,7 +32,7 @@ OpenBrush simplifica la comunicación entre contratos. No es necesario contar co
 ### Documentación
 
 - [Repositorio Github de OpenBrush](https://github.com/727-Ventures/openbrush-contracts)
-- [Documentación oficial](https://docs.openbrush.io/)
+- [Documentación oficial](https://learn.brushfam.io/docs/openbrush)
 - [Sitio web de OpenBrush](https://openbrush.io/)
 - [Seminario de Substrate (Youtube)](https://www.youtube.com/watch?v=I5OFGNVvzOc)
 - [Cómo usar modificadores?](https://medium.com/supercolony/how-to-use-modifiers-for-ink-smart-contracts-using-openbrush-7a9e53ba1c76)

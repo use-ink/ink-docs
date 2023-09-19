@@ -8,7 +8,7 @@ slug: /getting-started/openbrush
 
 It provides standard contracts based on [PSPs], as well as useful contracts and Rust macros to help you build ink! smart contracts.
 
-Using OpenBrush is simple, you will only add the dependency to your `Cargo.toml` file. Here is an [example](https://docs.openbrush.io/smart-contracts/overview) of how to do it.
+Using OpenBrush is simple, you will only add the dependency to your `Cargo.toml` file. Here is an [example](https://learn.brushfam.io/docs/OpenBrush/smart-contracts/overview) of how to do it.
 
 ### Why use OpenBrush?
 
@@ -33,7 +33,7 @@ Using OpenBrush is simple, you will only add the dependency to your `Cargo.toml`
 
 ### Generic Trait Implementation
 
-More importantly, OpenBrush adds support for generic Trait implementation so you can split Trait and Impls into different files, which will increase the readability and maintainability of your smart-contract code base (see detailed description [here](https://github.com/727-Ventures/openbrush-contracts/blob/main/docs/docs/smart-contracts/example/setup_project.md))
+More importantly, OpenBrush adds support for generic Trait implementation so you can split Trait and Impls into different files, which will increase the readability and maintainability of your smart-contract code base (see detailed description [here](https://learn.brushfam.io/docs/OpenBrush/smart-contracts/example/setup_project))
 
 ### Wrapper around Traits
 
@@ -42,7 +42,7 @@ Defining a Trait definition is sufficient (a contract that implements that Trait
 ### Documentation
 
 - [OpenBrush Github repo](https://github.com/727-Ventures/openbrush-contracts)
-- [Official Docs](https://docs.openbrush.io/)
+- [Official Docs](https://learn.brushfam.io/docs/openbrush)
 - [OpenBrush website](https://openbrush.io/)
 - [Substrate Seminar (Youtube)](https://www.youtube.com/watch?v=I5OFGNVvzOc)
 - [How to use modifiers](https://medium.com/supercolony/how-to-use-modifiers-for-ink-smart-contracts-using-openbrush-7a9e53ba1c76)
