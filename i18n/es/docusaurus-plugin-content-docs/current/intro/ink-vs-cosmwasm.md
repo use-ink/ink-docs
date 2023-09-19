@@ -131,5 +131,5 @@ Los contratos de CosmWasm son deplegados e instanciados con ayuda del ejecutable
 La lista de pasos a seguir puede encontrarse [aquí](https://docs.cosmwasm.com/docs/1.0/getting-started/interact-with-contract).
 
 Es posible desplegar e interactuar un contrato ink! usando el CLI(`cargo-contract`), o el UI web ([`contracts-ui`](https://contracts-ui.substrate.io/)).
-- [Instrucciones para `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/docs/extrinsics.md)
+- [Instrucciones para `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/crates/extrinsics/README.md)
 - [Instrucciones para `contracts-ui`](/getting-started/deploy-your-contract)
