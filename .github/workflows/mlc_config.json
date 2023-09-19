@@ -2,7 +2,7 @@
   "retryCount": 12,
   "fallbackRetryDelay": "60s",
   "timeout": "30s",
-  "aliveStatusCodes": [429, 200, 403],
+  "aliveStatusCodes": [429, 200, 403, 0],
   "replacementPatterns": [
     {
       "pattern": "^/",
