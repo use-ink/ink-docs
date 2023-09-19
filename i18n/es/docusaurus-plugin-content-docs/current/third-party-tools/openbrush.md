@@ -32,7 +32,7 @@ OpenBrush simplifica la comunicación entre contratos. No es necesario contar co
 ### Documentación
 
 - [Repositorio Github de OpenBrush](https://github.com/727-Ventures/openbrush-contracts)
-- [Documentación oficial](https://learn.brushfam.io/docs/openbrush)
+- [Documentación oficial](https://learn.brushfam.io/docs/OpenBrush)
 - [Sitio web de OpenBrush](https://openbrush.io/)
 - [Seminario de Substrate (Youtube)](https://www.youtube.com/watch?v=I5OFGNVvzOc)
 - [Cómo usar modificadores?](https://medium.com/supercolony/how-to-use-modifiers-for-ink-smart-contracts-using-openbrush-7a9e53ba1c76)

@@ -42,7 +42,7 @@ Defining a Trait definition is sufficient (a contract that implements that Trait
 ### Documentation
 
 - [OpenBrush Github repo](https://github.com/727-Ventures/openbrush-contracts)
-- [Official Docs](https://learn.brushfam.io/docs/openbrush)
+- [Official Docs](https://learn.brushfam.io/docs/OpenBrush)
 - [OpenBrush website](https://openbrush.io/)
 - [Substrate Seminar (Youtube)](https://www.youtube.com/watch?v=I5OFGNVvzOc)
 - [How to use modifiers](https://medium.com/supercolony/how-to-use-modifiers-for-ink-smart-contracts-using-openbrush-7a9e53ba1c76)
