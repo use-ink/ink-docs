@@ -686,7 +686,7 @@ use erc20::Erc20Ref;
 There are two methods to setup the other contract.
 
 1. Instantiate the cross-called-contract in the main contract's constructor.
-   See [here](https://use.ink/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/delegator) for an example.
+   See [here](https://use.ink/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
 

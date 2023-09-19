@@ -76,10 +76,10 @@ Algunos de los más interesantes son:
 
 <div className="row">
     <div className="col text--center">
-        <a href="https://github.com/paritytech/ink-examples/tree/main/delegator"><img src="/img/icons/delegator.svg" width="100" /></a>
+        <a href="https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator"><img src="/img/icons/delegator.svg" width="100" /></a>
         <p>
             Comunicación entre contratos.<br/>
-            <a href="https://github.com/paritytech/ink-examples/tree/main/delegator">
+            <a href="https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator">
                 » ver ejemplo
             </a>
         </p>
