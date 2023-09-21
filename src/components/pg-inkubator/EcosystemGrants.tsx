@@ -1,12 +1,12 @@
 import React from 'react'
+import Canary from '../../../static/animations/ecosystem-canary.json'
+import CuttingEdge from '../../../static/animations/ecosystem-cutting-edge.json'
+import Infrastructure from '../../../static/animations/ecosystem-infra.json'
 import { BigCTA } from '../BigCTA'
 import { PillList } from '../PillList'
 import { ScrollPlayer } from '../ScrollPlayer'
-import CuttingEdge from '../../../static/animations/ecosystem-cutting-edge.json'
-import Canary from '../../../static/animations/ecosystem-canary.json'
-import Infrastructure from '../../../static/animations/ecosystem-infra.json'
-import { Config } from './config'
 import { ClosedNotice } from './ClosedNotice'
+import { Config } from './config'
 
 const CANARY_EXAMPLES = [
   { icon: '/img/DEX.svg', title: 'DEX' },
@@ -56,9 +56,9 @@ export const EcosystemGrants: React.FC = () => {
 
               <div className="md:max-w-2xl md:w-[55%]">
                 <h3 className="text-base opacity-[50%] uppercase font-montserrat w-full">Category 1</h3>
-                <h2 className="text-4xl opacity-90 font-semibold font-montserrat w-full">Canary Dapp</h2>
+                <h2 className="text-4xl opacity-90 font-semibold font-montserrat w-full">Canary DApp</h2>
                 <p className="mt-8 dark:text-white/70 text-black/70">
-                  A Canary dapp is one that could be deployed on to a value bearing network, but may not necessarily be
+                  A Canary dApp is one that could be deployed on to a value bearing network, but may not necessarily be
                   battle hardened enough for serious use cases. They are meant to be a step beyond simple tutorials
                   while still being self-contained enough to provide a useful reference for developers building
                   production grade dapps.
