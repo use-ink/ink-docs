@@ -93,6 +93,7 @@ pub enum Status {
     /// of the winning bids.
 }
 ```
+The values of an enum should be referenced as `Status::OpeningPeriod`.
 
 ### Struct
 
@@ -125,8 +126,6 @@ mod MyContract {
     }
 }
 ```
-
-The values of an enum should be referenced as `Status::OpeningPeriod`.
 
 ## Initializing Storage in Constructors
 
