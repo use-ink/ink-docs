@@ -45,7 +45,15 @@ module.exports = {
       "basics/metadata",
       "basics/testing",
       "basics/debugging",
-      "basics/verification",
+      {
+        type: "category",
+        label: "Verification",
+        items: [
+          "basics/verification/contract-verification",
+          "basics/verification/sirato"
+        ]
+      }
+      // "basics/verification",
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
