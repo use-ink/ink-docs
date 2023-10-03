@@ -21,10 +21,6 @@ Defined in the `base_erc20.rs` module.
 ```rust
 #[ink::trait_definition]
 pub trait BaseErc20 {
-    /// Creates a new ERC-20 contract and initializes it with the initial supply for the instantiator.
-    #[ink(constructor)]
-    fn new(initial_supply: Balance) -> Self;
-
     /// Returns the total supply.
     #[ink(message)]
     fn total_supply(&self) -> Balance;
@@ -47,13 +43,16 @@ mod erc20 {
         total_supply: Balance,
         // more fields ...
     }
-
-    impl BaseErc20 for Erc20 {
+    
+    impl Erc20 {
+        /// Creates a new ERC-20 contract and initializes it with the initial supply for the instantiator.
         #[ink(constructor)]
         fn new(initial_supply: Balance) -> Self {
             // implementation ...
         }
+    }
 
+    impl BaseErc20 for Erc20 {
         #[ink(message)]
         fn total_supply(&self) -> Balance {
             // implementation ...
@@ -106,10 +105,6 @@ type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
 
 #[ink::trait_definition]
 pub trait Erc20 {
-    /// Constructs a new ERC-20 compliant smart contract using the initial supply.
-    #[ink(constructor)]
-    fn new(initial_supply: Balance) -> Self;
-
     /// Returns the total supply of the ERC-20 smart contract.
     #[ink(message)]
     fn total_supply(&self) -> Balance;
@@ -128,10 +123,6 @@ mod base_erc20 {
     /// We somehow cannot put the trait in the doc-test crate root due to bugs.
     #[ink_lang::trait_definition]
     pub trait Erc20 {
-        /// Constructs a new ERC-20 compliant smart contract using the initial supply.
-        #[ink(constructor)]
-        fn new(initial_supply: Balance) -> Self;
-
         /// Returns the total supply of the ERC-20 smart contract.
         #[ink(message)]
         fn total_supply(&self) -> Balance;
@@ -143,12 +134,15 @@ mod base_erc20 {
         // etc ..
     }
 
-    impl Erc20 for BaseErc20 {
+    impl BaseErc20 {
+        /// Constructs a new ERC-20 compliant smart contract using the initial supply.
         #[ink(constructor)]
         fn new(initial_supply: Balance) -> Self {
             Self { total_supply: initial_supply }
         }
+    }
 
+    impl Erc20 for BaseErc20 {
         /// Returns the total supply of the ERC-20 smart contract.
         #[ink(message)]
         fn total_supply(&self) -> Balance {
