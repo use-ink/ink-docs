@@ -25,7 +25,7 @@ a verifiable build and verify a binary against the reference contract.
 
 ## Verifiable build
 
-As mentioned earlier, due to non-deterministic nature of compilation,
+As mentioned earlier, due to the non-deterministic nature of Rust compilation,
 smart contract developers are advised to build their project inside
 a Docker container we provide. Luckily, `cargo-contract contract build`
 provides `--verifiable` flag for the action.
