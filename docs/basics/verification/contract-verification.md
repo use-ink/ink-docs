@@ -15,7 +15,7 @@ The verification process for Rust-based smart contract languages is more
 complex than EVM-based languages such as Solidity due to the Rust 
 compiler not providing deterministic builds of contracts. 
 
-In order to verify an ink! or Wasm smart contract the verification
+In order to verify an ink! smart contract, the verification
 process must recompile the contract in an identical host environment to
 which it was originally built. The simplest way to do this is using a Docker
 container.
