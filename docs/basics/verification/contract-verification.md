@@ -11,7 +11,7 @@ hide_title: true
 Contract verification is the process of matching a deployed ink! contract 
 with the source code and metadata generated when it was built. 
 
-The verification process for Wasm-based smart contract languages is more
+The verification process for Rust-based smart contract languages is more
 complex than EVM-based languages such as Solidity due to the Rust 
 compiler not providing deterministic builds of contracts. 
 
