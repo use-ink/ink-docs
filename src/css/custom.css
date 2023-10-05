@@ -269,6 +269,18 @@ button:disabled {
   margin: 25px 0px 25px 0px;
 }
 
+table.wallet-table tr{
+  border-top: 0;
+}
+
+table.wallet-table tr:nth-child(2n){
+  background-color: inherit;
+}
+
+table.wallet-table tr:first-child th{
+  border-top: 0
+}
+
 .chainHeader {
   height: 50px !important;
   margin: 25px 0px -25px 0px;
