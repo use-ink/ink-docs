@@ -23,6 +23,14 @@ container.
 Since ink! `4.0.0`, `cargo-contract` provides the necessary tools to produce 
 a verifiable build and verify a binary against the reference contract.
 
+:::note
+Contract verification tools are currently available in `cargo-contract`
+version `4.0.0-alpha`. To install it, run
+```
+cargo install cargo-contract --locked --version 4.0.0-alpha
+```
+:::
+
 ## Verifiable build
 
 As mentioned earlier, due to the non-deterministic nature of Rust compilation,
