@@ -4,8 +4,6 @@ hide_title: true
 slug: /migrate-to-parachain
 ---
 
-<img src="/img/title/polkadot.svg" className="titlePic" />
-
 # Migrating an ink! contract to Parachain Runtime
 
 Smart contracts written in `ink!` are a great starting point for developing applications in the Polkadot ecosystem. Developers can go from an idea to a fully functioning web3 application "in production" in a matter of hours or days. This allows faster feedback on ideas, to validate whether there is user demand in the first place, and to easily iterate and refine the implementation.
