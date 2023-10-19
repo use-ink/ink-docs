@@ -15,9 +15,9 @@ For many applications, smart contracts are good enough. However, they are expose
 3. Relative poor performance of interpreted smart contract (untrusted) code compared to pre-compiled Parachain runtime (trusted) code.
 4. Limited access to the host chain environment and any special functionality provided by an extensive suite of customisable FRAME pallets.
 
-Once a web3 application has proven it can work, the team may consider "upgrading" to a Parachain to unlock the full power of a dedicated App Chain. Compared to developing and deploying a smart contract, this requires considerably more time and expertise, which is why it is encouraged to start with `ink!` where possible, at least at the prototype stage.
+Once a web3 application has proven it can work, the team may consider "upgrading" to a Parachain to unlock the full power of a dedicated App Chain. Compared to developing and deploying a smart contract, this requires considerably more time and expertise, which is why we encourage to start with `ink!` where possible, at least at the prototype stage.
 
-Much of the difficulty in launching a Parachain comes in configuring a node implementation, bootstrapping and maintaining a collator network, deploying to testnets, managing infrastructure, acquiring "Coretime" (previously via a slot auction). All of which is time consuming and costly. This is important to note because this guide will focus on the migration of the code from `ink!` to `FRAME`, which might be a learning curve but overall a minor part of the overall migration, and a one-off cost.
+Much of the difficulty in launching a parachain comes in configuring a node implementation, bootstrapping and maintaining a collator network, deploying to testnets, managing infrastructure, acquiring "Coretime" (previously via a slot auction). All of which is time consuming and costly. This is important to note because this guide will focus on the migration of the code from `ink!` to `FRAME`, which might be a learning curve but overall a minor part of the overall migration, and a one-off cost.
 
 ## Utilizing existing FRAME pallets
 
@@ -27,7 +27,7 @@ There is a rich library of FRAME pallets, which may provide a drop in replacemen
 
 ### Similar
 
-The biggest advantage we have when migrating from `ink!` to `FRAME` is that both are Rust based DSLs, in both cases actual Rust or Rust-like code annotated with attributes which expands into Rust code for handling all the boilerplate for integrating into their respective execution environments. Indeed the modern `FRAME 2.0` was originally inspired by the `ink!` approach of attribute macros annotating Rust code.
+The biggest advantage we have when migrating from `ink!` to `FRAME` is that both are Rust based DSLs, in both cases actual Rust (or Rust-like)  code annotated with attributes expands into Rust code for handling all the boilerplate for integrating into their respective execution environments. Indeed the modern `FRAME 2.0` was originally inspired by the `ink!` approach of attribute macros annotating Rust code.
 
 So we can assume that the developer performing the migration is already familiar with Rust and its development environment, which is already a huge headstart for developing with `FRAME`. 
 
@@ -35,7 +35,7 @@ Next we can assume some familiarity with the execution environment, after all a 
 
 ### Different
 
-The biggest difference is that a contract is user uploaded and therefore untrusted code, so there are restrictions to what the contract is able to do and it will perform slower because it is interpreted. For example a contract can only read and write from its own sandboxed storage.
+The biggest difference is that a contract is user uploaded and therefore untrusted code, so there are restrictions to what the contract is able to do and it will perform slower because it is interpreted. For example, a contract can only read and write from its own sandboxed storage.
 
 Runtime code built using `FRAME` is trusted, can be pre-compiled and therefore executes significantly faster (though that may change if/when contracts are able to target [PolkaVM](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)). Pallets have direct access to other pallets and have full access to the Parachain storage, and the permissioning can be configured as desired.
 
@@ -53,7 +53,7 @@ Now we will move down the contract from top to bottom and begin the migration of
 
 ### Event Definitions
 
-First thing we encounter are events e.g. 
+First thing we encounter are events. E.g.:
 
 ```rust
 #[ink(event)]
@@ -153,7 +153,7 @@ Note that the `T` generic parameter is not used in this case, the `error` macro 
 
 ### Constructors
 
-In this example, the single is simply initializing the storage to empty values. 
+In this example, the single constructor is simply initializing the storage to empty values. 
 
 ```rust=
  #[ink(constructor)]
@@ -283,7 +283,7 @@ Data migration can be done at either genesis time or once the custom parachain i
 
 #### Retrieving the data from the contract
 
-In both cases it the first step is to download the current state of the contract at a fixed point in time, ensuring that no changes can be made to the contract after that. 
+In both cases the first steps are to first download the current state of the contract at a fixed point in time, and then ensuring that no changes can be made to the contract after that. 
 
 This could be done by using `set_code_hash` to update the source code of the contract to a special contract which allows only querying and downloading the state of the current contract, and no mutating messages.
 
@@ -298,7 +298,3 @@ Alternatively the state could be initialized via dispatchable extrinsic(s) which
 ### Adjusting UIs
 
 User interfaces will need to be adjusted to interact with a pallet rather than a contract. This should be relatively straightforward since client libraries usually have first-class support for interacting with Substrate pallets, and the signing etc. should already be integrated.
-
-
-
-
