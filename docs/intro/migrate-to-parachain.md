@@ -1,8 +1,10 @@
 ---
-title: Migrating an ink! contract to Parachain Runtime
+title: Migrating an ink! contract to a Parachain Runtime
 hide_title: true
-slug: /migrate-to-parachain
+slug: /migrate-ink-contracts-to-polkadot-frame-parachain
 ---
+
+<img src="/img/title/polkadot.svg" className="titlePic" />
 
 # Migrating an ink! contract to a Parachain Runtime
 
@@ -23,7 +25,7 @@ Much of the difficulty in launching a parachain comes in configuring a node impl
 
 There is a rich library of FRAME pallets, which may provide a drop in replacement for some (or all) of your smart contract functionality. For example, for a [PSP22](https://use.ink/getting-started/use-openbrush/) (similar to ERC20) fungible token contract, this could be replaced either by the native Parachain token itself via `pallet_balances` or by an asset on `pallet_assets`. Governance functions could be replaced by e.g. `pallet_democracy`, and so on. See [`polkadot-sdk`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame) for a range of pre-built pallets which can be used to handle some common functions.
 
-## Similarties and differences between `ink!` and `FRAME`
+## Similarities and differences between `ink!` and `FRAME`
 
 ### Similar
 
@@ -163,7 +165,7 @@ pub fn new() -> Self {
 ```
 This code is executed when the contract instance was initialized.
 
-Our use case is a migration, so we will assume that the existing data must be migrated from contract storage to the pallet storage. This will be covered in the Data Migration section.
+Our use case is a migration, so we will assume that the existing data must be migrated from contract storage to the pallet storage. This will be covered in the [Data Migration](#data-migration) section.
 
 No code migration is required then for this constructor.
 

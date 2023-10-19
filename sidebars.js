@@ -9,6 +9,7 @@ module.exports = {
       "intro/how-it-works",
       "intro/ink-vs-solidity",
       "intro/ink-vs-cosmwasm",
+      "intro/migrate-to-parachain",
     ],
     "Getting started": [
       "getting-started/setup",
