@@ -10,17 +10,6 @@ module.exports = {
       "intro/ink-vs-solidity",
       "intro/ink-vs-cosmwasm",
     ],
-    "Monthly Update": [
-      "monthly-update/overview",
-      "monthly-update/2023/03",
-      "monthly-update/2023/02",
-      "monthly-update/2023/01",
-      "monthly-update/2022/12",
-      "monthly-update/2022/11",
-      "monthly-update/2022/10",
-      "monthly-update/2022/09",
-      "monthly-update/archive",
-    ],
     "Getting started": [
       "getting-started/setup",
       "getting-started/creating",
