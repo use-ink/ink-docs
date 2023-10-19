@@ -2,7 +2,6 @@ module.exports = {
   reference: {
     Overview: [
       "intro/intro",
-      "intro/upcoming-events",
       "intro/why-rust",
       "intro/why-webassembly",
       "intro/polkadot",
