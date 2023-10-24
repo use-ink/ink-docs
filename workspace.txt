@@ -24,6 +24,7 @@ debuggability
 devnet
 dispatchable
 dispatchables
+dockerfile
 dylint
 edsl
 enjin

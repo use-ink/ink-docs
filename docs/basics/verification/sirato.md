@@ -1,40 +1,12 @@
 ---
-title: Contract Verification
-slug: /basics/contract-verification
+title: Sirato 
+slug: /basics/verification/sirato
 hide_title: true
 ---
 
 <img src="/img/title/magnifying-glass.svg" className="titlePic" />
 
-# Contract Verification
-
-Contract verification is the process of matching a deployed ink! contract 
-with the source code and metadata generated when it was built. 
-
-The verification process for Wasm-based smart contract languages is more
-complex than EVM-based languages such as Solidity due to the Rust 
-compiler not providing deterministic builds of contracts. 
-
-In order to verify an ink! or Wasm smart contract the verification
-process must recompile the contract in an identical host environment to
-which it was originally built. The simplest way to do this is using a Docker
-container.
-
-As this will not be possible with existing smart contracts, a fallback 
-mechanism has been created where a contract deployer can provide a 
-signed metadata file to associate with the contract. This approach is also
-outlined below.
-
-:::note
-At the current time, the `cargo-contract` CLI tool does not provide a Docker
-image for ink! creating verifiable builds. The following 
-[issue](https://github.com/paritytech/cargo-contract/issues/1065)
-has been created with details of this.
-
-As an interim solution, Web3 Labs are publishing a
-[container image](https://github.com/web3labs/ink-verifier-image) for ink!
-smart contract source code verification.
-:::
+# Sirato Verification Service
 
 Web3 Labs have made available a public version of their
 [verification service](https://github.com/web3labs/ink-verifier-server) 
