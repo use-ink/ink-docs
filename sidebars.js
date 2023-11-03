@@ -67,6 +67,18 @@ module.exports = {
       "datastructures/custom",
       "datastructures/storage-in-metadata",
     ],
+    "Linter": [
+      "linter/overview",
+      {
+        type: "category",
+        label: "Linting rules",
+        items: [
+            "linter/rules/primitive_topic",
+            "linter/rules/storage_never_freed",
+            "linter/rules/strict_balance_equality",
+        ]
+      }
+    ],
     "Frontend Development": [
       "frontend/overview",
       "frontend/getting-started",
