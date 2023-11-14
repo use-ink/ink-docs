@@ -73,6 +73,5 @@ Alternatively you can build the node by yourself.
 This can take quite a while though!
 
 ```bash
-git clone https://github.com/paritytech/substrate-contracts-node.git
 cargo install contracts-node
 ```
