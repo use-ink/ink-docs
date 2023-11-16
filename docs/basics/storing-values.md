@@ -25,7 +25,7 @@ pub struct MyContract {
 
 Substrate contracts may store types that are encodable and decodable with
 [Parity Codec](https://github.com/paritytech/parity-codec) which includes most Rust common data
-types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
+types such as `bool`, `u{16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
 
 Furthermore, ink! provides [substrate](https://substrate.io/) specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
 they were primitive types.
