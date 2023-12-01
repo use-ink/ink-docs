@@ -110,7 +110,7 @@ module.exports = {
               banner: 'none',
             },
             '5.x': {
-              label: '5.x',
+              label: '5.0-rc',
               path: '5.x',
               banner: 'none',
             },
