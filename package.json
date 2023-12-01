@@ -18,8 +18,8 @@
     "cspell": "cspell \"**/*.{md,mdx}\""
   },
   "devDependencies": {
-    "@docusaurus/core": "^3.0.1",
-    "@docusaurus/preset-classic": "^3.0.1",
+    "@docusaurus/core": "^2.4.0",
+    "@docusaurus/preset-classic": "^2.4.0",
     "@mdx-js/react": "^1.6.22",
     "@types/react-google-recaptcha": "^2.1.5",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
