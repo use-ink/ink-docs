@@ -109,6 +109,11 @@ module.exports = {
               path: '3.x',
               banner: 'none',
             },
+            '5.x': {
+              label: '5.x',
+              path: '5.x',
+              banner: 'none',
+            },
           },
         },
         blog: {
