@@ -41,3 +41,13 @@ There are several levels of abstraction where you can start your journey creatin
 ## Examples
 
 For inspiration how to get started building your full stack dApp. Make sure to visit our [Smart Contracts Examples section](/examples/smart-contracts) or [repository directly](https://github.com/paritytech/ink-examples). These examples not only offer the smart contract code but also have an accompanied frontend project. Checkout the `README.md` for details how to setup and run these frontend examples.
+
+## Other Languages
+
+Of course the browser and JavaScript should not be the one and only platform for smart contract frontends. It's just the most mature for smart contract frontend tooling.
+
+The following is a list of substrate libraries for other programming languages allowing for crafting frontend for other platforms than the web.
+
++ [novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios) - low level generic iOS SDK for substrate.
+
++ [novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android) - low level Android SDK for substrate.
