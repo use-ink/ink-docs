@@ -14,13 +14,21 @@ it is often necessary to perform an upgrade of a smart contract.
 The developer may need to fix a critical bug or introduce a new feature.
 
 For this type of scenario, ink! has different upgrade strategies.
-- [Proxy Forwarding](#proxy-forwarding)
-  - [Properties](#properties)
-- [Replacing Contract Code with `set_code_hash()`](#replacing-contract-code-with-set_code_hash)
-  - [Properties](#properties-1)
-  - [Storage Compatibility](#storage-compatibility)
-  - [A little note on the determinism of contract addresses](#a-little-note-on-the-determinism-of-contract-addresses)
-- [Examples](#examples)
+- [Upgradeable Contracts](#upgradeable-contracts)
+  - [Proxy Forwarding](#proxy-forwarding)
+    - [Properties](#properties)
+    - [Example](#example)
+  - [Delegating execution to foreign Contract Code with `delegate_call`](#delegating-execution-to-foreign-contract-code-with-delegate_call)
+    - [Properties](#properties-1)
+    - [Example](#example-1)
+  - [Note on the usage of wildcard selectors](#note-on-the-usage-of-wildcard-selectors)
+  - [Note on `CallFlags`](#note-on-callflags)
+  - [Replacing Contract Code with `set_code_hash()`](#replacing-contract-code-with-set_code_hash)
+    - [Properties](#properties-2)
+    - [Example](#example-2)
+    - [Storage Compatibility](#storage-compatibility)
+    - [A little note on the determinism of contract addresses](#a-little-note-on-the-determinism-of-contract-addresses)
+  - [Examples](#examples)
 
 ## Proxy Forwarding
 
@@ -39,6 +47,8 @@ User ---- tx ---> Proxy ----------> Implementation_v0
                      |
                       ------------> Implementation_v2
 ```
+
+### Example
 
 Our proxy contract will have these 2 storage fields:
 
@@ -62,7 +72,10 @@ and the actual message selector to proxy the call:
 impl Proxy {
     /// Changes the `AccountId` of the contract where any call that does
     /// not match a selector of this contract is forwarded to.
-    #[ink(message)]
+    ///
+    /// # Note
+    /// Only one extract message with a well-known selector `@` is allowed.
+    #[ink(message, selector = @)]
     pub fn change_forward_address(&mut self, new_address: AccountId) {
         assert_eq!(
             self.env().caller(),
@@ -86,18 +99,14 @@ impl Proxy {
     #[ink(message, payable, selector = _)]
     pub fn forward(&self) -> u32 {
         ink::env::call::build_call::<ink::env::DefaultEnvironment>()
-            .call_type(
-                Call::new()
-                    .callee(self.forward_to)
-                    .transferred_value(self.env().transferred_value())
-                    .gas_limit(0),
-            )
+            .call(self.forward_to)
+            .transferred_value(self.env().transferred_value())
             .call_flags(
                 ink::env::CallFlags::default()
                     .set_forward_input(true)
                     .set_tail_call(true),
             )
-            .fire()
+            .invoke()
             .unwrap_or_else(|err| {
                 panic!(
                     "cross-contract call to {:?} failed due to {:?}",
@@ -122,6 +131,172 @@ Using this pattern, you can introduce other message to your proxy contract.
 Any messages that are not matched in the proxy contract 
 will be forwarded to the specified contract address.
 
+## Delegating execution to foreign Contract Code with `delegate_call`
+
+Similar to proxy-forwarding we can delegate execution to another code hash uploaded on-chain.
+
+### Properties 
+
+- Delegates any call that does not match a selector of itself to another contract.
+- Code is required to uploaded on-chain, but is not required to be instantiated.
+- State is stored in the storage of the original contract which submits the call.
+- Storage layout must be identical between both contract codes.
+
+```
+User ---- tx ---> Contract ----------> Code_v0
+                     ^                     |
+                     |                     |
+                     ⌊_____________________⌋
+                  Storage update is propagated
+```
+
+### Example
+
+Suppose we have the defined of the caller contract as following:
+
+```rust
+#[ink(storage)]
+pub struct Delegator {
+    addresses: Mapping<AccountId, i32, ManualKey<0x23>>,
+    counter: i32,
+}
+```
+
+Then let's define two messages that separately calls to update `addresses` and `counter` separately:
+
+```rust
+/// Increment the current value using delegate call.
+#[ink(message)]
+pub fn inc_delegate(&mut self, hash: Hash) {
+    let selector = ink::selector_bytes!("inc");
+    let _ = build_call::<DefaultEnvironment>()
+        .delegate(hash)
+        // We specify `set_tail_call(true)` to use the delegatee last memory frame
+        // as the end of the execution cycle.
+        // So any mutations to `Packed` types, made by delegatee,
+        // will be flushed to storage.
+        //
+        // If we don't specify this flag.
+        // The storage state before the delegate call will be flushed to storage instead.
+        // See https://substrate.stackexchange.com/questions/3336/i-found-set-allow-reentry-may-have-some-problems/3352#3352
+        .call_flags(CallFlags::default().set_tail_call(true))
+        .exec_input(ExecutionInput::new(Selector::new(selector)))
+        .returns::<()>()
+        .try_invoke();
+}
+
+/// Adds entry to `addresses` using delegate call.
+/// Note that we don't need `set_tail_call(true)` flag
+/// because `Mapping` updates the storage instantly on-demand.
+#[ink(message)]
+pub fn add_entry_delegate(&mut self, hash: Hash) {
+    let selector = ink::selector_bytes!("append_address_value");
+    let _ = build_call::<DefaultEnvironment>()
+        .delegate(hash)
+        .exec_input(ExecutionInput::new(Selector::new(selector)))
+        .returns::<()>()
+        .try_invoke();
+}
+```
+
+ink! provides an intuitive call builder API for you to compose your call.
+As you can see that `inc_delegate()` builds a call in slightly different manner than `add_entry_delegate()`.
+That's because if the delegated code modifies layout-full storage
+(i.e. it contains at least non-`Lazy`, non-`Mapping` field), the `.set_tail_call(true)` flag of `CallFlags` needs to be specified and the storage layouts must match.
+
+This is due to the way ink! execution call stack is operated. Non-`Lazy`, non-`Mapping` field are first loaded into the memory of the delegated code where state changes may occur,
+if `set_tail_call(true)` is not set, then after the delegated code finishes execution, the memory page is popped discarding any state changes. `set_tail_call(true)` indicates that
+the execution context is not required to be returned to the caller, and changes can be flushed into the storage
+(see [Stack Exchange Answer](https://substrate.stackexchange.com/a/3352/3098) for more explanation).
+
+
+:::note Key compatibility
+If the delegated code modifies `Lazy` or `Mapping` field, the keys must be identical and `.set_tail_call(true)` is optional.
+This is because `Lazy` and `Mapping` interact with the storage directly instead of loading and flushing storage states.
+:::
+
+Now let's look at the "delegatee" code:
+
+```rust
+#[ink::contract]
+pub mod delegatee {
+    use ink::storage::{
+        traits::ManualKey,
+        Mapping,
+    };
+    #[ink(storage)]
+    pub struct Delegatee {
+        // `ManualKey` must be the same as in the original contract.
+        addresses: Mapping<AccountId, i32, ManualKey<0x23>>,
+        counter: i32,
+        // Uncommenting below line will break storage compatibility.
+        // flag: bool,
+    }
+
+    impl Delegatee {
+        /// When using the delegate call. You only upload the code of the delegatee
+        /// contract. However, the code and storage do not get initialized.
+        ///
+        /// Because of this. The constructor actually never gets called.
+        #[allow(clippy::new_without_default)]
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            unreachable!(
+                "Constructors are not called when upgrading using `set_code_hash`."
+            )
+        }
+
+        /// Increments the current value.
+        #[ink(message)]
+        pub fn inc(&mut self) {
+            self.counter = self.counter.checked_add(2).unwrap();
+        }
+
+        /// Adds current value of counter to the `addresses`
+        #[ink(message)]
+        pub fn append_address_value(&mut self) {
+            let caller = self.env().caller();
+            self.addresses.insert(caller, &self.counter);
+        }
+    }
+}
+```
+
+As you can see, delegatee's code looks like a normal ink! Smart Contract with some important features:
+- Storage layout is identical to the original contract's storage
+- `addresses` mapping key is identical
+- Constructor does not have any logic, as the code is never instantiated. (It can be, but plays no effect on the execution)
+
+
+## Note on the usage of wildcard selectors
+
+When working with cross-contract calls, developers are required to be aware of the some important changes.
+
+
+Since ink! 5 we have restricted the usage of the wildcard selector due to 
+[security reasons](https://blog.openzeppelin.com/security-review-ink-cargo-contract#custom-selectors-could-facilitate-proxy-selector-clashing-attacks).
+
+:::danger Beware
+Due to [IIP-2](https://github.com/paritytech/ink/issues/1676), ink! only allows
+to contain a single message with a well-known selector `@` when the other message
+with the wildcard selector `_` is defined.
+:::
+
+See [example](https://github.com/paritytech/ink/tree/master/integration-tests/wildcard-selector)
+for illustration on how it can be used in practice.
+
+## Note on `CallFlags`
+
+`CallFlags` provide fine-grained control over the cross-contract execution.
+
+Some useful properties:
+- Re-entry is disable by default. It can be enabled with `.set_allow_reentry(true)` flag.
+- The call execution context is returned to the caller by default. You can finish execution in the callee with `.set_tail_call(true)` flag.
+- `.set_clone_input(true)` clones the input of the caller's messages. It can be used with when `.set_tail_call(false)`.
+- `.set_forward_input(true)` consumes the input of the caller's message which can be used after.  It can be used with when `.set_tail_call(true)`. 
+
+
+
 ## Replacing Contract Code with `set_code_hash()`
 
 Following [Substrate's runtime upgradeability](https://docs.substrate.io/maintain/runtime-upgrades/) 
@@ -134,6 +309,9 @@ philosophy, ink! also supports an easy way to update your contract code via the 
 This effectively replaces the code which is executed for the contract address.
 - The other contract needs to be deployed on-chain.
 - State is stored in the storage of the originally instantiated contract.
+
+
+### Example
 
 Just add the following function to the contract you want to upgrade in the future.
 
