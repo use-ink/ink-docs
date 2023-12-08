@@ -1,6 +1,6 @@
 ---
 title: Working with StorageVec
-slug: /datastructures/mapping
+slug: /datastructures/storagevec
 hide_title: true
 ---
 
@@ -98,8 +98,8 @@ more than 4 GB data in blockchain storage.
 
 Iterators are not provided. `StorageVec` is expected to be used to
 store a lot elements, where iterating through the elements would be
-rather inefficient (manually iterating over the elements using a loop
-is possible but considered an anti-pattern for most cases).
+rather inefficient. Manually iterating over the elements using a loop
+is possible but considered an anti-pattern for most cases.
 
 For the same reason, operations which would require re-ordering
 stored elements are not supported. Examples include inserting and
@@ -132,7 +132,7 @@ element is calculated as follows:
 
 `StorageVec` is a `Lazy` type similar to `Mapping`.
 
-Hence, the same considerations apply for `StorageVec`:
+Hence, the same considerations apply to `StorageVec` too:
 - [Storage loading behavior](https://use.ink/datastructures/mapping#storage-loading-behavior)
 - [Use fallible storage methods for dynamically sized values](https://use.ink/datastructures/mapping#use-fallible-storage-methods-for-dynamically-sized-values)
 - [Updating values](https://use.ink/datastructures/mapping#updating-values)
