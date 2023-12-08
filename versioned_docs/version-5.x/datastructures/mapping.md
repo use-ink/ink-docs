@@ -111,7 +111,7 @@ Furthermore, it follows that mapping values do not have a contiguous storage lay
 not possible to iterate over the contents of a map.
 
 
-### Dynamically sized `Mapping` values 
+### Use fallible storage methods for dynamically sized values
 Reading from or writing to a `Mapping` implies encoding or decoding
 the according `Mapping` key and value. This happens transparently under the hood.
 However, because the static buffer used to store the encoded data is of limited
@@ -131,7 +131,7 @@ Consider a `Mapping` with `String` values like so:
 
 ```rust
 #[ink(storage)]
-pub struct Flipper {
+pub struct MyContract {
     on_chain_log: Mapping<u64, String>,
     nonce: u64,
 }
