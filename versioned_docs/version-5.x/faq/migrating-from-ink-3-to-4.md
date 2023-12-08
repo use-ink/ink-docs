@@ -3,6 +3,8 @@ title: Migrating from ink! 3.x to 4.0
 slug: /faq/migrating-from-ink-3-to-4
 ---
 
+<img src="/img/title/migration-3.x-to-4.0.svg" className="titlePic" />
+
 We've made a couple of breaking changes from ink! 3.x to ink! 4.0.
 On this page we outline how you can migrate existing clients and
 contracts from 3.x to 4.0.
