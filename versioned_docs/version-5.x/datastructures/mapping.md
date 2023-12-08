@@ -153,7 +153,7 @@ pub fn do_something(&mut self, data: String) {
 }
 ```
 
-Instead, consider using the fallible storage methods to handle such situations:
+Instead, consider using the fallible `try_insert` method to handle the situation:
 
 ```rust
 #[ink(message)]
