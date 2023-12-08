@@ -176,8 +176,9 @@ pub fn do_something2(&mut self, data: String) {
 
     self.nonce += 1;
 }
-
 ```
+
+We provide fallible `try_` versions for all storage operations on `Mapping`.
 
 ### Updating values
 
