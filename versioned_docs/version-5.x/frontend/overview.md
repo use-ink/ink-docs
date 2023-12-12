@@ -4,7 +4,7 @@ slug: /frontend/overview
 hide_title: true
 ---
 
-<img src="/img/title/storage.svg" className="titlePic" />
+<img src="/img/title/frontend.svg" className="titlePic" />
 
 # Overview
 
@@ -12,9 +12,9 @@ Now after you [wrote](/getting-started/creating-an-ink-project), [compiled](/get
 
 This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
 
-Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, also the tools for smart contract interaction.
+Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, the tools for smart contract interaction with JavaScript are the most advanced as well. To be precise all JavaScript tools mentioned here, actually leverage TypeScript to offer a JavaScript and a typesafe TypeScript experience.
 
-## JavaScript Tools
+## JavaScript/TypeScript Tools
 
 There are several levels of abstraction where you can start your journey creating a web frontend for your contracts. Each levels offers different advantages and disadvantages. The following list is of tools. They are sorted from the most generic no third party library way to interact with Polkadot's smart contracts to the most opinionated template using libraries and proven frontend frameworks.
 
