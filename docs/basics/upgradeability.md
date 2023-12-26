@@ -74,7 +74,7 @@ impl Proxy {
     /// not match a selector of this contract is forwarded to.
     ///
     /// # Note
-    /// Only one extract message with a well-known selector `@` is allowed.
+    /// Only one extra message with a well-known selector `@` is allowed.
     #[ink(message, selector = @)]
     pub fn change_forward_address(&mut self, new_address: AccountId) {
         assert_eq!(
@@ -138,7 +138,7 @@ Similar to proxy-forwarding we can delegate execution to another code hash uploa
 ### Properties 
 
 - Delegates any call that does not match a selector of itself to another contract.
-- Code is required to uploaded on-chain, but is not required to be instantiated.
+- Code is required to be uploaded on-chain, but is not required to be instantiated.
 - State is stored in the storage of the original contract which submits the call.
 - Storage layout must be identical between both contract codes.
 
@@ -152,7 +152,7 @@ User ---- tx ---> Contract ----------> Code_v0
 
 ### Example
 
-Suppose we have the defined of the caller contract as following:
+Suppose we have defined of the caller contract as following:
 
 ```rust
 #[ink(storage)]
