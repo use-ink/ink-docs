@@ -84,12 +84,14 @@ cargo contract upload --suri //Alice
 cargo contract instantiate --execute --suri //Alice --args true
 # The output of this command will contain the contract address,
 # insert it in the command below.
+# e.g  Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
 
-cargo contract call --contract ... --message get --suri //Alice
+
+cargo contract call --contract <insert-contract-address> --message get --suri //Alice
 ```
 
 ### 2. `flip()` function
 
 ```bash
-cargo contract call --contract ... --message flip --execute --suri //Alice
+cargo contract call --contract <insert-contract-address> --message flip --execute --suri //Alice
 ```
