@@ -143,11 +143,12 @@ Similar to proxy-forwarding we can delegate execution to another code hash uploa
 - Storage layout must be identical between both contract codes.
 
 ```
-User ---- tx ---> Contract ----------> Code_v0
-                     ^                     |
+                                (Storage of Contract A)
+User ---- tx ---> Contract A ----------> Code_v0
+                     |                     ^
                      |                     |
                      ⌊_____________________⌋
-                  Storage update is propagated
+                    Storage is delegated to
 ```
 
 ### Example
@@ -167,19 +168,17 @@ Then let's define two messages that separately calls to update `addresses` and `
 ```rust
 /// Increment the current value using delegate call.
 #[ink(message)]
-pub fn inc_delegate(&mut self, hash: Hash) {
+pub fn inc_delegate(&self, hash: Hash) {
     let selector = ink::selector_bytes!("inc");
     let _ = build_call::<DefaultEnvironment>()
         .delegate(hash)
-        // We specify `set_tail_call(true)` to use the delegatee last memory frame
-        // as the end of the execution cycle.
-        // So any mutations to `Packed` types, made by delegatee,
-        // will be flushed to storage.
-        //
-        // If we don't specify this flag.
-        // The storage state before the delegate call will be flushed to storage instead.
-        // See https://substrate.stackexchange.com/questions/3336/i-found-set-allow-reentry-may-have-some-problems/3352#3352
-        .call_flags(CallFlags::default().set_tail_call(true))
+        // if the receiver is set to `&mut self`,
+        // then any changes made in `inc_delegate()` before the delegate call
+        // will be persisted, and any changes made within delegate call will be discarded.
+
+        // Therefore, it is advised to use `&self` receiver with a mutating delegate call,
+        // or `.set_tail_call(true)` to flag that any changes made by delegate call should be flushed into storage. 
+        // .call_flags(CallFlags::default().set_tail_call(true))
         .exec_input(ExecutionInput::new(Selector::new(selector)))
         .returns::<()>()
         .try_invoke();
@@ -200,18 +199,23 @@ pub fn add_entry_delegate(&mut self, hash: Hash) {
 ```
 
 ink! provides an intuitive call builder API for you to compose your call.
-As you can see that `inc_delegate()` builds a call in slightly different manner than `add_entry_delegate()`.
+As you can see that `inc_delegate()` can be built a call in slightly different manner than `add_entry_delegate()`.
 That's because if the delegated code modifies layout-full storage
-(i.e. it contains at least non-`Lazy`, non-`Mapping` field), the `.set_tail_call(true)` flag of `CallFlags` needs to be specified and the storage layouts must match.
+(i.e. it contains at least non-`Lazy`, non-`Mapping` field),
+either the receiver should be set to `&self` or the `.set_tail_call(true)` flag of `CallFlags` needs to be specified, and the storage layouts must match.
 
-This is due to the way ink! execution call stack is operated. Non-`Lazy`, non-`Mapping` field are first loaded into the memory of the delegated code where state changes may occur,
-if `set_tail_call(true)` is not set, then after the delegated code finishes execution, the memory page is popped discarding any state changes. `set_tail_call(true)` indicates that
-the execution context is not required to be returned to the caller, and changes can be flushed into the storage
-(see [Stack Exchange Answer](https://substrate.stackexchange.com/a/3352/3098) for more explanation).
+This is due to the way ink! execution call stack is operated. Non-`Lazy`, non-`Mapping` field are first loaded into the memory.
+If `&mut self` receiver is used, then when delegate call is completed, the original state before the call will be persisted and flushed into the storage.
+Therefore, `.set_tail_call(true)` needs to be set to indicate that, that delegate call's storage context is the final (i.e. _tail) one that needs to be flushed.
+This also makes any code after the delegate call unreachable.
+With `&self` receiver, `.set_tail_call(true)` is not required since no storage flushing happens at the end of the original caller's function.
+(see [Stack Exchange Answer](https://substrate.stackexchange.com/a/3352/3098) for details on how changes are flushed into storage).
+
 
 
 :::note Key compatibility
-If the delegated code modifies `Lazy` or `Mapping` field, the keys must be identical and `.set_tail_call(true)` is optional.
+If the delegated code modifies `Lazy` or `Mapping` field, the keys must be identical and `.set_tail_call(true)` is optional 
+regardless of the function receiver.
 This is because `Lazy` and `Mapping` interact with the storage directly instead of loading and flushing storage states.
 :::
 
