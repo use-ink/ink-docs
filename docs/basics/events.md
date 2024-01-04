@@ -62,6 +62,11 @@ for an elaborate example which uses events.
 
 ## Event Definition
 
+Since `ink!` version `5.0`, events can be defined separately from a contract where they are 
+emitted. This allows events to be shared between 
+
+Within a `#[ink::contract]` annotated module, using the
+
 This is how an event definition looks:
 
 ```rust
