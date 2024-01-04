@@ -52,4 +52,4 @@ The following is a list of libraries which could be used to craft smart-contract
 
 + [paritytech/subxt](https://github.com/paritytech/subxt) - Rust library to submit extrinsics (transactions) to a substrate node via RPC.
 
-+ [`py-substrate-interface`](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md) - Python library to interface with Substrate nodes.
++ [polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md) - Python library to interface with Substrate nodes.
