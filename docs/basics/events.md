@@ -62,26 +62,41 @@ for an elaborate example which uses events.
 
 ## Event Definition
 
-Since `ink!` version `5.0`, events can be defined separately from a contract where they are 
-emitted. This allows events to be shared between 
+Since `ink!` version `5.0`, events can be defined independently of the contract which emits them. 
+Events can now be defined once and shared across multiple contracts. 
 
-Within a `#[ink::contract]` annotated module, using the
+This is useful for events for contracts which conform to standards such as `ERC20`: 
+contract indexers/explorers are now able to group all e.g. `Transferred` events.
 
 This is how an event definition looks:
 
 ```rust
-#[ink(event)]
+use ink::primitives::AccountId;
+
+#[ink::event]
 pub struct Transferred {
     #[ink(topic)]
     from: Option<AccountId>,
-
     #[ink(topic)]
     to: Option<AccountId>,
-
-    amount: Balance
-
+    amount: u128,
 }
 ```
+> Note that generics are [not currently supported](https://github.com/paritytech/ink/issues/2044)
+> , so the concrete types of `Environment` 
+> specific types such as `AccountId` must match up with the types used in the contract.
+
+This definition can exist within a contract definition module (inline events), in a different 
+module in the same crate or even in a different crate to be shared by multiple contracts.
+
+### Legacy syntax for inline Event definitions
+
+Events defined within a `#[ink::contract]` module can continue to use the original syntax for an 
+event definition, using the `#[ink(event)]` attribute. Under the covers this is simply expanded 
+to the new top level `#[ink::event]` macro, so both events defined using the legacy style and 
+using the new `event` attribute macro directly will behave exactly the same.
+
+### Topics
 
 Add the `#[ink(topic)]` attribute tag to each item in your event that you want to have indexed.
 A good rule of thumb is to ask yourself if somebody might want to search for this topic.
