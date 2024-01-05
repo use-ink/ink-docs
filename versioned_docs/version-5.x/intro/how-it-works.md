@@ -8,13 +8,13 @@ slug: /how-it-works
 
 # How it Works – Substrate
 
-ink! is a programming language for smart contracts; blockchains built with [the Substrate framework](http://substrate.io)
+ink! is a programming language for smart contracts; blockchains built with [the Substrate framework](https://substrate.io)
 can choose from a number of smart contract languages which one(s) they want to support.
 ink! is one of them. It is an opinionated language that we have built by extending the popular Rust programming language with functionality needed to make it smart contract compatible.
 
 ## How does ink! tie into Substrate?
 
-[Substrate](https://substrate.io) is a framework for building blockchains – those can be standalone blockchains or blockchains connected to [Kusama](http://kusama.network) or [Polkadot](http://polkadot.network), so called _parachains_. Substrate contains a number of modules, in Substrate terminology those are called _pallets_. Substrate comes with a set of pallets for many requirements modern blockchains typically have – staking, fungible tokens, non-fungible tokens, governance, etc.
+[Substrate](https://substrate.io) is a framework for building blockchains – those can be standalone blockchains or blockchains connected to [Kusama](https://kusama.network) or [Polkadot](https://polkadot.network), so called _parachains_. Substrate contains a number of modules, in Substrate terminology those are called _pallets_. Substrate comes with a set of pallets for many requirements modern blockchains typically have – staking, fungible tokens, non-fungible tokens, governance, etc.
 
 Substrate also ships with a module for smart contracts, this module is called `pallet-contracts`. If a parachain is developed in Substrate it can easily add smart contract functionality by including this pallet.
 
