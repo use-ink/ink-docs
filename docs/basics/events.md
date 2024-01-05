@@ -124,20 +124,42 @@ amounts each.
 
 #### Signature Topic
 
+By default all events have a signature topic. This allows indexing of all events of the same 
+type, emitted by different contracts. The `#[ink::event]` macro generates a signature topic at 
+compile time by hashing the name of the event concatenated with the *names of the types* of the all 
+the field 
+names:
+```
+blake2b("Event(field1_type,field2_type)")`
+```
+So for our `Transferred` example it will be: 
+```
+blake2b("Transferred(Option<AccountId>,Option<AccountId>,u128)")`
+```
+> Important caveat: because the *name* of the field type is used, refactoring an event 
+> definition to use a type alias or a fully qualified type will change the signature topic, even
+> though the underlying type is the same. Two otherwise identical definitions of an event with the 
+> same name and same field types but different field type names will have different signature 
+> topics.
 
+When decoding events emitted from a contract, signature topics are now required to determine which 
+type of event to decode into. 
 
 #### Anonymous Events
 
-Add the `#[ink(topic)]` attribute tag to each item in your event that you want to have indexed.
-A good rule of thumb is to ask yourself if somebody might want to search for this topic.
-For this reason the `amount` in the exemplary event above was not
-made indexable ‒ there will most probably be a lot of different events with
-differing amounts each.
+Annotating an event definitions with `#[ink(anonymous)]` (See [here](/macros-attributes/anonymous)
+for details on this attribute) prevents a signature topic from being generated and published with the
+event.
 
-The signature of the event is by default one of the topics of the event, except
-if you annotate the event with `#[ink(anonymous)]`.
-See [here](/macros-attributes/anonymous) for details on this attribute.
+It means that an indexer will not be able to index over the type of the event, which may be 
+desirable for some contracts, and would be a small gas cost optimization if necessary.
 
+However, when interacting with the contract from a client, no signature topic means that another 
+way is required to determine the type of the event to be decoded into (i.e. how do we know it is 
+a `Transferred` event, not an `Approval` event. One way would be to try decoding for each type 
+of event defined in the metadata of the contract until one succeeds. If calling a specific 
+`message`, it may be known up front what type of event that message will raise, so the client 
+code could just decode into that event directly.
 
 ## Emitting Events in a Constructor
 
