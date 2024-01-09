@@ -114,7 +114,7 @@ If you are building a multi-contract project,
 make sure you are executing the build in the parent directory in order to mount the directory 
 of all contracts to be visible. Specify a relative manifest path to the root contract: 
 
-`cargo contract build --verifiable --release --manifest-path ink-project-a/Cargo.toml`
+`cargo contract build --verifiable --manifest-path ink-project-a/Cargo.toml`
 :::
 
 You can find a Dockefile and further documentation on image usage 
