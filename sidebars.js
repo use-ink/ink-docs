@@ -73,9 +73,11 @@ module.exports = {
         type: "category",
         label: "Linting rules",
         items: [
+            "linter/rules/no_main",
             "linter/rules/primitive_topic",
             "linter/rules/storage_never_freed",
             "linter/rules/strict_balance_equality",
+            "linter/rules/non_fallible_api",
         ]
       }
     ],
