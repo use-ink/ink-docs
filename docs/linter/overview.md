@@ -8,7 +8,7 @@ description: An overview of ink! linter
 ink! includes the linter - a security tool designed to identify typical security issues in smart contracts. The linter is meant to seamlessly fit into the smart contracts development process, ensuring that contracts are thoroughly checked during the build phase before they are deployed to the blockchain.
 
 ## Installation
-The linter is integrated to the `cargo-contract` build process, therefore you should already have it installed if you are using [`cargo-contract`](https://github.com/paritytech/cargo-contract) of version `4.0.0` or later.
+The linter is integrated to the contracts build process, therefore you should already have it installed if you are using [`cargo-contract`](https://github.com/paritytech/cargo-contract) of version `4.0.0` or later.
 
 Here is the list of commands you can use for installation:
 
