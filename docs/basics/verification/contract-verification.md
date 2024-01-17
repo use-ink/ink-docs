@@ -81,7 +81,7 @@ There are two options when it comes to verification:
 `cargo contract verify` allows you to verify the given cargo project
 against a reference contract bundle. 
 
-Simply run `cargo contract verify --contract <path>` 
+Simply run `cargo contract verify <path>` 
 in the cargo project directory. 
 
 If the reference contract was not build inside a docker container, the command
