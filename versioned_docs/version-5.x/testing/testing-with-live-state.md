@@ -15,7 +15,7 @@ contracts with the state of a particular chain.
 
 In a real world case you will already have a live node. This will be the node you want to test you contracts off of. For example purposes we will be running a `substrate-contracts-node`.
 
-Clone substrate-contracts-node:
+Clone `substrate-contracts-node`:
 
 ```
 git clone https://github.com/paritytech/substrate-contracts-node
@@ -45,7 +45,7 @@ You should get output similar to:
 Next, produce one or two blocks by running `system.remark()` extrinsics. You can use the PolkadotJs Apps to do this. This is so we have 1 or 2 blocks produced on the node for the next step.
 
 ## Setup Chopsticks
-[Chopsticks](https://github.com/AcalaNetwork/chopsticks) is a powerful tool in our ecosystem that will allow us to mirror a running node. We will run chopsticks and have it mirror the substrate-contracts-node that is already running on our machince from the previous step. This will allow us to have a node with live chain state to test our contracts off of.
+[Chopsticks](https://github.com/AcalaNetwork/chopsticks) is a powerful tool in our ecosystem that will allow us to mirror a running node. We will run chopsticks and have it mirror the `substrate-contracts-node` that is already running on our machince from the previous step. This will allow us to have a node with live chain state to test our contracts off of.
 
 Clone chopsticks:
 
@@ -63,7 +63,7 @@ db: ./db.sqlite
 ```
 
 :::note
-In the example above chopsticks will be mirroring up until block 1 from the substrate-contracts-node. For real world use case you would want to use a different block number and this is the place where you can configure other variables such as a sudo key. Read the chopsticks docs for more info.
+In the example above chopsticks will be mirroring up until block 1 from the `substrate-contracts-node`. For real world use case you would want to use a different block number and this is the place where you can configure other variables such as a sudo key. Read the chopsticks docs for more info.
 :::
 
 You can either run chopsticks locally by following the instructions here:

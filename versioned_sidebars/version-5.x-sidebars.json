@@ -67,6 +67,7 @@
     ],
     "Storage & Data Structures": [
       "datastructures/overview",
+      "datastructures/storagevec",
       "datastructures/mapping",
       "datastructures/storage-layout",
       "datastructures/custom",
