@@ -62,10 +62,10 @@ for an elaborate example which uses events.
 
 ## Event Definition
 
-Since `ink!` version `5.0`, events can be defined independently of the contract which emits them. 
+Since ink! version 5.0, events can be defined independently of the contract which emits them. 
 Events can now be defined once and shared across multiple contracts. 
 
-This is useful for events for contracts which conform to standards such as `ERC20`: 
+This is useful for events for contracts which conform to standards such as ERC-20: 
 contract indexers/explorers are now able to group all e.g. `Transferred` events.
 
 This is how an event definition looks:
@@ -147,7 +147,7 @@ type of event to decode into.
 
 #### Anonymous Events
 
-Annotating an event definitions with `#[ink(anonymous)]` (See [here](/macros-attributes/anonymous)
+Annotating an event definition with `#[ink(anonymous)]` (See [here](/macros-attributes/anonymous)
 for details on this attribute) prevents a signature topic from being generated and published with the
 event.
 
