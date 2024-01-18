@@ -81,7 +81,7 @@ There are two options when it comes to verification:
 `cargo contract verify` allows you to verify the given cargo project
 against a reference contract bundle. 
 
-Simply run `cargo contract verify --contract <path>` 
+Simply run `cargo contract verify <path>` 
 in the cargo project directory. 
 
 If the reference contract was not build inside a docker container, the command
@@ -114,7 +114,7 @@ If you are building a multi-contract project,
 make sure you are executing the build in the parent directory in order to mount the directory 
 of all contracts to be visible. Specify a relative manifest path to the root contract: 
 
-`cargo contract build --verifiable --release --manifest-path ink-project-a/Cargo.toml`
+`cargo contract build --verifiable --manifest-path ink-project-a/Cargo.toml`
 :::
 
 You can find a Dockefile and further documentation on image usage 

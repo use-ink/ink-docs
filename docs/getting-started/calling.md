@@ -6,6 +6,8 @@ hide_title: true
 
 <img src="/img/title/frontend.svg" className="titlePic" />
 
+# Call Your Contract
+
 Now that your contract has been fully deployed, we can start interacting with it! Flipper only has
 two functions: `flip()` and `get()`. We will show you what it's like to play with both of them.
 
