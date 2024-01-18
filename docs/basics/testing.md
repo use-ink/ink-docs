@@ -187,7 +187,7 @@ cargo test --features e2e-tests
 ## End-to-End (E2E) testing of ink! contracts off of live chain state
 
 ### Run a node
-In real world case you will already have a live node. This will be the node you want to test you contracts off of. For example purposes we will be running a substrate-contracts-node. 
+In a real world case you will already have a live node. This will be the node you want to test you contracts off of. For example purposes we will be running a `substrate-contracts-node`. 
 
 Clone substrate-contracts-node:
 ```
