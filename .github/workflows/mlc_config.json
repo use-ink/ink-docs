@@ -1,8 +1,8 @@
 {
-  "retryCount": 6,
-  "fallbackRetryDelay": "30s",
+  "retryCount": 12,
+  "fallbackRetryDelay": "60s",
   "timeout": "30s",
-  "retryOn429": true,
+  "aliveStatusCodes": [429, 200, 403, 0],
   "replacementPatterns": [
     {
       "pattern": "^/",
@@ -11,12 +11,18 @@
   ],
   "httpHeaders": [
     {
-      "urls": [
-        "https://crates.io"
-      ],
+      "urls": ["https://crates.io"],
       "headers": {
         "Accept": "text/html"
       }
+    }
+  ],
+  "ignorePatterns": [
+    {
+      "pattern": "^https?://twitter.com"
+    },
+    {
+      "pattern": "^https?://x.com"
     }
   ]
 }

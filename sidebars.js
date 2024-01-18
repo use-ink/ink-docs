@@ -2,24 +2,13 @@ module.exports = {
   reference: {
     Overview: [
       "intro/intro",
-      "intro/upcoming-events",
       "intro/why-rust",
       "intro/why-webassembly",
       "intro/polkadot",
       "intro/how-it-works",
       "intro/ink-vs-solidity",
       "intro/ink-vs-cosmwasm",
-    ],
-    "Monthly Update": [
-      "monthly-update/overview",
-      "monthly-update/2023/03",
-      "monthly-update/2023/02",
-      "monthly-update/2023/01",
-      "monthly-update/2022/12",
-      "monthly-update/2022/11",
-      "monthly-update/2022/10",
-      "monthly-update/2022/09",
-      "monthly-update/archive",
+      "intro/migrate-to-parachain",
     ],
     "Getting started": [
       "getting-started/setup",
@@ -45,7 +34,15 @@ module.exports = {
       "basics/metadata",
       "basics/testing",
       "basics/debugging",
-      "basics/verification",
+      {
+        type: "category",
+        label: "Verification",
+        items: [
+          "basics/verification/contract-verification",
+          "basics/verification/sirato"
+        ]
+      }
+      // "basics/verification",
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
@@ -247,6 +244,8 @@ module.exports = {
       },
       // { "Swanky suite": ["third-party-tools/swanky/cli"] },
       "third-party-tools/ink-analyzer",
+      "third-party-tools/inkathon",
+      "third-party-tools/subwallet",
     ],
     FAQ: ["faq/faq", "faq/migrating-from-ink-3-to-4"],
     "Brand Assets": [

@@ -142,5 +142,5 @@ list of step is provided [here](https://docs.cosmwasm.com/docs/getting-started/i
 It is possible to deploy and interact with ink! contracts using either a CLI
 (`cargo-contract`), or a web UI ([`contracts-ui`](https://contracts-ui.substrate.io/)).
 
-- [Instructions for `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/docs/extrinsics.md)
+- [Instructions for `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/crates/extrinsics/README.md)
 - [Instructions for `contracts-ui`](/getting-started/deploy-your-contract)
