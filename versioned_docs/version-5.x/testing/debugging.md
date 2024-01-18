@@ -1,5 +1,5 @@
 ---
-title: Contract Debugging
+title: Debugging
 slug: /basics/contract-debugging
 hide_title: true
 ---

@@ -1,7 +1,12 @@
 ---
-title: Smart Contracts
+title: Smart Contract Examples
 slug: /examples/smart-contracts
+hide_title: true
 ---
+
+<img src="/img/title/frontend.svg" className="titlePic" />
+
+# Smart Contract Examples
 
 We have a repository <a href="https://github.com/paritytech/ink-examples/tree/main">`ink-examples`</a>,
 in which you find a number of contracts written in ink!.

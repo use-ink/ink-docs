@@ -3,6 +3,10 @@ title: Environment Functions
 slug: /basics/environment-functions
 ---
 
+<img src="/img/title/env-function.svg" className="titlePic" />
+
+# Environment Functions
+
 ink! exposes a number of handy environment functions.
 A full overview [is found here](https://docs.rs/ink_env/4.0.0/ink_env/#functions).
 

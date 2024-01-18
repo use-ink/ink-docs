@@ -32,8 +32,6 @@
       "basics/env-functions",
       "basics/environment",
       "basics/metadata",
-      "basics/testing",
-      "basics/debugging",
       {
         "type": "category",
         "label": "Verification",
@@ -42,6 +40,14 @@
           "basics/verification/sirato"
         ]
       }
+    ],
+    "Testing & Debugging": [
+      "testing/overview",
+      "testing/off-chain",
+      "testing/drink",
+      "testing/e2e",
+      "testing/testing-with-live-state",
+      "testing/debugging"
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
@@ -87,8 +93,11 @@
       "examples/contracts",
       "examples/dapps"
     ],
-    "ink!ubator": [
-      "inkubator/overview"
+    "Standards": [
+      "standards/overview"
+    ],
+    "Funding Programs": [
+      "funding-programs/overview"
     ],
     "Testnet": [
       "testnet/overview",
@@ -98,7 +107,7 @@
       "third-party-tools/openbrush",
       {
         "type": "category",
-        "label": "Swanky suite",
+        "label": "Swanky Suite",
         "items": [
           "third-party-tools/swanky/cli",
           "third-party-tools/swanky/node"

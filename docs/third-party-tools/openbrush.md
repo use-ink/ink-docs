@@ -16,7 +16,7 @@ You can find an example [here](https://learn.brushfam.io/docs/OpenBrush/smart-co
 
 - **PSP22**: Fungible Token (*ERC20 equivalent*) with extensions.
 - **PSP34**: Non-Fungible Token (*ERC721 equivalent*) with extensions.
-- **PSP37**: *ERC1155 equivalent* with extensions.
+- **PSP37**: ERC1155 equivalent with extensions.
 - **Ownable** Restrict access to action for non-owners.
 - **Access Control**: Define a set of roles and restrict access to an action by roles.
 - **Reentrancy Guard**: Prevent reentrant calls to a function.

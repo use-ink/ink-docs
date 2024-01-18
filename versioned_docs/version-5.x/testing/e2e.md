@@ -1,111 +1,12 @@
 ---
-title: Contract Testing
+title: Overview
 hide_title: true
-slug: /basics/contract-testing
+slug: /basics/contract-testing/end-to-end-e2e-testing
 ---
 
 <img src="/img/title/testing1.svg" className="titlePic" />
 
-# Contract Testing
-
-ink! supports three different stages of testing: unit, integration
-and end-to-end tests. On this page we'll explain what the purpose
-of each stage is about and how to use it.
-
-<img src="/img/testing.png" />
-
-Generally you can think of those three types of testing as a pyramid
-with the top being the most elaborate test. The End-to-End (E2E)
-tests at the top will test the lower layers of the pyramid as part
-of them.
-
-## Unit Tests
-
-Testing contracts off-chain is done by `cargo test` and users can simply use the standard Rust
-routines of creating unit test modules within the ink! project:
-
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn my_test() { ... }
-}
-```
-
-Test instances of contracts can be created with something like:
-
-```rust
-let contract = MyContract::my_constructor(a, b);
-```
-
-Messages can simply be called on the returned instance as if `MyContract::my_constructor` returns a
-`Self` instance.
-
-See the [flipper example](https://github.com/paritytech/ink-examples/blob/main/flipper/lib.rs).
-
-## Off-chain Tests
-
-For integration tests, the test is annotated with our `#[ink::test]`
-attribute instead of `#[test]`. Our attribute denotes that
-the test is then executed in a simulated, mocked blockchain environment.
-here are functions available to influence how the test environment
-is configured (e.g. setting a specified balance of an account to
-simulate how a contract would behave when interacting with it).
-
-If you annotate a test with the `#[ink::test]` attribute it
-will be executed in a simulated environment, similar to as it
-would be run on-chain.
-You then have fine-grained control over how a contract is called; 
-for example you can influence the block advancement, the value transferred to it,
-by which account it is called, which storage it is run with, etc..
-
-See the [`examples/erc20`](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) contract on how to utilize those or [the documentation](https://docs.rs/ink/4.0.0/ink/attr.test.html) for details.
-
-At the moment there are some known limitations to our off-chain environment,
-and we are working on making it behave as close to the real chain environment
-as possible.
-
-:::note
-One limitation of the off-chain testing framework is that it
-currently only supports a `DefaultEnvironment`.
-
-See [here](/basics/chain-environment-types) for an explanation of what an environment is.
-:::
-
-### How do you find out if your test requires the off-chain environment?
-
-Normally if the test recursively uses or invokes some contract methods that
-call a method defined in `self.env()` or `Self::env()`.
-
-An example is the following:
-
-```rust
-let caller: AccountId = self.env().caller();
-```
-
-### Example
-
-```rust
-#[cfg(test)]
-mod tests {
-    // Conventional unit test that works with assertions.
-    #[ink::test]
-    fn test1() {
-        // test code comes here as usual
-    }
-
-    // Conventional unit test that returns some Result.
-    // The test code can make use of operator-`?`.
-    #[ink::test]
-    fn test2() -> Result<(), ink::env::Error> {
-        // test code that returns a Rust Result type
-    }
-}
-```
-
-## End-to-End (E2E) Tests
+# End-to-End (E2E) Tests
 
 E2E testing enables developers to write a test that will not only test the contract in an
 isolated manner; instead the contract will be tested _together_ with all components that
@@ -126,7 +27,7 @@ part of the test execution as well.
 ink! does not put any requirements on the Substrate node in the background – for example,
 you can run a node that contains a snapshot of a live network.
 
-### Example
+## Example
 
 The following code example illustrates a basic E2E test for the
 [flipper example](https://github.com/paritytech/ink-examples/blob/main/flipper/lib.rs).
@@ -184,9 +85,9 @@ And finally execute the following command to start e2e test execution.
 cargo test --features e2e-tests
 ```
 
-## End-to-End (E2E) testing of ink! contracts off of live chain state
+# End-to-End (E2E) testing of ink! contracts off of live chain state
 
-### Run a node
+## Run a node
 In a real world case you will already have a live node. This will be the node you want to test you contracts off of. For example purposes we will be running a `substrate-contracts-node`.
 
 Clone substrate-contracts-node:
@@ -215,7 +116,7 @@ You should get output similar to:
 
 Next, produce one or two blocks by running `system.remark()` extrinsics. You can use the PolkadotJs Apps to do this. This is so we have 1 or 2 blocks produced on the node for the next step.
 
-### Setup [chopsticks](https://github.com/AcalaNetwork/chopsticks)
+## Setup [chopsticks](https://github.com/AcalaNetwork/chopsticks)
 Chopsticks is a powerful tool in our ecosystem that will allow us to mirror a running node. We will run chopsticks and have it mirror the substrate-contracts-node that is already running on our machince from the previous step. This will allow us to have a node with live chain state to test our contracts off of.
 
 Clone chopsticks:
@@ -248,7 +149,7 @@ npx @acala-network/chopsticks@latest --config=configs/dev.yml
 
 Recap: We have our live node running on port 9944 and our test node running on port 8000.
 
-### Run ink! e2e tests
+## Run ink! e2e tests
 
 Next we would like to run the integration tests for our ink! smart contract. For example purposes we will use the flipper ink! integration tests which reside in the ink! repo.
 
