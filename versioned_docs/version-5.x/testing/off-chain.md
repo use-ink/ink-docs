@@ -6,7 +6,33 @@ slug: /basics/contract-testing/off-chain
 
 <img src="/img/title/testing1.svg" className="titlePic" />
 
-# Off-chain Tests
+## Unit Tests
+
+Testing contracts off-chain is done by `cargo test` and users can simply use the standard Rust
+routines of creating unit test modules within the ink! project:
+
+```rust
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn my_test() { ... }
+}
+```
+
+Test instances of contracts can be created with something like:
+
+```rust
+let contract = MyContract::my_constructor(a, b);
+```
+
+Messages can simply be called on the returned instance as if `MyContract::my_constructor` returns a
+`Self` instance.
+
+See the [flipper example](https://github.com/paritytech/ink-examples/blob/main/flipper/lib.rs).
+
+# Integration Tests
 
 For integration tests, the test is annotated with our `#[ink::test]`
 attribute instead of `#[test]`. Our attribute denotes that
