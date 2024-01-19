@@ -102,7 +102,7 @@ npx @acala-network/chopsticks@latest run-block \
 | grep runtime::contracts
 ```
 
-This command replays the last block with trace-level logging enabled. By filtering the output with `runtime::contracts`, you can view all the contract calls in the block:
+This command replays the block with trace-level logging enabled. By filtering the output with `runtime::contracts`, you can view all the contract calls in the block:
 
 ```
 runtime::contracts           TRACE: call ExportedFunction::Call account: , input_data: [246, 118, 44, 201]
