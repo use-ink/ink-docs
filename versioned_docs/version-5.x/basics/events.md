@@ -136,11 +136,14 @@ So for our `Transferred` example it will be:
 ```
 blake2b("Transferred(Option<AccountId>,Option<AccountId>,u128)")`
 ```
-> Important caveat: because the *name* of the field type is used, refactoring an event 
-> definition to use a type alias or a fully qualified type will change the signature topic, even
-> though the underlying type is the same. Two otherwise identical definitions of an event with the 
-> same name and same field types but different field type names will have different signature 
-> topics.
+
+:::caution
+Important caveat: because the *name* of the field type is used, refactoring an event 
+definition to use a type alias or a fully qualified type will change the signature topic, even
+though the underlying type is the same. Two otherwise identical definitions of an event with the 
+same name and same field types but different field type names will have different signature 
+topics.
+:::
 
 When decoding events emitted from a contract, signature topics are now required to determine which 
 type of event to decode into. 

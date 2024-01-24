@@ -1,7 +1,7 @@
 ---
-title: Testing with Live State
+title: Testing with Chain Snapshot
 hide_title: true
-slug: /basics/contract-testing/with-live-state
+slug: /basics/contract-testing/chain-snapshot
 ---
 
 <img src="/img/title/testing1.svg" className="titlePic" />
