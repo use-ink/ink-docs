@@ -19,6 +19,8 @@ rustup install nightly-2023-12-28
 cargo install cargo-dylint dylint-link
 ```
 
+Note that the linter requires this specific version of the toolchain, since it uses the internal compiler API.
+
 ## Usage
 The linter operates via `cargo-contract`.
 
