@@ -279,7 +279,9 @@ Details on each lint can be found [here](/5.x/linter/overview).
 
 ### New `cargo-contract` commands
 
-We added a bunch of helpful new commands to `cargo-contract` 4.0:
+We added a bunch of helpful new commands to `cargo-contract` 4.0.
+For all these commands you can also supply the `--help` cli flag to get more
+info (e.g. `cargo contract storage --help`).
 
 * `cargo contract verify`: contract verification ([#1404](https://github.com/paritytech/cargo-contract/pull/1404), [#1306](https://github.com/paritytech/cargo-contract/pull/1306))
 * `cargo contract info` now outputs the language of the deployed contract, using a heuristic ([#1329](https://github.com/paritytech/cargo-contract/pull/1329))
@@ -287,7 +289,9 @@ We added a bunch of helpful new commands to `cargo-contract` 4.0:
 * `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/paritytech/cargo-contract/pull/1319))
 * `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/paritytech/cargo-contract/pull/1395), [#1414](https://github.com/paritytech/cargo-contract/pull/1414))
 
-For all these commands you can also supply the `--help` cli flag to get more info (e.g. `cargo contract storage --help`).
+<center>
+  <img src="/img/contract-storage.png"  />
+</center>
 
 ### Alternative off-chain E2E testing backend support: DRink!
 
