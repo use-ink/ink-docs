@@ -22,7 +22,9 @@ cargo install cargo-dylint dylint-link
 ## Usage
 The linter operates via `cargo-contract`.
 
-To perform an analysis, run the following command within the contract directory:
+By default, the linter is executed only for the RISC-V target, while for the WASM target, it is not executed unless specifically requested by the user.
+
+To perform a build with extra code analysis, run the following command within the contract directory:
 
 ```
 cargo contract build --lint
