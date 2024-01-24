@@ -4,7 +4,7 @@ slug: /basics/verification/sirato
 hide_title: true
 ---
 
-<img src="/img/title/magnifying-glass.svg" className="titlePic" />
+<img src="/img/title/verification.svg" className="titlePic" />
 
 # Sirato Verification Service
 

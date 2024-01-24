@@ -4,7 +4,7 @@ slug: /basics/verification/contract-verification
 hide_title: true
 ---
 
-<img src="/img/title/magnifying-glass.svg" className="titlePic" />
+<img src="/img/title/verification.svg" className="titlePic" />
 
 # Contract Verification
 
