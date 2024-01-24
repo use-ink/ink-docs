@@ -65,6 +65,14 @@ The following chains are in production and support ink! 5.0:
     </div>
 </div>
 
+<div className="row">
+    <div className="col text--center">
+        <a href="https://krest.peaq.network/">
+            <img src= "/img/chains/krest.svg" className="chain" />
+        </a>
+    </div>
+</div>
+
 ### `cargo-contract` 4.0
 
 Together with ink! 5.0 we've released `cargo-contract` 4.0.
