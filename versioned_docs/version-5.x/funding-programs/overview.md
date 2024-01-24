@@ -4,7 +4,7 @@ hide_title: true
 slug: /funding-programs
 ---
 
-<img src="/img/title/magnifying-glass.svg" className="titlePic" />
+<img src="/img/title/funding-programs.svg" className="titlePic" />
 
 On this page we list some general pointers where to find funding 
 in case you are looking for a paid gig when developing a public
