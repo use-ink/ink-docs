@@ -12,10 +12,11 @@ ink! includes the linter - a security tool designed to identify typical security
 ## Installation
 The linter is integrated to the contracts build process, therefore you should already have it installed if you are using [`cargo-contract`](https://github.com/paritytech/cargo-contract) of version `4.0.0` or later.
 
-Here is the list of commands you can use for installation:
+Here are commands you can use for installation:
 
 ```
-cargo install cargo-dylint dylint-link ink_linting ink_linting_mandatory
+rustup install nightly-2023-12-28
+cargo install cargo-dylint dylint-link
 ```
 
 ## Usage
