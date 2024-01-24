@@ -6,13 +6,28 @@ slug: /funding-programs
 
 <img src="/img/title/funding-programs.svg" className="titlePic" />
 
-On this page we list some general pointers where to find funding 
-in case you are looking for a paid gig when developing a public
-good for the ink! ecosystem.
+# Funding Programs
 
-# ink!ubator
+You want to develop a public good for the ink! ecosystem and are
+looking for funding? On this page we list some pointers of where you can look.
+
+## ink!ubator
 
 ink!ubator is an initiative funded by the Polkadot Treasury's Bounty Program. It is designed to
 kickstart the ink! ecosystem on Polkadot, Kusama, and other Substrate chains.
 
 You can learn more [here](/ubator).
+
+## Ecosystem Development Funds
+
+Nearly all chains that support ink! have some sort of ecosystem development program.
+Check [our intro page](/) to see the list of chains that support ink!.
+
+## Treasuries
+
+A number of chains that support ink! have a treasury. In the case of Polkadot the 
+treasury in on-chain with a governance process. Here, the community decides on
+where to best allocate funds.
+
+The [Polkadot](https://polkadot.polkassembly.io/) and [Kusama](https://kusama.polkassembly.io/)
+treasuries are examples. A number of ink! related proposals have been funded by both treasuries.
