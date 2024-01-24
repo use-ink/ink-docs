@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: /standards
+slug: /standards/overview
 hide_title: true
 ---
 
