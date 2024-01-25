@@ -25,6 +25,12 @@ The way how ink! 4.0 stores data and reads from it (i.e. the storage
 layout) changes from ink! 3.x to 4.0.
 :::
 
+## How to upgrade
+
+* Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `5`.
+* Update your local `cargo-contract` installation to 4.0.
+* Read through this page.
+
 ## Compatibility
 
 The following chains are in production and support ink! 5.0:
