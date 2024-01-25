@@ -325,6 +325,21 @@ It has a number of features that are pretty great:
 
 See the [DRink!](https://github.com/inkdevhub/drink) page for more details.
 
+### New Data Structure: `StorageVec`
+
+We've added a `Vec`-like data structure, built on top of Mapping.
+
+This allows to retrieve elements from a vector and grow it without
+having to load and push all elements.
+For `Vec`, the cost of reading or writing a single element grows linearly corresponding
+to the number of elements in the vector (its length). Additionally, the maximum capacity
+of the whole vector is limited by the size of [ink!'s static buffer](https://github.com/paritytech/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
+used during ABI encoding and decoding (default 16 KiB).
+`StorageVec` on the other hand allows to access each element individually.
+
+You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec),
+the Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
+
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
 See [here](https://github.com/paritytech/ink/tree/master/integration-tests/upgradeable-contracts)
