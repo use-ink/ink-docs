@@ -282,9 +282,12 @@ of the whole vector is limited by the size of [ink!'s static buffer](https://git
 used during ABI encoding and decoding (default 16 KiB).
 `StorageVec` on the other hand allows to access each element individually.
 
-For most uses of `Vec` it makes sense to transition to `StorageVec`.
-With a `Vec` it's possible to introduce a security issue in your contract where an
-attacker can fill the `Vec`, making it very costly to access it or write to it.
+We recommend reviewing your uses of `Vec` and transition to `StorageVec`.
+For most use cases this will make sense.
+
+With a `Vec` it's possible to e.g. introduce a security issue in your contract
+where an attacker can fill the `Vec`, making it very costly for other users to
+access it or write to it.
 
 You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec),
 the Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
