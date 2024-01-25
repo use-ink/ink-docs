@@ -285,8 +285,22 @@ of the whole vector is limited by the size of [ink!'s static buffer](https://git
 used during ABI encoding and decoding (default 16 KiB).
 `StorageVec` on the other hand allows to access each element individually.
 
+For most uses of `Vec` it makes sense to transition to `StorageVec`.
+With a `Vec` it's possible to introduce a security issue in your contract where an
+attacker can fill the `Vec`, making it very costly to access it or write to it.
+
 You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec),
 the Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
+
+## Fallible `get` and `set` methods for `Lazy` and `Mapping`
+
+In [#1910](https://github.com/paritytech/ink/pull/1910) we added `try_*` methods for
+reading and writing `Lazy` and `Mapping` values to and from storage.
+For `Mapping`, the encoded size of the key is also accounted for.
+
+We recommend transitioning usages of `Mapping::{set, get}` and `Lazy::{set, get}` to
+these new methods. You will thereby have to think of how to handle failure cases that
+can occur, but have so far not been reflected in the API.
 
 ### End-To-End testing with a chain snapshot 
 
