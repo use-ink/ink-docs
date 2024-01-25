@@ -303,7 +303,7 @@ Please see the individual Rust docs for these new methods:
 * [`Mapping`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
 
 We recommend transitioning usages of `Mapping::{insert, get, take}`, `Lazy::{set, get}`,
-`StorageVec::get` to these new methods.
+`StorageVec::{peek, get, set, pop, push}` to these new methods.
 You will thereby be forced to think about how to handle failure cases that
 can occur, but have so far not been reflected in the API.
 Possible failure cases are described in the individual Rust docs.
@@ -437,6 +437,5 @@ It can be used to call a runtime dispatchable from an ink! contract.
 
 You can find a contract example and a comparison with chain extensions
 [here](https://github.com/paritytech/ink/tree/master/integration-tests/call-runtime).
-
 We've added an example of how to end-to-end test
 `call_runtime` [here](https://github.com/paritytech/ink/tree/master/integration-tests/e2e-call-runtime).
