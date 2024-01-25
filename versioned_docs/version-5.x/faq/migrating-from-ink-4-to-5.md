@@ -242,6 +242,18 @@ You need to handle overflows using e.g. saturating or wraparound math.
 
 This was done in [#1831](https://github.com/paritytech/ink/pull/1831).
 
+### Fail when decoding from storage and not all bytes consumed
+
+If a contract previously relied on successful decoding which does not consume all bytes,
+then recompiling with a version of ink! which includes this change will cause that contract
+to trap at runtime when attempting to decode.
+
+A simple example would be if a storage cell contains some bytes which were in the first place
+an encoded `u32`. If the contract attempts to decode those into a `u8`
+this would previously have succeeded, now the contract would trap.
+
+We introduced this change in [#1897](https://github.com/paritytech/ink/pull/1897).
+
 ### [ink_e2e] Improved `call()` API
 
 We removed the `build_message()` function with its unhandy callback.
