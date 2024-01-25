@@ -270,9 +270,6 @@ let first_insert = ink_e2e::build_message::<MappingsRef>(contract_id)
 
 See [#1782](https://github.com/paritytech/ink/pull/1782) for more details.
 
-
-## Interesting New Features
-
 ### New Data Structure: `StorageVec`
 
 We've added a `Vec`-like data structure, built on top of Mapping.
@@ -301,6 +298,8 @@ For `Mapping`, the encoded size of the key is also accounted for.
 We recommend transitioning usages of `Mapping::{set, get}` and `Lazy::{set, get}` to
 these new methods. You will thereby have to think of how to handle failure cases that
 can occur, but have so far not been reflected in the API.
+
+## Interesting New Features
 
 ### End-To-End testing with a chain snapshot 
 
