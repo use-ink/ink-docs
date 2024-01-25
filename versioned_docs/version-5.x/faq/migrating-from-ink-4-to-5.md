@@ -289,15 +289,22 @@ attacker can fill the `Vec`, making it very costly to access it or write to it.
 You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec),
 the Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
 
-## Fallible `get` and `set` methods for `Lazy` and `Mapping`
+## We added fallible methods for `Lazy`, `Mapping`, `StorageVec`
 
 In [#1910](https://github.com/paritytech/ink/pull/1910) we added `try_*` methods for
 reading and writing `Lazy` and `Mapping` values to and from storage.
-For `Mapping`, the encoded size of the key is also accounted for.
+Please see the individual Rust docs for these new methods:
 
-We recommend transitioning usages of `Mapping::{set, get}` and `Lazy::{set, get}` to
-these new methods. You will thereby have to think of how to handle failure cases that
+* [`StorageVec`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html)
+* [`Lazy`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.Lazy.html)
+* [`Mapping`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
+
+We recommend transitioning usages of `Mapping::{insert, get, take}`, `Lazy::{set, get}`,
+`StorageVec::get` to these new methods.
+You will thereby be forced to think about how to handle failure cases that
 can occur, but have so far not been reflected in the API.
+
+Possible failure cases are described in the individual Rust docs.
 
 ## Interesting New Features
 
