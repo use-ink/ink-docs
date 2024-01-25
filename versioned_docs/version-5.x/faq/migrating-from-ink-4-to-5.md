@@ -340,6 +340,16 @@ used during ABI encoding and decoding (default 16 KiB).
 You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec),
 the Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
 
+### Support for multiple chain extensions
+
+With [#1958](https://github.com/paritytech/ink/pull/1958) we added support for interacting with
+multiple chain extensions from ink!.
+You can now e.g. have a contract that utilizes a PSP22 chain extension together with one
+for random numbers.
+
+We added an example contract that illustrates this:
+[`combined-extension`](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension).
+
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
 See [here](https://github.com/paritytech/ink/tree/master/integration-tests/upgradeable-contracts)
