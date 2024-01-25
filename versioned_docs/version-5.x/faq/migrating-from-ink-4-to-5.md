@@ -306,8 +306,11 @@ We recommend transitioning usages of `Mapping::{insert, get, take}`, `Lazy::{set
 `StorageVec::get` to these new methods.
 You will thereby be forced to think about how to handle failure cases that
 can occur, but have so far not been reflected in the API.
-
 Possible failure cases are described in the individual Rust docs.
+
+We added a lint to `cargo-contract` 4.0 that will detect
+potentially unsafe uses of methods for which there are safer alternatives:
+[`non_fallible_api`](https://use.ink/5.x/linter/rules/non_fallible_api).
 
 ## Interesting New Features
 
