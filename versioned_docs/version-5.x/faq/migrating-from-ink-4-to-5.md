@@ -395,3 +395,14 @@ In [#2031](https://github.com/paritytech/ink/pull/2031) we introduced an
 optional attribute `signature_topic` to the `#[ink::event]` and `#[ink(event)]` macros.
 It can be used to specify the signature topic for a specific event manually, instead of the
 automatic topic calculation.
+
+### Stabilized `call_runtime`
+
+We stabilized `call_runtime` in [#1749](https://github.com/paritytech/ink/pull/1749).
+It can be used to call a runtime dispatchable from an ink! contract.
+
+You can find a contract example and a comparison with chain extensions
+[here](https://github.com/paritytech/ink/tree/master/integration-tests/call-runtime).
+
+We've added an example of how to end-to-end test
+`call_runtime` [here](https://github.com/paritytech/ink/tree/master/integration-tests/e2e-call-runtime).
