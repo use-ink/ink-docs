@@ -347,6 +347,14 @@ multiple chain extensions from ink!.
 You can now e.g. have a contract that utilizes a PSP22 chain extension together with one
 for random numbers.
 
+The syntax for chain extensions changed slightly:
+
+```diff
+-#[ink(extension = 0xfecb)]
++#[ink(function = 0xfecb)]
+fn foo() {}
+```
+
 We added an example contract that illustrates this:
 [`combined-extension`](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension).
 
