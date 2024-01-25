@@ -6,9 +6,10 @@ hide_title: true
 
 <img src="/img/title/storage.svg" className="titlePic" />
 
-# Working with Mapping
+# Working with `StorageVec`
 
-In this section we demonstrate how to work with ink! [`StorageVec`](https://docs.rs/ink_storage/5.0.0/ink_storage/struct.StorageVec.html).
+In this section we demonstrate how to work with ink!'s
+[`StorageVec`](https://docs.rs/ink_storage/5.0.0/ink_storage/struct.StorageVec.html).
 
 ## Example: Using a `StorageVec`
 
@@ -85,8 +86,8 @@ This can be undesirable:
 The cost of reading or writing a _single_ element grows linearly
 corresponding to the number of elements in the vector (its length).
 Additionally, the maximum capacity of the _whole_ vector is limited by
-the size of the static buffer used during ABI encoding and decoding
-(default 16 KiB).
+the size of [ink!'s static buffer](https://github.com/paritytech/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
+used during ABI encoding and decoding (default 16 KiB).
 
 `StorageVec` on the other hand allows to access each element individually.
 Thus, it can theoretically grow to infinite size.
@@ -136,3 +137,8 @@ Hence, the same considerations apply to `StorageVec` too:
 - [Storage loading behavior](https://use.ink/datastructures/mapping#storage-loading-behavior)
 - [Use fallible storage methods for dynamically sized values](https://use.ink/datastructures/mapping#use-fallible-storage-methods-for-dynamically-sized-values)
 - [Updating values](https://use.ink/datastructures/mapping#updating-values)
+
+## Rust Docs
+
+See here for the Rust documentation of this data structure:
+[`StorageVec`](https://docs.rs/ink_storage/5.0.0/ink_storage/struct.StorageVec.html).
