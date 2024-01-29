@@ -55,7 +55,7 @@ You can find them here: [github.com/inkdevhub/standards](https://github.com/inkd
 
 ## PSP-22
 
-A standard for a fungible token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts).
+A standard for a fungible token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts).
 
 This proposal aims to define the standard fungible token interface for WebAssembly smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
 
