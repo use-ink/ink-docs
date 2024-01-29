@@ -310,6 +310,38 @@ We added a lint to `cargo-contract` 4.0 that will detect
 potentially unsafe uses of methods for which there are safer alternatives:
 [`non_fallible_api`](https://use.ink/5.x/linter/rules/non_fallible_api).
 
+### Chain Extension API changed + Support for multiple chain extensions
+
+With [#1958](https://github.com/paritytech/ink/pull/1958) we added support for interacting with
+multiple chain extensions from ink!. This is a breaking change.
+
+You can now e.g. have a contract that utilizes a PSP22 chain extension together with one
+for random numbers.
+
+The syntax for chain extensions changed slightly:
+
+```diff
+-#[ink(extension = 0xfecb)]
++#[ink(function = 0xfecb)]
+fn foo() {}
+```
+
+The argument type changed from `u32` to `u16`:
+
+```diff
+-/// `#[ink(extension = N: u32)]`
+-Extension,
++/// `#[ink(function = N: u16)]`
++Function,
+```
+
+A migration in most cases should just be to rename `#[ink(extension = …)]` to 
+`#[ink(function = …)]`.
+
+We added an example contract that illustrates the usage of multiple chain extensions
+in one contract:
+[`combined-extension`](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension).
+
 ## Interesting New Features
 
 ### End-To-End testing with a chain snapshot 
@@ -363,24 +395,6 @@ It has a number of features that are pretty great:
 - full control over runtime state, including block number, timestamp, etc.
 
 See the [DRink!](https://github.com/inkdevhub/drink) page for more details.
-
-### Support for multiple chain extensions
-
-With [#1958](https://github.com/paritytech/ink/pull/1958) we added support for interacting with
-multiple chain extensions from ink!.
-You can now e.g. have a contract that utilizes a PSP22 chain extension together with one
-for random numbers.
-
-The syntax for chain extensions changed slightly:
-
-```diff
--#[ink(extension = 0xfecb)]
-+#[ink(function = 0xfecb)]
-fn foo() {}
-```
-
-We added an example contract that illustrates this:
-[`combined-extension`](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension).
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
