@@ -490,7 +490,7 @@ ink::combine_extensions! {
 ```
 
 The combined structure is called `CombinedChainExtension`, and we can refer to it 
-when specify the chain extension type in `Environment`:
+when specifying the chain extension type in `Environment`:
 ```rust
 type ChainExtension = CombinedChainExtension;
 ```
