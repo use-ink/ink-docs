@@ -43,7 +43,7 @@ Next, we'll create some state and produce a bunch of blocks. You can do this by 
 
 ```
 cd ink-examples/flipper/
-cargo build --release
+cargo contract build --release
 cargo contract instantiate --suri //Alice --args true -x
 ```
 
@@ -112,36 +112,76 @@ Index | Root Key | Parent | Value
 0     | 00000000 | root   | Flipper { value: true }
 ```
 
-Recap: We have our "live" `substrate-contracts-node` running on port 9944
-and our test node with the branched state running on port 8000.
-You can now submit transactions to the node on port 8000, without affecting
-the node on port 9944.
+Chopsticks has branched off from the live chain.
+You can now submit transactions to the Chopsticks node on port 8000,
+without affecting the node/chain on port 9944.
 
 ### Run ink! e2e tests
 
-Next we would like to run some tests against this contract. 
-Add this code to the `flipper` example:
+Recap: We have our "live" `substrate-contracts-node` running on port 9944
+and our test node with the branched state running on port 8000.
+
+Next we would like to run some tests against the contract on our forked chain. 
+Our `flipper/lib.rs` contains a test that illustrates how to do this.
+The test reads an environment variable `CONTRACT_ADDR_HEX` that refers to
+the `flipper` on-chain address.
+
+Here's the code for it:
 
 ```rust
-TODO
+#[ink_e2e::test]
+#[ignore]
+async fn e2e_test_deployed_contract<Client: E2EBackend>(
+    mut client: Client,
+) -> E2EResult<()> {
+    // given
+    let addr = std::env::var("CONTRACT_ADDR_HEX")
+        .unwrap()
+        .replace("0x", "");
+    let acc_id = hex::decode(addr).unwrap();
+    let acc_id = AccountId::try_from(&acc_id[..]).unwrap();
+
+    // when
+    // Invoke `Flipper::get()` from Bob's account
+    let call_builder = ink_e2e::create_call_builder::<Flipper>(acc_id);
+    let get = call_builder.get();
+    let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await?;
+
+    // then
+    assert!(matches!(get_res.return_value(), true));
+    Ok(())
+}
 ```
 
-Let's now run our flipper integration tests against the Chopsticks node :
-
-```
-CONTRACTS_NODE_URL=ws://127.0.0.1:8000 cargo test --features e2e-tests
-```
+The test is marked as ignored, as it requires the pre-conditions that we went through
+above to succeed.
 
 :::info
+You can convert SS58 addresses to hex using the `subkey` tool:
+`subkey inspect <YOUR-SS58>`.
+:::
+
+In order to execute the test you would do something like:
+
+```
+export CONTRACT_HEX=0x2c75f0aa09dbfbfd49e6286a0f2edd3b4913f04a58b13391c79e96782f5713e3
+
+# This env variable needs to be set to reference the Chopsticks node.
+# If this env variable is not set, `ink_e2e` will spawn a new node
+# process (typically of `substrate-contracts-node`) for each test.
+export CONTRACTS_NODE_URL=ws://127.0.0.1:8000
+
+cargo test --features e2e-tests e2e_test_deployed_contract -- --ignored
+```
+
 Notice how we use the `CONTRACTS_NODE_URL` environment variable to specify where our
 Chopsticks node is running. This is essential.
-:::
 
 You will get output similar to the following:
 
 ```
-running 4 tests
-test flipper::e2e_tests::foobar ... ok
+running 1 tests
+test flipper::e2e_tests::e2e_test_deployed_contract ... ok
 ```
 
-Success! We just ran ink! integration tests against live chain state!
+Success! We just ran ink! integration tests against the snapshot of a chain!
