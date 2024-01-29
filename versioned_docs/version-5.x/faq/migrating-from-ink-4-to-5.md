@@ -290,11 +290,13 @@ You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/s
 The page explains when to use `StorageVec` and when not.
 The Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
 
-### We added fallible methods for `Lazy`, `Mapping`, `StorageVec`
+### Fallible methods for `Lazy`, `Mapping`, `StorageVec`
 
 In [#1910](https://github.com/paritytech/ink/pull/1910) we added `try_*` methods for
 reading and writing `Lazy` and `Mapping` values to and from storage.
 The try methods correspond to `Mapping::{insert, get, take}`, `Lazy::{set, get}`.
+For `StorageVec::{peek, get, set, pop, push}` we added `try_*` methods in
+[#1995](https://github.com/paritytech/ink/pull/1995).
 
 Please see the individual Rust docs for these new methods:
 
