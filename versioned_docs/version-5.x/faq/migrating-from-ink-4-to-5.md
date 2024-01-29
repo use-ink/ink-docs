@@ -282,31 +282,29 @@ of the whole vector is limited by the size of [ink!'s static buffer](https://git
 used during ABI encoding and decoding (default 16 KiB).
 `StorageVec` on the other hand allows to access each element individually.
 
-We recommend reviewing your uses of `Vec` and transition to `StorageVec`.
-For most use cases this will make sense.
-
 With a `Vec` it's possible to e.g. introduce a security issue in your contract
 where an attacker can fill the `Vec`, making it very costly for other users to
 access it or write to it.
 
-You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec),
-the Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
+You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec).
+The page explains when to use `StorageVec` and when not.
+The Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
 
 ## We added fallible methods for `Lazy`, `Mapping`, `StorageVec`
 
 In [#1910](https://github.com/paritytech/ink/pull/1910) we added `try_*` methods for
 reading and writing `Lazy` and `Mapping` values to and from storage.
+The try methods correspond to `Mapping::{insert, get, take}`, `Lazy::{set, get}`.
+
 Please see the individual Rust docs for these new methods:
 
 * [`StorageVec`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html)
 * [`Lazy`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.Lazy.html)
 * [`Mapping`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
 
-We recommend transitioning usages of `Mapping::{insert, get, take}`, `Lazy::{set, get}`,
-`StorageVec::{peek, get, set, pop, push}` to these new methods.
-You will thereby be forced to think about how to handle failure cases that
-can occur, but have so far not been reflected in the API.
-Possible failure cases are described in the individual Rust docs.
+You should use the `try_*` methods for dynamically sized values, unless you made sure
+otherwise they will fit into the static buffer. The [static buffer in ink!](https://github.com/paritytech/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
+is 16 kB by default.
 
 We added a lint to `cargo-contract` 4.0 that will detect
 potentially unsafe uses of methods for which there are safer alternatives:
