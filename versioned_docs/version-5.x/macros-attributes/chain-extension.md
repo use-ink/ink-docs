@@ -505,7 +505,7 @@ self.env().extension().psp22.total_supply()
 ```
 
 :::note
-ink! repository contains the [full example](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension) illustrating how to combine existing chain extensions 
+The ink! repository contains the [full example](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension) illustrating how to combine existing chain extensions 
 and mock them for testing.
 :::
 
