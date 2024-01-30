@@ -269,7 +269,7 @@ an encoded `u32`. If the contract attempts to decode those into a `u8`
 this would previously have succeeded, now the contract would trap.
 
 Here's a code example of behavior that previously worked for ink! 4.x, but
-the contract would trap with that data on 5.0 now:
+would error now:
 
 ```rust
 let key = 0u32;
