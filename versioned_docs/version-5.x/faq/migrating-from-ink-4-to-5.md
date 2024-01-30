@@ -178,7 +178,7 @@ selector to be defined. In ink! 4.x, more than one other message was allowed.
 Read more in [the PR](https://github.com/paritytech/ink/pull/1708) and [IIP-2: Limit contracts with a wildcard selector to one other message](https://github.com/paritytech/ink/issues/1676).
 
 The proposal is to restrict contracts with a wildcard selector to only have one other message
-with a reserved/well known selector. This guarantees that there are no selector clashes,
+with a reserved/well-known selector. This guarantees that there are no selector clashes,
 either by chance or malicious intent, and that the Proxy will only handle messages intended for it.
 
 If a contract uses a wildcard selector `#[ink(message, payable, selector = _)]` it _MAY_ define one
@@ -236,7 +236,7 @@ Please see [#1827](https://github.com/paritytech/ink/pull/1827) for details.
 
 ### No more unchecked arithmetic
 
-Unchecked arithmetic operations in a contract no longer work.
+Unchecked arithmetic operations in a contract are no longer supported for arithmetic safety reasons.
 Compiling a contract that contains those will fail gracefully.
 You need to handle overflows using e.g. saturating or wraparound math.
 
