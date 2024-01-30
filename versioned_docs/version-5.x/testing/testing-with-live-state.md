@@ -8,13 +8,23 @@ slug: /basics/contract-testing/chain-snapshot
 
 # Test End-to-End with a Chain Snapshot
 
-On this page we explain how to do test ink! contracts with the
-fork (i.e. snapshot) of a live chain.
-
+On this page we explain how to test ink! contracts with the
+fork of an existing chain. This snapshot will contain the
+state of this chain.
 We'll use the [Chopsticks](https://github.com/AcalaNetwork/chopsticks) tool for this purpose.
+
+This is a powerful workflow that you can use to e.g.
+
+* Test a contract upgrade or migration locally before running it in production.
+* Debug the behavior of an on-chain contract with on-chain state locally.
+* Get detailed debug info and replay blocks as you want.
+* …and much more!
+
 In the first section of this page we explain the general concept, using a local
 `substrate-contracts-node` that will play the role of our "live chain".
-In the second section we explain how to use one of the big production chains.
+
+In the second section we will walk you through testing a contract upgrade on a
+production chain.
 
 ## General Concept
 
@@ -152,17 +162,21 @@ async fn e2e_test_deployed_contract<Client: E2EBackend>(
 }
 ```
 
-The test is marked as ignored, as it requires the pre-conditions that we went through
+The test is marked as `#[ignore]`, as it requires the pre-conditions that we went through
 above to succeed.
 
 :::info
-You can convert SS58 addresses to hex using the `subkey` tool:
-`subkey inspect <YOUR-SS58>`.
-:::
-
-In order to execute the test you would do something like:
+You can convert SS58 addresses to hex using [the `subkey` tool](https://crates.io/crates/subkey):
 
 ```
+subkey inspect <YOUR-SS58>
+```
+:::
+
+Here's the process to execute the above test:
+
+```
+# Address of your on-chain contract
 export CONTRACT_HEX=0x2c75f0aa09dbfbfd49e6286a0f2edd3b4913f04a58b13391c79e96782f5713e3
 
 # This env variable needs to be set to reference the Chopsticks node.
@@ -173,9 +187,6 @@ export CONTRACTS_NODE_URL=ws://127.0.0.1:8000
 cargo test --features e2e-tests e2e_test_deployed_contract -- --ignored
 ```
 
-Notice how we use the `CONTRACTS_NODE_URL` environment variable to specify where our
-Chopsticks node is running. This is essential.
-
 You will get output similar to the following:
 
 ```
@@ -184,3 +195,7 @@ test flipper::e2e_tests::e2e_test_deployed_contract ... ok
 ```
 
 Success! We just ran ink! integration tests against the snapshot of a chain!
+
+## Testing a Contract Upgrade
+
+TODO
