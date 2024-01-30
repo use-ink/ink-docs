@@ -21,7 +21,8 @@ This migration guide only considers your code base! Not your storage data!
 If you have an existing contract on-chain you might not be able to just
 upgrade the code on-chain, you possibly also have to migrate your storage data.
 
-The relevant change that you have to take into consideration here is [#1897](https://github.com/paritytech/ink/pull/1897).
+The relevant change that you have to take into consideration is
+[#1897](https://github.com/paritytech/ink/pull/1897).
 A data migration may be required when your contract reads data from storage and truncates
 the data when decoding it.
 We've described this in more detail below, in the section
