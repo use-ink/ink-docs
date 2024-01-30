@@ -6,7 +6,7 @@ slug: /basics/contract-testing/chain-snapshot
 
 <img src="/img/title/testing1.svg" className="titlePic" />
 
-# Test End-to-End with Live Chain State
+# Test End-to-End with a Chain Snapshot
 
 On this page we explain how to do test ink! contracts with the
 fork (i.e. snapshot) of a live chain.
@@ -86,10 +86,9 @@ different block number and this is the place where you can configure other
 variables such as a sudo key. Read the chopsticks docs for more info.
 :::
 
-You can either run chopsticks locally by following the instructions here:
-- https://github.com/AcalaNetwork/chopsticks#install
-
-Or you can run chopsticks using npx:
+You can either run chopsticks locally by following the instructions
+[here](https://github.com/AcalaNetwork/chopsticks#install), or
+you can run it using npx:
 
 ```
 npx @acala-network/chopsticks@latest --config=configs/dev.yml
