@@ -1,17 +1,19 @@
 ---
-title: Testing with Chain Snapshot
+title: Testing with Chain Snapshots
 hide_title: true
 slug: /basics/contract-testing/chain-snapshot
 ---
 
-<img src="/img/title/testing1.svg" className="titlePic" />
+<img src="/img/title/blockchain-fork.svg" className="titlePic" />
 
-# Test End-to-End with a Chain Snapshot
+# Test your Contract with a Chain Snapshot
 
 On this page we explain how to test ink! contracts with the
-fork of an existing chain. This snapshot will contain the
-state of this chain.
-We'll use the [Chopsticks](https://github.com/AcalaNetwork/chopsticks) tool for this purpose.
+fork of an existing chain. We'll take a snapshot of an existing
+chain for this purpose. The snapshot contains the chains full state,
+but can be modified locally without affecting the live chain. 
+We'll use the [Chopsticks](https://github.com/AcalaNetwork/chopsticks)
+tool for this purpose.
 
 This is a powerful workflow that you can use to e.g.
 
@@ -24,7 +26,7 @@ In the first section of this page we explain the general concept, using a local
 `substrate-contracts-node` that will play the role of our "live chain".
 
 In the second section we will walk you through testing a contract upgrade on a
-production chain.
+production chain, before actually applying it in production.
 
 ## General Concept
 
@@ -151,12 +153,14 @@ async fn e2e_test_deployed_contract<Client: E2EBackend>(
     let acc_id = AccountId::try_from(&acc_id[..]).unwrap();
 
     // when
-    // Invoke `Flipper::get()` from Bob's account
+    // Invoke `Flipper::flip()` from Bob's account
     let call_builder = ink_e2e::create_call_builder::<Flipper>(acc_id);
+    let flip = call_builder.flip();
+    let _flip_res = client.call(&ink_e2e::bob(), &flip).submit().await?;
+    
+    // then
     let get = call_builder.get();
     let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await?;
-
-    // then
     assert!(matches!(get_res.return_value(), true));
     Ok(())
 }
@@ -194,7 +198,24 @@ running 1 tests
 test flipper::e2e_tests::e2e_test_deployed_contract ... ok
 ```
 
-Success! We just ran ink! integration tests against the snapshot of a chain!
+If you query the contract storage on our Chopsticks fork, you'll see that the E2E test
+flipped the boolean:
+
+```
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
+Index | Root Key | Parent | Value                                                                                                            
+0     | 00000000 | root   | Flipper { value: false }
+```
+
+On the "original" `substrate-contracts-node` chain the boolean will be untouched.
+
+```
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
+Index | Root Key | Parent | Value                                                                                                            
+0     | 00000000 | root   | Flipper { value: true }
+```
+
+Success! We just ran an ink! end-to-end test against the snapshot of a chain!
 
 ## Testing a Contract Upgrade
 
