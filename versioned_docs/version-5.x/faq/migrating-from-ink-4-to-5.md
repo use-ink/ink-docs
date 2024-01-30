@@ -16,13 +16,16 @@ In particular, we addressed the proxy selector clashing attack.
 You can find the full changelog of the 5.0 release [here](https://github.com/paritytech/ink/blob/master/CHANGELOG.md).
 
 :::caution
-This migration guide only considers your code base! Not your data!
+This migration guide only considers your code base! Not your storage data!
 
-If you have an existing contract on-chain you cannot just
-upgrade the code on-chain, you also have to migrate your data.
+If you have an existing contract on-chain you might not be able to just
+upgrade the code on-chain, you possibly also have to migrate your storage data.
 
-The way how ink! 4.0 stores data and reads from it (i.e. the storage
-layout) changes from ink! 3.x to 4.0.
+The relevant change that you have to take into consideration here is [#1897](https://github.com/paritytech/ink/pull/1897).
+A data migration may be required when your contract reads data from storage and truncates
+the data when decoding it.
+We've described this in more detail below, in the section
+["Fail when decoding from storage and not all bytes consumed"](#fail-when-decoding-from-storage-and-not-all-bytes-consumed).
 :::
 
 ## How to upgrade
@@ -251,6 +254,19 @@ to trap at runtime when attempting to decode.
 A simple example would be if a storage cell contains some bytes which were in the first place
 an encoded `u32`. If the contract attempts to decode those into a `u8`
 this would previously have succeeded, now the contract would trap.
+
+Here's a code example of behavior that previously worked for ink! 4.x, but
+the contract would trap with that data on 5.0 now:
+
+```rust
+let key = 0u32;
+let value = [0x42; 32];
+ink::env::set_contract_storage(&key, &value);
+
+// Only attempt to read the first byte (the `u8`) of the storage value data
+let _loaded_value: Option<u8> = ink::env::get_contract_storage(&key)
+    .map_err(|e| format!("get_contract_storage failed: {:?}", e))?;
+```
 
 We introduced this change in [#1897](https://github.com/paritytech/ink/pull/1897).
 
