@@ -237,6 +237,13 @@ This is a breaking change for any client code which uses topics to filter events
 Please see [#1827](https://github.com/paritytech/ink/pull/1827) for details.
 :::
 
+#### Custom signature topics
+
+In [#2031](https://github.com/paritytech/ink/pull/2031) we introduced an
+optional attribute `signature_topic` to the `#[ink::event]` and `#[ink(event)]` macros.
+It can be used to specify the signature topic for a specific event manually, instead of the
+automatic topic calculation.
+
 ### No more unchecked arithmetic
 
 Unchecked arithmetic operations in a contract are no longer supported for arithmetic safety reasons.
@@ -457,13 +464,6 @@ The default static buffer size is 16 kB, which is enough for on-chain smart
 contracts. However, the [Phala Network](https://phala.network/) parachain on Polkadot
 allows the deployment of ink! contracts off-chain. Hence, for their chain certain high
 computation contracts might require a larger buffer size.
-
-### Custom signature topics
-
-In [#2031](https://github.com/paritytech/ink/pull/2031) we introduced an
-optional attribute `signature_topic` to the `#[ink::event]` and `#[ink(event)]` macros.
-It can be used to specify the signature topic for a specific event manually, instead of the
-automatic topic calculation.
 
 ### Stabilized `call_runtime`
 
