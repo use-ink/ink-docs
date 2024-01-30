@@ -12,7 +12,8 @@ ink! includes the linter - a security tool designed to identify typical security
 ## Installation
 The linter is integrated to the contracts build process, therefore you should already have it installed if you are using [`cargo-contract`](https://github.com/paritytech/cargo-contract) of version `4.0.0` or later.
 
-Here are commands you can use for installation:
+The linter requires two crates and a fixed Rust toolchain version. You can use
+these commands to install the required dependencies:
 
 ```
 rustup install nightly-2023-12-28
