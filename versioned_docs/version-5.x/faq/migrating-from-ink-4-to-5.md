@@ -246,11 +246,14 @@ automatic topic calculation.
 
 ### No more unchecked arithmetic
 
-Unchecked arithmetic operations in a contract are no longer supported for arithmetic safety reasons.
-Compiling a contract that contains those will fail gracefully.
-You need to handle overflows using e.g. saturating or wraparound math.
+Unchecked arithmetic operations in a contract are no longer supported for arithmetic
+safety reasons. Compiling a contract that contains those will fail gracefully.
+You need to handle overflows using e.g. saturating or "wrap around" math.
+See [this](https://doc.rust-lang.org/book/ch03-02-data-types.html#scalar-types) section
+of the Rust Programming Language for a thorough explanation on how to do safe arithmetic
+operations in Rust.
 
-This was done in [#1831](https://github.com/paritytech/ink/pull/1831).
+This change was introduced in [#1831](https://github.com/paritytech/ink/pull/1831).
 
 ### Fail when decoding from storage and not all bytes consumed
 
