@@ -277,7 +277,45 @@ let _loaded_value: Option<u8> = ink::env::get_contract_storage(&key)
 
 We introduced this change in [#1897](https://github.com/paritytech/ink/pull/1897).
 
-### [ink_e2e] Improved `call()` API
+### [ink_e2e] API Changes
+
+#### Builder API
+
+In [#1917](https://github.com/paritytech/ink/pull/1917) we reworked the E2E API with
+a builder API. 
+`instantiate`, `call` and `upload` will now return a builder instance. You can
+specify optional arguments with builder methods, and submit the call for on-chain
+execution with the `.submit()` method, or dry-run it with `dry_run()`.
+
+```rust
+let contract = client
+    .instantiate("flipper", &ink_e2e::alice(), &mut constructor)
+    .submit()
+    .await
+    .expect("instantiate failed");
+let mut call = contract.call::<Flipper>();
+
+let get = call.get();
+let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await;
+assert!(matches!(get_res.return_value(), false));
+```
+
+#### Extra gas margin
+
+As part of [#1917](https://github.com/paritytech/ink/pull/1917) we added the possibility
+to specify a gas margin (in percentage) as part of the on-chain call.
+
+There are cases when gas estimates may not necessarily be accurate enough due to the complexity
+of the smart contract logic that adds additional overhead and gas consumption.
+Therefore, it is helpful to allow to specify an extra portion of the gas to be added to the 
+limit (i.e. 5%, 10%).
+
+The method `.extra_gas_portion(margin: u64)` method is part of the builder API:
+
+* [`ink_e2e::InstantiateBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/struct.InstantiateBuilder.html#method.extra_gas_portion)
+* [`ink_e2e::CallBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/struct.CallBuilder.html#method.extra_gas_portion)
+
+#### Improved `call()` API
 
 We removed the `build_message()` function with its unhandy callback.
 
