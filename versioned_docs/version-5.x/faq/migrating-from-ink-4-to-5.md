@@ -248,7 +248,10 @@ automatic topic calculation.
 
 Unchecked arithmetic operations in a contract are no longer supported for arithmetic
 safety reasons. Compiling a contract that contains those will fail gracefully.
-You need to handle overflows using e.g. saturating or "wrap around" math.
+
+If you haven't already done, you now need to handle overflows that could occur.
+Rust supports different possibilities of doing so (saturating, "wrap around",
+and unchecked arithmetic operations) .
 See [this](https://doc.rust-lang.org/book/ch03-02-data-types.html#scalar-types) section
 of the Rust Programming Language for a thorough explanation on how to do safe arithmetic
 operations in Rust.
