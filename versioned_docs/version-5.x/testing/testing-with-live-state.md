@@ -1,20 +1,32 @@
 ---
-title: Testing with Chain Snapshot
+title: Testing with Chain Snapshots
 hide_title: true
 slug: /basics/contract-testing/chain-snapshot
 ---
 
-<img src="/img/title/testing1.svg" className="titlePic" />
+<img src="/img/title/blockchain-fork.svg" className="titlePic" />
 
-# Test End-to-End with Live Chain State
+# Test your Contract with a Chain Snapshot
 
-On this page we explain how to do test ink! contracts with the
-fork (i.e. snapshot) of a live chain.
+On this page we explain how to test ink! contracts with the
+fork of an existing chain. We'll take a snapshot of an existing
+chain for this purpose. The snapshot contains the chains full state,
+but can be modified locally without affecting the live chain. 
+We'll use the [Chopsticks](https://github.com/AcalaNetwork/chopsticks)
+tool for this purpose.
 
-We'll use the [Chopsticks](https://github.com/AcalaNetwork/chopsticks) tool for this purpose.
+This is a powerful workflow that you can use to e.g.
+
+* Test a contract upgrade or migration locally before running it in production.
+* Debug the behavior of an on-chain contract with on-chain state locally.
+* Get detailed debug info and replay blocks as you want.
+* …and much more!
+
 In the first section of this page we explain the general concept, using a local
 `substrate-contracts-node` that will play the role of our "live chain".
-In the second section we explain how to use one of the big production chains.
+The `substrate-contracts-node` is just for exemplary purposes, you can also 
+apply the exact same workflow to production chains like Astar, Aleph Zero,
+Pendulum and others.
 
 ## General Concept
 
@@ -62,7 +74,11 @@ a powerful tool in our ecosystem that allows us to create a parallel reality
 of an existing network.
 
 We will run it and have it mirror the `substrate-contracts-node` that is already running
-on our machine from the previous step. 
+on our machine from the previous step.
+
+The following schema illustrates the setup that we will create:
+
+<img className="schema2" width title="Test your smart contract on a Chopsticks branch" src="/img/test-smart-contract-with-chain-snapshot.svg" alt="Chain Snapshot" />
 
 Clone chopsticks:
 
@@ -81,15 +97,18 @@ db: ./db.sqlite
 
 :::info
 In the example above chopsticks will be mirroring up until block 1 from the
-`substrate-contracts-node`. For real world use case you would want to use a
-different block number and this is the place where you can configure other
-variables such as a sudo key. Read the chopsticks docs for more info.
+`substrate-contracts-node`.
+
+For production chains (like Aleph Zero or Astar) you would want to use a different
+block number and different endpoint. The Chopsticks repository already contains a
+wide number of configurations for ink! production chains (see [here](https://github.com/AcalaNetwork/chopsticks/tree/master/configs)).
+If you don't find a fitting configuration there, see the section
+"[Application to Production Chains](#application-to-production-chains)".
 :::
 
-You can either run chopsticks locally by following the instructions here:
-- https://github.com/AcalaNetwork/chopsticks#install
-
-Or you can run chopsticks using npx:
+You can either run chopsticks locally by following the instructions
+[here](https://github.com/AcalaNetwork/chopsticks#install), or
+you can run it using npx:
 
 ```
 npx @acala-network/chopsticks@latest --config=configs/dev.yml
@@ -116,7 +135,7 @@ Chopsticks has branched off from the live chain.
 You can now submit transactions to the Chopsticks node on port 8000,
 without affecting the node/chain on port 9944.
 
-### Run ink! e2e tests
+### Run ink! E2E Tests
 
 Recap: We have our "live" `substrate-contracts-node` running on port 9944
 and our test node with the branched state running on port 8000.
@@ -142,28 +161,34 @@ async fn e2e_test_deployed_contract<Client: E2EBackend>(
     let acc_id = AccountId::try_from(&acc_id[..]).unwrap();
 
     // when
-    // Invoke `Flipper::get()` from Bob's account
+    // Invoke `Flipper::flip()` from Bob's account
     let call_builder = ink_e2e::create_call_builder::<Flipper>(acc_id);
+    let flip = call_builder.flip();
+    let _flip_res = client.call(&ink_e2e::bob(), &flip).submit().await?;
+    
+    // then
     let get = call_builder.get();
     let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await?;
-
-    // then
     assert!(matches!(get_res.return_value(), true));
     Ok(())
 }
 ```
 
-The test is marked as ignored, as it requires the pre-conditions that we went through
+The test is marked as `#[ignore]`, as it requires the pre-conditions that we went through
 above to succeed.
 
 :::info
-You can convert SS58 addresses to hex using the `subkey` tool:
-`subkey inspect <YOUR-SS58>`.
-:::
-
-In order to execute the test you would do something like:
+You can convert SS58 addresses to hex using [the `subkey` tool](https://crates.io/crates/subkey):
 
 ```
+subkey inspect <YOUR-SS58>
+```
+:::
+
+Here's the process to execute the above test:
+
+```
+# Address of your on-chain contract
 export CONTRACT_HEX=0x2c75f0aa09dbfbfd49e6286a0f2edd3b4913f04a58b13391c79e96782f5713e3
 
 # This env variable needs to be set to reference the Chopsticks node.
@@ -174,9 +199,6 @@ export CONTRACTS_NODE_URL=ws://127.0.0.1:8000
 cargo test --features e2e-tests e2e_test_deployed_contract -- --ignored
 ```
 
-Notice how we use the `CONTRACTS_NODE_URL` environment variable to specify where our
-Chopsticks node is running. This is essential.
-
 You will get output similar to the following:
 
 ```
@@ -184,4 +206,35 @@ running 1 tests
 test flipper::e2e_tests::e2e_test_deployed_contract ... ok
 ```
 
-Success! We just ran ink! integration tests against the snapshot of a chain!
+If you query the contract storage on our Chopsticks fork, you'll see that the E2E test
+flipped the boolean:
+
+```
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
+Index | Root Key | Parent | Value                                                                                                            
+0     | 00000000 | root   | Flipper { value: false }
+```
+
+On the "original" `substrate-contracts-node` chain the boolean will be untouched.
+
+```
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
+Index | Root Key | Parent | Value                                                                                                            
+0     | 00000000 | root   | Flipper { value: true }
+```
+
+Success! We just ran an ink! end-to-end test against the snapshot of a chain!
+
+## Application to Production Chains
+
+You can apply the workflow explained above to ink! production chains.
+
+You would want to use a different block number and different endpoint.
+The Chopsticks repository already contains a wide number of configurations for
+ink! production chains (see [here](https://github.com/AcalaNetwork/chopsticks/tree/master/configs)).
+
+If a pre-made config for chain you want to fork from is not available, you can just
+modify the `dev.yml`. You can use [polkadot-js/apps](https://polkadot.js.org/apps) to
+the URL of an endpoint to use:
+
+<img src="/img/polkadot-js-rpc-endpoint.png"  />

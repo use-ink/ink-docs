@@ -12,16 +12,22 @@ ink! includes the linter - a security tool designed to identify typical security
 ## Installation
 The linter is integrated to the contracts build process, therefore you should already have it installed if you are using [`cargo-contract`](https://github.com/paritytech/cargo-contract) of version `4.0.0` or later.
 
-Here is the list of commands you can use for installation:
+The linter requires two crates and a fixed Rust toolchain version. You can use
+these commands to install the required dependencies:
 
 ```
-cargo install cargo-dylint dylint-link ink_linting ink_linting_mandatory
+rustup install nightly-2023-12-28
+cargo install cargo-dylint dylint-link
 ```
+
+Note that the linter requires this specific version of the toolchain, since it uses the internal compiler API.
 
 ## Usage
 The linter operates via `cargo-contract`.
 
-To perform an analysis, run the following command within the contract directory:
+By default, the linter is executed only for the RISC-V target, while for the WASM target, it is not executed unless specifically requested by the user.
+
+To perform a build with extra code analysis, run the following command within the contract directory:
 
 ```
 cargo contract build --lint

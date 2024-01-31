@@ -55,18 +55,18 @@ You can find them here: [github.com/inkdevhub/standards](https://github.com/inkd
 
 ## PSP-22
 
-A standard for a fungible token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts).
+A standard for a fungible token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts).
 
 This proposal aims to define the standard fungible token interface for WebAssembly smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
 
 ## PSP-34
 
-A standard for a Non-Fungible Token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts).
+A standard for a Non-Fungible Token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts).
 
 This proposal aims to define the standard Non-Fungible Token interface for WebAssembly smart contracts, just like [EIP-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) for the Ethereum ecosystem.
 
 ## PSP-37
 
-A standard for a Multi Token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts).
+A standard for a Multi Token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts).
 
 This proposal aims to define the standard Multi Token interface for WebAssembly smart contracts, just like [EIP-1155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md) for the Ethereum ecosystem.
