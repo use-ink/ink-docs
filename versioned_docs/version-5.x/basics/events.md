@@ -105,7 +105,7 @@ An event's fields can be annotated with `#[ink(topic)]` (see example), which wil
 topic derived from the value of that field being emitted together with the event.
 
 Topics are by default a 32 byte array (`[u8; 32]`), although this is configurable on the 
-Polkadot SDK runtime level. If the SCALE encoded bytes of a field value are <= 32, then the 
+Polkadot SDK runtime level. If the SCALE encoded bytes of a field value are `<= 32`, then the 
 encoded bytes are used directly as the topic value. 
 
 For example, in the common case of indexing a field of type `AccountId`, where the default 

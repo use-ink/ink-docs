@@ -193,7 +193,10 @@ first, all contract messages now have a `Result` return type, and second a new f
 `lang_error`, will be introduced as part of the contract spec. The second change allows
 other languages (such as Solang) to use an equivalent `LangError`.
 
-<details><summary>Click here for a snippet of the new metadata for the Flipper contract.</summary>
+<details>
+  <summary>
+    Click here for a snippet of the new metadata for the Flipper contract.
+  </summary>
 <p>
 
 ```json
