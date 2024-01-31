@@ -23,7 +23,7 @@ With chain extensions you can expose parts of your runtime logic
 to smart contract developers.
 
 :::note
-The ink! example repository contains [the `rand-extension` example](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
+The ink! examples repository contains [the `rand-extension` example](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
 This is a complete example of a chain extension implemented in both ink! and Substrate.
 :::
 
@@ -51,15 +51,14 @@ the methods provided by the chain extension.
 
 ## Macro Attributes
 
-The macro supports only one required argument:
- - `extension = N: u16`:
+The macro supports only one required argument: `extension = N: u16`.
 The runtime may have several chain extensions at the same time. The `extension`
 identifier points to the corresponding chain extension in the runtime.
 The value should be the same as during the definition of the chain extension.
 You can consult the 
 [chain extension module documentation](https://paritytech.github.io/polkadot-sdk/master/pallet_contracts/chain_extension/index.html)
 if you are unsure how to find the chain extension code.
-Otherwise, you should contact the target chain's documentation 
+Otherwise, you should consult the target chain's documentation 
 for specifications of any chain extensions it exposes.
 
 ## Method Attributes
@@ -461,11 +460,10 @@ mod read_writer {
 }
 ```
 
-## Using Multiple Chain Extension
+## Using Multiple Chain Extensions
 
 It is possible to use multiple exposed chain extensions in the single environment of a smart contract.
 The declaration procedure of the chain extension stays the same.
-
 
 Suppose we want to combine two chain extension called `Psp22Extension` and `FetchRandom`, ink! provides
 a useful macro `ink::combine_extensions!` that allows to construct the structure combining 
