@@ -116,9 +116,7 @@ be `>= 9` for ink! 5.0 to be compatible.
 You can use e.g. the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
 
-<center>
-  <img src="/img/pallet-version.png"  />
-</center>
+<img src="/img/pallet-version.png"  />
 
 ### Tooling
 

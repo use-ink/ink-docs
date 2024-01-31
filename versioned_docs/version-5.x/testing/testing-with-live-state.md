@@ -99,9 +99,11 @@ db: ./db.sqlite
 In the example above chopsticks will be mirroring up until block 1 from the
 `substrate-contracts-node`.
 
-For real world use case you would want to use a different block number and
-different endpoint. The Chopsticks repository already contains a wide number
-of configurations for ink! production chains (see [here](https://github.com/AcalaNetwork/chopsticks/tree/master/configs)).
+For production chains (like Aleph Zero or Astar) you would want to use a different
+block number and different endpoint. The Chopsticks repository already contains a
+wide number of configurations for ink! production chains (see [here](https://github.com/AcalaNetwork/chopsticks/tree/master/configs)).
+If you don't find a fitting configuration there, see the section
+"[Application to Production Chains](#application-to-production-chains)".
 :::
 
 You can either run chopsticks locally by following the instructions
