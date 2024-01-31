@@ -24,9 +24,9 @@ This is a powerful workflow that you can use to e.g.
 
 In the first section of this page we explain the general concept, using a local
 `substrate-contracts-node` that will play the role of our "live chain".
-
-In the second section we will walk you through testing a contract upgrade on a
-production chain, before actually applying it in production.
+The `substrate-contracts-node` is just for exemplary purposes, you can also 
+apply the exact same workflow to production chains like Astar, Aleph Zero,
+Pendulum and others.
 
 ## General Concept
 
@@ -74,7 +74,11 @@ a powerful tool in our ecosystem that allows us to create a parallel reality
 of an existing network.
 
 We will run it and have it mirror the `substrate-contracts-node` that is already running
-on our machine from the previous step. 
+on our machine from the previous step.
+
+The following schema illustrates the setup that we will create:
+
+<img className="schema2" width title="Test your smart contract on a Chopsticks branch" src="/img/test-smart-contract-with-chain-snapshot.svg" alt="Chain Snapshot" />
 
 Clone chopsticks:
 
@@ -93,9 +97,11 @@ db: ./db.sqlite
 
 :::info
 In the example above chopsticks will be mirroring up until block 1 from the
-`substrate-contracts-node`. For real world use case you would want to use a
-different block number and this is the place where you can configure other
-variables such as a sudo key. Read the chopsticks docs for more info.
+`substrate-contracts-node`.
+
+For real world use case you would want to use a different block number and
+different endpoint. The Chopsticks repository already contains a wide number
+of configurations for ink! production chains (see [here](https://github.com/AcalaNetwork/chopsticks/tree/master/configs)).
 :::
 
 You can either run chopsticks locally by following the instructions
@@ -127,7 +133,7 @@ Chopsticks has branched off from the live chain.
 You can now submit transactions to the Chopsticks node on port 8000,
 without affecting the node/chain on port 9944.
 
-### Run ink! e2e tests
+### Run ink! E2E Tests
 
 Recap: We have our "live" `substrate-contracts-node` running on port 9944
 and our test node with the branched state running on port 8000.
@@ -217,6 +223,16 @@ Index | Root Key | Parent | Value
 
 Success! We just ran an ink! end-to-end test against the snapshot of a chain!
 
-## Testing a Contract Upgrade
+## Application to Production Chains
 
-TODO
+You can apply the workflow explained above to ink! production chains.
+
+You would want to use a different block number and different endpoint.
+The Chopsticks repository already contains a wide number of configurations for
+ink! production chains (see [here](https://github.com/AcalaNetwork/chopsticks/tree/master/configs)).
+
+If a pre-made config for chain you want to fork from is not available, you can just
+modify the `dev.yml`. You can use [polkadot-js/apps](https://polkadot.js.org/apps) to
+the URL of an endpoint to use:
+
+<img src="/img/polkadot-js-rpc-endpoint.png"  />

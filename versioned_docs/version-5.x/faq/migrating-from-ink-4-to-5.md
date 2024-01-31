@@ -448,9 +448,7 @@ info (e.g. `cargo contract storage --help`).
 * `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/paritytech/cargo-contract/pull/1319))
 * `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/paritytech/cargo-contract/pull/1395), [#1414](https://github.com/paritytech/cargo-contract/pull/1414))
 
-<center>
-  <img src="/img/contract-storage.png"  />
-</center>
+<img src="/img/contract-storage.png"  />
 
 ### Alternative off-chain E2E testing backend support: DRink!
 

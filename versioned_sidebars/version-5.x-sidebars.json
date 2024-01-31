@@ -46,8 +46,7 @@
       "testing/off-chain",
       "testing/drink",
       "testing/e2e",
-      "testing/testing-with-live-state",
-      "testing/debugging"
+      "testing/testing-with-live-state"
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
