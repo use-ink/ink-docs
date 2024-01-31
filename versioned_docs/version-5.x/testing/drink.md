@@ -8,16 +8,16 @@ slug: /basics/contract-testing/drink
 
 # DRink!
 
-Apart from the core ink! testing framework, we also have the [DRink!](https://github.com/inkdevhub/drink) library.
-It provides an intermediate solution between integration and E2E testing.
+Apart from the core ink! testing framework, Aleph Zero also provides the [DRink!](https://github.com/inkdevhub/drink) library.
+It offers an intermediate solution between integration and E2E testing.
 
-Briefly speaking, DRink! maintains full in-memory blockchain state and allows you to directly interact with it.
+Intuitively, DRink! maintains a full in-memory blockchain state and allows you to interact with it directly.
 This gives a notably robust methodology in contrast to the off-chain engine facilitated by the `ink::test` macro.
 Nevertheless, it is essential to note that the absence of the entire node layer makes the environment less realistic compared to the comprehensive setup employed in the end-to-end tests.
 
 ## Comparison to the other testing strategies
 
-To better assess when DRINK performs better than other testing methods, it is crucial to gain a deeper understanding of the consequences of its unique design and the trade-offs it entails.
+To better assess when DRink! performs better than other testing methods, it is crucial to gain a deeper understanding of the consequences of its unique design and the trade-offs it entails.
 
 1. **Speed:** since DRink! doesn't spawn any node or background process, everything happens locally, within the testing thread.
 This means that the execution can be synchronous and significantly faster than the E2E tests.
@@ -26,11 +26,11 @@ Also, there is no block production or finalization delay, which is a noticeable 
 Thanks to that, we can launch long-running simulations in a reasonable time.
 
 2. **Testing multiple contracts:** since we are working with a full blockchain state, we can perform any interaction with the contracts, which includes working with mutliple contracts at the same time.
-This is of course the same as in the E2E tests, but not possible in neither unit nor integration tests.
+Of course, this is the same as in the E2E tests, but it is not possible in either the unit or integration tests.
 
-3. **Working with arbitrary runtimes:** similarly to the E2E tests, where we can spawn any node with customized runtime (Polkadot's term for the state transition function), in DRink! tests we can work with any blockchain we want.
+3. **Working with arbitrary runtimes:** similarly to the E2E tests, where we can spawn any node with customized runtime (Polkadot's term for the state transition function), in DRink! tests we can work with any blockchain runtime we want.
 
-4. **Full control over runtime state:** we hold the state of the blockchain in hand, so we can easily manipulate it in any way we want.
+4. **Full control over runtime state:** we hold the state of the blockchain and exercise full control over it, so we can easily manipulate it however we want.
 This covers manipulating block number, timestamp, account balances, etc.
 Some of these are also possible in the E2E tests, but usually they require more effort or overhead.
 
@@ -50,7 +50,7 @@ The discrepancy can be mitigated by a careful and precise simulation and setup o
 3. **No typed contract API:** currently, DRink! works with string-encoded arguments and values, which means that we lose the type safety and convenience that was present in the other testing frameworks.
 Fortunately, this is going to change soon, as there is an ongoing effort to integrate it with [ink-wrapper](https://github.com/Cardinal-Cryptography/ink-wrapper) library.
 
-## When to use DRink!?
+## When to use `DRink!`?
 
 Usually, DRink! is a good choice for the development phase of your project.
 When the iteration speed is crucial, and you want to quickly test your contracts, DRink! will offer a versatile, yet highly efficient testing environment.
