@@ -92,8 +92,10 @@ See the [Chain Extensions](/macros-attributes/chain-extension) section for more 
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
-Please see [the `env_types` argument](https://docs.rs/ink_macro/4.0.0/ink_macro/attr.contract.html#header-arguments)
-for the contract macro. It allows you to specify your environment a la
+Please see [this section](/macros-attributes/contract#env-impl-environment) in our documentation.
+
+Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/4.0.0/ink_macro/attr.contract.html#header-arguments)
+for the `#[ink(contract)]` macro. It allows you to specify your environment a la
 `#[ink::contract(env = MyEnvironment)]`.
 
 ### What does the `#![cfg_attr(not(feature = "std"), no_std)]` at the beginning of each contract mean?
