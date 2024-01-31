@@ -550,3 +550,5 @@ impl ink::env::test::ChainExtension for MockedPSP22Extension {
   using `Self::ErrorCode` anywhere within the chain extension and its defined methods.
   Instead chain extension authors should directly use the error code type when required.
   This limitation might be lifted in future versions of ink!.
+- It is not possible to declare other chain extension traits as super traits or super
+  chain extensions of another.

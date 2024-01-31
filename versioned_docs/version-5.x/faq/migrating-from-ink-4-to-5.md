@@ -386,7 +386,7 @@ multiple chain extensions from ink!. This is a breaking change.
 You can now e.g. have a contract that utilizes a PSP22 chain extension together with one
 for random numbers.
 
-The syntax for chain extensions changed slightly:
+The syntax for chain extension function changed slightly:
 
 ```diff
 -#[ink(extension = 0xfecb)]
@@ -403,8 +403,16 @@ The argument type changed from `u32` to `u16`:
 +Function,
 ```
 
+The top level macro now accepts (extension = N: u16) argument to support multiple chain extensions.
+If you are using only one extension, the ID can be any `u16` number, 
+otherwise please consult [`#[ink::chain_extension]` page](https://use.ink/5.x/macros-attributes/chain-extension)
+```diff
+-#[ink::chain_extension]
++#[ink::chain_extension(extension = 1)]
+```
+
 A migration in most cases should just be to rename `#[ink(extension = …)]` to 
-`#[ink(function = …)]`.
+`#[ink(function = …)]`, and specifying `extension` argument in top level macro.
 
 We added an example contract that illustrates the usage of multiple chain extensions
 in one contract:
