@@ -48,7 +48,6 @@
     ]
   },
   "dependencies": {
-    "docusaurus-plugin-simple-analytics": "1.1.8",
     "@easyops-cn/docusaurus-search-local": "^0.40.1",
     "@headlessui/react": "^1.7.13",
     "@lottiefiles/lottie-player": "^1.7.1",
