@@ -282,3 +282,38 @@ in your contract.
 
 If you still, for some reason, need to use `String`, then you should use
 the `String` [from the ink! prelude](https://docs.rs/ink_prelude/latest/ink_prelude/string/struct.String.html).
+
+<h3 id="type-comparison">Getting a warning in <code>cargo-contract</code> about type compatibility?</h3>
+
+ink! and Substrate both support the possibility of deciding to deviate
+from the default types for `Balance`, `BlockNumber`, etc.
+These types are called environment types.
+
+If a chain decides on custom environment types, contract authors need
+to specify these types that deviate from the ink! default environment in their
+contracts. Otherwise, undefined behavior can occur when uploading a contract
+with deviating types to a chain.
+
+Custom environment types can be specified in ink! via the `#[contract(env = MyCustomEnvironment)]`
+attribute. You can read more are about this [here](/macros-attributes/contract#env-impl-environment).
+
+When using `cargo-contract` to interact with a chain you might get a warning along those lines:
+
+```
+Warning: This chain does not yet support checking for compatibility of your contract types.
+```
+
+This warning appears when the chain that you are targeting (via the `--url` cli flag)
+does not contain a version of `pallet-contracts` that does support type comparison.
+Type comparison is a feature that we introduced, it means we check that the environmental
+types of your contract are equivalent to the environmental types of the chain that you are
+targeting.
+It's a safety feature to make sure that you are not accidentally deploying a contract with
+e.g. `type Balance = u128` to a chain with a different `Balance` type.
+
+The `cargo-contract` warning means this check for compatible types cannot be performed.
+This check is only available on chains from `polkadot-1.2.0` on, specifically from
+[this commit](https://github.com/paritytech/polkadot-sdk/commit/d8a74901462ffb49345af6db7c5a7a6e2b3c92ed).
+
+If a chain indeed requires that contract developers have to use custom environment types,
+this should be communicated prominently by them. 
