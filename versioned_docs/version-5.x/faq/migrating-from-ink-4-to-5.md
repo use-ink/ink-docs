@@ -470,7 +470,9 @@ Example:
 
 #### Wrapped return types
 With [#1999](https://github.com/paritytech/ink/pull/1999) all return types are wrapped into
-`ink_primitives::ConstructorResult<T>` and `ink_primitives::MessageResult<T>` in constructors and messages correspondingly.
+[`ink_primitives::ConstructorResult<T>`](https://docs.rs/ink/5.0.0-rc/ink/type.ConstructorResult.html) and 
+[`ink_primitives::MessageResult<T>`](https://docs.rs/ink/5.0.0-rc/ink/type.MessageResult.html)
+in constructors and messages correspondingly.
 
 ## Interesting New Features
 
