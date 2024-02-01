@@ -453,7 +453,7 @@ ink! 5.0:
   ]
 ```
 
-#### `staticBufferSize`
+#### New field: `staticBufferSize`
 
 With [#1880](https://github.com/paritytech/ink/pull/1880) we added a `"staticBufferSize"` field to
 the metadata file.
@@ -462,15 +462,10 @@ See the section "[Buffer size can be customized](#buffer-size-can-be-customized)
 more info.
 
 Example:
-```json
+```diff
       "maxEventTopics": 4,
-      "staticBufferSize": 16384,
-      "timestamp": {
-        "displayName": [
-          "Timestamp"
-        ],
-        "type": 11
-      }
++     "staticBufferSize": 16384,
+      "timestamp": { ... }
 ```
 
 ## Interesting New Features
