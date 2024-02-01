@@ -411,6 +411,11 @@ otherwise please consult [`#[ink::chain_extension]` page](https://use.ink/5.x/ma
 +#[ink::chain_extension(extension = 1)]
 ```
 
+:::Note
+If the chain extension was not used in a tuple in the runtime configuration, 
+`extension = N: u16` can take any `u16` number.
+:::
+
 A migration in most cases should just be to rename `#[ink(extension = …)]` to 
 `#[ink(function = …)]`, and specifying `extension` argument in top level macro.
 

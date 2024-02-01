@@ -61,6 +61,11 @@ if you are unsure how to find the chain extension code.
 Otherwise, you should consult the target chain's documentation 
 for specifications of any chain extensions it exposes.
 
+:::Note
+If the chain extension is not used in a tuple in the runtime configuration, 
+`extension = N: u16` can take any `u16` number.
+:::
+
 ## Method Attributes
 
 There are two different attributes with which the chain extension methods
