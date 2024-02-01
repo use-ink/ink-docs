@@ -456,7 +456,7 @@ ink! 5.0:
 #### New field: `staticBufferSize`
 
 With [#1880](https://github.com/paritytech/ink/pull/1880) we added a `"staticBufferSize"` field to
-the metadata file.
+the metadata file. The unit is bytes.
 
 See the section "[Buffer size can be customized](#buffer-size-can-be-customized)" on this page for
 more info.
