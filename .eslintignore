@@ -5,4 +5,4 @@ babel.config.js
 docusaurus.config.js
 sidebars.js
 versioned_docs/version-5.x/third-party-tools/swanky/Figure.tsx
-versioned_docs/version-5.x/testnet/Faucet.tsx
+versioned_docs/version-5.x/testing/testnet/Faucet.tsx
