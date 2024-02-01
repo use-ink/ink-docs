@@ -410,6 +410,69 @@ We added an example contract that illustrates the usage of multiple chain extens
 in one contract:
 [`combined-extension`](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension).
 
+
+### Metadata Changes
+
+#### Events 2.0
+
+See [#1827](https://github.com/paritytech/ink/pull/1827) for the full details.
+Two fields werere added to the objects in the `events` array:
+`module_path` and `signature_topic`.
+
+Previously the order of the events in the `events` array was significant (i.e. the first
+one had an implied index of `0`), and this index could be used to determine which event
+to decode.
+Now that is replaced by the `signature_topic`, and the order of the events in the metadata
+no longer has any significance.
+
+See the section "[Events 2.0](#events-20)" on this page for more info.
+
+ink! 4.0:
+```json
+   "events": [
+      {
+        "args": [ ... ],
+        "docs": [ ... ],
+        "label": "Transfer"
+      },
+      ...
+  ]
+```
+
+ink! 5.0:
+```diff
+    "events": [
+      {
+        "args": [ ... ],
+        "docs": [ ... ],
+        "label": "...",
++       "module_path": "erc20::erc20",
++       "signature_topic": "0xb5b61a3e6a21a16be4f044b517c28ac692492f73c5bfd3f60178ad98c767f4cb"
+      },
+      ...
+  ]
+```
+
+#### `staticBufferSize`
+
+With [#1880](https://github.com/paritytech/ink/pull/1880) we added a `"staticBufferSize"` field to
+the metadata file.
+
+See the section "[Buffer size can be customized](#buffer-size-can-be-customized)" on this page for
+more info.
+
+Example:
+```json
+      "maxEventTopics": 4,
+      "staticBufferSize": 16384,
+      "timestamp": {
+        "displayName": [
+          "Timestamp"
+        ],
+        "type": 11
+      }
+```
+
 ## Interesting New Features
 
 ### End-To-End testing with a chain snapshot 
