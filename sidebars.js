@@ -246,6 +246,7 @@ module.exports = {
       "third-party-tools/ink-analyzer",
       "third-party-tools/inkathon",
       "third-party-tools/subwallet",
+      "third-party-tools/contract-wizard/index",
     ],
     FAQ: ["faq/faq", "faq/migrating-from-ink-3-to-4"],
     "Brand Assets": [
