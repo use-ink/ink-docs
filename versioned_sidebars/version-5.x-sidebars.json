@@ -46,7 +46,19 @@
       "testing/off-chain",
       "testing/drink",
       "testing/e2e",
-      "testing/testing-with-live-state"
+      "testing/testing-with-live-state",
+      {
+        "type": "category",
+        "label": "Testnet",
+        "items": [
+          "testing/testnet/overview",
+          "testing/testnet/faucet"
+        ],
+        "link": {
+          "type": "doc",
+          "id": "testing/testnet/overview"
+        }
+      }
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
@@ -98,10 +110,6 @@
     ],
     "Funding Programs": [
       "funding-programs/overview"
-    ],
-    "Testnet": [
-      "testnet/overview",
-      "testnet/faucet"
     ],
     "Third Party Tools & Libraries": [
       "third-party-tools/openbrush",
