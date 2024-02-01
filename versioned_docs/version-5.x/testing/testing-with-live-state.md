@@ -169,7 +169,7 @@ async fn e2e_test_deployed_contract<Client: E2EBackend>(
     // then
     let get = call_builder.get();
     let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await?;
-    assert!(matches!(get_res.return_value(), true));
+    assert!(matches!(get_res.return_value(), false));
     Ok(())
 }
 ```
