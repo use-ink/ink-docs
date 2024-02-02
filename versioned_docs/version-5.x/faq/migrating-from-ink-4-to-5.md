@@ -290,9 +290,9 @@ let contract = client
     .submit()
     .await
     .expect("instantiate failed");
-let mut call = contract.call::<Flipper>();
+let mut call_builder = contract.call_builder::<Flipper>();
 
-let get = call.get();
+let get = call_builder.get();
 let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await;
 assert!(matches!(get_res.return_value(), false));
 ```
