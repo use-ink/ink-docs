@@ -295,3 +295,29 @@ table.wallet-table * {
   width: 90%;
   margin: 25px;
 }
+
+.ignoreP a:not(:last-child) {
+  margin-right: 10px;
+}
+.ignoreP p {
+  display: none !important;
+}
+
+.pitch img {
+  margin-bottom: 10px;
+}
+
+/*
+Hotfix for https://lightrun.com/answers/prismjs-prism-toml-lang-line-breaks-on-section.
+Without it the `[features]` in code blocks that use `toml` as the syntax looks like this:
+```
+[
+features
+]
+```
+*/
+@layer utilities {
+  .table {
+    display: initial;
+  }
+}

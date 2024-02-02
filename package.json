@@ -18,21 +18,22 @@
     "cspell": "cspell \"**/*.{md,mdx}\""
   },
   "devDependencies": {
-    "@docusaurus/core": "^2.4.0",
-    "@docusaurus/preset-classic": "^2.4.0",
-    "@mdx-js/react": "^1.6.22",
-    "@types/react-google-recaptcha": "^2.1.5",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
-    "clsx": "^1.2.1",
-    "cspell": "^6.31.1",
-    "eslint": "^8.34.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.2",
-    "prettier": "^2.8.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.9.5"
+    "@docusaurus/core": "^3.1.1",
+    "@docusaurus/preset-classic": "^3.1.1",
+    "@mdx-js/react": "^3.0.0",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "clsx": "^2.1.0",
+    "cspell": "^8.3.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.2.4",
+    "prism-react-renderer": "^2.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3"
   },
   "browserslist": {
     "production": [
@@ -47,18 +48,16 @@
     ]
   },
   "dependencies": {
-    "@branchup/docusaurus-plugin-simple-analytics": "^1.1.0",
-    "@easyops-cn/docusaurus-search-local": "^0.34.0",
-    "@headlessui/react": "^1.7.13",
-    "@lottiefiles/lottie-player": "^1.7.1",
-    "autoprefixer": "^10.4.14",
-    "classnames": "^2.3.2",
-    "docusaurus-plugin-simple-analytics": "1.1.2",
+    "@easyops-cn/docusaurus-search-local": "^0.40.1",
+    "@headlessui/react": "^1.7.18",
+    "@lottiefiles/lottie-player": "^2.0.3",
+    "autoprefixer": "^10.4.17",
+    "classnames": "^2.5.1",
     "lottie-react": "^2.4.0",
-    "postcss": "^8.4.21",
-    "react-google-recaptcha": "^2.1.0",
-    "react-spring": "^9.7.1",
-    "tailwindcss": "^3.3.0",
-    "usehooks-ts": "^2.9.1"
+    "postcss": "^8.4.33",
+    "react-google-recaptcha": "^3.1.0",
+    "react-spring": "^9.7.3",
+    "tailwindcss": "^3.4.1",
+    "usehooks-ts": "^2.12.1"
   }
 }

@@ -112,7 +112,7 @@
       "funding-programs/overview"
     ],
     "Third Party Tools & Libraries": [
-      "third-party-tools/openbrush",
+      "third-party-tools/inkathon",
       {
         "type": "category",
         "label": "Swanky Suite",
@@ -126,8 +126,8 @@
         }
       },
       "third-party-tools/ink-analyzer",
-      "third-party-tools/inkathon",
-      "third-party-tools/subwallet"
+      "third-party-tools/subwallet",
+      "third-party-tools/openbrush"
     ],
     "FAQ": [
       "faq/faq",

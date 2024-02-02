@@ -49,13 +49,6 @@ const errMessage = pickDecodedError(
 console.error(errMessage); // string or undefined
 ```
 
-// export function pickDecodedError(
-//   call: CallResult | undefined,
-//   contract: Contract,
-//   moduleMessages?: Record<RegistryErrorMethod, string>,
-//   defaultMessage?: string,
-// ): string | undefined {
-
 ## pickResultOk
 
 `pickResultOk` picks the decoded Ok value or `undefined` if a contract returns a `Result<T,

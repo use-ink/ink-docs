@@ -1,3 +1,5 @@
+import {themes as prismThemes} from 'prism-react-renderer';
+
 module.exports = {
   title: 'ink! documentation',
   tagline: 'documentation for ink!',
@@ -14,12 +16,6 @@ module.exports = {
   ],
   scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
   plugins: [
-    [
-      'docusaurus-plugin-simple-analytics',
-      {
-        domain: 'apisa.parity.io',
-      },
-    ],
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -44,7 +40,8 @@ module.exports = {
   ],
   themeConfig: {
     prism: {
-      theme: require('prism-react-renderer/themes/duotoneDark'),
+      theme: prismThemes.github,
+      darkTheme: prismThemes.duotoneDark,
       additionalLanguages: ['rust', 'json', 'toml'],
     },
     colorMode: {
