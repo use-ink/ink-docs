@@ -118,21 +118,13 @@ Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+`
 
 <img src="/img/pallet-version.png"  />
 
-### Tooling
+### Tooling & Libraries
 
-* `cargo-contract` >= v4.0
 * Stable Rust >= 1.75
- 
-### Dependencies
-
-Same as for ink! 4.0.
-
-* `scale` >= 3
-* `scale-info` >= 2.6
-
-### Frontend Libraries
-
-Same as for ink! 4.0: `polkadot-js/api` and `polkadot-js/api-contract` >= 9.10.2.
+* `cargo-contract` >= v4.0
+* `polkadot-js/api` and `polkadot-js/api-contract` >= TODO
+* `use-inkathon` >= TODO
+* ink!athon >= TODO
 
 ## Important Changes
 
