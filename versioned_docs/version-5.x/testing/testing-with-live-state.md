@@ -61,10 +61,13 @@ cargo contract instantiate --suri //Alice --args true -x
 
 You can check that the contract exists by querying its state via `cargo-contract`:
 
-```json
+```
 $ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s
-Index | Root Key | Parent | Value                                                                                                            
-0     | 00000000 | root   | Flipper { value: true } 
++-------+----------+--------+-------------------------+
+| Index | Root Key | Parent | Value                   |
++=====================================================+
+| 0     | 00000000 | root   | Flipper { value: true } |
++-------+----------+--------+-------------------------+
 ```
 
 ### Setup Chopsticks
@@ -126,9 +129,12 @@ If you now execute the `cargo-contract` storage command against this node, you'l
 that the `flipper` contract exists there as well:
 
 ```
-cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
-Index | Root Key | Parent | Value                                                                                                            
-0     | 00000000 | root   | Flipper { value: true }
+$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
++-------+----------+--------+-------------------------+
+| Index | Root Key | Parent | Value                   |
++=====================================================+
+| 0     | 00000000 | root   | Flipper { value: true } |
++-------+----------+--------+-------------------------+
 ```
 
 Chopsticks has branched off from the live chain.
@@ -210,17 +216,23 @@ If you query the contract storage on our Chopsticks fork, you'll see that the E2
 flipped the boolean:
 
 ```
-cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
-Index | Root Key | Parent | Value                                                                                                            
-0     | 00000000 | root   | Flipper { value: false }
+$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
++-------+----------+--------+-------------------------+
+| Index | Root Key | Parent | Value                   |
++=====================================================+
+| 0     | 00000000 | root   | Flipper { value: false } |
++-------+----------+--------+-------------------------+
 ```
 
 On the "original" `substrate-contracts-node` chain the boolean will be untouched.
 
 ```
-cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
-Index | Root Key | Parent | Value                                                                                                            
-0     | 00000000 | root   | Flipper { value: true }
+$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
++-------+----------+--------+-------------------------+
+| Index | Root Key | Parent | Value                   |
++=====================================================+
+| 0     | 00000000 | root   | Flipper { value: true } |
++-------+----------+--------+-------------------------+
 ```
 
 Success! We just ran an ink! end-to-end test against the snapshot of a chain!
