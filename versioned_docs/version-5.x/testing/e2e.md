@@ -34,29 +34,26 @@ The following code example illustrates a basic E2E test for the
 
 ```rust
 #[ink_e2e::test]
-async fn default_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
+async fn default_works<Client: E2EBackend>(mut client: Client) -> E2EResult<()> {
     // When the function is entered, the contract was already
     // built in the background via `cargo contract build`.
     // The `client` object exposes an interface to interact
     // with the Substrate node.
     
     // given
-    let constructor = FlipperRef::new_default();
+    let mut constructor = FlipperRef::new_default();
 
     // when
-    let contract_acc_id = client
-        .instantiate("flipper", &ink_e2e::bob(), constructor, 0, None)
+    let contract = client
+        .instantiate("flipper", &ink_e2e::bob(), &mut constructor)
+        .submit()
         .await
-        .expect("instantiate failed")
-        .account_id;
+        .expect("instantiate failed");
+    let call_builder = contract.call_builder::<Flipper>();
 
     // then
-    let get = build_message::<FlipperRef>(contract_acc_id.clone())
-        .call(|flipper| flipper.get());
-    let get_res = client
-        .call(&ink_e2e::bob(), get, 0, None)
-        .await
-        .expect("get failed");
+    let get = call_builder.get();
+    let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await?;
     assert!(matches!(get_res.return_value(), false));
 
     Ok(())
