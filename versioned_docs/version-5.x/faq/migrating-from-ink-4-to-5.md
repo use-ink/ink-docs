@@ -328,6 +328,13 @@ let first_insert = ink_e2e::build_message::<MappingsRef>(contract_id)
 
 See [#1782](https://github.com/paritytech/ink/pull/1782) for more details.
 
+#### Removed `additional_contracts` parameter 
+
+`additional_contracts` parameter which is part of `#[ink_e2e:test]` has been removed in [#2098](https://github.com/paritytech/ink/pull/2098).
+This information is now implied from the contract's manifest. 
+Simply, add the other contract as dependency with the `ink-as-a-dependency` feature enabled.
+The test will detect the contract and build it as part of the test.
+
 ### New Data Structure: `StorageVec`
 
 We've added a `Vec`-like data structure, built on top of Mapping.
