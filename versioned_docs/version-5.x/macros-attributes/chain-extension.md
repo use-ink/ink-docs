@@ -7,7 +7,7 @@ hide_title: true
 <img src="/img/title/text/chain-ext.svg" className="titlePic" />
 
 In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
-via its well defined set of basic smart contract interface. This API already allows a whole variety of
+via its well defined set of basic smart contract interface functions. This API already allows a whole variety of
 interaction between the `contracts-pallet` and the executed smart contract. For example it is possible
 to call and instantiate other smart contracts on the same chain, emit events, query context information
 or run built-in cryptographic hashing procedures.
@@ -23,7 +23,7 @@ With chain extensions you can expose parts of your runtime logic
 to smart contract developers.
 
 :::note
-The ink! repository contains [the `rand-extension` example](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
+The ink! examples repository contains [the `rand-extension` example](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
 This is a complete example of a chain extension implemented in both ink! and Substrate.
 :::
 
@@ -49,14 +49,31 @@ ink! smart contracts using this chain extension simply depend on this crate
 and use its associated environment definition in order to make use of
 the methods provided by the chain extension.
 
-## Attributes
+## Macro Attributes
+
+The macro supports only one required argument: `extension = N: u16`.
+The runtime may have several chain extensions at the same time. The `extension`
+identifier points to the corresponding chain extension in the runtime.
+The value should be the same as during the definition of the chain extension.
+You can consult the 
+[chain extension module documentation](https://paritytech.github.io/polkadot-sdk/master/pallet_contracts/chain_extension/index.html)
+if you are unsure how to find the chain extension code.
+Otherwise, you should consult the target chain's documentation 
+for specifications of any chain extensions it exposes.
+
+:::Note
+If the chain extension is not used in a tuple in the runtime configuration, 
+`extension = N: u16` can take any `u16` number.
+:::
+
+## Method Attributes
 
 There are two different attributes with which the chain extension methods
 can be flagged:
 
 | Attribute | Required | Default Value | Description |
 |:----------|:--------:|:--------------|:-----------:|
-| `ink(extension = N: u32)` | Yes | - | Determines the unique function ID of the chain extension method. |
+| `ink(function = N: u16)` | Yes | - | Determines the unique function ID within the chain extension. |
 | `ink(handle_status = flag: bool)` | Optional | `true` | Assumes that the returned status code of the chain extension method always indicates success and therefore always loads and decodes the output buffer of the call. |
 
 As with all ink! attributes multiple of them can either appear in a contiguous list:
@@ -64,11 +81,11 @@ As with all ink! attributes multiple of them can either appear in a contiguous l
 ```rust
 type Access = i32;
 
-#[ink::chain_extension]
+#[ink::chain_extension(extension = 12)]
 pub trait MyChainExtension {
     type ErrorCode = i32;
 
-    #[ink(extension = 5, handle_status = false)]
+    #[ink(function = 5, handle_status = false)]
     fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
 ```
@@ -78,11 +95,11 @@ pub trait MyChainExtension {
 ```rust
 type Access = i32;
 
-#[ink::chain_extension]
+#[ink::chain_extension(extension = 12)]
 pub trait MyChainExtension {
   type ErrorCode = i32;
 
-  #[ink(extension = 5)]
+  #[ink(function = 5)]
   #[ink(handle_status = false)]
   fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
 }
@@ -154,7 +171,7 @@ from and to the runtime storage using access privileges:
 
 ```rust
 /// Custom chain extension to read to and write from the runtime.
-#[ink::chain_extension]
+#[ink::chain_extension(extension = 12)]
 pub trait RuntimeReadWrite {
     type ErrorCode = ReadWriteErrorCode;
 
@@ -163,8 +180,9 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Actually returns a value of type `Result<Vec<u8>, Self::ErrorCode>`.
-    /// #[ink(extension = 1, returns_result = false)]
-    /// fn read(key: &[u8]) -> Vec<u8>;
+    #[ink(function = 1, returns_result = false)]
+    fn read(key: &[u8]) -> Vec<u8>;
+
     ///
     /// Reads from runtime storage.
     ///
@@ -180,7 +198,7 @@ pub trait RuntimeReadWrite {
     ///
     /// This requires `ReadWriteError` to implement `From<ReadWriteErrorCode>`
     /// and may potentially return any `Self::ErrorCode` through its return value.
-    #[ink(extension = 2)]
+    #[ink(function = 2)]
     fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
 
     /// Writes into runtime storage.
@@ -188,7 +206,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Actually returns a value of type `Result<(), Self::ErrorCode>`.
-    #[ink(extension = 3)]
+    #[ink(function = 3)]
     fn write(key: &[u8], value: &[u8]);
 
     /// Returns the access allowed for the key for the caller.
@@ -196,7 +214,7 @@ pub trait RuntimeReadWrite {
     /// # Note
     ///
     /// Assumes to never fail the call and therefore always returns `Option<Access>`.
-    #[ink(extension = 4, handle_status = false)]
+    #[ink(function = 4, handle_status = false)]
     fn access(key: &[u8]) -> Option<Access>;
 
     /// Unlocks previously acquired permission to access key.
@@ -209,7 +227,7 @@ pub trait RuntimeReadWrite {
     ///
     /// Assumes the call to never fail and therefore does _NOT_ require `UnlockAccessError`
     /// to implement `From<Self::ErrorCode>` as in the `read_small` method above.
-    #[ink(extension = 5, handle_status = false)]
+    #[ink(function = 5, handle_status = false)]
     fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
 }
 
@@ -367,18 +385,18 @@ mod read_writer {
     }
 
     /// Custom chain extension to read to and write from the runtime.
-    #[ink::chain_extension]
+    #[ink::chain_extension(extension = 12)]
     pub trait RuntimeReadWrite {
           type ErrorCode = ReadWriteErrorCode;
-          #[ink(extension = 1)]
+          #[ink(function = 1)]
           fn read(key: &[u8]) -> Vec<u8>;
-          #[ink(extension = 2)]
+          #[ink(function = 2)]
           fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
-          #[ink(extension = 3)]
+          #[ink(function = 3)]
           fn write(key: &[u8], value: &[u8]);
-          #[ink(extension = 4, handle_status = false)]
+          #[ink(function = 4, handle_status = false)]
           fn access(key: &[u8]) -> Option<Access>;
-          #[ink(extension = 5, handle_status = false)]
+          #[ink(function = 5, handle_status = false)]
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
     }
 
@@ -443,6 +461,90 @@ mod read_writer {
          type Timestamp = <ink::env::DefaultEnvironment as ink::env::Environment>::Timestamp;
 
          type ChainExtension = RuntimeReadWrite;
+    }
+}
+```
+
+## Using Multiple Chain Extensions
+
+It is possible to use multiple exposed chain extensions in the single environment of a smart contract.
+The declaration procedure of the chain extension stays the same.
+
+Suppose we want to combine two chain extension called `Psp22Extension` and `FetchRandom`, ink! provides
+a useful macro [`ink::combine_extensions!`](https://docs.rs/ink/5.0.0-rc/ink/macro.combine_extensions.html) that allows to construct the structure combining 
+the aforementioned chain extensions like so:
+```rust
+ink::combine_extensions! {
+    /// This extension combines the `FetchRandom` and `Psp22Extension` extensions.
+    /// It is possible to combine any number of extensions in this way.
+    ///
+    /// This structure is an instance that is returned by the `self.env().extension()` call.
+    pub struct CombinedChainExtension {
+        /// The instance of the `Psp22Extension` chain extension.
+        ///
+        /// It provides you access to `PSP22` functionality.
+        pub psp22: Psp22Extension,
+        /// The instance of the `FetchRandom` chain extension.
+        ///
+        /// It provides you access to randomness functionality.
+        pub rand: FetchRandom,
+    }
+}
+```
+
+The combined structure is called `CombinedChainExtension`, and we can refer to it 
+when specifying the chain extension type in `Environment`:
+```rust
+type ChainExtension = CombinedChainExtension;
+```
+
+Each extension's method can be called by accessing it via the name of the field of `CombineChainExtension`:
+```rust
+self.env().extension().rand.<method_name_in_rand_ext>()
+// or
+self.env().extension().psp22.<method_name_in_psp22_ext>()
+// e.g.
+self.env().extension().psp22.total_supply()
+```
+
+:::note
+The ink! repository contains the [full example](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension) illustrating how to combine existing chain extensions 
+and mock them for testing.
+:::
+
+
+## Mocking Chain Extension
+
+You can mock chain extensions for unit testing purposes. 
+This can be achieved by implementing the [`ink::env::test::ChainExtension`](https://docs.rs/ink_env/latest/ink_env/test/trait.ChainExtension.html) trait.
+
+```rust
+/// Opaque structure
+struct MockedPSP22Extension;
+
+// Implementing 
+impl ink::env::test::ChainExtension for MockedPSP22Extension {
+    fn ext_id(&self) -> u16 {
+        // It is identifier used by `psp22_extension::Psp22Extension` extension.
+        // Must be the same as the once specified in `#[ink::chain_extension(extension = _)]`
+        13
+    }
+
+    // Call dispatcher.
+    // Call specific code based on the function id which is dispatched from the contract/
+    fn call(&mut self, func_id: u16, _input: &[u8], output: &mut Vec<u8>) -> u32 {
+        match func_id {
+            // `func_id` of the `total_supply` function.
+            // must match `#[ink(function = _)]` of the corresponding method
+            0x162d => {
+                ink::scale::Encode::encode_to(&TOTAL_SUPPLY, output);
+                0
+            },
+            // Other functions
+            _ => {
+                1
+            }
+        }
     }
 }
 ```
