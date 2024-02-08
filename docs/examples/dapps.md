@@ -14,7 +14,6 @@ smart contract.
 
 Three popular libraries for building frontends are:
 
-- [`useink`](/frontend/overview) an ergonomic React hooks library for interacting with Wasm contracts and Substrate.
 - [`polkadot-js/api`](https://github.com/polkadot-js/api) a low-level TypeScript API.
 - [useInkathon](https://github.com/scio-labs/use-inkathon) a React hooks library.
 
