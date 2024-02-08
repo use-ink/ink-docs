@@ -583,5 +583,6 @@ It can be used to call a runtime dispatchable from an ink! contract.
 
 You can find a contract example and a comparison with chain extensions
 [here](https://github.com/paritytech/ink/tree/master/integration-tests/call-runtime).
-We've added an example of how to end-to-end test
-`call_runtime` [here](https://github.com/paritytech/ink/tree/master/integration-tests/e2e-call-runtime).
+We've added an example contract with 
+`call_runtime` [here](https://github.com/paritytech/ink/tree/master/integration-tests/call-runtime)
+
