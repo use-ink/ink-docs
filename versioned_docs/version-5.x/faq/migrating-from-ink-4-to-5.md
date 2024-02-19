@@ -594,7 +594,7 @@ There is a new host function `call_v2` which allows passing both `Weight` parts:
 The legacy call function only provides the single `gas_limit` parameter, 
 which is used as the value for `ref_time_limit`.
 
-These parameters can be set on a call builder instance, by first calling `call_v2()` e.g.
+These parameters can be set on a call builder instance:
 ```rust
 call_builder
   .ref_time_limit(ref_time_limit)
