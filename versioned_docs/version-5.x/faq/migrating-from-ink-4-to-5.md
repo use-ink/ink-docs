@@ -585,3 +585,46 @@ You can find a contract example and a comparison with chain extensions
 [here](https://github.com/paritytech/ink/tree/master/integration-tests/call-runtime).
 We've added an example of how to end-to-end test
 `call_runtime` [here](https://github.com/paritytech/ink/tree/master/integration-tests/e2e-call-runtime).
+
+
+### `call_v2`
+
+There is a new host function `call_v2` which allows passing both `Weight` parts: 
+`ref_time_limit` and `proof_time_limit` and the `storage_deposit_limit`. 
+The legacy call function only provides the single `gas_limit` parameter, 
+which is used as the value for `ref_time_limit`.
+
+These parameters can be set on a call builder instance, by first calling `call_v2()` e.g.
+```rust
+call_builder
+  .ref_time_limit(ref_time_limit)
+  .proof_time_limit(proof_time_limit)
+  .storage_deposit_limit(storage_deposit_limit)
+  .invoke();
+```
+
+:::Note
+These changes depend on the [`60310de`](https://github.com/paritytech/polkadot-sdk/commit/60310de7d6402b6e44624aaa9b5db2dd848545e7)
+commit of the `pallet-contracts`.
+:::
+
+If you are developing a contract for the older version of the `pallet-contract`
+that uses the old `Weight` API, you can still use the legacy call builder:
+```rust
+call_builder
+  .call_v1()
+  .gas_limit(ref_time_limit)
+  .invoke();
+```
+
+Please note that that if you using trait definition for cross-contract call,
+direct calls from `contract_ref!` macro are only supported with the `call_v2`.
+Otherwise, you need to get the `CallBuilder` from the structure 
+and build the call manually.
+
+```rust
+type Erc20Wrapper = contract_ref!(Erc20);
+let erc20: Erc20Wrapper = new_erc20.into();
+let erc20_builder = self.erc20.call();
+erc20_builder.total_supply().call_v1().invoke()
+```
