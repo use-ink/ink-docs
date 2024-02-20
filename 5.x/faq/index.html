@@ -6,7 +6,7 @@
 <title data-rh="true">Frequently Asked Questions | ink! documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://use.ink/5.x/faq"><meta data-rh="true" property="og:locale" content="en_GB"><meta data-rh="true" property="og:locale:alternate" content="es_ES"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="5.x"><meta data-rh="true" name="docusaurus_tag" content="docs-default-5.x"><meta data-rh="true" name="docsearch:version" content="5.x"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-5.x"><meta data-rh="true" property="og:title" content="Frequently Asked Questions | ink! documentation"><meta data-rh="true" name="description" content="Who is &quot;Squink&quot;?"><meta data-rh="true" property="og:description" content="Who is &quot;Squink&quot;?"><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://use.ink/5.x/faq"><link data-rh="true" rel="alternate" href="https://use.ink/5.x/faq" hreflang="en-GB"><link data-rh="true" rel="alternate" href="https://use.ink/es/5.x/faq" hreflang="es-ES"><link data-rh="true" rel="alternate" href="https://use.ink/5.x/faq" hreflang="x-default"><link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.fc52ecc3.css">
-<script src="/assets/js/runtime~main.31cd8fe5.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.367bc6e2.js" defer="defer"></script>
 <script src="/assets/js/main.d9892a98.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -180,13 +180,15 @@ not aware of a better workaround until the bug in the compiler is fixed.</p>
 <p>If you don&#x27;t find the issue you can also ask for help in our public
 <a href="https://riot.im/app/#/room/#ink:matrix.parity.io" target="_blank" rel="noopener noreferrer">Element</a> or
 <a href="https://discord.gg/j2DKRRbSJr" target="_blank" rel="noopener noreferrer">Discord</a> channel.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="what-are-the-scaleencode-and-scaledecode-traits">What are the <code>scale::Encode</code> and <code>scale::Decode</code> traits?<a href="#what-are-the-scaleencode-and-scaledecode-traits" class="hash-link" aria-label="Direct link to what-are-the-scaleencode-and-scaledecode-traits" title="Direct link to what-are-the-scaleencode-and-scaledecode-traits">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="what-are-the-encode-decode-and-typeinfo-arguments-in-inkscale_deriveencode-decode-typeinfo-">What are the <code>Encode</code>, <code>Decode</code> and <code>TypeInfo</code> arguments in <code>#[ink::scale_derive(Encode, Decode, TypeInfo)]</code> ?<a href="#what-are-the-encode-decode-and-typeinfo-arguments-in-inkscale_deriveencode-decode-typeinfo-" class="hash-link" aria-label="Direct link to what-are-the-encode-decode-and-typeinfo-arguments-in-inkscale_deriveencode-decode-typeinfo-" title="Direct link to what-are-the-encode-decode-and-typeinfo-arguments-in-inkscale_deriveencode-decode-typeinfo-">​</a></h3>
 <p>Substrate-based blockchains use the <a href="https://github.com/paritytech/parity-scale-codec" target="_blank" rel="noopener noreferrer">SCALE codec</a>
 to encode data.
 As a consequence the data for every interaction with Substrate needs to
 be SCALE-encodable ‒ i.e. it needs to implement either <code>scale::Encode</code>,
 <code>scale::Decode</code>, or both. This affects e.g. data you want to return to a caller,
 data that you want to take as input, or data you want to store on-chain.</p>
+<p>ink! re-exports these traits and provides a useful macro <code>#[ink::scale_derive(Encode, Decode, TypeInfo)]</code> that allows to derive them
+in a concise way.</p>
 <p>A common error you might get when a necessary SCALE trait is not implemented
 for a data structure could be along the lines of <code>the trait &quot;WrapperTypeEncode&quot; is not implemented for &quot;Foo&quot;</code>.
 For example, you might encounter this error if you try to store a custom data
@@ -206,11 +208,15 @@ to a caller or when it is persisted to the contracts storage.</p>
 <p><code>Decode</code> is used for the inverse, e.g. when reading from storage or
 taking an input from a user (or another contract).</p>
 </li>
+<li>
+<p><code>TypeInfo</code> is used to encode the information about the type that is
+often used for the generation of metadata.</p>
+</li>
 </ul>
 <p>It&#x27;s possible to derive those traits and oftentimes the simplest way
 is to just derive the missing trait for the object for which its implementation
-is missing:</p>
-<div class="language-rust codeBlockContainer_Ckt0 theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-rust codeBlock_bY9V thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9a86fd"><span class="token attribute attr-name" style="color:#c4b9fe">#[derive(scale::Encode, scale::Decode)]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain"></span><span class="token keyword" style="color:#ffcc99">struct</span><span class="token plain"> </span><span class="token type-definition class-name">MyCustomDataStructure</span><span class="token plain"> </span><span class="token punctuation" style="color:#6c6783">{</span><span class="token plain"> … </span><span class="token punctuation" style="color:#6c6783">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+is missing using the ink! macro:</p>
+<div class="language-rust codeBlockContainer_Ckt0 theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-rust codeBlock_bY9V thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9a86fd"><span class="token attribute attr-name" style="color:#c4b9fe">#[ink::scale_derive(Encode, Decode)]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain"></span><span class="token keyword" style="color:#ffcc99">struct</span><span class="token plain"> </span><span class="token type-definition class-name">MyCustomDataStructure</span><span class="token plain"> </span><span class="token punctuation" style="color:#6c6783">{</span><span class="token plain"> … </span><span class="token punctuation" style="color:#6c6783">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-do-i-use-string-in-my-contract">How do I use <code>String</code> in my contract?<a href="#how-do-i-use-string-in-my-contract" class="hash-link" aria-label="Direct link to how-do-i-use-string-in-my-contract" title="Direct link to how-do-i-use-string-in-my-contract">​</a></h3>
 <p>In general, you should think twice if you really need <code>String</code>.
 Smart contracts usually don&#x27;t use strings; those are typically
