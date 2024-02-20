@@ -33,15 +33,16 @@ The following table gives a brief comparison of features between ink! and Solidi
 
 ### Table of Contents
 
-- [Solidity to ink! Guide](#solidity-to-ink-guide)
-- [Table of Contents](#table-of-contents)
-- [Converting a Solidity contract to ink!](#converting-a-solidity-contract-to-ink)
+- [ink! vs. Solidity](#ink-vs-solidity)
+  - [Solidity to ink! Guide](#solidity-to-ink-guide)
+    - [Table of Contents](#table-of-contents)
+  - [Converting a Solidity Contract to ink!](#converting-a-solidity-contract-to-ink)
     - [1. Generate a new ink! contract](#1-generate-a-new-ink-contract)
     - [2. Build the contract](#2-build-the-contract)
     - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
     - [4. Convert each function](#4-convert-each-function)
-- [Best Practices + Tips](#best-practices--tips)
-- [Syntax Equivalencies](#syntax-equivalencies)
+  - [Best Practices + Tips](#best-practices--tips)
+  - [Syntax Equivalencies](#syntax-equivalencies)
     - [`public function`](#public-function)
     - [`mapping declaration`](#mapping-declaration)
     - [`mapping usage`](#mapping-usage)
@@ -58,15 +59,15 @@ The following table gives a brief comparison of features between ink! and Solidi
     - [`transfer tokens from contract`](#transfer-tokens-from-contract)
     - [`events & indexed`](#events--indexed)
     - [`errors and returning`](#errors-and-returning)
-        - [`throw`](#throw)
-        - [`assert`](#assert)
-        - [`require and revert`](#require-and-revert)
+      - [`throw`](#throw)
+      - [`assert`](#assert)
+      - [`require and revert`](#require-and-revert)
     - [`nested mappings + custom / advanced structures`](#nested-mappings--custom--advanced-structures)
     - [`cross-contract calling`](#cross-contract-calling)
     - [`submit generic transaction / dynamic cross-contract calling`](#submit-generic-transaction--dynamic-cross-contract-calling)
-- [Limitations of ink! v3](#limitations-of-ink-v3)
-- [Troubleshooting Errors](#troubleshooting-errors)
-- [unit testing (off-chain)](#unit-testing-off-chain)
+  - [Limitations of ink! v3](#limitations-of-ink-v3)
+  - [Troubleshooting Errors](#troubleshooting-errors)
+  - [unit testing (off-chain)](#unit-testing-off-chain)
 
 ## Converting a Solidity Contract to ink!
 
@@ -223,8 +224,8 @@ mod example {
         data: u128,
     }
 
-    #[derive(Debug, scale::Encode, scale::Decode, PartialEq, Eq)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[derive(Debug, PartialEq, Eq)]
     pub enum Error {
         DataShouldNotBeZero,
     }
@@ -548,8 +549,8 @@ function myFunction(bool returnError) public pure {
 ```rust
 // ink!
 
-#[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
-#[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+#[derive(Debug, PartialEq, Eq)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 pub enum Error {
     /// Provide a detailed comment on the error
     MyError,
@@ -639,15 +640,8 @@ mod dao {
         storage::Mapping,
     };
 
-    #[derive(
-        scale::Encode,
-        scale::Decode,
-        Debug,
-    )]
-    #[cfg_attr(
-        feature = "std",
-        derive(scale_info::TypeInfo)
-    )]
+    #[derive(Debug)]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
     pub struct Proposal {
         voted_yes: BTreeMap<AccountId, bool>,
     }

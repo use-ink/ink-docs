@@ -16,10 +16,10 @@ Cualquier tipo personalizado que quiera ser compatible con el  storage de ink! d
 
 ```rust
 /// Un tipo personalizado que podemos usar en nuestro storage del contrato
-#[derive(scale::Decode, scale::Encode)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 #[cfg_attr(
     feature = "std",
-    derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
+    derive(ink::storage::traits::StorageLayout)
 )]
 pub struct Inner {
     value: bool,
