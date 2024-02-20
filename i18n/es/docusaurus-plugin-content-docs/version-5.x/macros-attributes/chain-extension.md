@@ -209,14 +209,14 @@ pub trait RuntimeReadWrite {
     fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
 }
 
-#[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 pub enum ReadWriteErrorCode {
   InvalidKey,
   CannotWriteToKey,
   CannotReadFromKey,
 }
 
-#[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 pub enum ReadWriteError {
   ErrorCode(ReadWriteErrorCode),
   BufferTooSmall { required_bytes: u32 },
@@ -234,7 +234,7 @@ impl From<scale::Error> for ReadWriteError {
   }
 }
 
-#[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 pub struct UnlockAccessError {
   reason: String,
 }
@@ -245,7 +245,7 @@ impl From<scale::Error> for UnlockAccessError {
   }
 }
 
-#[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 pub enum Access {
   ReadWrite,
   ReadOnly,
@@ -376,14 +376,14 @@ mod read_writer {
           fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
     }
     
-    #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
     pub enum ReadWriteErrorCode {
           InvalidKey,
           CannotWriteToKey,
           CannotReadFromKey,
     }
     
-    #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
     pub enum ReadWriteError {
           ErrorCode(ReadWriteErrorCode),
           BufferTooSmall { required_bytes: u32 },
@@ -399,7 +399,7 @@ mod read_writer {
          }
     }
   
-    #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
     pub struct UnlockAccessError {
          reason: String,
     }
@@ -408,7 +408,7 @@ mod read_writer {
              panic!("encountered unexpected invalid SCALE encoding")
          }
     }
-    #[derive(scale::Encode, scale::Decode, scale_info::TypeInfo)]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
     pub enum Access {
          ReadWrite,
          ReadOnly,

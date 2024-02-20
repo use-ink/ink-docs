@@ -26,10 +26,10 @@ are required as well. But don't worry, usually these traits can just be derived:
 
 ```rust
 /// A custom type that we can use in our contract storage
-#[derive(scale::Decode, scale::Encode)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 #[cfg_attr(
     feature = "std",
-    derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
+    derive(ink::storage::traits::StorageLayout)
 )]
 pub struct Inner {
     value: bool,

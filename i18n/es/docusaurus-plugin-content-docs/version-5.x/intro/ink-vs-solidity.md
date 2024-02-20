@@ -501,8 +501,8 @@ function myFunction(bool returnError) public {
 ```rust
 // ink!
 
-#[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
-#[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+#[derive(Debug, PartialEq, Eq)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 pub enum Error {
     /// Proveer un comentario detallado sobre el error
     MyError,
@@ -578,16 +578,15 @@ mod dao {
 
     use ink_prelude::collections::BTreeMap;
 
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
     #[derive(
-        scale::Encode,
-        scale::Decode,
         SpreadLayout,
         PackedLayout,
         SpreadAllocate,
     )]
     #[cfg_attr(
         feature = "std",
-        derive(scale_info::TypeInfo, ink_storage::traits::StorageLayout)
+        derive(ink_storage::traits::StorageLayout)
     )]
     pub struct Proposal {
         voted_yes: BTreeMap<AccountId, bool>,

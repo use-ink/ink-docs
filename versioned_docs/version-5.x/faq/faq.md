@@ -230,7 +230,7 @@ If you don't find the issue you can also ask for help in our public
 [Discord](https://discord.gg/j2DKRRbSJr) channel.
 
 
-### What are the `scale::Encode` and `scale::Decode` traits?
+### What are the `Encode`, `Decode` and `TypeInfo` arguments in `#[ink::scale_derive(Encode, Decode, TypeInfo)]` ?
 
 Substrate-based blockchains use the [SCALE codec](https://github.com/paritytech/parity-scale-codec)
 to encode data.
@@ -238,6 +238,9 @@ As a consequence the data for every interaction with Substrate needs to
 be SCALE-encodable ‒ i.e. it needs to implement either `scale::Encode`,
 `scale::Decode`, or both. This affects e.g. data you want to return to a caller,
 data that you want to take as input, or data you want to store on-chain.
+
+ink! re-exports these traits and provides a useful macro `#[ink::scale_derive(Encode, Decode, TypeInfo)]` that allows to derive them
+in a concise way.
 
 A common error you might get when a necessary SCALE trait is not implemented
 for a data structure could be along the lines of `the trait "WrapperTypeEncode"
@@ -261,12 +264,15 @@ to a caller or when it is persisted to the contracts storage.
 * `Decode` is used for the inverse, e.g. when reading from storage or
 taking an input from a user (or another contract).
 
+* `TypeInfo` is used to encode the information about the type that is
+often used for the generation of metadata.
+
 It's possible to derive those traits and oftentimes the simplest way
 is to just derive the missing trait for the object for which its implementation
-is missing:
+is missing using the ink! macro:
 
 ```rust
-#[derive(scale::Encode, scale::Decode)]
+#[ink::scale_derive(Encode, Decode)]
 struct MyCustomDataStructure { … }
 ```
 
