@@ -605,11 +605,11 @@ call_builder
 
 :::Note
 These changes depend on the [`60310de`](https://github.com/paritytech/polkadot-sdk/commit/60310de7d6402b6e44624aaa9b5db2dd848545e7)
-commit of the `pallet-contracts`.
+commit of `pallet-contracts`.
 :::
 
-If you are developing a contract for the older version of the `pallet-contract`
-that uses the old `Weight` API, you can still use the legacy call builder:
+If you are developing a contract for an older version of `pallet-contracts`
+that uses the old `Weight` API, you can still use the legacy call builder by first calling `call_v1`:
 ```rust
 call_builder
   .call_v1()
