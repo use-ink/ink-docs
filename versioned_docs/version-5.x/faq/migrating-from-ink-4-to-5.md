@@ -480,6 +480,45 @@ Example:
       "timestamp": { ... }
 ```
 
+#### Metadata storage keys encoding change
+
+Storage keys used to access storage data are SCALE encoded. Previously,
+the contract metadata used big endian encoding to represent storage keys.
+With the ink! 5.0 release, these encoding formats have been aligned,
+and SCALE encoding (little endian) is now used for the metadata storage keys.
+This is a breaking change, and client tools that use the storage keys from contract
+metadata will need to adapt accordingly.
+
+Please see: [#2048](https://github.com/paritytech/ink/pull/2048) for details.
+
+Example:
+```diff
+    "storage": {
+        "root": {
+        "layout": {
+            "struct": {
+            "fields": [
+                {
+                "layout": {
+                    "leaf": {
+-                   "key": "0x00000159",
++                   "key": "0x59010000",
+                    "ty": 0
+                    }
+                },
+                "name": "value"
+                }
+            ],
+            "name": "Flipper"
+            }
+        },
+-       "root_key": "0x00000159",
++       "root_key": "0x59010000",
+        "ty": 1
+        }
+    },
+```
+
 ## Interesting New Features
 
 ### End-To-End testing with a chain snapshot 
