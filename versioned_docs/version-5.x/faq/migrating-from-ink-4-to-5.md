@@ -235,17 +235,6 @@ optional attribute `signature_topic` to the `#[ink::event]` and `#[ink(event)]` 
 It can be used to specify the signature topic for a specific event manually, instead of the
 automatic topic calculation.
 
-### Metadata storage keys encoding change
-
-Storage keys used to access storage data are SCALE encoded. Previously,
-the contract metadata used big endian encoding to represent storage keys (`root_key` and `key` fields).
-With the ink! 5.0 release, these encoding formats have been aligned,
-and SCALE encoding (little endian) is now used for the metadata storage keys.
-This change is breaking, and client tools that use the storage keys from contract metadata
-will need to adapt accordingly.
-
-Please see: [#2048](https://github.com/paritytech/ink/pull/2048) for details.
-
 ### No more unchecked arithmetic
 
 Unchecked arithmetic operations in a contract are no longer supported for arithmetic
@@ -490,6 +479,17 @@ Example:
 +     "staticBufferSize": 16384,
       "timestamp": { ... }
 ```
+
+#### Metadata storage keys encoding change
+
+Storage keys used to access storage data are SCALE encoded. Previously,
+the contract metadata used big endian encoding to represent storage keys (`root_key` and `key` fields).
+With the ink! 5.0 release, these encoding formats have been aligned,
+and SCALE encoding (little endian) is now used for the metadata storage keys.
+This change is breaking, and client tools that use the storage keys from contract metadata
+will need to adapt accordingly.
+
+Please see: [#2048](https://github.com/paritytech/ink/pull/2048) for details.
 
 ## Interesting New Features
 
