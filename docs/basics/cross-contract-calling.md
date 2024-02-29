@@ -34,7 +34,7 @@ If you want to interact with a contract that is already on-chain you will need t
 
 ### `BasicContractRef` walkthrough
 
-We will walk through the [`basic_contract_ref`](https://github.com/paritytech/ink/tree/master/integration-tests/basic-contract-caller)
+We will walk through the [`cross-contract-calls`](https://github.com/paritytech/ink-examples/tree/master/cross-contract-calls)
 example in order to demonstrate how cross-contract calls using contract references work.
 
 The general workflow will be:
