@@ -30,6 +30,6 @@ For ink!, Gas is a synonym to the concept called "Weight" in the Substrate frame
 Blockchains that support ink! are built using Substrate which uses the concept of Weight
 to describe the usage of resources.
 The Weights concept is similar to what smart contract developers might know from other
-ecosystem, but is more fine granular.
+ecosystems, but is more fine grained.
 We decided on using the term "Gas" to make onboarding easier for developers from other
 smart contract ecosystems. So: `Gas = Weight = (refTime, proofSize)`.
