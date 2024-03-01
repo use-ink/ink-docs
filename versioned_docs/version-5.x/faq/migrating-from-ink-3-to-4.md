@@ -91,7 +91,7 @@ we removed support for it in [#1403](https://github.com/paritytech/ink/pull/1403
 
 As part of [#1233](https://github.com/paritytech/ink/pull/1233)
 the `eth_compatibility` crate was removed. The `ecdsa_to_eth_address()`
-function from it can now be found [in the `ink_env` crate](https://docs.rs/ink_env/4.0.0/ink_env/fn.ecdsa_to_eth_address.html).
+function from it can now be found [in the `ink_env` crate](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.ecdsa_to_eth_address.html).
 
 ```rust
 ink_env::ecdsa_to_eth_address(&pub_key, &mut output);
@@ -105,9 +105,9 @@ The return value is the size of the pre-existing value at the specified key if a
 
 Two new useful functions were added:
 
-- [`Mapping::contains(key)`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html#method.contains)
+- [`Mapping::contains(key)`](https://docs.rs/ink_storage/5.0.0-rc.1/ink_storage/struct.Mapping.html#method.contains)
   in [#1224](https://github.com/paritytech/ink/pull/1224).
-- [`Mapping::take()`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html#method.take)
+- [`Mapping::take()`](https://docs.rs/ink_storage/5.0.0-rc.1/ink_storage/struct.Mapping.html#method.take)
   to get a value while removing it from storage in [#1461](https://github.com/paritytech/ink/pull/1461).
 
 In case you were working around those two functions you can now
@@ -117,10 +117,10 @@ a `get(key).is_none()` instead of `contains(key)`.
 ## Storage functions in `ink_env`
 
 As part of [#1224](https://github.com/paritytech/ink/pull/1224) the return type
-of [`ink_env::set_contract_storage()`](https://docs.rs/ink_env/4.0.0/ink_env/fn.set_contract_storage.html)
+of [`ink_env::set_contract_storage()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.set_contract_storage.html)
 was changed to return an `Option<u32>` instead of `()`.
 
-A new function [`ink_env::take_contract_storage`](https://docs.rs/ink_env/4.0.0/ink_env/fn.take_contract_storage.html)
+A new function [`ink_env::take_contract_storage`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.take_contract_storage.html)
 was introduced.
 
 ## Removal of `ink_env::random` function
@@ -177,7 +177,7 @@ for constructors `Result<Constructor::Output, LangError>`).
 This happens even if the message/constructor doesn't have a return type,
 we default to the unit type `()` in that case.
 
-A [`LangError`](https://docs.rs/ink/4.0.0/ink/enum.LangError.html)
+A [`LangError`](https://docs.rs/ink/5.0.0-rc.1/ink/enum.LangError.html)
 is a type of error which doesn't originate from the contract itself,
 nor from the underlying execution environment (so the Contracts pallet
 in this case).
@@ -321,14 +321,14 @@ better.
 
 ## Updates to the `CallBuilder` and `CreateBuilder` APIs
 There's been several changes to the
-[`CallBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html)
+[`CallBuilder`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html)
 and
-[`CreateBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CreateBuilder.html)
+[`CreateBuilder`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CreateBuilder.html)
 APIs.
 
 In [#1604](https://github.com/paritytech/ink/pull/1604) we renamed the
 `CallBuilder::fire()` method to
-[`CallBuilder::invoke()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.invoke-2).
+[`CallBuilder::invoke()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.invoke-2).
 This brings more consistency across our APIs which were already using the `invoke`
 terminology.
 
@@ -337,9 +337,9 @@ we added support for handing
 `LangError`s from the `CreateBuilder` and `CallBuilder`, respectively.
 
 If you want to handle errors from either `Builder` you can use the new
-[`CreateBuilder::try_instantiate()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CreateBuilder.html#method.try_instantiate)
+[`CreateBuilder::try_instantiate()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CreateBuilder.html#method.try_instantiate)
 or
-[`CallBuilder::try_invoke()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.try_invoke-1)
+[`CallBuilder::try_invoke()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.try_invoke-1)
 methods.
 
 Because of the addition of those methods we also removed any error handling from the
@@ -349,13 +349,13 @@ directly, and panic when they encounter an error.
 
 Lastly, in [#1636](https://github.com/paritytech/ink/pull/1636) we added two methods to
 the `CallBuilder` to streamline
-[`Call`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.Call.html)
+[`Call`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.Call.html)
 and
-[`DelegateCall`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.DelegateCall.html)
+[`DelegateCall`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.DelegateCall.html)
 workflows:
 - For `Call` you can use
-  [`CallBuilder::call()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.call) (this replaces `CallBuilder::callee()`)
-- For `DelegateCall` you can use [`CallBuilder::delegate()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.delegate)
+  [`CallBuilder::call()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.call) (this replaces `CallBuilder::callee()`)
+- For `DelegateCall` you can use [`CallBuilder::delegate()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.delegate)
 
 ## Removal of `[lib.crate-type]` and `[lib.name]` from contract manifest
 Earlier versions of `cargo-contract` required that these two fields were specified in the
