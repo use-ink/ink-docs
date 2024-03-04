@@ -27,6 +27,7 @@
       "basics/events",
       "basics/selectors",
       "basics/trait-definitions",
+      "basics/gas",
       "basics/cross-contract-calling",
       "basics/upgradeability",
       "basics/env-functions",
