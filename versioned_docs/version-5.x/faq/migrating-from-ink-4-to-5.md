@@ -420,7 +420,7 @@ A migration in most cases should just be to rename `#[ink(extension = …)]` to
 
 We added an example contract that illustrates the usage of multiple chain extensions
 in one contract:
-[`combined-extension`](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension).
+[`combined-extension`](https://github.com/paritytech/ink-examples/tree/main/combined-extension).
 
 
 ### Metadata Changes
@@ -578,7 +578,7 @@ contract verification. [Read more here](/5.x/basics/verification/contract-verifi
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
-See [here](https://github.com/paritytech/ink/tree/master/integration-tests/upgradeable-contracts)
+See [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts)
 for the contract example.
 
 ### We made `set_code_hash` generic
@@ -621,9 +621,9 @@ We stabilized `call_runtime` in [#1749](https://github.com/paritytech/ink/pull/1
 It can be used to call a runtime dispatchable from an ink! contract.
 
 You can find a contract example and a comparison with chain extensions
-[here](https://github.com/paritytech/ink/tree/master/integration-tests/call-runtime).
+[here](https://github.com/paritytech/ink-examples/tree/main/call-runtime).
 We've added an example of how to end-to-end test
-`call_runtime` [here](https://github.com/paritytech/ink/tree/master/integration-tests/e2e-call-runtime).
+`call_runtime` [here](https://github.com/paritytech/ink-examples/tree/main/e2e-call-runtime).
 
 
 ### `call_v2`

@@ -286,7 +286,7 @@ to contain a single message with a well-known selector `@` when the other messag
 with the wildcard selector `_` is defined.
 :::
 
-See [example](https://github.com/paritytech/ink/tree/master/integration-tests/wildcard-selector)
+See [example](https://github.com/paritytech/ink-examples/tree/main/wildcard-selector)
 for illustration on how it can be used in practice.
 
 ## Note on `CallFlags`
