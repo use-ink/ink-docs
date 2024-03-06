@@ -4,6 +4,7 @@
       "intro/intro",
       "intro/why-rust",
       "intro/why-webassembly",
+      "intro/where-to-deploy",
       "intro/polkadot",
       "intro/how-it-works",
       "intro/ink-vs-solidity",
