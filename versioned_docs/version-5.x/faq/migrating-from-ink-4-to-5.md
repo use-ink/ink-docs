@@ -131,7 +131,7 @@ Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+`
 * `cargo-contract` >= v4.0
 * `substrate-contracts-node` >= 0.39.0
 * `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
-* `use-inkathon`, upgrade `polkadot-js/api` and `polkadot-js/api-contract` dependencies to >= 10.12.1
+* `use-inkathon`: upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
 * ink!athon >= 0.7.0
 
 ## Important Changes
