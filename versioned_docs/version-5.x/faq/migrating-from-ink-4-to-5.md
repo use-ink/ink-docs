@@ -410,7 +410,7 @@ otherwise please consult the [`#[ink::chain_extension]` macro documentation](htt
 +#[ink::chain_extension(extension = 1)]
 ```
 
-:::Note
+:::note
 If the chain extension was not used in a tuple in the runtime configuration, 
 `extension = N: u16` can take any `u16` number.
 :::
@@ -642,7 +642,7 @@ call_builder
   .invoke();
 ```
 
-:::Note
+:::note
 These changes depend on the [`60310de`](https://github.com/paritytech/polkadot-sdk/commit/60310de7d6402b6e44624aaa9b5db2dd848545e7)
 commit of `pallet-contracts`.
 :::
