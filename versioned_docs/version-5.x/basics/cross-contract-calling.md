@@ -34,7 +34,7 @@ If you want to interact with a contract that is already on-chain you will need t
 
 ### `BasicContractRef` walkthrough
 
-We will walk through the [`basic_contract_ref`](https://github.com/paritytech/ink/tree/master/integration-tests/basic-contract-caller)
+We will walk through the [`cross-contract-calls`](https://github.com/paritytech/ink-examples/tree/master/cross-contract-calls)
 example in order to demonstrate how cross-contract calls using contract references work.
 
 The general workflow will be:
@@ -228,6 +228,7 @@ Below is an example of how to instantiate a contract using the `CreateBuilder`. 
 ```rust
 use contract::MyContractRef;
 let my_contract: MyContractRef = build_create::<MyContractRef>()
+    .instantiate_v1()
     .code_hash(Hash::from([0x42; 32]))
     .gas_limit(0)
     .endowment(10)
@@ -272,6 +273,7 @@ Below is an example of how to call a contract using the `CallBuilder`. We will:
 ```rust
 let my_return_value = build_call::<DefaultEnvironment>()
     .call(AccountId::from([0x42; 32]))
+    .call_v1()
     .gas_limit(0)
     .transferred_value(10)
     .exec_input(

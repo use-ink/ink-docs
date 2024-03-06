@@ -37,6 +37,13 @@ We've described this in more detail below, in the section
 
 ## Compatibility
 
+There are four individual new functions that are only compatible with
+`polkadot-v1.8.0`. But they are all opt-in and in the guide below we 
+explain them. These functions are: 
+
+* v2 of `call` and `instantiate` ([explained here](#call-and-instantiate-v2))
+* `lock_delegate_dependency` and `unlock_delegate_dependency` ([explained here](#upgradeable-contracts-delegate_dependency))
+
 The following chains are in production and support ink! 5.0:
 
 <div className="row">
@@ -110,10 +117,10 @@ The same requirements as for ink! 4.0 hold.
 
 #### How do I find out which Polkadot version a chain is running on?
 
-You can query the `contracts::palletVersion()` via the chain state RPCs. It has to
+You can query `contracts::palletVersion()` via the chain state RPCs. It has to
 be `>= 9` for ink! 5.0 to be compatible.
 
-You can use e.g. the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
+You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
 
 <img src="/img/pallet-version.png"  />
@@ -122,7 +129,7 @@ Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+`
 
 * Stable Rust >= 1.75
 * `cargo-contract` >= v4.0
-* `polkadot-js/api` and `polkadot-js/api-contract` >= TODO
+* `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
 * `use-inkathon` >= TODO
 * ink!athon >= TODO
 
@@ -335,6 +342,20 @@ This information is now implied from the contract's manifest.
 Simply, add the other contract as dependency with the `ink-as-a-dependency` feature enabled.
 The test will detect the contract and build it as part of the test.
 
+#### 
+In [#2076](https://github.com/paritytech/ink/pull/2076), we've added a new
+[`remove_code`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/trait.ContractsBackend.html#method.remove_code)
+function to the E2E API:
+
+```rust
+let contract = client
+    .remove_code(&ink_e2e::alice(), code_hash)
+    // Submit the call for on-chain execution.
+    .submit()
+    .await
+    .expect("remove failed");
+```
+
 ### New Data Structure: `StorageVec`
 
 We've added a `Vec`-like data structure, built on top of Mapping.
@@ -420,8 +441,61 @@ A migration in most cases should just be to rename `#[ink(extension = …)]` to
 
 We added an example contract that illustrates the usage of multiple chain extensions
 in one contract:
-[`combined-extension`](https://github.com/paritytech/ink/tree/master/integration-tests/combined-extension).
+[`combined-extension`](https://github.com/paritytech/ink-examples/tree/main/combined-extension).
 
+### `call` and `instantiate` v2
+
+The functions to instantiate and call other contracts got an upgrade in the
+`polkadot-v1.8.0` release (in the [`d250a6`](https://github.com/paritytech/polkadot-sdk/commit/d250a6e4270a77f28e2737a4faa3fb78c8ea7a85) commit),
+The new v2 of them allows passing both `Weight` parts (`ref_time_limit` and `proof_size_limit`),
+as well as the `storage_deposit_limit`.
+
+The previous v1 `call` and `instantiate` functions only provided a single `gas_limit` parameter,
+which was used as the value for `ref_time_limit`.
+You can still use these `v1` versions.
+For `call` on a call builder obtained through
+[`build_call`](https://docs.rs/ink_env/5.0.0-rc.2/ink_env/call/fn.build_call.html):
+
+```
+call_builder
+  .call_v1()
+  .gas_limit(ref_time_limit)
+  .invoke();
+```
+
+For `instantiate` on [`build_create`](https://docs.rs/ink_env/5.0.0-rc.2/ink_env/call/fn.build_create.html):
+
+The new `v2` parameters can be set like so:
+
+```rust
+call_builder // or `create_builder`
+  .ref_time_limit(ref_time_limit)
+  .proof_size_limit(proof_size_limit)
+  .storage_deposit_limit(storage_deposit_limit)
+  .invoke();
+```
+
+You can find out if a chain supports the new `v2` functions for call/instantiate by
+querying the `contracts::apiVersion` constant. It has to be `1`.
+You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
+Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
+
+<img src="/img/api-version.png"  />
+
+At the time of the ink! v5 release (March 2024) no parachain with ink! support
+had upgraded to `polkadot-v1.8.0` yet.
+
+Please note that if you are using trait definitions for cross-contract calls,
+direct calls from the `contract_ref!` macro are only supported with the `call_v2`.
+Otherwise, you need to get the `CallBuilder` from the structure
+and build the call manually.
+
+```rust
+type Erc20Wrapper = contract_ref!(Erc20);
+let erc20: Erc20Wrapper = new_erc20.into();
+let erc20_builder = erc20.call();
+erc20_builder.total_supply().call_v1().invoke()
+```
 
 ### Metadata Changes
 
@@ -578,8 +652,35 @@ contract verification. [Read more here](/5.x/basics/verification/contract-verifi
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
-See [here](https://github.com/paritytech/ink/tree/master/integration-tests/upgradeable-contracts)
+See [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts)
 for the contract example.
+
+### Upgradeable Contracts: `delegate_dependency`
+
+We've added support for two new host functions:
+
+- `lock_delegate_dependency`: prevents the code at the given code hash from being removed.
+- `unlock_delegate_dependency`: releases the lock on preventing the code from being removed
+from the current contract.
+
+Having a delegate dependency allows contracts to safely delegate to another `code_hash` with
+the guarantee that it cannot be deleted. 
+
+We've updated the [`upgradeable-contracts/delegator`](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts#delegator)
+example to demonstrate these new calls.
+For that purpose we've also added a [`remove_code`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/trait.ContractsBackend.html#method.remove_code)
+function to the E2E API.
+
+These two functions are only available from `polkadot-1.8.0` on.
+You can find out if a chain supports these new functions by
+querying the `contracts::apiVersion` constant. It has to be `1`.
+You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
+Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
+
+<img src="/img/api-version.png"  />
+
+At the time of the ink! v5 release (March 2024) no parachain with ink! support
+had upgraded to `polkadot-v1.8.0` yet.
 
 ### We made `set_code_hash` generic
 
@@ -621,49 +722,6 @@ We stabilized `call_runtime` in [#1749](https://github.com/paritytech/ink/pull/1
 It can be used to call a runtime dispatchable from an ink! contract.
 
 You can find a contract example and a comparison with chain extensions
-[here](https://github.com/paritytech/ink/tree/master/integration-tests/call-runtime).
+[here](https://github.com/paritytech/ink-examples/tree/main/call-runtime).
 We've added an example of how to end-to-end test
-`call_runtime` [here](https://github.com/paritytech/ink/tree/master/integration-tests/e2e-call-runtime).
-
-
-### `call_v2`
-
-There is a new host function `call_v2` which allows passing both `Weight` parts: 
-`ref_time_limit` and `proof_time_limit` and the `storage_deposit_limit`. 
-The legacy call function only provides the single `gas_limit` parameter, 
-which is used as the value for `ref_time_limit`.
-
-These parameters can be set on a call builder instance:
-```rust
-call_builder
-  .ref_time_limit(ref_time_limit)
-  .proof_time_limit(proof_time_limit)
-  .storage_deposit_limit(storage_deposit_limit)
-  .invoke();
-```
-
-:::note
-These changes depend on the [`60310de`](https://github.com/paritytech/polkadot-sdk/commit/60310de7d6402b6e44624aaa9b5db2dd848545e7)
-commit of `pallet-contracts`.
-:::
-
-If you are developing a contract for an older version of `pallet-contracts`
-that uses the old `Weight` API, you can still use the legacy call builder by first calling `call_v1`:
-```rust
-call_builder
-  .call_v1()
-  .gas_limit(ref_time_limit)
-  .invoke();
-```
-
-Please note that that if you using trait definition for cross-contract call,
-direct calls from `contract_ref!` macro are only supported with the `call_v2`.
-Otherwise, you need to get the `CallBuilder` from the structure 
-and build the call manually.
-
-```rust
-type Erc20Wrapper = contract_ref!(Erc20);
-let erc20: Erc20Wrapper = new_erc20.into();
-let erc20_builder = self.erc20.call();
-erc20_builder.total_supply().call_v1().invoke()
-```
+`call_runtime` [here](https://github.com/paritytech/ink-examples/tree/main/e2e-call-runtime).

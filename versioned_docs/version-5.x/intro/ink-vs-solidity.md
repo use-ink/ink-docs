@@ -828,6 +828,7 @@ fn invoke_transaction(
         .call_type(
             Call::new()
                 .callee(callee) // contract to call
+                .call_v1()
                 .gas_limit(*gas_limit)
                 .transferred_value(transfer_amount), // value to transfer with call
         )

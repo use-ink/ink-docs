@@ -28,7 +28,7 @@ Si quiere interactuar con un contrato que ya está on-chain, tendrás que utiliz
 
 ### Tutorial para `BasicContractRef`
 
-Recorreremos el ejemplo de [`basic_contract_ref`](https://github.com/paritytech/ink/tree/master/integration-tests/basic_contract_caller) para demostrar cómo funcionan las llamadas Cross-Contract utilizando Referencias de Contratos.
+Recorreremos el ejemplo de [`basic_contract_ref`](https://github.com/paritytech/ink-examples/tree/main/basic_contract_caller) para demostrar cómo funcionan las llamadas Cross-Contract utilizando Referencias de Contratos.
 
 El flujo general de trabajo será:
 1. Preparar `OtherContract` para ser importado en otros contratos
