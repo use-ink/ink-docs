@@ -4,6 +4,7 @@
       "intro/intro",
       "intro/why-rust",
       "intro/why-webassembly",
+      "intro/where-to-deploy",
       "intro/polkadot",
       "intro/how-it-works",
       "intro/ink-vs-solidity",
@@ -127,8 +128,7 @@
         }
       },
       "third-party-tools/ink-analyzer",
-      "third-party-tools/subwallet",
-      "third-party-tools/openbrush"
+      "third-party-tools/subwallet"
     ],
     "FAQ": [
       "faq/faq",
