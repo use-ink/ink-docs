@@ -271,6 +271,31 @@ As you can see, delegatee's code looks like a normal ink! Smart Contract with so
 - `addresses` mapping key is identical
 - Constructor does not have any logic, as the code is never instantiated. (It can be, but plays no effect on the execution)
 
+### Delegate dependency locks
+
+In a delegator contract pattern, one contract delegates calls to another contract. 
+Thus it depends upon the contract code to which it delegates. Since on-chain contract code
+can be deleted by anybody if there are no instances of the contract on the chain, this would 
+break the `delegator` contract. To prevent this, the `delegator` contract can utilize the 
+`lock_delegate_dependency` and `unlock_delegate_dependency` host functions. Calling
+`lock_delegate_dependency` will prevent the code at the given hash from being deleted e.g.
+
+```rust
+self.env().lock_delegate_dependency(&code_hash);
+```
+
+A subsequent call to `unlock_delegate_dependency` from within the `delegator` contract 
+instance releases the lock from that contract, allowing that code at the given hash to be 
+deleted if no other instances of the contract or delegate dependency locks exist.
+
+```rust
+self.env().lock_delegate_dependency(&code_hash);
+```
+
+Note that these two methods can be called by anybody executing the contract, so it is the 
+responsibility of the contract developer to ensure correct access control.
+You can take a look at our [`upgradeable-contracts/delegator`](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts#delegator)
+example, which demonstrates the usage of these two functions.
 
 ## Note on the usage of wildcard selectors
 
