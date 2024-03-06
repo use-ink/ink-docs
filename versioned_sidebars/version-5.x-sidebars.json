@@ -128,8 +128,7 @@
         }
       },
       "third-party-tools/ink-analyzer",
-      "third-party-tools/subwallet",
-      "third-party-tools/openbrush"
+      "third-party-tools/subwallet"
     ],
     "FAQ": [
       "faq/faq",
