@@ -38,8 +38,8 @@ We've described this in more detail below, in the section
 ## Compatibility
 
 There are four individual new functions that are only compatible with
-`polkadot-v1.8.0`. But they are all opt-in and in the guide below we 
-explain them. These functions are: 
+`polkadot-v1.8.0`. But they are all opt-in and in the guide below we
+explain them. These functions are:
 
 * v2 of `call` and `instantiate` ([explained here](#call-and-instantiate-v2))
 * `lock_delegate_dependency` and `unlock_delegate_dependency` ([explained here](#upgradeable-contracts-delegate_dependency))
@@ -131,7 +131,7 @@ Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+`
 * `cargo-contract` >= v4.0
 * `substrate-contracts-node` >= 0.39.0
 * `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
-* `use-inkathon`, upgrade `polkadot-js/api` and `polkadot-js/api-contract` depdencies to >= 10.12.1
+* `use-inkathon`, upgrade `polkadot-js/api` and `polkadot-js/api-contract` dependencies to >= 10.12.1
 * ink!athon >= 0.7.0
 
 ## Important Changes
@@ -343,7 +343,7 @@ This information is now implied from the contract's manifest.
 Simply, add the other contract as dependency with the `ink-as-a-dependency` feature enabled.
 The test will detect the contract and build it as part of the test.
 
-#### 
+####
 In [#2076](https://github.com/paritytech/ink/pull/2076), we've added a new
 [`remove_code`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/trait.ContractsBackend.html#method.remove_code)
 function to the E2E API:
@@ -665,7 +665,7 @@ We've added support for two new host functions:
 from the current contract.
 
 Having a delegate dependency allows contracts to safely delegate to another `code_hash` with
-the guarantee that it cannot be deleted. 
+the guarantee that it cannot be deleted.
 
 We've updated the [`upgradeable-contracts/delegator`](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts#delegator)
 example to demonstrate these new calls.
@@ -725,5 +725,4 @@ It can be used to call a runtime dispatchable from an ink! contract.
 You can find a contract example and a comparison with chain extensions
 [here](https://github.com/paritytech/ink-examples/tree/main/call-runtime).
 We've added an example of how to end-to-end test
-
 `call_runtime` [here](https://github.com/paritytech/ink-examples/tree/main/e2e-call-runtime).
