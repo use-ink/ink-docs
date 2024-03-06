@@ -134,7 +134,7 @@ This change was done to ensure that you always use the correct scale dependency 
 with an ink! version. The relevant PR is [#1890](https://github.com/paritytech/ink/pull/1890).
 
 We removed the requirement for contracts to have direct dependencies on `parity-scale-codec`
-and `scale-info` in their `Cargo.toml`. 
+and `scale-info` in their `Cargo.toml`.
 You can now remove those dependencies from your contracts `Cargo.toml`:
 
 ```diff
@@ -279,7 +279,7 @@ We introduced this change in [#1897](https://github.com/paritytech/ink/pull/1897
 #### Builder API
 
 In [#1917](https://github.com/paritytech/ink/pull/1917) we reworked the E2E API with
-a builder API. 
+a builder API.
 `instantiate`, `call` and `upload` will now return a builder instance. You can
 specify optional arguments with builder methods, and submit the call for on-chain
 execution with the `.submit()` method, or dry-run it with `dry_run()`.
@@ -304,7 +304,7 @@ to specify a gas margin (in percentage) as part of the on-chain call.
 
 There are cases when gas estimates may not necessarily be accurate enough due to the complexity
 of the smart contract logic that adds additional overhead and gas consumption.
-Therefore, it is helpful to allow to specify an extra portion of the gas to be added to the 
+Therefore, it is helpful to allow to specify an extra portion of the gas to be added to the
 limit (i.e. 5%, 10%).
 
 The method `.extra_gas_portion(margin: u64)` method is part of the builder API:
@@ -328,10 +328,10 @@ let first_insert = ink_e2e::build_message::<MappingsRef>(contract_id)
 
 See [#1782](https://github.com/paritytech/ink/pull/1782) for more details.
 
-#### Removed `additional_contracts` parameter 
+#### Removed `additional_contracts` parameter
 
 `additional_contracts` parameter which is part of `#[ink_e2e:test]` has been removed in [#2098](https://github.com/paritytech/ink/pull/2098).
-This information is now implied from the contract's manifest. 
+This information is now implied from the contract's manifest.
 Simply, add the other contract as dependency with the `ink-as-a-dependency` feature enabled.
 The test will detect the contract and build it as part of the test.
 
@@ -403,7 +403,7 @@ The argument type changed from `u32` to `u16`:
 ```
 
 The top level macro `#[ink::chain_extension]` now _requires_ an `(extension = N: u16)` argument to support multiple chain extensions.
-If you are using only one extension, the ID can be any `u16` number, 
+If you are using only one extension, the ID can be any `u16` number,
 otherwise please consult the [`#[ink::chain_extension]` macro documentation](https://use.ink/5.x/macros-attributes/chain-extension)
 ```diff
 -#[ink::chain_extension]
@@ -411,11 +411,11 @@ otherwise please consult the [`#[ink::chain_extension]` macro documentation](htt
 ```
 
 :::note
-If the chain extension was not used in a tuple in the runtime configuration, 
+If the chain extension was not used in a tuple in the runtime configuration,
 `extension = N: u16` can take any `u16` number.
 :::
 
-A migration in most cases should just be to rename `#[ink(extension = …)]` to 
+A migration in most cases should just be to rename `#[ink(extension = …)]` to
 `#[ink(function = …)]`, and specifying `extension` argument in top level macro.
 
 We added an example contract that illustrates the usage of multiple chain extensions
@@ -521,7 +521,7 @@ Example:
 
 ## Interesting New Features
 
-### End-To-End testing with a chain snapshot 
+### End-To-End testing with a chain snapshot
 
 With ink! 5.0 we introduce the possibility of running your tests against the
 fork (i.e. snapshot) of a live chain.
@@ -560,7 +560,7 @@ info (e.g. `cargo contract storage --help`).
 ### Alternative off-chain E2E testing backend support: DRink!
 
 DRink! is a toolbox for ink! developers that allows for testing your contracts
-without any running node. 
+without any running node.
 
 It has a number of features that are pretty great:
 
@@ -583,7 +583,7 @@ for the contract example.
 
 ### We made `set_code_hash` generic
 
-The `self.env().set_code_hash()` method now accepts the `Hash` environment type instead 
+The `self.env().set_code_hash()` method now accepts the `Hash` environment type instead
 of a concrete `[u8; 32]`.
 
 ```rust
@@ -591,8 +591,8 @@ of a concrete `[u8; 32]`.
 pub fn set_code(&mut self, code_hash: [u8; 32]) {
     ink::env::set_code_hash(&code_hash).unwrap_or_else(|err| {});
 }
-        
-// Now 
+
+// Now
 pub fn set_code(&mut self, code_hash: Hash) {
     self.env().set_code_hash(&code_hash).unwrap_or_else(|err| {});
 }
@@ -602,7 +602,7 @@ More details in [#1906](https://github.com/paritytech/ink/pull/1906).
 
 ### Buffer size can be customized
 
-With [#1869](https://github.com/paritytech/ink/pull/1869) we added a possibility 
+With [#1869](https://github.com/paritytech/ink/pull/1869) we added a possibility
 of setting a custom static buffer size for ink! to use.
 
 ink! uses a static buffer for interacting with pallet-contracts, i.e. to move data
@@ -628,9 +628,9 @@ We've added an example of how to end-to-end test
 
 ### `call_v2`
 
-There is a new host function `call_v2` which allows passing both `Weight` parts: 
-`ref_time_limit` and `proof_time_limit` and the `storage_deposit_limit`. 
-The legacy call function only provides the single `gas_limit` parameter, 
+There is a new host function `call_v2` which allows passing both `Weight` parts:
+`ref_time_limit` and `proof_time_limit` and the `storage_deposit_limit`.
+The legacy call function only provides the single `gas_limit` parameter,
 which is used as the value for `ref_time_limit`.
 
 These parameters can be set on a call builder instance:
@@ -658,7 +658,7 @@ call_builder
 
 Please note that that if you using trait definition for cross-contract call,
 direct calls from `contract_ref!` macro are only supported with the `call_v2`.
-Otherwise, you need to get the `CallBuilder` from the structure 
+Otherwise, you need to get the `CallBuilder` from the structure
 and build the call manually.
 
 ```rust
