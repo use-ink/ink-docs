@@ -1,12 +1,12 @@
 ---
-title: Metadata Format
+title: Storage Metadata Format
 slug: /datastructures/storage-in-metadata
 hide_title: true
 ---
 
 <img src="/img/title/storage.svg" className="titlePic" />
 
-# Metadata Format
+# Storage Metadata Format
 
 The storage layout of a contract is reflected inside the metadata. It allows third-party
 tooling to work with contract storage and can also help to better understand the storage

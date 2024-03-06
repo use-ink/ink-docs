@@ -155,7 +155,7 @@ button:disabled {
 }
 
 .pagination-nav__label {
-  color: #fff;
+  color: var(--ifm-color-content-secondary);
 }
 
 .docusaurus-highlight-code-line {

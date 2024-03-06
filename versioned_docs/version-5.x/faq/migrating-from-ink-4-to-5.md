@@ -431,7 +431,7 @@ otherwise please consult the [`#[ink::chain_extension]` macro documentation](htt
 +#[ink::chain_extension(extension = 1)]
 ```
 
-:::Note
+:::note
 If the chain extension was not used in a tuple in the runtime configuration, 
 `extension = N: u16` can take any `u16` number.
 :::
@@ -496,7 +496,6 @@ let erc20: Erc20Wrapper = new_erc20.into();
 let erc20_builder = erc20.call();
 erc20_builder.total_supply().call_v1().invoke()
 ```
-
 
 ### Metadata Changes
 
