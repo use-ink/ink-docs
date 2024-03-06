@@ -475,7 +475,7 @@ call_builder // or `create_builder`
   .invoke();
 ```
 
-You can find out if a chain supports those new `v2` functions for call/instantiate by
+You can find out if a chain supports the new `v2` functions for call/instantiate by
 querying the `contracts::apiVersion` constant. It has to be `1`.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
