@@ -123,7 +123,6 @@ Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+`
 * Stable Rust >= 1.75
 * `cargo-contract` >= v4.0
 * `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
-* `use-inkathon` >= TODO
 * ink!athon >= TODO
 
 ## Important Changes
