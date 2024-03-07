@@ -29,47 +29,9 @@ The following table gives a brief comparison of features between ink! and Solidi
 
 </div>
 
-## Solidity to ink! Guide
-
-### Table of Contents
-
-- [ink! vs. Solidity](#ink-vs-solidity)
-  - [Solidity to ink! Guide](#solidity-to-ink-guide)
-    - [Table of Contents](#table-of-contents)
-  - [Converting a Solidity Contract to ink!](#converting-a-solidity-contract-to-ink)
-    - [1. Generate a new ink! contract](#1-generate-a-new-ink-contract)
-    - [2. Build the contract](#2-build-the-contract)
-    - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
-    - [4. Convert each function](#4-convert-each-function)
-  - [Best Practices + Tips](#best-practices--tips)
-  - [Syntax Equivalencies](#syntax-equivalencies)
-    - [`public function`](#public-function)
-    - [`mapping declaration`](#mapping-declaration)
-    - [`mapping usage`](#mapping-usage)
-    - [`struct`](#struct)
-    - [`assertions / requires`](#assertions--requires)
-    - [`timestamp`](#timestamp)
-    - [`contract caller`](#contract-caller)
-    - [`contract's address`](#contracts-address)
-    - [`bytes`](#bytes)
-    - [`uint256`](#uint256)
-    - [`payable`](#payable)
-    - [`received deposit / payment`](#received-deposit--payment)
-    - [`contract balance`](#contract-balance)
-    - [`transfer tokens from contract`](#transfer-tokens-from-contract)
-    - [`events & indexed`](#events--indexed)
-    - [`errors and returning`](#errors-and-returning)
-      - [`throw`](#throw)
-      - [`assert`](#assert)
-      - [`require and revert`](#require-and-revert)
-    - [`nested mappings + custom / advanced structures`](#nested-mappings--custom--advanced-structures)
-    - [`cross-contract calling`](#cross-contract-calling)
-    - [`submit generic transaction / dynamic cross-contract calling`](#submit-generic-transaction--dynamic-cross-contract-calling)
-  - [Limitations of ink! v3](#limitations-of-ink-v3)
-  - [Troubleshooting Errors](#troubleshooting-errors)
-  - [unit testing (off-chain)](#unit-testing-off-chain)
-
 ## Converting a Solidity Contract to ink!
+
+In the following, we'll explain how to convert a Solidity contract to ink!.
 
 ### 1. Generate a new ink! contract
 
