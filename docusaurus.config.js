@@ -66,23 +66,6 @@ module.exports = {
           position: 'right',
           dropdownActiveClassDisabled: true,
         },
-        {
-          type: 'dropdown',
-          label: 'Language',
-          position: 'right',
-          items: [
-            {
-              href: '../',
-              label: 'English',
-              target: '_parent',
-            },
-            {
-              href: '/es/',
-              label: 'Spanish',
-              target: '_parent',
-            },
-          ],
-        },
       ],
     },
   },
@@ -123,20 +106,6 @@ module.exports = {
       },
     ],
   ],
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es'],
-    localeConfigs: {
-      en: {
-        htmlLang: 'en-GB',
-        label: 'English',
-      },
-      es: {
-        label: 'Español',
-        htmlLang: 'es-ES',
-      },
-    },
-  },
   plugins: [
     async function myPlugin() {
       return {

@@ -14,7 +14,6 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve --port 8080",
-    "write-translations": "docusaurus write-translations",
     "cspell": "cspell \"**/*.{md,mdx}\""
   },
   "devDependencies": {
