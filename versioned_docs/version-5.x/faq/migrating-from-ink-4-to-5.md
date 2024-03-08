@@ -612,7 +612,7 @@ Example:
 With ink! 5.0 we introduce the possibility of running your tests against the
 fork (i.e. snapshot) of a live chain.
 
-See [this page](../basics/testing/testing-with-live-state.md) in our documentation for details.
+See [this page](../testing/testing-with-live-state.md) in our documentation for details.
 
 ### New lints
 

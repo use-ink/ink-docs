@@ -101,7 +101,7 @@ The first step in CosmWasm development is to
 [install dependencies](https://docs.cosmwasm.com/docs/getting-started/installation),
 namely Go, Rust and `wasmd`.
 
-For ink! you can also find [a setup guide](,,/getting-started/setup.md) which will help you
+For ink! you can also find [a setup guide](../getting-started/setup.md) which will help you
 with dependencies, namely Rust, `cargo-contract` and `substrate-contracts-node`.
 
 ### Environment Setup
