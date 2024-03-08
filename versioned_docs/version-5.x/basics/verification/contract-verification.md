@@ -20,7 +20,7 @@ process must recompile the contract in an identical host environment to
 which it was originally built. The simplest way to do this is using a Docker
 container.
 
-Since ink! 4.0, `cargo-contract` provides the necessary tools to produce 
+Since ink! 5.0, `cargo-contract` provides the necessary tools to produce 
 a verifiable build and verify a binary against the reference contract.
 
 :::note
