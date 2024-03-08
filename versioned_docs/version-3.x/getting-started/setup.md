@@ -55,7 +55,7 @@ rustup target add wasm32-unknown-unknown --toolchain nightly
 
 The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) is a simple Substrate
 blockchain which is configured to include the Substrate module for smart contract
-functionality ‒ the `contracts` pallet (see [How it Works](/how-it-works) for more).
+functionality ‒ the `contracts` pallet (see [How it Works](../intro/how-it-works.md) for more).
 
 It's a comfortable option if you want to get a quickstart.
 You can [download a binary from our releases page](https://github.com/paritytech/substrate-contracts-node/releases)

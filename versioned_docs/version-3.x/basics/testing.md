@@ -100,7 +100,7 @@ mod tests {
 ## On-chain Testing
 
 The easiest way to do on-chain testing is to
-[run a local substrate node](/getting-started/running-substrate),
+[run a local substrate node](../getting-started/running.md),
 deploy your contract there and interact with it.
 
 ```rust

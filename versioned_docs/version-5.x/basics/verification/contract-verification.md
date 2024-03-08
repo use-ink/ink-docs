@@ -76,7 +76,7 @@ is indeed a copy of some well-known contract code.
 
 There are two options when it comes to verification:
 * Local bare-bones verification using `cargo contract verify`
-* A third-party service [Sirato](/basics/verification/sirato)
+* A third-party service [Sirato](./sirato.md)
 
 `cargo contract verify` allows you to verify the given cargo project
 against a reference contract bundle. 

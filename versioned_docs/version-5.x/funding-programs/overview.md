@@ -21,7 +21,7 @@ You can learn more [here](/ubator).
 ## Ecosystem Development Funds
 
 Nearly all chains that support ink! have some sort of ecosystem development program.
-Check [our intro page](/) to see the list of chains that support ink!.
+We've listed [chains that support ink! here](../intro/where-to-deploy.md).
 
 ## Treasuries
 

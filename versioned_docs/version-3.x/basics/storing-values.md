@@ -26,7 +26,7 @@ ink! provides Substrate specific types like `AccountId`, `Balance`, and `Hash` t
 they were primitive types. 
 
 
-ink! also provides a `Mapping` storage type. You can read more about it [here](/datastructures/mapping).
+ink! also provides a `Mapping` storage type. You can read more about it [here](../datastructures/mapping.md).
 
 Here is an example of how you would store an `AccountId` and `Balance`:
 
@@ -91,7 +91,7 @@ Every ink! smart contract must have a constructor which is run once when a contr
 
 Note that if you have a contract whose storage contains `Mapping'`s you will need to use
 `ink_lang::utils::initialize_contract` in your constructor. See the
-[`Mapping` documentation](/datastructures/mapping) for more details.
+[`Mapping` documentation](../datastructures/mapping.md) for more details.
 
 ```rust
 use ink_lang as ink;

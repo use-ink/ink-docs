@@ -19,7 +19,7 @@ subsequently verify it using these services.
 ## Performing a verifiable build
 
 You should already be familiar with using `cargo-contract` to 
-[compile your contract](/getting-started/building-your-contract).
+[compile your contract](../../getting-started/compiling.md).
 
 You will need to install the ink! verified image crate:
 ```
@@ -40,7 +40,7 @@ this you can use the signed metadata file instead.
 :::
 
 If you were to use the 
-[flipper example](/getting-started/creating-an-ink-project) you would see 
+[flipper example](../../getting-started/creating.md) you would see 
 output similar to the below:
 ```
 ...
@@ -99,7 +99,7 @@ tree -L 3
 ```
 
 Now that you have created the verified build, you can 
-[deploy your contract](/getting-started/deploy-your-contract).
+[deploy your contract](../../getting-started/deploying.md).
 
 Once deployed, you will need to make a note of the contract's code hash in 
 order to verify it.

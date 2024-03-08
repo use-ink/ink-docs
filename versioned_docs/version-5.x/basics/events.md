@@ -150,7 +150,7 @@ type of event to decode into.
 
 #### Anonymous Events
 
-Annotating an event definition with `#[ink(anonymous)]` (See [here](/macros-attributes/anonymous)
+Annotating an event definition with `#[ink(anonymous)]` (See [here](../macros-attributes/anonymous.md)
 for details on this attribute) prevents a signature topic from being generated and published with the
 event.
 

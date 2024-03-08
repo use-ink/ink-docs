@@ -54,7 +54,7 @@ Over time the Substrate community might come up with yet other pallets for smart
 
 ### How to call other smart contracts on the same blockchain?
 
-See the [Cross-contract calling](/basics/cross-contract-calling) section.
+See the [Cross-contract calling](../basics/cross-contract-calling.md) section.
 
 ### How to call other smart contracts on another parachain?
 
@@ -78,7 +78,7 @@ possible future additions to eliminate re-entrancy attacks.
 
 ### How can my smart contract interact with the runtime?
 
-See the [Chain Extensions](/macros-attributes/chain-extension) section for more information.
+See the [Chain Extensions](../macros-attributes/chain-extension.md) section for more information.
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
@@ -199,12 +199,12 @@ As soon as the Rust team decides to stabilize these features ink! will be availa
 
 ### How do I hash a value?
 
-A number of crypto hashes are built into the [contracts-pallet](/how-it-works) and
+A number of crypto hashes are built into the [contracts-pallet](../intro/how-it-works.md) and
 therefore very efficient to use. We currently support a handful of those, you 
 can view the complete list [here](https://docs.rs/ink_env/3.3.1/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
-[Chain Extensions](/macros-attributes/chain-extension)
+[Chain Extensions](../macros-attributes/chain-extension.md)
 or make a proposal to include it into the default set of the `contracts-pallet`.
 
 Using one of the built-in crypto hashes can be done as explained here:
