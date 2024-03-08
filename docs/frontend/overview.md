@@ -8,7 +8,7 @@ hide_title: true
 
 # Overview
 
-Now after you [wrote](/getting-started/creating-an-ink-project), [compiled](/getting-started/building-your-contract) and [deployed your smart contract](/getting-started/deploy-your-contract), it is time to craft a user experience around it.
+Now after you [wrote](../getting-started/creating.md), [compiled](../getting-started/compiling.md) and [deployed your smart contract](../getting-started/deploying.md), it is time to craft a user experience around it.
 
 This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
 
@@ -38,7 +38,7 @@ There are several levels of abstraction where you can start your journey creatin
 
 ### Examples
 
-For inspiration how to get started building your full stack dApp. Make sure to visit our [Smart Contracts Examples section](/examples/smart-contracts) or [repository directly](https://github.com/paritytech/ink-examples). These examples not only offer the smart contract code but also have an accompanied frontend project. Checkout the `README.md` for details how to setup and run these frontend examples.
+For inspiration how to get started building your full stack dApp. Make sure to visit our [Smart Contracts Examples section](../examples/contracts.md) or [repository directly](https://github.com/paritytech/ink-examples). These examples not only offer the smart contract code but also have an accompanied frontend project. Checkout the `README.md` for details how to setup and run these frontend examples.
 
 ## Other Languages
 

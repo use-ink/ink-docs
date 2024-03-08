@@ -69,7 +69,7 @@ that the contract will e.g. print statements like
 ink::env::debug_println!("magic number: {}", value);
 ```
 
-to the node's console if debugging was enabled on the node ([instructions here](/faq#how-do-i-print-something-to-the-console-from-the-runtime)).
+to the node's console if debugging was enabled on the node ([instructions here](../faq/faq.md#how-do-i-print-something-to-the-console-from-the-runtime)).
 To support functionality like this the debug build of a contract includes some
 heavy-weight logic.
 

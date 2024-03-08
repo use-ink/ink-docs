@@ -56,7 +56,7 @@ It may _optionally_ contain the following keys:
 :::note
 
 Notice that we don't have an `abi` key, but we instead use the metadata version as the name
-of the key (`V3` in this case). You can read more about that in the [ABI documentation](/metadata#abi).
+of the key (`V3` in this case). You can read more about that in the [ABI documentation](#abi).
 
 :::
 

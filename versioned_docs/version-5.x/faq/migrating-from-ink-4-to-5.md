@@ -37,14 +37,40 @@ We've described this in more detail below, in the section
 
 ## Compatibility
 
-There are four individual new functions that are only compatible with
-`polkadot-v1.8.0`. But they are all opt-in and in the guide below we
-explain them. These functions are:
+### Substrate/Polkadot SDK
 
-* v2 of `call` and `instantiate` ([explained here](#call-and-instantiate-v2))
-* `lock_delegate_dependency` and `unlock_delegate_dependency` ([explained here](#upgradeable-contracts-delegate_dependency))
+There are two individual new functions that are only compatible with `polkadot-v1.8.0` and
+`substrate-contracts-node` v0.39.0:
+v2 of `call` and `instantiate` ([explained here](#call-and-instantiate-v2))
 
-The following chains are in production and support ink! 5.0:
+Additionally, there are two new functions that are only compatible with `polkadot-v1.9.0` and
+`substrate-contracts-node` v0.40.0:
+`lock_delegate_dependency` and `unlock_delegate_dependency` ([explained here](#upgradeable-contracts-delegate_dependency))
+
+These four functions are all opt-in! None of them are required to use ink! 5.0, they are only
+required if you want to access the particular functionality they provide.
+Please see the link explainers for more details about them.
+
+If you are not using any of those four functions, the same requirements as for ink! 4.0 hold:
+
+* `pallet-contracts` >= `polkadot-v0.9.37`.
+* `substrate-contracts-node` >= `v0.24.0`
+
+### How do I find out if a chain is compatible with ink! 5?
+
+You can query `contracts::palletVersion()` via the chain state RPCs. It has to
+be `>= 9` for ink! 5.0 to be compatible, excluding the four functions mentioned above.
+For the above mentioned four functions please see the respective sections on this page,
+we explain how to find out if a chain supports them there.
+
+You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
+Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
+
+<img src="/img/pallet-version.png"  />
+
+
+The following chains are in production and support ink! 5.0 if you are not using any of the
+four functions mentioned above:
 
 <div className="row">
     <div className="col text--center">
@@ -108,33 +134,18 @@ Make sure that e.g. your CI also uses at least `cargo-contract` 4.0 with ink! v5
 If you have wrapper scripts around `cargo-contract`, you should
 ensure that this version is enforced, otherwise users will get an error.
 
-### Substrate
-
-The same requirements as for ink! 4.0 hold.
-
-* `pallet-contracts` >= `polkadot-v0.9.37`.
-* `substrate-contracts-node` >= `v0.24.0`
-
-#### How do I find out which Polkadot version a chain is running on?
-
-You can query `contracts::palletVersion()` via the chain state RPCs. It has to
-be `>= 9` for ink! 5.0 to be compatible.
-
-You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
-Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
-
-<img src="/img/pallet-version.png"  />
-
 ### Tooling & Libraries
 
 * Stable Rust >= 1.75
 * `cargo-contract` >= v4.0
-* `substrate-contracts-node` >= 0.39.0
 * `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
 * `use-inkathon`: upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
 * ink!athon >= 0.7.0
 
 ## Important Changes
+
+We had to introduce a number of changes that require you to manually upgrade
+your contract from 4.x to 5.0. The steps to do this are explained in this section.
 
 ### `scale` dependencies were moved to `ink` entrance crate
 
@@ -222,7 +233,7 @@ pub fn handler(&self, msg: ProxyMessage) {
 In prior ink! versions, events were defined inside the `#[ink::contract]` macro.
 With ink! 5.0 we decouple events from the `#[ink::contract]` macro,
 allowing events to be shared between contracts.
-We've updated [the Events documentation page](/5.x/basics/events) accordingly.
+We've updated [the Events documentation page](../basics/events.md) accordingly.
 
 The syntax of defining events within the main `#[ink::contract]` macro will continue to work,
 no code changes in existing contracts are required to update to the new syntax.
@@ -373,7 +384,7 @@ With a `Vec` it's possible to e.g. introduce a security issue in your contract
 where an attacker can fill the `Vec`, making it very costly for other users to
 access it or write to it.
 
-You can find verbatim documentation on `StorageVec` [here](/5.x/datastructures/storagevec).
+You can find verbatim documentation on `StorageVec` [here](../datastructures/storagevec.md).
 The page explains when to use `StorageVec` and when not.
 The Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
 
@@ -481,7 +492,7 @@ querying the `contracts::apiVersion` constant. It has to be `1`.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
 
-<img src="/img/api-version.png"  />
+<img src="/img/api-version-1.png"  />
 
 At the time of the ink! v5 release (March 2024) no parachain with ink! support
 had upgraded to `polkadot-v1.8.0` yet.
@@ -601,22 +612,22 @@ Example:
 With ink! 5.0 we introduce the possibility of running your tests against the
 fork (i.e. snapshot) of a live chain.
 
-See [this page](/5.x/basics/contract-testing/chain-snapshot) in our documentation for details.
+See [this page](../basics/testing/testing-with-live-state.md) in our documentation for details.
 
 ### New lints
 
 The new lints are:
-* [`no_main`](/5.x/linter/rules/no_main): enforces `no_main` for  contracts.
-* [`primitive_topic`](/5.x/linter/rules/primitive_topic): no number types are allowed as event topics.
-* [`storage_never_freed`](/5.x/linter/rules/storage_never_freed): what is written into storage can be removed again.
-* [`strict_balance_equality`](/5.x/linter/rules/strict_balance_equality): detects usage of strict balance equality checks, a common smart contract vulnerability.
-* [`non_fallible_api`](/5.x/linter/rules/non_fallible_api): detects the usage of potentially unsafe methods for which there are safer alternatives.
+* [`no_main`](../linter/rules/no_main.md): enforces `no_main` for  contracts.
+* [`primitive_topic`](../linter/rules/primitive_topic.md): no number types are allowed as event topics.
+* [`storage_never_freed`](../linter/rules/storage_never_freed.md): what is written into storage can be removed again.
+* [`strict_balance_equality`](../linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
+* [`non_fallible_api`](../linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
 
 With `cargo-contract` 4.0 we added a couple new lints for common smart contract issues
 and best practices.
 You can run the linter via `cargo contract build --lint`.
 
-Details on each lint can be found [here](/5.x/linter/overview).
+Details on each lint can be found [here](../linter/overview.md).
 
 ### New `cargo-contract` commands
 
@@ -649,7 +660,7 @@ See the [DRink!](https://github.com/inkdevhub/drink) page for more details.
 ### Contract Verification
 
 We added a bunch of helpful documentation and `cargo-contract` commands for
-contract verification. [Read more here](/5.x/basics/verification/contract-verification).
+contract verification. [Read more here](../basics/verification/contract-verification.md).
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
@@ -674,11 +685,11 @@ function to the E2E API.
 
 These two functions are only available from `polkadot-1.8.0` on.
 You can find out if a chain supports these new functions by
-querying the `contracts::apiVersion` constant. It has to be `1`.
+querying the `contracts::apiVersion` constant. It has to be `2`.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
 
-<img src="/img/api-version.png"  />
+<img src="/img/api-version-2.png"  />
 
 At the time of the ink! v5 release (March 2024) no parachain with ink! support
 had upgraded to `polkadot-v1.8.0` yet.

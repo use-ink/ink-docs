@@ -12,23 +12,7 @@ Even though smart contracts are intended to be immutable by design,
 it is often necessary to perform an upgrade of a smart contract. 
 
 The developer may need to fix a critical bug or introduce a new feature.
-
-For this type of scenario, ink! has different upgrade strategies.
-- [Upgradeable Contracts](#upgradeable-contracts)
-  - [Proxy Forwarding](#proxy-forwarding)
-    - [Properties](#properties)
-    - [Example](#example)
-  - [Delegating execution to foreign Contract Code with `delegate_call`](#delegating-execution-to-foreign-contract-code-with-delegate_call)
-    - [Properties](#properties-1)
-    - [Example](#example-1)
-  - [Note on the usage of wildcard selectors](#note-on-the-usage-of-wildcard-selectors)
-  - [Note on `CallFlags`](#note-on-callflags)
-  - [Replacing Contract Code with `set_code_hash()`](#replacing-contract-code-with-set_code_hash)
-    - [Properties](#properties-2)
-    - [Example](#example-2)
-    - [Storage Compatibility](#storage-compatibility)
-    - [A little note on the determinism of contract addresses](#a-little-note-on-the-determinism-of-contract-addresses)
-  - [Examples](#examples)
+ink! supports different upgrade strategies that we describe on this page.
 
 ## Proxy Forwarding
 

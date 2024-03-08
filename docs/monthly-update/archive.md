@@ -5,9 +5,9 @@ slug: /monthly-update/archive
 
 ## 2022
 
-* [August](/monthly-update/2022/08)
-* [July](/monthly-update/2022/07)
-* [June](/monthly-update/2022/06)
-* [May](/monthly-update/2022/05)
-* [April](/monthly-update/2022/04)
-* [March](/monthly-update/2022/03)
+* [August](../monthly-update/2022/08.md)
+* [July](../monthly-update/2022/07.md)
+* [June](../monthly-update/2022/06.md)
+* [May](../monthly-update/2022/05.md)
+* [April](../monthly-update/2022/04.md)
+* [March](../monthly-update/2022/03.md)

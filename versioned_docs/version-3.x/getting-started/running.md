@@ -8,7 +8,7 @@ blockchain which is configured to include the `contracts` module.
 
 It's a comfortable option if you want to get a quickstart.
 
-[After successfully installing `substrate-contracts-node`](/getting-started/setup), you can start a local development chain by running:
+[After successfully installing `substrate-contracts-node`](../getting-started/setup.md), you can start a local development chain by running:
 
 ```bash
 substrate-contracts-node --dev

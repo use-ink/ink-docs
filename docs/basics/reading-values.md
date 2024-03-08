@@ -48,7 +48,7 @@ Note that all public functions must use the `#[ink(message)]` attribute.
 
 ## Getting a Value
 
-We already showed you how to initialize a storage value in the chapter [Storing Values](/basics/storing-values).
+We already showed you how to initialize a storage value in the chapter [Storing Values](./storing-values.md).
 Getting the value is just as simple:
 
 ```rust

@@ -48,7 +48,7 @@ Instead, ink! makes heavy usage of Rust macros. The main ink! macros are:
 - `#[ink(event)]` and `#[ink(topic)]` which annotates a struct and its members as the
   events and topics that the contract might emit.
 
-There are other ink! macros, for which details can be found at [Macros & Attributes](/macros-attributes).
+There are other ink! macros, for which details can be found at [Macros & Attributes](../macros-attributes/overview.md).
 
 ## Unit Testing
 
@@ -101,7 +101,7 @@ The first step in CosmWasm development is to
 [install dependencies](https://docs.cosmwasm.com/docs/getting-started/installation),
 namely Go, Rust and `wasmd`.
 
-For ink! you can also find [a setup guide](/getting-started/setup) which will help you
+For ink! you can also find [a setup guide](,,/getting-started/setup.md) which will help you
 with dependencies, namely Rust, `cargo-contract` and `substrate-contracts-node`.
 
 ### Environment Setup
@@ -155,4 +155,4 @@ It is possible to deploy and interact with ink! contracts using either a CLI
 (`cargo-contract`), or a web UI ([`contracts-ui`](https://contracts-ui.substrate.io/)).
 
 - [Instructions for `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/crates/extrinsics/README.md)
-- [Instructions for `contracts-ui`](/getting-started/deploy-your-contract)
+- [Instructions for `contracts-ui`](../getting-started/deploying.md)

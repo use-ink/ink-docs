@@ -30,7 +30,7 @@ A downside to using them is that you need to import the contract you want to cal
 dependency of your own contract.
 
 If you want to interact with a contract that is already on-chain you will need to use the
-[`Builders`](/basics/cross-contract-calling#builders) approach instead.
+[`Builders`](#builders) approach instead.
 
 ### `BasicContractRef` walkthrough
 
@@ -206,12 +206,12 @@ that you'll still need this contract to have been previously uploaded.
 :::note
 
 For a refresher on the difference between `upload` and `instantiate`
-[see here](/getting-started/deploy-your-contract).
+[see here](../getting-started/deploying.md).
 
 :::
 
 In order to instantiate a contract you need a reference to your contract, just like in
-[the previous section](/basics/cross-contract-calling#contract-references).
+[the previous section](#contract-references).
 
 Below is an example of how to instantiate a contract using the `CreateBuilder`. We will:
 - instantiate the uploaded contract with a `code_hash` of `0x4242...`
@@ -244,7 +244,7 @@ let my_contract: MyContractRef = build_create::<MyContractRef>()
 
 Since `CreateBuilder::instantiate()` returns a contract reference, we can use this
 contract reference to call messages just like in the
-[previous section](/basics/cross-contract-calling#contract-references).
+[previous section](#contract-references).
 
 ### CallBuilder
 The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
@@ -255,7 +255,7 @@ here.
 When using `Call`s the `CallBuilder` requires an already instantiated contract.
 
 We saw an example of how to use the `CreateBuilder` to instantiate contracts in the
-[previous section](/basics/cross-contract-calling#contract-references).
+[previous section](#contract-references).
 
 Below is an example of how to call a contract using the `CallBuilder`. We will:
 - make a regular `Call`

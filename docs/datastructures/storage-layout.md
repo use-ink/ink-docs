@@ -73,7 +73,7 @@ non-`Packed`, preventing it from being eagerly loaded during arbitrary storage o
 
 Note that in above illustration, the key of `0x12345678` just serves as an example; we'll
 learn more about storage key calculation
-[later in this chapter](/datastructures/storage-layout#manual-vs-automatic-key-generation).
+[later in this chapter](#manual-vs-automatic-key-generation).
 
 The following example demonstrates how we can solve the problem introduced in the above
 section. You'll notice that for the lazily loaded storage field, we now work with getters
