@@ -4,7 +4,7 @@ slug: /basics/gas
 hide_title: true
 ---
 
-<img src="/img/title/faq.svg" className="titlePic" />
+<img src="/img/title/gas.svg" className="titlePic" />
 
 ## What is "Gas" in ink!?
 
