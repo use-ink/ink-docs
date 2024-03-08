@@ -37,14 +37,40 @@ We've described this in more detail below, in the section
 
 ## Compatibility
 
-There are four individual new functions that are only compatible with
-`polkadot-v1.8.0`. But they are all opt-in and in the guide below we
-explain them. These functions are:
+### Substrate/Polkadot SDK
 
-* v2 of `call` and `instantiate` ([explained here](#call-and-instantiate-v2))
-* `lock_delegate_dependency` and `unlock_delegate_dependency` ([explained here](#upgradeable-contracts-delegate_dependency))
+There are two individual new functions that are only compatible with `polkadot-v1.8.0` and
+`substrate-contracts-node` v0.39.0:
+v2 of `call` and `instantiate` ([explained here](#call-and-instantiate-v2))
 
-The following chains are in production and support ink! 5.0:
+Additionally, there are two new functions that are only compatible with `polkadot-v1.9.0` and
+`substrate-contracts-node` v0.40.0:
+`lock_delegate_dependency` and `unlock_delegate_dependency` ([explained here](#upgradeable-contracts-delegate_dependency))
+
+These four functions are all opt-in! None of them are required to use ink! 5.0, they are only
+required if you want to access the particular functionality they provide.
+Please see the link explainers for more details about them.
+
+If you are not using any of those four functions, the same requirements as for ink! 4.0 hold:
+
+* `pallet-contracts` >= `polkadot-v0.9.37`.
+* `substrate-contracts-node` >= `v0.24.0`
+
+### How do I find out if a chain is compatible with ink! 5?
+
+You can query `contracts::palletVersion()` via the chain state RPCs. It has to
+be `>= 9` for ink! 5.0 to be compatible, excluding the four functions mentioned above.
+For the above mentioned four functions please see the respective sections on this page,
+we explain how to find out if a chain supports them there.
+
+You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
+Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
+
+<img src="/img/pallet-version.png"  />
+
+
+The following chains are in production and support ink! 5.0 if you are not using any of the
+four functions mentioned above:
 
 <div className="row">
     <div className="col text--center">
@@ -108,33 +134,18 @@ Make sure that e.g. your CI also uses at least `cargo-contract` 4.0 with ink! v5
 If you have wrapper scripts around `cargo-contract`, you should
 ensure that this version is enforced, otherwise users will get an error.
 
-### Substrate
-
-The same requirements as for ink! 4.0 hold.
-
-* `pallet-contracts` >= `polkadot-v0.9.37`.
-* `substrate-contracts-node` >= `v0.24.0`
-
-#### How do I find out which Polkadot version a chain is running on?
-
-You can query `contracts::palletVersion()` via the chain state RPCs. It has to
-be `>= 9` for ink! 5.0 to be compatible.
-
-You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
-Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
-
-<img src="/img/pallet-version.png"  />
-
 ### Tooling & Libraries
 
 * Stable Rust >= 1.75
 * `cargo-contract` >= v4.0
-* `substrate-contracts-node` >= 0.39.0
 * `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
 * `use-inkathon`: upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
 * ink!athon >= 0.7.0
 
 ## Important Changes
+
+We had to introduce a number of changes that require you to manually upgrade
+your contract from 4.x to 5.0. The steps to do this are explained in this section.
 
 ### `scale` dependencies were moved to `ink` entrance crate
 
@@ -481,7 +492,7 @@ querying the `contracts::apiVersion` constant. It has to be `1`.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
 
-<img src="/img/api-version.png"  />
+<img src="/img/api-version-1.png"  />
 
 At the time of the ink! v5 release (March 2024) no parachain with ink! support
 had upgraded to `polkadot-v1.8.0` yet.
@@ -674,11 +685,11 @@ function to the E2E API.
 
 These two functions are only available from `polkadot-1.8.0` on.
 You can find out if a chain supports these new functions by
-querying the `contracts::apiVersion` constant. It has to be `1`.
+querying the `contracts::apiVersion` constant. It has to be `2`.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
 
-<img src="/img/api-version.png"  />
+<img src="/img/api-version-2.png"  />
 
 At the time of the ink! v5 release (March 2024) no parachain with ink! support
 had upgraded to `polkadot-v1.8.0` yet.
