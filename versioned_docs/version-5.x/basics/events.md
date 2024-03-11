@@ -150,12 +150,32 @@ type of event to decode into.
 
 #### Anonymous Events
 
-Annotating an event definition with `#[ink(anonymous)]` (See [here](../macros-attributes/anonymous.md)
-for details on this attribute) prevents a signature topic from being generated and published with the
+Events annotated with `anonymous` will not have a signature topic generated and published with the
 event.
 
-It means that an indexer will not be able to index over the type of the event, which may be 
-desirable for some contracts, and would be a small gas cost optimization if necessary.
+For inline events, this can be done by marking the event with the `anonymous` attribute e.g.
+
+```rust
+#[ink(event, anonymous)]
+pub struct Event { .. }
+```
+or
+```rust
+#[ink(event)]
+#[ink(anonymous)]
+pub struct Event { .. }
+```
+
+For events defined using the `#[ink::event]` macro, the `anonymous` flag needs to be added as an 
+argument:
+
+```rust
+#[ink::event(anonymous)]
+pub struct Event { .. }
+```
+
+Without a signature topic, indexers will not be able to index over the type of the event, which 
+may be desirable for some contracts, and would be a small gas cost optimization if necessary.
 
 However, when interacting with the contract from a client, no signature topic means that another 
 way is required to determine the type of the event to be decoded into (i.e. how do we know it is 
