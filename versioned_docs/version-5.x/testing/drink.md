@@ -105,7 +105,7 @@ You can check some helpful and verbose examples [here](https://github.com/inkdev
 DRink! is already integrated with the ink! framework and can be used as a drop-in replacement for the standard E2E testing environment.
 Just use corresponding argument in the test macro:
 ```rust
-#[ink_e2e::test(backend(runtime_only()))]
+#[ink_e2e::test(backend(runtime_only))]
 ```
 to your test function and you have just switched from E2E testcase to DRink!-based one, that doesn't use any running node in the background!
 
