@@ -1,7 +1,6 @@
 {
   "language": "en",
   "dictionaries": ["rust", "workspace"],
-  "ignorePaths": ["**/es/**"],
   "dictionaryDefinitions": [
     {
       "name": "workspace",

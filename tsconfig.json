@@ -32,7 +32,6 @@
       "noImplicitThis": true
     },
     "include": [
-      "i18n",
       "docs",
       "src",
       "tailwind.confg.js"
