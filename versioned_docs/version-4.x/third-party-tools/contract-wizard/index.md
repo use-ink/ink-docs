@@ -14,7 +14,7 @@ To open the app follow [this link](https://contractwizard.xyz)
 
 :::
 
-![Contract Wizard Img](versioned_docs/version-4.x/third-party-tools/contract-wizard/assets/landing.png)
+![Contract Wizard Img](/img/third-party-tools/contract-wizard/landing.png)
 
 ## Purpose of the Polkadot Contract Wizard
 
