@@ -408,7 +408,7 @@ is 16 kB by default.
 
 We added a lint to `cargo-contract` 4.0 that will detect
 potentially unsafe uses of methods for which there are safer alternatives:
-[`non_fallible_api`](https://use.ink/5.x/linter/rules/non_fallible_api).
+[`non_fallible_api`](https://use.ink/linter/rules/non_fallible_api).
 
 ### Chain Extension API changed + Support for multiple chain extensions
 
@@ -437,7 +437,7 @@ The argument type changed from `u32` to `u16`:
 
 The top level macro `#[ink::chain_extension]` now _requires_ an `(extension = N: u16)` argument to support multiple chain extensions.
 If you are using only one extension, the ID can be any `u16` number,
-otherwise please consult the [`#[ink::chain_extension]` macro documentation](https://use.ink/5.x/macros-attributes/chain-extension)
+otherwise please consult the [`#[ink::chain_extension]` macro documentation](https://use.ink/macros-attributes/chain-extension)
 ```diff
 -#[ink::chain_extension]
 +#[ink::chain_extension(extension = 1)]
