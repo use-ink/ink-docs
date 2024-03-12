@@ -8,7 +8,7 @@ hide_title: true
 
 # Working with Mapping
 
-In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html).
+In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/5.0.0-rc.1/ink_storage/struct.Mapping.html).
 
 Here is an example of a mapping from a user to a `Balance`:
 
@@ -110,6 +110,75 @@ for n in 0..5 {
 Furthermore, it follows that mapping values do not have a contiguous storage layout, and it is
 not possible to iterate over the contents of a map.
 
+
+### Use fallible storage methods for dynamically sized values
+Reading from or writing to a `Mapping` implies encoding or decoding
+the according `Mapping` key and value. This happens transparently under the hood.
+However, because the static buffer used to store the encoded data is of limited
+size, it can fail and trap the contract.
+
+:::note
+
+The static buffer defaults to 16KB in size.
+
+:::
+
+This can be an issue for values with dynamically sized types.
+It is recommended to use fallible storage methods (prefixed with `try_`) for
+`Mapping`s containing dynamically sized values.
+
+Consider a `Mapping` with `String` values like so:
+
+```rust
+#[ink(storage)]
+pub struct MyContract {
+    on_chain_log: Mapping<u64, String>,
+    nonce: u64,
+}
+```
+
+If the `String` overgrows the static buffer size, it will no longer fit into the mapping:
+
+```rust
+#[ink(message)]
+pub fn do_something(&mut self, data: String) {
+    let caller = self.env().caller();
+
+    let log_message = format!("{caller:?}: {data}");
+
+    // Panics if log_message overgrows the static buffer size!
+    self.on_chain_log.insert(&self.nonce, &log_message);
+
+    self.nonce += 1;
+}
+```
+
+Instead, consider using the fallible `try_insert` method to handle the situation:
+
+```rust
+#[ink(message)]
+pub fn do_something2(&mut self, data: String) {
+    let caller = self.env().caller();
+
+    let log_message = format!("{caller:?}: {data}");
+
+    // `try_insert` will not panic but return an error instead.
+    if self
+        .on_chain_log
+        .try_insert(&self.nonce, &log_message)
+        .is_err()
+    {
+        // We get the chance to handle this problem properly:
+        // Restrain the log message to a size guaranteed to fit.
+        let log_message = format!("{caller:?}: <data omitted>");
+        self.on_chain_log.insert(&self.nonce, &log_message);
+    }
+
+    self.nonce += 1;
+}
+```
+
+We provide fallible `try_` versions for all storage operations on `Mapping`.
 
 ### Updating values
 

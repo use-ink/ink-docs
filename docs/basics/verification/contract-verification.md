@@ -20,14 +20,14 @@ process must recompile the contract in an identical host environment to
 which it was originally built. The simplest way to do this is using a Docker
 container.
 
-Since ink! `4.0.0`, `cargo-contract` provides the necessary tools to produce 
+Since ink! 5.0, `cargo-contract` provides the necessary tools to produce 
 a verifiable build and verify a binary against the reference contract.
 
 :::note
-Contract verification tools are currently available in `cargo-contract`
-version `4.0.0-alpha`. To install it, run
+Contract verification tools are available from `cargo-contract`
+version 4.0 on. To install it, run
 ```
-cargo install cargo-contract --locked --version 4.0.0-alpha
+cargo install cargo-contract --locked --version ^4
 ```
 :::
 
@@ -76,7 +76,7 @@ is indeed a copy of some well-known contract code.
 
 There are two options when it comes to verification:
 * Local bare-bones verification using `cargo contract verify`
-* A third-party service [Sirato](./sirato.md)
+* A third-party service [Sirato](docs/basics/verification/sirato.md)
 
 `cargo contract verify` allows you to verify the given cargo project
 against a reference contract bundle. 

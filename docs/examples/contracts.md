@@ -1,7 +1,12 @@
 ---
-title: Smart Contracts
+title: Smart Contract Examples
 slug: /examples/smart-contracts
+hide_title: true
 ---
+
+<img src="/img/title/frontend.svg" className="titlePic" />
+
+# Smart Contract Examples
 
 We have a repository <a href="https://github.com/paritytech/ink-examples/tree/main">`ink-examples`</a>,
 in which you find a number of contracts written in ink!.
@@ -99,4 +104,4 @@ The `.contract` file combines the Wasm and metadata into one file and needs to b
 when deploying the contract.
 
 For further information, please have a look at the
-[Deploy your Contract](../getting-started/deploying.md) section.
+[Deploy your Contract](docs/getting-starteded/deploying.md) section.

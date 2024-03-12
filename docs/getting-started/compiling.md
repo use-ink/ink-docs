@@ -14,10 +14,11 @@ Run the following command in your `flipper` directory to compile your smart cont
 cargo contract build
 ```
 
-This command will build the following for your contract: a Wasm binary, a metadata file (which contains the
-contract's ABI) and a `.contract` file which bundles both. This `.contract` file can be used to
-deploy your contract to a chain. If all goes well, you should see a `target` folder which
-contains these files:
+This command will build the following for your contract: 
+a Wasm binary, a metadata file (which contains the
+contract's ABI) and a `.contract` file which bundles both.
+
+If all goes well, you should see a `target` folder which contains these files:
 
 ```
 target
@@ -26,6 +27,25 @@ target
     └─ flipper.wasm
     └─ flipper.json
 ```
+You can think of it this way: the raw Wasm binary contains just
+the bytecode of your contract. Without further information it's
+not possible to know what this bytecode refers to. For example,
+which functions can be called in there and what their arguments
+are. This additional information that describes what the raw Wasm
+is about is called metadata ‒ data that describes other data.
+
+<p>
+    <img src="/img/metadata.svg"  />
+</p>
+
+The purpose of each file is:
+
+* `flipper.wasm`: This is the raw contract bytecode that will be deployed on-chain.
+* `flipper.json`: The isolated metadata, which is not stored on-chain.
+It's big and would take up too much space and costs.
+This file is used by e.g. a dApp user interface to know how to communicate with the on-chain contract.
+* `flipper.contract`: Combines both the contract's bytecode and the metadata. This file
+is used when you are using a Developer UI like [Contracts UI](https://contracts-ui.substrate.io/).
 
 Let's take a look at the structure of the `flipper.json`:
 
@@ -57,6 +77,20 @@ If you look closely at the constructors and messages, you will also notice a `se
 contains a 4-byte hash of the function name and is used to route your contract calls to the correct
 functions.
 
+You can also open up the `flipper.contract` file in any text editor. You'll notice that it's
+nearly the same as the `flipper.json`. The only different is that the `.contract` file contains
+an additional field with the hex-encoded Wasm bytecode of your contract:
+
+```
+{
+    "source": {
+        …
+        "wasm": "0x006173…",
+    },
+    …
+}
+```
+
 In the next section we will start a [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
 and configure the [Contracts UI](https://github.com/paritytech/contracts-ui) to interact with it.
 
@@ -69,7 +103,7 @@ that the contract will e.g. print statements like
 ink::env::debug_println!("magic number: {}", value);
 ```
 
-to the node's console if debugging was enabled on the node ([instructions here](../faq/faq.md#how-do-i-print-something-to-the-console-from-the-runtime)).
+to the node's console if debugging was enabled on the node ([instructions here](docs/faqaq/faq.md#how-do-i-print-something-to-the-console-from-the-runtime)).
 To support functionality like this the debug build of a contract includes some
 heavy-weight logic.
 

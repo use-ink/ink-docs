@@ -206,7 +206,7 @@ that you'll still need this contract to have been previously uploaded.
 :::note
 
 For a refresher on the difference between `upload` and `instantiate`
-[see here](../getting-started/deploying.md).
+[see here](docs/getting-starteded/deploying.md).
 
 :::
 
@@ -228,6 +228,7 @@ Below is an example of how to instantiate a contract using the `CreateBuilder`. 
 ```rust
 use contract::MyContractRef;
 let my_contract: MyContractRef = build_create::<MyContractRef>()
+    .instantiate_v1()
     .code_hash(Hash::from([0x42; 32]))
     .gas_limit(0)
     .endowment(10)
@@ -272,6 +273,7 @@ Below is an example of how to call a contract using the `CallBuilder`. We will:
 ```rust
 let my_return_value = build_call::<DefaultEnvironment>()
     .call(AccountId::from([0x42; 32]))
+    .call_v1()
     .gas_limit(0)
     .transferred_value(10)
     .exec_input(

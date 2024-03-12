@@ -67,7 +67,7 @@ pub struct Register {
 }
 ```
 
-Each of these structs annotated with `#[ink(event)]` can be translated to a variant in the pallet `Error` enum annotated with `#[pallet::error]`. Any of the `ink!` environment type aliases (both `Hash` and `AccountId` in the above example) must be translated to their equivalent associated type on the `Config` trait e.g. `AccountId` → `T::AccountId`. Also the `#[ink(topic)]` annotations must be removed: topics must be calculated manually when the event is emitted, and will be covered later. Remove the `#[pallet::generate_deposit(pub(super) fn deposit_event)]` and the final `Event` type will look like:
+Each of these structs annotated with `#[ink(event)]` can be translated to a variant in the pallet `Error` enum annotated with `#[pallet::error]`. Any of the `ink!` environment type aliases (both `Hash` and `AccountId` in the above example) must be translated to their equivalent associated type on the `Config` trait e.g. `AccountId` -> `T::AccountId`. Also the `#[ink(topic)]` annotations must be removed: topics must be calculated manually when the event is emitted, and will be covered later. Remove the `#[pallet::generate_deposit(pub(super) fn deposit_event)]` and the final `Event` type will look like:
 
 
 ```rust=
