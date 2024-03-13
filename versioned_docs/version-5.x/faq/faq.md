@@ -94,7 +94,7 @@ See the [Chain Extensions](../macros-attributes/chain-extension.md) section for 
 
 Please see [this section](../macros-attributes/contract.md#env-impl-environment) in our documentation.
 
-Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/5.0.0-rc.1/ink_macro/attr.contract.html#header-arguments)
+Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/5.0.0/ink_macro/attr.contract.html#header-arguments)
 for the `#[ink(contract)]` macro. It allows you to specify your environment a la
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -171,15 +171,15 @@ Rust's standard library consists of three different layers:
 
 A number of crypto hashes are built into the [pallet-contracts](../intro/how-it-works.md) and
 therefore very efficient to use. We currently support a handful of those, you
-can view the complete list [here](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/hash/trait.CryptoHash.html).
+can view the complete list [here](https://docs.rs/ink_env/5.0.0/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
 [Chain Extensions](../macros-attributes/chain-extension.md)
 or make a proposal to include it into the default set of the `pallet-contracts`.
 
 Using one of the built-in crypto hashes can be done as explained here:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_encoded.html)
 
 ### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
 

@@ -21,8 +21,8 @@ There are three ways to debug your ink! contract currently:
 
 You can use those two macros:
 
-* [`ink::env::debug_println!`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/macro.debug_println.html)
-* [`ink::env::debug_print!`](https://docs.rs/ink_env/5.0.0-rc.1/ink_env/macro.debug_print.html)
+* [`ink::env::debug_println!`](https://docs.rs/ink_env/5.0.0/ink_env/macro.debug_println.html)
+* [`ink::env::debug_print!`](https://docs.rs/ink_env/5.0.0/ink_env/macro.debug_print.html)
 
 There are things you could do to enable debug messages on the client console:
 
