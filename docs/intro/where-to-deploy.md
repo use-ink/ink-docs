@@ -52,6 +52,12 @@ hide_title: true
 
 <div className="row">
     <div className="col text--center">
+        <a href="https://www.ternoa.network/">
+            <img src= "/img/chains/ternoa.svg" className="chain" />
+        </a>
+    </div>
+
+    <div className="col text--center">
         <a href="https://krest.peaq.network/">
             <img src= "/img/chains/krest.svg" className="chain" />
         </a>
@@ -96,14 +102,6 @@ hide_title: true
     <div className="col text--center">
         <a href="https://github.com/yerbatech">
             <img src= "/img/chains/yerba.svg" className="chain" />
-        </a>
-    </div>
-</div>
-
-<div className="row">
-    <div className="col text--center">
-        <a href="https://www.ternoa.network/">
-            <img src= "/img/chains/ternoa.svg" className="chain" />
         </a>
     </div>
 </div>
