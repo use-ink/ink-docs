@@ -18,7 +18,6 @@ Here is an example of an append-only on-chain log:
 ```rust
 #[ink(storage)]
 pub struct MyContract {
-    /// Assign a balance to every account.
     on_chain_log: ink::storage::StorageVec<String>,
 }
 ```
@@ -35,7 +34,6 @@ mod mycontract {
 
     #[ink(storage)]
     pub struct MyContract {
-        /// Assign a balance to every account.
         on_chain_log: StorageVec<String>,
     }
 
