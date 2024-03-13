@@ -37,4 +37,4 @@ The entire source code (contract + frontend) is located here:
 You can view an online demo of the dApp here: [https://tiny.ink](https://tiny.ink).
 
 To create new short links you need `ROC` tokens from our testnet.
-See [here](docs/testingng/overview.md) for how to get those.
+See [here](docs/testing/overview.md) for how to get those.

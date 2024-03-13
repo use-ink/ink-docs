@@ -135,7 +135,7 @@ The contract storage is built on top of the runtime storage, and access is consi
 
 ### How do I print something to the console from the runtime?
 
-Please see our page on [Contract Debugging](docs/testingng/debugging.md).
+Please see our page on [Contract Debugging](docs/testing/debugging.md).
 
 ### Why is Rust's standard library (stdlib) not available in ink!?
 
