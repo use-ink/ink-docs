@@ -60,11 +60,11 @@ to run smart contracts targeting the EVM as well as the experimental `actors-pal
 execute smart contracts written in the actor style programming model.
 Over time the Substrate community might come up with yet other pallets for smart contracts execution.
 
-Please see our page [How it Works – Substrate](versioned_docs/version-4.x/introd_docs/version-4.x/intro/how-it-works.md) for more information.
+Please see our page [How it Works – Substrate](../intro/how-it-works.md) for more information.
 
 ### How to call other smart contracts on the same blockchain?
 
-See the [Cross-contract calling](versioned_docs/version-4.x/basics_docs/version-4.x/basics/cross-contract-calling.md) section.
+See the [Cross-contract calling](../basics/cross-contract-calling.md) section.
 
 ### How to call other smart contracts on another parachain?
 
@@ -88,7 +88,7 @@ possible future additions to eliminate re-entrancy attacks.
 
 ### How can my smart contract interact with the runtime?
 
-See the [Chain Extensions](versioned_docs/version-4.x/macros-attributeson-4.x/macros-attributes/chain-extension.md) section for more information.
+See the [Chain Extensions](../macros-attributes/chain-extension.md) section for more information.
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
@@ -133,7 +133,7 @@ The contract storage is built on top of the runtime storage, and access is consi
 
 ### How do I print something to the console from the runtime?
 
-Please see our page on [Contract Debugging](versioned_docs/version-4.x/basics_docs/version-4.x/basics/debugging.md).
+Please see our page on [Contract Debugging](../basics/debugging.md).
 
 ### Why is Rust's standard library (stdlib) not available in ink!?
 
@@ -167,12 +167,12 @@ Rust's standard library consists of three different layers:
 
 ### How do I hash a value?
 
-A number of crypto hashes are built into the [pallet-contracts](versioned_docs/version-4.x/introd_docs/version-4.x/intro/how-it-works.md) and
+A number of crypto hashes are built into the [pallet-contracts](../intro/how-it-works.md) and
 therefore very efficient to use. We currently support a handful of those, you
 can view the complete list [here](https://docs.rs/ink_env/4.0.0/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
-[Chain Extensions](versioned_docs/version-4.x/macros-attributeson-4.x/macros-attributes/chain-extension.md)
+[Chain Extensions](../macros-attributes/chain-extension.md)
 or make a proposal to include it into the default set of the `pallet-contracts`.
 
 Using one of the built-in crypto hashes can be done as explained here:

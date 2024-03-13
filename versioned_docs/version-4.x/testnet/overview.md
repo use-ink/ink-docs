@@ -36,7 +36,7 @@ See [here](https://wiki.polkadot.network/docs/learn-account-generation) for a de
 
 <img src="/img/chest.svg" alt="image of a treasure chest" className="faucetHeroImage" />
 
-As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](versioned_docs/version-4.x/testnet/faucet.md).
+As a second step, you have to get `ROC` testnet tokens through the [Rococo Faucet](./faucet.md).
 
 Alternatively, you can use the [Element chat room](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-rococo-testnet).
 You must send a message like this (Note the `:1002` after the wallet address):

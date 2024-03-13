@@ -10,7 +10,7 @@ Selectors in ink! are a language agnostic way of identifying constructors and me
 They are four-byte hexadecimal strings which look something like: `0x633aa551`.
 
 You can find the selector of an ink! constructor or message in your
-[contract metadata](versioned_docs/version-4.x/basics/metadata.md) by looking for the `selector` field of the dispatchable
+[contract metadata](./metadata.md) by looking for the `selector` field of the dispatchable
 you're interested in.
 
 Here is an example of how you can grab the message name and selector from your contract
@@ -48,7 +48,7 @@ To calculate the selector we:
 ## Selector Calculation: ink! Traits
 
 These rules change a bit if you define any messages using the `[ink::trait_definition]`
-[macro](versioned_docs/version-4.x/basics/trait-definitions.md). For our first step, instead of taking _just_ the
+[macro](./trait-definitions.md). For our first step, instead of taking _just_ the
 message name, we now also add the _trait name_ to the selector calculation.
 
 ```
