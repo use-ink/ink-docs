@@ -174,12 +174,12 @@ The contract `spec` consists of the following **required** keys:
     - `return_type`: The return type of the message.
     - `docs`: The message documentation.
 - `environment`: Configuration of the types that the host blockchain operates with. 
-You can check default types in [Environment](https://use.ink/basics/chain-environment-types) section.
+You can check default types in [Environment](./environment.md) section.
   - `accountId`: The type describing an account address.
   - `balance`: The type describing balance values.
   - `blockNumber`: The type describing a block number. 
   - `chainExtension`: The type describing the chain extension for the environment. 
-For more information about usage and definition check [this section](https://use.ink/macros-attributes/chain-extension).
+For more information about usage and definition check [this section](../macros-attributes/chain-extension.md).
   - `maxEventTopics`: The maximum number of supported event topics provided by the runtime.
   - `timestamp`: the type describing a timestamp.
 - `events`: The events of the contract.
@@ -203,7 +203,7 @@ comes from the smart contracting language itself, and not the contract nor the u
 environment (e.g `pallet-contracts`).
 
 All ink! messages and constructors now return a `Result` which uses this as the `Error`
-variant (see the [`LangError`](https://docs.rs/ink/4.0.0/ink/enum.LangError.html) docs for more).
+variant (see the [`LangError`](https://docs.rs/ink/5.0.0/ink/enum.LangError.html) docs for more).
 
 :::
 

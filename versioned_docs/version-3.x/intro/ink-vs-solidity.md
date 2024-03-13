@@ -267,7 +267,7 @@ pub struct ContractName {
 }
 ```
 
-when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://use.ink/datastructures/mapping) for more details.
+when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](../datastructures/mapping.md) for more details.
 
 ### `mapping usage`
 
@@ -621,7 +621,7 @@ This almost works as expected. However, there is still one issue. `SpreadAllocat
 
 ### `cross-contract calling`
 
-In ink!, to do [cross-contract calling](https://use.ink/basics/cross-contract-calling), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
+In ink!, to do [cross-contract calling](../basics/cross-contract-calling.md), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std)]
@@ -656,7 +656,7 @@ crate-type = [
 ink-as-dependency = []
 ```
 
-`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](https://use.ink/basics/cross-contract-calling)).
+`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](../basics/cross-contract-calling.md)).
 
 Then, In the main contract's Cargo.toml, import the contract that will be cross-called.
 
@@ -664,7 +664,7 @@ Then, In the main contract's Cargo.toml, import the contract that will be cross-
 erc20 = { path = "erc20", default-features = false, features = ["ink-as-dependency"] }
 ```
 
-And make sure to add it to the `std` field of the the .toml file.
+And make sure to add it to the `std` field of the .toml file.
 
 ```rust
 [features]
@@ -686,7 +686,7 @@ use erc20::Erc20Ref;
 There are two methods to setup the other contract.
 
 1. Instantiate the cross-called-contract in the main contract's constructor.
-   See [here](https://use.ink/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
+   See [here](../basics/cross-contract-calling.md) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
 
@@ -827,7 +827,7 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 
 - Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
 - To run ink! tests, do _not_ use `cargo +nightly contract test`. Use `cargo +nightly test`. Add the `--nocapture` flag for debug prints to show. See [here](https://substrate.stackexchange.com/questions/3197/how-to-understand-which-test-failed-in-ink) for more info why.
-- From the contract module, make sure to make the the contract struct and anything else that is going to be used in the unit tests public. For example:
+- From the contract module, make sure to make the contract struct and anything else that is going to be used in the unit tests public. For example:
 
 ```rust
 // top of file

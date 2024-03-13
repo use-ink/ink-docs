@@ -24,3 +24,4 @@ The trade-off is that with a parachain one has the freedom to decide on (nearly)
 A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that.
 
 ![](/img/smart-contract-vs-parachain.png)
+

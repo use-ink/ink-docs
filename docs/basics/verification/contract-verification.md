@@ -20,14 +20,14 @@ process must recompile the contract in an identical host environment to
 which it was originally built. The simplest way to do this is using a Docker
 container.
 
-Since ink! `4.0.0`, `cargo-contract` provides the necessary tools to produce 
+Since ink! 5.0, `cargo-contract` provides the necessary tools to produce 
 a verifiable build and verify a binary against the reference contract.
 
 :::note
-Contract verification tools are currently available in `cargo-contract`
-version `4.0.0-alpha`. To install it, run
+Contract verification tools are available from `cargo-contract`
+version 4.0 on. To install it, run
 ```
-cargo install cargo-contract --locked --version 4.0.0-alpha
+cargo install cargo-contract --locked --version ^4
 ```
 :::
 
@@ -117,5 +117,5 @@ of all contracts to be visible. Specify a relative manifest path to the root con
 `cargo contract build --verifiable --manifest-path ink-project-a/Cargo.toml`
 :::
 
-You can find a Dockefile and further documentation on image usage 
+You can find a Dockerfile and further documentation on image usage 
 in [the `cargo-contract` repository](https://github.com/paritytech/cargo-contract/tree/master/build-image)

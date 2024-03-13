@@ -4,6 +4,8 @@ hide_title: true
 slug: /basics/selectors
 ---
 
+<img src="/img/title/selector-hex.svg" className="titlePic" />
+
 # Selectors
 
 Selectors in ink! are a language agnostic way of identifying constructors and messages.

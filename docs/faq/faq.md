@@ -92,8 +92,10 @@ See the [Chain Extensions](../macros-attributes/chain-extension.md) section for 
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
-Please see [the `env_types` argument](https://docs.rs/ink_macro/4.0.0/ink_macro/attr.contract.html#header-arguments)
-for the contract macro. It allows you to specify your environment a la
+Please see [this section](../macros-attributes/contract.md#env-impl-environment) in our documentation.
+
+Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/5.0.0/ink_macro/attr.contract.html#header-arguments)
+for the `#[ink(contract)]` macro. It allows you to specify your environment a la
 `#[ink::contract(env = MyEnvironment)]`.
 
 ### What does the `#![cfg_attr(not(feature = "std"), no_std)]` at the beginning of each contract mean?
@@ -133,7 +135,7 @@ The contract storage is built on top of the runtime storage, and access is consi
 
 ### How do I print something to the console from the runtime?
 
-Please see our page on [Contract Debugging](../basics/debugging.md).
+Please see our page on [Contract Debugging](../testing/debugging.md).
 
 ### Why is Rust's standard library (stdlib) not available in ink!?
 
@@ -169,15 +171,15 @@ Rust's standard library consists of three different layers:
 
 A number of crypto hashes are built into the [pallet-contracts](../intro/how-it-works.md) and
 therefore very efficient to use. We currently support a handful of those, you
-can view the complete list [here](https://docs.rs/ink_env/4.0.0/ink_env/hash/trait.CryptoHash.html).
+can view the complete list [here](https://docs.rs/ink_env/5.0.0/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
 [Chain Extensions](../macros-attributes/chain-extension.md)
 or make a proposal to include it into the default set of the `pallet-contracts`.
 
 Using one of the built-in crypto hashes can be done as explained here:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/4.0.0/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/4.0.0/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_encoded.html)
 
 ### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
 
@@ -228,7 +230,7 @@ If you don't find the issue you can also ask for help in our public
 [Discord](https://discord.gg/j2DKRRbSJr) channel.
 
 
-### What are the `scale::Encode` and `scale::Decode` traits?
+### What are the `Encode`, `Decode` and `TypeInfo` arguments in `#[ink::scale_derive(Encode, Decode, TypeInfo)]` ?
 
 Substrate-based blockchains use the [SCALE codec](https://github.com/paritytech/parity-scale-codec)
 to encode data.
@@ -236,6 +238,9 @@ As a consequence the data for every interaction with Substrate needs to
 be SCALE-encodable ‒ i.e. it needs to implement either `scale::Encode`,
 `scale::Decode`, or both. This affects e.g. data you want to return to a caller,
 data that you want to take as input, or data you want to store on-chain.
+
+ink! re-exports these traits and provides a useful macro `#[ink::scale_derive(Encode, Decode, TypeInfo)]` that allows to derive them
+in a concise way.
 
 A common error you might get when a necessary SCALE trait is not implemented
 for a data structure could be along the lines of `the trait "WrapperTypeEncode"
@@ -259,12 +264,15 @@ to a caller or when it is persisted to the contracts storage.
 * `Decode` is used for the inverse, e.g. when reading from storage or
 taking an input from a user (or another contract).
 
+* `TypeInfo` is used to encode the information about the type that is
+often used for the generation of metadata.
+
 It's possible to derive those traits and oftentimes the simplest way
 is to just derive the missing trait for the object for which its implementation
-is missing:
+is missing using the ink! macro:
 
 ```rust
-#[derive(scale::Encode, scale::Decode)]
+#[ink::scale_derive(Encode, Decode)]
 struct MyCustomDataStructure { … }
 ```
 
@@ -279,4 +287,39 @@ and you should only persist items which you need to derive state transitions
 in your contract.
 
 If you still, for some reason, need to use `String`, then you should use
-the `String` [from the ink! prelude](https://docs.rs/ink_prelude/latest/ink_prelude/string/struct.String.html).
+the `String` [from the ink! prelude](https://docs.rs/ink_prelude/5.0.0/ink_prelude/string/struct.String.html).
+
+<h3 id="type-comparison">Getting a warning in <code>cargo-contract</code> about type compatibility?</h3>
+
+ink! and Substrate both support the possibility of deciding to deviate
+from the default types for `Balance`, `BlockNumber`, etc.
+These types are called environment types.
+
+If a chain decides on custom environment types, contract authors need
+to specify these types that deviate from the ink! default environment in their
+contracts. Otherwise, undefined behavior can occur when uploading a contract
+with deviating types to a chain.
+
+Custom environment types can be specified in ink! via the `#[contract(env = MyCustomEnvironment)]`
+attribute. You can read more are about this [here](../macros-attributes/contract.md#env-impl-environment).
+
+When using `cargo-contract` to interact with a chain you might get a warning along those lines:
+
+```
+Warning: This chain does not yet support checking for compatibility of your contract types.
+```
+
+This warning appears when the chain that you are targeting (via the `--url` cli flag)
+does not contain a version of `pallet-contracts` that does support type comparison.
+Type comparison is a feature that we introduced, it means we check that the environmental
+types of your contract are equivalent to the environmental types of the chain that you are
+targeting.
+It's a safety feature to make sure that you are not accidentally deploying a contract with
+e.g. `type Balance = u128` to a chain with a different `Balance` type.
+
+The `cargo-contract` warning means this check for compatible types cannot be performed.
+This check is only available on chains from `polkadot-1.2.0` on, specifically from
+[this commit](https://github.com/paritytech/polkadot-sdk/commit/d8a74901462ffb49345af6db7c5a7a6e2b3c92ed).
+
+If a chain indeed requires that contract developers have to use custom environment types,
+this should be communicated prominently by them. 

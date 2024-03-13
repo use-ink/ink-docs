@@ -80,7 +80,7 @@ module.exports = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: '4.x',
+              label: '5.x',
               path: '',
               banner: 'none',
             },
@@ -89,9 +89,9 @@ module.exports = {
               path: '3.x',
               banner: 'none',
             },
-            '5.x': {
-              label: '5.0-rc',
-              path: '5.x',
+            '4.x': {
+              label: '4.x',
+              path: '4.x',
               banner: 'none',
             },
           },

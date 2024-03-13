@@ -29,46 +29,9 @@ The following table gives a brief comparison of features between ink! and Solidi
 
 </div>
 
-## Solidity to ink! Guide
-
-### Table of Contents
-
-- [Solidity to ink! Guide](#solidity-to-ink-guide)
-- [Table of Contents](#table-of-contents)
-- [Converting a Solidity contract to ink!](#converting-a-solidity-contract-to-ink)
-    - [1. Generate a new ink! contract](#1-generate-a-new-ink-contract)
-    - [2. Build the contract](#2-build-the-contract)
-    - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
-    - [4. Convert each function](#4-convert-each-function)
-- [Best Practices + Tips](#best-practices--tips)
-- [Syntax Equivalencies](#syntax-equivalencies)
-    - [`public function`](#public-function)
-    - [`mapping declaration`](#mapping-declaration)
-    - [`mapping usage`](#mapping-usage)
-    - [`struct`](#struct)
-    - [`assertions / requires`](#assertions--requires)
-    - [`timestamp`](#timestamp)
-    - [`contract caller`](#contract-caller)
-    - [`contract's address`](#contracts-address)
-    - [`bytes`](#bytes)
-    - [`uint256`](#uint256)
-    - [`payable`](#payable)
-    - [`received deposit / payment`](#received-deposit--payment)
-    - [`contract balance`](#contract-balance)
-    - [`transfer tokens from contract`](#transfer-tokens-from-contract)
-    - [`events & indexed`](#events--indexed)
-    - [`errors and returning`](#errors-and-returning)
-        - [`throw`](#throw)
-        - [`assert`](#assert)
-        - [`require and revert`](#require-and-revert)
-    - [`nested mappings + custom / advanced structures`](#nested-mappings--custom--advanced-structures)
-    - [`cross-contract calling`](#cross-contract-calling)
-    - [`submit generic transaction / dynamic cross-contract calling`](#submit-generic-transaction--dynamic-cross-contract-calling)
-- [Limitations of ink! v3](#limitations-of-ink-v3)
-- [Troubleshooting Errors](#troubleshooting-errors)
-- [unit testing (off-chain)](#unit-testing-off-chain)
-
 ## Converting a Solidity Contract to ink!
+
+In the following, we'll explain how to convert a Solidity contract to ink!.
 
 ### 1. Generate a new ink! contract
 
@@ -223,8 +186,8 @@ mod example {
         data: u128,
     }
 
-    #[derive(Debug, scale::Encode, scale::Decode, PartialEq, Eq)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[derive(Debug, PartialEq, Eq)]
     pub enum Error {
         DataShouldNotBeZero,
     }
@@ -323,7 +286,7 @@ pub struct ContractName {
 }
 ```
 
-When using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://use.ink/datastructures/mapping) for more details.
+When using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](../datastructures/mapping.md) for more details.
 
 ### `mapping usage`
 
@@ -548,8 +511,8 @@ function myFunction(bool returnError) public pure {
 ```rust
 // ink!
 
-#[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
-#[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+#[derive(Debug, PartialEq, Eq)]
+#[ink::scale_derive(Encode, Decode, TypeInfo)]
 pub enum Error {
     /// Provide a detailed comment on the error
     MyError,
@@ -639,15 +602,8 @@ mod dao {
         storage::Mapping,
     };
 
-    #[derive(
-        scale::Encode,
-        scale::Decode,
-        Debug,
-    )]
-    #[cfg_attr(
-        feature = "std",
-        derive(scale_info::TypeInfo)
-    )]
+    #[derive(Debug)]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
     pub struct Proposal {
         voted_yes: BTreeMap<AccountId, bool>,
     }
@@ -699,7 +655,7 @@ mod dao {
 
 ### `cross-contract calling`
 
-In ink!, to do [cross-contract calling](https://use.ink/basics/cross-contract-calling), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
+In ink!, to do [cross-contract calling](../basics/cross-contract-calling.md), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
@@ -732,7 +688,7 @@ crate-type = [
 ink-as-dependency = []
 ```
 
-`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](https://use.ink/basics/cross-contract-calling)).
+`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](../basics/cross-contract-calling.md)).
 
 Then, In the main contract's Cargo.toml, import the contract that will be cross-called.
 
@@ -762,7 +718,7 @@ use erc20::Erc20Ref;
 There are two methods to setup the other contract.
 
 1. Instantiate the cross-called-contract in the main contract's constructor.  
-   See [here](https://use.ink/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
+   See [here](../basics/cross-contract-calling.md) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
 
@@ -834,6 +790,7 @@ fn invoke_transaction(
         .call_type(
             Call::new()
                 .callee(callee) // contract to call
+                .call_v1()
                 .gas_limit(*gas_limit)
                 .transferred_value(transfer_amount), // value to transfer with call
         )
