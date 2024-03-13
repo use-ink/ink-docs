@@ -6,7 +6,7 @@
 <title data-rh="true">Migrating from ink! 3.x to 4.0 | ink! documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://use.ink/5.x/faq/migrating-from-ink-3-to-4"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="5.x"><meta data-rh="true" name="docusaurus_tag" content="docs-default-5.x"><meta data-rh="true" name="docsearch:version" content="5.x"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-5.x"><meta data-rh="true" property="og:title" content="Migrating from ink! 3.x to 4.0 | ink! documentation"><meta data-rh="true" name="description" content="We&#x27;ve made a couple of breaking changes from ink! 3.x to ink! 4.0."><meta data-rh="true" property="og:description" content="We&#x27;ve made a couple of breaking changes from ink! 3.x to ink! 4.0."><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://use.ink/5.x/faq/migrating-from-ink-3-to-4"><link data-rh="true" rel="alternate" href="https://use.ink/5.x/faq/migrating-from-ink-3-to-4" hreflang="en"><link data-rh="true" rel="alternate" href="https://use.ink/5.x/faq/migrating-from-ink-3-to-4" hreflang="x-default"><link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.606c4e4a.css">
-<script src="/assets/js/runtime~main.89e6bf6c.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.01b75d28.js" defer="defer"></script>
 <script src="/assets/js/main.a4e5ac5a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -78,7 +78,7 @@ we removed support for it in <a href="https://github.com/paritytech/ink/pull/140
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="removal-of-eth_compatibility-crate">Removal of <code>eth_compatibility</code> crate<a href="#removal-of-eth_compatibility-crate" class="hash-link" aria-label="Direct link to removal-of-eth_compatibility-crate" title="Direct link to removal-of-eth_compatibility-crate">​</a></h2>
 <p>As part of <a href="https://github.com/paritytech/ink/pull/1233" target="_blank" rel="noopener noreferrer">#1233</a>
 the <code>eth_compatibility</code> crate was removed. The <code>ecdsa_to_eth_address()</code>
-function from it can now be found <a href="https://docs.rs/ink_env/5.0.0/ink_env/fn.ecdsa_to_eth_address.html" target="_blank" rel="noopener noreferrer">in the <code>ink_env</code> crate</a>.</p>
+function from it can now be found <a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.ecdsa_to_eth_address.html" target="_blank" rel="noopener noreferrer">in the <code>ink_env</code> crate</a>.</p>
 <div class="language-rust codeBlockContainer_Ckt0 theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-rust codeBlock_bY9V thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9a86fd"><span class="token namespace" style="opacity:0.7">ink_env</span><span class="token namespace punctuation" style="opacity:0.7;color:#6c6783">::</span><span class="token function" style="color:#9a86fd">ecdsa_to_eth_address</span><span class="token punctuation" style="color:#6c6783">(</span><span class="token operator" style="color:#e09142">&amp;</span><span class="token plain">pub_key</span><span class="token punctuation" style="color:#6c6783">,</span><span class="token plain"> </span><span class="token operator" style="color:#e09142">&amp;</span><span class="token keyword" style="color:#ffcc99">mut</span><span class="token plain"> output</span><span class="token punctuation" style="color:#6c6783">)</span><span class="token punctuation" style="color:#6c6783">;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="ink_storagemapping"><code>ink_storage::Mapping</code><a href="#ink_storagemapping" class="hash-link" aria-label="Direct link to ink_storagemapping" title="Direct link to ink_storagemapping">​</a></h2>
 <p>The function signature of <code>Mapping::insert(key, val)</code> changed to
@@ -86,9 +86,9 @@ function from it can now be found <a href="https://docs.rs/ink_env/5.0.0/ink_env
 The return value is the size of the pre-existing value at the specified key if any (in bytes).</p>
 <p>Two new useful functions were added:</p>
 <ul>
-<li><a href="https://docs.rs/ink_storage/5.0.0/ink_storage/struct.Mapping.html#method.contains" target="_blank" rel="noopener noreferrer"><code>Mapping::contains(key)</code></a>
+<li><a href="https://docs.rs/ink_storage/5.0.0-rc.1/ink_storage/struct.Mapping.html#method.contains" target="_blank" rel="noopener noreferrer"><code>Mapping::contains(key)</code></a>
 in <a href="https://github.com/paritytech/ink/pull/1224" target="_blank" rel="noopener noreferrer">#1224</a>.</li>
-<li><a href="https://docs.rs/ink_storage/5.0.0/ink_storage/struct.Mapping.html#method.take" target="_blank" rel="noopener noreferrer"><code>Mapping::take()</code></a>
+<li><a href="https://docs.rs/ink_storage/5.0.0-rc.1/ink_storage/struct.Mapping.html#method.take" target="_blank" rel="noopener noreferrer"><code>Mapping::take()</code></a>
 to get a value while removing it from storage in <a href="https://github.com/paritytech/ink/pull/1461" target="_blank" rel="noopener noreferrer">#1461</a>.</li>
 </ul>
 <p>In case you were working around those two functions you can now
@@ -96,9 +96,9 @@ use them directly; they are more gas-efficient than e.g. executing
 a <code>get(key).is_none()</code> instead of <code>contains(key)</code>.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="storage-functions-in-ink_env">Storage functions in <code>ink_env</code><a href="#storage-functions-in-ink_env" class="hash-link" aria-label="Direct link to storage-functions-in-ink_env" title="Direct link to storage-functions-in-ink_env">​</a></h2>
 <p>As part of <a href="https://github.com/paritytech/ink/pull/1224" target="_blank" rel="noopener noreferrer">#1224</a> the return type
-of <a href="https://docs.rs/ink_env/5.0.0/ink_env/fn.set_contract_storage.html" target="_blank" rel="noopener noreferrer"><code>ink_env::set_contract_storage()</code></a>
+of <a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.set_contract_storage.html" target="_blank" rel="noopener noreferrer"><code>ink_env::set_contract_storage()</code></a>
 was changed to return an <code>Option&lt;u32&gt;</code> instead of <code>()</code>.</p>
-<p>A new function <a href="https://docs.rs/ink_env/5.0.0/ink_env/fn.take_contract_storage.html" target="_blank" rel="noopener noreferrer"><code>ink_env::take_contract_storage</code></a>
+<p>A new function <a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.take_contract_storage.html" target="_blank" rel="noopener noreferrer"><code>ink_env::take_contract_storage</code></a>
 was introduced.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="removal-of-ink_envrandom-function">Removal of <code>ink_env::random</code> function<a href="#removal-of-ink_envrandom-function" class="hash-link" aria-label="Direct link to removal-of-ink_envrandom-function" title="Direct link to removal-of-ink_envrandom-function">​</a></h2>
 <p>We had to remove the <a href="https://docs.rs/ink_env/3.3.1/ink_env/fn.random.html" target="_blank" rel="noopener noreferrer"><code>ink_env::random</code></a>
@@ -140,7 +140,7 @@ and constructor returning a <code>Result&lt;Message::Output, LangError&gt;</code
 for constructors <code>Result&lt;Constructor::Output, LangError&gt;</code>).
 This happens even if the message/constructor doesn&#x27;t have a return type,
 we default to the unit type <code>()</code> in that case.</p>
-<p>A <a href="https://docs.rs/ink/5.0.0/ink/enum.LangError.html" target="_blank" rel="noopener noreferrer"><code>LangError</code></a>
+<p>A <a href="https://docs.rs/ink/5.0.0-rc.1/ink/enum.LangError.html" target="_blank" rel="noopener noreferrer"><code>LangError</code></a>
 is a type of error which doesn&#x27;t originate from the contract itself,
 nor from the underlying execution environment (so the Contracts pallet
 in this case).</p>
@@ -198,22 +198,22 @@ more idiomatic Rust, and also conveys the meaning of a &quot;null&quot; or &quot
 better.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="updates-to-the-callbuilder-and-createbuilder-apis">Updates to the <code>CallBuilder</code> and <code>CreateBuilder</code> APIs<a href="#updates-to-the-callbuilder-and-createbuilder-apis" class="hash-link" aria-label="Direct link to updates-to-the-callbuilder-and-createbuilder-apis" title="Direct link to updates-to-the-callbuilder-and-createbuilder-apis">​</a></h2>
 <p>There&#x27;s been several changes to the
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CallBuilder.html" target="_blank" rel="noopener noreferrer"><code>CallBuilder</code></a>
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html" target="_blank" rel="noopener noreferrer"><code>CallBuilder</code></a>
 and
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CreateBuilder.html" target="_blank" rel="noopener noreferrer"><code>CreateBuilder</code></a>
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CreateBuilder.html" target="_blank" rel="noopener noreferrer"><code>CreateBuilder</code></a>
 APIs.</p>
 <p>In <a href="https://github.com/paritytech/ink/pull/1604" target="_blank" rel="noopener noreferrer">#1604</a> we renamed the
 <code>CallBuilder::fire()</code> method to
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CallBuilder.html#method.invoke-2" target="_blank" rel="noopener noreferrer"><code>CallBuilder::invoke()</code></a>.
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.invoke-2" target="_blank" rel="noopener noreferrer"><code>CallBuilder::invoke()</code></a>.
 This brings more consistency across our APIs which were already using the <code>invoke</code>
 terminology.</p>
 <p>In <a href="https://github.com/paritytech/ink/pull/1512" target="_blank" rel="noopener noreferrer">#1512</a> and <a href="https://github.com/paritytech/ink/pull/1525" target="_blank" rel="noopener noreferrer">#1525</a>
 we added support for handing
 <code>LangError</code>s from the <code>CreateBuilder</code> and <code>CallBuilder</code>, respectively.</p>
 <p>If you want to handle errors from either <code>Builder</code> you can use the new
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CreateBuilder.html#method.try_instantiate" target="_blank" rel="noopener noreferrer"><code>CreateBuilder::try_instantiate()</code></a>
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CreateBuilder.html#method.try_instantiate" target="_blank" rel="noopener noreferrer"><code>CreateBuilder::try_instantiate()</code></a>
 or
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CallBuilder.html#method.try_invoke-1" target="_blank" rel="noopener noreferrer"><code>CallBuilder::try_invoke()</code></a>
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.try_invoke-1" target="_blank" rel="noopener noreferrer"><code>CallBuilder::try_invoke()</code></a>
 methods.</p>
 <p>Because of the addition of those methods we also removed any error handling from the
 non-<code>try_</code> methods in <a href="https://github.com/paritytech/ink/pull/1602" target="_blank" rel="noopener noreferrer">#1602</a>. This means
@@ -221,14 +221,14 @@ that the <code>CallBuilder::invoke()</code> and <code>CreateBuilder::instantiate
 directly, and panic when they encounter an error.</p>
 <p>Lastly, in <a href="https://github.com/paritytech/ink/pull/1636" target="_blank" rel="noopener noreferrer">#1636</a> we added two methods to
 the <code>CallBuilder</code> to streamline
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.Call.html" target="_blank" rel="noopener noreferrer"><code>Call</code></a>
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.Call.html" target="_blank" rel="noopener noreferrer"><code>Call</code></a>
 and
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.DelegateCall.html" target="_blank" rel="noopener noreferrer"><code>DelegateCall</code></a>
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.DelegateCall.html" target="_blank" rel="noopener noreferrer"><code>DelegateCall</code></a>
 workflows:</p>
 <ul>
 <li>For <code>Call</code> you can use
-<a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CallBuilder.html#method.call" target="_blank" rel="noopener noreferrer"><code>CallBuilder::call()</code></a> (this replaces <code>CallBuilder::callee()</code>)</li>
-<li>For <code>DelegateCall</code> you can use <a href="https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CallBuilder.html#method.delegate" target="_blank" rel="noopener noreferrer"><code>CallBuilder::delegate()</code></a></li>
+<a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.call" target="_blank" rel="noopener noreferrer"><code>CallBuilder::call()</code></a> (this replaces <code>CallBuilder::callee()</code>)</li>
+<li>For <code>DelegateCall</code> you can use <a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/call/struct.CallBuilder.html#method.delegate" target="_blank" rel="noopener noreferrer"><code>CallBuilder::delegate()</code></a></li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="removal-of-libcrate-type-and-libname-from-contract-manifest">Removal of <code>[lib.crate-type]</code> and <code>[lib.name]</code> from contract manifest<a href="#removal-of-libcrate-type-and-libname-from-contract-manifest" class="hash-link" aria-label="Direct link to removal-of-libcrate-type-and-libname-from-contract-manifest" title="Direct link to removal-of-libcrate-type-and-libname-from-contract-manifest">​</a></h2>
 <p>Earlier versions of <code>cargo-contract</code> required that these two fields were specified in the
