@@ -6,7 +6,7 @@
 <title data-rh="true">Frequently Asked Questions | ink! documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://use.ink/5.x/faq"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="5.x"><meta data-rh="true" name="docusaurus_tag" content="docs-default-5.x"><meta data-rh="true" name="docsearch:version" content="5.x"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-5.x"><meta data-rh="true" property="og:title" content="Frequently Asked Questions | ink! documentation"><meta data-rh="true" name="description" content="Who is &quot;Squink&quot;?"><meta data-rh="true" property="og:description" content="Who is &quot;Squink&quot;?"><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://use.ink/5.x/faq"><link data-rh="true" rel="alternate" href="https://use.ink/5.x/faq" hreflang="en"><link data-rh="true" rel="alternate" href="https://use.ink/5.x/faq" hreflang="x-default"><link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.606c4e4a.css">
-<script src="/assets/js/runtime~main.01b75d28.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.89e6bf6c.js" defer="defer"></script>
 <script src="/assets/js/main.a4e5ac5a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -72,7 +72,7 @@ possible future additions to eliminate re-entrancy attacks.</p>
 <p>See the <a href="/5.x/macros-attributes/chain-extension">Chain Extensions</a> section for more information.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-use-ink-with-a-substrate-chain-with-a-custom-chain-config">How can I use ink! with a Substrate chain with a custom chain config?<a href="#how-can-i-use-ink-with-a-substrate-chain-with-a-custom-chain-config" class="hash-link" aria-label="Direct link to How can I use ink! with a Substrate chain with a custom chain config?" title="Direct link to How can I use ink! with a Substrate chain with a custom chain config?">​</a></h3>
 <p>Please see <a href="/5.x/macros-attributes/contract#env-impl-environment">this section</a> in our documentation.</p>
-<p>Detailed documentation is found in <a href="https://docs.rs/ink_macro/5.0.0-rc.1/ink_macro/attr.contract.html#header-arguments" target="_blank" rel="noopener noreferrer">the Rust docs</a>
+<p>Detailed documentation is found in <a href="https://docs.rs/ink_macro/5.0.0/ink_macro/attr.contract.html#header-arguments" target="_blank" rel="noopener noreferrer">the Rust docs</a>
 for the <code>#[ink(contract)]</code> macro. It allows you to specify your environment a la
 <code>#[ink::contract(env = MyEnvironment)]</code>.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="what-does-the-cfg_attrnotfeature--std-no_std-at-the-beginning-of-each-contract-mean">What does the <code>#![cfg_attr(not(feature = &quot;std&quot;), no_std)]</code> at the beginning of each contract mean?<a href="#what-does-the-cfg_attrnotfeature--std-no_std-at-the-beginning-of-each-contract-mean" class="hash-link" aria-label="Direct link to what-does-the-cfg_attrnotfeature--std-no_std-at-the-beginning-of-each-contract-mean" title="Direct link to what-does-the-cfg_attrnotfeature--std-no_std-at-the-beginning-of-each-contract-mean">​</a></h3>
@@ -134,14 +134,14 @@ operations.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-do-i-hash-a-value">How do I hash a value?<a href="#how-do-i-hash-a-value" class="hash-link" aria-label="Direct link to How do I hash a value?" title="Direct link to How do I hash a value?">​</a></h3>
 <p>A number of crypto hashes are built into the <a href="/5.x/how-it-works">pallet-contracts</a> and
 therefore very efficient to use. We currently support a handful of those, you
-can view the complete list <a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/hash/trait.CryptoHash.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
+can view the complete list <a href="https://docs.rs/ink_env/5.0.0/ink_env/hash/trait.CryptoHash.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p>If you have the urgent need for another crypto hash you could introduce it through
 <a href="/5.x/macros-attributes/chain-extension">Chain Extensions</a>
 or make a proposal to include it into the default set of the <code>pallet-contracts</code>.</p>
 <p>Using one of the built-in crypto hashes can be done as explained here:</p>
 <ul>
-<li><a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.hash_bytes.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_bytes()</code></a></li>
-<li><a href="https://docs.rs/ink_env/5.0.0-rc.1/ink_env/fn.hash_encoded.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_encoded()</code></a></li>
+<li><a href="https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_bytes.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_bytes()</code></a></li>
+<li><a href="https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_encoded.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_encoded()</code></a></li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="why-is-it-not-possible-to-use-floating-point-data-types-in-ink-how-do-i-implement-returning-a-decimal-number">Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?<a href="#why-is-it-not-possible-to-use-floating-point-data-types-in-ink-how-do-i-implement-returning-a-decimal-number" class="hash-link" aria-label="Direct link to Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?" title="Direct link to Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?">​</a></h3>
 <p>Floats are cool for all kinds of reasons, but they also have one important
