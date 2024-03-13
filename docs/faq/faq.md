@@ -301,7 +301,7 @@ contracts. Otherwise, undefined behavior can occur when uploading a contract
 with deviating types to a chain.
 
 Custom environment types can be specified in ink! via the `#[contract(env = MyCustomEnvironment)]`
-attribute. You can read more are about this [here](../docs/macros-attributes/contract.md#env-impl-environment).
+attribute. You can read more are about this [here](../macros-attributes/contract.md#env-impl-environment).
 
 When using `cargo-contract` to interact with a chain you might get a warning along those lines:
 
