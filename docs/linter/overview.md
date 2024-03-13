@@ -17,6 +17,7 @@ these commands to install the required dependencies:
 
 ```
 rustup install nightly-2023-12-28
+rustup component add rust-src --toolchain nightly-2023-12-28
 cargo install cargo-dylint dylint-link
 ```
 
