@@ -516,7 +516,7 @@ and mock them for testing.
 ## Mocking Chain Extension
 
 You can mock chain extensions for unit testing purposes. 
-This can be achieved by implementing the [`ink::env::test::ChainExtension`](https://docs.rs/ink_env/latest/ink_env/test/trait.ChainExtension.html) trait.
+This can be achieved by implementing the [`ink::env::test::ChainExtension`](https://docs.rs/ink_env/5.0.0/ink_env/test/trait.ChainExtension.html) trait.
 
 ```rust
 /// Opaque structure

@@ -287,7 +287,7 @@ and you should only persist items which you need to derive state transitions
 in your contract.
 
 If you still, for some reason, need to use `String`, then you should use
-the `String` [from the ink! prelude](https://docs.rs/ink_prelude/latest/ink_prelude/string/struct.String.html).
+the `String` [from the ink! prelude](https://docs.rs/ink_prelude/5.0.0/ink_prelude/string/struct.String.html).
 
 <h3 id="type-comparison">Getting a warning in <code>cargo-contract</code> about type compatibility?</h3>
 
