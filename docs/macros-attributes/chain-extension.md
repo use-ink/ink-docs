@@ -471,7 +471,7 @@ It is possible to use multiple exposed chain extensions in the single environmen
 The declaration procedure of the chain extension stays the same.
 
 Suppose we want to combine two chain extension called `Psp22Extension` and `FetchRandom`, ink! provides
-a useful macro [`ink::combine_extensions!`](https://docs.rs/ink/5.0.0-rc/ink/macro.combine_extensions.html) that allows to construct the structure combining 
+a useful macro [`ink::combine_extensions!`](https://docs.rs/ink/5.0.0/ink/macro.combine_extensions.html) that allows to construct the structure combining 
 the aforementioned chain extensions like so:
 ```rust
 ink::combine_extensions! {

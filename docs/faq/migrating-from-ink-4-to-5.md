@@ -179,7 +179,7 @@ pub enum Error {}
 pub enum Error {}
 ```
 
-The documentation of the macro can be found [here](https://docs.rs/ink/5.0.0-rc/ink/attr.scale_derive.html).
+The documentation of the macro can be found [here](https://docs.rs/ink/5.0.0/ink/attr.scale_derive.html).
 
 ### Wildcard selectors: only one other message is allowed in the contract besides the wildcard selector
 
@@ -328,8 +328,8 @@ limit (i.e. 5%, 10%).
 
 The method `.extra_gas_portion(margin: u64)` method is part of the builder API:
 
-* [`ink_e2e::InstantiateBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/struct.InstantiateBuilder.html#method.extra_gas_portion)
-* [`ink_e2e::CallBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/struct.CallBuilder.html#method.extra_gas_portion)
+* [`ink_e2e::InstantiateBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.InstantiateBuilder.html#method.extra_gas_portion)
+* [`ink_e2e::CallBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.CallBuilder.html#method.extra_gas_portion)
 
 #### Improved `call()` API
 
@@ -356,7 +356,7 @@ The test will detect the contract and build it as part of the test.
 
 ####
 In [#2076](https://github.com/paritytech/ink/pull/2076), we've added a new
-[`remove_code`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/trait.ContractsBackend.html#method.remove_code)
+[`remove_code`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/trait.ContractsBackend.html#method.remove_code)
 function to the E2E API:
 
 ```rust
@@ -386,7 +386,7 @@ access it or write to it.
 
 You can find verbatim documentation on `StorageVec` [here](docs/datastructureses/storagevec.md).
 The page explains when to use `StorageVec` and when not.
-The Rust docs can be found [here](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html).
+The Rust docs can be found [here](https://docs.rs/ink/5.0.0/ink/storage/struct.StorageVec.html).
 
 ### Fallible methods for `Lazy`, `Mapping`, `StorageVec`
 
@@ -398,9 +398,9 @@ For `StorageVec::{peek, get, set, pop, push}` we added `try_*` methods in
 
 Please see the individual Rust docs for these new methods:
 
-* [`StorageVec`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.StorageVec.html)
-* [`Lazy`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.Lazy.html)
-* [`Mapping`](https://docs.rs/ink/5.0.0-rc/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
+* [`StorageVec`](https://docs.rs/ink/5.0.0/ink/storage/struct.StorageVec.html)
+* [`Lazy`](https://docs.rs/ink/5.0.0/ink/storage/struct.Lazy.html)
+* [`Mapping`](https://docs.rs/ink/5.0.0/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
 
 You should use the `try_*` methods for dynamically sized values, unless you made sure
 otherwise they will fit into the static buffer. The [static buffer in ink!](https://github.com/paritytech/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
@@ -680,7 +680,7 @@ the guarantee that it cannot be deleted.
 
 We've updated the [`upgradeable-contracts/delegator`](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts#delegator)
 example to demonstrate these new calls.
-For that purpose we've also added a [`remove_code`](https://docs.rs/ink_e2e/5.0.0-rc/ink_e2e/trait.ContractsBackend.html#method.remove_code)
+For that purpose we've also added a [`remove_code`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/trait.ContractsBackend.html#method.remove_code)
 function to the E2E API.
 
 These two functions are only available from `polkadot-1.8.0` on.
