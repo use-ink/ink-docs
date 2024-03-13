@@ -129,7 +129,7 @@ If you now execute the `cargo-contract` storage command against this node, you'l
 that the `flipper` contract exists there as well:
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
+$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
