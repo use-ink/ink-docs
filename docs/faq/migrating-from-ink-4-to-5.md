@@ -6,14 +6,14 @@ slug: /faq/migrating-from-ink-4-to-5
 <img src="/img/title/migration-4.x-to-5.0.svg" className="titlePic" />
 
 We've made a couple of breaking changes from ink! 4.x to ink! 5.0.
-On this page we outline how you can migrate existing clients and
+On this page we outline how you can migrate existing dApps and
 contracts from 4.x to 5.0.
 
 This release addresses the majority of issues raised in [the OpenZeppelin
 security review](https://blog.openzeppelin.com/security-review-ink-cargo-contract).
 In particular, we addressed the proxy selector clashing attack.
 
-You can find the full changelog of the 5.0 release [here](https://github.com/paritytech/ink/blob/master/CHANGELOG.md).
+You can find the full changelog of the 5.0 release [here](https://github.com/paritytech/ink/blob/master/CHANGELOG.md#version-500).
 
 :::caution
 This migration guide only considers your code base! Not your storage data!
@@ -39,19 +39,17 @@ We've described this in more detail below, in the section
 
 ### Substrate/Polkadot SDK
 
-There are two individual new functions that are only compatible with `polkadot-v1.8.0` and
-`substrate-contracts-node` v0.39.0:
-v2 of `call` and `instantiate` ([explained here](#call-and-instantiate-v2))
-
-Additionally, there are two new functions that are only compatible with `polkadot-v1.9.0` and
-`substrate-contracts-node` v0.40.0:
-`lock_delegate_dependency` and `unlock_delegate_dependency` ([explained here](#upgradeable-contracts-delegate_dependency))
+There are four new functions that are only compatible from particular releases upwards:
+* v2 of `call` and `instantiate`: `>= polkadot-v1.8.0` and `substrate-contracts-node >= v0.39.0`
+([explained here](#call-and-instantiate-v2)).
+* `lock_delegate_dependency` and `unlock_delegate_dependency`:
+`>= polkadot-v1.9.0` and `substrate-contracts-node >= v0.40.0` ([explained here](#upgradeable-contracts-delegate_dependency)).
 
 These four functions are all opt-in! None of them are required to use ink! 5.0, they are only
 required if you want to access the particular functionality they provide.
-Please see the link explainers for more details about them.
+Please see the linked explainers for more details about them.
 
-If you are not using any of those four functions, the same requirements as for ink! 4.0 hold:
+If you are not using any of those four functions, the same requirements as for ink! 4.0 holds:
 
 * `pallet-contracts` >= `polkadot-v0.9.37`.
 * `substrate-contracts-node` >= `v0.24.0`
@@ -59,9 +57,10 @@ If you are not using any of those four functions, the same requirements as for i
 ### How do I find out if a chain is compatible with ink! 5?
 
 You can query `contracts::palletVersion()` via the chain state RPCs. It has to
-be `>= 9` for ink! 5.0 to be compatible, excluding the four functions mentioned above.
+be `>= 9` for ink! 5.0 to be compatible, if you don't use any of the four functions
+mentioned above.
 For the above mentioned four functions please see the respective sections on this page,
-we explain how to find out if a chain supports them there.
+there we explain how to find out if a chain supports them there.
 
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
@@ -69,7 +68,7 @@ Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+`
 <img src="/img/pallet-version.png"  />
 
 
-The following chains are in production and support ink! 5.0 if you are not using any of the
+The following chains are in production and support ink! 5.0, if you are not using any of the
 four functions mentioned above:
 
 <div className="row">
@@ -109,6 +108,11 @@ four functions mentioned above:
 </div>
 
 <div className="row">
+    <div className="col text--center">
+        <a href="https://www.ternoa.network/">
+            <img src= "/img/chains/ternoa.svg" className="chain" />
+        </a>
+    </div>
     <div className="col text--center">
         <a href="https://krest.peaq.network/">
             <img src= "/img/chains/krest.svg" className="chain" />
@@ -641,7 +645,8 @@ info (e.g. `cargo contract storage --help`).
 * `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/paritytech/cargo-contract/pull/1319))
 * `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/paritytech/cargo-contract/pull/1395), [#1414](https://github.com/paritytech/cargo-contract/pull/1414))
 
-<img src="/img/contract-storage.png"  />
+<img src="/img/cargo-contract-storage.png"  /><br/>
+<img src="/img/cargo-contract-info.png"  />
 
 ### Alternative off-chain E2E testing backend support: DRink!
 
