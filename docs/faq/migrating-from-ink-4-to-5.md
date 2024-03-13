@@ -466,7 +466,7 @@ The previous v1 `call` and `instantiate` functions only provided a single `gas_l
 which was used as the value for `ref_time_limit`.
 You can still use these `v1` versions.
 For `call` on a call builder obtained through
-[`build_call`](https://docs.rs/ink_env/5.0.0-rc.2/ink_env/call/fn.build_call.html):
+[`build_call`](https://docs.rs/ink_env/5.0.0/ink_env/call/fn.build_call.html):
 
 ```
 call_builder
@@ -475,7 +475,7 @@ call_builder
   .invoke();
 ```
 
-For `instantiate` on [`build_create`](https://docs.rs/ink_env/5.0.0-rc.2/ink_env/call/fn.build_create.html):
+For `instantiate` on [`build_create`](https://docs.rs/ink_env/5.0.0/ink_env/call/fn.build_create.html):
 
 The new `v2` parameters can be set like so:
 
