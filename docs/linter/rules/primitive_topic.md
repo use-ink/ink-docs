@@ -6,7 +6,7 @@ description: primitive_topic lint documentation
 # primitive_topic
 ## What it does
 Checks for ink! contracts that use the
-[`#[ink(topic)]`](https://use.ink/macros-attributes/topic) annotation with primitive number
+[`#[ink(topic)]`](../../macros-attributes/topic.md) annotation with primitive number
 types. Topics are discrete events for which it makes sense to filter. Typical examples of
 fields that should be filtered are `AccountId`, `bool` or `enum` variants.
 

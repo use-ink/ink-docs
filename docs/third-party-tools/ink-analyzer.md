@@ -13,7 +13,7 @@ ink! analyzer aims to improve ink! language support in [integrated development e
 
 ## Problem
 
-While ink! developers can leverage Rust tooling and excellent IDE/code editor support via [rust-analyzer](https://rust-analyzer.github.io/) and [IntelliJ Rust](https://www.jetbrains.com/rust/) because ["ink! is just standard Rust in a well-defined "contract format" with specialized `#[ink(…)]` attribute macros"](https://use.ink/getting-started/creating-an-ink-project),
+While ink! developers can leverage Rust tooling and excellent IDE/code editor support via [rust-analyzer](https://rust-analyzer.github.io/) and [IntelliJ Rust](https://www.jetbrains.com/rust/) because ["ink! is just standard Rust in a well-defined "contract format" with specialized `#[ink(…)]` attribute macros"](../getting-started/creating.md),
 relying on only generic Rust language support in IDEs, code editors and other development tools has some significant limitations for the developer experience including:
 
 - No language support (e.g. diagnostic errors/warnings and quick fixes) for ink!'s domain specific semantic rules for smart contracts (e.g. exactly one `#[ink(storage)]` struct, at least one `#[ink(message)]` method and the same for `#[ink(constructor)]`, ink! attributes should be applied to items of the correct type e.t.c).

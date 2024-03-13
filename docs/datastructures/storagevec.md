@@ -134,9 +134,9 @@ element is calculated as follows:
 `StorageVec` is a `Lazy` type similar to `Mapping`.
 
 Hence, the same considerations apply to `StorageVec` too:
-- [Storage loading behavior](https://use.ink/datastructures/mapping#storage-loading-behavior)
-- [Use fallible storage methods for dynamically sized values](https://use.ink/datastructures/mapping#use-fallible-storage-methods-for-dynamically-sized-values)
-- [Updating values](https://use.ink/datastructures/mapping#updating-values)
+- [Storage loading behavior](../datastructures/mapping.md#storage-loading-behavior)
+- [Use fallible storage methods for dynamically sized values](../datastructures/mapping.md#use-fallible-storage-methods-for-dynamically-sized-values)
+- [Updating values](../datastructures/mapping.md#updating-values)
 
 ## Rust Docs
 

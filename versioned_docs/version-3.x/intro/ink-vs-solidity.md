@@ -267,7 +267,7 @@ pub struct ContractName {
 }
 ```
 
-when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](https://use.ink/datastructures/mapping) for more details.
+when using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](../datastructures/mapping.md) for more details.
 
 ### `mapping usage`
 
@@ -621,7 +621,7 @@ This almost works as expected. However, there is still one issue. `SpreadAllocat
 
 ### `cross-contract calling`
 
-In ink!, to do [cross-contract calling](https://use.ink/basics/cross-contract-calling), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
+In ink!, to do [cross-contract calling](../basics/cross-contract-calling.md), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
 
 ```rust
 #![cfg_attr(not(feature = "std"), no_std)]
@@ -656,7 +656,7 @@ crate-type = [
 ink-as-dependency = []
 ```
 
-`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](https://use.ink/basics/cross-contract-calling)).
+`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](../basics/cross-contract-calling.md)).
 
 Then, In the main contract's Cargo.toml, import the contract that will be cross-called.
 
@@ -686,7 +686,7 @@ use erc20::Erc20Ref;
 There are two methods to setup the other contract.
 
 1. Instantiate the cross-called-contract in the main contract's constructor.
-   See [here](https://use.ink/basics/cross-contract-calling/) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
+   See [here](../basics/cross-contract-calling.md) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
 
