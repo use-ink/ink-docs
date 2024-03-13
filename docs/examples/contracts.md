@@ -104,4 +104,4 @@ The `.contract` file combines the Wasm and metadata into one file and needs to b
 when deploying the contract.
 
 For further information, please have a look at the
-[Deploy your Contract](docs/getting-starteded/deploying.md) section.
+[Deploy your Contract](docs/getting-started/deploying.md) section.

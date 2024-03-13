@@ -284,8 +284,8 @@ After:
 
 The storage layout under the `storage` key changed for v4. If you have an application
 that is using it consider reading the updated documentation:
-- [General storage documentation](docs/datastructureses/overview.md)
-- [Storage metadata format](docs/datastructureses/storage-in-metadata.md)
+- [General storage documentation](docs/datastructures/overview.md)
+- [Storage metadata format](docs/datastructures/storage-in-metadata.md)
 
 ## Removal of `AccountId` `Default` implementation
 In [#1255](https://github.com/paritytech/ink/pull/1255) we removed the `Default` trait

@@ -13,4 +13,4 @@ Defines an ink! event. A contract can define multiple such ink! events.
 Events can now be defined independently of contracts. The legacy syntax of events defined 
 within a contract module using `#[ink(event)]` continues to be valid.
 
-[See our section on Events](docs/basicscs/events.md) for a detailed description and examples.
+[See our section on Events](docs/basics/events.md) for a detailed description and examples.

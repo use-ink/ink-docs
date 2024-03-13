@@ -60,11 +60,11 @@ to run smart contracts targeting the EVM as well as the experimental `actors-pal
 execute smart contracts written in the actor style programming model.
 Over time the Substrate community might come up with yet other pallets for smart contracts execution.
 
-Please see our page [How it Works – Substrate](docs/introro/how-it-works.md) for more information.
+Please see our page [How it Works – Substrate](docs/intro/how-it-works.md) for more information.
 
 ### How to call other smart contracts on the same blockchain?
 
-See the [Cross-contract calling](docs/basicscs/cross-contract-calling.md) section.
+See the [Cross-contract calling](docs/basics/cross-contract-calling.md) section.
 
 ### How to call other smart contracts on another parachain?
 
@@ -88,11 +88,11 @@ possible future additions to eliminate re-entrancy attacks.
 
 ### How can my smart contract interact with the runtime?
 
-See the [Chain Extensions](docs/macros-attributeses/chain-extension.md) section for more information.
+See the [Chain Extensions](docs/macros-attributes/chain-extension.md) section for more information.
 
 ### How can I use ink! with a Substrate chain with a custom chain config?
 
-Please see [this section](docs/macros-attributeses/contract.md#env-impl-environment) in our documentation.
+Please see [this section](docs/macros-attributes/contract.md#env-impl-environment) in our documentation.
 
 Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/5.0.0/ink_macro/attr.contract.html#header-arguments)
 for the `#[ink(contract)]` macro. It allows you to specify your environment a la
@@ -169,12 +169,12 @@ Rust's standard library consists of three different layers:
 
 ### How do I hash a value?
 
-A number of crypto hashes are built into the [pallet-contracts](docs/introro/how-it-works.md) and
+A number of crypto hashes are built into the [pallet-contracts](docs/intro/how-it-works.md) and
 therefore very efficient to use. We currently support a handful of those, you
 can view the complete list [here](https://docs.rs/ink_env/5.0.0/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
-[Chain Extensions](docs/macros-attributeses/chain-extension.md)
+[Chain Extensions](docs/macros-attributes/chain-extension.md)
 or make a proposal to include it into the default set of the `pallet-contracts`.
 
 Using one of the built-in crypto hashes can be done as explained here:
@@ -301,7 +301,7 @@ contracts. Otherwise, undefined behavior can occur when uploading a contract
 with deviating types to a chain.
 
 Custom environment types can be specified in ink! via the `#[contract(env = MyCustomEnvironment)]`
-attribute. You can read more are about this [here](docs/macros-attributeses/contract.md#env-impl-environment).
+attribute. You can read more are about this [here](docs/macros-attributes/contract.md#env-impl-environment).
 
 When using `cargo-contract` to interact with a chain you might get a warning along those lines:
 

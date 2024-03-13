@@ -58,7 +58,7 @@ as possible.
 One limitation of the off-chain testing framework is that it
 currently only supports a `DefaultEnvironment`.
 
-See [here](docs/basicscs/environment.md) for an explanation of what an environment is.
+See [here](docs/basics/environment.md) for an explanation of what an environment is.
 :::
 
 ## How do you find out if your test requires the off-chain environment?
