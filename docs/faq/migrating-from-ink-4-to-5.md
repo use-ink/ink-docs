@@ -143,8 +143,9 @@ ensure that this version is enforced, otherwise users will get an error.
 * Stable Rust >= 1.75
 * `cargo-contract` >= v4.0
 * `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
-* `use-inkathon`: upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
-* ink!athon >= 0.7.0
+* [`use-inkathon`](https://github.com/scio-labs/use-inkathon): upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
+* [ink!athon](https://inkathon.xyz/) >= 0.7.0
+* [`typechain-polkadot`](https://github.com/Brushfam/typechain-polkadot) >= 1.2.0
 
 ## Important Changes
 
