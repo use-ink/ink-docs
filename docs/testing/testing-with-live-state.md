@@ -32,7 +32,7 @@ Pendulum and others.
 
 First you need a node that has produced some blocks with state. We'll
 use `substrate-contracts-node` for this purpose.
-[See here](docs/getting-started/running.md) for how to run it.
+[See here](../getting-started/running.md) for how to run it.
 
 You should get output similar to:
 

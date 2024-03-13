@@ -57,7 +57,7 @@ mod MyContractWithStringsAndArrays {
 
 ### Mapping
 
-ink! also provides a `Mapping` storage type. You can read more about it [here](docs/datastructures/mapping.md).
+ink! also provides a `Mapping` storage type. You can read more about it [here](../datastructures/mapping.md).
 
 ### Substrate Types
 
@@ -137,7 +137,7 @@ Every ink! smart contract must have a constructor which is run once when a contr
 
 Note that if you have a contract whose storage contains `Mapping'`s you will need to use
 `ink_lang::utils::initialize_contract` in your constructor. See the
-[`Mapping` documentation](docs/datastructures/mapping.md) for more details.
+[`Mapping` documentation](../datastructures/mapping.md) for more details.
 
 ```rust
 #[ink::contract]

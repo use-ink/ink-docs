@@ -76,7 +76,7 @@ is indeed a copy of some well-known contract code.
 
 There are two options when it comes to verification:
 * Local bare-bones verification using `cargo contract verify`
-* A third-party service [Sirato](docs/basics/verification/sirato.md)
+* A third-party service [Sirato](./sirato.md)
 
 `cargo contract verify` allows you to verify the given cargo project
 against a reference contract bundle. 
@@ -117,5 +117,5 @@ of all contracts to be visible. Specify a relative manifest path to the root con
 `cargo contract build --verifiable --manifest-path ink-project-a/Cargo.toml`
 :::
 
-You can find a Dockefile and further documentation on image usage 
+You can find a Dockerfile and further documentation on image usage 
 in [the `cargo-contract` repository](https://github.com/paritytech/cargo-contract/tree/master/build-image)

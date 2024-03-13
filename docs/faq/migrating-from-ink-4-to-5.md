@@ -233,7 +233,7 @@ pub fn handler(&self, msg: ProxyMessage) {
 In prior ink! versions, events were defined inside the `#[ink::contract]` macro.
 With ink! 5.0 we decouple events from the `#[ink::contract]` macro,
 allowing events to be shared between contracts.
-We've updated [the Events documentation page](docs/basics/events.md) accordingly.
+We've updated [the Events documentation page](../basics/events.md) accordingly.
 
 The syntax of defining events within the main `#[ink::contract]` macro will continue to work,
 no code changes in existing contracts are required to update to the new syntax.
@@ -384,7 +384,7 @@ With a `Vec` it's possible to e.g. introduce a security issue in your contract
 where an attacker can fill the `Vec`, making it very costly for other users to
 access it or write to it.
 
-You can find verbatim documentation on `StorageVec` [here](docs/datastructures/storagevec.md).
+You can find verbatim documentation on `StorageVec` [here](../datastructures/storagevec.md).
 The page explains when to use `StorageVec` and when not.
 The Rust docs can be found [here](https://docs.rs/ink/5.0.0/ink/storage/struct.StorageVec.html).
 
@@ -612,22 +612,22 @@ Example:
 With ink! 5.0 we introduce the possibility of running your tests against the
 fork (i.e. snapshot) of a live chain.
 
-See [this page](docs/testing/testing-with-live-state.md) in our documentation for details.
+See [this page](../testing/testing-with-live-state.md) in our documentation for details.
 
 ### New lints
 
 The new lints are:
-* [`no_main`](docs/linter/rules/no_main.md): enforces `no_main` for  contracts.
-* [`primitive_topic`](docs/linter/rules/primitive_topic.md): no number types are allowed as event topics.
-* [`storage_never_freed`](docs/linter/rules/storage_never_freed.md): what is written into storage can be removed again.
-* [`strict_balance_equality`](docs/linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
-* [`non_fallible_api`](docs/linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
+* [`no_main`](../linter/rules/no_main.md): enforces `no_main` for  contracts.
+* [`primitive_topic`](../linter/rules/primitive_topic.md): no number types are allowed as event topics.
+* [`storage_never_freed`](../linter/rules/storage_never_freed.md): what is written into storage can be removed again.
+* [`strict_balance_equality`](../linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
+* [`non_fallible_api`](../linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
 
 With `cargo-contract` 4.0 we added a couple new lints for common smart contract issues
 and best practices.
 You can run the linter via `cargo contract build --lint`.
 
-Details on each lint can be found [here](docs/linter/overview.md).
+Details on each lint can be found [here](../linter/overview.md).
 
 ### New `cargo-contract` commands
 
@@ -660,7 +660,7 @@ See the [DRink!](https://github.com/inkdevhub/drink) page for more details.
 ### Contract Verification
 
 We added a bunch of helpful documentation and `cargo-contract` commands for
-contract verification. [Read more here](docs/basics/verification/contract-verification.md).
+contract verification. [Read more here](../basics/verification/contract-verification.md).
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 

@@ -206,7 +206,7 @@ that you'll still need this contract to have been previously uploaded.
 :::note
 
 For a refresher on the difference between `upload` and `instantiate`
-[see here](docs/getting-started/deploying.md).
+[see here](../getting-started/deploying.md).
 
 :::
 

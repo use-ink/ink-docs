@@ -12,7 +12,7 @@ The [`substrate-contracts-node`](https://github.com/paritytech/substrate-contrac
 is a simple Substrate blockchain which is configured to include the `contracts` module.
 It's a comfortable option if you want to get a quickstart.
 
-[After successfully installing `substrate-contracts-node`](docs/getting-started/setup.md#installing-substrate-contracts-node),
+[After successfully installing `substrate-contracts-node`](./setup.md#installing-substrate-contracts-node),
 you can start a local development chain by running:
 
 ```bash

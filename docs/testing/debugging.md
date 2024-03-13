@@ -11,9 +11,9 @@ hide_title: true
 There are three ways to debug your ink! contract currently:
 
 * You can write tests using one of the mechanisms described on the
-  [Contract Testing](docs/testing/overview.md) page.
+  [Contract Testing](./overview.md) page.
 * You can interact with your contract via a UI or command-line. This is
-  described on the [Call Your Contract](docs/getting-started/calling.md) page.
+  described on the [Call Your Contract](../getting-started/calling.md) page.
 * You can print debug statements in your contract. Those will appear
   on the Substrate node's `stdout`. This is described on this page.
 
