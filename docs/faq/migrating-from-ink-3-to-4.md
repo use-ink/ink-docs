@@ -373,7 +373,7 @@ crate-type = [
 ]
 ```
 
-However, with with [cargo-contract#929](https://github.com/paritytech/cargo-contract/pull/929) we changed this behavior to:
+However, with [cargo-contract#929](https://github.com/paritytech/cargo-contract/pull/929) we changed this behavior to:
 - Use the contract name by default, removing the need for the `name` field
 - Compile contracts as `rlib`s by default, and automatically changing to `cdylib` as
   needed

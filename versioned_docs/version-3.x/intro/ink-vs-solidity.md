@@ -664,7 +664,7 @@ Then, In the main contract's Cargo.toml, import the contract that will be cross-
 erc20 = { path = "erc20", default-features = false, features = ["ink-as-dependency"] }
 ```
 
-And make sure to add it to the `std` field of the the .toml file.
+And make sure to add it to the `std` field of the .toml file.
 
 ```rust
 [features]
@@ -827,7 +827,7 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 
 - Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
 - To run ink! tests, do _not_ use `cargo +nightly contract test`. Use `cargo +nightly test`. Add the `--nocapture` flag for debug prints to show. See [here](https://substrate.stackexchange.com/questions/3197/how-to-understand-which-test-failed-in-ink) for more info why.
-- From the contract module, make sure to make the the contract struct and anything else that is going to be used in the unit tests public. For example:
+- From the contract module, make sure to make the contract struct and anything else that is going to be used in the unit tests public. For example:
 
 ```rust
 // top of file
