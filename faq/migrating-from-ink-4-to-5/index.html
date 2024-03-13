@@ -6,7 +6,7 @@
 <title data-rh="true">Migrating from ink! 4.x to 5.0 | ink! documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://use.ink/faq/migrating-from-ink-4-to-5"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Migrating from ink! 4.x to 5.0 | ink! documentation"><meta data-rh="true" name="description" content="We&#x27;ve made a couple of breaking changes from ink! 4.x to ink! 5.0."><meta data-rh="true" property="og:description" content="We&#x27;ve made a couple of breaking changes from ink! 4.x to ink! 5.0."><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://use.ink/faq/migrating-from-ink-4-to-5"><link data-rh="true" rel="alternate" href="https://use.ink/faq/migrating-from-ink-4-to-5" hreflang="en"><link data-rh="true" rel="alternate" href="https://use.ink/faq/migrating-from-ink-4-to-5" hreflang="x-default"><link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.606c4e4a.css">
-<script src="/assets/js/runtime~main.743f24f8.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.cffc1494.js" defer="defer"></script>
 <script src="/assets/js/main.cbf8c657.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -73,8 +73,9 @@ ensure that this version is enforced, otherwise users will get an error.</p>
 <li>Stable Rust &gt;= 1.75</li>
 <li><code>cargo-contract</code> &gt;= v4.0</li>
 <li><code>polkadot-js/api</code> and <code>polkadot-js/api-contract</code> &gt;= 10.12.1</li>
-<li><code>use-inkathon</code>: upgrade the <code>polkadot-js/api</code> and <code>polkadot-js/api-contract</code> dependencies in your project to &gt;= 10.12.1</li>
-<li>ink!athon &gt;= 0.7.0</li>
+<li><a href="https://github.com/scio-labs/use-inkathon" target="_blank" rel="noopener noreferrer"><code>use-inkathon</code></a>: upgrade the <code>polkadot-js/api</code> and <code>polkadot-js/api-contract</code> dependencies in your project to &gt;= 10.12.1</li>
+<li><a href="https://inkathon.xyz/" target="_blank" rel="noopener noreferrer">ink!athon</a> &gt;= 0.7.0</li>
+<li><a href="https://github.com/Brushfam/typechain-polkadot" target="_blank" rel="noopener noreferrer"><code>typechain-polkadot</code></a> &gt;= 1.2.0</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="important-changes">Important Changes<a href="#important-changes" class="hash-link" aria-label="Direct link to Important Changes" title="Direct link to Important Changes">​</a></h2>
 <p>We had to introduce a number of changes that require you to manually upgrade
