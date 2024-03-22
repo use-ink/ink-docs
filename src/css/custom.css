@@ -321,3 +321,14 @@ features
     display: initial;
   }
 }
+
+.oldVersion {
+  color: var(--ifm-color-primary);
+}
+
+.attention {
+  float: left;
+  width: 15px;
+  color: var(--ifm-color-primary);
+  fill: var(--ifm-color-primary);
+}
