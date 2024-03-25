@@ -84,14 +84,14 @@ module.exports = {
               path: '',
               banner: 'none',
             },
-            '3.x': {
-              label: '3.x',
-              path: '3.x',
-              banner: 'none',
-            },
             '4.x': {
               label: '4.x',
               path: '4.x',
+              banner: 'none',
+            },
+            '3.x': {
+              label: '3.x',
+              path: '3.x',
               banner: 'none',
             },
           },
