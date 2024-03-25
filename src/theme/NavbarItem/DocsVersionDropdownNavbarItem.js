@@ -20,9 +20,9 @@ export default function DocsVersionDropdownNavbarItemWrapper(props) {
     if (isViewingOutdatedVersion) {
         return (
             <>
-                <div className={"navbar__item oldVersion"}>
-                    <div className={"attention"}>
-                        <svg xmlns={"http://www.w3.org/2000/svg"} viewBox={"0 0 512 512"}><path d={d}></path></svg>
+                <div className={'navbar__item oldVersion'}>
+                    <div className={'attention'}>
+                        <svg xmlns={'http://www.w3.org/2000/svg'} viewBox={'0 0 512 512'}><path d={d}></path></svg>
                     </div>
                     You are viewing the documentation for an older version of ink!.
                 </div>
