@@ -47,11 +47,26 @@ Options:
   -V, --version  Print version information
 ```
 
-### Installation
+## Installing `cargo-contract`
 
-Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/paritytech/cargo-contract#installation).
+:::warning Installation requires [Rust](https://www.rust-lang.org/) and a C++ compiler with C++17 support. 
+Compilers like gcc v7.1+, clang v5.0+, and Visual Studio 2019+ should work.:::
 
-If everything worked, `cargo contract --help` should show you the above list of available commands.
+-   Step 1: `rustup component add rust-src`.
+
+-   Step 2: `cargo install --force --locked cargo-contract`.
+
+-   Step 3: Install `dylint` for linting.
+
+    -   `cargo install cargo-dylint dylint-link` (Linux / Win)
+    -   `brew install openssl` (MacOS) 
+
+-   Step 4: (**Optional**) Install [Docker Engine](https://docs.docker.com/engine/install)
+    to be able to produce verifiable builds.
+
+Test the installation by running `cargo contract --help` to see the list of available commands.
+
+If you encounter any problems, refer to the [`cargo-contract`](https://github.com/paritytech/cargo-contract#installation) repository.
 
 ## Installing `substrate-contracts-node`
 
