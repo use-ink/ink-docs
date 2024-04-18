@@ -11,12 +11,12 @@ hide_title: true
 XCM allows for cross-chain communications, enabling ink! smart contract to interact with other chains.
 You can learn more about XCM in the [Polkadot Wiki](https://wiki.polkadot.network/docs/learn/xcm).
 
-As of version 5.1.0, two new host functions, `xcm_execute` and `xcm_send`, have been introduced.
-These functions enable the straightforward sending and execution of XCM programs from within ink! contracts.
+As of version 5.1.0, two new host functions, [`xcm_execute`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) and [`xcm_send`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_send), have been introduced.
+These functions enable sending and executing XCM from within ink! contracts.
 
 **Note:**
 
-In versions of ink! prior to 5.1.0, the `call_runtime` host function or a custom chain extension can be used to send or execute an XCM from ink! contracts.
+In versions of ink! prior to 5.1.0, the [call_runtime](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.call_runtime) host function or a custom chain extension can be used to send or execute an XCM from ink! contracts.
 
 # xcm_execute
 
