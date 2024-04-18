@@ -34,15 +34,15 @@ pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
         id: *self.env().caller().as_ref(),
     }.into();
 
-    // Create an XCM message
+    // Create an XCM message.
     let message: Xcm<()> = Xcm::builder_unsafe()
 
-     // Withdraw the relay's native token derivative from the contract's account
+     // Withdraw the relay's native token derivative from the contract's account.
      .withdraw_asset((Parent, amount))
 
-    // initiate_reserve_withdraw instruction takes the derivative token from the holding register and burns it,
-    // then send the nested XCM to the reserve in this example, the relay chain.
-    // upon receiving the XCM the reserve will withdraw the asset from our chain's sovereign account, and deposit on the caller's account.
+    // The initiate_reserve_withdraw instruction takes the derivative token from the holding register and burns it.
+    // It then send the nested XCM to the reserve in this example, the relay chain.
+    // Upon receiving the XCM, the reserve will withdraw the asset from our chain's sovereign account, and deposit on the caller's account.
     .initiate_reserve_withdraw(
         All,
         Parent,
@@ -60,12 +60,14 @@ pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
 
 # xcm_send
 
-The [`xcm_send`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) function enables sending XCM to be executed by another chain. Messages sent originate from the contract's account. Consequently, the receiving chain will process the message using the contract's sovereign account as the origin.
+The [`xcm_send`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) function enables sending XCM to be executed by another chain.
+Messages sent originate from the contract's account. Consequently, the receiving chain will process the message using the contract's sovereign account as the origin.
 
-The following example demonstrates how to use `xcm_send`. In this example, we send an XCM to the relay chain. This XCM will execute on the relay chain using the contract's sovereign account as the origin of the call. It will then transfer, some `value` from this account to the caller's account.
+The following example demonstrates how to use `xcm_send`. In this example, we send an XCM to the relay chain.
+This XCM will execute using the contract's sovereign account as the origin of the call.
+It will then transfer, some `value` from this account to the caller's account.
 
 ```rust
-/// A simple message, that will use the contract as a remote faucet to send funds to the caller on the relay chain.
 #[ink(message)]
 pub fn send_funds(&mut self, value: Balance, fee: Balance) -> Result<(), RuntimeError> {
     // The destination of the XCM message. Assuming we run the contract on a parachain, the parent will be the relay chain.
