@@ -45,7 +45,7 @@ The purpose of each file is:
 It's big and would take up too much space and costs.
 This file is used by e.g. a dApp user interface to know how to communicate with the on-chain contract.
 * `flipper.contract`: Combines both the contract's bytecode and the metadata. This file
-is used when you are using a Developer UI like [Contracts UI](https://contracts-ui.substrate.io/).
+is used when you are using a Developer UI like [Contracts UI](https://ui.use.ink).
 
 Let's take a look at the structure of the `flipper.json`:
 

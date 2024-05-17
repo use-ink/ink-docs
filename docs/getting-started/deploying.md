@@ -37,7 +37,7 @@ and waste space on the blockchain.
 Here we will upload the contract code and instantiate one copy of the contract on the blockchain
 (which is usually why we upload the contract code in the first place):
 
-- Go to https://contracts-ui.substrate.io/
+- Go to https://ui.use.ink
 - Click the **Add New Contract** button in the sidebar.
 - Click the **Upload New Contract Code** button in the Add New Contract page.
 - Choose an **Instantiation account** (e.g. ALICE).
