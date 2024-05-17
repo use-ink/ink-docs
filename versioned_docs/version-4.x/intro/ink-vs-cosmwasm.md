@@ -65,7 +65,7 @@ You can read more about ink! unit tests [here](../basics/testing.md#unit-tests).
 
 CosmWasm uses [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) as its main
 compiler, while ink! uses [cargo-contract](https://github.com/use-ink/cargo-contract).
-`cargo-contract` is developed by Parity specifically for building, testing, and deploying
+`cargo-contract` is developed specifically for building, testing, and deploying
 ink! contracts.
 
 # Local Development Network
