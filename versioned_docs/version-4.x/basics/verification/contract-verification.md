@@ -118,4 +118,4 @@ of all contracts to be visible. Specify a relative manifest path to the root con
 :::
 
 You can find a Dockefile and further documentation on image usage 
-in [the `cargo-contract` repository](https://github.com/paritytech/cargo-contract/tree/master/build-image)
+in [the `cargo-contract` repository](https://github.com/use-ink/cargo-contract/tree/master/build-image)

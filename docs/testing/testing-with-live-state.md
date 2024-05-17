@@ -51,7 +51,7 @@ $ substrate-contracts-node
 Note that the node is running on port 9944.
 
 Next, we'll create some state and produce a bunch of blocks. You can do this by deploying [our
-`flipper` example](https://github.com/paritytech/ink-examples/tree/main/flipper):
+`flipper` example](https://github.com/use-ink/ink-examples/tree/main/flipper):
 
 ```
 cd ink-examples/flipper/

@@ -17,10 +17,10 @@ A pre-requisite for compiling smart contracts is to have a stable Rust version a
 
 ## ink! CLI
 
-The first tool we will be installing is [`cargo-contract`](https://github.com/paritytech/cargo-contract),
+The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
 a CLI tool for helping setting up and managing WebAssembly smart contracts written with ink!.
 
-You can find it [here on GitHub](https://github.com/paritytech/cargo-contract)
+You can find it [here on GitHub](https://github.com/use-ink/cargo-contract)
 and [here on crates.io](https://crates.io/crates/cargo-contract).
 
 The tool has a number of handy capabilities:
@@ -49,7 +49,7 @@ Options:
 
 ### Installation
 
-Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/paritytech/cargo-contract#installation).
+Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/use-ink/cargo-contract#installation).
 
 If everything worked, `cargo contract --help` should show you the above list of available commands.
 

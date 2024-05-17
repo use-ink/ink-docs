@@ -85,7 +85,7 @@ It may _optionally_ include the following keys:
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127).
+see [here](https://github.com/use-ink/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L127).
 
 :::
 
@@ -117,7 +117,7 @@ It can _optionally_ include the following keys:
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395).
+see [here](https://github.com/use-ink/cargo-contract/blob/45fbc0b43ac9e676107ad9a03f8d7a0a01d84c50/metadata/lib.rs#L395).
 
 :::
 
@@ -154,7 +154,7 @@ The ink! metadata consists of the following **required** sections
 :::info
 
 If you're interested in the code reference from `ink!`
-see [here](https://github.com/paritytech/ink/blob/80d302eb9b9cddb726200a9a86c71ae344d1b042/crates/metadata/src/lib.rs#L91).
+see [here](https://github.com/use-ink/ink/blob/80d302eb9b9cddb726200a9a86c71ae344d1b042/crates/metadata/src/lib.rs#L91).
 
 :::
 

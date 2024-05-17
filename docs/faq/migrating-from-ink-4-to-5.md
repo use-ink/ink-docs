@@ -13,7 +13,7 @@ This release addresses the majority of issues raised in [the OpenZeppelin
 security review](https://blog.openzeppelin.com/security-review-ink-cargo-contract).
 In particular, we addressed the proxy selector clashing attack.
 
-You can find the full changelog of the 5.0 release [here](https://github.com/paritytech/ink/blob/master/CHANGELOG.md#version-500).
+You can find the full changelog of the 5.0 release [here](https://github.com/use-ink/ink/blob/master/CHANGELOG.md#version-500).
 
 :::caution
 This migration guide only considers your code base! Not your storage data!
@@ -22,7 +22,7 @@ If you have an existing contract on-chain you might not be able to just
 upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 The relevant change that you have to take into consideration is
-[#1897](https://github.com/paritytech/ink/pull/1897).
+[#1897](https://github.com/use-ink/ink/pull/1897).
 A data migration may be required when your contract reads data from storage and truncates
 the data when decoding it.
 We've described this in more detail below, in the section
@@ -155,7 +155,7 @@ your contract from 4.x to 5.0. The steps to do this are explained in this sectio
 ### `scale` dependencies were moved to `ink` entrance crate
 
 This change was done to ensure that you always use the correct scale dependency versions
-with an ink! version. The relevant PR is [#1890](https://github.com/paritytech/ink/pull/1890).
+with an ink! version. The relevant PR is [#1890](https://github.com/use-ink/ink/pull/1890).
 
 We removed the requirement for contracts to have direct dependencies on `parity-scale-codec`
 and `scale-info` in their `Cargo.toml`.
@@ -193,7 +193,7 @@ we've tightened the usage of wildcard selectors.
 With ink! 5.0 we allow only exactly one other contract message with a well-known reserved
 selector to be defined. In ink! 4.x, more than one other message was allowed.
 
-Read more in [the PR](https://github.com/paritytech/ink/pull/1708) and [IIP-2: Limit contracts with a wildcard selector to one other message](https://github.com/paritytech/ink/issues/1676).
+Read more in [the PR](https://github.com/use-ink/ink/pull/1708) and [IIP-2: Limit contracts with a wildcard selector to one other message](https://github.com/use-ink/ink/issues/1676).
 
 The proposal is to restrict contracts with a wildcard selector to only have one other message
 with a reserved/well-known selector. This guarantees that there are no selector clashes,
@@ -249,12 +249,12 @@ The topic calculation changed in general, so also for events that are declared i
 
 This is a breaking change for any client code which uses topics to filter events.
 
-Please see [#1827](https://github.com/paritytech/ink/pull/1827) for details.
+Please see [#1827](https://github.com/use-ink/ink/pull/1827) for details.
 :::
 
 #### Custom signature topics
 
-In [#2031](https://github.com/paritytech/ink/pull/2031) we introduced an
+In [#2031](https://github.com/use-ink/ink/pull/2031) we introduced an
 optional attribute `signature_topic` to the `#[ink::event]` and `#[ink(event)]` macros.
 It can be used to specify the signature topic for a specific event manually, instead of the
 automatic topic calculation.
@@ -271,7 +271,7 @@ See [this](https://doc.rust-lang.org/book/ch03-02-data-types.html#scalar-types) 
 of the Rust Programming Language for a thorough explanation on how to do safe arithmetic
 operations in Rust.
 
-This change was introduced in [#1831](https://github.com/paritytech/ink/pull/1831).
+This change was introduced in [#1831](https://github.com/use-ink/ink/pull/1831).
 
 ### Fail when decoding from storage and not all bytes consumed
 
@@ -296,13 +296,13 @@ let _loaded_value: Option<u8> = ink::env::get_contract_storage(&key)
     .map_err(|e| format!("get_contract_storage failed: {:?}", e))?;
 ```
 
-We introduced this change in [#1897](https://github.com/paritytech/ink/pull/1897).
+We introduced this change in [#1897](https://github.com/use-ink/ink/pull/1897).
 
 ### [ink_e2e] API Changes
 
 #### Builder API
 
-In [#1917](https://github.com/paritytech/ink/pull/1917) we reworked the E2E API with
+In [#1917](https://github.com/use-ink/ink/pull/1917) we reworked the E2E API with
 a builder API.
 `instantiate`, `call` and `upload` will now return a builder instance. You can
 specify optional arguments with builder methods, and submit the call for on-chain
@@ -323,7 +323,7 @@ assert!(matches!(get_res.return_value(), false));
 
 #### Extra gas margin
 
-As part of [#1917](https://github.com/paritytech/ink/pull/1917) we added the possibility
+As part of [#1917](https://github.com/use-ink/ink/pull/1917) we added the possibility
 to specify a gas margin (in percentage) as part of the on-chain call.
 
 There are cases when gas estimates may not necessarily be accurate enough due to the complexity
@@ -350,17 +350,17 @@ let first_insert = ink_e2e::build_message::<MappingsRef>(contract_id)
     .call().insert_balance(1_000));
 ```
 
-See [#1782](https://github.com/paritytech/ink/pull/1782) for more details.
+See [#1782](https://github.com/use-ink/ink/pull/1782) for more details.
 
 #### Removed `additional_contracts` parameter
 
-`additional_contracts` parameter which is part of `#[ink_e2e:test]` has been removed in [#2098](https://github.com/paritytech/ink/pull/2098).
+`additional_contracts` parameter which is part of `#[ink_e2e:test]` has been removed in [#2098](https://github.com/use-ink/ink/pull/2098).
 This information is now implied from the contract's manifest.
 Simply, add the other contract as dependency with the `ink-as-a-dependency` feature enabled.
 The test will detect the contract and build it as part of the test.
 
 ####
-In [#2076](https://github.com/paritytech/ink/pull/2076), we've added a new
+In [#2076](https://github.com/use-ink/ink/pull/2076), we've added a new
 [`remove_code`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/trait.ContractsBackend.html#method.remove_code)
 function to the E2E API:
 
@@ -381,7 +381,7 @@ This allows to retrieve elements from a vector and grow it without
 having to load and push all elements.
 For `Vec`, the cost of reading or writing a single element grows linearly corresponding
 to the number of elements in the vector (its length). Additionally, the maximum capacity
-of the whole vector is limited by the size of [ink!'s static buffer](https://github.com/paritytech/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
+of the whole vector is limited by the size of [ink!'s static buffer](https://github.com/use-ink/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
 used during ABI encoding and decoding (default 16 KiB).
 `StorageVec` on the other hand allows to access each element individually.
 
@@ -395,11 +395,11 @@ The Rust docs can be found [here](https://docs.rs/ink/5.0.0/ink/storage/struct.S
 
 ### Fallible methods for `Lazy`, `Mapping`, `StorageVec`
 
-In [#1910](https://github.com/paritytech/ink/pull/1910) we added `try_*` methods for
+In [#1910](https://github.com/use-ink/ink/pull/1910) we added `try_*` methods for
 reading and writing `Lazy` and `Mapping` values to and from storage.
 The try methods correspond to `Mapping::{insert, get, take}`, `Lazy::{set, get}`.
 For `StorageVec::{peek, get, set, pop, push}` we added `try_*` methods in
-[#1995](https://github.com/paritytech/ink/pull/1995).
+[#1995](https://github.com/use-ink/ink/pull/1995).
 
 Please see the individual Rust docs for these new methods:
 
@@ -408,7 +408,7 @@ Please see the individual Rust docs for these new methods:
 * [`Mapping`](https://docs.rs/ink/5.0.0/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
 
 You should use the `try_*` methods for dynamically sized values, unless you made sure
-otherwise they will fit into the static buffer. The [static buffer in ink!](https://github.com/paritytech/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
+otherwise they will fit into the static buffer. The [static buffer in ink!](https://github.com/use-ink/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
 is 16 kB by default.
 
 We added a lint to `cargo-contract` 4.0 that will detect
@@ -417,7 +417,7 @@ potentially unsafe uses of methods for which there are safer alternatives:
 
 ### Chain Extension API changed + Support for multiple chain extensions
 
-With [#1958](https://github.com/paritytech/ink/pull/1958) we added support for interacting with
+With [#1958](https://github.com/use-ink/ink/pull/1958) we added support for interacting with
 multiple chain extensions from ink!. This is a breaking change.
 
 You can now e.g. have a contract that utilizes a PSP22 chain extension together with one
@@ -458,7 +458,7 @@ A migration in most cases should just be to rename `#[ink(extension = …)]` to
 
 We added an example contract that illustrates the usage of multiple chain extensions
 in one contract:
-[`combined-extension`](https://github.com/paritytech/ink-examples/tree/main/combined-extension).
+[`combined-extension`](https://github.com/use-ink/ink-examples/tree/main/combined-extension).
 
 ### `call` and `instantiate` v2
 
@@ -518,7 +518,7 @@ erc20_builder.total_supply().call_v1().invoke()
 
 #### Events 2.0
 
-See [#1827](https://github.com/paritytech/ink/pull/1827) for the full details.
+See [#1827](https://github.com/use-ink/ink/pull/1827) for the full details.
 Two fields werere added to the objects in the `events` array:
 `module_path` and `signature_topic`.
 
@@ -558,7 +558,7 @@ ink! 5.0:
 
 #### New field: `staticBufferSize`
 
-With [#1880](https://github.com/paritytech/ink/pull/1880) we added a `"staticBufferSize"` field to
+With [#1880](https://github.com/use-ink/ink/pull/1880) we added a `"staticBufferSize"` field to
 the metadata file. The unit is bytes.
 
 See the section "[Buffer size can be customized](#buffer-size-can-be-customized)" on this page for
@@ -580,7 +580,7 @@ and SCALE encoding (little endian) is now used for the metadata storage keys.
 This is a breaking change, and client tools that use the storage keys from contract
 metadata will need to adapt accordingly.
 
-Please see: [#2048](https://github.com/paritytech/ink/pull/2048) for details.
+Please see: [#2048](https://github.com/use-ink/ink/pull/2048) for details.
 
 Example:
 ```diff
@@ -640,11 +640,11 @@ We added a bunch of helpful new commands to `cargo-contract` 4.0.
 For all these commands you can also supply the `--help` cli flag to get more
 info (e.g. `cargo contract storage --help`).
 
-* `cargo contract verify`: contract verification ([#1404](https://github.com/paritytech/cargo-contract/pull/1404), [#1306](https://github.com/paritytech/cargo-contract/pull/1306))
-* `cargo contract info` now outputs the language of the deployed contract, using a heuristic ([#1329](https://github.com/paritytech/cargo-contract/pull/1329))
-* `cargo contract info --binary`: outputs the on-chain Wasm of the contract ([#1311](https://github.com/paritytech/cargo-contract/pull/1311/))
-* `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/paritytech/cargo-contract/pull/1319))
-* `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/paritytech/cargo-contract/pull/1395), [#1414](https://github.com/paritytech/cargo-contract/pull/1414))
+* `cargo contract verify`: contract verification ([#1404](https://github.com/use-ink/cargo-contract/pull/1404), [#1306](https://github.com/use-ink/cargo-contract/pull/1306))
+* `cargo contract info` now outputs the language of the deployed contract, using a heuristic ([#1329](https://github.com/use-ink/cargo-contract/pull/1329))
+* `cargo contract info --binary`: outputs the on-chain Wasm of the contract ([#1311](https://github.com/use-ink/cargo-contract/pull/1311/))
+* `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/use-ink/cargo-contract/pull/1319))
+* `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/use-ink/cargo-contract/pull/1395), [#1414](https://github.com/use-ink/cargo-contract/pull/1414))
 
 <img src="/img/cargo-contract-storage.png"  /><br/>
 <img src="/img/cargo-contract-info.png"  />
@@ -670,7 +670,7 @@ contract verification. [Read more here](../basics/verification/contract-verifica
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
-See [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts)
+See [here](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts)
 for the contract example.
 
 ### Upgradeable Contracts: `delegate_dependency`
@@ -684,7 +684,7 @@ from the current contract.
 Having a delegate dependency allows contracts to safely delegate to another `code_hash` with
 the guarantee that it cannot be deleted.
 
-We've updated the [`upgradeable-contracts/delegator`](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts#delegator)
+We've updated the [`upgradeable-contracts/delegator`](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts#delegator)
 example to demonstrate these new calls.
 For that purpose we've also added a [`remove_code`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/trait.ContractsBackend.html#method.remove_code)
 function to the E2E API.
@@ -717,11 +717,11 @@ pub fn set_code(&mut self, code_hash: Hash) {
 }
 ```
 
-More details in [#1906](https://github.com/paritytech/ink/pull/1906).
+More details in [#1906](https://github.com/use-ink/ink/pull/1906).
 
 ### Buffer size can be customized
 
-With [#1869](https://github.com/paritytech/ink/pull/1869) we added a possibility
+With [#1869](https://github.com/use-ink/ink/pull/1869) we added a possibility
 of setting a custom static buffer size for ink! to use.
 
 ink! uses a static buffer for interacting with pallet-contracts, i.e. to move data
@@ -736,10 +736,10 @@ computation contracts might require a larger buffer size.
 
 ### Stabilized `call_runtime`
 
-We stabilized `call_runtime` in [#1749](https://github.com/paritytech/ink/pull/1749).
+We stabilized `call_runtime` in [#1749](https://github.com/use-ink/ink/pull/1749).
 It can be used to call a runtime dispatchable from an ink! contract.
 
 You can find a contract example and a comparison with chain extensions
-[here](https://github.com/paritytech/ink-examples/tree/main/call-runtime).
+[here](https://github.com/use-ink/ink-examples/tree/main/call-runtime).
 We've added an example of how to end-to-end test
-`call_runtime` [here](https://github.com/paritytech/ink-examples/tree/main/e2e-call-runtime).
+`call_runtime` [here](https://github.com/use-ink/ink-examples/tree/main/e2e-call-runtime).

@@ -84,7 +84,7 @@ This can be undesirable:
 The cost of reading or writing a _single_ element grows linearly
 corresponding to the number of elements in the vector (its length).
 Additionally, the maximum capacity of the _whole_ vector is limited by
-the size of [ink!'s static buffer](https://github.com/paritytech/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
+the size of [ink!'s static buffer](https://github.com/use-ink/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
 used during ABI encoding and decoding (default 16 KiB).
 
 `StorageVec` on the other hand allows to access each element individually.

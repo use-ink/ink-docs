@@ -32,7 +32,7 @@ link! is a URL shortener dApp. It consists of a frontend and an ink! contract.
 
 link! uses [`polkadot-js/api`](https://github.com/polkadot-js/api) under the hood.
 The entire source code (contract + frontend) is located here:
-[https://github.com/paritytech/link](https://github.com/paritytech/link).
+[https://github.com/use-ink/link](https://github.com/use-ink/link).
 
 You can view an online demo of the dApp here: [https://tiny.ink](https://tiny.ink).
 

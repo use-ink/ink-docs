@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
           </li>
           <li>
             <a
-              href="https://github.com/paritytech/ink-docs/"
+              href="https://github.com/use-ink/ink-docs/"
               target="_blank"
               rel="noreferrer"
               className="hover:opacity-80 transition-opacity duration-75 p-0 flex items-center"

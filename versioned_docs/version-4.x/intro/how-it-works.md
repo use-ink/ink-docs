@@ -28,7 +28,7 @@ We intentionally designed `pallet-contracts` in a way that it is decoupled from 
 
 For contract developers this means they can use ink! for writing smart contracts, but can also decide on other languages. Right now three languages to choose from exist:
 
-* [Parity's ink!](https://github.com/paritytech/ink) for Rust.
+* [Parity's ink!](https://github.com/use-ink/ink) for Rust.
 * [ask!](https://github.com/patractlabs/ask) for AssemblyScript.
 * The [Solang](https://github.com/hyperledger-labs/solang) compiler for Solidity.
 
