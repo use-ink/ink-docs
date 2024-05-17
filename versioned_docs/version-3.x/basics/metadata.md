@@ -109,7 +109,7 @@ It can _optionally_ include the following keys:
   "name": "flipper",
   "version": "3.1.0",
   "authors": [
-    "Parity Technologies <admin@parity.io>"
+    "Use Ink <ink@use.ink>"
   ]
 }
 ```

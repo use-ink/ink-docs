@@ -7,7 +7,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
-  organizationName: 'paritytech',
+  organizationName: 'Use Ink',
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [

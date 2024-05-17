@@ -55,7 +55,7 @@ It should contain a key-value `image` after the `contract` information:
     "name": "flipper",
     "version": "4.3.0",
     "authors": [
-      "Parity Technologies <admin@parity.io>"
+      "Use Ink <ink@use.ink>"
     ]
   },
   "image": "paritytech/contracts-verifiable:4.0.0-alpha",
