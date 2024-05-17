@@ -7,7 +7,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
-  organizationName: 'Use Ink',
+  organizationName: 'use-ink',
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [
