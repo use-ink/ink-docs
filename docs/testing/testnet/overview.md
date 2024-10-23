@@ -38,24 +38,5 @@ In case you are using the `polkadot-js` frontend, you can see them under
 
 ### (3) Deploy Your Contract
 
-Once you have `PAS` on Paseo you can deploy a contract _nearly_ as you would with
-a local developer node.
-The only difference is that you can't use pre-endowed accounts like `Alice` or `Bob`,
-you have to use the one you generated instead.
-
-<img src="/img/deployment-acc.png" alt="Deploy a smart contract on Rococo/Polkadot" />
-
-You can also deploy your contract from the command-line via `cargo-contract`.
-Make sure you are in the folder of your contract and that it has been
-built recently. Then execute:
-
-```bash
-cargo contract upload --suri "your twelve or twenty-four words"
-cargo contract instantiate --suri … --constructor new --args true
-```
-
-`new` in this case would be a constructor method exposed by the contract,
-`--args` would be any arguments the constructor expects.
-
-See [the `cargo-contract` docs](https://github.com/paritytech/cargo-contract/blob/master/crates/extrinsics/README.md#commands)
-for a more detailed documentation.
+Once you have `PAS` on Paseo you can deploy by following the instructions in the Pop Docs [here](https://learn.onpop.io/contracts/guides/deploy-on-pop-testnet#:~:text=Transfer%20from%20Paseo%20Relay%20Network%20to%20Pop%20Testnet).
+The only difference is that instead of using the `Alice` account you will use the one you generated.

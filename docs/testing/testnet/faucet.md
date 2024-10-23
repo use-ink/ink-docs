@@ -7,7 +7,7 @@ hide_title: true
 <!-- import Faucet from "./Faucet"; -->
 
 
-There is a faucet for [Paseo] (https://faucet.polkadot.io/).
+There is a faucet for [Paseo](https://faucet.polkadot.io/).
 By requesting funds from the link above you will receive `PAS`
 tokens to your account on this parachain.
 
