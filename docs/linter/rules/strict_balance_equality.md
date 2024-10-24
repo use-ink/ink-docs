@@ -10,7 +10,7 @@ Looks for strict equalities with balance in ink! contracts.
 ## Why is this bad?
 The problem with strict balance equality is that it is always possible to forcibly send
 tokens to a contract. For example, using
-[`terminate_contract`](https://paritytech.github.io/ink/ink_env/fn.terminate_contract.html).
+[`terminate_contract`](https://use-ink.github.io/ink/ink_env/fn.terminate_contract.html).
 In such a case, the condition involving the contract balance will work incorrectly, what
 may lead to security issues, including DoS attacks and draining contract's gas.
 

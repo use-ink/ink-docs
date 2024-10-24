@@ -314,7 +314,7 @@ Some useful properties:
 
 Following [Substrate's runtime upgradeability](https://docs.substrate.io/maintain/runtime-upgrades/) 
 philosophy, ink! also supports an easy way to update your contract code via the special function 
-[`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html).
+[`set_code_hash()`](https://use-ink.github.io/ink/ink_env/fn.set_code_hash.html).
 
 ### Properties
 
