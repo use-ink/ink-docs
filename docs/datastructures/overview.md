@@ -19,7 +19,7 @@ As a core ingredient to the ink! language, its main advantage is being simple an
 lightweight: It favors being efficient in terms of gas costs and code size
 over providing a lot of high-level functionality found in other implementations
 like the `ink::prelude::collections::HashMap` type.
-Overall, the ink! `Mapping` will be solid choice for most contracts. Moreover, smart
+Overall, the ink! `Mapping` will be a solid choice for most contracts. Moreover, smart
 contracts developers can implement advanced features themselves.
 
 `Lazy` is a wrapper type that can be used over any other storage compatible type.
