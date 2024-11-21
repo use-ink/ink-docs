@@ -10,7 +10,7 @@ slug: /cargo-contract-cli
 
 `cargo-contract` is a CLI tool which helps you set up and manage
 WebAssembly smart contracts written with ink!.
-You can find it [here on GitHub](https://github.com/paritytech/cargo-contract)
+You can find it [here on GitHub](https://github.com/use-ink/cargo-contract)
 and here on [crates.io](https://crates.io/crates/cargo-contract).
 
 The tool has a number of handy capabilities:

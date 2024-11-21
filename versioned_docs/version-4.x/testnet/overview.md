@@ -77,5 +77,5 @@ cargo contract instantiate --suri … --constructor new --args true
 `new` in this case would be a constructor method exposed by the contract,
 `--args` would be any arguments the constructor expects.
 
-See [the `cargo-contract` docs](https://github.com/paritytech/cargo-contract/blob/master/crates/extrinsics/README.md#commands)
+See [the `cargo-contract` docs](https://github.com/use-ink/cargo-contract/blob/master/crates/extrinsics/README.md#commands)
 for a more detailed documentation.

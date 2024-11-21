@@ -12,7 +12,7 @@ A pre-requisite for compiling smart contracts is to have Rust and Cargo installe
 
 ## ink! CLI
 
-The first tool we will be installing is [`cargo-contract`](https://github.com/paritytech/cargo-contract), a CLI tool for helping setting up and managing WebAssembly smart contracts written with ink!.
+The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract), a CLI tool for helping setting up and managing WebAssembly smart contracts written with ink!.
 
 As a pre-requisite for the tool you need to install the [binaryen](https://github.com/WebAssembly/binaryen) package, which is used to optimize the WebAssembly bytecode of the contract.
 

@@ -87,7 +87,7 @@ It may _optionally_ include the following keys:
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L157).
+see [here](https://github.com/use-ink/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L157).
 
 :::
 
@@ -111,7 +111,7 @@ It can _optionally_ include the following keys:
   "name": "flipper",
   "version": "4.0.0-beta.1",
   "authors": [
-    "Parity Technologies <admin@parity.io>"
+    "Use Ink <ink@use.ink>"
   ]
 }
 ```
@@ -119,7 +119,7 @@ It can _optionally_ include the following keys:
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/paritytech/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L432).
+see [here](https://github.com/use-ink/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L432).
 
 :::
 
@@ -149,7 +149,7 @@ The ink! metadata consists of the following **required** sections
 :::info
 
 If you're interested in the code reference from `ink!`
-see [here](https://github.com/paritytech/ink/blob/c8aa3ee41112b327d4f3cb3959f188945c8ccace/crates/metadata/src/lib.rs#L90).
+see [here](https://github.com/use-ink/ink/blob/c8aa3ee41112b327d4f3cb3959f188945c8ccace/crates/metadata/src/lib.rs#L90).
 
 :::
 

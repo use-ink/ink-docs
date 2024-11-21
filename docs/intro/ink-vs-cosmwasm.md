@@ -8,7 +8,7 @@ hide_title: true
 
 # ink! vs. CosmWasm
 
-This is a short comparison between [ink!](https://github.com/paritytech/ink/)
+This is a short comparison between [ink!](https://github.com/use-ink/ink/)
 and [CosmWasm](https://github.com/CosmWasm/cosmwasm) meant to onboard
 developers coming from the Cosmos ecosystem.
 
@@ -64,8 +64,8 @@ You can read more about ink! unit tests [here](../testing/off-chain.md).
 ## Compiler
 
 CosmWasm uses [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) as its main
-compiler, while ink! uses [cargo-contract](https://github.com/paritytech/cargo-contract).
-`cargo-contract` is developed by Parity specifically for building, testing, and deploying
+compiler, while ink! uses [cargo-contract](https://github.com/use-ink/cargo-contract).
+`cargo-contract` is developed specifically for building, testing, and deploying
 ink! contracts.
 
 # Local Development Network
@@ -131,7 +131,7 @@ $ cargo unit-test
 ```
 
 Similarly, ink! provides an
-[`examples`](https://github.com/paritytech/ink-examples/tree/main) directory of its
+[`examples`](https://github.com/use-ink/ink-examples/tree/main) directory of its
 main repository.
 
 A contract can be compiled from its directory via:
@@ -152,7 +152,7 @@ CosmWasm contracts are deployed and instantiated with help of the `wasmd` execut
 list of step is provided [here](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract).
 
 It is possible to deploy and interact with ink! contracts using either a CLI
-(`cargo-contract`), or a web UI ([`contracts-ui`](https://contracts-ui.substrate.io/)).
+(`cargo-contract`), or a web UI ([`contracts-ui`](https://ui.use.ink)).
 
-- [Instructions for `cargo-contract`](https://github.com/paritytech/cargo-contract/blob/master/crates/extrinsics/README.md)
+- [Instructions for `cargo-contract`](https://github.com/use-ink/cargo-contract/blob/master/crates/extrinsics/README.md)
 - [Instructions for `contracts-ui`](../getting-started/deploying.md)

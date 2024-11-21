@@ -20,7 +20,7 @@ You should start to see blocks being produced by your node in your terminal.
 
 You can interact with your node using the Contracts UI:
 
-<a href="https://github.com/paritytech/contracts-ui">https://github.com/paritytech/contracts-ui</a>
+<a href="https://github.com/use-ink/contracts-ui">https://github.com/use-ink/contracts-ui</a>
 
 Now configure the UI to connect to the locally running node:
 

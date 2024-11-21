@@ -56,7 +56,7 @@ parachain ‒ in that language.
 
 This is a list of languages you can currently choose from:
 
-* [Parity's ink!](https://github.com/paritytech/ink) for Rust
+* [Polkadot's ink!](https://github.com/use-ink/ink) for Rust
 * [ask!](https://github.com/patractlabs/ask) for Assembly Script
 * The [Solang](https://github.com/hyperledger-labs/solang) compiler for Solidity
 
@@ -69,5 +69,5 @@ The following graphic depicts the idea:
 There are also different user interfaces and command-line tools you can use to deploy
 or interact with contracts:
 
-* [Contracts UI](https://contracts-ui.substrate.io/)
+* [Contracts UI](https://ui.use.ink)
 * [polkadot-js](https://polkadot.js.org/apps/)

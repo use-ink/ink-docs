@@ -59,7 +59,7 @@ can just use a stable Rust toolchain now (>= Rust 1.63).
 
 ## New entrance `ink` crate
 
-The `ink_lang` crate has been replaced in [#1223](https://github.com/paritytech/ink/pull/1223)
+The `ink_lang` crate has been replaced in [#1223](https://github.com/use-ink/ink/pull/1223)
 by a new top level `ink` crate. All existing sub-crates are reexported and should be used via
 the new `ink` crate, so e.g. `ink::env` instead of `ink_env`. Contract authors should now import
 the top level `ink` crate instead of the individual crates.
@@ -72,24 +72,24 @@ the top level `ink` crate instead of the individual crates.
 
 ## Storage  API + Layout
 
-With [#1331](https://github.com/paritytech/ink/pull/1331) the way `ink!` reads and writes
+With [#1331](https://github.com/use-ink/ink/pull/1331) the way `ink!` reads and writes
 to a contract's storage changed. Storage keys are generated at compile-time, and user facing
 abstractions which determine how contract data is laid out in storage are different now.
 
 ### Migration
 - Initialize `Mapping` fields with `Mapping::default()` instead of  `ink_lang::utils::initialize_contract` in
-  constructors. See [`erc20`](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) and other examples which use a `Mapping`.
+  constructors. See [`erc20`](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs) and other examples which use a `Mapping`.
 - `SpreadAllocate`, `SpreadLayout`, `PackedLayout`, `PackedAllocate` have been removed.
 
 ## Removal of `wee-alloc` support
 
 ink! uses a bump allocator by default, additionally we supported another allocator
 (`wee-alloc`) through a feature flag. `wee-alloc` is no longer maintained and
-we removed support for it in [#1403](https://github.com/paritytech/ink/pull/1403).
+we removed support for it in [#1403](https://github.com/use-ink/ink/pull/1403).
 
 ## Removal of `eth_compatibility` crate
 
-As part of [#1233](https://github.com/paritytech/ink/pull/1233)
+As part of [#1233](https://github.com/use-ink/ink/pull/1233)
 the `eth_compatibility` crate was removed. The `ecdsa_to_eth_address()`
 function from it can now be found [in the `ink_env` crate](https://docs.rs/ink_env/4.0.0/ink_env/fn.ecdsa_to_eth_address.html).
 
@@ -106,9 +106,9 @@ The return value is the size of the pre-existing value at the specified key if a
 Two new useful functions were added:
 
 - [`Mapping::contains(key)`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html#method.contains)
-  in [#1224](https://github.com/paritytech/ink/pull/1224).
+  in [#1224](https://github.com/use-ink/ink/pull/1224).
 - [`Mapping::take()`](https://docs.rs/ink_storage/4.0.0/ink_storage/struct.Mapping.html#method.take)
-  to get a value while removing it from storage in [#1461](https://github.com/paritytech/ink/pull/1461).
+  to get a value while removing it from storage in [#1461](https://github.com/use-ink/ink/pull/1461).
 
 In case you were working around those two functions you can now
 use them directly; they are more gas-efficient than e.g. executing
@@ -116,7 +116,7 @@ a `get(key).is_none()` instead of `contains(key)`.
 
 ## Storage functions in `ink_env`
 
-As part of [#1224](https://github.com/paritytech/ink/pull/1224) the return type
+As part of [#1224](https://github.com/use-ink/ink/pull/1224) the return type
 of [`ink_env::set_contract_storage()`](https://docs.rs/ink_env/4.0.0/ink_env/fn.set_contract_storage.html)
 was changed to return an `Option<u32>` instead of `()`.
 
@@ -126,7 +126,7 @@ was introduced.
 ## Removal of `ink_env::random` function
 
 We had to remove the [`ink_env::random`](https://docs.rs/ink_env/3.3.1/ink_env/fn.random.html)
-function (in [#1442](https://github.com/paritytech/ink/pull/1442)).
+function (in [#1442](https://github.com/use-ink/ink/pull/1442)).
 This function allowed contract developers getting random entropy.
 There is unfortunately no way how this can be done safely enough
 with built-in Substrate primitives on-chain currently. We're
@@ -147,7 +147,7 @@ deprecated the random interface of `pallet-contracts`.
 
 ## Constructors can now return `Result<Self, MyContractError>`
 
-With [#1446](https://github.com/paritytech/ink/pull/1446) we introduced
+With [#1446](https://github.com/use-ink/ink/pull/1446) we introduced
 the possibility for constructors to return either `Self` (as usual) or
 `Result<Self, MyContractError>`.
 
@@ -159,14 +159,14 @@ of this information.
 ## Chain extension's `returns_result` removed
 
 The `returns_result` flag has been removed from the `#[ink(extension = …)]` attribute in
-[#1569](https://github.com/paritytech/ink/pull/1569).
+[#1569](https://github.com/use-ink/ink/pull/1569).
 We now infer this information at compile time. If `handle_status` is set to `true`,
 the return type will still be wrapped into `Result` as before.
 
 ## Contract Metadata (ABI)
 
 The most detailed way to grasp what changed is to look at
-[this PR](https://github.com/paritytech/ink-docs/pull/138), which
+[this PR](https://github.com/use-ink/ink-docs/pull/138), which
 updated the metadata page in our documentation.
 
 ### Add support for language level errors (`LangError`)
@@ -252,7 +252,7 @@ other languages (such as Solang) to use an equivalent `LangError`.
 
 ### Version field
 
-As part of [#1313](https://github.com/paritytech/ink/pull/1313) the ink! ABI was
+As part of [#1313](https://github.com/use-ink/ink/pull/1313) the ink! ABI was
 changed to have a proper version field as part of the ink! metadata object.
 This enables querying the ABI version in a less-ambiguous way.
 
@@ -288,7 +288,7 @@ that is using it consider reading the updated documentation:
 - [Storage metadata format](../../versioned_docs/version-4.x/datastructures/storage-in-metadata.md)
 
 ## Removal of `AccountId` `Default` implementation
-In [#1255](https://github.com/paritytech/ink/pull/1255) we removed the `Default` trait
+In [#1255](https://github.com/use-ink/ink/pull/1255) we removed the `Default` trait
 implementation on `AccountId`s.
 
 The `Default` implementation of `AccountId` returned the zero-address, which is
@@ -326,13 +326,13 @@ and
 [`CreateBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CreateBuilder.html)
 APIs.
 
-In [#1604](https://github.com/paritytech/ink/pull/1604) we renamed the
+In [#1604](https://github.com/use-ink/ink/pull/1604) we renamed the
 `CallBuilder::fire()` method to
 [`CallBuilder::invoke()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.invoke-2).
 This brings more consistency across our APIs which were already using the `invoke`
 terminology.
 
-In [#1512](https://github.com/paritytech/ink/pull/1512) and [#1525](https://github.com/paritytech/ink/pull/1525)
+In [#1512](https://github.com/use-ink/ink/pull/1512) and [#1525](https://github.com/use-ink/ink/pull/1525)
 we added support for handing
 `LangError`s from the `CreateBuilder` and `CallBuilder`, respectively.
 
@@ -343,11 +343,11 @@ or
 methods.
 
 Because of the addition of those methods we also removed any error handling from the
-non-`try_` methods in [#1602](https://github.com/paritytech/ink/pull/1602). This means
+non-`try_` methods in [#1602](https://github.com/use-ink/ink/pull/1602). This means
 that the `CallBuilder::invoke()` and `CreateBuilder::instantiate()` methods return values
 directly, and panic when they encounter an error.
 
-Lastly, in [#1636](https://github.com/paritytech/ink/pull/1636) we added two methods to
+Lastly, in [#1636](https://github.com/use-ink/ink/pull/1636) we added two methods to
 the `CallBuilder` to streamline
 [`Call`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.Call.html)
 and
@@ -373,7 +373,7 @@ crate-type = [
 ]
 ```
 
-However, with [cargo-contract#929](https://github.com/paritytech/cargo-contract/pull/929) we changed this behavior to:
+However, with [cargo-contract#929](https://github.com/use-ink/cargo-contract/pull/929) we changed this behavior to:
 - Use the contract name by default, removing the need for the `name` field
 - Compile contracts as `rlib`s by default, and automatically changing to `cdylib` as
   needed

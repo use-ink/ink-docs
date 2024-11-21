@@ -18,7 +18,7 @@ relying on only generic Rust language support in IDEs, code editors and other de
 
 - No language support (e.g. diagnostic errors/warnings and quick fixes) for ink!'s domain specific semantic rules for smart contracts (e.g. exactly one `#[ink(storage)]` struct, at least one `#[ink(message)]` method and the same for `#[ink(constructor)]`, ink! attributes should be applied to items of the correct type e.t.c).
 - Inconsistent editor experience with issues like no code completion and/or hover content for some ink! attribute arguments (e.g `#[ink(payable)]`) because [macro expansion/name resolution and trait resolution are hard problems for generic IDE/code editor tools](https://rust-lang.github.io/compiler-team/working-groups/rls-2.0/#scope-and-purpose) (see also [https://rust-analyzer.github.io/blog/2021/11/21/ides-and-macros.html](https://rust-analyzer.github.io/blog/2021/11/21/ides-and-macros.html)).
-- No language support (e.g. go to definition, find references and rename/refactor) for [ink! specific syntax like paths in ink! attribute argument values (e.g. `env` values)](https://github.com/paritytech/ink/blob/v4.2.1/crates/ink/ir/src/ast/mod.rs#L19-L25).
+- No language support (e.g. go to definition, find references and rename/refactor) for [ink! specific syntax like paths in ink! attribute argument values (e.g. `env` values)](https://github.com/use-ink/ink/blob/v4.2.1/crates/ink/ir/src/ast/mod.rs#L19-L25).
 
 ## Solution
 

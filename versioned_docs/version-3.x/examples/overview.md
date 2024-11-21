@@ -3,7 +3,7 @@ title: Overview
 slug: /examples
 ---
 
-In our <a href="https://github.com/paritytech/ink-examples/tree/main">examples folder</a> you find a number of examples written in ink!.
+In our <a href="https://github.com/use-ink/ink-examples/tree/main">examples folder</a> you find a number of examples written in ink!.
 
 Some of the most interesting ones:
 

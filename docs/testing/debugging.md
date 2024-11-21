@@ -38,7 +38,7 @@ There are things you could do to enable debug messages on the client console:
   ```
 
 1. __Set the log level of your node to `runtime::contracts::strace` to trace host function calls.__<br/>
-   These function calls logs will also be displayed in the `Debug message` panel of [Contracts UI](https://github.com/paritytech/contracts-ui).
+   These function calls logs will also be displayed in the `Debug message` panel of [Contracts UI](https://github.com/use-ink/contracts-ui).
    For example, to view these traces in addition to the logs described above:
 
   ```
@@ -73,7 +73,7 @@ It is only printed for RPC calls or off-chain tests.
 
 # Decode Data Payload
 
-You can use a block explorer or an app like PolkadotJs to retrieve the data payload of a contract transaction, and then use [cargo-contract](https://github.com/paritytech/cargo-contract) to decode it.
+You can use a block explorer or an app like PolkadotJs to retrieve the data payload of a contract transaction, and then use [cargo-contract](https://github.com/use-ink/cargo-contract) to decode it.
 
 ```bash
 # From your contract directory

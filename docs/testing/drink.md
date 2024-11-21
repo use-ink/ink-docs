@@ -109,7 +109,7 @@ Just use corresponding argument in the test macro:
 ```
 to your test function and you have just switched from E2E testcase to DRink!-based one, that doesn't use any running node in the background!
 
-For a full example check out [ink! repository](https://github.com/paritytech/ink-examples/tree/main/e2e-runtime-only-backend).
+For a full example check out [ink! repository](https://github.com/use-ink/ink-examples/tree/main/e2e-runtime-only-backend).
 
 ### With a command line tool
 
