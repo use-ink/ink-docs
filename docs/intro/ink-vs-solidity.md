@@ -744,80 +744,106 @@ Now, to perform the cross-contract call:
 Note: as of now (ink! v3.3.1), when using cross-contract calls, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/use-ink/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/use-ink/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/use-ink/ink/issues/1134).
 
 ### `submit generic transaction / dynamic cross-contract calling`
-
+invokes function found at `callee` contract address, sends the `transferAmount` to the `callee`, and the `transactionData` payload.
 ```c++
-// solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
 
-// invokes function found at`addr`, sends the `_amount` to the `addr`, and the `_transactionData` payload.
-addr.call.value(_amount)(_transactionData)
-```
+contract CallContract {
 
-```rust
-// ink!
+    constructor() {}
 
-// ...
+    function invokeTransaction(
+        address payable callee, 
+        uint transferAmount, 
+        bytes4 functionSelector,
+        string memory transactionData
+    ) public returns(bool success, bytes memory message) {
 
-use ink_env::call::{
-    build_call,
-    Call,
-    ExecutionInput,
-    Selector,
-};
+        bytes memory _data = abi
+            .encodePacked(functionSelector, transactionData);
 
-/// A wrapper that allows us to encode a blob of bytes.
-///
-/// We use this to pass the set of untyped (bytes) parameters to the `CallBuilder`.
-struct CallInput<'a>(&'a [u8]);
+        (success, message) = callee
+            .call{value: transferAmount}(_data);
 
-impl<'a> scale::Encode for CallInput<'a> {
-    fn encode_to<T: Output + ?Sized>(&self, dest: &mut T) {
-        dest.write(self.0);
+        return (success, message);
     }
 }
+```
+The equivalant in Ink!: 
+```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
-// ...
+#[ink::contract]
+mod call_contract {
+    use ink::{
+        env::call::{
+            build_call, 
+            Call, 
+            ExecutionInput, 
+            Selector
+        },
+        prelude::vec::Vec,
+    };
 
-// see: https://github.com/use-ink/ink-examples/blob/main/multisig/lib.rs#L535
-fn invoke_transaction(
-    &mut self,
-    callee: AccountId,
-    transfer_amount: u128,
-    function_selector: [u8; 4],
-    transaction_data: Vec<u8>,
-    gas_limit: u64) -> Result<()> {
+    #[ink(storage)]
+    #[derive(Default)]
+    pub struct CallContract {}
 
-    let result = build_call::<<Self as ::ink_lang::reflect::ContractEnv>::Env>()
-        .call_type(
-            Call::new()
-                .callee(callee) // contract to call
-                .call_v1()
-                .gas_limit(*gas_limit)
-                .transferred_value(transfer_amount), // value to transfer with call
-        )
-        .exec_input(
-            ExecutionInput::new(Selector::from(*function_selector))
-                    .push_arg(CallInput(transaction_data)), // SCALE-encoded parameters
-        )
-        .returns::<()>()
-        .fire()
-        .map_err(|_| Error::TransactionFailed);
-    result
+    #[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
+    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    pub enum Error {
+        TransactionFailed,
+    }
+    type Result<T> = core::result::Result<T, Error>;
+
+
+    impl CallContract{
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            Default::default()
+        }
+
+        #[ink(message, payable)]
+        pub fn invoke_transaction(
+            &mut self,
+            callee: AccountId,
+            transfer_amount: u128,
+            function_selector: [u8; 4],
+            transaction_data: Vec<u8>,
+            gas_limit: Option<u64>,
+        ) -> Result<()> {
+        
+            let transaction_result = build_call::<<Self as ::ink::env::ContractEnv>::Env>()
+                .call_type(
+                    Call::new(callee) // contract to call
+                        .gas_limit(gas_limit.unwrap_or_default())
+                        .transferred_value(transfer_amount), // value to transfer with call
+                )
+                .exec_input(
+                    ExecutionInput::new(Selector::new(function_selector))
+                        .push_arg(transaction_data), // SCALE-encoded parameters
+                )
+                .returns::<()>()
+                .try_invoke();
+            
+            match transaction_result {
+                Ok(Ok(_)) => Ok(()),
+                _ => Err(Error::TransactionFailed),
+            }
+        }
+    }
 }
-
 ```
 
 Note: the `function_selector` bytes can be found in the generated `target/ink/<contract-name>.json`.
 
-## Limitations of ink! v3
+## Limitations of ink! v4
 
 - Multi-file projects are not supported with pure ink!
     - implementing traits / interfaces will not work
     - There are alternatives that do add this functionality such as OpenBrush
-- Nested structs and data structures can be difficult to use
-- Cross-contract calling prevents events from being emitted. See [here](https://github.com/use-ink/ink/issues/1000) for details.
-- Cross-contract calling can not be tested off-chain with unit tests.
-  On-chain integration tests will need to be used.
-
+    
 ## Troubleshooting Errors
 
 - `ERROR: Validation of the Wasm failed.`
