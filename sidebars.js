@@ -54,7 +54,7 @@ module.exports = {
         "label": "Testnet",
         "items": [
           "testing/testnet/overview",
-          "testing/testnet/faucet"
+          "testing/testnet/faucet",
         ],
         "link": {
           "type": "doc",
