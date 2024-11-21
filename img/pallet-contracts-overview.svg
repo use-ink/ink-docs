@@ -85,7 +85,7 @@
    </g>
    <text x="409.41479" y="169.30264" fill="#000000" font-family="sans-serif" font-size="15.88px" letter-spacing="0px" stroke-width=".2646" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="409.41479" y="169.30264" fill="#000000" font-size="15.88px" stroke-width=".2646" text-align="center" text-anchor="middle">Solidity</tspan></text>
    <text x="674.48651" y="169.30264" fill="#000000" font-family="sans-serif" font-size="15.88px" letter-spacing="0px" stroke-width=".2646" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="674.48651" y="169.30264" fill="#000000" font-size="15.88px" stroke-width=".2646" text-align="center" text-anchor="middle">ask! Assembly Script eDSL</tspan></text>
-   <text x="215.62152" y="169.30264" fill="#000000" font-family="sans-serif" font-size="15.88px" letter-spacing="0px" stroke-width=".2646" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="215.62152" y="169.30264" fill="#000000" font-size="15.88px" stroke-width=".2646" text-align="center" text-anchor="middle">Parity's Rust eDSL</tspan></text>
+   <text x="215.62152" y="169.30264" fill="#000000" font-family="sans-serif" font-size="15.88px" letter-spacing="0px" stroke-width=".2646" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="215.62152" y="169.30264" fill="#000000" font-size="15.88px" stroke-width=".2646" text-align="center" text-anchor="middle">Polkadot's Rust eDSL</tspan></text>
    <g transform="translate(0 6.35)" stroke-width="0">
     <circle cx="864.9" cy="109.2" r="5.499"/>
     <circle cx="880.5" cy="109.2" r="5.499"/>
