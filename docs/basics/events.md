@@ -57,7 +57,7 @@ mod erc20 {
 }
 ```
 
-See our [`ERC20 example contract`](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) 
+See our [`ERC20 example contract`](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs) 
 for an elaborate example which uses events.
 
 ## Event Definition
@@ -82,7 +82,7 @@ pub struct Transferred {
     amount: u128,
 }
 ```
-> Note that generics are [not currently supported](https://github.com/paritytech/ink/issues/2044)
+> Note that generics are [not currently supported](https://github.com/use-ink/ink/issues/2044)
 > , so the concrete types of `Environment` 
 > specific types such as `AccountId` must match up with the types used in the contract.
 

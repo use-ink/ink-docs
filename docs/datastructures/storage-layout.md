@@ -62,7 +62,7 @@ number of elements, instead.
 ## Eager Loading vs. Lazy Loading
 ink! provides means of breaking the storage up into smaller pieces, which can be loaded
 on demand, with the
-[`Lazy`](https://paritytech.github.io/ink/ink/storage/struct.Lazy.html) primitive.
+[`Lazy`](https://use-ink.github.io/ink/ink/storage/struct.Lazy.html) primitive.
 Wrapping any storage field inside a `Lazy` struct makes the storage
 struct in which that field appears also
 non-`Packed`, preventing it from being eagerly loaded during arbitrary storage operations:

@@ -278,7 +278,7 @@ self.env().lock_delegate_dependency(&code_hash);
 
 Note that these two methods can be called by anybody executing the contract, so it is the 
 responsibility of the contract developer to ensure correct access control.
-You can take a look at our [`upgradeable-contracts/delegator`](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts#delegator)
+You can take a look at our [`upgradeable-contracts/delegator`](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts#delegator)
 example, which demonstrates the usage of these two functions.
 
 ## Note on the usage of wildcard selectors
@@ -290,12 +290,12 @@ Since ink! 5 we have restricted the usage of the wildcard selector due to
 [security reasons](https://blog.openzeppelin.com/security-review-ink-cargo-contract#custom-selectors-could-facilitate-proxy-selector-clashing-attacks).
 
 :::danger Beware
-Due to [IIP-2](https://github.com/paritytech/ink/issues/1676), ink! only allows
+Due to [IIP-2](https://github.com/use-ink/ink/issues/1676), ink! only allows
 to contain a single message with a well-known selector `@` when the other message
 with the wildcard selector `_` is defined.
 :::
 
-See [example](https://github.com/paritytech/ink-examples/tree/main/wildcard-selector)
+See [example](https://github.com/use-ink/ink-examples/tree/main/wildcard-selector)
 for illustration on how it can be used in practice.
 
 ## Note on `CallFlags`
@@ -314,7 +314,7 @@ Some useful properties:
 
 Following [Substrate's runtime upgradeability](https://docs.substrate.io/maintain/runtime-upgrades/) 
 philosophy, ink! also supports an easy way to update your contract code via the special function 
-[`set_code_hash()`](https://paritytech.github.io/ink/ink_env/fn.set_code_hash.html).
+[`set_code_hash()`](https://use-ink.github.io/ink/ink_env/fn.set_code_hash.html).
 
 ### Properties
 
@@ -426,4 +426,4 @@ for more details.
 ## Examples
 
 Examples of upgradable contracts can be found in the 
-[ink! repository](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts).
+[ink! repository](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts).

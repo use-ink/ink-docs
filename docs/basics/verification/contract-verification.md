@@ -55,7 +55,7 @@ It should contain a key-value `image` after the `contract` information:
     "name": "flipper",
     "version": "4.3.0",
     "authors": [
-      "Parity Technologies <admin@parity.io>"
+      "Use Ink <ink@use.ink>"
     ]
   },
   "image": "paritytech/contracts-verifiable:4.0.0-alpha",
@@ -118,4 +118,4 @@ of all contracts to be visible. Specify a relative manifest path to the root con
 :::
 
 You can find a Dockerfile and further documentation on image usage 
-in [the `cargo-contract` repository](https://github.com/paritytech/cargo-contract/tree/master/build-image)
+in [the `cargo-contract` repository](https://github.com/use-ink/cargo-contract/tree/master/build-image)

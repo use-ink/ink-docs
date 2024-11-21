@@ -58,7 +58,7 @@ contains a 4-byte hash of the function name and is used to route your contract c
 functions.
 
 In the next section we will start a [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
-and configure the [Contracts UI](https://github.com/paritytech/contracts-ui) to interact with it.
+and configure the [Contracts UI](https://github.com/use-ink/contracts-ui) to interact with it.
 
 ## Debug vs. Release Build
 

@@ -23,7 +23,7 @@ With chain extensions you can expose parts of your runtime logic
 to smart contract developers.
 
 :::note
-The ink! repository contains [the `rand-extension` example](https://github.com/paritytech/ink-examples/tree/main/rand-extension).
+The ink! repository contains [the `rand-extension` example](https://github.com/use-ink/ink-examples/tree/main/rand-extension).
 This is a complete example of a chain extension implemented in both ink! and Substrate.
 :::
 
@@ -274,7 +274,7 @@ above are often required to implement various traits such as SCALE's `Encode` an
 as well as `scale-info`'s `TypeInfo` trait.
 
 A full example of the above chain extension definition can be seen
-[here](https://github.com/paritytech/ink/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
+[here](https://github.com/use-ink/ink/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
 
 ## Example: Environment
 

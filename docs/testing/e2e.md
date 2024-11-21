@@ -30,7 +30,7 @@ you can run a node that contains a snapshot of a live network.
 ## Example
 
 The following code example illustrates a basic E2E test for the
-[flipper example](https://github.com/paritytech/ink-examples/blob/main/flipper/lib.rs).
+[flipper example](https://github.com/use-ink/ink-examples/blob/main/flipper/lib.rs).
 
 ```rust
 #[ink_e2e::test]
@@ -61,7 +61,7 @@ async fn default_works<Client: E2EBackend>(mut client: Client) -> E2EResult<()> 
 ```
 
 You can run the above test by going to the `flipper` folder in
-[the ink! examples directory](https://github.com/paritytech/ink-examples/tree/main).
+[the ink! examples directory](https://github.com/use-ink/ink-examples/tree/main).
 
 Before you can run the test, you have to install a Substrate
 node with `pallet-contracts`. By default e2e tests require that you install [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node). You do not need to run it in the background since the node is started for each test independently.

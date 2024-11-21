@@ -67,7 +67,7 @@ Here is a brief comparison of features between ink! and Solidity:
 
 ### 1. Generate New ink! Contract
 
-Run the following to generate ink! boilerplate code for ink!'s "Hello, World!" (the [`flipper`](https://github.com/paritytech/ink-examples/tree/main/flipper) contract))
+Run the following to generate ink! boilerplate code for ink!'s "Hello, World!" (the [`flipper`](https://github.com/use-ink/ink-examples/tree/main/flipper) contract))
 
 ```
 cargo contract new <contract-name>
@@ -201,7 +201,7 @@ A few key differences are:
 - Double check all `.unwrap()`s performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
 - Run the contracts node with `substrate-contracts-node --dev -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
 - When passing parameters to a helper, it is recommended to pass references (even for primitives) as Wasm is more efficient with references.
-  For example (see [erc20](https://github.com/paritytech/ink-examples/blob/main/erc20/lib.rs) example):
+  For example (see [erc20](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs) example):
 
 ```rust
 /// Returns the account balance for the specified `owner`.
@@ -457,7 +457,7 @@ self.env().emit_event(MyCoolEvent {
 
 Solidity has several error handling mechanisms: `assert`, `require`, `revert`, and `throw`. Each of these will revert the changed state when called. See [this article](https://medium.com/blockchannel/the-use-of-revert-assert-and-require-in-solidity-and-the-new-revert-opcode-in-the-evm-1a3a7990e06e) for details on these.
 
-ink! uses a `Result` enum (`Ok(T)`, `Err(E)`), `assert!` and `panic!`. [This Stack Exchange](https://substrate.stackexchange.com/questions/2391/panic-in-ink-smart-contracts) answer and [GitHub discussion](https://github.com/paritytech/ink/issues/641) provide more details on these.
+ink! uses a `Result` enum (`Ok(T)`, `Err(E)`), `assert!` and `panic!`. [This Stack Exchange](https://substrate.stackexchange.com/questions/2391/panic-in-ink-smart-contracts) answer and [GitHub discussion](https://github.com/use-ink/ink/issues/641) provide more details on these.
 
 #### `throw`
 
@@ -686,7 +686,7 @@ use erc20::Erc20Ref;
 There are two methods to setup the other contract.
 
 1. Instantiate the cross-called-contract in the main contract's constructor.
-   See [here](../basics/cross-contract-calling.md) for a tutorial, and [here](https://github.com/paritytech/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
+   See [here](../basics/cross-contract-calling.md) for a tutorial, and [here](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts/delegator) for an example.
 2. Or, add the `AccountId` of an already deployed contract.
    Here is an example constructor to set this up:
 
@@ -708,7 +708,7 @@ Now, to perform the cross-contract call:
 }
 ```
 
-Note: as of now (ink! v3.3.1), when using cross-contract calls, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/paritytech/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/paritytech/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/paritytech/ink/issues/1134).
+Note: as of now (ink! v3.3.1), when using cross-contract calls, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/use-ink/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/use-ink/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/use-ink/ink/issues/1134).
 
 ### `submit generic transaction / dynamic cross-contract calling`
 
@@ -744,7 +744,7 @@ impl<'a> scale::Encode for CallInput<'a> {
 
 // ...
 
-// see: https://github.com/paritytech/ink-examples/blob/main/multisig/lib.rs#L535
+// see: https://github.com/use-ink/ink-examples/blob/main/multisig/lib.rs#L535
 fn invoke_transaction(
     &mut self,
     callee: AccountId,
@@ -779,7 +779,7 @@ Note: the `function_selector` bytes can be found in the generated `target/ink/me
   - implementing traits / interfaces will not work
   - There are alternatives that do add this functionality such as OpenBrush
 - Nested structs and data structures can be difficult to use
-- Cross-contract calling prevents events from being emitted. See [here](https://github.com/paritytech/ink/issues/1000) for details.
+- Cross-contract calling prevents events from being emitted. See [here](https://github.com/use-ink/ink/issues/1000) for details.
 - Cross-contract calling can not be tested offchain with unit tests. On-chain integration tests will need to be used.
 
 ## Troubleshooting Errors
@@ -892,7 +892,7 @@ fn do_some_write(&mut self) {
 
 - useful code to interact and modify the contract environment for testing
 
-[ink_env docs](https://paritytech.github.io/ink/ink_env/test/index.html)
+[ink_env docs](https://use-ink.github.io/ink/ink_env/test/index.html)
 
 ```rust
 // get the default accounts (alice, bob, ...)
