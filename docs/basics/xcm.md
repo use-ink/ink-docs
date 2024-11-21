@@ -11,14 +11,14 @@ hide_title: true
 XCM allows for cross-chain communications, enabling ink! smart contract to interact with other chains.
 You can learn more about XCM in the [Polkadot Wiki](https://wiki.polkadot.network/docs/learn/xcm).
 
-As of version 5.1.0, two new host functions, [`xcm_execute`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) and [`xcm_send`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_send), have been introduced.
+As of ink! v5.1.0, two new functions, [`xcm_execute`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) and [`xcm_send`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_send), have been introduced.
 These functions enable sending and executing XCM from within ink! contracts.
 
 **Note:**
 
-In versions of ink! prior to 5.1.0, the [call_runtime](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.call_runtime) host function or a custom chain extension can be used to send or execute an XCM from ink! contracts.
+In versions of ink! prior to v5.1.0, the [call_runtime](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.call_runtime) host function or a custom chain extension can be used to send or execute an XCM from ink! contracts.
 
-# xcm_execute
+# `xcm_execute`
 
 The [`xcm_execute`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
 
@@ -41,7 +41,7 @@ pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
      .withdraw_asset((Parent, amount))
 
     // The initiate_reserve_withdraw instruction takes the derivative token from the holding register and burns it.
-    // It then send the nested XCM to the reserve in this example, the relay chain.
+    // It then sends the nested XCM to the reserve in this example, the relay chain.
     // Upon receiving the XCM, the reserve will withdraw the asset from our chain's sovereign account, and deposit on the caller's account.
     .initiate_reserve_withdraw(
         All,
@@ -58,7 +58,7 @@ pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
 }
 ```
 
-# xcm_send
+# `xcm_send`
 
 The [`xcm_send`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) function enables sending XCM to be executed by another chain.
 Messages sent originate from the contract's account. Consequently, the receiving chain will process the message using the contract's sovereign account as the origin.
