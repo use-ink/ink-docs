@@ -91,44 +91,29 @@ ink! contracts can be deployed on a few different options:
 - Locally, on a single or multiple node setup of [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
 - [Contracts on Rococo Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer),
   which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
-- [Astar Network’s Shibuya testnet](https://docs.astar.network/docs/build/Introduction/astar_family/#shibuya).
+- [Astar Network’s Shibuya testnet](https://docs.astar.network/docs/build/introduction/astar_family/#shibuya-substrate).
 
 ## Development Workflow
 
-### Dependencies
+### Dependencies and Environment Setup
 
 The first step in CosmWasm development is to
-[install dependencies](https://docs.cosmwasm.com/docs/getting-started/installation),
-namely Go, Rust and `wasmd`.
+[install dependencies and setup the environment](https://docs.cosmwasm.com/core/installation),
+namely Rust, the WebAssembly target, `cargo-generate` and `cargo-run-script`.
 
 For ink! you can also find [a setup guide](../getting-started/setup.md) which will help you
 with dependencies, namely Rust, `cargo-contract` and `substrate-contracts-node`.
 
-### Environment Setup
-
-The next step in the CosmWasm development workflow is
-[setting up the environment](https://docs.cosmwasm.com/docs/getting-started/setting-env).
-That consists mainly of configuring `wasmd` such that it has prefunded accounts that are able
-to interact with the network.
-
-When `substrate-contracts-node` is started, it already contains well
-known pre-funded accounts (`alice`, `bob`, etc.) which are ready to be used for development.
-
 ### Compile and Test
 
-CosmWasm provides example contracts at the
-[cw-contracts](https://github.com/InterWasm/cw-contracts) repository. After the
-repository is cloned, from the contract directory it can be compiled via:
+CosmWasm provides a template at the
+[cw-template](https://github.com/CosmWasm/cw-template) repository. In order to generate a new project, all  you have to do is run:
 
 ```
-$ cargo wasm
+$ cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
 ```
 
-and tested via:
-
-```
-$ cargo unit-test
-```
+Replacing `PROJECT_NAME` with the name of your project.
 
 Similarly, ink! provides an
 [`examples`](https://github.com/use-ink/ink-examples/tree/main) directory of its
@@ -149,7 +134,7 @@ $ cargo test
 ### Deploy and Interact
 
 CosmWasm contracts are deployed and instantiated with help of the `wasmd` executable. The
-list of step is provided [here](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract).
+list of step is provided [here](https://docs.cosmwasm.com/wasmd).
 
 It is possible to deploy and interact with ink! contracts using either a CLI
 (`cargo-contract`), or a web UI ([`contracts-ui`](https://ui.use.ink)).

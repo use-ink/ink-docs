@@ -49,7 +49,7 @@ We'll use the [`DNS` example](https://github.com/use-ink/ink-examples/blob/main/
 
 ### Setup
 
-Start by cloning the [Parachain Template](https://github.com/substrate-developer-hub/substrate-parachain-template/) which contains a [template pallet](https://github.com/substrate-developer-hub/substrate-parachain-template/blob/main/pallets/template/src/lib.rs) which we can modify.
+Start by cloning the [Parachain Template](https://github.com/paritytech/polkadot-sdk-parachain-template) which contains a [template pallet](https://github.com/paritytech/polkadot-sdk-parachain-template/blob/master/pallets/template/src/lib.rs) which we can modify.
 
 Now we will move down the contract from top to bottom and begin the migration of code.
 
