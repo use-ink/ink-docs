@@ -47,7 +47,7 @@
     ]
   },
   "dependencies": {
-    "@easyops-cn/docusaurus-search-local": "^0.40.1",
+    "@easyops-cn/docusaurus-search-local": "^0.46.1",
     "@headlessui/react": "^1.7.18",
     "@lottiefiles/lottie-player": "^2.0.3",
     "autoprefixer": "^10.4.17",
