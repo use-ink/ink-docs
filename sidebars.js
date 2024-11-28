@@ -34,6 +34,7 @@ module.exports = {
       "basics/env-functions",
       "basics/environment",
       "basics/metadata",
+      "basics/xcm",
       {
         "type": "category",
         "label": "Verification",
