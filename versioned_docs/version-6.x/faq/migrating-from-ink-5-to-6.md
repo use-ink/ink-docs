@@ -26,8 +26,6 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## Compatibility
 
-### Polkadot SDK
-
 * `>= polkadot-v1.9.0`
 * `pallet-contracts >= polkadot-v0.9.37`
 * `substrate-contracts-node >= v0.24.0`
