@@ -79,6 +79,11 @@ module.exports = {
           routeBasePath: '/',
           lastVersion: 'current',
           versions: {
+            '6.x': {
+              label: '6.x',
+              path: '6.x',
+              banner: 'none',
+            },
             current: {
               label: '5.x',
               path: '',
