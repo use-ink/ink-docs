@@ -1,9 +1,9 @@
 ---
-title: Migrating from ink! 4.x to 5.0
-slug: /faq/migrating-from-ink-4-to-5
+title: Migrating from ink! 5.x to 6.0
+slug: /faq/migrating-from-ink-5-to-6
 ---
 
-<img src="/img/title/migration-4.x-to-5.0.svg" className="titlePic" />
+<img src="/img/title/migration-5.x-to-6.0.svg" className="titlePic" />
 
 We've made a couple of breaking changes from ink! 4.x to ink! 5.0.
 On this page we outline how you can migrate existing dApps and

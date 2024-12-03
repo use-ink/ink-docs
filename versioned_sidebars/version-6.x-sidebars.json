@@ -133,6 +133,7 @@
     ],
     "FAQ": [
       "faq/faq",
+      "faq/migrating-from-ink-5-to-6",
       "faq/migrating-from-ink-4-to-5",
       "faq/migrating-from-ink-3-to-4"
     ],
