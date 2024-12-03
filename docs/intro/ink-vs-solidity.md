@@ -57,27 +57,31 @@ An example Solidity class looks like:
 
 <!-- Markdown syntax highlighting does not support Solidity. C++ seems to be the best match -->
 
-```c++
+```C++
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
+
 contract MyContract {
     bool private _theBool;
     event UpdatedBool(bool indexed _theBool);
 
-    constructor(bool theBool_) {
-        require(theBool_ == true, "theBool_ must start as true");
+    constructor(bool theBool) {
+        require(theBool == true, "theBool must start as true");
 
-        _theBool = theBool_;
+        _theBool = theBool;
     }
 
     function setBool(bool newBool) public returns (bool boolChanged) {
-        if _theBool == newBool {
-               boolChanged = false;
+        if (_theBool == newBool) { 
+            boolChanged = false;  
         } else {
             boolChanged = true;
         }
 
         _theBool = newBool;
+
         // emit event
-        UpdatedBool(newBool);
+        emit UpdatedBool(newBool); 
     }
 }
 ```
@@ -85,9 +89,7 @@ contract MyContract {
 And the equivalent contract in ink! looks like:
 
 ```rust
-#![cfg_attr(not(feature = "std"), no_std)]
-
-use ink_lang as ink;
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 #[ink::contract]
 mod mycontract {
@@ -111,7 +113,7 @@ mod mycontract {
 
         #[ink(message)] // functions become struct implementations
         pub fn set_bool(&mut self, new_bool: bool) -> bool {
-            let bool_changed = true;
+            let bool_changed: bool;
 
             if self.the_bool == new_bool{
                 bool_changed = false;
