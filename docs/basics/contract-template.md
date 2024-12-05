@@ -64,20 +64,7 @@ edition = "2021"
 # `ink::env` is the `ink_env` crate that contains functions
 # to interact with a contract's environment (querying information
 # about a caller, the current block number, etc.).
-ink = { version = "4.0.0-beta", default-features = false }
-
-# Substrate blockchains use the SCALE codec for anything to
-# do with data encoding/decoding. If an ink! contract is called
-# the passed values have to be SCALE-encoded and return values
-# have to be SCALE-decoded. All values that are put into a
-# contract's storage are SCALE-encoded as well.
-scale = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
-
-# This crate is used to write information about a contract's
-# types into the contract's metadata (i.e. its ABI). This is
-# needed so that a client knows that a contract message requires
-# e.g. an Array and that it has to SCALE-encode the value as an Array.
-scale-info = { version = "2.3", default-features = false, features = ["derive"], optional = true }
+ink = { version = "5", default-features = false }
 
 [dev-dependencies]
 # This developer dependency is for the End-to-End testing framework.
@@ -87,19 +74,10 @@ ink_e2e = { path = "../../crates/e2e" }
 name = "foobar"
 path = "lib.rs"
 
-# This setting typically specifies that you'd like the compiler to
-# create a dynamic system library. For WebAssembly though it specifies
-# that the compiler should create a `*.wasm` without a start function.
-crate-type = [
-    "cdylib",
-]
-
 [features]
 default = ["std"]
 std = [
     "ink/std",
-    "scale/std",
-    "scale-info/std",
 ]
 ink-as-dependency = []
 

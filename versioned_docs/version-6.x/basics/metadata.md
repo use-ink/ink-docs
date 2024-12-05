@@ -79,7 +79,7 @@ It may _optionally_ include the following keys:
 ```json
 "source": {
   "hash": "0x157014494527fee27a82e49bbd9eea10c0713bb0566f6def37f4595db86236ff",
-  "language": "ink! 4.0.0",
+  "language": "ink! 5.1.0",
   "compiler": "rustc 1.66.0"
 }
 ```
@@ -109,7 +109,7 @@ It can _optionally_ include the following keys:
 ```json
 "contract": {
   "name": "flipper",
-  "version": "4.0.0-beta.1",
+  "version": "5.0.0",
   "authors": [
     "Use Ink <ink@use.ink>"
   ]
