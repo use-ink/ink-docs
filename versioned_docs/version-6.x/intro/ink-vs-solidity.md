@@ -276,19 +276,13 @@ mapping(address => uint128) private mapName;
 
 ```rust
 //ink!
-use ink_storage::{
-    traits::SpreadAllocate,
-    Mapping,
-};
+use ink::storage::Mapping;
 
 #[ink(storage)]
-#[derive(SpreadAllocate)]
 pub struct ContractName {
     map_name: Mapping<AccountId, u128>,
 }
 ```
-
-When using a map in ink!, `ink_lang::utils::initialize_contract` must be used in the constructor. See [here](../datastructures/mapping.md) for more details.
 
 ### `mapping usage`
 
