@@ -7,7 +7,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
-  organizationName: 'paritytech',
+  organizationName: 'use-ink',
   onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [
@@ -75,10 +75,15 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
+          editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
           routeBasePath: '/',
           lastVersion: 'current',
           versions: {
+            '6.x': {
+              label: '6.x',
+              path: '6.x',
+              banner: 'none',
+            },
             current: {
               label: '5.x',
               path: '',
@@ -98,7 +103,7 @@ module.exports = {
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/paritytech/ink-docs/edit/master/',
+          editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
         },
         theme: {
           customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/faucet.css')],

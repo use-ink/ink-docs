@@ -10,33 +10,33 @@ if you could add one of those!
 ## Built _with_ ink!
 ### Normal Design
 
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge.svg)](https://github.com/use-ink/ink)
 
 ```markdown
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge.svg)](https://github.com/use-ink/ink)
 ```
 
 ### Flat Design
 
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge_flat.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge_flat.svg)](https://github.com/use-ink/ink)
 
 ```markdown
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/badge_flat.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge_flat.svg)](https://github.com/use-ink/ink)
 ```
 
 ## Built _for_ ink!
 ### Normal Design
 
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/built-for-ink.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink.svg)](https://github.com/use-ink/ink)
 
 ```markdown
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/built-for-ink.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink.svg)](https://github.com/use-ink/ink)
 ```
 
 ### Flat Design
 
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/built-for-ink-flat.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink-flat.svg)](https://github.com/use-ink/ink)
 
 ```markdown
-[![Built with ink!](https://raw.githubusercontent.com/paritytech/ink/master/.images/built-for-ink-flat.svg)](https://github.com/paritytech/ink)
+[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink-flat.svg)](https://github.com/use-ink/ink)
 ```

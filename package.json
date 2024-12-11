@@ -17,8 +17,8 @@
     "cspell": "cspell \"**/*.{md,mdx}\""
   },
   "devDependencies": {
-    "@docusaurus/core": "^3.1.1",
-    "@docusaurus/preset-classic": "^3.1.1",
+    "@docusaurus/core": "^3.6.3",
+    "@docusaurus/preset-classic": "^3.6.3",
     "@mdx-js/react": "^3.0.0",
     "@types/react-google-recaptcha": "^2.1.9",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
@@ -47,7 +47,7 @@
     ]
   },
   "dependencies": {
-    "@easyops-cn/docusaurus-search-local": "^0.40.1",
+    "@easyops-cn/docusaurus-search-local": "^0.46.1",
     "@headlessui/react": "^1.7.18",
     "@lottiefiles/lottie-player": "^2.0.3",
     "autoprefixer": "^10.4.17",

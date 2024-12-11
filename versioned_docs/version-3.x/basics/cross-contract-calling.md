@@ -7,7 +7,7 @@ In ink! contracts it is possible to call ink! messages and ink! constructors. So
 delegation and ink! messages can easily call other ink! messages.
 Given another ink! contract like, we can call any of its functions.
 
-See our [`delegator example contract`](https://github.com/paritytech/ink-examples/blob/main/delegator/lib.rs) 
+See our [`delegator example contract`](https://github.com/use-ink/ink-examples/blob/main/delegator/lib.rs) 
 for an elaborate example which uses cross-contract calling.
 
 ### How it Works

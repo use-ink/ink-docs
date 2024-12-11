@@ -45,7 +45,7 @@ Because `ink!` is executing in a more constrained environment, it is able to be 
 
 ## Example Migration
 
-We'll use the [`DNS` example](https://github.com/paritytech/ink-examples/blob/main/dns/lib.rs) contract to demonstrate a migration.
+We'll use the [`DNS` example](https://github.com/use-ink/ink-examples/blob/main/dns/lib.rs) contract to demonstrate a migration.
 
 ### Setup
 

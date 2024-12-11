@@ -14,8 +14,8 @@ Substrate types, you have to make sure to configure that chain's
 `Environment` for your contract!
 :::
 
-ink! defines a trait [`Environment`](https://paritytech.github.io/ink/ink_env/trait.Environment.html)
-and also a default implementation of that trait ‒ [`DefaultEnvironment`](https://paritytech.github.io/ink/ink_env/enum.DefaultEnvironment.html).
+ink! defines a trait [`Environment`](https://use-ink.github.io/ink/ink_env/trait.Environment.html)
+and also a default implementation of that trait ‒ [`DefaultEnvironment`](https://use-ink.github.io/ink/ink_env/enum.DefaultEnvironment.html).
 
 These are the types that ink! uses, if no explicit steps are taken:
 
@@ -49,7 +49,7 @@ type as Ethereum for their `AccountId`.
 
 Most Substrate chains stay with the default Substrate types though and
 ink! just uses those by default as well. It is possible to configure
-a different environment in the contract macro ([documentation here](https://paritytech.github.io/ink/ink/attr.contract.html#header-arguments))
+a different environment in the contract macro ([documentation here](https://use-ink.github.io/ink/ink/attr.contract.html#header-arguments))
 though:
 
 ```rust
