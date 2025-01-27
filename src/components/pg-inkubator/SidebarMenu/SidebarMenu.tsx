@@ -25,20 +25,6 @@ export const SidebarMenu: React.FC = () => {
         <li className="pt-2 mx-6 px-0 mb-2 border-b border-solid border-background-700/20 dark:border-background-300/20 border-t-0 border-x-0" />
 
         <li className="p-0 m-0">
-          <a href={Config.builderFormURL} className={linkClasses} target="_blank" rel="noreferrer">
-            <i className="underline mr-2">Apply</i>
-            to the Builder Track
-          </a>
-        </li>
-
-        <li className="p-0 m-0">
-          <a href={Config.auditorFormURL} className={linkClasses} target="_blank" rel="noreferrer">
-            <i className="underline mr-2">Apply</i>
-            to the Auditor Track
-          </a>
-        </li>
-
-        <li className="p-0 m-0">
           <a href={Config.grantsApplicationURL} className={linkClasses} target="_blank" rel="noreferrer">
             <i className="underline mr-2">Apply</i>
             for an Ecosystem Grant
