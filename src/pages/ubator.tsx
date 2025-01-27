@@ -23,7 +23,8 @@ const Inkubator = () => (
     <BrowserOnly>
       {() => {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const InkubatorPage = require('../components/pg-inkubator').default
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const InkubatorPage = require('../components/pg-inkubator').default;
         return <InkubatorPage />
       }}
     </BrowserOnly>
