@@ -17,8 +17,8 @@
     "cspell": "cspell \"**/*.{md,mdx}\""
   },
   "devDependencies": {
-    "@docusaurus/core": "^3.6.3",
-    "@docusaurus/preset-classic": "^3.6.3",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
     "@mdx-js/react": "^3.0.0",
     "@types/react-google-recaptcha": "^2.1.9",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
@@ -30,8 +30,8 @@
     "eslint-plugin-react": "^7.33.2",
     "prettier": "^3.2.4",
     "prism-react-renderer": "^2.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "typescript": "^5.3.3"
   },
   "browserslist": {
