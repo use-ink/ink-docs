@@ -4,6 +4,7 @@ import { InkubatorLogo } from '../icons'
 import { Link } from 'react-router-dom'
 import { useUI } from '../../hooks'
 import { Config } from './config'
+import {BigCTA} from "../BigCTA";
 
 export const Nav: React.FC = () => {
   const { setShowSidebar } = useUI()
@@ -27,17 +28,11 @@ export const Nav: React.FC = () => {
             Documentation
           </Link>
 
-          <DropdownMenu
-            className="hidden lg:block"
-            title="Apply"
-            items={[
-              {
-                href: Config.grantsApplicationURL,
-                emphasized: 'Apply',
-                title: 'for an Ecosystem Grant',
-              },
-            ]}
-          />
+          <a href={Config.grantsApplicationURL}
+            className="hidden lg:block font-montserrat text-black/70 hover:text-black/90 dark:text-white/90 dark:hover:text-white"
+          >
+            Apply for an Ecosystem Grant
+          </a>
         </ul>
       </div>
     </nav>
