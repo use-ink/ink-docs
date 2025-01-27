@@ -38,8 +38,6 @@ export const EcosystemGrants: React.FC = () => {
       <div className="px-4">
         <div className="max-w-biggest mx-auto">
           <div className="text-center w-full">
-            <ClosedNotice className="mb-2 mx-auto justify-center" />
-            <h3 className="text-base uppercase font-bold font-montserrat w-full">Track 3</h3>
             <h2 className="text-5xl font-semibold font-montserrat w-full text-brand-500">
               <i className="font-bold text-black dark:text-white">Ecosystem</i> Grants
             </h2>
