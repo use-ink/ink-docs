@@ -1,8 +1,6 @@
 import React from 'react'
-import { BigCTA } from '../../BigCTA'
 import { InfoCard, InfoCardProps } from '../../InfoCard'
-import { Config } from '../config'
-import classNames from "classnames";
+import classNames from 'classnames';
 
 const TRACK_PHASES: InfoCardProps[] = [
   {
