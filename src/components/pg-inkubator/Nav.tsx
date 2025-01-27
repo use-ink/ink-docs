@@ -1,10 +1,8 @@
 import React from 'react'
-import { DropdownMenu } from '../DropdownMenu'
 import { InkubatorLogo } from '../icons'
 import { Link } from 'react-router-dom'
 import { useUI } from '../../hooks'
 import { Config } from './config'
-import {BigCTA} from "../BigCTA";
 
 export const Nav: React.FC = () => {
   const { setShowSidebar } = useUI()
