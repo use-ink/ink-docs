@@ -17,22 +17,22 @@
     "cspell": "cspell \"**/*.{md,mdx}\""
   },
   "devDependencies": {
-    "@docusaurus/core": "^3.6.3",
-    "@docusaurus/preset-classic": "^3.6.3",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
     "@mdx-js/react": "^3.0.0",
     "@types/react-google-recaptcha": "^2.1.9",
-    "@typescript-eslint/eslint-plugin": "^6.20.0",
-    "@typescript-eslint/parser": "^6.20.0",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
     "clsx": "^2.1.0",
     "cspell": "^8.3.2",
     "eslint": "^8.56.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react": "^7.37.4",
     "prettier": "^3.2.4",
     "prism-react-renderer": "^2.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.3.3"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3"
   },
   "browserslist": {
     "production": [
@@ -48,14 +48,14 @@
   },
   "dependencies": {
     "@easyops-cn/docusaurus-search-local": "^0.46.1",
-    "@headlessui/react": "^1.7.18",
+    "@headlessui/react": "^2.2.0",
     "@lottiefiles/lottie-player": "^2.0.3",
     "autoprefixer": "^10.4.17",
     "classnames": "^2.5.1",
-    "lottie-react": "^2.4.0",
+    "lottie-react": "^2.4.1",
     "postcss": "^8.4.33",
     "react-google-recaptcha": "^3.1.0",
-    "react-spring": "^9.7.3",
+    "react-spring": "^9.7.5",
     "tailwindcss": "^3.4.1",
     "usehooks-ts": "^2.12.1"
   }

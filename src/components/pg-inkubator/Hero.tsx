@@ -41,11 +41,12 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
             <hgroup className="md:mb-10">
               <h2 className="text-2xl dark:text-white/70 mb-2">
                 <span className="bg-light-background dark:bg-dark-background">
-                  ink!ubator connects you with core developers and extensive resources.
+                  ink!ubator provides access to core developers and a wealth of resources.
                 </span>
               </h2>
               <h3 className="text-brand-500/80 font-semibold text-md italic">
-                The first cohort is closed. We are accepting applications for future cohorts.
+                <p>The first cohort has successfully concluded, and applications for the next cohort are now open.</p>
+                <p><a href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}>Read the final report of the first cohort here.</a></p>
               </h3>
             </hgroup>
             {withLinkCTA && (

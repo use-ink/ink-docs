@@ -4,7 +4,8 @@ import Head from '@docusaurus/Head'
 
 const TITLE = 'ink!ubator | Take your ink! project to new depths.'
 const DESCRIPTION =
-  'ink!ubator connects you with core developers and extensive resources. Get funding and technical support for your next ink! project.'
+  'ink!ubator provides access to core developers and a wealth of resources.<br/>' +
+  'The first cohort has successfully concluded, and applications for the next cohort are now open.';
 
 const Inkubator = () => (
   <>
@@ -22,7 +23,8 @@ const Inkubator = () => (
     <BrowserOnly>
       {() => {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const InkubatorPage = require('../components/pg-inkubator').default
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const InkubatorPage = require('../components/pg-inkubator').default;
         return <InkubatorPage />
       }}
     </BrowserOnly>

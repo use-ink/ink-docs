@@ -18,10 +18,9 @@ export const Overview: React.FC = () => {
           </p>
         </hgroup>
 
-        <ul className="list-none relative z-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-biggest md:px-12 px-0">
+        <ul className="list-none relative z-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-biggest md:px-12 px-0">
           {[
             { title: 'Developer Growth', logo: '/img/Developer.svg' },
-            { title: 'Security Audits', logo: '/img/Security.svg' },
             { title: 'Full-Stack Tooling', logo: '/img/Tools.svg' },
             { title: 'High-Impact Product Launches', logo: '/img/Product.svg' },
           ].map(({ title, logo }) => (

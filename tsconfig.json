@@ -37,6 +37,8 @@
       "tailwind.confg.js"
     ],
     "exclude": [
-      "node_modules"
+      "node_modules",
+      ".docusaurus",
+      "build"
     ]
   }

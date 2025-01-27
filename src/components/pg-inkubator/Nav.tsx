@@ -32,16 +32,6 @@ export const Nav: React.FC = () => {
             title="Apply"
             items={[
               {
-                href: Config.builderFormURL,
-                emphasized: 'Apply',
-                title: 'for the Builder Track',
-              },
-              {
-                href: Config.auditorFormURL,
-                emphasized: 'Apply',
-                title: 'for the Auditor Track',
-              },
-              {
                 href: Config.grantsApplicationURL,
                 emphasized: 'Apply',
                 title: 'for an Ecosystem Grant',

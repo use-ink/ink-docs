@@ -5,7 +5,6 @@ import { SidebarMenu } from './SidebarMenu'
 import { Hero } from './Hero'
 import { Overview } from './Overview'
 import { BuilderTrack } from './BuildTrack'
-import { AuditorTrack } from './AuditorTrack'
 import { EcosystemGrants } from './EcosystemGrants'
 import { Footer } from './Footer'
 
@@ -20,7 +19,6 @@ const InkubatorPage = () => {
             <Hero className="overflow-hidden" />
             <Overview />
             <BuilderTrack />
-            <AuditorTrack />
             <EcosystemGrants />
           </div>
           <Footer />
