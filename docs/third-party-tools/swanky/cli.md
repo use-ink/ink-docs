@@ -38,7 +38,7 @@ Note that using the precompiled binaries, NPM, or compiling it yourself requires
 
 ### Dev container (Recommended)
 
-Using [dev container](https://docs.astar.network/docs/build/environment/dev-container) is the recommended method to use `swanky-cli`, it includes all the environment setup and will support auto-updates in the future.
+Using [dev container](https://github.com/inkdevhub/swanky-dev-container) is the recommended method to use `swanky-cli`, it includes all the environment setup and will support auto-updates in the future.
 
 To run your project in the dev container follow the steps on [swanky-dev-container Github](https://github.com/AstarNetwork/swanky-dev-container).
 
