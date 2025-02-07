@@ -23,7 +23,7 @@ The terms hereby refer to:
 
 The term `refTime` comes from "reference time", referring to Substrate's Weights system, where
 computation time is benchmarked on reference hardware. You can read more details
-[here](https://docs.substrate.io/reference/how-to-guides/weights/).
+[here](https://docs.polkadot.com/polkadot-protocol/glossary/#weight).
 
 The term `proofSize` is only relevant for parachains on the [Polkadot](https://polkadot.network/)
 or [Kusama](https://kusama.network/) networks.
