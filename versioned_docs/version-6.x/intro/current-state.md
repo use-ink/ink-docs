@@ -120,7 +120,9 @@ We are actively working on [this migration guide](/6.x/faq/migrating-from-ink-5-
 All breaking changes and new features will eventually be documented there. 
 
 What has not yet been migrated is [Contracts UI](https://github.com/use-ink/contracts-ui)
-and external libraries (such as [ink!athon](https://inkathon.xyz/), and `polkadot-js`). 
+and external libraries (such as [ink!athon](https://inkathon.xyz/), the
+[ink! Analyzer VS Code extension](https://marketplace.visualstudio.com/items?itemName=ink-analyzer.ink-analyzer),
+`polkadot-js`, …). 
 We are in contact with the maintainers of these external libraries about migrating as well.
 
 ## 💸 ink!ubator 2.0
