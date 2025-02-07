@@ -33,7 +33,7 @@ const TRACK_PHASES: InfoCardProps[] = [
     superTitle: 'Phase 4',
     title: 'Grant distribution and showcase',
     info: [
-        'Upon the successful deployment of their projects, teams will receive grants ranging from $50,000 to $65,000.',
+        'Upon the successful deployment of their projects, teams will receive grants of up to $50,000.',
         'The program will conclude with the publication of a final report and a presentation of all participants and their projects on the Polkadot Forum, showcasing their contributions to the ecosystem. The program will remain open until all rewards have been distributed.'
     ],
   },
