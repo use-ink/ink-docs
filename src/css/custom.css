@@ -332,3 +332,7 @@ features
   color: var(--ifm-color-primary);
   fill: var(--ifm-color-primary);
 }
+
+.titleSpace {
+  margin-bottom: 20px;
+}
