@@ -40,7 +40,7 @@ Rust compiler with optimal flags for smart contracts).
 
 As an ongoing research project Parity was always looking at alternatives to WebAssembly
 for smart contract execution. Some of those investigations are
-persisted in the Polkadot forum. The forum post on [the eBPF investigation](https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084)
+persisted in the Polkadot Forum. The forum post on [the eBPF investigation](https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084)
 (eBPF is used in Solana) highlights some shortcomings of WebAssembly for smart contracts.
 
 During 2023, Parity core developer Jan Bujak ([@koute](https://github.com/koute)) did another
@@ -50,7 +50,7 @@ His explorations yielded promising results and a new project
 was started: [PolkaVM](https://github.com/paritytech/polkavm)
 ([here's the announcement](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)).
 PolkaVM is intended to be a very fast RISC-V based virtual machine. Jan
-regularly shared performance benchmarks in the Polkadot forum. Those were very
+regularly shared performance benchmarks in the Polkadot Forum. Those were very
 good and got community enthusiasm started. 
 For blockchains a very fast performance correlates with transaction throughput
 and transaction costs, which implies improved scalability and costs for users.
@@ -127,7 +127,7 @@ We are in contact with the maintainers of these external libraries about migrati
 
 The [ink!ubator](/ubator) is a funding program for advancing the ink! ecosystem. 
 The first round of projects was completed in autumn 2024! A final summary was posted
-by Toma, one of the curators, on the Polkadot forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120). 
+by Toma, one of the curators, on the Polkadot Forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120). 
 
 Applications for the second round will open soon. The best way to follow this
 is to watch [the ink!ubator 2.0 repository](https://github.com/use-inkubator/Ecosystem-Grants) 
@@ -137,4 +137,4 @@ on GitHub.
 
 In case you have any questions, the best way to reach out is in
 [our Telegram group](https://t.me/inkathon) or the
-[Polkadot forum](https://forum.polkadot.network/).
+[Polkadot Forum](https://forum.polkadot.network/).
