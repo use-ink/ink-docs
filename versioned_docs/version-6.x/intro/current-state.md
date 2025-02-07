@@ -48,7 +48,7 @@ exploration on alternatives for WebAssembly. [His forum post](https://forum.polk
 gives a great overview on how he landed at RISC-V and its potential.
 His explorations yielded promising results and a new project
 was started: [PolkaVM](https://github.com/paritytech/polkavm)
-([here's the Forum announcement](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)).
+([here's the announcement](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)).
 PolkaVM is intended to be a very fast RISC-V based virtual machine. Jan
 regularly shared performance benchmarks in the Polkadot forum. Those were very
 good and got community enthusiasm started. 
