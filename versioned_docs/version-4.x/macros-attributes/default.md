@@ -8,7 +8,7 @@ hide_title: true
 
 Applicable to ink! messages and constructors.
 
-Works as a hint for UIs to determine if constuctor/message should be picked as default.
+Works as a hint for UIs to determine if constructor/message should be picked as default.
 
 At most one constructor or message can be marked as default.
 
