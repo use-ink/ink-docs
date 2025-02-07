@@ -98,10 +98,10 @@ The Polkadot launch is targeted for Q3/25.
 
 `pallet-revive` and RISC-V is seen as the future of smart contracts in the Polkadot
 ecosystem. We agree with that vision and are excited to work on making the ink! stack 
-ready for that future!
+ready for it!
 In autumn 2024 the ink! Alliance created [a Polkadot treasury proposal](https://forum.polkadot.network/t/treasury-ink-alliance-for-a-more-successful-plaza/9692)
 around this.
-The Polkadot community communicated its alignment and we got the mandate of
+The Polkadot community signaled its alignment and gave us the mandate of
 migrating ink! to this new stack.
 
 Hence, v5 of ink! and `cargo-contract` are the last ones supporting `pallet-contracts`
@@ -120,7 +120,21 @@ We are actively working on [this migration guide](/6.x/faq/migrating-from-ink-5-
 All breaking changes and new features will eventually be documented there. 
 
 What has not yet been migrated is [Contracts UI](https://github.com/use-ink/contracts-ui)
-and external libraries (such as ink!athon, and `polkadot-js`). We are in contact with
-the maintainers of these external libraries about migrating as well.
+and external libraries (such as [ink!athon](https://inkathon.xyz/), and `polkadot-js`). 
+We are in contact with the maintainers of these external libraries about migrating as well.
 
+## 💸 ink!ubator 2.0
 
+The [ink!ubator](/ubator) is a funding program for advancing the ink! ecosystem. 
+The first round of projects is completed! A final summary was posted by Toma, one
+of the curators, on the Polkadot forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120). 
+
+Applications for the second round will open soon. The best way to follow this
+is to watch [the ink!ubator 2.0 repository](https://github.com/use-inkubator/Ecosystem-Grants) 
+on GitHub.
+
+## ❓Questions?
+
+In case you have any questions, the best way to reach out is in
+[our Telegram group](https://t.me/inkathon) or the
+[Polkadot Forum](https://forum.polkadot.network/).
