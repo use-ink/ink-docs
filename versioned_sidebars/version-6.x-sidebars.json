@@ -2,8 +2,11 @@
   "reference": {
     "Overview": [
       "intro/intro",
+      "intro/current-state"
+    ],
+    "Background": [
       "intro/why-rust",
-      "intro/why-webassembly",
+      "intro/why-riscv",
       "intro/where-to-deploy",
       "intro/polkadot",
       "intro/how-it-works",
