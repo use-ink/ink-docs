@@ -94,7 +94,7 @@ At the time of writing, `pallet-revive` is deployed to the Polkadot testnet West
 A launch on Polkadot's canary network Kusama is targeted for early Q2/25.
 The Polkadot launch is targeted for Q3/25.
 
-## 🙌 Migrating ink! to RISC-V + `pallet-revive` (now)
+## 🙌 Migrating ink! to RISC-V + `pallet-revive` (currently wip)
 
 `pallet-revive` and RISC-V is seen as the future of smart contracts in the Polkadot
 ecosystem. We agree with that vision and are excited to work on making the ink! stack 
