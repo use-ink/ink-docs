@@ -6,28 +6,27 @@ slug: /why-riscv
 
 <img src="/img/title/ink!-6.0.svg" title="RISC-V" className="titlePic"  />
 
-Parity Technologies is the company that is developing the execution engine for ink!
-contracts -- the Substrate module `pallet-contracts`.
-Up until ink! v5 this engine was executing WebAssembly smart
-contracts.
-From ink! v6 on we migrated to a new execution engine -- `pallet-revive`,
+[Parity Technologies](https://www.parity.io) is the company that is developing the execution engine for ink!
+contracts ᠆ [the Substrate module `pallet-revive`](https://github.com/paritytech/polkadot-sdk/blob/master/substrate/frame/revive/).
+
+Up until ink! v5 the engine was a different one ([`pallet-contracts`](https://github.com/paritytech/polkadot-sdk/blob/master/substrate/frame/contracts/)),
+which executes WebAssembly smart contracts.
+For ink! v6 we migrated to a new execution engine ᠆ `pallet-revive`,
 which executes smart contracts in the RISC-V bytecode format.
 On this page we lay out what motivated this decision.
 
-
-## Why no longer WebAssembly for Smart Contracts?
+### Why no longer WebAssembly for Smart Contracts?
 
 As an ongoing research project Parity was always looking at alternatives to WebAssembly
 for smart contract execution. Some of those investigations are
 persisted in the Polkadot Forum. The forum post on [the eBPF investigation](https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084)
 (eBPF is used in Solana) highlights some shortcomings of WebAssembly for smart contracts.
 
-On a high level these are important findings:
+On a high level these include:
 
 _WebAssembly is unnecessarily flexible (i.e. complex) for our use case of smart contracts._
-The unneeded flexibility causes unnecessary overhead for the interpreter
+This unneeded flexibility causes unnecessary overhead for the interpreter
 that runs the contract and thus the performance.
-
 
 The stack is unbounded. Moreover, a function
 can declare arguments and locals. That all means you actually need to perform some
@@ -43,13 +42,17 @@ Contracts need to be single-pass compiled on-chain. With multiple passes the
 compiler would be subject to malicious contracts that exploit its behavior via
 compiler bombs.
 
-_Intepretation of RISC-V contracts can be done more efficient as Wasm_
+_Interpretation of RISC-V contracts can be done more efficient as Was.m_
 WebAssembly bytecode is a stack machine, whereas RISC-V is modeled as a
 register machine.
-The target architectures that Polkadot SDK (and hence `pallet-revive`) supports
+The target architectures that Polkadot SDK (and hence `pallet-revive`)
+supports is x86 (and possibly ARM in the future). Both of those are register 
+machines, hence .
 
 RISC-V is a register machine, just like any target
-machine we ever intent to support (x86 + ARM at the moment). It is a
+machine we ever intent to support (x86 + ARM at the moment). 
+
+It is a
 RISC ISA with few registers so that it can be 1to1 mapped to x86-64 and ARM without
 any register allocation overhead.
 
