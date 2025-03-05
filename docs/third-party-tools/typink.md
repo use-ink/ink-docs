@@ -39,7 +39,7 @@ Typink provides a type-safe, flexible, and efficient way to build ink! dApps:
 
 ## Join the community
 
-Join the [Dedot & Typink Telegram Group](https://t.me/JoinDedot) to ask questions, share ideas, and collaborate on ink! dApp development! Whether you’re looking for support or want to contribute, we’d love to have you on board. [Join us now!](https://t.me/JoinDedot)
+Join the [Dedot & Typink Telegram Group](https://t.me/JoinDedot) to ask questions, share ideas, and collaborate on ink! dApps development! Whether you’re looking for support or want to contribute, we’d love to have you on board. [Join us now!](https://t.me/JoinDedot)
 
 ---
 **Build with confidence. Build with Typink.**
