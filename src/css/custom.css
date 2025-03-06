@@ -28,7 +28,17 @@
   --secondary-500: #ed6d89;
   --warning-500: #ffc32b;
   --warning-700: #e3961b;
- }
+
+  --ifm-background-color: rgb(245, 245, 245) !important;
+  --ifm-navbar-background-color: rgba(245, 245, 245, 0.5) !important;
+
+  --doc-sidebar-width: 270px !important;
+}
+
+[data-theme='dark'] {
+  --ifm-background-color: rgb(17, 17, 17) !important;
+  --ifm-navbar-background-color: rgba(17, 17, 17, 0.5) !important;
+}
 
 h1 {
   font-size: var(--ifm-h1-font-size);
@@ -50,8 +60,8 @@ h1 {
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 label {
@@ -64,7 +74,6 @@ input {
   color: #fafafa;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  margin: 0.5rem 0 0;
   border: none;
   width: 100%;
 }
@@ -81,7 +90,8 @@ input:focus-visible {
   border: none;
 }
 
-input::-webkit-input-placeholder { /* Edge */
+input::-webkit-input-placeholder {
+  /* Edge */
   color: var(--ifm-color-primary-lightest);
 }
 
@@ -169,8 +179,18 @@ button:disabled {
   outline: none !important;
 }
 
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(7px);
+}
+
 .navbar__logo {
-  margin-left: 0.5rem !important;
+  margin-left: 0.8rem !important;
+  height: 1.5rem;
+}
+
+.navbar__search-input {
+  @apply rounded-md;
 }
 
 .squid {
@@ -335,4 +355,35 @@ features
 
 .titleSpace {
   margin-bottom: 20px;
+}
+
+.theme-doc-markdown img:first-of-type {
+  @apply mt-4;
+}
+
+.theme-doc-sidebar-container {
+  @apply !border-none;
+}
+
+.menu {
+  @apply !p-4 text-sm;
+}
+
+.theme-doc-sidebar-container {
+  @apply !border-none;
+}
+
+.menu {
+  font-size: 14px;
+  @apply !p-4;
+}
+
+.menu__caret::before,
+.menu__link--sublist-caret::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' style='transform: rotate(-90deg);' stroke='currentColor' fill='none' stroke-width='2' height='14' width='14' class='x:shrink-0 x:rounded-sm x:p-0.5 x:hover:bg-gray-800/5 x:dark:hover:bg-gray-100/5 x:motion-reduce:*:transition-none origin-center rtl:-rotate-270'%3E%3Cpath d='M9 5l7 7-7 7' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat center center;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background-color: transparent;
 }

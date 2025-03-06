@@ -1,4 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types'
+import { themes as prismThemes } from 'prism-react-renderer'
 
 module.exports = {
   title: 'ink! documentation',
@@ -8,26 +9,25 @@ module.exports = {
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
   organizationName: 'use-ink',
-  onBrokenLinks: 'warn',
   projectName: 'ink-docs',
   stylesheets: [
     'fonts/fonts.css',
     'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap',
   ],
   scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
-  plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          {
-            to: '/ubator',
-            from: '/inkubator',
-          },
-        ],
-      },
-    ],
-  ],
+  // plugins: [
+  //   [
+  //     '@docusaurus/plugin-client-redirects',
+  //     {
+  //       redirects: [
+  //         {
+  //           to: '/ubator',
+  //           from: '/inkubator',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // ],
   themes: [
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
@@ -55,11 +55,7 @@ module.exports = {
         src: 'img/text-black.svg',
         srcDark: '/img/text-white.svg',
       },
-      logo: {
-        alt: 'ink!',
-        src: 'img/text-black.svg',
-        srcDark: '/img/text-white.svg',
-      },
+
       items: [
         {
           type: 'docsVersionDropdown',
@@ -123,4 +119,4 @@ module.exports = {
       }
     },
   ],
-}
+} satisfies Config
