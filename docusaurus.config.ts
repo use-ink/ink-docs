@@ -55,14 +55,13 @@ module.exports = {
         src: 'img/text-black.svg',
         srcDark: '/img/text-white.svg',
       },
-
-      items: [
-        {
-          type: 'docsVersionDropdown',
-          position: 'right',
-          dropdownActiveClassDisabled: true,
-        },
-      ],
+      // items: [
+      //   {
+      //     type: 'docsVersionDropdown',
+      //     position: 'right',
+      //     dropdownActiveClassDisabled: true,
+      //   },
+      // ],
     },
   },
   presets: [
@@ -72,7 +71,6 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
-          routeBasePath: '/',
           lastVersion: 'current',
           versions: {
             v6: {
