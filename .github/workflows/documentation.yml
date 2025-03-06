@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - master
+      - docs2.0
 jobs:
   checks:
     if: github.event_name != 'push'
