@@ -192,6 +192,7 @@ button:disabled {
 .navbar__search-input {
   @apply rounded-md;
   font-size: 14px;
+  width: 16rem;
 }
 
 .squid {
@@ -360,6 +361,10 @@ features
 
 .theme-doc-markdown img:first-of-type {
   @apply mt-4;
+}
+
+.theme-doc-markdown img {
+  border-radius: 10px;
 }
 
 .theme-doc-sidebar-container {
