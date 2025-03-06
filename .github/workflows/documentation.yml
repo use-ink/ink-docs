@@ -2,10 +2,12 @@ name: documentation
 
 on:
   pull_request:
-    branches: [master]
+    branches:
+      - master
+      - docs2.0
   push:
-    branches: [master]
-
+    branches:
+      - master
 jobs:
   checks:
     if: github.event_name != 'push'
