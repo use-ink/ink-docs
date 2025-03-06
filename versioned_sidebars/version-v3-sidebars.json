@@ -51,25 +51,11 @@
       "datastructures/spread-storage-layout",
       "datastructures/custom"
     ],
-    "Examples": [
-      "examples/overview"
-    ],
-    "cargo-contract CLI": [
-      "cargo-contract/overview"
-    ],
-    "Live Testnet": [
-      "testnet/overview"
-    ],
-    "Third Party Tools": [
-      "third-party-tools/openbrush"
-    ],
-    "FAQ": [
-      "faq/faq"
-    ],
-    "Brand Assets": [
-      "brand-assets/ink",
-      "brand-assets/community-badges",
-      "brand-assets/cargo-contract"
-    ]
+    "Examples": ["examples/overview"],
+    "cargo-contract CLI": ["cargo-contract/overview"],
+    "Live Testnet": ["testnet/overview"],
+    "Third Party Tools": ["third-party-tools/openbrush"],
+    "FAQ": ["faq/faq"],
+    "Brand Assets": ["brand-assets/ink", "brand-assets/community-badges", "brand-assets/cargo-contract"]
   }
 }

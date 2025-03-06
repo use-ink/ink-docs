@@ -82,7 +82,7 @@ module.exports = {
             },
             current: {
               label: 'v5',
-              path: '',
+              path: 'docs',
               banner: 'none',
             },
             v4: {

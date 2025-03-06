@@ -17,12 +17,6 @@
     "cspell": "cspell \"**/*.{md,mdx}\"",
     "migrate-image-links": "ts-node src/scripts/migrate-image-links.ts"
   },
-  "devDependencies": {
-    "@types/glob": "^8.1.0",
-    "glob": "^11.0.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
-  },
   "browserslist": {
     "production": [
       ">0.5%",
@@ -47,5 +41,26 @@
     "react-spring": "^9.7.5",
     "tailwindcss": "^3.4.1",
     "usehooks-ts": "^2.12.1"
+  },
+  "devDependencies": {
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
+    "@mdx-js/react": "^3.0.0",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "clsx": "^2.1.0",
+    "cspell": "^8.3.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.37.4",
+    "prettier": "^3.2.4",
+    "prism-react-renderer": "^2.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3",
+    "@types/glob": "^8.1.0",
+    "glob": "^11.0.1",
+    "ts-node": "^10.9.2"
   }
 }

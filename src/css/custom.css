@@ -191,6 +191,7 @@ button:disabled {
 
 .navbar__search-input {
   @apply rounded-md;
+  font-size: 14px;
 }
 
 .squid {
