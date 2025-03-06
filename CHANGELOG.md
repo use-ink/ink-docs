@@ -29,3 +29,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - migrate all intro images from `<img src="/img/title/storage.svg" className="titlePic" />` to e.g. `![Storage Title Picture](/img/title/storage.svg)` in order to add missing alt texts and prevent page jumping
 
 - repo structure
+
+- misc
+  - update github workflow to use node 18 -> 20
