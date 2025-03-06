@@ -55,13 +55,13 @@ module.exports = {
         src: 'img/text-black.svg',
         srcDark: '/img/text-white.svg',
       },
-      // items: [
-      //   {
-      //     type: 'docsVersionDropdown',
-      //     position: 'right',
-      //     dropdownActiveClassDisabled: true,
-      //   },
-      // ],
+      items: [
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
+      ],
     },
   },
   presets: [
@@ -80,7 +80,7 @@ module.exports = {
             },
             current: {
               label: 'v5',
-              path: 'docs',
+              path: '',
               banner: 'none',
             },
             v4: {
