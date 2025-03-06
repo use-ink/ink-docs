@@ -4,7 +4,7 @@ hide_title: true
 slug: /macros-attributes/contract
 ---
 
-<img src="/img/title/text/contract.svg" className="titlePic" />
+![Text/contract Title Picture](/img/title/text/contract.svg)
 
 # \#[ink::contract]
 

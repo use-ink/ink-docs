@@ -4,7 +4,7 @@ slug: /basics/mutating-values
 hide_title: true
 ---
 
-<img src="/img/title/storage-mutating.svg" className="titlePic" />
+![Storage Mutating Title Picture](/img/title/storage-mutating.svg)
 
 # Mutating Storage Values
 

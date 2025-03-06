@@ -4,7 +4,7 @@ hide_title: true
 slug: /funding-programs
 ---
 
-<img src="/img/title/funding-programs.svg" className="titlePic" />
+![Funding Programs Title Picture](/img/title/funding-programs.svg)
 
 # Funding Programs
 

@@ -4,7 +4,7 @@ slug: /macros-attributes/selector
 hide_title: true
 ---
 
-<img src="/img/title/text/selector.svg" className="titlePic" />
+![Text/selector Title Picture](/img/title/text/selector.svg)
 
 Applicable to ink! messages and ink! constructors.
 

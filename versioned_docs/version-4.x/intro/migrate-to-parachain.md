@@ -4,7 +4,7 @@ hide_title: true
 slug: /migrate-ink-contracts-to-polkadot-frame-parachain
 ---
 
-<img src="/img/title/polkadot.svg" className="titlePic" />
+![Polkadot Title Picture](/img/title/polkadot.svg)
 
 # Migrating an ink! contract to a Parachain Runtime
 

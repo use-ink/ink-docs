@@ -4,7 +4,7 @@ slug: /basics/storing-values
 hide_title: true
 ---
 
-<img src="/img/title/storage.svg" className="titlePic" />
+![Storage Title Picture](/img/title/storage.svg)
 
 # Storing Values
 

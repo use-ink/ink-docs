@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/contract-testing/overview
 ---
 
-<img src="/img/title/testing1.svg" className="titlePic" />
+![Testing1 Title Picture](/img/title/testing1.svg)
 
 # Overview
 

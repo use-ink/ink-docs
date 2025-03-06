@@ -4,7 +4,7 @@ slug: /getting-started/running-substrate
 hide_title: true
 ---
 
-<img src="/img/title/substrate.svg" className="titlePic" />
+![Substrate Title Picture](/img/title/substrate.svg)
 
 # Run a Substrate Node
 

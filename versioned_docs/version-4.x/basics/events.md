@@ -4,7 +4,7 @@ slug: /basics/events
 hide_title: true
 ---
 
-<img src="/img/title/balloons-1.svg" className="titlePic" />
+![Balloons 1 Title Picture](/img/title/balloons-1.svg)
 
 # Events
 

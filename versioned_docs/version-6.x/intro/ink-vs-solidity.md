@@ -4,7 +4,7 @@ hide_title: true
 slug: /ink-vs-solidity
 ---
 
-<img src="/img/title/solidity.svg" className="titlePic" />
+![Solidity Title Picture](/img/title/solidity.svg)
 
 # ink! vs. Solidity
 

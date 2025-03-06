@@ -4,7 +4,7 @@ slug: /basics/chain-environment-types
 hide_title: true
 ---
 
-<img src="/img/title/environment.svg" className="titlePic" />
+![Environment Title Picture](/img/title/environment.svg)
 
 # Chain Environment Types
 

@@ -4,7 +4,7 @@ slug: /macros-attributes/message
 hide_title: true
 ---
 
-<img src="/img/title/text/message.svg" className="titlePic" />
+![Text/message Title Picture](/img/title/text/message.svg)
 
 Applicable to methods.
 

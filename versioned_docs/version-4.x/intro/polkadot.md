@@ -4,7 +4,7 @@ hide_title: true
 slug: /smart-contracts-polkadot
 ---
 
-<img src="/img/title/polkadot.svg" className="titlePic" />
+![Polkadot Title Picture](/img/title/polkadot.svg)
 
 # Smart Contracts in Polkadot
 

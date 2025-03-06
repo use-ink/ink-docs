@@ -4,7 +4,7 @@ slug: /basics/xcm
 hide_title: true
 ---
 
-<img src="/img/title/xcm.svg" className="titlePic" />
+![Xcm Title Picture](/img/title/xcm.svg)
 
 # Cross-Consensus Message (XCM)
 

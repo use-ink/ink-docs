@@ -4,7 +4,7 @@ slug: /getting-started/deploy-your-contract
 hide_title: true
 ---
 
-<img src="/img/title/rocket.svg" className="titlePic" />
+![Rocket Title Picture](/img/title/rocket.svg)
 
 # Deploy Your Contract
 

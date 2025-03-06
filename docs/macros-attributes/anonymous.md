@@ -4,7 +4,7 @@ slug: /macros-attributes/anonymous
 hide_title: true
 ---
 
-<img src="/img/title/text/anon.svg" className="titlePic" />
+![Text/anon Title Picture](/img/title/text/anon.svg)
 
 Applicable to ink! events.
 

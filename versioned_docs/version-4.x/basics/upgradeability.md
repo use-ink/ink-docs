@@ -4,7 +4,7 @@ slug: /basics/upgradeable-contracts
 hide_title: true
 ---
 
-<img src="/img/title/upgradeable-contract.svg" className="titlePic" />
+![Upgradeable Contract Title Picture](/img/title/upgradeable-contract.svg)
 
 # Upgradeable Contracts
 

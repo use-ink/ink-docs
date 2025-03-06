@@ -5,7 +5,7 @@ slug: /faq
 hide_table_of_contents: true
 ---
 
-<img src="/img/title/faq.svg" className="titlePic" />
+![Faq Title Picture](/img/title/faq.svg)
 
 # Frequently Asked Questions
 

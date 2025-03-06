@@ -4,7 +4,7 @@ slug: /basics/cross-contract-calling
 hide_title: true
 ---
 
-<img src="/img/title/cross-contract.svg" className="titlePic" />
+![Cross Contract Title Picture](/img/title/cross-contract.svg)
 
 # Cross-Contract Calls
 

@@ -4,7 +4,7 @@ slug: /macros-attributes/chain-extension
 hide_title: true
 ---
 
-<img src="/img/title/text/chain-ext.svg" className="titlePic" />
+![Text/chain Ext Title Picture](/img/title/text/chain-ext.svg)
 
 In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
 via its well defined set of basic smart contract interface functions. This API already allows a whole variety of

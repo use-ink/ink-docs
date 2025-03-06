@@ -4,7 +4,7 @@ slug: /getting-started/creating-an-ink-project
 hide_title: true
 ---
 
-<img src="/img/title/heart.svg" className="titlePic" />
+![Heart Title Picture](/img/title/heart.svg)
 
 # Creating an ink! Project
 

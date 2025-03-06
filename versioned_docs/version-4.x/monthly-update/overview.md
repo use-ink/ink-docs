@@ -4,7 +4,7 @@ slug: /monthly-update/
 hide_title: true
 ---
 
-<img src="/img/title/monthly-update.svg" className="titlePic" />
+![Monthly Update Title Picture](/img/title/monthly-update.svg)
 
 Hey there reader 👋!
 

@@ -4,7 +4,7 @@ slug: /where-to-deploy
 hide_title: true
 ---
 
-<img src="/img/title/rocket.svg" className="titlePic" />
+![Rocket Title Picture](/img/title/rocket.svg)
 
 # Supported Chains: Where can I deploy ink! contracts?
 

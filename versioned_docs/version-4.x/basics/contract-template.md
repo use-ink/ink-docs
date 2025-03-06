@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/contract-template
 ---
 
-<img src="/img/title/macro.svg" className="titlePic" />
+![Macro Title Picture](/img/title/macro.svg)
 
 # Contract Template
 

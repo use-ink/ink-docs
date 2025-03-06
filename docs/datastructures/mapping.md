@@ -4,7 +4,7 @@ slug: /datastructures/mapping
 hide_title: true
 ---
 
-<img src="/img/title/storage.svg" className="titlePic" />
+![Storage Title Picture](/img/title/storage.svg)
 
 # Working with Mapping
 
@@ -110,8 +110,8 @@ for n in 0..5 {
 Furthermore, it follows that mapping values do not have a contiguous storage layout, and it is
 not possible to iterate over the contents of a map.
 
-
 ### Use fallible storage methods for dynamically sized values
+
 Reading from or writing to a `Mapping` implies encoding or decoding
 the according `Mapping` key and value. This happens transparently under the hood.
 However, because the static buffer used to store the encoded data is of limited

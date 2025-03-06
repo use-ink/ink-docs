@@ -4,7 +4,7 @@ hide_title: true
 slug: /upcoming-events
 ---
 
-<img src="/img/title/monthly-update.svg" className="titlePic" />
+![Monthly Update Title Picture](/img/title/monthly-update.svg)
 
 
 ### April 5, 2023 | Office Hours

@@ -4,7 +4,7 @@ hide_title: true
 slug: /why-rust-for-smart-contracts
 ---
 
-<img src="/img/title/rust.svg" className="titlePic" />
+![Rust Title Picture](/img/title/rust.svg)
 
 # Why Rust for Smart Contracts?
 

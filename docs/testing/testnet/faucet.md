@@ -4,7 +4,7 @@ slug: /faucet
 hide_title: true
 ---
 
-<img src="/img/title/faucet.svg" className="titlePic" />
+![Faucet Title Picture](/img/title/faucet.svg)
 
 # Faucet
 

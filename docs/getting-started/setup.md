@@ -4,7 +4,7 @@ slug: /getting-started/setup
 hide_title: true
 ---
 
-<img src="/img/title/setup.svg" className="titlePic" />
+![Setup Title Picture](/img/title/setup.svg)
 
 # Setup
 

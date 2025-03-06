@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/contract-testing/drink
 ---
 
-<img src="/img/title/drink.svg" className="titlePic" />
+![Drink Title Picture](/img/title/drink.svg)
 
 # DRink!
 

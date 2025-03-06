@@ -4,7 +4,7 @@ slug: /examples/dapps
 hide_title: true
 ---
 
-<img src="/img/title/balloons-2.svg" className="titlePic" />
+![Balloons 2 Title Picture](/img/title/balloons-2.svg)
 
 # DApps
 

@@ -4,7 +4,7 @@ slug: /macros-attributes/impl
 hide_title: true
 ---
 
-<img src="/img/title/text/impl.svg" className="titlePic" />
+![Text/impl Title Picture](/img/title/text/impl.svg)
 
 This attribute supports a niche case that is rarely needed.
 

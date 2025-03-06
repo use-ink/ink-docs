@@ -4,7 +4,7 @@ hide_title: true
 slug: /why-webassembly-for-smart-contracts
 ---
 
-<img src="/img/title/wasm.svg" className="titlePic" />
+![Wasm Title Picture](/img/title/wasm.svg)
 
 # Why WebAssembly for Smart Contracts?
 

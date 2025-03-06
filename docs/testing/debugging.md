@@ -4,7 +4,7 @@ slug: /basics/contract-debugging
 hide_title: true
 ---
 
-<img src="/img/title/magnifying-glass.svg" className="titlePic" />
+![Magnifying Glass Title Picture](/img/title/magnifying-glass.svg)
 
 # Contract Debugging
 

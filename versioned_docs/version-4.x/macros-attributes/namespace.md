@@ -4,7 +4,7 @@ slug: /macros-attributes/namespace
 hide_title: true
 ---
 
-<img src="/img/title/text/namespace.svg" className="titlePic" />
+![Text/namespace Title Picture](/img/title/text/namespace.svg)
 
 Applicable to ink! trait implementation blocks.
 

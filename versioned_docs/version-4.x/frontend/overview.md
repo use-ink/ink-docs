@@ -4,7 +4,7 @@ slug: /frontend/overview
 hide_title: true
 ---
 
-<img src="/img/title/frontend.svg" className="titlePic" />
+![Frontend Title Picture](/img/title/frontend.svg)
 
 # Overview
 

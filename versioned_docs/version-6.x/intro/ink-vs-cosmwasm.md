@@ -4,7 +4,7 @@ slug: /ink-vs-cosmwasm
 hide_title: true
 ---
 
-<img src="/img/title/cosmwasm.svg" className="titlePic" />
+![Cosmwasm Title Picture](/img/title/cosmwasm.svg)
 
 # ink! vs. CosmWasm
 

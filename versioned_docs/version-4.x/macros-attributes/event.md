@@ -4,7 +4,7 @@ slug: /macros-attributes/event
 hide_title: true
 ---
 
-<img src="/img/title/text/event.svg" className="titlePic" />
+![Text/event Title Picture](/img/title/text/event.svg)
 
 Applicable on `struct` definitions.
 

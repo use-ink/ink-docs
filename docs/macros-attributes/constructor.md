@@ -4,7 +4,7 @@ slug: /macros-attributes/constructor
 hide_title: true
 ---
 
-<img src="/img/title/text/constructor.svg" className="titlePic" />
+![Text/constructor Title Picture](/img/title/text/constructor.svg)
 
 Applicable to a method.
 

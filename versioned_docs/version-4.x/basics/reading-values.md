@@ -4,7 +4,7 @@ slug: /basics/reading-values
 hide_title: true
 ---
 
-<img src="/img/title/storage-read.svg" className="titlePic" />
+![Storage Read Title Picture](/img/title/storage-read.svg)
 
 # Reading Values from Storage
 

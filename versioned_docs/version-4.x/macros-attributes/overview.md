@@ -4,7 +4,7 @@ slug: /macros-attributes
 hide_title: true
 ---
 
-<img src="/img/title/text/contract.svg" className="titlePic" />
+![Text/contract Title Picture](/img/title/text/contract.svg)
 
 An ink! module is the module that is flagged by `#[ink::contract]` containing all the ink! definitions.
 All ink! attributes are available to specify inside an ink! module.

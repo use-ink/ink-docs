@@ -4,7 +4,7 @@ slug: /getting-started/calling-your-contract
 hide_title: true
 ---
 
-<img src="/img/title/frontend.svg" className="titlePic" />
+![Frontend Title Picture](/img/title/frontend.svg)
 
 # Call Your Contract
 

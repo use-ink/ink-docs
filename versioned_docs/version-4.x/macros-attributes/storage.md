@@ -4,7 +4,7 @@ slug: /macros-attributes/storage
 hide_title: true
 ---
 
-<img src="/img/title/text/storage.svg" className="titlePic" />
+![Text/storage Title Picture](/img/title/text/storage.svg)
 
 Applicable on `struct` definitions. 
 

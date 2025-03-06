@@ -3,7 +3,7 @@ title: Migrating from ink! 5.x to 6.0
 slug: /faq/migrating-from-ink-5-to-6
 ---
 
-<img src="/img/title/migration-5.x-to-6.0.svg" className="titlePic" />
+![Migration 5.x To 6.0 Title Picture](/img/title/migration-5.x-to-6.0.svg)
 
 We've made a couple of breaking changes from ink! 5.x to ink! 6.0.
 On this page we outline how you can migrate existing dApps and

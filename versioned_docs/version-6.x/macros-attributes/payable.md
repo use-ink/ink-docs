@@ -4,7 +4,7 @@ slug: /macros-attributes/payable
 hide_title: true
 ---
 
-<img src="/img/title/text/payable.svg" className="titlePic" />
+![Text/payable Title Picture](/img/title/text/payable.svg)
 
 Applicable to ink! messages.
 

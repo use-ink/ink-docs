@@ -4,7 +4,7 @@ hide_title: true
 slug: /how-it-works
 ---
 
-<img src="/img/title/substrate.svg" className="titlePic" />
+![Substrate Title Picture](/img/title/substrate.svg)
 
 # How it Works – Substrate
 

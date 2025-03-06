@@ -4,7 +4,7 @@ slug: /getting-started/building-your-contract
 hide_title: true
 ---
 
-<img src="/img/title/cargo-contract.svg" className="titlePic" />
+![Cargo Contract Title Picture](/img/title/cargo-contract.svg)
 
 # Compile Your Contract
 
