@@ -31,19 +31,20 @@ We've described this in more detail below, in the section
 
 ## How to upgrade
 
-* Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `5`.
-* Update your local `cargo-contract` installation to 4.0.
-* Read through this page.
+- Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `5`.
+- Update your local `cargo-contract` installation to 4.0.
+- Read through this page.
 
 ## Compatibility
 
 ### Substrate/Polkadot SDK
 
 There are four new functions that are only compatible from particular releases upwards:
-* v2 of `call` and `instantiate`: `>= polkadot-v1.8.0` and `substrate-contracts-node >= v0.39.0`
-([explained here](#call-and-instantiate-v2)).
-* `lock_delegate_dependency` and `unlock_delegate_dependency`:
-`>= polkadot-v1.9.0` and `substrate-contracts-node >= v0.40.0` ([explained here](#upgradeable-contracts-delegate_dependency)).
+
+- v2 of `call` and `instantiate`: `>= polkadot-v1.8.0` and `substrate-contracts-node >= v0.39.0`
+  ([explained here](#call-and-instantiate-v2)).
+- `lock_delegate_dependency` and `unlock_delegate_dependency`:
+  `>= polkadot-v1.9.0` and `substrate-contracts-node >= v0.40.0` ([explained here](#upgradeable-contracts-delegate_dependency)).
 
 These four functions are all opt-in! None of them are required to use ink! 5.0, they are only
 required if you want to access the particular functionality they provide.
@@ -51,8 +52,8 @@ Please see the linked explainers for more details about them.
 
 If you are not using any of those four functions, the same requirements as for ink! 4.0 holds:
 
-* `pallet-contracts` >= `polkadot-v0.9.37`.
-* `substrate-contracts-node` >= `v0.24.0`
+- `pallet-contracts` >= `polkadot-v0.9.37`.
+- `substrate-contracts-node` >= `v0.24.0`
 
 ### How do I find out if a chain is compatible with ink! 5?
 
@@ -66,7 +67,6 @@ You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
 
 <img src="/img/pallet-version.png"  />
-
 
 The following chains are in production and support ink! 5.0, if you are not using any of the
 four functions mentioned above:
@@ -132,6 +132,7 @@ You can upgrade via:
 ```rust
 cargo install cargo-contract --version ^4
 ```
+
 :::
 
 Make sure that e.g. your CI also uses at least `cargo-contract` 4.0 with ink! v5.0.
@@ -140,12 +141,12 @@ ensure that this version is enforced, otherwise users will get an error.
 
 ### Tooling & Libraries
 
-* Stable Rust >= 1.75
-* `cargo-contract` >= v4.0
-* `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
-* [`use-inkathon`](https://github.com/scio-labs/use-inkathon): upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
-* [ink!athon](https://inkathon.xyz/) >= 0.7.0
-* [`typechain-polkadot`](https://github.com/Brushfam/typechain-polkadot) >= 1.2.0
+- Stable Rust >= 1.75
+- `cargo-contract` >= v4.0
+- `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
+- [`use-inkathon`](https://github.com/scio-labs/use-inkathon): upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
+- [ink!athon](https://inkathon.xyz/) >= 0.7.0
+- [`typechain-polkadot`](https://github.com/Brushfam/typechain-polkadot) >= 1.2.0
 
 ## Important Changes
 
@@ -333,8 +334,8 @@ limit (i.e. 5%, 10%).
 
 The method `.extra_gas_portion(margin: u64)` method is part of the builder API:
 
-* [`ink_e2e::InstantiateBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.InstantiateBuilder.html#method.extra_gas_portion)
-* [`ink_e2e::CallBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.CallBuilder.html#method.extra_gas_portion)
+- [`ink_e2e::InstantiateBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.InstantiateBuilder.html#method.extra_gas_portion)
+- [`ink_e2e::CallBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.CallBuilder.html#method.extra_gas_portion)
 
 #### Improved `call()` API
 
@@ -360,6 +361,7 @@ Simply, add the other contract as dependency with the `ink-as-a-dependency` feat
 The test will detect the contract and build it as part of the test.
 
 ####
+
 In [#2076](https://github.com/use-ink/ink/pull/2076), we've added a new
 [`remove_code`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/trait.ContractsBackend.html#method.remove_code)
 function to the E2E API:
@@ -403,9 +405,9 @@ For `StorageVec::{peek, get, set, pop, push}` we added `try_*` methods in
 
 Please see the individual Rust docs for these new methods:
 
-* [`StorageVec`](https://docs.rs/ink/5.0.0/ink/storage/struct.StorageVec.html)
-* [`Lazy`](https://docs.rs/ink/5.0.0/ink/storage/struct.Lazy.html)
-* [`Mapping`](https://docs.rs/ink/5.0.0/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
+- [`StorageVec`](https://docs.rs/ink/5.0.0/ink/storage/struct.StorageVec.html)
+- [`Lazy`](https://docs.rs/ink/5.0.0/ink/storage/struct.Lazy.html)
+- [`Mapping`](https://docs.rs/ink/5.0.0/ink/storage/struct.Mapping.html). For `Mapping`, the encoded size of the key is also accounted for.
 
 You should use the `try_*` methods for dynamically sized values, unless you made sure
 otherwise they will fit into the static buffer. The [static buffer in ink!](https://github.com/use-ink/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
@@ -443,6 +445,7 @@ The argument type changed from `u32` to `u16`:
 The top level macro `#[ink::chain_extension]` now _requires_ an `(extension = N: u16)` argument to support multiple chain extensions.
 If you are using only one extension, the ID can be any `u16` number,
 otherwise please consult the [`#[ink::chain_extension]` macro documentation](../macros-attributes/chain-extension.md)
+
 ```diff
 -#[ink::chain_extension]
 +#[ink::chain_extension(extension = 1)]
@@ -531,6 +534,7 @@ no longer has any significance.
 See the section "[Events 2.0](#events-20)" on this page for more info.
 
 ink! 4.0:
+
 ```json
    "events": [
       {
@@ -543,6 +547,7 @@ ink! 4.0:
 ```
 
 ink! 5.0:
+
 ```diff
     "events": [
       {
@@ -565,6 +570,7 @@ See the section "[Buffer size can be customized](#buffer-size-can-be-customized)
 more info.
 
 Example:
+
 ```diff
       "maxEventTopics": 4,
 +     "staticBufferSize": 16384,
@@ -583,6 +589,7 @@ metadata will need to adapt accordingly.
 Please see: [#2048](https://github.com/use-ink/ink/pull/2048) for details.
 
 Example:
+
 ```diff
     "storage": {
         "root": {
@@ -622,11 +629,12 @@ See [this page](../testing/testing-with-live-state.md) in our documentation for 
 ### New lints
 
 The new lints are:
-* [`no_main`](../linter/rules/no_main.md): enforces `no_main` for  contracts.
-* [`primitive_topic`](../linter/rules/primitive_topic.md): no number types are allowed as event topics.
-* [`storage_never_freed`](../linter/rules/storage_never_freed.md): what is written into storage can be removed again.
-* [`strict_balance_equality`](../linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
-* [`non_fallible_api`](../linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
+
+- [`no_main`](../linter/rules/no_main.md): enforces `no_main` for contracts.
+- [`primitive_topic`](../linter/rules/primitive_topic.md): no number types are allowed as event topics.
+- [`storage_never_freed`](../linter/rules/storage_never_freed.md): what is written into storage can be removed again.
+- [`strict_balance_equality`](../linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
+- [`non_fallible_api`](../linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
 
 With `cargo-contract` 4.0 we added a couple new lints for common smart contract issues
 and best practices.
@@ -640,11 +648,11 @@ We added a bunch of helpful new commands to `cargo-contract` 4.0.
 For all these commands you can also supply the `--help` cli flag to get more
 info (e.g. `cargo contract storage --help`).
 
-* `cargo contract verify`: contract verification ([#1404](https://github.com/use-ink/cargo-contract/pull/1404), [#1306](https://github.com/use-ink/cargo-contract/pull/1306))
-* `cargo contract info` now outputs the language of the deployed contract, using a heuristic ([#1329](https://github.com/use-ink/cargo-contract/pull/1329))
-* `cargo contract info --binary`: outputs the on-chain Wasm of the contract ([#1311](https://github.com/use-ink/cargo-contract/pull/1311/))
-* `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/use-ink/cargo-contract/pull/1319))
-* `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/use-ink/cargo-contract/pull/1395), [#1414](https://github.com/use-ink/cargo-contract/pull/1414))
+- `cargo contract verify`: contract verification ([#1404](https://github.com/use-ink/cargo-contract/pull/1404), [#1306](https://github.com/use-ink/cargo-contract/pull/1306))
+- `cargo contract info` now outputs the language of the deployed contract, using a heuristic ([#1329](https://github.com/use-ink/cargo-contract/pull/1329))
+- `cargo contract info --binary`: outputs the on-chain Wasm of the contract ([#1311](https://github.com/use-ink/cargo-contract/pull/1311/))
+- `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/use-ink/cargo-contract/pull/1319))
+- `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/use-ink/cargo-contract/pull/1395), [#1414](https://github.com/use-ink/cargo-contract/pull/1414))
 
 <img src="/img/cargo-contract-storage.png"  /><br/>
 <img src="/img/cargo-contract-info.png"  />
@@ -679,7 +687,7 @@ We've added support for two new host functions:
 
 - `lock_delegate_dependency`: prevents the code at the given code hash from being removed.
 - `unlock_delegate_dependency`: releases the lock on preventing the code from being removed
-from the current contract.
+  from the current contract.
 
 Having a delegate dependency allows contracts to safely delegate to another `code_hash` with
 the guarantee that it cannot be deleted.

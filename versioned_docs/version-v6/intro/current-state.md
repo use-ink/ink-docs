@@ -6,7 +6,7 @@ hide_title: true
 
 <img src="/img/title/q1-25.svg" className="titlePic titleSpace" />
 
-A lot has happened recently and this page provides context of where 
+A lot has happened recently and this page provides context of where
 ink! stands in February 2025 and what the plan for the future is.
 Let's dive right in!
 
@@ -34,7 +34,7 @@ From ink! v1 to v5, the execution platform was Substrate's smart contracts
 module [`pallet-contracts`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts/).
 This pallet required the smart contracts that were uploaded to be in the WebAssembly
 (Wasm) bytecode format. So ink! contracts were always compiled to a WebAssembly binary.
-This could be done by invoking `cargo build`/`rustc` directly or via our CLI tool 
+This could be done by invoking `cargo build`/`rustc` directly or via our CLI tool
 [`cargo-contract`](https://github.com/use-ink/cargo-contract) (which executes the
 Rust compiler with optimal flags for smart contracts).
 
@@ -51,7 +51,7 @@ was started: [PolkaVM](https://github.com/paritytech/polkavm)
 ([the announcement contains more info](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)).
 PolkaVM is intended to be a very fast RISC-V based virtual machine. Jan
 regularly shared performance benchmarks in the Polkadot Forum. Those were very
-good and got community enthusiasm started. 
+good and got community enthusiasm started.
 For blockchains a very fast performance correlates with transaction throughput
 and transaction costs, which implies improved scalability and reduced costs for users.
 Eventually an idea emerged: move the Substrate stack in the long-term to RISC-V
@@ -60,11 +60,11 @@ instead of WebAssembly.
 ## 🤝 RISC-V + `pallet-revive` (2025)
 
 As migrating the Substrate stack from WebAssembly to RISC-V is a highly complex
-undertaking, it was found that smart contracts are an ideal starting point 
+undertaking, it was found that smart contracts are an ideal starting point
 to kick off this migration in a clearly delimited component.
 
 Parity subsequently forked Substrate's `pallet-contracts` into a new project called
-[`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive). 
+[`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive).
 Smart contracts that are uploaded to this new pallet have to be
 in the RISC-V bytecode format, and no longer in WebAssembly.
 
@@ -75,17 +75,17 @@ made to provide first-class support for Solidity contracts:
     closer to the EVM (e.g. types, events, and debugging was changed to be Solidity
     compatible).
 
-    * In the `pallet-contracts` era the idea for Solidity compatibility was a project 
-    called [Solang](https://github.com/hyperledger-solang/solang/). It's a Solidity 
+    * In the `pallet-contracts` era the idea for Solidity compatibility was a project
+    called [Solang](https://github.com/hyperledger-solang/solang/). It's a Solidity
     compiler that parses Solidity syntax and outputs WebAssembly.
     Parsing the Solidity syntax turned out to be a complex undertaking. Solidity
     as a language is also evolving and provided a moving target.<br/><br/>
     As an iteration on that approach, for `pallet-revive` Parity started a new
     project called [`revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive/src) ᠆
-    a compiler from the Solidity bytecode YUL to a RISC-V 
-    contract that can be executed on `pallet-revive`. 
+    a compiler from the Solidity bytecode YUL to a RISC-V
+    contract that can be executed on `pallet-revive`.
     This bytecode is more stable than the language syntax. Plus Solidity developers
-    can continue to use the Solidity compiler `solc` to compile their contracts. 
+    can continue to use the Solidity compiler `solc` to compile their contracts.
 
     * An RPC wrapper that maps Ethereum RPC's onto Substrate was created.
 
@@ -97,7 +97,7 @@ The Polkadot launch is targeted for Q3/25.
 ## 🙌 Migrating ink! to RISC-V + `pallet-revive` (currently wip)
 
 `pallet-revive` and RISC-V is seen as the future of smart contracts in the Polkadot
-ecosystem. We agree with that vision and are excited to work on making the ink! stack 
+ecosystem. We agree with that vision and are excited to work on making the ink! stack
 ready for it!
 In autumn 2024 the ink! Alliance created [a Polkadot treasury proposal](https://forum.polkadot.network/t/treasury-ink-alliance-for-a-more-successful-plaza/9692)
 around this.
@@ -109,30 +109,30 @@ and Wasm. We can still backport important fixes, but the coming releases (`>= v6
 all no longer be compatible. In case you want to create a PR for a backport, we have
 v5 release branches [here](https://github.com/use-ink/ink/tree/v5.x) and [here](https://github.com/use-ink/cargo-contract/tree/v5.x.x).
 
-The current state of this migration is that the `master` branches of 
+The current state of this migration is that the `master` branches of
 [ink!](https://github.com/use-ink/ink) and [`cargo-contract`](https://github.com/use-ink/cargo-contract)
 are compatible with `polkadot-sdk` + `pallet-revive` + PolkaVM from Jan 7, 2025.
 That's the date to which we've caught up so far. We are working on catching up
 to present day and aim to have a pre-release 6.0.0-alpha of both ink! and
 `cargo-contract` out in February 2025.
 
-We are actively working on [this migration guide](/6.x/faq/migrating-from-ink-5-to-6).
-All breaking changes and new features will eventually be documented there. 
+We are actively working on [this migration guide](/v6/faq/migrating-from-ink-5-to-6).
+All breaking changes and new features will eventually be documented there.
 
 What has not yet been migrated is [Contracts UI](https://github.com/use-ink/contracts-ui)
 and external libraries (such as [ink!athon](https://inkathon.xyz/), the
 [ink! Analyzer VS Code extension](https://marketplace.visualstudio.com/items?itemName=ink-analyzer.ink-analyzer),
-`polkadot-js`, …). 
+`polkadot-js`, …).
 We are in contact with the maintainers of these external libraries about migrating as well.
 
 ## 💸 ink!ubator 2.0
 
-The [ink!ubator](/ubator) is a funding program for advancing the ink! ecosystem. 
+The [ink!ubator](/ubator) is a funding program for advancing the ink! ecosystem.
 The first round of projects was completed in autumn 2024! A final summary was posted
-by Toma, one of the curators, on the Polkadot Forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120). 
+by Toma, one of the curators, on the Polkadot Forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120).
 
 Applications for the second round will open soon. The best way to follow this
-is to watch [the ink!ubator 2.0 repository](https://github.com/use-inkubator/Ecosystem-Grants) 
+is to watch [the ink!ubator 2.0 repository](https://github.com/use-inkubator/Ecosystem-Grants)
 on GitHub.
 
 ## ❓Questions?

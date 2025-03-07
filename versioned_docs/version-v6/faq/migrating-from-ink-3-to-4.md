@@ -21,12 +21,13 @@ layout) changes from ink! 3.x to 4.0.
 ## Compatibility
 
 ink! 4.0 is compatible with:
-* Stable Rust >= 1.63.0
-* `scale` >=3
-* `scale-info` >= 2.3
-* `pallet-contracts` >= `polkadot-v0.9.37`
-* `substrate-contracts-node` >= `v0.24.0`
-* `polkadot-js/api` and `polkadot-js/api-contract` >= 9.10.2
+
+- Stable Rust >= 1.63.0
+- `scale` >=3
+- `scale-info` >= 2.3
+- `pallet-contracts` >= `polkadot-v0.9.37`
+- `substrate-contracts-node` >= `v0.24.0`
+- `polkadot-js/api` and `polkadot-js/api-contract` >= 9.10.2
 
 ## `cargo-contract` 2.0
 
@@ -65,19 +66,21 @@ the new `ink` crate, so e.g. `ink::env` instead of `ink_env`. Contract authors s
 the top level `ink` crate instead of the individual crates.
 
 ### Migration
+
 - In `Cargo.toml` Replace all individual `ink_*` crate dependencies with the `ink` crate.
 - In the contract source:
   - Remove the commonly used `use ink_lang as ink` idiom.
   - Replace all usages of individual crates with reexports, e.g. `ink_env` ➜ `ink::env`.
 
-## Storage  API + Layout
+## Storage API + Layout
 
 With [#1331](https://github.com/use-ink/ink/pull/1331) the way `ink!` reads and writes
 to a contract's storage changed. Storage keys are generated at compile-time, and user facing
 abstractions which determine how contract data is laid out in storage are different now.
 
 ### Migration
-- Initialize `Mapping` fields with `Mapping::default()` instead of  `ink_lang::utils::initialize_contract` in
+
+- Initialize `Mapping` fields with `Mapping::default()` instead of `ink_lang::utils::initialize_contract` in
   constructors. See [`erc20`](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs) and other examples which use a `Mapping`.
 - `SpreadAllocate`, `SpreadLayout`, `PackedLayout`, `PackedAllocate` have been removed.
 
@@ -257,6 +260,7 @@ changed to have a proper version field as part of the ink! metadata object.
 This enables querying the ABI version in a less-ambiguous way.
 
 Before:
+
 ```json
 "source": {...},
 "contract": {...},
@@ -269,6 +273,7 @@ Before:
 ```
 
 After:
+
 ```json
 {
   "source": {...},
@@ -284,10 +289,12 @@ After:
 
 The storage layout under the `storage` key changed for v4. If you have an application
 that is using it consider reading the updated documentation:
-- [General storage documentation](../../../versioned_docs/version-4.x/datastructures/overview.md)
-- [Storage metadata format](../../../versioned_docs/version-4.x/datastructures/storage-in-metadata.md)
+
+- [General storage documentation](../../../versioned_docs/version-v4/datastructures/overview.md)
+- [Storage metadata format](../../../versioned_docs/version-v4/datastructures/storage-in-metadata.md)
 
 ## Removal of `AccountId` `Default` implementation
+
 In [#1255](https://github.com/use-ink/ink/pull/1255) we removed the `Default` trait
 implementation on `AccountId`s.
 
@@ -306,12 +313,14 @@ have a couple of different options for how to move forward. These will depend on
 exactly you were using the zero-address for.
 
 If you were using it as a burn address:
+
 - You can pick another address to use, assuming that you've actually picked a random
   address
 - Consider a solution that involves reducing total issuance, instead of transferring
   tokens to a random address
 
 If you were using it as a privileged account:
+
 - Change the account
 - Add checks to ensure that calls coming from the zero-address are rejected
 
@@ -320,6 +329,7 @@ more idiomatic Rust, and also conveys the meaning of a "null" or "empty" address
 better.
 
 ## Updates to the `CallBuilder` and `CreateBuilder` APIs
+
 There's been several changes to the
 [`CallBuilder`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html)
 and
@@ -353,11 +363,13 @@ the `CallBuilder` to streamline
 and
 [`DelegateCall`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.DelegateCall.html)
 workflows:
+
 - For `Call` you can use
   [`CallBuilder::call()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.call) (this replaces `CallBuilder::callee()`)
 - For `DelegateCall` you can use [`CallBuilder::delegate()`](https://docs.rs/ink_env/4.0.0/ink_env/call/struct.CallBuilder.html#method.delegate)
 
 ## Removal of `[lib.crate-type]` and `[lib.name]` from contract manifest
+
 Earlier versions of `cargo-contract` required that these two fields were specified in the
 contract manifest explicitly, as follows:
 
@@ -374,6 +386,7 @@ crate-type = [
 ```
 
 However, with [cargo-contract#929](https://github.com/use-ink/cargo-contract/pull/929) we changed this behavior to:
+
 - Use the contract name by default, removing the need for the `name` field
 - Compile contracts as `rlib`s by default, and automatically changing to `cdylib` as
   needed
