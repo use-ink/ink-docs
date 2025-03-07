@@ -116,7 +116,7 @@ That's the date to which we've caught up so far. We are working on catching up
 to present day and aim to have a pre-release 6.0.0-alpha of both ink! and
 `cargo-contract` out in February 2025.
 
-We are actively working on [this migration guide](/v6/faq/migrating-from-ink-5-to-6).
+We are actively working on [this migration guide](/docs/v6/faq/migrating-from-ink-5-to-6).
 All breaking changes and new features will eventually be documented there.
 
 What has not yet been migrated is [Contracts UI](https://github.com/use-ink/contracts-ui)

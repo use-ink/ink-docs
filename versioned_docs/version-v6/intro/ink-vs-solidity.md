@@ -72,8 +72,8 @@ contract MyContract {
     }
 
     function setBool(bool newBool) public returns (bool boolChanged) {
-        if (_theBool == newBool) { 
-            boolChanged = false;  
+        if (_theBool == newBool) {
+            boolChanged = false;
         } else {
             boolChanged = true;
         }
@@ -81,7 +81,7 @@ contract MyContract {
         _theBool = newBool;
 
         // emit event
-        emit UpdatedBool(newBool); 
+        emit UpdatedBool(newBool);
     }
 }
 ```
@@ -145,14 +145,15 @@ A few key differences are:
 ### 4. Convert each function
 
 - Start converting each function one by one.
-    - A recommended approach is to, if possible, skip cross-contract calls at first and use mock data instead
-    - This way off-chain unit tests can be written to test the core functionality
-        - unit tests are off-chain and do not work with cross-contract calls
-    - Once fully tested, start adding in cross-contract calls and perform on-chain manual + integration tests
+  - A recommended approach is to, if possible, skip cross-contract calls at first and use mock data instead
+  - This way off-chain unit tests can be written to test the core functionality
+    - unit tests are off-chain and do not work with cross-contract calls
+  - Once fully tested, start adding in cross-contract calls and perform on-chain manual + integration tests
 - Ensure that function's visibility (public, private) are matched in ink!
 - In Solidity, if a function returns a `bool success`, ink! will use a `Result<()>` instead (`Result::Ok` or `Result::Err`).
 
 Solidity return example:
+
 ```c++
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.1;
@@ -163,7 +164,7 @@ contract Example {
     constructor(){}
 
     function setData(uint128 newData) public returns (
-        bool success, 
+        bool success,
         string memory reason
         ) {
 
@@ -178,6 +179,7 @@ contract Example {
 ```
 
 The equivalent contract in ink!:
+
 ```rust
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
 
@@ -214,7 +216,6 @@ mod example {
     }
 }
 ```
-
 
 ## Best Practices + Tips
 
@@ -571,7 +572,7 @@ mod dao {
     impl Dao{
         #[ink(constructor)]
         pub fn new() -> Self {
-            Self { 
+            Self {
                 is_whitelisted: Mapping::default(),
                 proposals: Vec::new(),
             }
@@ -614,7 +615,7 @@ mod dao {
     impl Dao{
         #[ink(constructor)]
         pub fn new() -> Self {
-            Self { 
+            Self {
                 is_whitelisted: Mapping::default(),
                 proposals: Vec::new(),
             }
@@ -632,10 +633,10 @@ mod dao {
             let proposal = self.proposals
                 .get_mut(proposal_id as usize)
                 .unwrap();
-            
+
             proposal.voted_yes
                 .insert(Self::env().caller(), vote);
-        }        
+        }
 
         #[ink(message)]
         pub fn get_proposal(&self, proposal_id: u32) -> BTreeMap<AccountId, bool> {
@@ -740,7 +741,9 @@ Now, to perform the cross-contract call:
 Note: as of now (ink! v3.3.1), when using cross-contract calls, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/use-ink/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/use-ink/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/use-ink/ink/issues/1134).
 
 ### `submit generic transaction / dynamic cross-contract calling`
+
 invokes function found at `callee` contract address, sends the `transferAmount` to the `callee`, and the `transactionData` payload.
+
 ```c++
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.1;
@@ -750,8 +753,8 @@ contract CallContract {
     constructor() {}
 
     function invokeTransaction(
-        address payable callee, 
-        uint transferAmount, 
+        address payable callee,
+        uint transferAmount,
         bytes4 functionSelector,
         string memory transactionData
     ) public returns(bool success, bytes memory message) {
@@ -766,7 +769,9 @@ contract CallContract {
     }
 }
 ```
-The equivalant in Ink!: 
+
+The equivalant in Ink!:
+
 ```rust
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
 
@@ -774,9 +779,9 @@ The equivalant in Ink!:
 mod call_contract {
     use ink::{
         env::call::{
-            build_call, 
-            Call, 
-            ExecutionInput, 
+            build_call,
+            Call,
+            ExecutionInput,
             Selector
         },
         prelude::vec::Vec,
@@ -809,7 +814,7 @@ mod call_contract {
             transaction_data: Vec<u8>,
             gas_limit: Option<u64>,
         ) -> Result<()> {
-        
+
             let transaction_result = build_call::<<Self as ::ink::env::ContractEnv>::Env>()
                 .call_type(
                     Call::new(callee) // contract to call
@@ -822,7 +827,7 @@ mod call_contract {
                 )
                 .returns::<()>()
                 .try_invoke();
-            
+
             match transaction_result {
                 Ok(Ok(_)) => Ok(()),
                 _ => Err(Error::TransactionFailed),
@@ -837,9 +842,9 @@ Note: the `function_selector` bytes can be found in the generated `target/ink/<c
 ## Limitations of ink! v4
 
 - Multi-file projects are not supported with pure ink!
-    - implementing traits / interfaces will not work
-    - There are alternatives that do add this functionality such as OpenBrush
-    
+  - implementing traits / interfaces will not work
+  - There are alternatives that do add this functionality such as OpenBrush
+
 ## Troubleshooting Errors
 
 - `ERROR: Validation of the Wasm failed.`
@@ -884,7 +889,7 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 ## unit testing (off-chain)
 
 - Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
-- To run ink! tests, use the command `cargo test`. Add the `--nocapture` flag for debug prints to show. 
+- To run ink! tests, use the command `cargo test`. Add the `--nocapture` flag for debug prints to show.
 - From the contract module, make sure to make the contract struct and anything else that is going to be used in the unit tests public. For example:
 
 ```rust

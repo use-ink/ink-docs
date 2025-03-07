@@ -20,15 +20,15 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## How to upgrade
 
-* Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `6`.
-* Update your local `cargo-contract` installation to 6.0.
-* Read through this page.
+- Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `6`.
+- Update your local `cargo-contract` installation to 6.0.
+- Read through this page.
 
 ## Compatibility
 
-* `>= polkadot-v1.9.0`
-* `pallet-contracts >= polkadot-v0.9.37`
-* `substrate-contracts-node >= v0.24.0`
+- `>= polkadot-v1.9.0`
+- `pallet-contracts >= polkadot-v0.9.37`
+- `substrate-contracts-node >= v0.24.0`
 
 ### How do I find out if a chain is compatible with ink! 5?
 
@@ -71,11 +71,11 @@ cargo install cargo-contract --version ^6
 
 ### Tooling & Libraries
 
-* Stable Rust >= 1.81
-* `cargo-contract` >= v6.0
-* `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
-* [`use-inkathon`](https://github.com/scio-labs/use-inkathon): 10.12.1
-* [ink!athon](https://inkathon.xyz/) >= 0.7.0
+- Stable Rust >= 1.81
+- `cargo-contract` >= v6.0
+- `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
+- [`use-inkathon`](https://github.com/scio-labs/use-inkathon): 10.12.1
+- [ink!athon](https://inkathon.xyz/) >= 0.7.0
 
 ## Important Changes
 
@@ -89,13 +89,6 @@ In a nutshell it prevents developers from hiding functionality in a contract,
 that would not be visible in the metadata (so e.g. on a block explorer).
 The relevant PR is [#2313](https://github.com/use-ink/ink/pull/2313).
 
-From ink! 6.0 on only these attributes are allowed in `#[cfg(…)]`:
-    - `test`
-    - `feature` (without `std`)
-    - `any`
-    - `not`
-    - `all`
+From ink! 6.0 on only these attributes are allowed in `#[cfg(…)]`: - `test` - `feature` (without `std`) - `any` - `not` - `all`
 
 ## Interesting New Features
-
-
