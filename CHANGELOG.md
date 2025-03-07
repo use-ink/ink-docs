@@ -32,3 +32,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - misc
   - update github workflow to use node 18 -> 20
+  - make docusuaurus.config.js => docusuaurus.config.ts and fix duplicate config entries
