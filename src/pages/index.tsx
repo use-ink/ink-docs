@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from '@docusaurus/Link'
 
 export default function Home() {
   return (
@@ -6,12 +7,12 @@ export default function Home() {
       <h1 className="text-4xl font-bold">Hello ink!</h1>
       <p className="text-sm text-gray-500">(This will be the revamped ink! landing page)</p>
       <div className="flex flex-row gap-4">
-        <a href="docs" className="text-purple-300 underline hover:text-purple-400">
+        <Link to="/docs" className="text-purple-300 underline hover:text-purple-400">
           docs →
-        </a>
-        <a href="ubator" className="text-purple-300 underline hover:text-purple-400">
+        </Link>
+        <Link to="/ubator" className="text-purple-300 underline hover:text-purple-400">
           ink!ubator →
-        </a>
+        </Link>
       </div>
     </div>
   )
