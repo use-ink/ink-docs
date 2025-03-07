@@ -1,0 +1,535 @@
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+const baseUrl = useBaseUrl()
+
+---
+title: Components Cheatsheet
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import TOCInline from '@theme/TOCInline'
+
+
+export const question = { 
+  question: "How can you access the state of a component from inside of a member function?", 
+  answers: [ 
+    "this.getState()", 
+    "this.prototype.stateValue", 
+    "this.state", 
+    "this.values" 
+  ],
+  correctAnswerIdx: 3,
+  msgCorrect: "Correct answer. Good job.",
+  msgIncorrect: "Incorrect answer. Please try again.",
+  explanation: "Some extra explanation that will appear when the user answered the questioin correctly."
+}
+
+On this page you'll find most commonly used markdown & mdx components that you can copy to your tutorials.
+
+## Page Title & Data
+
+For the title of the page, and the name of the tab, at the very top of your file, just add this code snippet to the top.
+
+Any thing inbetween the `---` tags will be used for the meta data of the page
+
+```md
+---
+title: Cheatsheet
+id: page-id-when-linking-to-it
+---
+```
+
+## Docusaurus-specific considerations
+There's a couple things to be aware of when adding your own `*.md` files to our codebase:
+
+- Please remove all `HTML` elements
+- Links are done using `[text](link)` this can link out to external links or to local docs files
+- For images, use the syntax `![Alt Text](image url)` to add an image, alternatively see below:
+
+```md
+<img
+  src={require('../static/img/example-banner.png').default}
+  alt="Example banner"
+/>
+```
+
+### Adding meta data to your doc
+
+The docs make use of a feature called [frontmatter](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#markdown-frontmatter) which lets you add some meta data and
+control the way the docs are referenced through the site.
+
+This is done by adding a small section to the top of your doc like this:
+
+```md
+---
+title: Example Doc
+---
+```
+
+That title in the example will automatically add a `# Heading` to your page when it renders
+
+There are a couple settings available;
+
+Such as specifying the url you would like using
+
+`slug: /questionably/deep/url/for/no/reason/buckwheat-crepes`
+
+Adding `keywords` or `description` etc, below is a full example:
+```
+---
+id: not-three-cats
+title: Three Cats
+hide_title: false
+hide_table_of_contents: false
+sidebar_label: Still not three cats
+description: Three cats are not unlike four cats like three cats
+keywords:
+  - cats
+  - three
+image: ./assets/img/logo.png
+slug: /myDoc
+---
+My Document Markdown content
+```
+
+### Side bar navigation
+
+To update the high level navigation, open the file in `docs/sidebars.js` and arrange n order as required. The titles for links are pulled from their files.
+
+The `items` here take a page ID, a page ID by default is the title of the file, as example `example-doc.md` would be `example-doc`
+
+To read the Docusaurus docs, [click here](https://docusaurus.io/docs/sidebar)
+
+For Heading 1 specifically, you should set the page title in the meta data.
+
+[Docusaurus source docs](https://docusaurus.io/docs/next/markdown-features/headings)
+
+## Formating / Markdown / MDX Elements
+
+```md
+# Heading 1
+```
+
+## Heading 2
+
+```md
+## Heading 2
+```
+
+### Heading 3
+
+```md
+### Heading 3
+```
+
+#### Heading 4
+
+```md
+#### Heading 4
+```
+
+##### Heading 5
+
+```md
+##### Heading 5
+```
+
+###### Heading 6
+
+```md
+###### Heading 6
+```
+
+## Line breaks
+
+```md
+Some text
+
+With a line between them
+```
+
+## Lists
+
+### Unordered lists 
+
+- Unordered list 1
+- Unordered list 2
+- Unordered list 3
+
+```md
+- Unordered list 1
+- Unordered list 2
+- Unordered list 3
+```
+
+### Unordered lists
+
+You don't actually have to do the numbers, as long as there is a number at the start it'll count incrementally starting with the first number in the list
+
+1. Ordererd list 1
+69. Ordererd list 2
+42. Ordererd list 3
+
+
+```md
+1. Ordererd list 1
+69. Ordererd list 2
+42. Ordererd list 3
+```
+
+### Nested & Mixed lists
+
+1. Ordererd list
+    1. Sable
+    2. Ferret
+        - Cat rat
+        - Fox weasel
+    8. Lamp
+69. Ordererd list
+    - Grape
+    - Potatoes
+        - Chips
+            1. Crisps
+            1. Fondant
+            1. Frites
+    - Lemons
+        1. Three cats
+        1. Pasta
+        9. Ragu
+42. Ordererd list
+
+```md
+1. Ordererd list
+    1. Sable
+    2. Ferret
+        - Cat rat
+        - Fox weasel
+    8. Lamp
+69. Ordererd list
+    - Grape
+    - Potatoes
+        - Chips
+            1. Crisps
+            1. Fondant
+            1. Frites
+    - Lemons
+        1. Three cats
+        1. Pasta
+        9. Ragu
+42. Ordererd list
+```
+
+## Text styling
+
+_Italic/Emphasize_
+
+```md
+_Italic/Emphasize_
+```
+
+**Strong/Bold**
+
+```md
+**Strong/Bold**
+```
+
+**_Italic & Bold_**
+
+```md
+**_Italic & Bold_**
+```
+
+## Codeblocks
+
+So you basically define a section using the ` ``` ` anything between two lines that contain these 3 back quotes will be in the block
+
+If you want specific formatting for a certain language like for example Javascript here:
+
+```js
+const threeCats = ["cat", "cat", "cat"]
+```
+
+```md
+Mind the indentation here, code blocks in code blocks isn't normal usage
+    ```js
+    const threeCats = ["cat", "cat", "cat"]
+    ```
+```
+
+```jsx title="src/components/HelloDocusaurus.js"
+function HelloDocusaurus() {
+    return (
+        <h1>Hello, Docusaurus!</h1>
+    )
+}
+```
+
+```md
+    ```jsx title="src/components/where-should-i-save-this-file.js"
+    function HelloDocusaurus() {
+        return (
+            <h1>Hello, Docusaurus!</h1>
+        )
+    }
+    ```
+```
+
+Theres a lot of different code formattings to use, `md`, `js`, `ts`, etc. The package used is [Prism react render](https://github.com/FormidableLabs/prism-react-renderer).
+
+To see all the magic code components Docusaurus provides: [look here](https://docusaurus.io/docs/markdown-features/code-blocks).
+
+
+## Quotes
+
+
+> Quoted text.
+
+> > Quoted quote.
+
+> Quoted text.
+> > Quoted quote.
+> > > Quoted quote.
+
+> Quoted text.
+> > Quoted quote.
+> > > Quoted quote.
+> > > > Quoted quote.
+
+
+```md
+> Quoted text.
+
+> > Quoted quote.
+
+> Quoted text.
+> > Quoted quote.
+> > > Quoted quote.
+
+> Quoted text.
+> > Quoted quote.
+> > > Quoted quote.
+> > > > Quoted quote.
+```
+
+## Admonitions
+
+These are nifty notification blocks [from Docusaurus](https://docusaurus.io/docs/next/markdown-features/admonitions)
+
+:::note
+
+The content and title *can* include markdown.
+
+:::
+
+:::note Your Title
+
+The content and title *can* include markdown.
+
+:::
+
+:::tip You can specify an optional title
+
+Heads up! Here's a pro-tip.
+
+:::
+
+:::info
+
+Useful information.
+
+:::
+
+:::caution
+
+Warning! You better pay attention!
+
+:::
+
+:::danger
+
+Danger danger, mayday!
+
+:::
+
+```
+:::note
+
+The content and title *can* include markdown.
+
+:::
+
+:::note Your Title
+
+The content and title *can* include markdown.
+
+:::
+
+:::tip You can specify an optional title
+
+Heads up! Here's a pro-tip.
+
+:::
+
+:::info
+
+Useful information.
+
+:::
+
+:::caution
+
+Warning! You better pay attention!
+
+:::
+
+:::danger
+
+Danger danger, mayday!
+
+:::
+```
+
+
+
+## Links
+
+The links in this paragraph are being pulled from a list [a link][1] and
+another [link][2].
+
+```md
+The links in this paragraph are being pulled from a list [a link][1] and
+another [link][2].
+```
+
+```md
+This is that list
+
+[1]: http://example.com/ "Title"
+[2]: http://example.org/ "Title"
+```
+
+[1]: http://example.com/ "Title"
+[2]: http://example.org/ "Title"
+
+## Images
+
+### Alt tags for images
+
+You can update the alt tag data for text like this:
+
+Logo: ![Alt](/img/ink-profile.png "Docusaurus logo")
+
+```md
+Logo: ![Alt](/img/ink-profile.png "Docusaurus logo")
+```
+
+You can create a image with a hyperlink to another page or a hash link on the page by adding the link in the brackets next to it
+
+Linked logo: [![alt text](//img/ink-profile.png)](https://docs.Docusaurus.net/ "Off to the docs")
+
+```md
+Linked logo: [![alt text](//img/ink-profile.png)](https://docs.Docusaurus.net/ "Off to the docs")
+```
+
+## MDX features
+
+A quick note on using what's called `.mdx` features, `mdx` means markdown extended, to used these features, you need to name your file to have the extention `.mdx`
+
+For example `cheatsheet.mdx`
+
+This lets you use react components that are a bit more intricate that the standard markdown features.
+
+To make use of an `mdx` component like `Tabs`, you need to add any `import ... from ...` lines to the top of the page, but below the meta data section. Heres an example:
+
+```
+---
+title: Cheatsheet (Heading 1)
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+### Tabs
+
+This is an example of the `tabs` component.
+
+For extend usage, please refer to the [Docusaurus documentation.](https://docusaurus.io/docs/next/markdown-features/tabs)
+
+<Tabs
+  defaultValue="apple"
+  values={[
+    {label: 'Apple', value: 'apple'},
+    {label: 'Orange', value: 'orange'},
+    {label: 'Banana', value: 'banana'},
+  ]}>
+  <TabItem value="apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana">This is a banana 🍌</TabItem>
+</Tabs>
+
+```mdx
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="apple"
+  values={[
+    {label: 'Apple', value: 'apple'},
+    {label: 'Orange', value: 'orange'},
+    {label: 'Banana', value: 'banana'},
+  ]}>
+  <TabItem value="apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana">This is a banana 🍌</TabItem>
+</Tabs>
+```
+
+### Toggles
+<details>
+  <summary>Toggle me!</summary>
+  <div>
+    <div>This is the detailed content</div>
+    <br/>
+    <details>
+      <summary>
+        Nested toggle! Some surprise inside...
+      </summary>
+      <div>
+        😲😲😲😲😲
+      </div>
+    </details>
+  </div>
+</details>
+
+### Inline Table of Contents
+
+If you need a table contents literally anywhere, you can make use of the `<TOCInline>` component.
+
+For extend usage, please refer to the [Docusaurus documentation.](https://docusaurus.io/docs/next/markdown-features/inline-toc)
+
+<TOCInline toc={toc} />
+
+
+```mdx
+import TOCInline from '@theme/TOCInline'
+
+<TOCInline toc={toc} />
+```
+
+## Footnotes & references
+
+This is how we make a reference to a foot note or reference that's found at the bottoms of the page.[^1]
+
+```md
+This is how we make a reference to a footnote [^1] that's found at the bottoms of the page
+```
+
+To create list of foot notes, you just add list like this somewhere, preferably at the bottom of the file
+
+```md
+[^1]: an amazing foot note, you can add links n things here as usual
+
+```
+
+[^1]: an amazing foot note, you can add links n things here as usual
