@@ -11,7 +11,7 @@ module.exports = {
   trailingSlash: false,
   organizationName: 'niklasp',
   projectName: 'ink-docs',
-  deploymentBranch: 'docs2.0',
+  deploymentBranch: 'gh-pages',
   stylesheets: [
     'fonts/fonts.css',
     'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap',
