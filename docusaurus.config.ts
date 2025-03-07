@@ -4,12 +4,14 @@ import { themes as prismThemes } from 'prism-react-renderer'
 module.exports = {
   title: 'ink! documentation',
   tagline: 'documentation for ink!',
-  url: 'https://use.ink',
-  baseUrl: '/',
+  url: 'https://niklasp.github.io',
+  baseUrl: '/ink-docs/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
-  organizationName: 'use-ink',
+  trailingSlash: false,
+  organizationName: 'niklasp',
   projectName: 'ink-docs',
+  deploymentBranch: 'docs2.0',
   stylesheets: [
     'fonts/fonts.css',
     'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap',
