@@ -1,0 +1,26 @@
+[data-theme='dark'].gradient-purple {
+  background: linear-gradient(330deg, #8648d9 25%, rgb(62, 35, 161) 41.232327298001124%, rgb(0, 0, 0) 77%);
+  mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 100%);
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Freude', sans-serif;
+}
+
+.table-of-contents__link {
+  padding: 4px;
+  border: 3px dotted;
+  border-color: transparent;
+  padding: 8px;
+  border-radius: 8px;
+}
+.table-of-contents__link--active,
+.table-of-contents__link:hover {
+  border-color: rgba(189, 130, 253, 0.5);
+}
+
+.table-of-contents li {
+  margin: 2px;
+}

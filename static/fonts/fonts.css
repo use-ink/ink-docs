@@ -13,3 +13,17 @@
     url('NunitoSans/nunito-sans-v6-vietnamese_latin-ext_latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
     url('NunitoSans/nunito-sans-v6-vietnamese_latin-ext_latin-regular.svg#NunitoSans') format('svg'); /* Legacy iOS */
 }
+
+@font-face {
+  font-family: 'Freude';
+  font-weight: 400;
+  font-style: normal;
+  src: url('freude/Freude.eot');
+  src:
+    url('freude/Freude.eot?#iefix') format('embedded-opentype'),
+    url('freude/Freude.woff') format('woff'),
+    url('freude/Freude.eot?#iefix') format('embedded-opentype'),
+    url('freude/Freude.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

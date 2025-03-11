@@ -102,13 +102,17 @@ module.exports = {
           editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
         },
         theme: {
-          customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/faucet.css')],
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/docs.css'),
+            require.resolve('./src/css/faucet.css'),
+          ],
         },
       },
     ],
   ],
   plugins: [
-    async function myPlugin() {
+    async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
         configurePostCss(postcssOptions) {
