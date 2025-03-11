@@ -11,6 +11,7 @@ module.exports = {
         montserrat: ['Montserrat'],
         nunito: 'Nunito Sans',
         lora: 'Lora, serif',
+        freude: 'Freude',
       },
       colors: {
         brand: {

@@ -8,9 +8,9 @@ import type { Props } from '@theme/DocVersionRoot'
 
 export default function DocsRoot(props: Props): ReactNode {
   return (
-    <HtmlClassNameProvider className={clsx(ThemeClassNames.wrapper.docsPages, 'font-montserrat')}>
-      <div className="absolute top-0 left-0 w-full h-[150vh] gradient-purple -z-10"></div>
+    <HtmlClassNameProvider className={clsx(ThemeClassNames.wrapper.docsPages)}>
       <Layout>{renderRoutes(props.route.routes!)}</Layout>
+      <div className="absolute top-0 left-0 w-full h-[150vh] gradient-purple -z-10"></div>
     </HtmlClassNameProvider>
   )
 }
