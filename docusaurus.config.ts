@@ -12,10 +12,7 @@ module.exports = {
   organizationName: 'niklasp',
   projectName: 'ink-docs',
   deploymentBranch: 'gh-pages',
-  stylesheets: [
-    'fonts/fonts.css',
-    'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700&display=swap',
-  ],
+  stylesheets: ['fonts/fonts.css'],
   scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
   // plugins: [
   //   [
@@ -106,6 +103,7 @@ module.exports = {
             require.resolve('./src/css/custom.css'),
             require.resolve('./src/css/docs.css'),
             require.resolve('./src/css/faucet.css'),
+            require.resolve('./static/fonts/fonts.css'),
           ],
         },
       },

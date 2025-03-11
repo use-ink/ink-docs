@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lora:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;700;900&display=swap');
 
 @font-face {
   font-family: 'Nunito Sans';
@@ -18,12 +18,12 @@
   font-family: 'Freude';
   font-weight: 400;
   font-style: normal;
-  src: url('freude/Freude.eot');
+  src: url('/static/fonts/Freude/Freude.eot');
   src:
-    url('freude/Freude.eot?#iefix') format('embedded-opentype'),
-    url('freude/Freude.woff') format('woff'),
-    url('freude/Freude.eot?#iefix') format('embedded-opentype'),
-    url('freude/Freude.woff') format('woff');
+    url('/static/fonts/Freude/Freude.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/Freude/Freude.woff') format('woff'),
+    url('/static/fonts/Freude/Freude.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/Freude/Freude.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
