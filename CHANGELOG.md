@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
     - @types/glob
     - glob
     - ts-node
+  - migrate images to useBaseUrl in order for docusaurus to be able to run docs from subdirectory and hosted at subdomains (e.g. niklasp.github.io/ink-docs/docs)
 
 - Redesign
 
