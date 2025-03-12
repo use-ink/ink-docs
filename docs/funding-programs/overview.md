@@ -21,11 +21,11 @@ You can learn more [here](/ubator).
 ## Ecosystem Development Funds
 
 Nearly all chains that support ink! have some sort of ecosystem development program.
-We've listed [chains that support ink! here](../intro/where-to-deploy.md).
+We've listed [chains that support ink! here](../intro/where-to-deploy.mdx).
 
 ## Treasuries
 
-A number of chains that support ink! have a treasury. In the case of Polkadot the 
+A number of chains that support ink! have a treasury. In the case of Polkadot the
 treasury in on-chain with a governance process. Here, the community decides on
 where to best allocate funds.
 

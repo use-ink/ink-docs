@@ -13,7 +13,7 @@ export function GetSupport() {
           <SocialIcon
             className="rotate-[-6deg]"
             href="https://t.me/yourname"
-            icon={<FaTelegram size={28} />}
+            icon={<FaTelegram size={64} />}
             helpText="Join us on Telegram"
           />
 
@@ -21,7 +21,7 @@ export function GetSupport() {
           <SocialIcon
             className="skew-y-[-6deg] rotate-[12deg]"
             href="https://youtube.com/@yourchannel"
-            icon={<FaYoutube size={28} />}
+            icon={<FaYoutube size={64} />}
             helpText="Visit us on YouTube"
           />
 
@@ -34,7 +34,7 @@ export function GetSupport() {
           <SocialIcon
             className="skew-x-[-12deg] skew-y-[-6deg] rotate-[8deg]"
             href="https://x.com/yourhandle"
-            icon={<FaXTwitter size={28} />}
+            icon={<FaXTwitter size={64} />}
             helpText="Follow us on X"
           />
 
@@ -42,7 +42,7 @@ export function GetSupport() {
           <SocialIcon
             className="skew-x-[-9deg] skew-y-[6deg] rotate-[-9deg]"
             href="https://github.com/yourname"
-            icon={<FaGithub size={28} />}
+            icon={<FaGithub size={64} />}
             helpText="Contribute to ink!"
           />
         </div>

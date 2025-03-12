@@ -12,7 +12,6 @@ export default function DocsVersionDropdownNavbarItemWrapper(props) {
   const activeDocContext = useActiveDocContext(props.docsPluginId)
   const versions = useVersions(props.docsPluginId)
 
-  console.log(versions)
   const currentVersion = versions.find((version) => version?.name === 'current')
   const isViewingOutdatedVersion = activeDocContext.activeVersion?.name !== currentVersion?.name
   const isViewingUnreleasedVersion = activeDocContext.activeVersion?.name === 'v6'

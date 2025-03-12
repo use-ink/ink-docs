@@ -415,8 +415,8 @@ table.wallet-table * {
 
 .theme-doc-sidebar-container {
   @apply !border-none;
-  mask-image: linear-gradient(to top, transparent 0%, black 30px);
-  margin-bottom: 20px;
+  /* mask-image: linear-gradient(to top, transparent 0%, black 30px);
+  margin-bottom: 20px; */
 }
 
 .menu__caret::before,

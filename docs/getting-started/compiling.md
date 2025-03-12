@@ -14,7 +14,7 @@ Run the following command in your `flipper` directory to compile your smart cont
 cargo contract build
 ```
 
-This command will build the following for your contract: 
+This command will build the following for your contract:
 a Wasm binary, a metadata file (which contains the
 contract's ABI) and a `.contract` file which bundles both.
 
@@ -27,6 +27,7 @@ target
     └─ flipper.wasm
     └─ flipper.json
 ```
+
 You can think of it this way: the raw Wasm binary contains just
 the bytecode of your contract. Without further information it's
 not possible to know what this bytecode refers to. For example,
@@ -40,12 +41,12 @@ is about is called metadata ‒ data that describes other data.
 
 The purpose of each file is:
 
-* `flipper.wasm`: This is the raw contract bytecode that will be deployed on-chain.
-* `flipper.json`: The isolated metadata, which is not stored on-chain.
-It's big and would take up too much space and costs.
-This file is used by e.g. a dApp user interface to know how to communicate with the on-chain contract.
-* `flipper.contract`: Combines both the contract's bytecode and the metadata. This file
-is used when you are using a Developer UI like [Contracts UI](https://ui.use.ink).
+- `flipper.wasm`: This is the raw contract bytecode that will be deployed on-chain.
+- `flipper.json`: The isolated metadata, which is not stored on-chain.
+  It's big and would take up too much space and costs.
+  This file is used by e.g. a dApp user interface to know how to communicate with the on-chain contract.
+- `flipper.contract`: Combines both the contract's bytecode and the metadata. This file
+  is used when you are using a Developer UI like [Contracts UI](https://ui.use.ink).
 
 Let's take a look at the structure of the `flipper.json`:
 
@@ -67,12 +68,12 @@ Let's take a look at the structure of the `flipper.json`:
 
 This file describes all the interfaces that can be used to interact with your contract:
 
-* `types` provides the custom **data types** used throughout the rest of the JSON.
-* `storage` defines all the **storage** items managed by your contract and how to ultimately access them.
-* `spec` stores information about the callable functions like **constructors** and **messages** a
-user can call to interact with the contract. It also has helpful information like the **events**
-that are emitted by the contract or any **docs**.
-  
+- `types` provides the custom **data types** used throughout the rest of the JSON.
+- `storage` defines all the **storage** items managed by your contract and how to ultimately access them.
+- `spec` stores information about the callable functions like **constructors** and **messages** a
+  user can call to interact with the contract. It also has helpful information like the **events**
+  that are emitted by the contract or any **docs**.
+
 If you look closely at the constructors and messages, you will also notice a `selector` which
 contains a 4-byte hash of the function name and is used to route your contract calls to the correct
 functions.
@@ -103,7 +104,7 @@ that the contract will e.g. print statements like
 ink::env::debug_println!("magic number: {}", value);
 ```
 
-to the node's console if debugging was enabled on the node ([instructions here](../faq/faq.md#how-do-i-print-something-to-the-console-from-the-runtime)).
+to the node's console if debugging was enabled on the node ([instructions here](../faq/faq.mdx#how-do-i-print-something-to-the-console-from-the-runtime)).
 To support functionality like this the debug build of a contract includes some
 heavy-weight logic.
 
