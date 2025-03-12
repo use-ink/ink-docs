@@ -42,6 +42,9 @@
   --ifm-navbar-background-color: transparent !important;
   --ifm-navbar-search-input-placeholder-color: var(--ifm-color-primary-lightest) !important;
   --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%23d7b5ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+  --ifm-menu-color-background-hover: transparent;
+  --ifm-menu-color-background-active: transparent;
+  --ifm-dropdown-background-color: #110a2dcc;
 }
 
 html {
@@ -183,13 +186,34 @@ button:disabled {
   padding: 0 var(--ifm-pre-padding);
 }
 
+/* first level menu */
+.theme-doc-sidebar-item-category-level-1 > div > .menu__link:hover {
+  background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%) !important;
+  transform: translate3d(0px, 0, 0);
+}
+
+/* nested menu links */
+
 .menu__link {
+  transition: transform 0.3s ease-in-out;
   outline: none !important;
+}
+
+.menu__link:hover {
+  transition: transform 0.15s ease-in-out;
+  transform: translate3d(5px, 0, 0);
+  color: var(--ifm-color-primary-lightest);
+  /* background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%); */
+}
+
+.navbar-sidebar {
+  @apply bg-black;
 }
 
 .navbar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(7px);
+  @apply min-[997px]:backdrop-blur-md;
+  @apply min-[997px]:bg-gradient-to-r min-[997px]:from-[#020204aa] min-[997px]:to-[#1c1047aa];
 }
 
 .navbar__logo {
@@ -357,10 +381,6 @@ table.wallet-table * {
   }
 }
 
-.oldVersion {
-  color: var(--ifm-color-primary);
-}
-
 .attention {
   float: left;
   width: 15px;
@@ -438,6 +458,8 @@ h3 {
   margin: 2px;
 }
 
+/** SIDEBAR **/
+
 li.theme-doc-sidebar-item-category-level-1 {
   background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%);
   /* padding: 14px; */
@@ -453,4 +475,26 @@ ul.menu__list {
 
 ul.menu__list li a {
   padding: 14px;
+}
+
+/** SEARCH BAR **/
+[class^='dropdownMenu_'] {
+  /* Your styles here */
+  color: var(--ifm-color-primary);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--ifm-dropdown-background-color) !important;
+  @apply rounded-full !backdrop-blur-md;
+  @apply !shadow-lg;
+}
+
+.table-of-contents__left-border {
+  border: none;
+}
+
+/** TOP NAV **/
+
+.dropdown__menu {
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

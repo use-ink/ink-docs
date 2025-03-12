@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from '@docusaurus/Link'
 import {
   useActiveDocContext,
   useVersions,
@@ -11,6 +12,7 @@ export default function DocsVersionDropdownNavbarItemWrapper(props) {
   const activeDocContext = useActiveDocContext(props.docsPluginId)
   const versions = useVersions(props.docsPluginId)
 
+  console.log(versions)
   const currentVersion = versions.find((version) => version?.name === 'current')
   const isViewingOutdatedVersion = activeDocContext.activeVersion?.name !== currentVersion?.name
   const isViewingUnreleasedVersion = activeDocContext.activeVersion?.name === 'v6'
@@ -19,21 +21,35 @@ export default function DocsVersionDropdownNavbarItemWrapper(props) {
 
   if (isViewingUnreleasedVersion) {
     return (
-      <>
+      <div className="flex flex-row items-center gap-2 text-foreground">
+        <span className="text-2xl text-transparent font-freude bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+          Attention!
+        </span>
         <div className={'navbar__item oldVersion text-sm'}>
-          ⚠️ You are viewing the documentation for an <em>unreleased</em> version of ink!.
+          You are viewing <em>unreleased</em> ink! {activeDocContext.activeVersion?.name} docs.{' '}
+          <Link to={'/docs'} className="underline hover:text-purple-600">
+            Click here
+          </Link>{' '}
+          to view the latest docs.
         </div>
         <DocsVersionDropdownNavbarItem {...props} />
-      </>
+      </div>
     )
   } else if (isViewingOutdatedVersion) {
     return (
-      <>
+      <div className="flex flex-row items-center gap-2 text-foreground">
+        <span className="text-2xl text-transparent font-freude bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+          Attention!
+        </span>
         <div className={'navbar__item oldVersion text-sm'}>
-          ⚠️ You are viewing the documentation for an older version of ink!.
+          You are viewing <em>outdated</em> ink! {activeDocContext.activeVersion?.name} docs.{' '}
+          <Link to={'/docs'} className="underline hover:text-purple-600">
+            Click here
+          </Link>{' '}
+          to view the latest docs.
         </div>
         <DocsVersionDropdownNavbarItem {...props} />
-      </>
+      </div>
     )
   } else {
     return (
