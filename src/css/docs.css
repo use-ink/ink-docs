@@ -45,6 +45,7 @@
   --ifm-menu-color-background-hover: transparent;
   --ifm-menu-color-background-active: transparent;
   --ifm-dropdown-background-color: #110a2dcc;
+  --ifm-navbar-search-input-background-color: #000;
 }
 
 html {
@@ -187,7 +188,7 @@ button:disabled {
 }
 
 /* first level menu */
-.theme-doc-sidebar-item-category-level-1 > div > .menu__link:hover {
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > div > .menu__link:hover {
   background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%) !important;
   transform: translate3d(0px, 0, 0);
 }
@@ -203,6 +204,7 @@ button:disabled {
   transition: transform 0.15s ease-in-out;
   transform: translate3d(5px, 0, 0);
   color: var(--ifm-color-primary-lightest);
+  background: transparent;
   /* background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%); */
 }
 
@@ -213,6 +215,9 @@ button:disabled {
 .navbar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   @apply min-[997px]:backdrop-blur-md;
+}
+
+[data-theme='dark'] .navbar {
   @apply min-[997px]:bg-gradient-to-r min-[997px]:from-[#020204aa] min-[997px]:to-[#1c1047aa];
 }
 
@@ -497,4 +502,8 @@ ul.menu__list li a {
 .dropdown__menu {
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kbd {
+  background: #000 !important;
 }
