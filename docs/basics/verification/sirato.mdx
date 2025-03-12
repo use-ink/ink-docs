@@ -4,6 +4,8 @@ slug: /basics/verification/sirato
 hide_title: true
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 ![Verification Title Picture](/img/title/verification.svg)
 
 # Sirato Verification Service
@@ -117,7 +119,7 @@ Web3 Labs host a public instance of the service at
 to the service is also avilable at 
 [ink-verifier.sirato.xyz/api/api-docs/](https://ink-verifier.sirato.xyz/api/api-docs/).
 
-<img src="/img/verification-service-api.png" alt="ink! Verification Service Swagger endpoint" />
+<img src={useBaseUrl('/img/verification-service-api.png')} alt="ink! Verification Service Swagger endpoint" />
 
 The verification process entails the following steps:
 
@@ -162,7 +164,7 @@ For instance, in order to verify a contract deployed on the Rococo parachain,
 you can head to the Sirato instance at 
 [substrate.sirato.xyz](https://substrate.sirato.xyz/).
 
-<img src="/img/sirato-substrate.png" alt="Sirato Substrate" />
+<img src={useBaseUrl('/img/sirato-substrate.png')} alt="Sirato Substrate" />
 
 From there you can navigate to the deployed code by clicking on the Code 
 reference that matches the code hash returned by the cargo contract instantiate 
@@ -171,40 +173,40 @@ call.
 Alternatively, you can navigate directly by entering the URL 
 `https://substrate.sirato.xyz/codes/0x<code-hash>`.
 
-<img src="/img/sirato-contract-instance.png" alt="Sirato contract instance view" />
+<img src={useBaseUrl('/img/sirato-contract-instance.png')} alt="Sirato contract instance view" />
 
 Now click on the source code tab:
 
-<img src="/img/sirato-package-upload.png" alt="Sirato package upload page" />
+<img src={useBaseUrl('/img/sirato-package-upload.png')} alt="Sirato package upload page" />
 
 Then upload the verified `package.zip` file that you generated earlier.
 
-<img src="/img/sirato-package-upload-done.png" alt="Sirato package upload complete" />
+<img src={useBaseUrl('/img/sirato-package-upload-done.png')} alt="Sirato package upload complete" />
 
 You can now start the verification process which kicks off a build of the 
 provided resources.
 
-<img src="/img/sirato-package-verify.png" alt="Sirato package verification" />
+<img src={useBaseUrl('/img/sirato-package-verify.png')} alt="Sirato package verification" />
 
 Once the process has finished you will see the message 
 `Contract successfully verified`.
 
-<img src="/img/sirato-verify-complete.png" alt="Sirato package verification complete" />
+<img src={useBaseUrl('/img/sirato-verify-complete.png')} alt="Sirato package verification complete" />
 
 Clicking Browse verified files will display the associated metadata and 
 source files for your contract.
 
-<img src="/img/sirato-browse-verified.png" alt="Sirato browse verified contract" />
+<img src={useBaseUrl('/img/sirato-browse-verified.png')} alt="Sirato browse verified contract" />
 
 If we then browse back to our contract instance, any methods or events will 
 now be decoded.
 
-<img src="/img/sirato-decoded-transaction.png" alt="Sirato decoded contract transaction" />
+<img src={useBaseUrl('/img/sirato-decoded-transaction.png')} alt="Sirato decoded contract transaction" />
 
 We can verify this by invoking a method on the contract. We can now see the 
 decoded method that was called in Sirato.
 
-<img src="/img/sirato-decoded-transaction2.png" alt="Another Sirato decoded contract transaction" />
+<img src={useBaseUrl('/img/sirato-decoded-transaction2.png')} alt="Another Sirato decoded contract transaction" />
 
 ### Unverified metadata upload
 

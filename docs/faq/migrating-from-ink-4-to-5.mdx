@@ -3,6 +3,8 @@ title: Migrating from ink! 4.x to 5.0
 slug: /faq/migrating-from-ink-4-to-5
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 ![Migration 4.x To 5.0 Title Picture](/img/title/migration-4.x-to-5.0.svg)
 
 We've made a couple of breaking changes from ink! 4.x to ink! 5.0.
@@ -65,7 +67,7 @@ there we explain how to find out if a chain supports them there.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » `contracts` » `palletVersion()` » Click on the `+` on the right.
 
-<img src="/img/pallet-version.png"  />
+<img src={useBaseUrl('/img/pallet-version.png')}  />
 
 
 The following chains are in production and support ink! 5.0, if you are not using any of the
@@ -74,17 +76,17 @@ four functions mentioned above:
 <div className="row">
     <div className="col text--center">
         <a href="https://alephzero.org">
-            <img src= "/img/chains/aleph-zero.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/aleph-zero.svg')} className="chain" />
         </a>
     </div>
     <div className="col text--center">
         <a href="https://astar.network">
-            <img src= "/img/chains/astar.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/astar.svg')} className="chain" />
         </a>
     </div>
     <div className="col text--center">
         <a href="https://shiden.astar.network">
-            <img src= "/img/chains/shiden.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/shiden.svg')} className="chain" />
         </a>
     </div>
 </div>
@@ -92,17 +94,17 @@ four functions mentioned above:
 <div className="row">
     <div className="col text--center">
         <a href="http://phala.network">
-            <img src= "/img/chains/phala.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/phala.svg')} className="chain" />
         </a>
     </div>
     <div className="col text--center">
         <a href="https://pendulumchain.org">
-            <img src= "/img/chains/pendulum.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/pendulum.svg')} className="chain" />
         </a>
     </div>
     <div className="col text--center">
         <a href="https://pendulumchain.org/amplitude">
-            <img src= "/img/chains/amplitude.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/amplitude.svg')} className="chain" />
         </a>
     </div>
 </div>
@@ -110,12 +112,12 @@ four functions mentioned above:
 <div className="row">
     <div className="col text--center">
         <a href="https://www.ternoa.network/">
-            <img src= "/img/chains/ternoa.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/ternoa.svg')} className="chain" />
         </a>
     </div>
     <div className="col text--center">
         <a href="https://krest.peaq.network/">
-            <img src= "/img/chains/krest.svg" className="chain" />
+            <img src= {useBaseUrl('/img/chains/krest.svg')} className="chain" />
         </a>
     </div>
 </div>
@@ -497,7 +499,7 @@ querying the `contracts::apiVersion` constant. It has to be `1`.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
 
-<img src="/img/api-version-1.png"  />
+<img src={useBaseUrl('/img/api-version-1.png')}  />
 
 At the time of the ink! v5 release (March 2024) no parachain with ink! support
 had upgraded to `polkadot-v1.8.0` yet.
@@ -646,8 +648,8 @@ info (e.g. `cargo contract storage --help`).
 * `cargo contract info --all`: displays all addresses of deployed contracts on a particular chain ([#1319](https://github.com/use-ink/cargo-contract/pull/1319))
 * `cargo contract storage`: displays the storage of an on-chain contract ([#1395](https://github.com/use-ink/cargo-contract/pull/1395), [#1414](https://github.com/use-ink/cargo-contract/pull/1414))
 
-<img src="/img/cargo-contract-storage.png"  /><br/>
-<img src="/img/cargo-contract-info.png"  />
+<img src={useBaseUrl('/img/cargo-contract-storage.png')}  /><br/>
+<img src={useBaseUrl('/img/cargo-contract-info.png')}  />
 
 ### Alternative off-chain E2E testing backend support: DRink!
 
@@ -695,7 +697,7 @@ querying the `contracts::apiVersion` constant. It has to be `2`.
 You can use the [polakdot.js app](https://polkadot.js.org/apps/) to do this:
 Developer » Chain State » Constants » `contracts` » `apiVersion` » Click on the `+` on the right.
 
-<img src="/img/api-version-2.png"  />
+<img src={useBaseUrl('/img/api-version-2.png')}  />
 
 At the time of the ink! v5 release (March 2024) no parachain with ink! support
 had upgraded to `polkadot-v1.8.0` yet.
