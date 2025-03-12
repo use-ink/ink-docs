@@ -1,8 +1,8 @@
 import React from 'react'
-import useBaseUrl from '@docusaurus/useBaseUrl'
 import { ListItem } from './list-item'
 import { Info } from '@phosphor-icons/react'
 import clsx from 'clsx'
+import { GetSupport } from './get-support'
 
 export function Footer({ className }: { className?: string }) {
   const footerLinks = [
@@ -103,10 +103,11 @@ export function Footer({ className }: { className?: string }) {
   return (
     <footer
       className={clsx(
-        'grid w-full pb-12 pt-20 dark:bg-gradient-to-b from-[rgba(33,15,59,0)] via-[rgb(29,24,61)] to-black',
+        'grid w-full pb-12 pt-24 dark:bg-gradient-to-b from-[rgba(33,15,59,0)] via-[rgb(29,24,61)] to-black',
         className,
       )}
     >
+      <GetSupport />
       <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 justify-center">
         <div className="flex flex-col gap-4">
           <p className="text-[12px] text-gray-400">© use.ink {new Date().getFullYear()}. All rights reserved.</p>
