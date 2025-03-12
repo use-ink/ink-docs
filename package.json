@@ -51,6 +51,7 @@
     "@easyops-cn/docusaurus-search-local": "^0.46.1",
     "@headlessui/react": "^2.2.0",
     "@lottiefiles/lottie-player": "^2.0.3",
+    "@phosphor-icons/react": "^2.1.7",
     "autoprefixer": "^10.4.17",
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",

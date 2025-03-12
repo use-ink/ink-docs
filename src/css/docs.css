@@ -32,7 +32,7 @@
   --ifm-background-color: rgb(245, 245, 245) !important;
   --ifm-navbar-background-color: rgba(245, 245, 245, 0.5) !important;
 
-  --doc-sidebar-width: 270px !important;
+  --doc-sidebar-width: 300px !important;
 
   --ifm-menu-link-padding-horizontal: 0px;
 }
@@ -410,16 +410,13 @@ table.wallet-table * {
 }
 
 .menu {
-  @apply !p-4 text-sm;
+  @apply !px-8 !pt-6 text-sm;
 }
 
 .theme-doc-sidebar-container {
   @apply !border-none;
-}
-
-.menu {
-  font-size: 14px;
-  @apply !p-4;
+  mask-image: linear-gradient(to top, transparent 0%, black 30px);
+  margin-bottom: 20px;
 }
 
 .menu__caret::before,
