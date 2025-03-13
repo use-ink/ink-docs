@@ -509,3 +509,53 @@ ul.menu__list li a {
 .kbd {
   background: #000 !important;
 }
+
+/** PAGINATION **/
+
+.pagination-nav {
+  box-shadow: 0 24px 24px #00000040;
+  padding: 18px;
+  background-image: linear-gradient(rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.pagination-nav__info {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(224, 191, 255);
+}
+
+.pagination-nav__link {
+  @apply !rounded-[18px];
+  background: rgba(189, 130, 253, 0.1);
+  border: transparent;
+  flex: 1;
+  transition: background 0.2s ease-in-out;
+  height: auto;
+}
+
+.pagination-nav__link:hover {
+  background: rgba(189, 130, 253, 0.2);
+}
+
+.pagination-nav__sublabel {
+  font-size: 12px;
+  color: rgb(218, 185, 249);
+}
+
+.pagination-nav__label {
+  color: rgb(220, 215, 224);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pagination-nav__label::before,
+.pagination-nav__label::after {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(218, 185, 249);
+}

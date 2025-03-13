@@ -19,7 +19,7 @@ export function ListItem({
   )
 
   return (
-    <li className="flex items-center gap-2 group bg-[#8053b80f] hover:bg-[#8a66b329] text-[15px] font-[600]">
+    <li className="flex items-center gap-2 group bg-[#8053b80f] hover:bg-[#8a66b329] rounded-[12px] text-[15px] font-[600]">
       {href ? (
         <a
           href={href}
