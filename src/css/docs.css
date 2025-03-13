@@ -499,6 +499,10 @@ ul.menu__list li a {
   border: none;
 }
 
+[class^='dataset_'] [class^='suggestion_'] {
+  background: transparent !important;
+}
+
 /** TOP NAV **/
 
 .dropdown__menu {
