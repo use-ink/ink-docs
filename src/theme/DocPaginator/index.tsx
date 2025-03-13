@@ -15,7 +15,7 @@ export default function DocPaginator(props: Props): ReactNode {
       })}
     >
       <span className="pagination-nav__info">Continue Learning</span>
-      <div className="flex flex-row w-full gap-4">
+      <div className="grid w-full grid-cols-2 gap-4">
         {previous && (
           <PaginatorNavLink
             {...previous}
