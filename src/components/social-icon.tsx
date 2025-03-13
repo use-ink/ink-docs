@@ -26,15 +26,13 @@ export function SocialIcon({
       )}
       <div
         className={clsx(
-          'z-0 relative flex items-center justify-center w-[124px] h-[124px] bg-white shadow-md rounded-2xl',
+          'z-0 relative flex items-center justify-center w-[124px] h-[124px] bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de] hover:shadow-[10px_10px_0px_0px_#6957de] transition-shadow duration-500',
           className,
         )}
-        style={{
-          boxShadow: 'rgb(92, 77, 196) 8px 8px 0px 0px',
-        }}
       >
-        {/* Icon */}
-        <div className="text-black">{icon}</div>
+        <div className="flex items-center justify-center w-[100px] h-[100px] bg-white border-[#6957de] border-4 border-solid rounded-[24px]">
+          <div className="flex items-center text-black ">{icon}</div>
+        </div>
       </div>
     </a>
   )
