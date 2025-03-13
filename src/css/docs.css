@@ -187,31 +187,6 @@ button:disabled {
   padding: 0 var(--ifm-pre-padding);
 }
 
-/* first level menu */
-[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > div > .menu__link:hover {
-  background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%) !important;
-  transform: translate3d(0px, 0, 0);
-}
-
-/* nested menu links */
-
-.menu__link {
-  transition: transform 0.3s ease-in-out;
-  outline: none !important;
-}
-
-.menu__link:hover {
-  transition: transform 0.15s ease-in-out;
-  transform: translate3d(5px, 0, 0);
-  color: var(--ifm-color-primary-lightest);
-  background: transparent;
-  /* background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%); */
-}
-
-.navbar-sidebar {
-  @apply bg-black;
-}
-
 .navbar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   @apply min-[997px]:backdrop-blur-md;
@@ -415,8 +390,12 @@ table.wallet-table * {
 
 .theme-doc-sidebar-container {
   @apply !border-none;
-  /* mask-image: linear-gradient(to top, transparent 0%, black 30px);
-  margin-bottom: 20px; */
+  position: relative;
+}
+
+.theme-doc-sidebar-container nav {
+  mask-image: linear-gradient(to top, transparent 0%, black 30px);
+  margin-bottom: 20px;
 }
 
 .menu__caret::before,
@@ -444,6 +423,8 @@ h3 {
   font-family: 'Freude', sans-serif;
 }
 
+/** SIDEBAR **/
+
 .table-of-contents__link {
   padding: 4px;
   border: 3px dotted;
@@ -460,8 +441,6 @@ h3 {
   margin: 2px;
 }
 
-/** SIDEBAR **/
-
 li.theme-doc-sidebar-item-category-level-1 {
   background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%);
   /* padding: 14px; */
@@ -477,6 +456,32 @@ ul.menu__list {
 
 ul.menu__list li a {
   padding: 14px;
+}
+
+/* first level menu */
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > div > .menu__link:hover {
+  background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%) !important;
+  transform: translate3d(0px, 0, 0);
+}
+
+/* nested menu links */
+
+.menu__link {
+  transition: transform 0.3s ease-in-out;
+  outline: none !important;
+  border-radius: 0;
+}
+
+.menu__link:hover {
+  transition: transform 0.15s ease-in-out;
+  transform: translate3d(5px, 0, 0);
+  color: var(--ifm-color-primary-lightest);
+  background: transparent;
+  /* background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%); */
+}
+
+.navbar-sidebar {
+  @apply bg-black;
 }
 
 /** SEARCH BAR **/
