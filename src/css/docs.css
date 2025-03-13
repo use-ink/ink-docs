@@ -46,6 +46,8 @@
   --ifm-menu-color-background-active: transparent;
   --ifm-dropdown-background-color: #110a2dcc;
   --ifm-navbar-search-input-background-color: #000;
+
+  --admonition-background-color: #110a2dcc;
 }
 
 html {
@@ -410,6 +412,7 @@ table.wallet-table * {
 
 .breadcrumbs__item--active .breadcrumbs__link {
   background-color: transparent;
+  color: #bd82fd1a;
 }
 
 [data-theme='dark'] .gradient-purple {
@@ -562,4 +565,60 @@ ul.menu__list li a {
   font-size: 18px;
   font-weight: 400;
   color: rgb(218, 185, 249);
+}
+
+/** ADMONITIONS **/
+
+.theme-admonition {
+  margin-bottom: 0 !important;
+  padding: 1rem;
+  background-color: inherit !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: 500 !important;
+}
+
+[class^='admonitionHeading_'] {
+  font-family: 'Freude', sans-serif !important;
+  font-size: 18px !important;
+  color: var(--heading-color) !important;
+}
+
+[class^='admonitionIcon_'] {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+[class^='admonitionIcon_'] svg {
+  fill: currentColor !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.admonition-wrap {
+  border: 1px solid rgba(189, 130, 253, 0.1) !important;
+}
+
+.admonition-wrap-tip {
+  background-color: rgba(129, 252, 186, 0.2) !important;
+  --heading-color: rgb(129, 252, 145);
+}
+
+.admonition-wrap-caution {
+  background-color: rgba(252, 232, 129, 0.2) !important;
+  --heading-color: rgb(252, 232, 129);
+}
+
+.admonition-wrap-danger {
+  background-color: rgba(252, 129, 129, 0.2) !important;
+  --heading-color: rgb(252, 129, 129);
+}
+
+.admonition-wrap-info {
+  background-color: rgba(129, 149, 252, 0.2) !important;
+  --heading-color: rgb(129, 149, 252);
+}
+
+.admonition-wrap-note {
+  background-color: rgba(189, 130, 253, 0.2) !important;
+  --heading-color: rgb(189, 130, 253);
 }
