@@ -14,7 +14,6 @@ export default function IconHome(props) {
         viewBox="0 0 44.5 76"
         style={{
           enableBackground: 'new 0 0 44.5 76',
-          color: '#bc83fb',
         }}
         fill="currentColor"
         xmlSpace="preserve"
