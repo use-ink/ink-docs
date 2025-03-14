@@ -5,125 +5,53 @@ slug: /
 hide_table_of_contents: true
 ---
 
-<br />
+## Introduction
 
-<center>
-    <img src="/img/title/ink!-6.0.svg" title="The ink! 6.0 smart contracts toolkit release" width="800" style={{ marginBottom: 10 }} />
-</center>
+ink! is a programming language for smart contracts.
 
-<center className="ignoreP">
-    <a href="https://github.com/use-ink/ink-examples">
-        <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=GitHub&logoColor=black&label=ink!%20Examples&labelColor=white&color=blue" />
-    </a>
-    &nbsp;
-    <a href="https://substrate.stackexchange.com/questions/tagged/ink?tab=Votes">
-        <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=StackExchange&label=ink!%20Support%20on%20StackExchange&labelColor=white&color=blue" />
-    </a>
-    &nbsp;
-    <a href="https://t.me/inkathon">
-        <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=Telegram&label=ink!%20Developer%20Group%20on%20Telegram&labelColor=white&color=blue" />
-    </a>
-    <br/>
-</center>
+It's a domain-specific Rust language: contracts are normal Rust code.
 
-<center className="ignoreP">
-    <a href="https://twitter.com/ink_lang">
-        <img style={{height: 25}} src="https://img.shields.io/twitter/follow/ink_lang?label=Follow%20us%20on%20X" />
-    </a>
-    &nbsp;
-    <a href="http://youtube.com/@ink-lang">
-        <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=YouTube&logoColor=eb3f25&label=ink!%20YouTube&labelColor=white&color=blue" />
-    </a>
-</center>
+We decided on Rust as it provides inherent safety-guarantees and
+a great performance. This translates to low user fees and makes it
+an ideal choice for scalable smart contracts.
 
-<h3 style={{ lineHeight: 1.4 + 'em', marginTop: 0.5 + 'em' }}>
-  <center>
-    <em>
-      ink! is a programming language for smart contracts.<br />
-      You can use it with blockchains built on <a href="https://github.com/paritytech/substrate">Substrate</a>.
-    </em>
-  </center>
-</h3>
+You can use all the normal Rust tooling ‒ clippy, crates.io, IDE’s, etc.
+
+Interoperability with Solidity contracts:
+Solidity developers can cross-contract call ink! contracts as if they were
+Solidity contracts.
+
+You can deploy ink! to blockchains built with <a href="https://github.com/paritytech/polkadot-sdk">Polkadot SDK</a>.
+See [here](https://use.ink) for a list of chains that support us.
+
+## Fast Track
+
+Install Rust and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+
+Download the binary for a local development node [here](https://github.com/use-ink/substrate-contracts-node/releases).
+
+```toml
+# Install our cli tool.
+# It wraps around `cargo build` to build contracts with optimal
+# flags for blockchains. It also allows for deploying + interacting
+# with contracts.
+cargo install cargo-contract
+
+# Create a simple contract.
+cargo contract new flipper && cd flipper
+cargo contract build --release
+
+# Instantiate this contract on-chain.
+cargo contract instantiate --suri //Alice
+
+# Dry-run a call of it.
+cargo contract call --suri //Alice --contract 0x… --message get
+
+# Execute a contract call, as a transaction on-chain.
+cargo contract call --suri //Alice --contract 0x… --message flip -x
+```
 
 <br/>
-
-<div className="row">
-  <div className="col text--center">
-    <a href="https://www.parity.io/blog/what-is-paritys-ink">
-      <img src="/img/what-is-ink.png" width="250" style={{ borderRadius: 10, border: '1px solid slategrey' }} />
-    </a>
-    <p>
-      What is Polkadot's ink!?<br />
-      <a href="https://www.parity.io/blog/what-is-paritys-ink">» view page</a>
-    </p>
-  </div>
-  <div className="col text--center">
-    <a href="/6.x/current-state">
-      <img src="/img/current-state.png" width="250" style={{ borderRadius: 10, border: '1px solid slategrey' }} />
-    </a>
-    <p>
-      Current Project State<br />
-      <a href="/6.x/current-state">» view current state</a>
-    </p>
-  </div>
-  <div className="col text--center">
-    <a target="_parent" href="/6.x/faq/migrating-from-ink-5-to-6">
-      <img src="/img/migration-guide-5-to-6.png" width="250" style={{ borderRadius: 10, border: '1px solid slategrey' }} />
-    </a>
-    <p>
-      Migrate to ink! 6.0<br />
-      <a target="_parent" href="/6.x/faq/migrating-from-ink-5-to-6">» view migration guide</a>
-    </p>
-  </div>
-</div>
-
-## Our Pitch
-
-<div className="pitch">
-    <div className="row">
-      <div className="col text--center">
-        <img src="/img/icons/rust.svg" width="100" />
-        <p>Inherent safety-guarantees with the Rust programming language.</p>
-      </div>
-      <div className="col text--center">
-        <img src="/img/icons/ecosystem.svg" width="100" />
-        <p>Ability to use all the normal Rust tooling ‒ clippy, crates.io, IDE’s, etc.</p>
-      </div>
-      <div className="col text--center">
-        <img src="/img/icons/interop.svg" width="100" />
-        <p>Interoperability with Solidity contracts.</p>
-      </div>
-    </div>
-
-    <br />
-    &nbsp;
-    <br />
-
-    <div className="row">
-      <div className="col text--center">
-        <img src="/img/icons/migration-path.svg" width="100" />
-        <p>Clear migration path for graduating to a parachain.</p>
-      </div>
-      <div className="col text--center">
-        <img src="/img/icons/RISC-V-logo.svg" width="100" />
-        <p>Established industry standard for the compiler target.</p>
-      </div>
-      <div className="col text--center">
-        <img src="/img/icons/polkadot.svg" width="100" />
-        <p>Native to Polkadot. Complements your Substrate parachain perfectly.</p>
-      </div>
-    </div>
-</div>
-
-## Where can I deploy ink! v6 contracts?
-
-ink! v6 is still in development, it can't be deployed to production yet.
-
-We plan to release ink! 6.0.0-alpha in February and will update this section with testnet
-information then.
-
-You can follow Parity's plans for deploying the ink! execution engine (`pallet-revive`)
-to Kusama and Polkadot on [the Polkadot Forum](https://forum.polkadot.network/t/update-on-ethereum-compatible-smart-contracts/11512).
 
 ## Smart Contract Examples
 
