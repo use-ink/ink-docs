@@ -2,7 +2,8 @@
   "reference": {
     "Overview": [
       "intro/intro",
-      "intro/current-state"
+      "intro/current-state",
+      "faq/migrating-from-ink-5-to-6"
     ],
     "Background": [
       "intro/why-rust",
