@@ -52,6 +52,7 @@
     "@headlessui/react": "^2.2.0",
     "@lottiefiles/lottie-player": "^2.0.3",
     "@phosphor-icons/react": "^2.1.7",
+    "@radix-ui/react-slot": "^1.1.2",
     "autoprefixer": "^10.4.17",
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",

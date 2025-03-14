@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__docusaurus {
+  background: rgb(19, 15, 33);
+}

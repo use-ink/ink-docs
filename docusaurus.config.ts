@@ -100,8 +100,8 @@ module.exports = {
         },
         theme: {
           customCss: [
-            require.resolve('./src/css/custom.css'),
-            require.resolve('./src/css/docs.css'),
+            require.resolve('./src/css/shared.css'),
+            // require.resolve('./src/css/docs.css'),
             require.resolve('./src/css/faucet.css'),
             require.resolve('./static/fonts/fonts.css'),
           ],

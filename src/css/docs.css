@@ -1,6 +1,6 @@
 /* stylelint-disable docusaurus/copyright-header */
 /**
- * Any CSS included here will be global. The classic template
+ * Any CSS included here will be for docs. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
@@ -411,12 +411,6 @@ table.wallet-table * {
 [data-theme='dark'] .gradient-purple {
   background: linear-gradient(330deg, #8648d9 25%, rgb(62, 35, 161) 41.232327298001124%, rgb(0, 0, 0) 77%);
   mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 100%);
-}
-
-h1,
-h2,
-h3 {
-  font-family: 'Freude', sans-serif;
 }
 
 /** BREADCRUMBS **/
