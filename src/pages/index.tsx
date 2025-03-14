@@ -5,42 +5,94 @@ import '../css/landing.css'
 import { Navbar } from '../components/landing/nav'
 import { Footer } from '../components/footer'
 import { Button } from '../components/ui/button'
+import { MainCta } from '../components/landing/main-cta'
+
 export default function Home() {
   return (
     <>
       <Navbar className="z-20" />
-      <section className="relative h-screen section-intro">
+      <section className="relative min-h-screen section-intro">
         <div className="absolute inset-0 z-0 section-bg"></div>
-        <div
-          className="relative z-10 flex flex-col items-center justify-center h-screen"
-          style={{ fontFamily: 'Montserrat  ' }}
-        >
-          <h1 className="text-4xl font-bold">Hello ink!</h1>
-          <p className="text-sm text-gray-500">(This will be the revamped ink! landing page)</p>
-          <div className="flex flex-row gap-4">
-            <Link to="/docs" className="">
-              <Button size="lg">docs →</Button>
-            </Link>
+        <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
+          <MainCta
+            title="Build Rust-Based Smart Contracts"
+            description="Create, manage, and deploy smart contracts with ink!"
+            cta={
+              <div className="flex flex-row gap-4">
+                <Link to="/docs" className="hover:scale-105 hover:-rotate-1 !transition-all duration-300">
+                  <Button size="lg">Start Building →</Button>
+                </Link>
 
-            <Link to="/ubator" className="">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="!transition-all duration-300 hover:scale-105 hover:-rotate-1"
-              >
-                ink!ubator
-              </Button>
-            </Link>
-          </div>
+                <Link to="/ubator" className="">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="!transition-all duration-300 hover:scale-105 hover:-rotate-1"
+                  >
+                    ink!ubator
+                  </Button>
+                </Link>
+              </div>
+            }
+            media={<>👀</>}
+          />
         </div>
       </section>
       <section className="h-screen section-interop">
-        <h2 className="text-4xl font-bold">Future-Proof Interoperability</h2>
-        <p className="text-sm text-gray-500">
-          Develop smart contracts that seamlessly integrate across Polkadot, Kusama, and Substrate.
-        </p>
+        <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
+          <MainCta
+            classNames={{
+              container: 'max-w-lg',
+            }}
+            variant="center"
+            title="Future-Proof Interoperability"
+            description="Develop smart contracts that seamlessly integrate across Polkadot, Kusama, and Substrate."
+            level="h2"
+            cta={
+              <div className="flex flex-row gap-4">
+                <Link to="/ubator" className="">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="!transition-all duration-300 hover:scale-105 hover:-rotate-1"
+                  >
+                    Read the docs
+                  </Button>
+                </Link>
+              </div>
+            }
+            media={<>👀</>}
+          />
+        </div>
       </section>
-      <section className="h-screen section-rust"></section>
+      <section className="h-screen section-rust">
+        <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
+          <MainCta
+            variant="left"
+            title="Rust Powered Protection"
+            description="Deploy smart contracts with built-in safety guarantees from the world's most secure programming language."
+            level="h2"
+            cta={
+              <div className="flex flex-row gap-4">
+                <Link to="/docs" className="hover:scale-105 hover:-rotate-1 !transition-all duration-300">
+                  <Button size="lg">Start Building →</Button>
+                </Link>
+
+                <Link to="/ubator" className="">
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="!transition-all duration-300 hover:scale-105 hover:-rotate-1"
+                  >
+                    ink!ubator
+                  </Button>
+                </Link>
+              </div>
+            }
+            media={<>👀</>}
+          />
+        </div>
+      </section>
       <section className="h-screen section-risc"></section>
       <section className="relative h-screen section-composability">
         <div className="absolute inset-0 h-full">

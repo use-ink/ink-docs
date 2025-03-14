@@ -6,6 +6,12 @@
   background: rgb(19, 15, 33);
 }
 
+.nav-top .mask {
+  mask: linear-gradient(180deg, #000000 10%, rgba(0, 0, 0, 0) 130%) add;
+  backdrop-filter: blur(10px);
+  @apply bg-gradient-to-b from-[#000000cc] via-[#000000aa] to-transparent;
+}
+
 .section-intro > .section-bg {
   background: linear-gradient(330deg, #8648d9 0%, rgb(28, 18, 97) 50%, rgb(0, 0, 0) 77%);
   mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%) add;
