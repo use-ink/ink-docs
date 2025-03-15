@@ -129,7 +129,8 @@ module.exports = {
         }
       },
       "third-party-tools/ink-analyzer",
-      "third-party-tools/subwallet"
+      "third-party-tools/subwallet",
+      "third-party-tools/typink"
     ],
     "FAQ": [
       "faq/faq",
