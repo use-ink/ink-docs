@@ -67,10 +67,10 @@ Some of the most interesting ones:
 
 <div className="row">
     <div className="col text--center">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts/delegator"><img src="/img/icons/delegator.svg" width="100" /></a>
+        <a href="hhttps://github.com/use-ink/ink-examples/tree/main/cross-contract-calls"><img src="/img/icons/delegator.svg" width="100" /></a>
         <p>
             Cross-contract calls.<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts/delegator">» view example</a>
+            <a href="https://github.com/use-ink/ink-examples/tree/main/cross-contract-calls">» view example</a>
         </p>
     </div>
     <div className="col text--center">
