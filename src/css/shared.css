@@ -1,5 +1,13 @@
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
 h1,
 h2,
 h3 {
   font-family: 'Freude', sans-serif;
+}
+
+h2 {
+  font-size: 30px;
 }

@@ -26,7 +26,7 @@ export function GetSupport() {
           />
 
           {/* Heading */}
-          <h2 className="order-first w-full !text-[50px] font-bold text-center text-white md:text-4xl md:order-none md:w-auto">
+          <h2 className="order-first w-full !text-[50px] font-bold text-center text-white md:text-4xl md:order-none md:w-auto m-0">
             Get In Touch
           </h2>
 
