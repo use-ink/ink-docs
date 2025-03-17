@@ -6,6 +6,10 @@
   background: rgb(19, 15, 33);
 }
 
+main.page h1 {
+  font-size: 64px;
+}
+
 .nav-top .mask {
   mask: linear-gradient(180deg, #000000 10%, rgba(0, 0, 0, 0) 130%) add;
   backdrop-filter: blur(10px);

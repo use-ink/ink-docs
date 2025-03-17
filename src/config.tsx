@@ -9,6 +9,7 @@ import {
   Info,
   Lego,
   Link,
+  PaintBrush,
   Question,
   Target,
   YoutubeLogo,
@@ -52,6 +53,11 @@ export const navLinks = [
         label: 'Bounties',
         href: '/bounties',
         icon: <Target size={20} weight="fill" />,
+      },
+      {
+        label: 'Projects',
+        href: '/projects',
+        icon: <PaintBrush size={20} weight="fill" />,
       },
       {
         label: 'Support',
