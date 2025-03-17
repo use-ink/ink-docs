@@ -3050,6 +3050,18 @@
   resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.27.0.tgz#167c163139efc98c2194aba090076c03b658c07d"
   integrity sha512-gvznmLhi6JPEf0bsq7SwRYTHAKKq/wcmKqFez9sRdbED+SPMUmK5omfZ6w3EwUFQHbYUa4zPBYedQ7Knv70RMw==
 
+"@rive-app/canvas@2.26.4":
+  version "2.26.4"
+  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-2.26.4.tgz#52ef70dfaac2a29a42122296231852bb9147a7c0"
+  integrity sha512-a9bSM2Hwe2K5hcRMC0dDfR4ygDgrJhVrEtv2L+QYS8bmjI2V2IgZsocKvtc/gW7Gt+R7NIBNgcy/vW1hl6KzFg==
+
+"@rive-app/react-canvas@^4.18.3":
+  version "4.18.3"
+  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-4.18.3.tgz#b6446ec0ff14db9216566ee04c62f16cbcacbb99"
+  integrity sha512-0bRoiFlel6zUY8KBhD6AA1Tzr83h/PSXwm9d4BJqU72r16gg56Z4uLxupgmGdSAb5pCFP7LzKhjuoY3aa3JyBg==
+  dependencies:
+    "@rive-app/canvas" "2.26.4"
+
 "@sideway/address@^4.1.5":
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.5.tgz#4bc149a0076623ced99ca8208ba780d65a99b9d5"
@@ -6273,6 +6285,15 @@ fraction.js@^4.3.7:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.7.tgz#06ca0085157e42fda7f9e726e79fefc4068840f7"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
 
+framer-motion@^12.5.0:
+  version "12.5.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.5.0.tgz#3201f92d7a00f7ab636c39fdb619b07247f05a8b"
+  integrity sha512-buPlioFbH9/W7rDzYh1C09AuZHAk2D1xTA1BlounJ2Rb9aRg84OXexP0GLd+R83v0khURdMX7b5MKnGTaSg5iA==
+  dependencies:
+    motion-dom "^12.5.0"
+    motion-utils "^12.5.0"
+    tslib "^2.4.0"
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -8619,6 +8640,26 @@ minimist@^1.2.0:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-7.1.2.tgz#93a9626ce5e5e66bd4db86849e7515e92340a707"
   integrity sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==
+
+motion-dom@^12.5.0:
+  version "12.5.0"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.5.0.tgz#38beabafa11c068f09c2b096674b2d46025a0a24"
+  integrity sha512-uH2PETDh7m+Hjd1UQQ56yHqwn83SAwNjimNPE/kC+Kds0t4Yh7+29rfo5wezVFpPOv57U4IuWved5d1x0kNhbQ==
+  dependencies:
+    motion-utils "^12.5.0"
+
+motion-utils@^12.5.0:
+  version "12.5.0"
+  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.5.0.tgz#0e42a6b8030327166ca0d0ea0d5b86d64c21e51d"
+  integrity sha512-+hFFzvimn0sBMP9iPxBa9OtRX35ZQ3py0UHnb8U29VD+d8lQ8zH3dTygJWqK7av2v6yhg7scj9iZuvTS0f4+SA==
+
+motion@^12.5.0:
+  version "12.5.0"
+  resolved "https://registry.yarnpkg.com/motion/-/motion-12.5.0.tgz#483b51433e6112e3bb1afa70fe0764306b976c02"
+  integrity sha512-BTAYKszMmTvXSsIyeHNMPSicjWgUA4j7OmZv1xPpthm4sPub3ch66fy9U7BhJ1uXNL3YeprsIegzuvps3FkEMw==
+  dependencies:
+    framer-motion "^12.5.0"
+    tslib "^2.4.0"
 
 mrmime@^2.0.0:
   version "2.0.0"

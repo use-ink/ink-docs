@@ -12,7 +12,7 @@
   @apply bg-gradient-to-b from-[#000000cc] via-[#000000aa] to-transparent;
 }
 
-.section-intro > .section-bg {
+.section-bg {
   background: linear-gradient(330deg, #8648d9 0%, rgb(28, 18, 97) 50%, rgb(0, 0, 0) 77%);
   mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%) add;
 }

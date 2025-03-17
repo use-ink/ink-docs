@@ -1,16 +1,14 @@
 import React from 'react'
 import Link from '@docusaurus/Link'
 
-import '../css/landing.css'
 import { Button } from '../components/ui/button'
 import { MainCta } from '../components/landing/main-cta'
 import Layout from './layout'
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout className="!mt-0">
       <section className="relative min-h-screen section-intro">
-        <div className="absolute inset-0 z-0 section-bg"></div>
         <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
           <MainCta
             title="Build Rust-Based Smart Contracts"
