@@ -9,14 +9,15 @@ import Rocket from '@site/static/img/rocket.svg'
 
 export default function PageTutorials() {
   return (
-    <Layout>
+    <Layout className="container">
       <div className="flex flex-col items-center justify-center max-w-[540px] min-h-[50vh] mx-auto text-center mt-[10vh]">
         <motion.div
           className="w-[246px] h-[246px] rotate-[25deg]"
-          initial={{ scale: 0.7, translateY: 200, translateX: -100, rotate: 30 }}
-          animate={{ scale: 1, translateY: 0, translateX: 0, rotate: 30 }}
+          initial={{ opacity: 0, scale: 0.7, translateY: 200, translateX: -100, rotate: 30 }}
+          animate={{ opacity: 1, scale: 1, translateY: 0, translateX: 0, rotate: 30 }}
           transition={{
             duration: 1,
+            opacity: { visualDuration: 0.1 },
             translateY: { type: 'spring', visualDuration: 0.9, bounce: 0.5 },
             translateX: { type: 'spring', visualDuration: 0.9, bounce: 0.5 },
             rotate: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
