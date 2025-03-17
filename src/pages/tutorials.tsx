@@ -6,6 +6,8 @@ import { TutorialCard } from '../components/tutorial-card'
 import { motion } from 'framer-motion'
 
 import Rocket from '@site/static/img/rocket.svg'
+import { Button } from '../components/ui/button'
+import Link from '@docusaurus/Link'
 
 export default function PageTutorials() {
   return (
@@ -53,6 +55,14 @@ export default function PageTutorials() {
           {tutorials.map((tutorial) => (
             <TutorialCard key={tutorial.title} {...tutorial} />
           ))}
+        </div>
+        <div className="flex flex-col items-center justify-center gap-4 my-16 md:flex-row">
+          <p className="m-0">Not seeing a tutorial you wish we offered?</p>
+          <Link href="https://github.com/paritytech/ink-tutorials/issues" className="text-blue-500">
+            <Button size="lg" variant="secondary">
+              Request a topic
+            </Button>
+          </Link>
         </div>
       </section>
     </Layout>
