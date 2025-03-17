@@ -4,7 +4,7 @@ import { Footer } from '../components/footer'
 import Head from '@docusaurus/Head'
 import classNames from 'classnames'
 import '../css/pages.css'
-import StarryBackground from '../components/starry-background'
+import { StarryBackground } from '../components/starry-background'
 export default function Layout({
   children,
   head,

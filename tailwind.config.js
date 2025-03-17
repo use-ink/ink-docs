@@ -32,6 +32,12 @@ module.exports = {
       maxWidth: {
         biggest: '1440px',
       },
+      keyframes: {
+        glow: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
+      },
       backgroundImage: {
         waves: "url('/img/Waves.svg')",
         'waves-light': "url('/img/Waves-light.svg')",
@@ -40,6 +46,9 @@ module.exports = {
         'inkubator-banner-dark': "url('/img/inkubator-tile-banner-dark.svg')",
         'gradient-1': 'linear-gradient(180deg, #FFFFFF 0%, #EFEFEF 100%);',
         'gradient-1-dark': 'linear-gradient(180deg, #1B1B1D 0%, #242526 100%);',
+      },
+      animation: {
+        glow: 'glow 10s ease-in-out infinite',
       },
     },
   },
