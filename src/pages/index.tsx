@@ -2,15 +2,13 @@ import React from 'react'
 import Link from '@docusaurus/Link'
 
 import '../css/landing.css'
-import { Navbar } from '../components/landing/nav'
-import { Footer } from '../components/footer'
 import { Button } from '../components/ui/button'
 import { MainCta } from '../components/landing/main-cta'
+import Layout from './layout'
 
 export default function Home() {
   return (
-    <>
-      <Navbar className="z-20" />
+    <Layout>
       <section className="relative min-h-screen section-intro">
         <div className="absolute inset-0 z-0 section-bg"></div>
         <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
@@ -23,7 +21,7 @@ export default function Home() {
                   <Button size="lg">Start Building →</Button>
                 </Link>
 
-                <Link to="/ubator" className="">
+                <Link to="/inkubator" className="">
                   <Button
                     variant="secondary"
                     size="lg"
@@ -50,7 +48,7 @@ export default function Home() {
             level="h2"
             cta={
               <div className="flex flex-row gap-4">
-                <Link to="/ubator" className="">
+                <Link to="/inkubator" className="">
                   <Button
                     variant="secondary"
                     size="lg"
@@ -78,7 +76,7 @@ export default function Home() {
                   <Button size="lg">Start Building →</Button>
                 </Link>
 
-                <Link to="/ubator" className="">
+                <Link to="/inkubator" className="">
                   <Button
                     variant="secondary"
                     size="lg"
@@ -107,7 +105,6 @@ export default function Home() {
           />
         </div>
       </section>
-      <Footer />
-    </>
+    </Layout>
   )
 }

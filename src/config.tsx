@@ -25,17 +25,17 @@ export const navLinks = [
       },
       {
         label: 'Tutorials',
-        href: 'https://github.com/use-ink/ink',
+        href: '/tutorials',
         icon: <Lego size={20} weight="fill" />,
       },
       {
         label: 'Tooling',
-        href: 'https://github.com/use-ink/ink',
+        href: '/tooling',
         icon: <Hammer size={20} weight="fill" />,
       },
       {
         label: 'Chains',
-        href: 'https://github.com/use-ink/ink',
+        href: '/chains',
         icon: <Link size={20} />,
       },
     ],
@@ -45,17 +45,17 @@ export const navLinks = [
     links: [
       {
         label: 'About',
-        href: 'https://discord.gg/ink',
+        href: '/about',
         icon: <Info size={20} weight="fill" />,
       },
       {
         label: 'Bounties',
-        href: 'https://twitter.com/ink_lang',
+        href: '/bounties',
         icon: <Target size={20} weight="fill" />,
       },
       {
         label: 'Support',
-        href: 'https://discord.gg/ink',
+        href: '/support',
         icon: <ChatCircleDots size={20} weight="fill" />,
       },
       {
@@ -67,7 +67,7 @@ export const navLinks = [
   },
   {
     title: 'ink!ubator',
-    href: '/ubator',
+    href: '/inkubator',
   },
 ]
 
@@ -147,7 +147,7 @@ export const footerLinks = [
       },
       {
         label: 'Funding Program',
-        href: 'https://use.ink/ubator',
+        href: 'https://use.ink/inkubator',
         icon: <CoinVertical size={20} weight="fill" />,
       },
       {

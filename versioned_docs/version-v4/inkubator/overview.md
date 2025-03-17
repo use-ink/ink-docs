@@ -12,4 +12,4 @@ ink!ubator is an initiative funded by the Polkadot Treasury's Bounty Program. It
 
 import { BigCTA } from "/src/components/BigCTA";
 
-<BigCTA title="ink!ubator" emphasized="Learn" cta="more" url="/ubator" tabIndex={0} />
+<BigCTA title="ink!ubator" emphasized="Learn" cta="more" url="/inkubator" tabIndex={0} />

@@ -127,7 +127,7 @@ We are in contact with the maintainers of these external libraries about migrati
 
 ## 💸 ink!ubator 2.0
 
-The [ink!ubator](/ubator) is a funding program for advancing the ink! ecosystem.
+The [ink!ubator](/inkubator) is a funding program for advancing the ink! ecosystem.
 The first round of projects was completed in autumn 2024! A final summary was posted
 by Toma, one of the curators, on the Polkadot Forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120).
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from '@docusaurus/Link'
-import { ChevronDown } from 'lucide-react'
 import { ListItem } from '../list-item'
 import { cn } from '../../util'
 import { CaretDown, Control } from '@phosphor-icons/react'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 interface NavItemProps {
   item: {
@@ -46,11 +46,19 @@ export function NavItem({ item }: NavItemProps) {
           'bg-[#171233cc] backdrop-blur-md p-[12px] rounded-[18px] shadow-[rgba(140,_124,_247,_0.12)_0px_2px_1px_0px_inset,_rgba(189,_130,_253,_0.15)_0px_0px_10px_0px_inset,_rgba(0,_0,_0,_0.24)_36px_36px_24px_0px]',
         )}
       >
-        {item.links.map((link) => (
-          <ListItem key={link.label} href={link.href} icon={link.icon}>
-            {link.label}
-          </ListItem>
-        ))}
+        {item.links.map((link) => {
+          let href = link.href
+          if (link.href.includes('http')) {
+            href = link.href
+          } else {
+            href = useBaseUrl(link.href)
+          }
+          return (
+            <ListItem key={link.label} href={href} icon={link.icon}>
+              {link.label}
+            </ListItem>
+          )
+        })}
       </div>
     </div>
   )

@@ -20,7 +20,7 @@ module.exports = {
   //     {
   //       redirects: [
   //         {
-  //           to: '/ubator',
+  //           to: '/inkubator',
   //           from: '/inkubator',
   //         },
   //       ],

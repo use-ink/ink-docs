@@ -16,7 +16,7 @@ looking for funding? On this page we list some pointers of where you can look.
 ink!ubator is an initiative funded by the Polkadot Treasury's Bounty Program. It is designed to
 kickstart the ink! ecosystem on Polkadot, Kusama, and other Substrate chains.
 
-You can learn more [here](/ubator).
+You can learn more [here](/inkubator).
 
 ## Ecosystem Development Funds
 
@@ -25,7 +25,7 @@ We've listed [chains that support ink! here](../intro/where-to-deploy.md).
 
 ## Treasuries
 
-A number of chains that support ink! have a treasury. In the case of Polkadot the 
+A number of chains that support ink! have a treasury. In the case of Polkadot the
 treasury in on-chain with a governance process. Here, the community decides on
 where to best allocate funds.
 

@@ -46,13 +46,17 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
               </h2>
               <h3 className="text-brand-500/80 font-semibold text-md italic">
                 <p>The first cohort has successfully concluded, and applications for the next cohort are now open.</p>
-                <p><a href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}>Read the final report of the first cohort here.</a></p>
+                <p>
+                  <a href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}>
+                    Read the final report of the first cohort here.
+                  </a>
+                </p>
               </h3>
             </hgroup>
             {withLinkCTA && (
               <div className="md:mb-0 mb-10">
                 <Link
-                  to="/ubator"
+                  to="/inkubator"
                   className={classNames(
                     'py-4 px-6 bg-brand-500 hover:bg-brand-500/90 hover:text-dark-background text-center',
                     'transition duration-75 text-dark-background hover:no-underline rounded-full text-lg',

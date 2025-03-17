@@ -8,7 +8,7 @@ import { navLinks } from '../../config'
 
 export function Navbar({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <header className={cn('nav-top', 'fixed w-full', className)}>
+    <header className={cn('nav-top fixed w-full z-20', className)}>
       <div className="absolute inset-0 z-0 mask"></div>
       <div className="container flex items-center h-[80px]">
         <div className="flex items-center mr-8">
