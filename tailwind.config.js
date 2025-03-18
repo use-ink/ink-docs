@@ -37,6 +37,10 @@ module.exports = {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' },
         },
+        heartbeat: {
+          '0%, 80%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.2)' },
+        },
       },
       backgroundImage: {
         waves: "url('/img/Waves.svg')",
@@ -49,6 +53,7 @@ module.exports = {
       },
       animation: {
         glow: 'glow 10s ease-in-out infinite',
+        heartbeat: 'heartbeat 1.2s ease-in-out infinite',
       },
     },
   },

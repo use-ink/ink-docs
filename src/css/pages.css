@@ -10,6 +10,10 @@ main.page h1 {
   font-size: 64px;
 }
 
+main.page h2 {
+  font-size: 48px;
+}
+
 main.page a {
   text-decoration: underline;
   color: rgb(224, 191, 255);

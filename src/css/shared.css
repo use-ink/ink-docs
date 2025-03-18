@@ -11,3 +11,7 @@ h3 {
 h2 {
   font-size: 30px;
 }
+
+hr {
+  background-color: rgba(189, 130, 253, 0.15);
+}

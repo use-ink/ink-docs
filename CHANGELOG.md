@@ -16,7 +16,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
     - ts-node
   - migrate images to useBaseUrl in order for docusaurus to be able to run docs from subdirectory and hosted at subdomains (e.g. niklasp.github.io/ink-docs/docs)
 
-- Redesign
+- Add Pages
+
+  - Stories
+  - Tutorials
+  - Projects
+
+- Docs Redesign
 
   - modernize sidebar look
   - modernize and fix search bar input
@@ -36,3 +42,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - misc
   - update github workflow to use node 18 -> 20
   - make docusuaurus.config.js => docusuaurus.config.ts and fix duplicate config entries
+  - change `tsconfig.json` to updated docusaurus structure to get rid of import types not found

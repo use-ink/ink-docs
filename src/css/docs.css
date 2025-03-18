@@ -618,6 +618,10 @@ ul.menu__list li a {
   border: 1px solid rgba(189, 130, 253, 0.1) !important;
 }
 
+.admonition-wrap > div {
+  border-radius: 8px !important;
+}
+
 .admonition-wrap-tip {
   background-color: rgba(129, 252, 186, 0.2) !important;
   --heading-color: rgb(129, 252, 145);
@@ -641,4 +645,20 @@ ul.menu__list li a {
 .admonition-wrap-note {
   background-color: rgba(189, 130, 253, 0.2) !important;
   --heading-color: rgb(189, 130, 253);
+}
+
+.admonition-wrap-color {
+  background: linear-gradient(
+    180deg,
+    #2e0040 0%,
+    rgba(106, 0, 117, 0.88) 51.80180180180181%,
+    rgba(230, 0, 122, 0.66) 100%
+  ) !important;
+  --heading-color: rgb(189, 130, 253);
+  border: 1px solid rgba(189, 130, 253, 0.1) !important;
+  border-top: 0 !important;
+}
+
+.admonition-wrap-color > div {
+  background: #bd82fd33 !important;
 }

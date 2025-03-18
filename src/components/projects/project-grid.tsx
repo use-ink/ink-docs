@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+
 import { cn } from '../../util'
 import { motion } from 'framer-motion'
 import { projects } from './projects'

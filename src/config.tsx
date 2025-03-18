@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  BookOpen,
   ChatCircleDots,
   Code,
   CoinVertical,
@@ -39,6 +40,11 @@ export const navLinks = [
         href: '/chains',
         icon: <Link size={20} />,
       },
+      {
+        label: 'YouTube',
+        href: 'https://www.youtube.com/@ink_lang',
+        icon: <YoutubeLogo size={20} weight="fill" />,
+      },
     ],
   },
   {
@@ -60,14 +66,9 @@ export const navLinks = [
         icon: <PaintBrush size={20} weight="fill" />,
       },
       {
-        label: 'Support',
-        href: '/support',
-        icon: <ChatCircleDots size={20} weight="fill" />,
-      },
-      {
-        label: 'YouTube',
-        href: 'https://www.youtube.com/@ink_lang',
-        icon: <YoutubeLogo size={20} weight="fill" />,
+        label: 'Stories',
+        href: '/stories',
+        icon: <BookOpen size={20} weight="fill" />,
       },
     ],
   },

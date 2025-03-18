@@ -4,7 +4,7 @@ import type { Props } from '@theme/Admonition'
 import AdmonitionTypes from '@theme/Admonition/Types'
 import clsx from 'clsx'
 
-type AdmonitionType = 'note' | 'info' | 'tip' | 'caution' | 'danger'
+type AdmonitionType = 'note' | 'info' | 'tip' | 'caution' | 'danger' | 'color'
 
 function getAdmonitionTypeComponent(type: AdmonitionType): ComponentType<Props> {
   const component = AdmonitionTypes[type]
@@ -19,7 +19,7 @@ export default function Admonition(unprocessedProps: Props): ReactNode {
   const props = processAdmonitionProps(unprocessedProps)
   const AdmonitionTypeComponent = getAdmonitionTypeComponent(props.type)
 
-  if (!['note', 'info', 'tip', 'caution', 'danger'].includes(props.type)) {
+  if (!['note', 'info', 'tip', 'caution', 'danger', 'color'].includes(props.type)) {
     props.type = 'info'
   }
 
