@@ -11,12 +11,14 @@ import { navLinks } from '../../config'
 export function Navbar({
   className,
   cta = 'Start Building',
-  ctaLink = '/docs/getting-started/installation',
+  ctaLink = '/docs',
 }: {
   className?: string
   cta?: string
   ctaLink?: string
 }) {
+  const ctaHref = ctaLink.includes('http') ? ctaLink : useBaseUrl(ctaLink)
+
   return (
     <motion.header
       className={cn('nav-top fixed w-full z-20', className)}
@@ -40,13 +42,13 @@ export function Navbar({
         </nav>
         <div>
           {cta === 'Start Building' ? (
-            <Link href={ctaLink}>
+            <Link href={ctaHref}>
               <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
                 Start Building
               </Button>
             </Link>
           ) : (
-            <Link href={ctaLink}>
+            <Link href={ctaHref}>
               <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
                 {cta}
               </Button>
