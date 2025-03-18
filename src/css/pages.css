@@ -10,6 +10,24 @@ main.page h1 {
   font-size: 64px;
 }
 
+main.page a {
+  text-decoration: underline;
+  color: rgb(224, 191, 255);
+}
+
+main.page a:hover {
+  color: rgb(189, 130, 253);
+}
+
+main.page code {
+  color: #cbc3ff;
+  background-color: rgba(140, 124, 247, 0.1);
+  padding: 0.2em 0.3em;
+  border: 1px solid rgba(140, 124, 247, 0.1);
+  border-radius: 24px;
+  font-size: 85%;
+}
+
 .nav-top .mask {
   mask: linear-gradient(180deg, #000000 10%, rgba(0, 0, 0, 0) 130%) add;
   backdrop-filter: blur(10px);

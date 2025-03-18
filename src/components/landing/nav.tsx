@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import { motion } from 'framer-motion'
+
 import { cn } from '../../util'
 import { NavItem } from './nav-item'
 import { Button } from '../ui/button'
@@ -8,7 +10,12 @@ import { navLinks } from '../../config'
 
 export function Navbar({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <header className={cn('nav-top fixed w-full z-20', className)}>
+    <motion.header
+      className={cn('nav-top fixed w-full z-20', className)}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: 'easeInOut' }}
+    >
       <div className="absolute inset-0 z-0 mask"></div>
       <div className="mx-8 flex items-center h-[80px]">
         <div className="flex items-center mr-8">
@@ -29,6 +36,6 @@ export function Navbar({ className }: React.HTMLAttributes<HTMLElement>) {
           </Button>
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }

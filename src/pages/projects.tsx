@@ -3,6 +3,7 @@ import Layout from './layout'
 import PolkadotLogo from '@site/static/img/Polkadot_Logo_White.svg'
 import ProjectGrid from '../components/projects/project-grid'
 import { motion } from 'framer-motion'
+
 export default function PageProjects() {
   return (
     <Layout className="container">
