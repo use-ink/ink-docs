@@ -22,7 +22,7 @@ export function NavItem({ item }: NavItemProps) {
     return (
       <Link
         href={item.href}
-        className="flex items-center text-sm transition-colors text-foreground hover:text-primary font-[700] text-white hover:text-[#8c7cf7] hover:no-underline"
+        className="flex items-center text-[16px] transition-colors text-foreground hover:text-primary font-[700] text-white hover:text-[#8c7cf7] hover:no-underline"
       >
         {item.title}
       </Link>
@@ -31,7 +31,7 @@ export function NavItem({ item }: NavItemProps) {
 
   return (
     <div className="relative group/nav-item">
-      <li className="flex items-center gap-1 font-[700] text-sm transition-colors outline-none cursor-pointer text-white group-hover/nav-item:text-primary hover:text-[#8c7cf7]">
+      <li className="flex items-center gap-1 font-[700] text-[16px] transition-colors outline-none cursor-pointer text-white group-hover/nav-item:text-primary hover:text-[#8c7cf7]">
         {item.title}
         <CaretDown
           size={16}

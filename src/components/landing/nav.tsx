@@ -8,7 +8,15 @@ import { NavItem } from './nav-item'
 import { Button } from '../ui/button'
 import { navLinks } from '../../config'
 
-export function Navbar({ className }: React.HTMLAttributes<HTMLElement>) {
+export function Navbar({
+  className,
+  cta = 'Start Building',
+  ctaLink = '/docs/getting-started/installation',
+}: {
+  className?: string
+  cta?: string
+  ctaLink?: string
+}) {
   return (
     <motion.header
       className={cn('nav-top fixed w-full z-20', className)}
@@ -31,9 +39,19 @@ export function Navbar({ className }: React.HTMLAttributes<HTMLElement>) {
           </div>
         </nav>
         <div>
-          <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
-            Start Building
-          </Button>
+          {cta === 'Start Building' ? (
+            <Link href={ctaLink}>
+              <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
+                Start Building
+              </Button>
+            </Link>
+          ) : (
+            <Link href={ctaLink}>
+              <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
+                {cta}
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </motion.header>

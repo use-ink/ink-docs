@@ -23,17 +23,11 @@ export default function Home() {
                 <Star size={16} weight="fill" className="inline animate-flip" />
                 <AnimatedText text="1.4K+ stars on GitHub!" element="span" className="text-[16px] font-[600]" />
               </a>
-              // <a
-              //   href="https://github.com/paritytech/ink"
-              //   className="text-[16px] font-[600] !no-underline !text-[#ffc249] flex flex-row items-center gap-2"
-              // >
-              //   <Star size={16} weight="fill" className="animate-flip" /> 1.4K+ stars on GitHub!
-              // </a>
             }
             title="Build Rust-Based Smart Contracts"
             description="Create, manage, and deploy smart contracts with ink!"
             cta={
-              <div className="flex flex-row w-full gap-4">
+              <div className="flex flex-col gap-4 mx-4 md:flex-row md:mx-0">
                 <Link
                   to="/docs"
                   className="hover:scale-105 hover:-rotate-1 !transition-all duration-300 flex-1 lg:flex-none"
@@ -61,7 +55,7 @@ export default function Home() {
                 transition={{ duration: 1.5, ease: 'easeInOut' }}
                 className="w-full h-full px-4"
               >
-                <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className="animate-float" />
+                <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" />
               </motion.div>
             }
           />
