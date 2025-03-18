@@ -41,6 +41,15 @@ module.exports = {
           '0%, 80%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.2)' },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(5)' },
+          '50%': { transform: 'translateY(-15px)' },
+        },
+        flip: {
+          '0%, 16%': { transform: 'rotateY(0)' },
+          '8%': { transform: 'rotateY(180deg)' },
+          '16%, 100%': { transform: 'rotateY(0)' },
+        },
       },
       backgroundImage: {
         waves: "url('/img/Waves.svg')",
@@ -54,6 +63,8 @@ module.exports = {
       animation: {
         glow: 'glow 10s ease-in-out infinite',
         heartbeat: 'heartbeat 1.2s ease-in-out infinite',
+        float: 'float 10s ease-in-out infinite',
+        flip: 'flip 3s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite',
       },
     },
   },

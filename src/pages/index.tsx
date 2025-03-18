@@ -1,40 +1,73 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import Link from '@docusaurus/Link'
 
 import { Button } from '../components/ui/button'
 import { MainCta } from '../components/landing/main-cta'
 import Layout from './layout'
+import Hero from '@site/static/img/Hero.svg'
+import { Star } from '@phosphor-icons/react'
+import { AnimatedText } from '../components/animated-text'
 
 export default function Home() {
   return (
     <Layout className="!mt-0">
-      <section className="relative min-h-screen section-intro">
-        <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
+      <section className="relative flex flex-col items-center justify-center min-h-screen my-16 section-intro md:my-0">
+        <div className="container relative z-10 flex flex-col items-center justify-center">
           <MainCta
+            notice={
+              <a
+                className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)]"
+                href="https://github.com/use-ink/ink"
+              >
+                <Star size={16} weight="fill" className="inline animate-flip" />
+                <AnimatedText text="1.4K+ stars on GitHub!" element="span" className="text-[16px] font-[600]" />
+              </a>
+              // <a
+              //   href="https://github.com/paritytech/ink"
+              //   className="text-[16px] font-[600] !no-underline !text-[#ffc249] flex flex-row items-center gap-2"
+              // >
+              //   <Star size={16} weight="fill" className="animate-flip" /> 1.4K+ stars on GitHub!
+              // </a>
+            }
             title="Build Rust-Based Smart Contracts"
             description="Create, manage, and deploy smart contracts with ink!"
             cta={
-              <div className="flex flex-row gap-4">
-                <Link to="/docs" className="hover:scale-105 hover:-rotate-1 !transition-all duration-300">
-                  <Button size="lg">Start Building →</Button>
+              <div className="flex flex-row w-full gap-4">
+                <Link
+                  to="/docs"
+                  className="hover:scale-105 hover:-rotate-1 !transition-all duration-300 flex-1 lg:flex-none"
+                >
+                  <Button size="lg" className="w-full lg:w-auto">
+                    Start Building →
+                  </Button>
                 </Link>
 
-                <Link to="/inkubator" className="">
+                <Link to="/inkubator" className="flex-1 lg:flex-none">
                   <Button
                     variant="secondary"
                     size="lg"
-                    className="!transition-all duration-300 hover:scale-105 hover:-rotate-1"
+                    className="!transition-all duration-300 hover:scale-105 hover:-rotate-1 w-full lg:w-auto"
                   >
                     ink!ubator
                   </Button>
                 </Link>
               </div>
             }
-            media={<>👀</>}
+            media={
+              <motion.div
+                initial={{ opacity: 0, y: -100, rotateY: 50 }}
+                animate={{ opacity: 1, y: 0, rotateY: 0 }}
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
+                className="w-full h-full px-4"
+              >
+                <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className="animate-float" />
+              </motion.div>
+            }
           />
         </div>
       </section>
-      <section className="h-screen section-interop">
+      <section className="min-h-screen section-interop">
         <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
           <MainCta
             classNames={{

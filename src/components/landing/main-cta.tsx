@@ -2,6 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 
 export function MainCta({
+  notice,
   title,
   description,
   cta,
@@ -10,6 +11,7 @@ export function MainCta({
   level = 'h1',
   classNames,
 }: {
+  notice?: React.ReactNode
   title: string
   description: string
   cta: React.ReactNode
@@ -42,13 +44,14 @@ export function MainCta({
   }
 
   return (
-    <div className="flex flex-row items-center gap-8">
+    <div className="grid grid-cols-1 gap-8 my-32 lg:grid-cols-2 lg:my-0">
       <div
         className={cn(
-          `flex flex-col gap-[30px] ${variant === 'left' ? 'w-2/3 order-1' : 'w-2/3 order-2'}`,
+          `flex flex-col gap-[30px] justify-center max-w-2xl text-center lg:text-left ${variant === 'left' ? '' : ''}`,
           classNames?.container,
         )}
       >
+        {notice && <div className="text-sm text-gray-500">{notice}</div>}
         {level === 'h1' ? (
           <h1 className={cn('text-[64px] font-bold leading-[57px] p-0 m-0', classNames?.title)}>{title}</h1>
         ) : (
@@ -58,9 +61,7 @@ export function MainCta({
         {cta}
       </div>
       {media && (
-        <div className={cn(`${variant === 'left' ? 'w-1/3 order-2' : 'w-1/3 order-1'}`, classNames?.media)}>
-          {media}
-        </div>
+        <div className={cn(`${variant === 'left' ? ' order-2' : 'w-full order-1'}`, classNames?.media)}>{media}</div>
       )}
     </div>
   )

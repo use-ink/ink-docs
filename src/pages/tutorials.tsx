@@ -25,7 +25,7 @@ export default function PageTutorials() {
             rotate: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
           }}
         >
-          <Rocket className="w-full h-full" style={{ filter: 'drop-shadow(0 10px 10px #0009' }} />
+          <Rocket style={{ filter: 'drop-shadow(0 10px 10px #0005' }} />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, translateY: 100 }}
