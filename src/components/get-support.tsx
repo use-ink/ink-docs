@@ -12,7 +12,7 @@ export function GetSupport() {
           {/* Telegram */}
           <SocialIcon
             className="rotate-[-6deg]"
-            href="https://t.me/yourname"
+            href="https://t.me/inkathon"
             icon={<FaTelegram size={52} />}
             helpText="Join us on Telegram"
           />

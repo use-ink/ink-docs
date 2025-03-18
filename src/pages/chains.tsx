@@ -45,7 +45,7 @@ export default function PageChains() {
           </a>
         </motion.div>
       </section>
-      <section id="chains" className="grid grid-cols-1 gap-4 mt-32 md:grid-cols-12">
+      <section id="chains" className="grid grid-cols-1 gap-4 pt-32 md:grid-cols-12">
         <motion.div
           initial={{ opacity: 0, y: 50, x: -50, rotate: 10 }}
           animate={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
