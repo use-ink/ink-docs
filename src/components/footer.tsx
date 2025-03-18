@@ -4,6 +4,7 @@ import { ListItem } from './list-item'
 import clsx from 'clsx'
 import { GetSupport } from './get-support'
 import { footerLinks } from '../config'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 export function Footer({ className }: { className?: string }) {
   // linear-gradient(180deg,rgba(33,15,59,0) 0%,rgb(29,24,61) 38%,rgb(0,0,0) 100%)
@@ -31,11 +32,20 @@ export function Footer({ className }: { className?: string }) {
             >
               {link.title}
             </h3>
-            {link.links.map((link) => (
-              <ListItem key={link.label} href={link.href} icon={link.icon}>
-                {link.label}
-              </ListItem>
-            ))}
+
+            {link.links.map((link) => {
+              let href = link.href
+              if (link.href.includes('http')) {
+                href = link.href
+              } else {
+                href = useBaseUrl(link.href)
+              }
+              return (
+                <ListItem key={link.label} href={href} icon={link.icon}>
+                  {link.label}
+                </ListItem>
+              )
+            })}
           </div>
         ))}
       </div>
