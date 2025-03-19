@@ -40,6 +40,9 @@ module.exports = {
         label: 'Verification',
         items: ['basics/verification/contract-verification', 'basics/verification/sirato'],
       },
+      'third-party-tools/ink-analyzer',
+      'third-party-tools/subwallet',
+      'third-party-tools/typink',
     ],
     'Testing & Debugging': [
       'testing/overview',

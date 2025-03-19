@@ -114,7 +114,7 @@ The current state of this migration is that the `master` branches of
 are compatible with `polkadot-sdk` + `pallet-revive` + PolkaVM from Jan 7, 2025.
 That's the date to which we've caught up so far. We are working on catching up
 to present day and aim to have a pre-release 6.0.0-alpha of both ink! and
-`cargo-contract` out in February 2025.
+`cargo-contract` out in March 2025.
 
 We are actively working on [this migration guide](/docs/v6/faq/migrating-from-ink-5-to-6).
 All breaking changes and new features will eventually be documented there.
@@ -131,9 +131,9 @@ The [ink!ubator](/inkubator) is a funding program for advancing the ink! ecosyst
 The first round of projects was completed in autumn 2024! A final summary was posted
 by Toma, one of the curators, on the Polkadot Forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120).
 
-Applications for the second round will open soon. The best way to follow this
-is to watch [the ink!ubator 2.0 repository](https://github.com/use-inkubator/Ecosystem-Grants)
-on GitHub.
+Applications for the second cohort are now open.
+See [the ink!ubator 2.0 repository](https://github.com/use-inkubator/Ecosystem-Grants)
+on GitHub for more details.
 
 ## ❓Questions?
 
