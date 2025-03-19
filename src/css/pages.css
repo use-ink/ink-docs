@@ -7,11 +7,20 @@
 }
 
 main.page h1 {
-  font-size: 64px;
+  font-size: 42px;
 }
 
 main.page h2 {
-  font-size: 48px;
+  font-size: 38px;
+}
+
+@media (min-width: 768px) {
+  main.page h1 {
+    font-size: 64px;
+  }
+  main.page h2 {
+    font-size: 48px;
+  }
 }
 
 main.page a {

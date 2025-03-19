@@ -109,7 +109,7 @@ export default function Home() {
             description="Deploy smart contracts with built-in safety guarantees from the world's most secure programming language."
             level="h2"
             cta={
-              <div className="flex flex-row gap-4">
+              <div className="flex flex-col gap-4 md:flex-row md:gap-4">
                 <Link to="/docs" className="hover:scale-105 hover:-rotate-1 !transition-all duration-300">
                   <Button size="lg">Start Building →</Button>
                 </Link>

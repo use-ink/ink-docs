@@ -105,7 +105,7 @@ export function Navbar({
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         className="overflow-hidden"
                       >
-                        <div className="flex flex-col gap-2 pl-4 text-center">
+                        <div className="flex flex-col gap-2 text-center">
                           {item.links.map((link) => (
                             <ListItem key={link.label} href={link.href} icon={link.icon} className="text-center">
                               {link.label}
