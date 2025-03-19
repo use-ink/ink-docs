@@ -7,9 +7,29 @@ import { Button } from '../components/ui/button'
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
+const head = (
+  <>
+    <title>Brand Assets | ink!</title>
+    <meta name="description" content="Explore the brand assets for ink!, including logos and guidelines." />
+    <meta name="keywords" content="brand, assets, logos" />
+    <meta name="author" content="ink! alliance" />
+    <meta property="og:title" content="Brand Assets | ink!" />
+    <meta property="og:description" content="Explore the brand assets for ink!, including logos and guidelines." />
+    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ink!" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ink! logo" />
+    <meta property="og:image:type" content="image/png" />
+  </>
+)
+
 export default function PageAssets() {
   return (
-    <Layout className="container">
+    <Layout className="container" head={head}>
       <section>
         <div className="flex flex-col items-center justify-center my-12 text-center">
           <motion.h1
@@ -76,7 +96,7 @@ export default function PageAssets() {
             <hr className="dotted" />
             <a href={useBaseUrl('img/logo/ink-brand-assets.zip')} download>
               <Button size="lg" className="w-full">
-                Download all ink! Brand Assets
+                Download all ink! brand assets
               </Button>
             </a>
           </CardContent>

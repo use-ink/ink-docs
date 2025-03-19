@@ -9,9 +9,29 @@ import Hero from '@site/static/img/Hero.svg'
 import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../components/animated-text'
 
+const head = (
+  <>
+    <title>Home | ink!</title>
+    <meta name="description" content="Welcome to ink!, the Rust smart contract language of Polkadot." />
+    <meta name="keywords" content="ink!, smart contracts, rust, Polkadot" />
+    <meta name="author" content="ink! alliance" />
+    <meta property="og:title" content="Home | ink!" />
+    <meta property="og:description" content="Welcome to ink!, the Rust smart contract language of Polkadot." />
+    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ink!" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ink! logo" />
+    <meta property="og:image:type" content="image/png" />
+  </>
+)
+
 export default function Home() {
   return (
-    <Layout className="!mt-0">
+    <Layout head={head} className="!mt-0">
       <section className="relative flex flex-col items-center justify-center min-h-screen my-16 section-intro md:my-0">
         <div className="container relative z-10 flex flex-col items-center justify-center">
           <MainCta

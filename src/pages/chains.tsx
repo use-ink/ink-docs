@@ -8,9 +8,32 @@ import Admonition from '../theme/Admonition/index'
 import { ImageContainer } from '../components/image-container'
 import { Button } from '../components/ui/button'
 
+const head = (
+  <>
+    <title>Chains | ink!</title>
+    <meta name="description" content="Information about blockchains hosting ink! smart contracts and their features." />
+    <meta name="keywords" content="chains, interoperability, rollups, Polkadot" />
+    <meta name="author" content="ink! alliance" />
+    <meta property="og:title" content="Chains | ink!" />
+    <meta
+      property="og:description"
+      content="Information about blockchains hosting ink! smart contracts and their features."
+    />
+    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ink!" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ink! logo" />
+    <meta property="og:image:type" content="image/png" />
+  </>
+)
+
 export default function PageChains() {
   return (
-    <Layout className="container">
+    <Layout className="container" head={head}>
       <section className="flex flex-col items-center justify-center h-[calc(90vh-80px)] text-center relative">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <motion.h1

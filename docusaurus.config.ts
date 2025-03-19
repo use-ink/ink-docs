@@ -2,8 +2,8 @@ import type { Config } from '@docusaurus/types'
 import { themes as prismThemes } from 'prism-react-renderer'
 
 module.exports = {
-  title: 'ink! documentation',
-  tagline: 'documentation for ink!',
+  title: 'Documentation | ink!',
+  tagline: 'Comprehensive documentation for ink!, covering all aspects of development.',
   url: 'https://niklasp.github.io',
   baseUrl: '/ink-docs/',
   onBrokenLinks: 'throw',
@@ -101,7 +101,6 @@ module.exports = {
         theme: {
           customCss: [
             require.resolve('./src/css/shared.css'),
-            // require.resolve('./src/css/docs.css'),
             require.resolve('./src/css/faucet.css'),
             require.resolve('./static/fonts/fonts.css'),
           ],

@@ -4,9 +4,29 @@ import BountiesBackground from '@site/static/img/Bounties.svg'
 import Layout from './layout'
 import { BountyList } from '../components/bounties/bounty-list'
 
+const head = (
+  <>
+    <title>Bounties | ink!</title>
+    <meta name="description" content="Discover available bounties and contribute to the ink! ecosystem." />
+    <meta name="keywords" content="contribute, bounties" />
+    <meta name="author" content="ink! alliance" />
+    <meta property="og:title" content="Bounties |  ink!" />
+    <meta property="og:description" content="Discover available bounties and contribute to the ink! ecosystem." />
+    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ink!" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ink! logo" />
+    <meta property="og:image:type" content="image/png" />
+  </>
+)
+
 export default function PageBounties() {
   return (
-    <Layout className="relative">
+    <Layout className="relative" head={head}>
       <section className="flex flex-col h-[calc(100vh-80px)] my-0 text-center container">
         <BountiesBackground className="absolute -top-[80px] left-0 w-full -z-10" />
         <motion.h1

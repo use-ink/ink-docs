@@ -159,7 +159,7 @@ export const footerLinks = [
       },
       {
         label: 'Brand Assets',
-        href: 'https://github.com/use-ink/ink-docs',
+        href: '/brand-assets',
         icon: <Images size={20} weight="fill" />,
       },
       {

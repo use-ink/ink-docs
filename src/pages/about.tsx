@@ -9,13 +9,33 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import Link from '@docusaurus/Link'
 import { Button } from '../components/ui/button'
 
+const head = (
+  <>
+    <title>About | ink!</title>
+    <meta name="description" content="Learn about ink!, its history, and its community-driven development." />
+    <meta name="keywords" content="about, history, community" />
+    <meta name="author" content="ink! alliance" />
+    <meta property="og:title" content="About | ink!" />
+    <meta property="og:description" content="Learn about ink!, its history, and its community-driven development." />
+    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ink!" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ink! logo" />
+    <meta property="og:image:type" content="image/png" />
+  </>
+)
+
 export default function PageAbout() {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref })
   const y = useParallax(scrollYProgress, 300)
 
   return (
-    <Layout className="container relative">
+    <Layout className="container relative" head={head}>
       <Squink
         className="-z-20 absolute opacity-35 top-[80vh] left-[18%] w-[444px] h-auto -translate-x-1/2 -translate-y-1/2"
         style={{ maskImage: 'linear-gradient(to bottom, black 0%, transparent 60%)' }}

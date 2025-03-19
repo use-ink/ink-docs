@@ -9,9 +9,35 @@ import Rocket from '@site/static/img/rocket.svg'
 import { Button } from '../components/ui/button'
 import Link from '@docusaurus/Link'
 
+const head = (
+  <>
+    <title>Tutorials | ink!</title>
+    <meta
+      name="description"
+      content="Access tutorials to help you get started with ink! smart contracts and deploy them on Polkadot and beyond."
+    />
+    <meta name="keywords" content="tutorials, learning, ink!, guides, Polkadot" />
+    <meta name="author" content="ink! alliance" />
+    <meta property="og:title" content="Tutorials | ink!" />
+    <meta
+      property="og:description"
+      content="Access tutorials to help you get started with ink! smart contracts and deploy them on Polkadot and beyond."
+    />
+    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ink!" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ink! logo" />
+    <meta property="og:image:type" content="image/png" />
+  </>
+)
+
 export default function PageTutorials() {
   return (
-    <Layout className="container">
+    <Layout className="container" head={head}>
       <div className="flex flex-col items-center justify-center max-w-[540px] min-h-[50vh] mx-auto text-center mt-[10vh]">
         <motion.div
           className="w-[246px] h-[246px] rotate-[25deg]"
