@@ -5,7 +5,7 @@ import { Hero } from './Hero'
 import { Overview } from './Overview'
 import { BuilderTrack } from './BuildTrack'
 import { EcosystemGrants } from './EcosystemGrants'
-import { Navbar } from '../landing/nav'
+import { Navbar } from '../nav/nav'
 import { Footer } from '../footer'
 
 const InkubatorPage = () => {

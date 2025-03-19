@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import Link from '@docusaurus/Link'
 
 import { Button } from '../components/ui/button'
-import { MainCta } from '../components/landing/main-cta'
+import { MainCta } from '../main-cta'
 import Layout from './layout'
 import Hero from '@site/static/img/Hero.svg'
 import { Star } from '@phosphor-icons/react'
@@ -37,7 +37,7 @@ export default function Home() {
           <MainCta
             notice={
               <a
-                className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)]"
+                className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)] justify-center lg:justify-start"
                 href="https://github.com/use-ink/ink"
               >
                 <Star size={16} weight="fill" className="inline animate-flip" />
