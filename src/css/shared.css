@@ -15,3 +15,9 @@ h2 {
 hr {
   background-color: rgba(189, 130, 253, 0.15);
 }
+
+hr.dotted {
+  border-top: 3px dotted rgba(189, 130, 253, 0.1);
+  margin: 30px 0;
+  background: transparent;
+}
