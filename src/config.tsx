@@ -31,19 +31,19 @@ export const navLinks = [
         icon: <Lego size={20} weight="fill" />,
       },
       {
-        label: 'Tooling',
-        href: '/tooling',
-        icon: <Hammer size={20} weight="fill" />,
+        label: 'Projects',
+        href: '/projects',
+        icon: <PaintBrush size={20} weight="fill" />,
       },
+      // {
+      //   label: 'Tooling',
+      //   href: '/tooling',
+      //   icon: <Hammer size={20} weight="fill" />,
+      // },
       {
         label: 'Chains',
         href: '/chains',
         icon: <Link size={20} />,
-      },
-      {
-        label: 'YouTube',
-        href: 'https://www.youtube.com/@ink_lang',
-        icon: <YoutubeLogo size={20} weight="fill" />,
       },
     ],
   },
@@ -61,14 +61,14 @@ export const navLinks = [
         icon: <Target size={20} weight="fill" />,
       },
       {
-        label: 'Projects',
-        href: '/projects',
-        icon: <PaintBrush size={20} weight="fill" />,
-      },
-      {
         label: 'Stories',
         href: '/stories',
         icon: <BookOpen size={20} weight="fill" />,
+      },
+      {
+        label: 'YouTube',
+        href: 'https://www.youtube.com/@ink_lang',
+        icon: <YoutubeLogo size={20} weight="fill" />,
       },
     ],
   },
