@@ -57,36 +57,38 @@ export function Navbar({
         transition={{ duration: 0.4, ease: 'easeInOut' }}
       >
         <div className="absolute inset-0 z-0 mask"></div>
-        <div className="ml-6 mr-2 flex items-center h-[80px] justify-between md:justify-start">
-          <div className="flex items-center mr-8">
-            <Link href="/" className="z-10 font-bold">
-              <img src={logo} alt="ink!" className="w-20 h-20" />
-            </Link>
-          </div>
-          <nav className="z-10 items-center flex-1 hidden md:flex">
-            <div className="flex gap-6 mx-auto">
-              {navLinks.map((item) => (
-                <NavItem key={item.title} item={item} />
-              ))}
+        <div className="max-w-[1920px] mx-auto">
+          <div className="ml-6 mr-2 md:ml-8 md:mr-8 flex items-center h-[80px] justify-between md:justify-start">
+            <div className="flex items-center mr-8">
+              <Link href="/" className="z-10 font-bold">
+                <img src={logo} alt="ink!" className="w-20 h-20" />
+              </Link>
             </div>
-          </nav>
-          <div className="z-10 md:hidden">
-            <Hamburger
-              toggled={isMobileMenuOpen}
-              toggle={setMobileMenuOpen}
-              color="#BD82FD"
-              size={22}
-              distance="lg"
-              rounded
-              label="Open menu"
-            />
-          </div>
-          <div className="hidden md:block">
-            <Link href={ctaHref}>
-              <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
-                {cta}
-              </Button>
-            </Link>
+            <nav className="z-10 items-center flex-1 hidden md:flex">
+              <div className="flex gap-6 mx-auto">
+                {navLinks.map((item) => (
+                  <NavItem key={item.title} item={item} />
+                ))}
+              </div>
+            </nav>
+            <div className="z-10 md:hidden">
+              <Hamburger
+                toggled={isMobileMenuOpen}
+                toggle={setMobileMenuOpen}
+                color="#BD82FD"
+                size={22}
+                distance="lg"
+                rounded
+                label="Open menu"
+              />
+            </div>
+            <div className="hidden md:block">
+              <Link href={ctaHref}>
+                <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
+                  {cta}
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </motion.header>
