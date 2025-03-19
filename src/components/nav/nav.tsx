@@ -1,11 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Coins } from '@phosphor-icons/react'
+import { Cross as Hamburger } from 'hamburger-react'
+
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
-import { motion, AnimatePresence } from 'framer-motion'
-import { List, X, CaretDown, Info, BookOpen, YoutubeLogo, Coins } from '@phosphor-icons/react'
-import { Cross as Hamburger } from 'hamburger-react'
+import PolkadotLogo from '@site/static/img/Polkadot_Logo_White.svg'
 
 import { cn } from '../../util'
 import { NavItem } from './nav-item'
@@ -59,10 +61,21 @@ export function Navbar({
         <div className="absolute inset-0 z-0 mask"></div>
         <div className="max-w-[1920px] mx-auto">
           <div className="ml-6 mr-2 md:ml-8 md:mr-8 flex items-center h-[80px] justify-between md:justify-start">
-            <div className="flex items-center mr-8">
-              <Link href="/" className="z-10 font-bold">
-                <img src={logo} alt="ink!" className="w-20 h-20" />
-              </Link>
+            <div className="flex flex-row items-center">
+              <div className="flex items-center mr-4">
+                <Link href="/" className="z-10 font-bold">
+                  <img src={logo} alt="ink!" className="w-20 h-20" />
+                </Link>
+              </div>
+              <motion.div
+                className="z-10 flex-row items-center gap-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: 'easeInOut', delay: 0.2 }}
+              >
+                <span className="block text-xs">Powered by</span>
+                <PolkadotLogo className="w-auto h-[20px]" />
+              </motion.div>
             </div>
             <nav className="z-10 items-center flex-1 hidden md:flex">
               <div className="flex gap-6 mx-auto">
