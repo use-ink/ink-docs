@@ -17,8 +17,8 @@ const head = (
     <meta name="author" content="ink! alliance" />
     <meta property="og:title" content="Home | ink!" />
     <meta property="og:description" content="Welcome to ink!, the Rust smart contract language of Polkadot." />
-    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
-    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/home.png" />
+    <meta property="og:url" content="https://niklasp.github.io/ink-docs/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />
     <meta property="og:locale" content="en_US" />
