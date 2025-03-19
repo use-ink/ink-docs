@@ -12,7 +12,7 @@ const head = (
     <meta name="author" content="ink! alliance" />
     <meta property="og:title" content="Bounties |  ink!" />
     <meta property="og:description" content="Discover available bounties and contribute to the ink! ecosystem." />
-    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/bounties.png" />
     <meta property="og:url" content="https://use-ink.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />

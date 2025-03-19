@@ -48,21 +48,14 @@ export default function Home() {
             description="Create, manage, and deploy smart contracts with ink!"
             cta={
               <div className="flex flex-col gap-4 mx-4 md:flex-row md:mx-0">
-                <Link
-                  to="/docs"
-                  className="hover:scale-105 hover:-rotate-1 !transition-all duration-300 flex-1 lg:flex-none"
-                >
+                <Link to="/docs" className=" !transition-all duration-300 flex-1 lg:flex-none">
                   <Button size="lg" className="w-full lg:w-auto">
                     Start Building →
                   </Button>
                 </Link>
 
                 <Link to="/inkubator" className="flex-1 lg:flex-none">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="!transition-all duration-300 hover:scale-105 hover:-rotate-1 w-full lg:w-auto"
-                  >
+                  <Button variant="secondary" size="lg" className="!transition-all duration-300 w-full lg:w-auto">
                     ink!ubator
                   </Button>
                 </Link>

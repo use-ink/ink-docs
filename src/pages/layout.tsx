@@ -9,16 +9,20 @@ import { StarryBackground } from '../components/starry-background'
 
 const defaultHead = (
   <>
-    <title>Default Title | ink!</title>
-    <meta name="description" content="Default description for ink! pages." />
+    <title>Smart Contracts on Polkadot in Rust | ink!</title>
+    <meta name="description" content="Build Rust-based smart contracts on Polkadot with ink!" />
     <meta name="keywords" content="ink!, smart contracts, rust, Polkadot" />
-    <meta property="og:title" content="Default Title | ink!" />
-    <meta property="og:description" content="Default description for ink! pages." />
-    <meta property="og:image" content="https://niklasp.github.io/ink-docs/image/opengraph/home.png" />
+    <meta property="og:title" content="Smart Contracts on Polkadot in Rust | ink!" />
+    <meta property="og:description" content="Build Rust-based smart contracts on Polkadot with ink!" />
+    <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/home.png" />
     <meta property="og:url" content="https://niklasp.github.io/ink-docs/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ink! logo" />
+    <meta property="og:image:type" content="image/png" />
   </>
 )
 
