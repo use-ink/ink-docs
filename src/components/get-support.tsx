@@ -7,11 +7,11 @@ import { SocialIcon } from './social-icon'
 export function GetSupport() {
   return (
     <div className="w-full pb-32">
-      <div className="w-full px-20 mx-auto">
-        <div className="flex flex-wrap items-center gap-8 lg:gap-0 justify-evenly">
+      <div className="w-full mx-auto md:px-4 lg:px-20">
+        <div className="grid grid-cols-2 gap-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-0 max-w-[1200px] mx-auto items-centers">
           {/* Telegram */}
           <SocialIcon
-            className="rotate-[-6deg]"
+            className="skew-y-[-6deg] scale-90 md:rotate-[-6deg] md:scale-100 justify-self-end md:justify-self-center"
             href="https://t.me/inkathon"
             icon={<FaTelegram size={52} />}
             helpText="Join us on Telegram"
@@ -19,20 +19,19 @@ export function GetSupport() {
 
           {/* YouTube */}
           <SocialIcon
-            className="skew-y-[-6deg] rotate-[12deg]"
+            className="skew-y-[-6deg] scale-90 md:rotate-[12deg] md:scale-100 md:justify-self-center"
             href="https://youtube.com/@yourchannel"
             icon={<FaYoutube size={52} />}
             helpText="Visit us on YouTube"
           />
 
           {/* Heading */}
-          <h2 className="order-first w-full !text-[50px] font-bold text-center text-white md:text-4xl md:order-none md:w-auto m-0">
+          <h2 className="col-span-2 md:col-span-4 lg:col-span-2 order-first w-full !text-[50px] font-bold text-center text-white md:text-4xl lg:order-none sm:mx-18 self-center px-4">
             Get In Touch
           </h2>
 
-          {/* Twitter */}
           <SocialIcon
-            className="skew-x-[-12deg] skew-y-[-6deg] rotate-[8deg]"
+            className="skew-y-[-6deg] scale-90 md:rotate-[8deg] md:scale-100 justify-self-end md:justify-self-center"
             href="https://x.com/yourhandle"
             icon={<FaXTwitter size={52} />}
             helpText="Follow us on X"
@@ -40,7 +39,7 @@ export function GetSupport() {
 
           {/* GitHub */}
           <SocialIcon
-            className="skew-x-[-9deg] skew-y-[6deg] rotate-[-9deg]"
+            className="skew-y-[-6deg] scale-90 md:rotate-[-9deg] md:scale-100 md:justify-self-center"
             href="https://github.com/yourname"
             icon={<FaGithub size={52} />}
             helpText="Contribute to ink!"

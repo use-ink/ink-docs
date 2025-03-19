@@ -12,7 +12,7 @@ export function Footer({ className }: { className?: string }) {
   return (
     <footer
       className={clsx(
-        'grid w-full pb-12 pt-24 mt-20 border-0 border-t border-solid border-[rgb(140,124,247)]',
+        'grid w-full pb-12 pt-24 mt-20 px-8 border-0 border-t border-solid border-[rgb(140,124,247)]',
         className,
       )}
       style={{
