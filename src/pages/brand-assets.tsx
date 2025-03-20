@@ -11,8 +11,8 @@ const head = (
   <>
     <title>Brand Assets | ink!</title>
     <meta name="description" content="Explore the brand assets for ink!, including logos and guidelines." />
-    <meta name="keywords" content="brand, assets, logos" />
-    <meta name="author" content="ink! alliance" />
+    <meta name="keywords" content="brand, assets, logos, corporate identity, design" />
+    <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="Brand Assets | ink!" />
     <meta property="og:description" content="Explore the brand assets for ink!, including logos and guidelines." />
     <meta property="og:image" content="https://use-ink.com/img/og-image.png" />

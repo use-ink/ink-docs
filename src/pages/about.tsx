@@ -13,8 +13,8 @@ const head = (
   <>
     <title>About | ink!</title>
     <meta name="description" content="Learn about ink!, its history, and its community-driven development." />
-    <meta name="keywords" content="about, history, community" />
-    <meta name="author" content="ink! alliance" />
+    <meta name="keywords" content="ink! Alliance, Use Ink, Parity Technologies, PolkaVM, Polkadot" />
+    <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="About | ink!" />
     <meta property="og:description" content="Learn about ink!, its history, and its community-driven development." />
     <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
@@ -193,7 +193,7 @@ export default function PageAbout() {
         </div>
         <hr className="my-12" />
         <div className="flex flex-col items-center justify-center gap-4 my-16 md:flex-row">
-          <p className="m-0">Want to join the ink! alliance?</p>
+          <p className="m-0">Want to join the ink! Alliance?</p>
           <Link href="https://t.me/inkathon" className="text-blue-500">
             <Button size="lg" variant="secondary">
               Join our Telegram

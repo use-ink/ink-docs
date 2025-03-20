@@ -12,11 +12,11 @@ import { AnimatedText } from '../components/animated-text'
 const head = (
   <>
     <title>Home | ink!</title>
-    <meta name="description" content="Welcome to ink!, the Rust smart contract language of Polkadot." />
-    <meta name="keywords" content="ink!, smart contracts, rust, Polkadot" />
-    <meta name="author" content="ink! alliance" />
+    <meta name="description" content="ink! is the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM." />
+    <meta name="keywords" content="Smart contracts, Rust, Polkadot, PolkaVM, RISC-V" />
+    <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="Home | ink!" />
-    <meta property="og:description" content="Welcome to ink!, the Rust smart contract language of Polkadot." />
+    <meta property="og:description" content="ink! is the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM." />
     <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/home.png" />
     <meta property="og:url" content="https://niklasp.github.io/ink-docs/" />
     <meta property="og:type" content="website" />

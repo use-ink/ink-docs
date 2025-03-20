@@ -12,8 +12,8 @@ const head = (
   <>
     <title>Chains | ink!</title>
     <meta name="description" content="Information about blockchains hosting ink! smart contracts and their features." />
-    <meta name="keywords" content="chains, interoperability, rollups, Polkadot" />
-    <meta name="author" content="ink! alliance" />
+    <meta name="keywords" content="chains, interoperability, rollups, Polkadot, parachain" />
+    <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="Chains | ink!" />
     <meta
       property="og:description"

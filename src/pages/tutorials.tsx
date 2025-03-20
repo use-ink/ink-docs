@@ -17,7 +17,7 @@ const head = (
       content="Access tutorials to help you get started with ink! smart contracts and deploy them on Polkadot and beyond."
     />
     <meta name="keywords" content="tutorials, learning, ink!, guides, Polkadot" />
-    <meta name="author" content="ink! alliance" />
+    <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="Tutorials | ink!" />
     <meta
       property="og:description"

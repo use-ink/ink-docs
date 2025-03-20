@@ -8,8 +8,8 @@ const head = (
   <>
     <title>Bounties | ink!</title>
     <meta name="description" content="Discover available bounties and contribute to the ink! ecosystem." />
-    <meta name="keywords" content="contribute, bounties" />
-    <meta name="author" content="ink! alliance" />
+    <meta name="keywords" content="Grant, Funding, Bounties, Contribute" />
+    <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="Bounties |  ink!" />
     <meta property="og:description" content="Discover available bounties and contribute to the ink! ecosystem." />
     <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/bounties.png" />
