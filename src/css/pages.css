@@ -41,11 +41,11 @@ main.page code {
   font-size: 85%;
 }
 
-.nav-top .mask {
+/* .nav-top .mask {
   mask: linear-gradient(180deg, #000000 10%, rgba(0, 0, 0, 0) 130%) add;
   backdrop-filter: blur(10px);
   @apply bg-gradient-to-b from-[#000000cc] via-[#000000aa] to-transparent;
-}
+} */
 
 .section-bg {
   background: linear-gradient(330deg, #8648d9 0%, rgb(28, 18, 97) 50%, rgb(0, 0, 0) 77%);
