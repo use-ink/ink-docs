@@ -81,7 +81,7 @@ export function Navbar({
                 <PolkadotLogo className="w-auto h-[20px]" />
               </motion.div>
             </div>
-            <nav className="z-10 items-center flex-1 hidden md:flex">
+            <nav className="z-10 items-center flex-1 hidden navbar md:flex !bg-none !backdrop-filter-none">
               <div className="flex gap-6 mx-auto">
                 {navLinks.map((item) => (
                   <NavItem key={item.title} item={item} />

@@ -4,7 +4,9 @@ slug: /current-state
 hide_title: true
 ---
 
-<img src="/img/title/q1-25.svg" className="titlePic titleSpace" />
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<img src={useBaseUrl('/img/title/q1-25.svg')} className="titlePic titleSpace" />
 
 A lot has happened recently and this page provides context of where
 ink! stands in February 2025 and what the plan for the future is.
@@ -115,7 +117,7 @@ are compatible with `polkadot-sdk` + `pallet-revive` + PolkaVM from Jan 7, 2025.
 That's the date to which we've caught up so far. We are working on catching up
 to present day and aim to have a pre-release 6.0.0-alpha of both ink! and
 `cargo-contract` out in March 2025.
-
+s
 We are actively working on [this migration guide](/docs/v6/faq/migrating-from-ink-5-to-6).
 All breaking changes and new features will eventually be documented there.
 
@@ -140,3 +142,5 @@ on GitHub for more details.
 In case you have any questions, the best way to reach out is in
 [our Telegram group](https://t.me/inkathon) or the
 [Polkadot Forum](https://forum.polkadot.network/).
+
+

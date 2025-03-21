@@ -191,15 +191,6 @@ button:disabled {
   padding: 0 var(--ifm-pre-padding);
 }
 
-.navbar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  @apply min-[997px]:backdrop-blur-md;
-}
-
-[data-theme='dark'] .navbar {
-  @apply min-[997px]:bg-gradient-to-r min-[997px]:from-[#020204aa] min-[997px]:to-[#1c1047aa];
-}
-
 .navbar__logo {
   margin-left: 0.8rem !important;
   height: 2rem;
