@@ -1,6 +1,7 @@
 .docMainContainer {
   display: flex;
   width: 100%;
+  margin-top: 80px;
 }
 
 @media (min-width: 997px) {
@@ -14,8 +15,6 @@
   }
 
   .docItemWrapperEnhanced {
-    max-width: calc(
-      var(--ifm-container-width) + var(--doc-sidebar-width)
-    ) !important;
+    max-width: calc(var(--ifm-container-width) + var(--doc-sidebar-width)) !important;
   }
 }

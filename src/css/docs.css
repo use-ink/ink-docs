@@ -208,7 +208,8 @@ button:disabled {
 .navbar__search-input {
   @apply rounded-full;
   font-size: 14px;
-  width: 16rem;
+  width: 12rem;
+  height: 2.5rem;
   box-shadow:
     0 12px 12px #0000001f,
     inset 0 0 1px #f4f1fe1a;

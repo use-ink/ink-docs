@@ -19,10 +19,14 @@ export function Navbar({
   className,
   cta = 'Start Building',
   ctaLink = '/docs',
+  children,
+  childrenRight,
 }: {
   className?: string
   cta?: string
   ctaLink?: string
+  children?: React.ReactNode
+  childrenRight?: React.ReactNode
 }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const ctaHref = ctaLink.includes('http') ? ctaLink : useBaseUrl(ctaLink)
@@ -95,13 +99,17 @@ export function Navbar({
                 label="Open menu"
               />
             </div>
-            <div className="hidden md:block">
-              <Link href={ctaHref}>
-                <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
-                  {cta}
-                </Button>
-              </Link>
-            </div>
+            {childrenRight ? (
+              childrenRight
+            ) : (
+              <div className="hidden md:block">
+                <Link href={ctaHref}>
+                  <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
+                    {cta}
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </motion.header>
