@@ -216,7 +216,7 @@ button:disabled {
 
 .navbar__logo {
   margin-left: 0.8rem !important;
-  height: 2rem;
+  height: 38px;
 }
 
 .navbar__search-input {
@@ -534,6 +534,7 @@ ul.menu__list li a {
 
 .navbar-sidebar {
   @apply bg-black;
+  z-index: 80;
 }
 
 /** SEARCH BAR **/
