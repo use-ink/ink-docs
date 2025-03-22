@@ -54,6 +54,8 @@ export function Navbar({
     }
   }, [isMobileMenuOpen])
 
+  const baseUrl = useBaseUrl('/').slice(0, -1)
+
   return (
     <>
       <motion.header
@@ -128,11 +130,19 @@ export function Navbar({
                 <div key={item.title} className="flex flex-col gap-2">
                   <span className="font-semibold text-[#BD82FD] text-[14px] uppercase">{item.title}</span>
                   <div className="flex flex-col gap-2 text-center">
-                    {item.links?.map((link) => (
-                      <ListItem key={link.label} href={link.href} icon={link.icon} className="text-center">
-                        {link.label}
-                      </ListItem>
-                    ))}
+                    {item.links.map((link) => {
+                      let href = link.href
+                      if (link.href.includes('http')) {
+                        href = link.href
+                      } else {
+                        href = baseUrl + link.href
+                      }
+                      return (
+                        <ListItem key={link.label} href={href} icon={link.icon}>
+                          {link.label}
+                        </ListItem>
+                      )
+                    })}
                   </div>
                 </div>
               ))}

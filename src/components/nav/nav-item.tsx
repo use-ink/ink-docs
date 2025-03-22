@@ -18,6 +18,8 @@ interface NavItemProps {
 }
 
 export function NavItem({ item }: NavItemProps) {
+  const baseUrl = useBaseUrl('/').slice(0, -1)
+
   if (!item.links?.length) {
     return (
       <Link
@@ -51,7 +53,7 @@ export function NavItem({ item }: NavItemProps) {
           if (link.href.includes('http')) {
             href = link.href
           } else {
-            href = useBaseUrl(link.href)
+            href = baseUrl + link.href
           }
           return (
             <ListItem key={link.label} href={href} icon={link.icon}>
