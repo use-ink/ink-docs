@@ -205,15 +205,6 @@ button:disabled {
   padding: 0 var(--ifm-pre-padding);
 }
 
-/* .navbar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  @apply min-[997px]:backdrop-blur-md;
-}
-
-[data-theme='dark'] .navbar {
-  @apply min-[997px]:bg-gradient-to-r min-[997px]:from-[#020204aa] min-[997px]:to-[#1c1047aa];
-} */
-
 .navbar__logo {
   margin-left: 0.8rem !important;
   height: 38px;
@@ -443,23 +434,6 @@ table.wallet-table * {
   background-color: transparent;
   color: rgb(202, 194, 255) !important;
 }
-
-/* .framer-8rI4H .framer-9fo3k9 {
-  place-content: center;
-  align-items: center;
-  background-color: rgba(244, 241, 254, 0.05);
-  border-radius: 8px;
-  display: flex;
-  flex: 0 0 auto;
-  flex-flow: column;
-  gap: 10px;
-  height: min-content;
-  overflow: hidden;
-  padding: 5px 10px;
-  position: relative;
-  width: min-content;
-  will-change: var(--framer-will-change-override, transform);
-} */
 
 .attention-box {
   background-color: rgba(189, 130, 253, 0.2);
@@ -700,3 +674,5 @@ ul.menu__list li a {
 .admonition-wrap-color > div {
   background: #bd82fd33 !important;
 }
+
+/** Custom usable classes **/
