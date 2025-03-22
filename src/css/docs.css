@@ -456,6 +456,10 @@ table.wallet-table * {
 
 /** SIDEBAR **/
 
+.menu__list .menu__list {
+  margin-top: 0 !important;
+}
+
 .table-of-contents__link {
   padding: 4px;
   border: 3px dotted;
@@ -526,7 +530,7 @@ ul.menu__list li a {
 }
 
 .navbar-sidebar {
-  @apply bg-black;
+  background: #130f21;
   z-index: 80;
 }
 
