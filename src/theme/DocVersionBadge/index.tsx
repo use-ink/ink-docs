@@ -5,7 +5,7 @@ import { ThemeClassNames } from '@docusaurus/theme-common'
 import { useDocsVersion, useVersions } from '@docusaurus/plugin-content-docs/client'
 import type { Props } from '@theme/DocVersionBadge'
 import Link from '@docusaurus/Link'
-import { OctagonAlert } from 'lucide-react'
+import { AlertCircle, OctagonAlert } from 'lucide-react'
 
 export default function DocVersionBadge({ className }: Props): ReactNode {
   const versionMetadata = useDocsVersion()
@@ -33,28 +33,44 @@ export default function DocVersionBadge({ className }: Props): ReactNode {
         </span>
         {isUnreleasedVersion && (
           <div className="attention-box">
-            <span className="fit-content  text-[22px] text-transparent font-freude bg-clip-text bg-gradient-to-r from-[#bd82fd] to-[#8c7cf7] leading-[22px]">
-              Attention!
+            <span
+              className="flex items-center gap-2 rounded-[12px] p-2"
+              style={{
+                background:
+                  'linear-gradient(135deg, var(--token-f4360154-129c-450f-b724-996b72ffc267, rgb(189, 130, 253)) /* {"name":"ink Purple"} */ 0%, rgb(252, 129, 129) 100%)',
+              }}
+            >
+              <AlertCircle size={22} fill="transparent" stroke="black" strokeWidth={2.5} />
             </span>
-
-            <span>
-              You are viewing <em>unreleased</em> ink! {activeVersionNumber} docs.{' '}
-              <Link to={'/docs'} className="underline">
-                Click here
-              </Link>{' '}
-              to view the latest docs.
-            </span>
+            <div className="flex flex-col gap-0.5 font-[500]">
+              <span className="fit-content  text-[22px] text-transparent font-freude bg-clip-text bg-gradient-to-r from-[#bd82fd] to-[#8c7cf7] leading-[22px]">
+                Attention!
+              </span>
+              <span>
+                You are viewing <em>unreleased</em> ink! {activeVersionNumber} docs.{' '}
+                <Link to={'/docs'} className="underline">
+                  Click here
+                </Link>{' '}
+                to view the latest docs.
+              </span>
+            </div>
           </div>
         )}
         {isOutdatedVersion && (
-          <div className="admonition-wrap-caution admonition-wrap p-[5px] rounded-[12px] border border-solid my-4">
-            <div className="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning">
-              <div className="admonitionHeading_Gvgb">
-                <span className="flex items-center gap-2">
-                  <OctagonAlert size={20} fill="transparent" stroke="currentColor" />
-                  Attention!
-                </span>
-              </div>
+          <div className="attention-box">
+            <span
+              className="flex items-center gap-2 rounded-[12px] p-2"
+              style={{
+                background:
+                  'linear-gradient(135deg, var(--token-f4360154-129c-450f-b724-996b72ffc267, rgb(189, 130, 253)) /* {"name":"ink Purple"} */ 0%, rgb(252, 129, 129) 100%)',
+              }}
+            >
+              <AlertCircle size={22} fill="transparent" stroke="black" strokeWidth={2.5} />
+            </span>
+            <div className="flex flex-col gap-0.5 font-[500]">
+              <span className="fit-content  text-[22px] text-transparent font-freude bg-clip-text bg-gradient-to-r from-[#bd82fd] to-[#8c7cf7] leading-[22px]">
+                Attention!
+              </span>
               <span>
                 You are viewing <em>outdated</em> ink! {activeVersionNumber} docs.{' '}
                 <Link to={'/docs'} className="underline">

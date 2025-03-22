@@ -18,7 +18,7 @@ export default function MobileSidebarToggle(): ReactNode {
       className="navbar__toggle clean-btn"
       type="button"
     >
-      <Hamburger color="#BD82FD" size={28} distance="lg" rounded label="Open menu" />
+      <Hamburger toggled={shown} color="#BD82FD" size={28} distance="lg" rounded label="Open menu" />
     </button>
   )
 }

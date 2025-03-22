@@ -10,7 +10,7 @@ export default function NavbarLogo(): ReactNode {
   const baseUrl = useBaseUrl('/')
 
   return (
-    <div className="flex ml-2 items-center justify-center gap-2 overflow-hidden group h-[calc(100%+1rem)]">
+    <div className="flex ml-0 lg:ml-2 items-center justify-center gap-2 overflow-hidden group h-[calc(100%+1rem)]">
       <div className="relative logo-wrap">
         <Link to={baseUrl} className="absolute top-0 left-0 z-10 w-full h-full cursor-pointer" />
         <Logo
