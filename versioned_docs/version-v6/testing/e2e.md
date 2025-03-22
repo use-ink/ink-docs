@@ -64,13 +64,13 @@ You can run the above test by going to the `flipper` folder in
 [the ink! examples directory](https://github.com/use-ink/ink-examples/tree/main).
 
 Before you can run the test, you have to install a Substrate
-node with `pallet-contracts`. By default e2e tests require that you install [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node). You do not need to run it in the background since the node is started for each test independently.
+node with `pallet-revive`. By default, e2e tests require that you install [`ink-node`](https://github.com/use-ink/ink-node). You do not need to run it in the background since the node is started for each test independently.
 To install the latest version:
 
 ```sh
-cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git
+cargo install ink-node --git https://github.com/use-ink/ink-node.git
 ```
-If you want to run any other node with `pallet-contracts` you need to change `CONTRACTS_NODE` environment variable:
+If you want to run any other node with `pallet-revive` you need to change `CONTRACTS_NODE` environment variable:
 
 ```sh
 export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"

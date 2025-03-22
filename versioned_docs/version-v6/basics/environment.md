@@ -38,8 +38,8 @@ impl Environment for DefaultEnvironment {
 ```
 
 The context here is that you can use ink! on any blockchain that was built with
-the [Substrate](https://substrate.io) framework and includes the
-[`pallet-contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts)
+the [Polkadot SDK](https://polkadot.com/platform/sdk) and includes the
+[`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive)
 module.
 
 Chains built on Substrate can decide on their own which types they want

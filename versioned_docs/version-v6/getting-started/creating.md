@@ -10,7 +10,7 @@ hide_title: true
 
 ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (EDSL) that you can use to write WebAssembly based smart contracts in the Rust programming language.
 
-ink! is just standard Rust in a well defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Substrate compatible Wasm bytecode!
+ink! is just standard Rust in a well-defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Polkadot SDK compatible RISC-V bytecode!
 
 Use the ink! CLI to generate an initial smart contract with some scaffolding code.
 
@@ -57,6 +57,6 @@ test flipper::tests::default_works ... ok
 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
-Now that we are feeling confident things are working, we can actually compile this contract to Wasm in the next step.
+Now that we are feeling confident things are working, we can actually compile this contract to a RISC-V binary in the next step.
 
 

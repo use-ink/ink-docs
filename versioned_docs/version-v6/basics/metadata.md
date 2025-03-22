@@ -21,13 +21,13 @@ The metadata can be found in your contract's target directory under the name
 :::note
 
 The metadata is also contained in your `<contract-name>.contract` file. The difference is
-that the `.contract` file also contains the Wasm binary of your contract.
+that the `.contract` file also contains the binary of your contract (under `source.contract_binary`).
 
 :::
 
 ## `<contract-name>.json`
 The metadata is defined by the following **required** keys:
-- `source`: Information about the contract's Wasm code.
+- `source`: Information about the contract's binary.
 - `contract`: Metadata about the contract.
 - `abi`: Raw JSON of the contract's abi metadata, generated during contract compilation.
 
@@ -68,12 +68,12 @@ The following sections will dive deeper into how these sections are made up.
 This object contains information about how the contract was built.
 
 It consists of the following **required** keys:
-- `hash`: The hash of the contract's Wasm code.
+- `hash`: The hash of the contract's binary.
 - `language`: The language used to write the contract.
 - `compiler`: The compiler used to compile the contract.
 
 It may _optionally_ include the following keys:
-- `wasm`: The actual Wasm code of the contract, for optionally bundling the code with the metadata.
+- `contract_binary`: The actual binary code of the contract, for optionally bundling the code with the metadata.
 - `build_info`: Extra information about the environment in which the contract was built.
 
 ```json
@@ -127,7 +127,7 @@ see [here](https://github.com/use-ink/cargo-contract/blob/30ba1ec545d01c0479fe47
 This is the specification of the contract.
 
 Unlike the previous metadata sections the structure of the object stored here is not
-defined. Instead, it is up to each programming language (e.g. ink!, ask!, Solidity) to
+defined. Instead, it is up to each programming language (e.g. ink! or Solidity) to
 define their own metadata format which will then be stored here.
 
 In this document we will focus on the ink! ABI.
@@ -148,7 +148,7 @@ The ink! metadata consists of the following **required** sections
 
 :::info
 
-If you're interested in the code reference from `ink!`
+If you're interested in the code reference from ink!
 see [here](https://github.com/use-ink/ink/blob/c8aa3ee41112b327d4f3cb3959f188945c8ccace/crates/metadata/src/lib.rs#L90).
 
 :::
@@ -200,7 +200,7 @@ define any events then the `events` key would contain an empty array `[]`.
 
 The `lang_error` field was introduced as part of ink! 4.0. This represents an error which
 comes from the smart contracting language itself, and not the contract nor the underlying
-environment (e.g `pallet-contracts`).
+environment (i.e. `pallet-revive`).
 
 All ink! messages and constructors now return a `Result` which uses this as the `Error`
 variant (see the [`LangError`](https://docs.rs/ink/5.0.0/ink/enum.LangError.html) docs for more).

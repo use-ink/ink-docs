@@ -416,6 +416,7 @@ pub struct YourContract {
 
 :::note
 
+todo
 If your contract utilizes this approach, it no-longer holds a deterministic address assumption.
 You can no longer assume that a contract address identifies a specific code hash.
 Please refer to [the issue](https://github.com/paritytech/substrate/pull/10690#issuecomment-1025702389) 

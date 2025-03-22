@@ -80,7 +80,7 @@ section. You'll notice that for the lazily loaded storage field, we now work wit
 and setters to access and modify the underlying storage value:
 
 ```rust
-#![cfg_attr(not(feature = "std"), no_std)]
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 #[ink::contract]
 mod mycontract {

@@ -8,21 +8,21 @@ hide_title: true
 
 # Run a Substrate Node
 
-The [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node)
+The [`ink-node`](https://github.com/use-ink/ink-node)
 is a simple Substrate blockchain which is configured to include the `contracts` module.
 It's a comfortable option if you want to get a quickstart.
 
-[After successfully installing `substrate-contracts-node`](./setup.md#installing-substrate-contracts-node),
+[After successfully installing `ink-node`](./setup.md#installing-ink-node),
 you can start a local development chain by running:
 
 ```bash
-substrate-contracts-node
+ink-node
 ```
 
-**Note:** `substrate-contracts-node` uses the `--dev` flag by default. 
+**Note:** `ink-node` uses the `--dev` flag by default. 
 You may need to specify the `--dev` flag when you want to run a development chain with another binary (e.g using the Substrate Node Template).
 
-![An image of the terminal starting a Substrate node](/img/substrate-contracts-node.png)
+<img src="/img/ink-node.png" className="titlePic titleSpace" title="An image of the terminal starting a Substrate node" />
 
 You can interact with your node using [the Contracts UI](https://contracts-ui.substrate.io).
 Once you have the webpage open, you have to configure the UI to connect to the locally running node:

@@ -1,6 +1,6 @@
 ---
 title: ink! vs. CosmWasm
-slug: /ink-vs-cosmwasm
+slug: /background/ink-vs-cosmwasm
 hide_title: true
 ---
 
@@ -15,8 +15,8 @@ developers coming from the Cosmos ecosystem.
 ## Architecture
 
 CosmWasm is modular, meaning that any blockchain using the Cosmos SDK can add smart
-contract support to their chain. That is similar to the [Substrate](https://substrate.io/)
-approach, where chains have the option to add `pallet-contracts` to their runtime.
+contract support to their chain. That is similar to the [Polkadot SDK](https://polkadot.com/platform/sdk)
+approach, where chains have the option to add `pallet-revive` to their runtime.
 
 Aside from that, the architecture philosophy is likely the point where CosmWasm and ink!
 differ the most. CosmWasm follows the actor model design pattern, while ink! follows a
@@ -76,22 +76,21 @@ repository acts as the basic template for a generic Cosmos node. With the additi
 [wasmd](https://github.com/CosmWasm/wasmd), the entry point for CosmWasm development.
 
 In terms of Substrate, `substrate-node-template` is a basic generic template of a node.
-Similar to `x/wasm`, [`pallet-contracts`](https://github.com/paritytech/substrate/tree/master/frame/contracts)
-is the module that adds WebAssembly smart contract functionality to the chain. Parity
-provides the [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node),
-which is analogous to `wasmd` - a basic template node for smart contract development.
+Similar to `x/wasm`, [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/susbtrate/frame/revive)
+is the module that adds RISC-V smart contract functionality to the chain. 
+We provide the [ink-node](https://github.com/use-ink/ink-node), which is analogous to `wasmd` — a basic template node 
+for smart contract development.
 
 ## Testnets
 
 For CosmWasm development and on-chain testing, `wasmd` can be operated as a local setup
 (single or multiple nodes), or connected to the `cliffnet` public test network.
 
-ink! contracts can be deployed on a few different options:
+For testing, ink! contracts can be deployed on a few different options:
 
-- Locally, on a single or multiple node setup of [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node).
-- [Contracts on Rococo Parachain](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-contracts-rpc.polkadot.io#/explorer),
-  which is connected to the [Rococo relay chain test network](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/explorer).
-- [Astar Network’s Shibuya testnet](https://docs.astar.network/docs/build/introduction/astar_family/#shibuya-substrate).
+- Locally, on a single or multiple node setup of [`ink-node`](https://github.com/use-ink/ink-node).
+- TODO add Paseo/Westend
+- TODO add Pop Testnet
 
 ## Development Workflow
 
@@ -102,7 +101,7 @@ The first step in CosmWasm development is to
 namely Rust, the WebAssembly target, `cargo-generate` and `cargo-run-script`.
 
 For ink! you can also find [a setup guide](../getting-started/setup.md) which will help you
-with dependencies, namely Rust, `cargo-contract` and `substrate-contracts-node`.
+with dependencies, namely Rust, `cargo-contract` and `ink-node`.
 
 ### Compile and Test
 

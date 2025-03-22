@@ -31,10 +31,10 @@ There are things you could do to enable debug messages on the client console:
    you compile a contract in `--release` mode.
 
 1. __Set the log level of your node to `runtime::contracts=debug`.__<br/>
-   For example, to have only errors and debug output show up for the `substrate-contracts-node`:
+   For example, to have only errors and debug output show up for the `ink-node`:
 
   ```
-  substrate-contracts-node -lerror,runtime::contracts=debug
+  ink-node -lerror,runtime::contracts=debug
   ```
 
 1. __Set the log level of your node to `runtime::contracts::strace` to trace host function calls.__<br/>
@@ -42,7 +42,7 @@ There are things you could do to enable debug messages on the client console:
    For example, to view these traces in addition to the logs described above:
 
   ```
-  substrate-contracts-node -lerror,runtime::contracts=debug,runtime::contracts::strace=trace
+  ink-node -lerror,runtime::contracts=debug,runtime::contracts::strace=trace
   ```
 
 ## Example

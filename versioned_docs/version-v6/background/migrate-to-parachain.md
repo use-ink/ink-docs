@@ -1,14 +1,14 @@
 ---
-title: Migrating an ink! contract to a Parachain Runtime
+title: Migrate an ink! contract to a Rollup
 hide_title: true
-slug: /migrate-ink-contracts-to-polkadot-frame-parachain
+slug: /background/migrate-ink-contracts-to-polkadot-frame-parachain-rollup
 ---
 
 ![Polkadot Title Picture](/img/title/polkadot.svg)
 
-# Migrating an ink! contract to a Parachain Runtime
+# Migrating an ink! contract to a Polkadot SDK Runtime
 
-Smart contracts written in `ink!` are a great starting point for developing applications in the Polkadot ecosystem. Developers can go from an idea to a fully functioning web3 application "in production" in a matter of hours or days. This allows faster feedback on ideas, to validate whether there is user demand in the first place, and to easily iterate and refine the implementation.
+Smart contracts written in ink! are a great starting point for developing applications in the Polkadot ecosystem. Developers can go from an idea to a fully functioning web3 application "in production" in a matter of hours or days. This allows faster feedback on ideas, to validate whether there is user demand in the first place, and to easily iterate and refine the implementation.
 
 For many applications, smart contracts are good enough. However, they are exposed to the inherent limitations of the smart contract execution environment: 
     
@@ -17,19 +17,19 @@ For many applications, smart contracts are good enough. However, they are expose
 3. Relative poor performance of interpreted smart contract (untrusted) code compared to pre-compiled Parachain runtime (trusted) code.
 4. Limited access to the host chain environment and any special functionality provided by an extensive suite of customisable FRAME pallets.
 
-Once a web3 application has proven it can work, the team may consider "upgrading" to a Parachain to unlock the full power of a dedicated App Chain. Compared to developing and deploying a smart contract, this requires considerably more time and expertise, which is why we encourage to start with `ink!` where possible, at least at the prototype stage.
+Once a web3 application has proven it can work, the team may consider "upgrading" to a Parachain to unlock the full power of a dedicated App Chain. Compared to developing and deploying a smart contract, this requires considerably more time and expertise, which is why we encourage to start with ink! where possible, at least at the prototype stage.
 
-Much of the difficulty in launching a parachain comes in configuring a node implementation, bootstrapping and maintaining a collator network, deploying to testnets, managing infrastructure, acquiring "Coretime" (previously via a slot auction). All of which is time consuming and costly. This is important to note because this guide will focus on the migration of the code from `ink!` to `FRAME`, which might be a learning curve but overall a minor part of the overall migration, and a one-off cost.
+Much of the difficulty in launching a parachain comes in configuring a node implementation, bootstrapping and maintaining a collator network, deploying to testnets, managing infrastructure, acquiring "Coretime" (previously via a slot auction). All of which is time consuming and costly. This is important to note because this guide will focus on the migration of the code from ink! to `FRAME`, which might be a learning curve but overall a minor part of the overall migration, and a one-off cost.
 
 ## Utilizing existing FRAME pallets
 
 There is a rich library of FRAME pallets, which may provide a drop in replacement for some (or all) of your smart contract functionality. For example, for a [PSP22](../standards/overview.md) (similar to ERC20) fungible token contract, this could be replaced either by the native Parachain token itself via `pallet_balances` or by an asset on `pallet_assets`. Governance functions could be replaced by e.g. `pallet_democracy`, and so on. See [`polkadot-sdk`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame) for a range of pre-built pallets which can be used to handle some common functions.
 
-## Similarities and differences between `ink!` and `FRAME`
+## Similarities and differences between ink! and `FRAME`
 
 ### Similar
 
-The biggest advantage we have when migrating from `ink!` to `FRAME` is that both are Rust based DSLs, in both cases actual Rust (or Rust-like)  code annotated with attributes expands into Rust code for handling all the boilerplate for integrating into their respective execution environments. Indeed the modern `FRAME 2.0` was originally inspired by the `ink!` approach of attribute macros annotating Rust code.
+The biggest advantage we have when migrating from ink! to `FRAME` is that both are Rust based DSLs, in both cases actual Rust (or Rust-like)  code annotated with attributes expands into Rust code for handling all the boilerplate for integrating into their respective execution environments. Indeed the modern `FRAME 2.0` was originally inspired by the ink! approach of attribute macros annotating Rust code.
 
 So we can assume that the developer performing the migration is already familiar with Rust and its development environment, which is already a huge headstart for developing with `FRAME`. 
 
@@ -41,7 +41,7 @@ The biggest difference is that a contract is user uploaded and therefore untrust
 
 Runtime code built using `FRAME` is trusted, can be pre-compiled and therefore executes significantly faster (though that may change if/when contracts are able to target [PolkaVM](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)). Pallets have direct access to other pallets and have full access to the Parachain storage, and the permissioning can be configured as desired.
 
-Because `ink!` is executing in a more constrained environment, it is able to be much more opinionated and therefore a simpler language. Because execution is metered (pay as you go execution by the user), there is no need to worry about benchmarking for "weight" calculation. `FRAME` is more powerful, but necessarily more complicated.
+Because ink! is executing in a more constrained environment, it is able to be much more opinionated and therefore a simpler language. Because execution is metered (pay as you go execution by the user), there is no need to worry about benchmarking for "weight" calculation. `FRAME` is more powerful, but necessarily more complicated.
 
 ## Example Migration
 
@@ -67,10 +67,10 @@ pub struct Register {
 }
 ```
 
-Each of these structs annotated with `#[ink(event)]` can be translated to a variant in the pallet `Error` enum annotated with `#[pallet::error]`. Any of the `ink!` environment type aliases (both `Hash` and `AccountId` in the above example) must be translated to their equivalent associated type on the `Config` trait e.g. `AccountId` -> `T::AccountId`. Also the `#[ink(topic)]` annotations must be removed: topics must be calculated manually when the event is emitted, and will be covered later. Remove the `#[pallet::generate_deposit(pub(super) fn deposit_event)]` and the final `Event` type will look like:
+Each of these structs annotated with `#[ink(event)]` can be translated to a variant in the pallet `Error` enum annotated with `#[pallet::error]`. Any of the ink! environment type aliases (both `Hash` and `AccountId` in the above example) must be translated to their equivalent associated type on the `Config` trait e.g. `AccountId` -> `T::AccountId`. Also the `#[ink(topic)]` annotations must be removed: topics must be calculated manually when the event is emitted, and will be covered later. Remove the `#[pallet::generate_deposit(pub(super) fn deposit_event)]` and the final `Event` type will look like:
 
 
-```rust=
+```rust
 #[pallet::event]
 pub enum Event<T: Config> {
     Register {
@@ -96,7 +96,7 @@ pub enum Event<T: Config> {
 
 The storage layout of the contract is defined by the following struct:
 
-```rust=
+```rust
 #[ink(storage)]
 pub struct DomainNameService {
     /// A hashmap to store all name to addresses mapping.
@@ -107,7 +107,7 @@ pub struct DomainNameService {
     default_address: AccountId,
 }
 ```
-In `ink!`, the layout of the contract storage is defined by this top level `struct`. A brief recap of how this is used:
+In ink!, the layout of the contract storage is defined by this top level `struct`. A brief recap of how this is used:
 - Constructors must return an initialized instance of this struct, which is then written to storage. 
 - Non mutable messages e.g. `#[ink(message)] fn message(&self, ..)` will load an instance of this struct and pass it as `&self`.
 - Mutable messages e.g. `#[ink(message)] fn message(&mut self, ..)`, will load an instance of the struct and persist it if the message succeeds in executing.
@@ -124,25 +124,25 @@ pub type DefaultAddress<T: Config> = StorageValue<_, T::AccountId>;
 
 `name_to_address: Mapping<Hash, AccountId>,` translates to a `StorageMap` like so:
 
-```rust=
+```rust
 #[pallet::storage]
 pub type NameToAddress<T: Config> = StorageMap<_, Blake2_128Concat, T::Hash, T::AccountId>;
 ```
 
 `name_to_owner: Mapping<Hash, AccountId>,` also translates to a `StorageMap`:
 
-```rust=
+```rust
 #[pallet::storage]
 pub type NameToOwner<T: Config> = StorageMap<_, Blake2_128Concat, T::Hash, T::AccountId>;
 ```
 
-Reading and writing these storage values must all be done explicitly, in contrast with `ink!` which can do so automatically for non "lazy" values. When it comes to migrating the messages, this will be demonstrated.
+Reading and writing these storage values must all be done explicitly, in contrast with ink! which can do so automatically for non "lazy" values. When it comes to migrating the messages, this will be demonstrated.
 
 ### Error Definition
 
 Simply copy across the variants of the `enum Error` to the equivalent `#[pallet::error]` definition. In our case we end up with:
 
-```rust=
+```rust
 #[pallet::error]
 pub enum Error<T> {
     /// Returned if the name already exists upon registration.
@@ -157,7 +157,7 @@ Note that the `T` generic parameter is not used in this case, the `error` macro 
 
 In this example, the single constructor is simply initializing the storage to empty values. 
 
-```rust=
+```rust
  #[ink(constructor)]
 pub fn new() -> Self {
     Default::default()
@@ -175,7 +175,7 @@ No code migration is required then for this constructor.
 
 There are 3 mutable messages (that can change the state of the contract): `register`, `set_address` and `transfer`. This guide will demonstrate `register`, and the other two can follow a similar pattern. The message is defined as so, with added numerical comments to show the translation to the equivalent `FRAME` code.
 
-```rust=
+```rust
 #[ink(message)]
 pub fn register(&mut self, name: Hash) -> Result<()> {
     // 1.
@@ -195,7 +195,7 @@ pub fn register(&mut self, name: Hash) -> Result<()> {
 
 Before proceeding, it is necessary to add a custom `deposit_event` function for raising events which accepts topics:
 
-```rust=
+```rust
 impl<T: Config> Pallet<T> {
     fn deposit_event(topics: Vec<T::Hash>, event: Event<T>) {
         <frame_system::Pallet<T>>::deposit_event_indexed(
@@ -207,7 +207,7 @@ impl<T: Config> Pallet<T> {
 ```
 Now we can translate the `register` message into a "Dispatchable":
 
-```rust=
+```rust
 #[pallet::call_index(0)]
 #[pallet::weight(Weight::from_parts(10_000, 0)
     .saturating_add(T::DbWeight::get().reads(1))
@@ -228,9 +228,9 @@ pub fn register(origin: OriginFor<T>, name: T::Hash) -> DispatchResultWithPostIn
     Ok(().into())
 }
 ```
-Compare the numbered annotations from the `ink!` contract message and the `FRAME` dispatchable, and you can see they are very similar, just different APIs for interacting with the environment and with storage.
+Compare the numbered annotations from the ink! contract message and the `FRAME` dispatchable, and you can see they are very similar, just different APIs for interacting with the environment and with storage.
 
-For `4.`, in `FRAME` we need to generate the topic list manually which is done automatically in `ink!` via the annotations.
+For `4.`, in `FRAME` we need to generate the topic list manually which is done automatically in ink! via the annotations.
 
 #### Weights
 
@@ -245,7 +245,7 @@ The `pallet::weight` attribute defines the `weight` of the dispatchable i.e. the
 
 In our case, `1.` is good enough, so the following read only message:
 
-```rust=
+```rust
 #[ink(message)]
 pub fn get_address(&self, name: Hash) -> AccountId {
     self.get_address_or_default(name)
@@ -259,13 +259,13 @@ fn get_address_or_default(&self, name: Hash) -> AccountId {
 ```
 Can be queried *without* any modifications to the `NameToAddress` storage type:
 
-```rust=
+```rust
 #[pallet::storage]
 pub type NameToAddress<T: Config> = StorageMap<_, Blake2_128Concat, T::Hash, T::AccountId>;
 ```
 `subxt` would generate the following accessor for querying the storage:
 
-```rust=
+```rust
 let storage_query = my_custom_chain::storage().dns().name_to_address(&name);
 
 // Use that query to `fetch` a result. This returns an `Option<_>`, which will be

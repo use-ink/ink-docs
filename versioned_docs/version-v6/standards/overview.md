@@ -4,6 +4,8 @@ slug: /standards/overview
 hide_title: true
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ![Standards Title Picture](/img/title/standards.svg)
 
 # Overview
@@ -12,6 +14,8 @@ Standards are maintained by the community initiative ink!hub.
 You can find them here: [github.com/inkdevhub/standards](https://github.com/inkdevhub/standards).
 
 ## Wallet Support
+
+TODO
 
 <table className="wallet-table text--center">
     <tr>
@@ -23,30 +27,40 @@ You can find them here: [github.com/inkdevhub/standards](https://github.com/inkd
     <tr>
         <th>
             <a href="https://www.subwallet.app/" title="SubWallet" >
-                <img src= "/img/wallets/subwallet.svg" className="wallet" alt="SubWallet" width="200"/>
+                <img src={useBaseUrl('/img/wallets/subwallet.svg')} className="wallet" alt="SubWallet" width="200"/>
             </a>
         </th>
-        <td><img src= "/img/icons/checkmark1.svg" className="checkmark" /></td>
-        <td><img src= "/img/icons/checkmark1.svg" className="checkmark" /></td>
-        <td><img src= "/img/icons/checkmark1.svg" className="checkmark" /></td>
+        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
+        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
+        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
     </tr>
     <tr>
         <th>
             <a href="https://polkadot.js.org/extension/" title="Polkadot{.js}">
-                <img src= "/img/wallets/polkadot-js.svg" className="wallet" alt="Polkadot{.js}" width="200"/>
+                <img src={useBaseUrl('/img/wallets/polkadot-js.svg')} className="wallet" alt="Polkadot{.js}" width="200"/>
             </a>
         </th>
-        <td><img src= "/img/icons/checkmark1.svg" className="checkmark" /></td>
+        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <th>
             <a href="https://www.talisman.xyz/" title="Talisman">
-                <img src= "/img/wallets/talisman.svg" className="wallet" alt="Talisman" width="200"/>
+                <img src={useBaseUrl('/img/wallets/talisman.svg')} className="wallet" alt="Talisman" width="200"/>
             </a>
         </th>
-        <td><img src= "/img/icons/checkmark1.svg" className="checkmark"/></td>
+        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark"/></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <a href="https://metamask.io" title="MetaMask">
+                <img src={useBaseUrl('/img/wallets/metamask.svg')} className="wallet" alt="metamask" width="200"/>
+            </a>
+        </th>
+        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark"/></td>
         <td></td>
         <td></td>
     </tr>

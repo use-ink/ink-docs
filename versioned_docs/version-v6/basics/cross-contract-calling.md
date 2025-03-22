@@ -16,8 +16,8 @@ There are a few approaches to performing these cross-contract calls in ink!:
 1. Builders (i.e `CreateBuilder` and `CallBuilder`)
 
 Contract references can only be used for cross-contract calls to other ink! contracts.
-Builders can be used to issue cross-contract calls to any Wasm contract, such as those
-written in ink!, Solang, or ask!.
+Builders can be used to issue cross-contract calls to any RISC-V contract, such as those
+written in ink! or Solidity.
 
 ## Contract References
 
@@ -135,7 +135,7 @@ pub fn flip_and_get(&mut self) -> bool {
 
 #### Uploading `OtherContract`
 
-You will need the [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node)
+You will need the [`ink-node`](https://github.com/use-ink/ink-node)
 running in the background for the next steps.
 
 We can upload `OtherContract` using `cargo-contract` as follows:
@@ -345,11 +345,9 @@ for more details on proper error handling.
 :::tip
 
 Because the `CallBuilder` requires only a contract's `AccountId` and message `selector`,
-we can call Solidity contracts compiled using the [Solang](https://github.com/hyperledger/solang)
-compiler and deployed to a chain that supports the `pallet-contracts`.
+we can call Solidity contracts compiled using [Parity's revive compiler](https://github.com/paritytech/revive)
+compiler and deployed to a chain that supports the `pallet-revive`.
+
+TODO update link below to fitting example in the `ink-examples` repo
 See [here](https://github.com/xermicus/call_solidity) for an example of how to do that.
-
-The reverse, calls from Solidity to ink!, are **not** supported by Solang, but there are
-plans to implement this in the future.
-
 :::

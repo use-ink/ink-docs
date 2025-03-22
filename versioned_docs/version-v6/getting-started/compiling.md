@@ -15,7 +15,7 @@ cargo contract build
 ```
 
 This command will build the following for your contract: 
-a Wasm binary, a metadata file (which contains the
+a binary, a metadata file (which contains the
 contract's ABI) and a `.contract` file which bundles both.
 
 If all goes well, you should see a `target` folder which contains these files:
@@ -24,14 +24,14 @@ If all goes well, you should see a `target` folder which contains these files:
 target
   └─ ink
     └─ flipper.contract
-    └─ flipper.wasm
+    └─ flipper.polkavm
     └─ flipper.json
 ```
-You can think of it this way: the raw Wasm binary contains just
+You can think of it this way: the raw `.polkavm` binary contains just
 the bytecode of your contract. Without further information it's
 not possible to know what this bytecode refers to. For example,
 which functions can be called in there and what their arguments
-are. This additional information that describes what the raw Wasm
+are. This additional information that describes what the raw binary
 is about is called metadata ‒ data that describes other data.
 
 <p>
@@ -40,7 +40,7 @@ is about is called metadata ‒ data that describes other data.
 
 The purpose of each file is:
 
-* `flipper.wasm`: This is the raw contract bytecode that will be deployed on-chain.
+* `flipper.polkavm`: This is the raw contract bytecode that will be deployed on-chain.
 * `flipper.json`: The isolated metadata, which is not stored on-chain.
 It's big and would take up too much space and costs.
 This file is used by e.g. a dApp user interface to know how to communicate with the on-chain contract.
@@ -79,19 +79,19 @@ functions.
 
 You can also open up the `flipper.contract` file in any text editor. You'll notice that it's
 nearly the same as the `flipper.json`. The only different is that the `.contract` file contains
-an additional field with the hex-encoded Wasm bytecode of your contract:
+an additional field with the hex-encoded binary of your contract:
 
 ```
 {
     "source": {
         …
-        "wasm": "0x006173…",
+        "contract_binary": "0x006173…",
     },
     …
 }
 ```
 
-In the next section we will start a [Substrate Smart Contracts node](https://github.com/paritytech/substrate-contracts-node)
+In the next section we will start a [Substrate Smart Contracts node](https://github.com/use-ink/ink-node)
 and configure the [Contracts UI](https://github.com/use-ink/contracts-ui) to interact with it.
 
 ## Debug vs. Release Build
@@ -114,7 +114,7 @@ contract with `--release`:
 cargo contract build --release
 ```
 
-This will ensure that nothing unnecessary is compiled into the Wasm blob, making
+This will ensure that nothing unnecessary is compiled into the binary blob, making
 your contract faster and cheaper to deploy and execute.
 
 :::info

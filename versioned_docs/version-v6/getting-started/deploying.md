@@ -8,7 +8,7 @@ hide_title: true
 
 # Deploy Your Contract
 
-Now that we have generated the Wasm binary from our source code and connected to a local node, we want
+Now that we have generated the contract binary from our source code and connected to a local node, we want
 to deploy this contract onto our Substrate blockchain.
 
 Smart contract deployment on Substrate is a little different than on traditional smart contract
@@ -42,7 +42,7 @@ Here we will upload the contract code and instantiate one copy of the contract o
 - Click the **Upload New Contract Code** button in the Add New Contract page.
 - Choose an **Instantiation account** (e.g. ALICE).
 - Give the contract a descriptive **Name** (e.g. Flipper Contract).
-- Drag the `flipper.contract` file that contains the bundled Wasm blob and metadata into the drag
+- Drag the `flipper.contract` file that contains the bundled binary blob and metadata into the drag
   & drop area. You will see the UI parse the metadata and enabling the button that takes you to the next step.
 - Click the **Next** button
 

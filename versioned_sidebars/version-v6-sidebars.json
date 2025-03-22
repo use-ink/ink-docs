@@ -5,16 +5,6 @@
       "intro/current-state",
       "faq/migrating-from-ink-5-to-6"
     ],
-    "Background": [
-      "intro/why-rust",
-      "intro/why-riscv",
-      "intro/where-to-deploy",
-      "intro/polkadot",
-      "intro/how-it-works",
-      "intro/ink-vs-solidity",
-      "intro/ink-vs-cosmwasm",
-      "intro/migrate-to-parachain"
-    ],
     "Getting started": [
       "getting-started/setup",
       "getting-started/creating",
@@ -39,14 +29,7 @@
       "basics/environment",
       "basics/metadata",
       "basics/xcm",
-      {
-        "type": "category",
-        "label": "Verification",
-        "items": [
-          "basics/verification/contract-verification",
-          "basics/verification/sirato"
-        ]
-      }
+      "basics/verification/contract-verification"
     ],
     "Testing & Debugging": [
       "testing/overview",
@@ -108,44 +91,23 @@
     "Frontend Development": [
       "frontend/overview"
     ],
-    "Examples": [
-      "examples/contracts",
-      "examples/dapps"
-    ],
     "Standards": [
       "standards/overview"
     ],
-    "Funding Programs": [
-      "funding-programs/overview"
-    ],
-    "Third Party Tools & Libraries": [
-      "third-party-tools/inkathon",
-      {
-        "type": "category",
-        "label": "Swanky Suite",
-        "items": [
-          "third-party-tools/swanky/cli",
-          "third-party-tools/swanky/node"
-        ],
-        "link": {
-          "type": "doc",
-          "id": "third-party-tools/swanky/index"
-        }
-      },
-      "third-party-tools/ink-analyzer",
-      "third-party-tools/subwallet"
+    "Technical Background": [
+      "background/why-rust",
+      "background/why-riscv",
+      "background/contracts-vs-rollups",
+      "background/polkadot-sdk",
+      "background/ink-vs-solidity",
+      "background/ink-vs-cosmwasm",
+      "background/migrate-to-parachain"
     ],
     "FAQ": [
       "faq/faq",
       "faq/migrating-from-ink-5-to-6",
       "faq/migrating-from-ink-4-to-5",
       "faq/migrating-from-ink-3-to-4"
-    ],
-    "Brand Assets": [
-      "brand-assets/ink",
-      "brand-assets/community-badges",
-      "brand-assets/cargo-contract",
-      "brand-assets/stickers"
     ]
   }
 }
