@@ -38,7 +38,6 @@ export default function Layout({
   return (
     <>
       <Head>{head || defaultHead}</Head>
-
       <Navbar />
       <main className={classNames('page flex flex-col min-h-screen mt-[80px] z-10', className)}>
         <StarryBackground />

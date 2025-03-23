@@ -6,6 +6,7 @@ import { useDocsVersion, useVersions } from '@docusaurus/plugin-content-docs/cli
 import type { Props } from '@theme/DocVersionBadge'
 import Link from '@docusaurus/Link'
 import { AlertCircle, OctagonAlert } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function DocVersionBadge({ className }: Props): ReactNode {
   const versionMetadata = useDocsVersion()

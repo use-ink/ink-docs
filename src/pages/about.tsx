@@ -1,13 +1,17 @@
 import React, { useRef } from 'react'
-import Layout from './layout'
 import { motion, useScroll } from 'motion/react'
 
-import Squink from '@site/static/img/ink-squink.svg'
+import Link from '@docusaurus/Link'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+import Layout from './layout'
 import { useParallax } from '../util'
 import { ImageContainer } from '../components/image-container'
-import useBaseUrl from '@docusaurus/useBaseUrl'
-import Link from '@docusaurus/Link'
 import { Button } from '../components/ui/button'
+
+import Squink from '@site/static/img/about/about-squink.svg'
+import Fish1 from '@site/static/img/fishes/fish-1.svg'
+import WaterLine from '@site/static/img/water-line.svg'
 
 const head = (
   <>
@@ -30,19 +34,12 @@ const head = (
 )
 
 export default function PageAbout() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref })
-  const y = useParallax(scrollYProgress, 300)
-
   return (
-    <Layout className="container relative" head={head}>
-      <Squink
-        className="-z-20 absolute opacity-35 top-[80vh] left-[18%] w-[444px] h-auto -translate-x-1/2 -translate-y-1/2"
-        style={{ maskImage: 'linear-gradient(to bottom, black 0%, transparent 60%)' }}
-      />
-      <section className="relative flex flex-col items-center justify-center my-12 overflow-hidden text-center">
+    <Layout className="relative" head={head}>
+      <WaterLine className="absolute top-40 left-0 h-auto w-[100vw] -z-10 opacity-50" />
+      <section className="relative flex flex-col items-center justify-center max-w-4xl mx-auto my-12 overflow-hidden text-center">
         <motion.h1
-          className="text-center"
+          className="text-center !text-[185px] font-freude mix-blend-color-burn animate-float"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut' }}
@@ -50,23 +47,26 @@ export default function PageAbout() {
           About ink!
         </motion.h1>
       </section>
-      <section className="flex flex-col items-start justify-center max-w-4xl gap-8 mx-auto my-12 text-left md:flex-row">
-        <h2 className="w-auto whitespace-nowrap">what is ink!?</h2>
-        <p className="text-balance font-[600]">
-          <b>ink! is a programming language for smart contracts</b> — one of several that blockchains built with the
-          Substrate framework can choose from. It&apos;s an opinionated language created by Parity team members by
-          extending the popular Rust programming language with functionality needed to make it smart contract
-          compatible.
-        </p>
+      <section className="container grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-2">
+        <div className="flex flex-col items-start gap-1">
+          <h2 className="w-auto whitespace-nowrap">What is ink!?</h2>
+          <p className="text-balance font-[600] text-[21px]">
+            <b>ink! is a programming language for smart contracts</b> — one of several that blockchains built with the
+            Substrate framework can choose from. It&apos;s an opinionated language created by Parity team members by
+            extending the popular Rust programming language with functionality needed to make it smart contract
+            compatible.
+          </p>
+        </div>
         <motion.div
           className="w-[400px] h-[400px]"
           initial={{ visibility: 'hidden' }}
           animate={{ visibility: 'visible' }}
-          ref={ref}
-          style={{ y }}
         >
-          <Squink className="w-full h-full translate-y-1/5" />
+          <Squink className="w-full h-full" />
         </motion.div>
+      </section>
+      <section className="relative w-full h-48">
+        <Fish1 className="absolute right-0 w-[400px] h-[400px] animate-swim-left will-change-transform" />
       </section>
       <section className="max-w-4xl mx-auto">
         <h2 className="mb-8">The history of ink!</h2>
