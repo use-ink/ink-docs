@@ -11,12 +11,9 @@ export function Footer({ className }: { className?: string }) {
 
   return (
     <footer
-      className={clsx(
-        'grid w-full pb-12 pt-24 mt-20 px-8 border-0 border-t border-solid border-[rgb(140,124,247)]',
-        className,
-      )}
+      className={clsx('grid w-full pb-12 pt-24 mt-20 px-8', className)}
       style={{
-        background: 'linear-gradient(180deg,#5c4ec4 0%,rgb(47,34,133) 33%,rgb(0,0,0) 83%)',
+        background: 'linear-gradient(0deg, rgb(29, 24, 74) 0%, rgb(17, 14, 43) 64.0514%, rgb(19, 15, 33) 100%)',
       }}
     >
       <GetSupport />

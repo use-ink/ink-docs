@@ -7,7 +7,7 @@ import { SocialIcon } from './social-icon'
 export function GetSupport() {
   return (
     <div className="w-full pb-32">
-      <div className="w-full mx-auto md:px-4 lg:px-20">
+      <div className="w-full mx-auto md:px-4 lg:px-10 xl:px-20">
         <div className="grid grid-cols-2 gap-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-0 max-w-[1200px] mx-auto items-centers">
           {/* Telegram */}
           <SocialIcon
