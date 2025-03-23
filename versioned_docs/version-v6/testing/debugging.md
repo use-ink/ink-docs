@@ -21,8 +21,8 @@ There are three ways to debug your ink! contract currently:
 
 You can use those two macros:
 
-* [`ink::env::debug_println!`](https://docs.rs/ink_env/5.0.0/ink_env/macro.debug_println.html)
-* [`ink::env::debug_print!`](https://docs.rs/ink_env/5.0.0/ink_env/macro.debug_print.html)
+* [`ink::env::debug_println!`](https://docs.rs/ink_env/6.0.0/ink_env/macro.debug_println.html)
+* [`ink::env::debug_print!`](https://docs.rs/ink_env/6.0.0/ink_env/macro.debug_print.html)
 
 There are things you could do to enable debug messages on the client console:
 
@@ -77,7 +77,7 @@ You can use a block explorer or an app like PolkadotJs to retrieve the data payl
 
 ```bash
 # From your contract directory
-cargo contract decode message -d fe5bd8ea01000000
+$ cargo contract decode message -d fe5bd8ea01000000
 ```
 
 This command will output the method name and parameters encoded in the data payload:
@@ -95,11 +95,11 @@ To replay a transaction, you can use [Chopstick](https://github.com/AcalaNetwork
 Assuming you have a node that you can connect to at `$ENDPOINT` and the transaction you want to replay is in block `$BLOCK_HASH`, you can use the following command:
 
 ```bash
-npx @acala-network/chopsticks@latest run-block \
---endpoint $ENDPOINT \
---block $BLOCK_HASH \
---runtime-log-level 5 \
-| grep runtime::contracts
+$ npx @acala-network/chopsticks@latest run-block \
+    --endpoint $ENDPOINT \
+    --block $BLOCK_HASH \
+    --runtime-log-level 5 \
+    | grep runtime::contracts
 ```
 
 This command replays the block with trace-level logging enabled. By filtering the output with `runtime::contracts`, you can view all the contract calls in the block:
@@ -114,10 +114,10 @@ runtime::contracts           TRACE: call result ExecReturnValue { flags: (empty)
 From here, you can identify the call you are interested in and decode the data payload:
 
 ```bash
-echo 254, 91, 216, 234, 1, 0, 0, 0 \
-| tr ',' ' ' \
-| xargs printf '%02x' \
-| xargs cargo contract decode message -d
+$ echo 254, 91, 216, 234, 1, 0, 0, 0 \
+    | tr ',' ' ' \
+    | xargs printf '%02x' \
+    | xargs cargo contract decode message -d
 ```
 
 This command will output the following:
@@ -133,20 +133,20 @@ You can also use [Chopstick](https://github.com/AcalaNetwork/chopsticks) to star
 This command starts a fork beginning at block `$BLOCK_HASH`. You can connect to this fork using `ws://localhost:8000` to submit extrinsics via PolkadotJs or `cargo contract`:
 
 ```bash
-npx @acala-network/chopsticks@latest \
---endpoint $ENDPOINT \
---block $BLOCK_HASH \
---runtime-log-level 5
+$ npx @acala-network/chopsticks@latest \
+    --endpoint $ENDPOINT \
+    --block $BLOCK_HASH \
+    --runtime-log-level 5
 ```
 
 Here, for example, you can re-run the transaction that we decoded in the previous section:
 
 ```bash
-cargo contract call \
---contract $CONTRACT_ADDR \
---message inc_by --args 1 \
---suri //Alice \
---url ws://localhost:8000
+$ cargo contract call \
+    --contract $CONTRACT_ADDR \
+    --message inc_by --args 1 \
+    --suri //Alice \
+    --url ws://localhost:8000
 ```
 
 Since trace-level logging is used, you will receive detailed information about all the host functions called during the execution of the contract:

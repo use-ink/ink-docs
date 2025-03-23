@@ -8,6 +8,12 @@ slug: /basics/contract-testing/chain-snapshot
 
 # Test your Contract with a Chain Snapshot
 
+:::caution
+This page has not yet been updated to ink! v6.
+
+TODO
+:::
+
 On this page we explain how to test ink! contracts with the
 fork of an existing chain. We'll take a snapshot of an existing
 chain for this purpose. The snapshot contains the chains full state,

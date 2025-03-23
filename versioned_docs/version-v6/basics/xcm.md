@@ -6,7 +6,13 @@ hide_title: true
 
 ![Xcm Title Picture](/img/title/xcm.svg)
 
-# Cross-Consensus Message (XCM)
+# Cross-Consensus Messaging (XCM)
+
+:::caution
+This page has not yet been updated to ink! v6.
+
+TODO 
+:::
 
 XCM allows for cross-chain communications, enabling ink! smart contract to interact with other chains.
 You can learn more about XCM in the [Polkadot Wiki](https://wiki.polkadot.network/docs/learn/xcm).

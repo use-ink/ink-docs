@@ -21,7 +21,7 @@ The terms hereby refer to:
 
 `proofSize`: The amount of storage in bytes that a transaction is allowed to read.
 
-The term `refTime` comes from "reference time", referring to Substrate's Weights system, where
+The term `refTime` comes from "reference time", referring to the Polkadot SDK Weights system, where
 computation time is benchmarked on reference hardware. You can read more details
 [here](https://docs.polkadot.com/polkadot-protocol/glossary/#weight).
 

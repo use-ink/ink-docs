@@ -12,7 +12,7 @@ An ink! smart contract may define events that it can emit during contract execut
 Emitting events can be used by third party tools to query information about a contract's
 execution and state.
 
-![Contract execution via transaction](/img/events.svg)
+![Contract execution via transaction](/img/events-revive.svg)
 
 ## Example
 
@@ -226,8 +226,9 @@ pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
 
 ## Cost of using Events
 
-When using events and topics, developers should be mindful of the costs associated. Firstly: if 
-optimizing for contract size, using events will increase the size of the final code size. So 
+When using events and topics, developers should be mindful of the costs associated. 
+
+Firstly: if optimizing for contract size, using events will increase the size of the final code size. So 
 minimizing or eliminating event usage where necessary will reduce contract size. The same can be 
 said for the execution (aka gas) costs when using events. We recommend considering the cost of 
 events when using them, and measuring the code size and gas costs with different usage patterns 

@@ -8,21 +8,20 @@ slug: /basics/contract-template
 
 # Contract Template
 
-On this page we'll go over how to create a basic contract and explain
-its elements.
+On this page we'll go over the elements of a basic contract.
 
 ## Creating a template
 
 Change into your working directory and run:
 
 ```bash
-cargo contract new foobar
+$ cargo contract new foobar
 ```
 
 This will create a new project folder named `foobar`.
 
 ```bash
-cd foobar/
+$ cd foobar/
 ```
 
 In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
@@ -30,13 +29,13 @@ In the `lib.rs` file you find initial scaffolded code, which you can use as a st
 Quickly check that it compiles, and the trivial tests pass with:
 
 ```bash
-cargo test
+$ cargo test
 ```
 
 Also check that you can build the contract by running:
 
 ```bash
-cargo contract build
+$ cargo contract build
 ```
 
 `cargo test` builds the contract for `std`, `cargo contract build` for an 
@@ -67,7 +66,7 @@ edition = "2021"
 # `ink::env` is the `ink_env` crate that contains functions
 # to interact with a contract's environment (querying information
 # about a caller, the current block number, etc.).
-ink = { version = "5", default-features = false }
+ink = { version = "6", default-features = false }
 
 [dev-dependencies]
 # This developer dependency is for the End-to-End testing framework.

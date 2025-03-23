@@ -1,21 +1,16 @@
 ---
-title: Metadata
+title: ink! Format
 hide_title: true
-slug: /basics/metadata
+slug: /basics/metadata/ink
 ---
 
-![Metadata Title Picture](/img/title/metadata.svg)
+![Metadata Title Picture](/img/title/metadata-revive.svg)
 
 # ink! Metadata
 
-The ink! metadata is used to describe a contract in a language agnostic way. It is
-intended to be used by third party tools (e.g. UIs, block explorers) in order to correctly
-call contract functions and interpret events.
-
 The ink! metadata is generated when a contract is built using `cargo-contract`, e.g
 `cargo contract build`.
-
-The metadata can be found in your contract's target directory under the name
+It can be found in your contract's target directory under the name
 `<contract-name>.json`.
 
 :::note
@@ -79,15 +74,15 @@ It may _optionally_ include the following keys:
 ```json
 "source": {
   "hash": "0x157014494527fee27a82e49bbd9eea10c0713bb0566f6def37f4595db86236ff",
-  "language": "ink! 5.1.0",
-  "compiler": "rustc 1.66.0"
+  "language": "ink! 6.0.0",
+  "compiler": "rustc 1.85.0"
 }
 ```
 
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/use-ink/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L157).
+see [here](https://github.com/use-ink/cargo-contract/blob/master/crates/metadata/src/lib.rs#L197).
 
 :::
 
@@ -109,7 +104,7 @@ It can _optionally_ include the following keys:
 ```json
 "contract": {
   "name": "flipper",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "authors": [
     "Use Ink <ink@use.ink>"
   ]
@@ -119,7 +114,7 @@ It can _optionally_ include the following keys:
 :::info
 
 If you're interested in the code reference from `cargo-contract`
-see [here](https://github.com/use-ink/cargo-contract/blob/30ba1ec545d01c0479fe47c97d2c8911ab868d46/crates/metadata/src/lib.rs#L432).
+see [here](https://github.com/use-ink/cargo-contract/blob/master/crates/metadata/src/lib.rs#L469).
 
 :::
 
@@ -149,7 +144,7 @@ The ink! metadata consists of the following **required** sections
 :::info
 
 If you're interested in the code reference from ink!
-see [here](https://github.com/use-ink/ink/blob/c8aa3ee41112b327d4f3cb3959f188945c8ccace/crates/metadata/src/lib.rs#L90).
+see [here](https://github.com/use-ink/ink/blob/master/crates/metadata/src/lib.rs#L82).
 
 :::
 
@@ -203,7 +198,7 @@ comes from the smart contracting language itself, and not the contract nor the u
 environment (i.e. `pallet-revive`).
 
 All ink! messages and constructors now return a `Result` which uses this as the `Error`
-variant (see the [`LangError`](https://docs.rs/ink/5.0.0/ink/enum.LangError.html) docs for more).
+variant (see the [`LangError`](https://docs.rs/ink/6.0.0/ink/enum.LangError.html) docs for more).
 
 :::
 
@@ -342,15 +337,8 @@ This indicates the version of the ABI format the generated metadata conforms to.
 distinct from any concept of Rust's crate versioning.
 
 ```json
-"version": "4"
+"version": "6"
 ```
-
-:::tip ink! 3.x Compatibility Note
-
-In version 3 of the ink! metadata the version was specified as a key which wrapped the
-ABI (e.g `"V3": { ... }`). This is no longer the case with version 4.
-
-:::
 
 ### `user`
 This is an _optional_ field used to add user-defined metadata. Some examples of things
