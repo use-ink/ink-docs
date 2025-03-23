@@ -75,7 +75,7 @@ See the [Chain Extensions](../macros-attributes/chain-extension.md) section for 
 
 Please see [this section](../macros-attributes/contract.md#env-impl-environment) in our documentation.
 
-Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/5.0.0/ink_macro/attr.contract.html#header-arguments)
+Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/6.0.0/ink_macro/attr.contract.html#header-arguments)
 for the `#[ink(contract)]` macro. It allows you to specify your environment a la
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -114,10 +114,6 @@ used by a contract instance. Memory is temporary and only lasts until the contra
 execution is done, while storage is persistent and lasts over many contract executions.
 The contract storage is built on top of the runtime storage, and access is considered to be slow.
 
-### How do I print something to the console from the runtime?
-
-Please see our page on [Contract Debugging](../testing/debugging.md).
-
 ### Why is Rust's standard library (stdlib) not available in ink!?
 
 Rust's standard library consists of three different layers:
@@ -152,15 +148,15 @@ Rust's standard library consists of three different layers:
 
 A number of crypto hashes are built into [pallet-revive](../background/polkadot-sdk.md) and
 therefore very efficient to use. We currently support a handful of those, you
-can view the complete list [here](https://docs.rs/ink_env/5.0.0/ink_env/hash/trait.CryptoHash.html).
+can view the complete list [here](https://docs.rs/ink_env/6.0.0/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
 [Chain Extensions](../macros-attributes/chain-extension.md)
 or make a proposal to include it into the default set of the `pallet-revive`.
 
 Using one of the built-in crypto hashes can be done as explained here:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/5.0.0/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://docs.rs/ink_env/6.0.0/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://docs.rs/ink_env/6.0.0/ink_env/fn.hash_encoded.html)
 
 ### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
 
@@ -268,7 +264,7 @@ and you should only persist items which you need to derive state transitions
 in your contract.
 
 If you still, for some reason, need to use `String`, then you should use
-the `String` [from the ink! prelude](https://docs.rs/ink_prelude/5.0.0/ink_prelude/string/struct.String.html).
+the `String` [from the ink! prelude](https://docs.rs/ink_prelude/6.0.0/ink_prelude/string/struct.String.html).
 
 <h3 id="type-comparison">Getting a warning in <code>cargo-contract</code> about type compatibility?</h3>
 

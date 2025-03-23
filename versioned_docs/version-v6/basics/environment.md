@@ -8,12 +8,6 @@ hide_title: true
 
 # Chain Environment Types
 
-:::caution
-If you write a contract for a chain that deviates from the default
-Substrate types, you have to make sure to configure that chain's
-`Environment` for your contract!
-:::
-
 ink! defines a trait [`Environment`](https://use-ink.github.io/ink/ink_env/trait.Environment.html)
 and also a default implementation of that trait ‒ [`DefaultEnvironment`](https://use-ink.github.io/ink/ink_env/enum.DefaultEnvironment.html).
 
@@ -28,12 +22,13 @@ pub enum DefaultEnvironment {}
 impl Environment for DefaultEnvironment {
     const MAX_EVENT_TOPICS: usize = 4;
 
-    type AccountId = ink_primitives::AccountId;
-    type Balance = u128;
-    type Hash = ink_primitives::Hash;
-    type Timestamp = u64;
-    type BlockNumber = u32;
+    type AccountId = AccountId;
+    type Balance = Balance;
+    type Hash = Hash;
+    type Timestamp = Timestamp;
+    type BlockNumber = BlockNumber;
     type ChainExtension = NoChainExtension;
+    type EventRecord = EventRecord;
 }
 ```
 
@@ -55,3 +50,10 @@ though:
 ```rust
 #[ink::contract(env = MyCustomTypes)]
 ```
+
+:::caution
+If you write a contract for a chain that deviates from our default
+types (`DefaultEnvironment`), you have to make sure to configure that chain's
+`Environment` for your contract!
+:::
+

@@ -32,6 +32,13 @@ Solidity contracts.
 You can deploy ink! to blockchains built with <a href="https://github.com/paritytech/polkadot-sdk">Polkadot SDK</a>.
 See [here](https://use.ink) for a list of chains that support us.
 
+:::note
+ink! v6 is no longer using WebAssembly and `pallet-contracts`!
+Instead we migrated to RISC-V, PolkaVM, and `pallet-revive`.
+
+Read more about the transition [here](../faq/migrating-from-ink-5-to-6.md).
+:::
+
 ## Fast Track
 
 Install Rust and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
@@ -43,20 +50,21 @@ Download the binary for a local development node [here](https://github.com/use-i
 # It wraps around `cargo build` to build contracts with optimal
 # flags for blockchains. It also allows for deploying + interacting
 # with contracts.
-cargo install cargo-contract
+$ rustup component add rust-src
+$ cargo install --locked cargo-contract
 
 # Create a simple contract.
-cargo contract new flipper && cd flipper
-cargo contract build --release
+$ cargo contract new flipper && cd flipper
+$ cargo contract build --release
 
 # Instantiate this contract on-chain.
-cargo contract instantiate --suri //Alice
+$ cargo contract instantiate --suri //Alice
 
 # Dry-run a call of it.
-cargo contract call --suri //Alice --contract 0x… --message get
+$ cargo contract call --suri //Alice --contract 0x… --message get
 
 # Execute a contract call, as a transaction on-chain.
-cargo contract call --suri //Alice --contract 0x… --message flip -x
+$ cargo contract call --suri //Alice --contract 0x… --message flip -x
 ```
 
 <br/>

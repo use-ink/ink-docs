@@ -1,5 +1,5 @@
 ---
-title: Migrating from ink! 4.x to 5.0
+title: "Migration: ink! v4 → v5"
 slug: /faq/migrating-from-ink-4-to-5
 ---
 
@@ -674,7 +674,7 @@ See the [DRink!](https://github.com/inkdevhub/drink) page for more details.
 ### Contract Verification
 
 We added a bunch of helpful documentation and `cargo-contract` commands for
-contract verification. [Read more here](../basics/verification/contract-verification.md).
+contract verification. [Read more here](../basics/metadata/contract-verification.md).
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 

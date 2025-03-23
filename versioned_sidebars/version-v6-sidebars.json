@@ -11,8 +11,7 @@
       "getting-started/compiling",
       "getting-started/running",
       "getting-started/deploying",
-      "getting-started/calling",
-      "getting-started/troubleshooting"
+      "getting-started/calling"
     ],
     "Basics": [
       "basics/contract-template",
@@ -27,9 +26,20 @@
       "basics/upgradeability",
       "basics/env-functions",
       "basics/environment",
-      "basics/metadata",
+      {
+        "type": "category",
+        "label": "Metadata",
+        "items": [
+          "basics/metadata/ink-format",
+          "basics/metadata/solidity-format"
+        ],
+        "link": {
+          "type": "doc",
+          "id": "basics/metadata/metadata"
+        }
+      },
       "basics/xcm",
-      "basics/verification/contract-verification"
+      "basics/contract-verification"
     ],
     "Testing & Debugging": [
       "testing/overview",

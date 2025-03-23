@@ -8,21 +8,20 @@ hide_title: true
 
 # Setup
 
-In case you are looking for a guided tutorial directed
-towards beginners please check out our [Guided Tutorial](https://docs.substrate.io/tutorials/smart-contracts/).
-
 ## Rust & Cargo
 
-A pre-requisite for compiling smart contracts is to have a stable Rust version and Cargo installed. Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+A pre-requisite for compiling smart contracts is to have a stable Rust version (>= 1.85) and Cargo installed.
+Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 ## ink! CLI
 
 The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
-our CLI tool for helping setting up and managing smart contracts written with ink!.
+our CLI tool for help with setting up and managing smart contracts written with ink!.
 
 The tool has a number of handy capabilities:
 
-```
+```bash
+$ cargo contract --help
 Utilities to develop ink! smart contracts
 
 Usage: cargo contract <COMMAND>
@@ -62,7 +61,7 @@ If everything worked, `cargo contract --help` should show you the above list of 
 The [ink-node](https://github.com/use-ink/ink-node) is
 a simple Substrate blockchain which is configured to include the Polkadot SDK module for
 smart contract functionality – the `pallet-revive` (see [Polkadot SDK](../background/polkadot-sdk.md) for more).
-It's a comfortable option if you want to get a quickstart.
+It's a comfortable option for local development and testing.
 
 There are two ways of installing the node:
 
@@ -73,9 +72,8 @@ This is the recommended method, you can
 
 ### (2) Build it yourself
 
-Alternatively you can build the node by yourself.
-This can take quite a while though!
+Alternatively, you can build the node by yourself.
+This can take a while though!
 
-```bash
-cargo install ink-node
-```
+The build instructions and pre-requisites can be found
+[here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).

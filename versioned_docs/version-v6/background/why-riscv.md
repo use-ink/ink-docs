@@ -4,6 +4,13 @@ hide_title: true
 slug: /background/why-riscv-and-polkavm-for-smart-contracts
 ---
 
+<head>
+    <meta name="description" content="Why RISC-V and PolkaVM for Smart Contracts?" />
+    <meta name="keywords" content="Polkadot, PolkaVM, RISC-V, RISCV, Smart Contracts" />
+    <meta property="og:title" content="Why RISC-V and PolkaVM for Smart Contracts?" />
+    <meta property="og:description" content="Discover available bounties and contribute to the ink! ecosystem." />
+</head>
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('/img/title/polkadot-riscv.svg')} title="RISC-V" className="titlePic"  />
@@ -80,24 +87,18 @@ around this.
 The Polkadot community signaled its alignment and gave us the mandate of
 migrating ink! to this new stack.
 
-Hence, v5 of ink! and `cargo-contract` are the last ones supporting `pallet-contracts`
+Hence, v5 of ink! and `cargo-contract` were the last versions supporting `pallet-contracts`
 and Wasm. We can still backport important fixes, but the coming releases (`>= v6`) will
 all no longer be compatible. In case you want to create a PR for a backport, we have
 v5 release branches [here](https://github.com/use-ink/ink/tree/v5.x) and [here](https://github.com/use-ink/cargo-contract/tree/v5.x.x).
 
-The current state of this migration is that the `master` branches of
-[ink!](https://github.com/use-ink/ink) and [`cargo-contract`](https://github.com/use-ink/cargo-contract)
-are compatible with `polkadot-sdk` + `pallet-revive` + PolkaVM from Jan 7, 2025.
-That's the date to which we've caught up so far. We are working on catching up
-to present day and aim to have a pre-release 6.0.0-alpha of both ink! and
-`cargo-contract` out in March 2025.
-
-We are actively working on [this migration guide](/docs/v6/faq/migrating-from-ink-5-to-6).
-All breaking changes and new features will eventually be documented there.
+We have created [this migration guide](/docs/v6/faq/migrating-from-ink-5-to-6) from ink! v5 to v6.
+All breaking changes and new features are documented there.
 
 What has not yet been migrated is [Contracts UI](https://github.com/use-ink/contracts-ui)
 and external libraries (such as [ink!athon](https://inkathon.xyz/), the
 [ink! Analyzer VS Code extension](https://marketplace.visualstudio.com/items?itemName=ink-analyzer.ink-analyzer),
 `polkadot-js`, …).
-We are in contact with the maintainers of these external libraries about migrating as well.
+We are in contact with the maintainers of these external libraries about migrating 
+them as well.
 

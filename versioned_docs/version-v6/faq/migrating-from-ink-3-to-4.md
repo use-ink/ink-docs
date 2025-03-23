@@ -1,5 +1,5 @@
 ---
-title: Migrating from ink! 3.x to 4.0
+title: "Migration: ink! v3 → v4"
 slug: /faq/migrating-from-ink-3-to-4
 ---
 

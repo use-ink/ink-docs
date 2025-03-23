@@ -8,7 +8,7 @@ hide_title: true
 
 # Working with Mapping
 
-In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/5.0.0/ink_storage/struct.Mapping.html).
+In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/6.0.0/ink_storage/struct.Mapping.html).
 
 Here is an example of a mapping from a user to a `Balance`:
 

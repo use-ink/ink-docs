@@ -72,7 +72,7 @@ The storage will be reflected inside the metadata as like follows:
 
 We observe that the storage layout is represented as a tree, where tangible storage values
 end up inside a `leaf`. Because of
-[`Packed`](https://docs.rs/ink_storage_traits/5.0.0/ink_storage_traits/trait.Packed.html)
+[`Packed`](https://docs.rs/ink_storage_traits/6.0.0/ink_storage_traits/trait.Packed.html)
 encoding, leafs can share the same storage key, and
 in order to reach them you'd need to fetch and decode the whole storage cell under this key.
 

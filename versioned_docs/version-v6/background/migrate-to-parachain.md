@@ -6,7 +6,7 @@ slug: /background/migrate-ink-contracts-to-polkadot-frame-parachain-rollup
 
 ![Polkadot Title Picture](/img/title/polkadot.svg)
 
-# Migrating an ink! contract to a Polkadot SDK Runtime
+# Migrate an ink! contract to a Polkadot SDK Runtime
 
 Smart contracts written in ink! are a great starting point for developing applications in the Polkadot ecosystem. Developers can go from an idea to a fully functioning web3 application "in production" in a matter of hours or days. This allows faster feedback on ideas, to validate whether there is user demand in the first place, and to easily iterate and refine the implementation.
 

@@ -31,7 +31,7 @@ extent, the storage API works similar to a traditional key-value database.
 ## Packed vs Non-Packed layout
 
 Types that can be stored entirely under a single storage cell are considered
-[`Packed`](https://docs.rs/ink_storage_traits/5.0.0/ink_storage_traits/trait.Packed.html).
+[`Packed`](https://docs.rs/ink_storage_traits/6.0.0/ink_storage_traits/trait.Packed.html).
 By default, ink! tries to store all storage struct fields under a single storage cell.
 Consequentially, with a `Packed` storage layout, any message interacting with the contract
 storage will always need to operate on the entire contract storage struct.
@@ -132,10 +132,10 @@ large or sparse arrays on contract storage, consider using a `Mapping` instead.
 ## Manual vs. Automatic Key Generation
 
 By default, keys are calculated automatically for you, thanks to the
-[`AutoKey`](https://docs.rs/ink_storage_traits/5.0.0/ink_storage_traits/struct.AutoKey.html)
+[`AutoKey`](https://docs.rs/ink_storage_traits/6.0.0/ink_storage_traits/struct.AutoKey.html)
 primitive. They'll be generated at compile time and ruled out for conflicts.
 However, for non-`Packed` types like `Lazy` or the `Mapping`, the
-[`ManualKey`](https://docs.rs/ink_storage_traits/5.0.0/ink_storage_traits/struct.ManualKey.html)
+[`ManualKey`](https://docs.rs/ink_storage_traits/6.0.0/ink_storage_traits/struct.ManualKey.html)
 primitive allows manual control over the storage key of a field like so:
 
 ```rust

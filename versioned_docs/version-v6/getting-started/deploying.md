@@ -1,5 +1,5 @@
 ---
-title: Deploy Your Contract
+title: Deploy your contract
 slug: /getting-started/deploy-your-contract
 hide_title: true
 ---
@@ -9,19 +9,19 @@ hide_title: true
 # Deploy Your Contract
 
 Now that we have generated the contract binary from our source code and connected to a local node, we want
-to deploy this contract onto our Substrate blockchain.
+to deploy this contract onto our local node.
 
-Smart contract deployment on Substrate is a little different than on traditional smart contract
+Smart contract deployment on `pallet-revive` is a little different than on traditional smart contract
 blockchains.
 
 Whereas a completely new blob of smart contract source code is deployed each time you push a
-contract on other platforms, Substrate opts to optimize this behavior. For example, the standard
+contract on other platforms, `pallet-revive` opts to optimize this behavior. For example, the standard
 ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the
 initial configuration (through the Solidity `constructor` function). Each of these instances take
 up space on the blockchain equivalent to the contract source code size, even though no code was
 actually changed.
 
-In Substrate, the contract deployment process is split into two steps:
+For `pallet-revive`, the contract deployment process is split into two steps:
 
 1. Putting your contract code on the blockchain
 2. Creating an instance of your contract
@@ -31,6 +31,12 @@ time, but instantiated any number of times. No need to continually upload the sa
 and waste space on the blockchain.
 
 ## Using the Contracts UI
+
+:::caution
+This section on the Contracts UI has not yet been updated to ink! v6.
+
+TODO @peterwht Please review this section.
+:::
 
 ### 1. Upload Contract Code
 
@@ -81,7 +87,6 @@ Contracts can be deployed via the command-line as well. With `cargo-contract`
 it's just a simple sequence of:
 
 ```bash
-cargo contract build
-cargo contract upload --suri //Alice
-cargo contract instantiate --suri //Alice --args true
+$ cargo contract build
+$ cargo contract instantiate --suri //Alice --args true
 ```

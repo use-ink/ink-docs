@@ -9,7 +9,7 @@ hide_title: true
 # Working with `StorageVec`
 
 In this section we demonstrate how to work with ink!'s
-[`StorageVec`](https://docs.rs/ink_storage/5.0.0/ink_storage/struct.StorageVec.html).
+[`StorageVec`](https://docs.rs/ink_storage/6.0.0/ink_storage/struct.StorageVec.html).
 
 ## Example: Using a `StorageVec`
 
@@ -139,4 +139,4 @@ Hence, the same considerations apply to `StorageVec` too:
 ## Rust Docs
 
 See here for the Rust documentation of this data structure:
-[`StorageVec`](https://docs.rs/ink_storage/5.0.0/ink_storage/struct.StorageVec.html).
+[`StorageVec`](https://docs.rs/ink_storage/6.0.0/ink_storage/struct.StorageVec.html).

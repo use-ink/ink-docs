@@ -1,5 +1,5 @@
 ---
-title: Call Your Contract
+title: Call your contract
 slug: /getting-started/calling-your-contract
 hide_title: true
 ---
@@ -18,7 +18,7 @@ There are two ways of calling a contract:
 ### Dry-run via RPC
 
 Remote procedure calls, or RPC methods, are a way for an external program – for example, a browser
-or front-end application – to communicate with a Substrate node. 
+or front-end application – to communicate with a Polkadot SDK node. 
 For example, you might use an RPC method to read a stored value, submit a transaction, or request
 information about the chain a node is connected to.
 
@@ -27,7 +27,7 @@ an ERC-20 contract), then this is typically done via RPC. Specifically it is don
 executing a synchronous dry-run of the contract method and returning its result.
 The following schema depicts this.
 
-![Contract dry-run via RPC](/img/rpc.svg)
+![Contract dry-run via RPC](/img/rpc-revive.svg)
 
 RPC calls don't require any tokens, they just require a connection to a node in the 
 network. It's important to note that the execution won't result in any state mutations
@@ -47,7 +47,7 @@ event. Typically libraries (like `polkadot-js/api`) provide API functions to do 
 The important take-away is that contract developers have to make sure that events
 are emitted if they want clients to be able to pick up on them.
 
-![Contract execution via transaction](/img/events.svg)
+![Contract execution via transaction](/img/events-revive.svg)
 
 ## Using the Contracts UI
 
@@ -82,20 +82,26 @@ Calling a contract can also be done via the command-line!
 ### 1. `get()` function
 
 ```bash
-cargo contract build
-cargo contract upload --suri //Alice
+$ cargo contract build
+$ cargo contract instantiate --execute --suri //Alice --args true
 
-cargo contract instantiate --execute --suri //Alice --args true
-# The output of this command will contain the contract address,
-# insert it in the command below.
-# e.g  Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
+# The output of this command will contain the contract address in
+# this format: 
+#     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
+# Insert it in the command below.
 
-
-cargo contract call --contract <insert-contract-address> --message get --suri //Alice
+$ cargo contract call 
+  --contract <insert-contract-address> 
+  --message get 
+  --suri //Alice
 ```
 
 ### 2. `flip()` function
 
 ```bash
-cargo contract call --contract <insert-contract-address> --message flip --execute --suri //Alice
+$ cargo contract call 
+  --contract <insert-contract-address>
+  --message flip
+  --execute
+  --suri //Alice
 ```

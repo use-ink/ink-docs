@@ -49,7 +49,7 @@ You can then use `cargo contract --help` to start exploring the commands made av
 In order to initialize a new ink! project you can use:
 
 ```bash
-cargo contract new flipper
+$ cargo contract new flipper
 ```
 
 This will create a folder `flipper` in your work directory.
@@ -60,7 +60,7 @@ The `lib.rs` contains our hello world contract ‒ the `Flipper`, which we expla
 In order to build the contract just execute these commands in the `flipper` folder:
 
 ```bash
-cargo contract build
+$ cargo contract build
 ```
 
 As a result you'll get the file `target/flipper.contract`. It's a JSON which bundles the contract's
