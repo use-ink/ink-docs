@@ -4,6 +4,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import { stories } from './stories'
 import { cn } from '../../util'
 import { ImageContainer } from '../image-container'
+import { CTA } from '../cta'
 
 export interface Story {
   logo: string
@@ -28,7 +29,7 @@ export function StoryList() {
       {stories.map((story, index) => (
         <div
           key={story.name}
-          className={cn('flex flex-col gap-12 font-[500] mb-16 pb-16', {
+          className={cn('flex flex-col gap-12 font-[500] pb-16', {
             'border-0 border-b border-solid border-[rgba(189,130,253,.15)]': index !== stories.length - 1,
           })}
         >
@@ -66,6 +67,12 @@ export function StoryList() {
           </motion.div>
         </div>
       ))}
+      <hr className="" />
+      <CTA
+        text="Share your story with the ink! community"
+        btnText="Join our Telegram"
+        btnLink="https://t.me/inkathon"
+      />
     </div>
   )
 }

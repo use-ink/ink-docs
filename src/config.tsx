@@ -67,7 +67,7 @@ export const navLinks = [
       },
       {
         label: 'YouTube',
-        href: 'https://www.youtube.com/@ink_lang',
+        href: 'https://www.youtube.com/@ink-lang',
         icon: <YoutubeLogo size={20} weight="fill" />,
       },
     ],

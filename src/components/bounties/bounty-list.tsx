@@ -2,6 +2,7 @@ import React from 'react'
 import { BountyCard } from './bounty-card'
 import { Button } from '../ui/button'
 import Link from '@docusaurus/Link'
+import { CTA } from '../cta'
 export interface Bounty {
   title: string
   applyLink: string
@@ -68,14 +69,11 @@ export function BountyList() {
         ))}
       </div>
       <hr className="my-16" />
-      <div className="flex flex-col items-center justify-center gap-4 my-16 md:flex-row">
-        <p className="m-0">Not seeing a bounty you wish was available?</p>
-        <Link href="https://t.me/inkathon" className="text-blue-500">
-          <Button size="lg" variant="secondary">
-            Request a new bounty
-          </Button>
-        </Link>
-      </div>
+      <CTA
+        text="Not seeing a bounty you wish was available?"
+        btnText="Request a new bounty"
+        btnLink="https://t.me/inkathon"
+      />
       <hr className="my-16" />
       <h2>
         Past Bounties <span className="text-sm text-gray-500">({pastBounties.length})</span>
