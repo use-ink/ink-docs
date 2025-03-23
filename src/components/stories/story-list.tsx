@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { stories } from './stories'
 import { cn } from '../../util'
+import { ImageContainer } from '../image-container'
 
 export interface Story {
   logo: string
@@ -51,13 +52,13 @@ export function StoryList() {
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="flex flex-col gap-8 md:flex-row"
           >
-            <div className="flex items-center justify-center max-w-[300px] rounded-lg border-[rgba(140,124,247,.15)] border border-solid bg-[#241a38] p-4">
+            <ImageContainer className="w-full md:!w-auto max-w-full md:max-w-[200px] h-24">
               <img
                 src={useBaseUrl(story.logo)}
                 alt={`${story.name} logo`}
                 className="object-contain h-auto mix-blend-lighten"
               />
-            </div>
+            </ImageContainer>
             <div className="flex flex-col gap-2">
               <h4 className="text-xs text-gray-500 uppercase font-[600]">BACKSTORY</h4>
               <div className="">{story.backstory}</div>

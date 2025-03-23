@@ -16,7 +16,7 @@ export const stories: Story[] = [
     ),
   },
   {
-    logo: 'img/stories/artzero-logo.svg',
+    logo: 'img/stories/artzero-logo.avif',
     image: 'img/stories/artzero.avif',
     name: 'artzero',
     backstory: (
