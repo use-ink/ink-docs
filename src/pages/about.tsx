@@ -36,7 +36,7 @@ const head = (
 export default function PageAbout() {
   return (
     <Layout className="relative" head={head}>
-      <WaterLine className="absolute top-40 left-0 h-auto w-[100vw] -z-10 opacity-50" />
+      <WaterLine className="absolute top-40 left-0 h-auto w-[100vw] -z-10 opacity-70" />
       <section className="relative flex flex-col items-center justify-center max-w-4xl mx-auto my-12 overflow-hidden text-center">
         <motion.h1
           className="text-center !text-[185px] font-freude mix-blend-color-burn animate-float"
@@ -46,6 +46,9 @@ export default function PageAbout() {
         >
           About ink!
         </motion.h1>
+      </section>
+      <section className="relative w-full h-0">
+        <Fish1 className="absolute top-0right-0 w-[400px] h-[400px] animate-swim-right will-change-transform" />
       </section>
       <section className="container grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-2">
         <div className="flex flex-col items-start gap-1">
@@ -68,8 +71,8 @@ export default function PageAbout() {
       <section className="relative w-full h-48">
         <Fish1 className="absolute right-0 w-[400px] h-[400px] animate-swim-left will-change-transform" />
       </section>
-      <section className="max-w-4xl mx-auto">
-        <h2 className="mb-8">The history of ink!</h2>
+      <section className="container max-w-4xl mx-auto">
+        <h2 className="mb-8">History of ink!</h2>
 
         <div className="flex flex-col items-start w-full gap-8">
           <img
@@ -78,10 +81,10 @@ export default function PageAbout() {
             className="shadow-xl rounded-xl aspect-video"
           />
           <div className="flex flex-col items-start gap-8 md:flex-row">
-            <ImageContainer className="!w-auto">
+            <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>
-                <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center">YEARS</h4>
-                <div className="font-[500] font-freude text-[40px] text-center">&apos;19 - &apos;24</div>
+                <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center text-[12px]">YEARS</h4>
+                <div className="font-[500] font-freude text-[40px] leading-[50px] text-center">&apos;19-&apos;24</div>
               </div>
             </ImageContainer>
             <div className="flex flex-col items-start flex-1">
@@ -117,10 +120,10 @@ export default function PageAbout() {
             />
           </div>
           <div className="flex flex-col items-start gap-8 md:flex-row">
-            <ImageContainer className="!w-auto">
+            <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>
-                <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center">YEAR</h4>
-                <div className="font-[500] font-freude text-[40px] text-center">2024</div>
+                <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center text-[12px]">YEAR</h4>
+                <div className="font-[500] font-freude text-[40px] leading-[50px] text-center">2024</div>
               </div>
             </ImageContainer>
             <div className="flex flex-col items-start flex-1">
@@ -209,10 +212,10 @@ export default function PageAbout() {
             className="shadow-xl rounded-xl aspect-video"
           />
           <div className="flex flex-col items-start gap-8 md:flex-row">
-            <ImageContainer className="!w-auto">
+            <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>
-                <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center">TODAY</h4>
-                <div className="font-[500] font-freude text-[40px] text-center">2025</div>
+                <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center text-[12px]">TODAY</h4>
+                <div className="font-[500] font-freude text-[40px] leading-[50px] text-center">2025</div>
               </div>
             </ImageContainer>
             <div className="flex flex-col items-start flex-1">

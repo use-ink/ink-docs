@@ -5,7 +5,7 @@ export function ImageContainer({ children, className }: { children: React.ReactN
   return (
     <div
       className={cn(
-        'flex items-center justify-center max-w-[300px] w-full h-auto rounded-lg border-[rgba(140,124,247,.15)] border border-solid bg-[#241a38] p-4',
+        'flex items-center justify-center max-w-[300px] w-full h-auto rounded-[12px] border-[rgba(140,124,247,.15)] border border-solid bg-[#241a38] p-4',
         className,
       )}
     >
