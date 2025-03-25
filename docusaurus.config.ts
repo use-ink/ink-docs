@@ -108,6 +108,43 @@ module.exports = {
       },
     ],
   ],
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'og:image',
+        content: 'https://use.ink/img/opengraph/docs.png',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'og:image:width',
+        content: '1200',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'og:image:height',
+        content: '630',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'og:image:alt',
+        content: 'ink! Documentation',
+      },
+    },
+  ],
   plugins: [
     async function tailwindPlugin() {
       return {
