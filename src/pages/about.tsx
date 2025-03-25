@@ -62,7 +62,7 @@ export default function PageAbout() {
       <section className="relative w-full h-0">
         <Fish1 className="absolute -top-20 left-0 w-[30px] h-[30px] animate-swim-right will-change-transform" />
       </section>
-      <section className="container grid max-w-[1000px] grid-cols-1 gap-8 mx-auto md:grid-cols-2">
+      <section className="container grid !max-w-[1000px] grid-cols-1 gap-8 mx-auto md:grid-cols-2">
         <div className="flex flex-col items-start gap-1">
           <h2 className="w-auto whitespace-nowrap">What is ink!?</h2>
           <p className="text-balance font-[600] text-[21px]">
