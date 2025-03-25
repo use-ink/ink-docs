@@ -39,6 +39,7 @@ export default function PageAbout() {
   const { RiveComponent: SquinkAbout } = useRive({
     src: useBaseUrl('animations/about_squink.riv'),
     autoplay: true,
+    animations: ['squink', 'click', 'crab', 'idle'],
   })
 
   const ref = useRef(null)

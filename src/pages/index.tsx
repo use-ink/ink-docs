@@ -8,6 +8,7 @@ import Layout from './layout'
 import Hero from '@site/static/img/Hero.svg'
 import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../components/animated-text'
+import Tentacles from '@site/static/img/home/Tentacles-left.svg'
 
 const head = (
   <>
@@ -80,7 +81,8 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="min-h-screen section-interop">
+      <section className="relative min-h-screen section-interop">
+        <Tentacles className="absolute inset-0 w-[calc(100vw+300px)] h-full" />
         <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
           <MainCta
             classNames={{
