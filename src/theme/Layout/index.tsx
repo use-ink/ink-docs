@@ -11,6 +11,7 @@ import LayoutProvider from '@theme/Layout/Provider'
 import ErrorPageContent from '@theme/ErrorPageContent'
 import type { Props } from '@theme/Layout'
 import styles from './styles.module.css'
+import Head from '@docusaurus/Head'
 
 export default function Layout(props: Props): ReactNode {
   const {
@@ -27,6 +28,13 @@ export default function Layout(props: Props): ReactNode {
   return (
     <LayoutProvider>
       <PageMetadata title={title} description={description} />
+      <Head>
+        <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/docs.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="ink! Documentation" />
+        <meta property="og:image:type" content="image/png" />
+      </Head>
 
       <SkipToContent />
 
