@@ -23,7 +23,7 @@ const head = (
       property="og:description"
       content="Access tutorials to help you get started with ink! smart contracts and deploy them on Polkadot and beyond."
     />
-    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
+    <meta property="og:image" content="https://use-ink.com/img/opengraph-home.png" />
     <meta property="og:url" content="https://use-ink.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />

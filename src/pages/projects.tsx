@@ -12,8 +12,8 @@ const head = (
     <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="Projects | ink!" />
     <meta property="og:description" content="Explore projects built with ink! and their impact on the ecosystem." />
-    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
-    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:image" content="https://use-ink.com/img/opengraph/home.png" />
+    <meta property="og:url" content="https://use-ink.com/projects" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />
     <meta property="og:locale" content="en_US" />

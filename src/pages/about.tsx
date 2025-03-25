@@ -23,8 +23,8 @@ const head = (
     <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="About | ink!" />
     <meta property="og:description" content="Learn about ink!, its history, and its community-driven development." />
-    <meta property="og:image" content="https://use-ink.com/img/og-image.png" />
-    <meta property="og:url" content="https://use-ink.com" />
+    <meta property="og:image" content="https://use-ink.com/img/opengraph/home.png" />
+    <meta property="og:url" content="https://use-ink.com/about" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />
     <meta property="og:locale" content="en_US" />
