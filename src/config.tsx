@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   BookOpen,
-  ChatCircleDots,
   Code,
   CoinVertical,
   FileText,
@@ -12,6 +11,7 @@ import {
   Link,
   PaintBrush,
   Question,
+  Shapes,
   Target,
   YoutubeLogo,
 } from '@phosphor-icons/react'
@@ -28,22 +28,17 @@ export const navLinks = [
       {
         label: 'Tutorials',
         href: '/tutorials',
-        icon: <Lego size={20} weight="fill" />,
+        icon: <Shapes size={20} weight="fill" />,
+      },
+      {
+        label: 'Chains',
+        href: '/chains',
+        icon: <Link size={20} />,
       },
       {
         label: 'Projects',
         href: '/projects',
         icon: <PaintBrush size={20} weight="fill" />,
-      },
-      // {
-      //   label: 'Tooling',
-      //   href: '/tooling',
-      //   icon: <Hammer size={20} weight="fill" />,
-      // },
-      {
-        label: 'Chains',
-        href: '/chains',
-        icon: <Link size={20} />,
       },
     ],
   },
@@ -90,17 +85,17 @@ export const footerLinks = [
       {
         label: 'Tutorials',
         href: '/tutorials',
-        icon: <Lego size={20} weight="fill" />,
-      },
-      {
-        label: 'Tooling',
-        href: '/tooling',
-        icon: <Hammer size={20} weight="fill" />,
+        icon: <Shapes size={20} weight="fill" />,
       },
       {
         label: 'Chains',
         href: '/chains',
         icon: <Link size={20} />,
+      },
+      {
+        label: 'Projects',
+        href: '/projects',
+        icon: <PaintBrush size={20} weight="fill" />,
       },
     ],
   },
@@ -117,16 +112,6 @@ export const footerLinks = [
         href: '/bounties',
         icon: <Target size={20} weight="fill" />,
       },
-      // {
-      //   label: 'Hackathons',
-      //   href: 'https://discord.gg/ink',
-      //   icon: <Info size={20} />,
-      // },
-      // {
-      //   label: 'Stories',
-      //   href: 'https://discord.gg/ink',
-      //   icon: <Info size={20} />,
-      // },
       {
         label: 'Stories',
         href: '/stories',
