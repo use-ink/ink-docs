@@ -65,7 +65,7 @@ While CosmWasm unit tests have different modules for each of the three main entr
 functions, ink! allows for a more generalised approach, where the `#[ink(test)]` macro is
 used for each unit test.
 
-You can read more about ink! unit tests [here](../testing/unit-integration).
+You can read more about ink! unit tests [here](../testing/unit-integration.md).
 
 ## Compiler
 
