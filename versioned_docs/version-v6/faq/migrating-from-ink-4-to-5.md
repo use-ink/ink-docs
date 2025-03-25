@@ -674,7 +674,8 @@ See the [DRink!](https://github.com/inkdevhub/drink) page for more details.
 ### Contract Verification
 
 We added a bunch of helpful documentation and `cargo-contract` commands for
-contract verification. [Read more here](/v5/basics/metadata/contract-verification.md).
+contract verification. Please see the page on contract verification under "Basics"
+for more details.
 
 ### We improved the contract example illustrating upgradeable contracts via `delegate_call`
 
