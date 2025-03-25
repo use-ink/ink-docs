@@ -128,13 +128,13 @@ export const footerLinks = [
       //   icon: <Info size={20} />,
       // },
       {
-        label: 'Support',
-        href: '/support',
-        icon: <ChatCircleDots size={20} weight="fill" />,
+        label: 'Stories',
+        href: '/stories',
+        icon: <BookOpen size={20} weight="fill" />,
       },
       {
         label: 'YouTube',
-        href: 'https://www.youtube.com/@ink_lang',
+        href: 'https://www.youtube.com/@ink-lang',
         icon: <YoutubeLogo size={20} weight="fill" />,
       },
     ],
