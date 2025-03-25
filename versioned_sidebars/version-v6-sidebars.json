@@ -41,11 +41,11 @@
       "basics/xcm",
       "basics/contract-verification"
     ],
-    "Testing & Debugging": [
+    "Testing": [
       "testing/overview",
-      "testing/off-chain",
-      "testing/drink",
+      "testing/unit-integration",
       "testing/e2e",
+      "testing/sandbox",
       "testing/testing-with-live-state",
       {
         "type": "category",
@@ -59,6 +59,16 @@
           "id": "testing/testnet/overview"
         }
       }
+    ],
+    "Debugging": [
+      "debugging/overview",
+      "debugging/events",
+      "debugging/return_value",
+      "debugging/tracing",
+      "debugging/sandbox",
+      "debugging/decoding",
+      "debugging/replays",
+      "debugging/pre-compiles"
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",

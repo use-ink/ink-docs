@@ -1,7 +1,7 @@
 ---
 title: Testing with Chain Snapshots
 hide_title: true
-slug: /basics/contract-testing/chain-snapshot
+slug: /contract-testing/chain-snapshot
 ---
 
 ![Blockchain Fork Title Picture](/img/title/blockchain-fork.svg)
@@ -44,7 +44,7 @@ You should get output similar to:
 
 ```
 $ ink-node
-2023-09-26 07:58:28.885  INFO main sc_cli::runner: Substrate Contracts Node    
+2023-09-26 07:58:28.885  INFO main sc_cli::runner: ink! Node
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ✌️  version 0.30.0-124c159ba94    
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ❤️  by Parity Technologies <admin@parity.io>, 2021-2023    
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: 📋 Chain specification: Development    

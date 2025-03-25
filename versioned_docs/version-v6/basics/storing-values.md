@@ -59,7 +59,7 @@ mod MyContractWithStringsAndArrays {
 
 ink! also provides a `Mapping` storage type. You can read more about it [here](../datastructures/mapping.md).
 
-### Substrate Types
+### Polkadot SDK Types
 
 Here is an example of how you would store substrate types `AccountId`, `Balance` and `Hash`:
 

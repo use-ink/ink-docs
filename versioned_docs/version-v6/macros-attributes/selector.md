@@ -6,9 +6,17 @@ hide_title: true
 
 ![Text/selector Title Picture](/img/title/text/selector.svg)
 
+:::caution
+This section has not yet been updated to ink! v6.
+
+TODO @davidsemakula Please review this page in light of our ABI updates. 
+:::
+
+### 1. Upload Contract Code
+
 Applicable to ink! messages and ink! constructors.
 
-By default ink! creates a selector for each message and constructor.
+By default, ink! creates a selector for each message and constructor.
 This is necessary since the contract is compiled to a binary blob and functions are invoked by invoking the
 selector, which identifies a method ‒ method names are no longer available in these underlying layers.
 
@@ -20,6 +28,10 @@ A selector must be a `u32` decodable integer. For example
 - `selector = 42`
 
 An exception is the fallback selector `_`, allowing contract calls not matching any of the other message selectors to be dispatched to a fallback message. Fallback messages can be `payable`.
+
+:::info
+The term wildcard selector is just a synonym for fallback selector.
+:::
 
 ## Examples
 

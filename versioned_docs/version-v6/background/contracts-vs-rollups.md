@@ -8,11 +8,11 @@ slug: /background/smart-contracts-vs-polkadot-rollups
 
 # Smart Contracts vs. Rollups
 
-One of the first questions we typically get when somebody learns about Substrate and Polkadot SDK is when to develop a
+One of the first questions we typically get when somebody learns about the Polkadot SDK SDK is when to develop a
 rollup (i.e. a parachain) vs. when to develop a smart contract.
 
 ## The Difference
-The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Substrate terminology this state transition function is called the chain's _runtime_.
+The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Polkadot SDK terminology this state transition function is called the chain's _runtime_.
 
 The distinction to other ecosystems here is that, in the context of Polkadot, parachains and smart contracts exist at different layers of the stack: _smart contracts sit on top of parachains_. Parachains would usually be described as layer-1 blockchains — except for that they don't have to build their own security, are upgradable, and interoperable.
 

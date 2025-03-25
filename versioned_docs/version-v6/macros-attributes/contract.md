@@ -6,12 +6,19 @@ slug: /macros-attributes/contract
 
 ![Text/contract Title Picture](/img/title/text/contract.svg)
 
+:::caution
+This page has not yet been written for ink! v6.
+
+TODO @davidsemakula Please add the `abi` header argument here.
+:::
+
+
 # \#[ink::contract]
 
 The `#[ink::contract]` macro is the entry point for writing ink! smart contracts.
 
-If you are a beginner trying to learn ink! we recommend you to check out
-our extensive [ink! workshop](https://docs.substrate.io/tutorials/smart-contracts/).
+If you are a beginner trying to learn ink! we recommend starting
+from the [Getting Started](../getting-started/setup.md) page of this documentation.
 
 ## Description
 

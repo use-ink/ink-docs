@@ -6,6 +6,16 @@ hide_title: true
 
 ![Storage Title Picture](/img/title/storage.svg)
 
+:::caution
+This page has not yet been edited for ink! v6.
+There are many mentions of `pallet-contracts` and its internals here.
+This info needs to be checked for validity in `pallet-revive`.
+
+We should also highlight that this is for the ink! Metadata Format.
+
+TODO
+:::
+
 # Storage Metadata Format
 
 The storage layout of a contract is reflected inside the metadata. It allows third-party

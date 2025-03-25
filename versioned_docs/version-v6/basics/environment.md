@@ -37,12 +37,12 @@ the [Polkadot SDK](https://polkadot.com/platform/sdk) and includes the
 [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive)
 module.
 
-Chains built on Substrate can decide on their own which types they want
+Chains built with the Polkadot SDK can decide on their own which types they want
 to use for e.g. the chain's block number or account id's. For example,
 chains that intend to be compatible to Ethereum typically use the same
 type as Ethereum for their `AccountId`.
 
-Most Substrate chains stay with the default Substrate types though and
+Most Polkadot SDK chains stay with the default types though and
 ink! just uses those by default as well. It is possible to configure
 a different environment in the contract macro ([documentation here](https://use-ink.github.io/ink/ink/attr.contract.html#header-arguments))
 though:

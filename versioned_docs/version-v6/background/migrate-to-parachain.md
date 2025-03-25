@@ -234,14 +234,15 @@ For `4.`, in `FRAME` we need to generate the topic list manually which is done a
 
 #### Weights
 
-The `pallet::weight` attribute defines the `weight` of the dispatchable i.e. the amount of onchain resources it is estimated to consume. Because we are now writing trusted code, we can define this up front (no runtime gas metering). The number in the `weight` is typically generated via a benchmarking process. It is important to integrate this process and set a non-arbitrary value here before deploying to a production chain. Read more https://docs.substrate.io/build/tx-weights-fees/.
+The `pallet::weight` attribute defines the `weight` of the dispatchable i.e. the amount of onchain resources it is estimated to consume. Because we are now writing trusted code, we can define this up front (no runtime gas metering). The number in the `weight` is typically generated via a benchmarking process. It is important to integrate this process and set a non-arbitrary value here before deploying to a production chain. 
+You can read more [here](https://docs.polkadot.com/polkadot-protocol/basics/blocks-transactions-fees/fees/).
 
 #### Immutable (read only) messages
 
 `ink!` messages can return a value, which when executed as an RPC "dry-run" (not via a transaction), are used to read the state of contracts. Dispatchables in `FRAME` cannot return values directly. There are two ways to read the state from a FRAME pallet:
 
 1. Reading from `#[pallet::storage]` items directly, client libraries will generate an API to do this from the runtime metadata. See e.g. [`subxt`](https://github.com/paritytech/subxt/blob/master/subxt/examples/storage_fetch.rs)
-2. Via runtime APIs, RPC methods that can be wired up directly into query methods on a pallet. See https://docs.substrate.io/reference/runtime-apis/.
+2. Via runtime APIs, RPC methods that can be wired up directly into query methods on a pallet. See [here](https://docs.polkadot.com/polkadot-protocol/basics/node-and-runtime/#runtime-apis) for more info.
 
 In our case, `1.` is good enough, so the following read only message:
 
@@ -293,10 +294,10 @@ An alternative would be querying the contract storage directly, but currently th
 
 #### Initializing the pallet 
 
-Once the data has been downloaded and serialized, it can be used to initialize the state of the custom parachain runtime. This can be hardcoded in a `#[pallet::genesis_build]` impl block. See https://docs.substrate.io/reference/how-to-guides/basics/configure-genesis-state/.
+Once the data has been downloaded and serialized, it can be used to initialize the state of the custom parachain runtime. This can be hardcoded in a `#[pallet::genesis_build]` impl block. See [here](https://docs.polkadot.com/develop/parachains/deployment/generate-chain-specs/) for more info.
 
 Alternatively the state could be initialized via dispatchable extrinsic(s) which initialize the storage.
 
 ### Adjusting UIs
 
-User interfaces will need to be adjusted to interact with a pallet rather than a contract. This should be relatively straightforward since client libraries usually have first-class support for interacting with Substrate pallets, and the signing etc. should already be integrated.
+User interfaces will need to be adjusted to interact with a pallet rather than a contract. This should be relatively straightforward since client libraries usually have first-class support for interacting with Polkadot SDK pallets, and the signing etc. should already be integrated.

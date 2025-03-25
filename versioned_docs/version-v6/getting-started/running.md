@@ -30,7 +30,7 @@ $ ink-node
 ```
 
 **Note:** `ink-node` uses the `--dev` flag by default. 
-You may need to specify the `--dev` flag when you want to run a development chain with another binary (e.g using the Substrate Node Template).
+You may need to specify the `--dev` flag when you want to run a development chain with another binary (e.g using the Polkadot SDK Node Template).
 
 <img src={useBaseUrl('/img/ink-node.png')} className="titlePic titleSpace" title="Screenshot of terminal starting a local node" />
 

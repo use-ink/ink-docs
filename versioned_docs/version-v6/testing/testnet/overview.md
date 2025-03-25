@@ -4,9 +4,18 @@ hide_title: true
 slug: /testnet
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ![Testnet Title Picture](/img/title/testnet.svg)
 
 # Contracts on Paseo
+
+:::caution
+This section has not yet been updated to ink! v6.
+
+TODO @peterwht Please review this page.
+:::
+
 
 [Paseo](https://wiki.polkadot.network/docs/build-pdk#paseo-testnet) is a testnet for
 Polkadot and Kusama parachains.
@@ -33,8 +42,7 @@ If everything worked out, the `PAS` tokens will show up in your account.
 In case you are using the `polkadot-js` frontend, you can see them under
 [the "Accounts" tab for Paseo](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpaseo.dotters.network#/accounts).
 
-<img src="/img/pas-in-wallet.png" alt="Paseo testnet tokens in wallet" />
-
+<img src={useBaseUrl('img/pas-in-wallet.png')} alt="Paseo testnet tokens in wallet" />
 
 ### (3) Deploy Your Contract
 

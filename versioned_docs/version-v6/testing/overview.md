@@ -1,7 +1,7 @@
 ---
 title: Overview
 hide_title: true
-slug: /basics/contract-testing/overview
+slug: /contract-testing/overview
 ---
 
 ![Testing1 Title Picture](/img/title/testing1.svg)

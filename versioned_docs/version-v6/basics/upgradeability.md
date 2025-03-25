@@ -284,7 +284,7 @@ Some useful properties:
 
 ## Replacing Contract Code with `set_code_hash()`
 
-Following [Substrate's runtime upgradeability](https://docs.substrate.io/maintain/runtime-upgrades/) 
+Following [Polkadot SDK's runtime upgradeability](https://docs.polkadot.com/develop/parachains/maintenance/runtime-upgrades/) 
 philosophy, ink! also supports an easy way to update your contract code via the special function 
 [`set_code_hash()`](https://use-ink.github.io/ink/ink_env/fn.set_code_hash.html).
 
