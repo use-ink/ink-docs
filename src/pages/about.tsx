@@ -49,7 +49,7 @@ export default function PageAbout() {
   return (
     <Layout className="relative" head={head} ref={ref}>
       <WaterLine className="absolute top-40 left-0 h-auto w-[100vw] -z-10 opacity-70" />
-      <section className="relative flex flex-col items-center justify-center max-w-[1000px] mx-auto my-24 md:my-12 lg:my-8 overflow-hidden text-center">
+      <section className="relative flex flex-col items-center justify-center !max-w-[1000px] mx-auto my-24 md:my-12 lg:my-8 overflow-hidden text-center">
         <motion.h1
           className="text-center !text-[80px] md:!text-[150px] lg:!text-[210px] font-freude mix-blend-color-burn animate-float"
           initial={{ opacity: 0, y: 50 }}
@@ -90,7 +90,7 @@ export default function PageAbout() {
       <section className="relative w-full h-48">
         <Fish2 className="absolute right-0 w-[100px] h-[100px] animate-swim-left will-change-transform" />
       </section>
-      <section className="container max-w-[1000px] mx-auto">
+      <section className="container !max-w-[1000px] mx-auto">
         <h2 className="mb-8">History of ink!</h2>
 
         <div className="flex flex-col items-start w-full gap-8">
