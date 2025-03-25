@@ -26,3 +26,9 @@ hr.dotted {
   height: 4px !important;
   box-shadow: 0 0 10px rgba(189, 130, 253, 0.5);
 }
+
+button {
+  background-color: transparent;
+  border-color: transparent;
+  border: none !important;
+}

@@ -84,8 +84,9 @@ export function BountyList() {
           <hr className="mt-16 mb-8" />
           <CTA
             text="Not seeing a bounty you wish was available?"
-            btnText="Request a new bounty"
+            btnText="Request bounty"
             btnLink="https://t.me/inkathon"
+            btnVariant="default"
           />
         </>
       )}

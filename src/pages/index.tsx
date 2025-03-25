@@ -60,9 +60,9 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                <Link to="/inkubator" className="flex-1 lg:flex-none">
+                <Link to="/tutorials" className="flex-1 lg:flex-none">
                   <Button variant="secondary" size="lg" className="!transition-all duration-300 w-full lg:w-auto">
-                    ink!ubator
+                    View tutorials
                   </Button>
                 </Link>
               </div>
