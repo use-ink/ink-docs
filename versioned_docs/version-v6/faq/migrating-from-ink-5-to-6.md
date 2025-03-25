@@ -211,7 +211,7 @@ We have implemented barebones support for this tracing API in the 6.0.0-alpha
 versions of ink! + `cargo-contract`. But it's really barebones and should
 certainly be improved before a production release.
 
-We've updated [the Debugging chapter](../testing/debugging.md) of this documentation
+We've updated [the Debugging chapter](../debugging/overview.md) of this documentation
 to reflect the new workflow.
 
 ## Removed Events
