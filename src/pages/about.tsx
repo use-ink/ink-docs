@@ -9,9 +9,10 @@ import { useParallax } from '../util'
 import { ImageContainer } from '../components/image-container'
 import { Button } from '../components/ui/button'
 
-import Squink from '@site/static/img/about/about-squink.svg'
-import Fish1 from '@site/static/img/fishes/fish-1.svg'
+import Fish1 from '@site/static/img/fishes/Fish-29.svg'
+import Fish2 from '@site/static/img/fishes/Fish-13.svg'
 import WaterLine from '@site/static/img/water-line.svg'
+import { useRive } from '@rive-app/react-canvas'
 
 const head = (
   <>
@@ -34,12 +35,21 @@ const head = (
 )
 
 export default function PageAbout() {
+  const { RiveComponent: SquinkAbout } = useRive({
+    src: useBaseUrl('animations/about_squink.riv'),
+    autoplay: true,
+  })
+
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref })
+  const y = useParallax(scrollYProgress, -200)
+
   return (
-    <Layout className="relative" head={head}>
+    <Layout className="relative" head={head} ref={ref}>
       <WaterLine className="absolute top-40 left-0 h-auto w-[100vw] -z-10 opacity-70" />
-      <section className="relative flex flex-col items-center justify-center max-w-4xl mx-auto my-12 overflow-hidden text-center">
+      <section className="relative flex flex-col items-center justify-center max-w-[1000px] mx-auto my-24 md:my-12 lg:my-8 overflow-hidden text-center">
         <motion.h1
-          className="text-center !text-[185px] font-freude mix-blend-color-burn animate-float"
+          className="text-center !text-[80px] md:!text-[150px] lg:!text-[210px] font-freude mix-blend-color-burn animate-float"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut' }}
@@ -48,37 +58,44 @@ export default function PageAbout() {
         </motion.h1>
       </section>
       <section className="relative w-full h-0">
-        <Fish1 className="absolute top-0right-0 w-[400px] h-[400px] animate-swim-right will-change-transform" />
+        <Fish1 className="absolute -top-20 left-0 w-[30px] h-[30px] animate-swim-right will-change-transform" />
       </section>
-      <section className="container grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-2">
+      <section className="container grid max-w-[1000px] grid-cols-1 gap-8 mx-auto md:grid-cols-2">
         <div className="flex flex-col items-start gap-1">
           <h2 className="w-auto whitespace-nowrap">What is ink!?</h2>
           <p className="text-balance font-[600] text-[21px]">
-            <b>ink! is a programming language for smart contracts</b> — one of several that blockchains built with the
-            Substrate framework can choose from. It&apos;s an opinionated language created by Parity team members by
-            extending the popular Rust programming language with functionality needed to make it smart contract
-            compatible.
+            <span className="font-bold text-[rgb(187,131,250)]">
+              ink! is a programming language for smart contracts
+            </span>{' '}
+            — one of several that blockchains built with the{' '}
+            <a href="https://polkadot.com/platform/sdk" target="_blank" rel="noreferrer">
+              Polkadot SDK
+            </a>{' '}
+            can choose from. It&apos;s an opinionated language created by Parity team members by extending the popular
+            Rust programming language with functionality needed to make it smart contract compatible.
           </p>
         </div>
-        <motion.div
-          className="w-[400px] h-[400px]"
-          initial={{ visibility: 'hidden' }}
-          animate={{ visibility: 'visible' }}
-        >
-          <Squink className="w-full h-full" />
-        </motion.div>
+        <div className="flex items-center justify-center">
+          <motion.div
+            className="w-[500px] h-[500px] -mt-[30px] animate-float"
+            initial={{ visibility: 'hidden' }}
+            animate={{ visibility: 'visible' }}
+          >
+            <SquinkAbout />
+          </motion.div>
+        </div>
       </section>
       <section className="relative w-full h-48">
-        <Fish1 className="absolute right-0 w-[400px] h-[400px] animate-swim-left will-change-transform" />
+        <Fish2 className="absolute right-0 w-[100px] h-[100px] animate-swim-left will-change-transform" />
       </section>
-      <section className="container max-w-4xl mx-auto">
+      <section className="container max-w-[1000px] mx-auto">
         <h2 className="mb-8">History of ink!</h2>
 
         <div className="flex flex-col items-start w-full gap-8">
           <img
             src={useBaseUrl('/img/about/ink-history.png')}
             alt="ink! history"
-            className="shadow-xl rounded-xl aspect-video"
+            className="shadow-xl rounded-[20px] aspect-video"
           />
           <div className="flex flex-col items-start gap-8 md:flex-row">
             <ImageContainer className="w-full md:!w-auto max-w-full">
@@ -92,20 +109,37 @@ export default function PageAbout() {
                 The early years — a squink is born
               </h4>
               <p>
-                In 2019, ink! started out as a small project at Parity Technologies (the company that stewarded
-                Polkadot). Over the years, ink! grew into a sophisticated ecosystem and a community did form around it.
+                In 2019, ink! started out as a small project at{' '}
+                <Link to="https://parity.io" target="_blank" rel="noreferrer">
+                  Parity Technologies
+                </Link>{' '}
+                (the company that stewarded{' '}
+                <Link to="https://polkadot.com" target="_blank" rel="noreferrer">
+                  Polkadot
+                </Link>
+                ). Over the years, ink! grew into a sophisticated ecosystem and a community did form around it.
                 Throughout all this time Parity continued to allocate developer resources to the project, which is
                 amazing!
               </p>
+
               <p>
                 In April 2024, ink! moved out of the Parity umbrella. Instead of one company, it is nowadays developed
                 and maintained by an alliance of individual developers, companies, and community teams altogether. You
-                can read more on our transition out of Parity here.
+                can read more on our transition out of Parity{' '}
+                <Link to="https://x.com/ink_lang/status/1783877356819783916" target="_blank" rel="noreferrer">
+                  here
+                </Link>
+                .
               </p>
+
               <p>
                 We continue to work closely with Parity, we contribute code to Parity-maintained components and
                 regularly synchronize with Parity developers. Parity continues to be involved in ink! as well: in late
-                2024 SRLabs and the Parity security team conducted an audit of ink! v5 (read more here).
+                2024 SRLabs and the Parity security team conducted an audit of ink! v5 (
+                <Link to="https://x.com/paritytech/status/1882492494661005760" target="_blank" rel="noreferrer">
+                  read more here
+                </Link>
+                ).
               </p>
             </div>
           </div>
@@ -116,7 +150,7 @@ export default function PageAbout() {
             <img
               src={useBaseUrl('/img/about/ink-alliance.png')}
               alt="ink! history"
-              className="object-cover shadow-xl rounded-xl"
+              className="object-cover shadow-xl rounded-[20px]"
             />
           </div>
           <div className="flex flex-col items-start gap-8 md:flex-row">
@@ -209,7 +243,7 @@ export default function PageAbout() {
           <img
             src={useBaseUrl('/img/about/inkubator2-0.png')}
             alt="ink! history"
-            className="shadow-xl rounded-xl aspect-video"
+            className="shadow-xl rounded-[20px] aspect-video"
           />
           <div className="flex flex-col items-start gap-8 md:flex-row">
             <ImageContainer className="w-full md:!w-auto max-w-full">

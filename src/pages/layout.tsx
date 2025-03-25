@@ -30,16 +30,18 @@ export default function Layout({
   children,
   head,
   className,
+  ref,
 }: {
   children: React.ReactNode
   head?: React.ReactNode
   className?: string
+  ref?: React.RefObject<HTMLDivElement>
 }) {
   return (
     <>
       <Head>{head || defaultHead}</Head>
       <Navbar />
-      <main className={classNames('page flex flex-col min-h-screen mt-[80px] z-10', className)}>
+      <main className={classNames('page flex flex-col min-h-screen mt-[80px] z-10', className)} ref={ref}>
         <StarryBackground />
         {children}
       </main>
