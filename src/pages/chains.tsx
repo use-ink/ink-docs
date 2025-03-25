@@ -147,14 +147,14 @@ export default function PageChains() {
               <img
                 src={useBaseUrl('/img/chains/assethub.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
           </div>
@@ -166,56 +166,56 @@ export default function PageChains() {
               <img
                 src={useBaseUrl('/img/chains/aleph-zero.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/astar.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/shiden.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/phala.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/pendulum.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/amplitude.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/krest.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/ternoa.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
           </div>
@@ -226,42 +226,42 @@ export default function PageChains() {
               <img
                 src={useBaseUrl('/img/chains/t3rn.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/enjin.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/zeitgeist.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/peaq.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/bitcountry.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/yerba.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
           </div>
@@ -271,7 +271,7 @@ export default function PageChains() {
             <img
               src={useBaseUrl('/img/chains/assethub.svg')}
               alt="chains"
-              className="w-full h-full mx-auto mix-blend-lighten"
+              className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
             />
           </ImageContainer>
           <hr className="my-10" />
