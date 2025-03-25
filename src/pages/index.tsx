@@ -12,11 +12,17 @@ import { AnimatedText } from '../components/animated-text'
 const head = (
   <>
     <title>Home | ink!</title>
-    <meta name="description" content="ink! is the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM." />
+    <meta
+      name="description"
+      content="ink! is the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM."
+    />
     <meta name="keywords" content="Smart contracts, Rust, Polkadot, PolkaVM, RISC-V" />
     <meta name="author" content="ink! Alliance" />
     <meta property="og:title" content="Home | ink!" />
-    <meta property="og:description" content="ink! is the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM." />
+    <meta
+      property="og:description"
+      content="ink! is the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM."
+    />
     <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/home.png" />
     <meta property="og:url" content="https://niklasp.github.io/ink-docs/" />
     <meta property="og:type" content="website" />
@@ -50,7 +56,7 @@ export default function Home() {
               <div className="flex flex-col gap-4 mx-4 md:flex-row md:mx-0">
                 <Link to="/docs" className=" !transition-all duration-300 flex-1 lg:flex-none">
                   <Button size="lg" className="w-full lg:w-auto">
-                    Start Building →
+                    Start building
                   </Button>
                 </Link>
 

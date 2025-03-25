@@ -106,7 +106,10 @@ export function Navbar({
             ) : (
               <div className="hidden md:block">
                 <Link href={ctaHref}>
-                  <Button className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform">
+                  <Button
+                    variant="base"
+                    className="transition-all !duration-300 hover:scale-105 hover:rotate-1 will-change-transform"
+                  >
                     {cta}
                   </Button>
                 </Link>

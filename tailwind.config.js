@@ -74,6 +74,10 @@ module.exports = {
           '50%': { transform: 'translateY(0) translateX(-100%) rotateY(180deg)' },
           '75%': { transform: 'translateY(10px) translateX(-50%)' },
         },
+        'up-down': {
+          '0%, 100%': { transform: 'rotate(-1deg)' },
+          '50%': { transform: 'rotate(5deg)' },
+        },
       },
       backgroundImage: {
         waves: "url('/img/Waves.svg')",
@@ -93,6 +97,7 @@ module.exports = {
         'swim-right': 'swim-right 140s linear infinite',
         'swim-left-right': 'swim-left-right 100s linear infinite',
         swim: 'swim 10s ease-in-out infinite',
+        'up-down': 'up-down 15s ease-in-out infinite',
       },
     },
   },

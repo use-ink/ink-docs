@@ -142,20 +142,15 @@ export const footerLinks = [
   {
     title: 'Helpful Links',
     links: [
-      // {
-      //   label: 'ink!ubator',
-      //   href: 'https://discord.gg/ink',
-      //   icon: <Info size={20} />,
-      // },
+      {
+        label: 'ink!ubator',
+        href: '/inkubator',
+        icon: <CoinVertical size={20} weight="fill" />,
+      },
       {
         label: 'ink! examples',
         href: 'https://github.com/use-ink/ink-examples',
         icon: <Code size={20} weight="fill" />,
-      },
-      {
-        label: 'Funding Program',
-        href: 'https://use.ink/inkubator',
-        icon: <CoinVertical size={20} weight="fill" />,
       },
       {
         label: 'Brand Assets',
@@ -164,7 +159,7 @@ export const footerLinks = [
       },
       {
         label: 'FAQ',
-        href: 'https://github.com/use-ink/ink-docs',
+        href: '/docs/faq',
         icon: <Question size={20} weight="fill" />,
       },
     ],

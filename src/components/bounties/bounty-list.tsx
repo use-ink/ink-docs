@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link'
 import { CTA } from '../cta'
 export interface Bounty {
   title: string
-  applyLink: string
+  applyLink?: string
   announcementLink?: string
   objective: React.ReactNode
   status: React.ReactNode
@@ -20,24 +20,20 @@ export interface PastBounty extends Bounty {
   }[]
 }
 
-export const activeBounties: Bounty[] = [
-  {
-    title: 'Build a new ink! app',
-    applyLink: 'https://github.com/use-inkubator/Ecosystem-Grants',
-    announcementLink: 'https://github.com/use-inkubator/Ecosystem-Grants',
-    objective:
-      'The current ink! documentation website (https://use.ink/) is an extensive developer documentation. We want to move this content under use.ink/docs and have an engaging website in its place that provides a less overwhelming entry point to ink!.',
-    status: 'Looking for applicants. Please review bounty requirements before applying.',
-  },
-]
+export const activeBounties: Bounty[] = []
 
 export const pastBounties: PastBounty[] = [
   {
-    title: 'Build a new ink! app',
-    applyLink: 'https://github.com/use-inkubator/Ecosystem-Grants',
-    objective:
-      'The current ink! documentation website (https://use.ink/) is an extensive developer documentation. We want to move this content under use.ink/docs and have an engaging website in its place that provides a less overwhelming entry point to ink!.',
-    status: 'A team has been selected. Work has been completed. We love the new website!',
+    title: 'ink! Documentation Website Upgrade',
+    announcementLink: 'https://github.com/use-ink/ink-alliance/blob/main/bounties/001-website_upgrade.md',
+    objective: (
+      <>
+        The current ink! documentation website (<a href="https://use.ink/">https://use.ink</a>) is an extensive
+        developer documentation. We want to move this content under <a href="https://use.ink/docs">use.ink/docs</a> and
+        have an engaging website in its place that provides a less overwhelming entry point to ink!.
+      </>
+    ),
+    status: 'Work was successfully completed on schedule by selected team. Bounty is now closed.',
     team: [
       {
         title: 'Flez — Designer',
@@ -60,29 +56,39 @@ export const pastBounties: PastBounty[] = [
 export function BountyList() {
   return (
     <>
-      <h2>
-        Active Bounties <span className="text-sm text-gray-500">({activeBounties.length})</span>
-      </h2>
-      <div className="flex flex-col items-start justify-start gap-4">
-        {activeBounties.map((bounty) => (
-          <BountyCard key={bounty.title} bounty={bounty} />
-        ))}
-      </div>
-      <hr className="my-16" />
-      <CTA
-        text="Not seeing a bounty you wish was available?"
-        btnText="Request a new bounty"
-        btnLink="https://t.me/inkathon"
-      />
-      <hr className="my-16" />
-      <h2>
-        Past Bounties <span className="text-sm text-gray-500">({pastBounties.length})</span>
-      </h2>
+      {activeBounties.length > 0 && (
+        <>
+          <h2>Active Bounties ({activeBounties.length})</h2>
+          <div className="flex flex-col items-start justify-start gap-4">
+            {activeBounties.map((bounty) => (
+              <BountyCard key={bounty.title} bounty={bounty} />
+            ))}
+          </div>
+          <hr className="my-16" />
+          <CTA
+            text="Not seeing a bounty you wish was available?"
+            btnText="Request a new bounty"
+            btnLink="https://t.me/inkathon"
+          />
+          <hr className="my-16" />
+        </>
+      )}
+      <h2>Past Bounties ({pastBounties.length})</h2>
       <div className="flex flex-col gap-4 item">
         {pastBounties.map((bounty) => (
           <BountyCard key={bounty.title} bounty={bounty} />
         ))}
       </div>
+      {activeBounties.length === 0 && (
+        <>
+          <hr className="mt-16 mb-8" />
+          <CTA
+            text="Not seeing a bounty you wish was available?"
+            btnText="Request a new bounty"
+            btnLink="https://t.me/inkathon"
+          />
+        </>
+      )}
     </>
   )
 }
