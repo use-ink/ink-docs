@@ -13,6 +13,7 @@ import Fish1 from '@site/static/img/fishes/Fish-29.svg'
 import Fish2 from '@site/static/img/fishes/Fish-13.svg'
 import WaterLine from '@site/static/img/water-line.svg'
 import { useRive } from '@rive-app/react-canvas'
+import { CTA } from '../components/cta'
 
 const head = (
   <>
@@ -282,21 +283,8 @@ export default function PageAbout() {
             </div>
           </div>
         </div>
-        {/* 
-        <div className="flex flex-col items-start w-full gap-8">
-          <h2>Brand Assets</h2>
-          <div className="flex flex-col items-start gap-8">
-            <p>
-              Our primary logo is our squid mascot (named &quot;Squink&quot;) plus our text logo. Please use this
-              combined logo preferably.
-            </p>
-            <p>
-              <a href={useBaseUrl('/img/about/ink-logo.svg')} download>
-                Download ink! logo
-              </a>
-            </p>
-          </div>
-        </div> */}
+        <hr className="my-12" />
+        <CTA text="Want to join the ink! Alliance?" btnText="Join our Telegram" btnLink="https://t.me/inkathon" />
       </section>
     </Layout>
   )
