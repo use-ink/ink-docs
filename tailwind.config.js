@@ -33,6 +33,14 @@ module.exports = {
         biggest: '1440px',
       },
       keyframes: {
+        circle: {
+          '0%': {
+            transform: 'rotate(0deg) translate(-50%, -50%) rotate(0deg)',
+          },
+          '100%': {
+            transform: 'rotate(360deg) translate(-50%, -50%) rotate(-360deg)',
+          },
+        },
         glow: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' },
@@ -89,6 +97,7 @@ module.exports = {
         'gradient-1-dark': 'linear-gradient(180deg, #1B1B1D 0%, #242526 100%);',
       },
       animation: {
+        circle: 'circle 10s linear infinite',
         glow: 'glow 10s ease-in-out infinite',
         heartbeat: 'heartbeat 1.2s ease-in-out infinite',
         float: 'float 10s ease-in-out infinite',

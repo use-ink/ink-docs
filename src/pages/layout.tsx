@@ -41,7 +41,7 @@ export default function Layout({
     <>
       <Head>{head || defaultHead}</Head>
       <Navbar />
-      <main className={classNames('page flex flex-col min-h-screen mt-[80px] z-10', className)} ref={ref}>
+      <main className={classNames('page flex flex-col min-h-screen pt-[80px] z-10', className)} ref={ref}>
         <StarryBackground />
         {children}
       </main>

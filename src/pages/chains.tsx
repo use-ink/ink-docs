@@ -7,6 +7,7 @@ import Layout from './layout'
 import Admonition from '../theme/Admonition/index'
 import { ImageContainer } from '../components/image-container'
 import { Button } from '../components/ui/button'
+import CircleAnimation from '../components/chains/circle-animation'
 
 const head = (
   <>
@@ -33,9 +34,53 @@ const head = (
 
 export default function PageChains() {
   return (
-    <Layout className="container" head={head}>
-      <section className="flex flex-col items-center justify-center h-[calc(90vh-80px)] text-center relative">
-        <div className="flex flex-col items-center justify-center gap-4 text-center">
+    <Layout className="" head={head}>
+      <div
+        style={{
+          mask: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%)',
+          background: 'radial-gradient(41% 50% at 50% 50%, rgb(71, 60, 160) 36.9776%, rgb(0, 0, 0) 100%)',
+        }}
+        className="absolute inset-0"
+      ></div>
+      <section
+        className="flex flex-col -mt-[80px] !pt-[80px] items-center justify-center min-h-[calc(90vh-80px)] text-center relative w-full overflow-hidden"
+        style={{
+          mask: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0) 50%, rgb(0, 0, 0) 100%)',
+        }}
+      >
+        <div className="absolute">
+          <CircleAnimation
+            circleSize={'1000px'}
+            animationDuration={50}
+            className="border-dotted border-[rgba(189,130,253,0.2)] -z-10"
+            dotPosition={100}
+          >
+            <div className="bg-[rgb(189,132,251,0.2)] rounded-full w-[100px] h-[100px] mx-auto">
+              <img
+                src={useBaseUrl('/img/chains/polkadot-token.svg')}
+                alt="chains"
+                className="w-[100px] h-[100px] mx-auto"
+              />
+            </div>
+          </CircleAnimation>
+        </div>
+        <div className="absolute">
+          <CircleAnimation
+            circleSize={'700px'}
+            animationDuration={35}
+            reverse
+            className="border-solid border-[rgba(189,130,253,0.2)] -z-10"
+          >
+            <div className="bg-[rgb(189,132,251,0.2)] rounded-full w-[100px] h-[100px] mx-auto">
+              <img
+                src={useBaseUrl('/img/chains/polkadot-token.svg')}
+                alt="chains"
+                className="w-[100px] h-[100px] mx-auto"
+              />
+            </div>
+          </CircleAnimation>
+        </div>
+        <div className="relative flex flex-col items-center justify-center gap-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,18 +102,18 @@ export default function PageChains() {
             Explore the different chains that you can deploy ink! smart contracts with, separated by version.
           </motion.p>
         </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-0"
-        >
-          <a href="#chains" className="scroll-m-64">
-            <ArrowCircleDown size={32} weight="duotone" fill="rgb(140, 124, 247)" />
-          </a>
-        </motion.div>
       </section>
-      <section id="chains" className="grid grid-cols-1 gap-4 pt-32 md:grid-cols-12">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="relative items-center w-full text-center"
+      >
+        <a href="#chains" className="scroll-m-64">
+          <ArrowCircleDown size={32} weight="duotone" fill="rgb(140, 124, 247)" />
+        </a>
+      </motion.div>
+      <section id="chains" className="container grid grid-cols-1 gap-4 pt-32 md:grid-cols-12">
         <motion.div
           initial={{ opacity: 0, y: 50, x: -50, rotate: 10 }}
           animate={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
@@ -100,7 +145,7 @@ export default function PageChains() {
           <div className="flex flex-row gap-4">
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/testnet.svg')}
+                src={useBaseUrl('/img/chains/assethub.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
@@ -119,56 +164,56 @@ export default function PageChains() {
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/testnet.svg')}
+                src={useBaseUrl('/img/chains/aleph-zero.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/astar.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/shiden.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/phala.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/pendulum.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/amplitude.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/krest.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/ternoa.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
@@ -179,42 +224,42 @@ export default function PageChains() {
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/testnet.svg')}
+                src={useBaseUrl('/img/chains/t3rn.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/enjin.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/zeitgeist.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/peaq.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/bitcountry.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
             </ImageContainer>
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                src={useBaseUrl('/img/chains/yerba.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten"
               />
@@ -224,7 +269,7 @@ export default function PageChains() {
           <p className="font-[600] text-[18px] mb-1">ink! Testnet</p>
           <ImageContainer>
             <img
-              src={useBaseUrl('/img/chains/testnet.svg')}
+              src={useBaseUrl('/img/chains/assethub.svg')}
               alt="chains"
               className="w-full h-full mx-auto mix-blend-lighten"
             />
