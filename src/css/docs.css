@@ -620,8 +620,13 @@ ul.menu__list li a {
   margin-bottom: 0 !important;
   padding: 1rem;
   background-color: inherit !important;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 0 solid rgba(255, 255, 255, 0.06);
+  border-left: 8px solid var(--heading-color) !important;
   font-weight: 500 !important;
+}
+
+.theme-admonition:hover {
+  border-left-color: var(--heading-color) !important;
 }
 
 .theme-admonition a {

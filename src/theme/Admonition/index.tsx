@@ -27,7 +27,7 @@ export default function Admonition(unprocessedProps: Props): ReactNode {
     <div
       className={clsx(
         `admonition-wrap-${props.type}`,
-        'admonition-wrap p-[5px] rounded-[12px] border border-solid my-2',
+        'admonition-wrap p-[5px] rounded-[12px] border border-solid my-2 border-l-[5px]',
       )}
     >
       <AdmonitionTypeComponent {...props} />

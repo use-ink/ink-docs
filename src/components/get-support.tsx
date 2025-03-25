@@ -6,7 +6,7 @@ import { SocialIcon } from './social-icon'
 
 export function GetSupport() {
   return (
-    <div className="w-full pb-32">
+    <div className="w-full pb-16">
       <div className="w-full mx-auto md:px-4 lg:px-10 xl:px-20">
         <div className="grid grid-cols-2 gap-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-0 max-w-[1200px] mx-auto items-centers">
           {/* Telegram */}
@@ -26,7 +26,7 @@ export function GetSupport() {
           />
 
           {/* Heading */}
-          <h2 className="col-span-2 md:col-span-4 lg:col-span-2 order-first w-full !text-[50px] font-bold text-center text-white md:text-4xl lg:order-none sm:mx-18 self-center px-4">
+          <h2 className="col-span-2 font-[400] md:col-span-4 lg:col-span-2 order-first w-full !text-[50px] text-center text-[rgb(244,241,254)] md:text-4xl lg:order-none sm:mx-18 self-center px-4">
             Get In Touch
           </h2>
 

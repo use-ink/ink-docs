@@ -124,7 +124,7 @@ export default function PageChains() {
         </motion.div>
         <div className="flex flex-col gap-4 md:col-span-9">
           <h2>Introducing ink! v6</h2>
-          <Admonition type="color">
+          <Admonition type="note">
             <p>
               With ink! version 6 we are transitioning to a new execution engine: the{' '}
               <code className="whitespace-nowrap">pallet-revive</code> module of Polkadot SDK. This module executes
