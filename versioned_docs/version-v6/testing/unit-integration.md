@@ -1,7 +1,7 @@
 ---
-title: Off-chain Tests
+title: Unit & Integration
 hide_title: true
-slug: /basics/contract-testing/off-chain
+slug: /contract-testing/unit-integration-tests
 ---
 
 ![Testing1 Title Picture](/img/title/testing1.svg)

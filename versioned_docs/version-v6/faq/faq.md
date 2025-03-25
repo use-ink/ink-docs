@@ -39,17 +39,17 @@ So please don't make poor Squink cry having to read !ink, ink, Ink!, or Ink.
 <img src={useBaseUrl('/img/sad-squid.svg')} alt="Squink ‒ the ink! mascot" width="300" />
 </center>
 
-### What's ink!'s relationship to Substrate/Polkadot?
+### What's ink!'s relationship to the Polkadot SDK/Substrate?
 
 Please see our page [Polkadot SDK](../background/polkadot-sdk.md) for more information.
 
 ### How to call other smart contracts on the same blockchain?
 
-See the [Cross-contract calling](../basics/cross-contract-calling.md) section.
+See our [Cross-contract calling](../basics/cross-contract-calling.md) page.
 
-### How to call other smart contracts on another parachain?
+### How to call other smart contracts on another rollup/parachain?
 
-This feature has not yet been implemented by the Substrate side.
+See our page on [XCM](../basics/xcm.md).
 
 ### What is a contract's ABI or Metadata?
 
@@ -64,14 +64,24 @@ be encoded and decoded respectively etc.
 
 ### Can a re-entrancy bug occur in ink! contracts?
 
-Yes. However, the Substrate team is well aware of the associated problems and already through about
-possible future additions to eliminate re-entrancy attacks.
+:::caution
+This page has to be reviewed in light of our ABI changes.
+
+TODO There are some reentrancy features in ink!,
+those should be explained here or on another page.
+:::
+
+# Cross-Contract Calls
 
 ### How can my smart contract interact with the runtime?
 
+:::caution
+TODO review
+:::
+
 See the [Chain Extensions](../macros-attributes/chain-extension.md) section for more information.
 
-### How can I use ink! with a Substrate chain with a custom chain config?
+### How can I use ink! with a Polkadot SDK chain with a custom chain config?
 
 Please see [this section](../macros-attributes/contract.md#env-impl-environment) in our documentation.
 
@@ -100,6 +110,10 @@ The two modes are as follows:
    on a chain.
 
 ### Overflow Safety?
+
+:::caution
+TODO @davidsemakula Please review if still up to date.
+:::
 
 Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
 
@@ -146,7 +160,7 @@ Rust's standard library consists of three different layers:
 
 ### How do I hash a value?
 
-A number of crypto hashes are built into [pallet-revive](../background/polkadot-sdk.md) and
+A number of crypto hashes are built into [`pallet-revive`](../background/polkadot-sdk.md) and
 therefore very efficient to use. We currently support a handful of those, you
 can view the complete list [here](https://docs.rs/ink_env/6.0.0/ink_env/hash/trait.CryptoHash.html).
 
@@ -166,9 +180,9 @@ different processors compute (slightly) different results for the same
 operation. Although there is an IEEE spec, non-determinism can come from specific
 libraries used, or even hardware. In order for the nodes in a blockchain network
 to reach agreement on the state of the chain, all operations must be completely
-deterministic. Hence we don't allow floating point data types in ink!.
+deterministic. Hence, we don't allow floating point data types in ink!.
 
-Consequently it's not possible to return a decimal number from an ink! message.
+Consequently, it's not possible to return a decimal number from an ink! message.
 What you should do instead is to have your user interface denominate the returned
 number to decimals.
 
@@ -196,22 +210,12 @@ it is most likely a bug in your contract or in ink!.
 
 A common source of `ContractTrapped` are Integer overflows, those can cause
 your contract to trap as well.
-There is a [known bug in the Rust compiler](https://github.com/rust-lang/rust/issues/78744)
-with respect to safe math operations. As a workaround for this particular bug
-try to insert `overflow-checks = false` into your `Cargo.toml`.
-This will disable safe math operations altogether, but unfortunately we are currently
-not aware of a better workaround until the bug in the compiler is fixed.
-
-If you don't find the issue you can also ask for help in our public
-[Element](https://riot.im/app/#/room/#ink:matrix.parity.io) or
-[Discord](https://discord.gg/j2DKRRbSJr) channel.
-
 
 ### What are the `Encode`, `Decode` and `TypeInfo` arguments in `#[ink::scale_derive(Encode, Decode, TypeInfo)]` ?
 
-Substrate-based blockchains use the [SCALE codec](https://github.com/paritytech/parity-scale-codec)
+Polkadot SDK-based blockchains use the [SCALE codec](https://github.com/paritytech/parity-scale-codec)
 to encode data.
-As a consequence the data for every interaction with Substrate needs to
+As a consequence the data for every interaction with Polkadot SDK needs to
 be SCALE-encodable ‒ i.e. it needs to implement either `scale::Encode`,
 `scale::Decode`, or both. This affects e.g. data you want to return to a caller,
 data that you want to take as input, or data you want to store on-chain.
@@ -268,7 +272,7 @@ the `String` [from the ink! prelude](https://docs.rs/ink_prelude/6.0.0/ink_prelu
 
 <h3 id="type-comparison">Getting a warning in <code>cargo-contract</code> about type compatibility?</h3>
 
-ink! and Substrate both support the possibility of deciding to deviate
+ink! and Polkadot SDK both support the possibility of deciding to deviate
 from the default types for `Balance`, `BlockNumber`, etc.
 These types are called environment types.
 
@@ -295,8 +299,6 @@ It's a safety feature to make sure that you are not accidentally deploying a con
 e.g. `type Balance = u128` to a chain with a different `Balance` type.
 
 The `cargo-contract` warning means this check for compatible types cannot be performed.
-This check is only available on chains from `polkadot-1.2.0` on, specifically from
-[this commit](https://github.com/paritytech/polkadot-sdk/commit/d8a74901462ffb49345af6db7c5a7a6e2b3c92ed).
 
 If a chain indeed requires that contract developers have to use custom environment types,
 this should be communicated prominently by them. 

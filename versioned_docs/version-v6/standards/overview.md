@@ -8,14 +8,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ![Standards Title Picture](/img/title/standards.svg)
 
+:::caution
+This page has not yet been edited for ink! v6 yet.
+
+TODO @peterwht
+:::
+
 # Overview
 
 Standards are maintained by the community initiative ink!hub.
 You can find them here: [github.com/inkdevhub/standards](https://github.com/inkdevhub/standards).
 
 ## Wallet Support
-
-TODO
 
 <table className="wallet-table text--center">
     <tr>

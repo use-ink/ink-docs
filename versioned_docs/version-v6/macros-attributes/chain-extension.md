@@ -6,13 +6,19 @@ hide_title: true
 
 ![Text/chain Ext Title Picture](/img/title/text/chain-ext.svg)
 
+:::caution
+This page has not yet been edited for ink! v6 yet.
+
+TODO 
+:::
+
 In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
 via its well defined set of basic smart contract interface functions. This API already allows a whole variety of
 interaction between the `contracts-pallet` and the executed smart contract. For example it is possible
 to call and instantiate other smart contracts on the same chain, emit events, query context information
 or run built-in cryptographic hashing procedures.
 
-If this basic set of features is not enough for a particular Substrate built blockchain it is possible
+If this basic set of features is not enough for a particular Polkadot SDK built blockchain it is possible
 to easily extend this API using the so-called chain extension feature.
 
 <center>
@@ -24,7 +30,7 @@ to smart contract developers.
 
 :::note
 The ink! examples repository contains [the `rand-extension` example](https://github.com/use-ink/ink-examples/tree/main/rand-extension).
-This is a complete example of a chain extension implemented in both ink! and Substrate.
+This is a complete example of a chain extension implemented in both ink! and Polkadot SDK.
 :::
 
 ## Structure

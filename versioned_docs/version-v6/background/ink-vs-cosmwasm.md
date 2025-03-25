@@ -6,6 +6,12 @@ hide_title: true
 
 ![Cosmwasm Title Picture](/img/title/cosmwasm.svg)
 
+:::caution
+This page has not yet been edited for ink! v6.
+
+TODO @peterwht
+:::
+
 # ink! vs. CosmWasm
 
 This is a short comparison between [ink!](https://github.com/use-ink/ink/)
@@ -59,7 +65,7 @@ While CosmWasm unit tests have different modules for each of the three main entr
 functions, ink! allows for a more generalised approach, where the `#[ink(test)]` macro is
 used for each unit test.
 
-You can read more about ink! unit tests [here](../testing/off-chain.md).
+You can read more about ink! unit tests [here](../testing/unit-integration).
 
 ## Compiler
 
@@ -75,7 +81,7 @@ repository acts as the basic template for a generic Cosmos node. With the additi
 `x/wasm` module and some clean-up, this template repository becomes
 [wasmd](https://github.com/CosmWasm/wasmd), the entry point for CosmWasm development.
 
-In terms of Substrate, `substrate-node-template` is a basic generic template of a node.
+In terms of Polkadot SDK, [`polkadot-sdk-solochain-template`](https://github.com/paritytech/polkadot-sdk-solochain-template) is a basic generic template of a node.
 Similar to `x/wasm`, [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/susbtrate/frame/revive)
 is the module that adds RISC-V smart contract functionality to the chain. 
 We provide the [ink-node](https://github.com/use-ink/ink-node), which is analogous to `wasmd` — a basic template node 

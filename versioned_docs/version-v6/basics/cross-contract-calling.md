@@ -6,6 +6,12 @@ hide_title: true
 
 ![Cross Contract Title Picture](/img/title/cross-contract.svg)
 
+:::caution
+This page has to be reviewed in light of our ABI changes.
+
+TODO @davidsemakula or @peterwht
+:::
+
 # Cross-Contract Calls
 
 In ink! contracts it is possible to call messages and constructors of other

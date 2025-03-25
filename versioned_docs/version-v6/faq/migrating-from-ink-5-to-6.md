@@ -146,7 +146,7 @@ information.
 
 Besides the publicly exposed crate functions, we've introduced a new subcommand
 `cargo contract account` that allows resolving the `H160` contract address to the
-Substrate `AccountId` which it is mapped to.
+Polkadot SDK `AccountId` which it is mapped to.
 
 #### Contract Hash: `H256`
 For a contract's hash value, `pallet-revive` uses a fixed `H256`, Previously,
@@ -210,6 +210,9 @@ point to look deeper into it is the [`tracing.rs`](https://github.com/paritytech
 We have implemented barebones support for this tracing API in the 6.0.0-alpha
 versions of ink! + `cargo-contract`. But it's really barebones and should
 certainly be improved before a production release.
+
+We've updated [the Debugging chapter](../testing/debugging.md) of this documentation
+to reflect the new workflow.
 
 ## Removed Events
 In [#7164](https://github.com/paritytech/polkadot-sdk/pull/7164), Parity removed
