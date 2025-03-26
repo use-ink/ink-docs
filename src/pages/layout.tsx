@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import '../css/pages.css'
 
 import { StarryBackground } from '../components/starry-background'
+import Particles from '../reactbits/Backgrounds/Particles/Particles'
 
 const defaultHead = (
   <>
@@ -42,7 +43,6 @@ export default function Layout({
       <Head>{head || defaultHead}</Head>
       <Navbar />
       <main className={classNames('page flex flex-col min-h-screen pt-[80px] z-10', className)} ref={ref}>
-        <StarryBackground />
         {children}
       </main>
       <Footer />

@@ -10,6 +10,7 @@ import { Button } from '../components/ui/button'
 import CircleAnimation from '../components/chains/circle-animation'
 import { TriangleAlert } from 'lucide-react'
 import Link from '@docusaurus/Link'
+import { StarryBackground } from '../components/starry-background'
 
 const head = (
   <>
@@ -37,6 +38,7 @@ const head = (
 export default function PageChains() {
   return (
     <Layout className="" head={head}>
+      <StarryBackground />
       <div
         style={{
           mask: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%)',

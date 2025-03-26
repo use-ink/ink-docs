@@ -11,6 +11,7 @@ import { AnimatedText } from '../components/animated-text'
 import TentaclesLeft from '@site/static/img/home/Tentacles_l.svg'
 import TentaclesRight from '@site/static/img/home/Tentacles_r.svg'
 import MetaBalls from '../reactbits/Animations/MetaBalls/MetaBalls'
+import Particles from '../reactbits/Backgrounds/Particles/Particles'
 
 const head = (
   <>
@@ -41,12 +42,24 @@ const head = (
 export default function Home() {
   return (
     <Layout head={head} className="!mt-0">
-      <section className="relative flex flex-col items-center justify-center min-h-screen my-16 section-intro md:my-0">
+      <div style={{ width: '100vw', height: '150vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
+        <Particles
+          particleColors={['#e7a3ff', '#e7a3ff']}
+          particleCount={1000}
+          particleSpread={30}
+          speed={0}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+      <section className="relative flex flex-col items-center justify-center min-h-screen my-16 pointer-events-none section-intro md:my-0">
         <div className="container relative z-10 flex flex-col items-center justify-center">
           <MainCta
             notice={
               <a
-                className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)] justify-center lg:justify-start"
+                className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)] justify-center lg:justify-start pointer-events-auto"
                 href="https://github.com/use-ink/ink"
               >
                 <Star size={16} weight="fill" className="inline animate-flip" />
@@ -57,13 +70,13 @@ export default function Home() {
             description="Create, manage, and deploy smart contracts with ink!"
             cta={
               <div className="flex flex-col gap-4 mx-4 md:flex-row md:mx-0">
-                <Link to="/docs" className=" !transition-all duration-300 flex-1 lg:flex-none">
+                <Link to="/docs" className=" !transition-all duration-300 flex-1 lg:flex-none pointer-events-auto">
                   <Button size="lg" className="w-full lg:w-auto">
                     Start building
                   </Button>
                 </Link>
 
-                <Link to="/tutorials" className="flex-1 lg:flex-none">
+                <Link to="/tutorials" className="flex-1 pointer-events-auto lg:flex-none">
                   <Button variant="secondary" size="lg" className="!transition-all duration-300 w-full lg:w-auto">
                     View tutorials
                   </Button>
