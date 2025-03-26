@@ -4,6 +4,9 @@ import BountiesBackground from '@site/static/img/Bounties.svg'
 import Layout from './layout'
 import { BountyList } from '../components/bounties/bounty-list'
 import { ArrowCircleDown } from '@phosphor-icons/react'
+import { useRive } from '@rive-app/react-canvas'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 const head = (
   <>
     <title>Bounties | ink!</title>
@@ -25,12 +28,21 @@ const head = (
 )
 
 export default function PageBounties() {
+  const { RiveComponent: BountiesBackground } = useRive({
+    src: useBaseUrl('animations/Bounties.riv'),
+    autoplay: true,
+    animations: ['floating', 'eye', 'fan', 'bubbles'],
+  })
+
   return (
-    <Layout className="relative mt-16" head={head}>
+    <Layout className="relative -mt-[80px]" head={head}>
+      <div className="w-[100vw] h-[33.5vw]">
+        <BountiesBackground className="w-full h-full" />
+      </div>
       <section className="container flex flex-col my-0 mb-8 text-center">
-        <BountiesBackground className="absolute -top-[80px] left-0 w-full -z-10" />
+        {/* <BountiesBackground className="absolute -top-[80px] left-0 w-full -z-10" /> */}
         <motion.h1
-          className="text-center mt-[50vh]"
+          className="text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut' }}

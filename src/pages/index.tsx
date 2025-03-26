@@ -14,6 +14,11 @@ import MetaBalls from '../reactbits/Animations/MetaBalls/MetaBalls'
 import Particles from '../reactbits/Backgrounds/Particles/Particles'
 import Orb from '../reactbits/Backgrounds/Orb/Orb'
 import WaterLine from '@site/static/img/water-line.svg'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import { useRive } from '@rive-app/react-canvas'
+import Fish1 from '@site/static/img/fishes/Fish-29.svg'
+import Fish2 from '@site/static/img/fishes/Fish-13.svg'
+import { StarryBackground } from '../components/starry-background'
 
 const head = (
   <>
@@ -42,19 +47,26 @@ const head = (
 )
 
 export default function Home() {
+  const { RiveComponent: HeroSquink } = useRive({
+    src: useBaseUrl('animations/Hero.riv'),
+    autoplay: true,
+    animations: ['main', 'head', 'code', 'floating'],
+  })
+
+  const { RiveComponent: RustMedal } = useRive({
+    src: useBaseUrl('animations/Medal.riv'),
+    autoplay: true,
+  })
+
+  const { RiveComponent: RiscV } = useRive({
+    src: useBaseUrl('animations/Risc-v.riv'),
+    autoplay: true,
+  })
+
   return (
     <Layout head={head} className="!mt-0">
       <div style={{ width: '100vw', height: '150vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
-        <Particles
-          particleColors={['#e7a3ff', '#e7a3ff']}
-          particleCount={1000}
-          particleSpread={30}
-          speed={0}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
+        <StarryBackground />
       </div>
       <section className="relative flex flex-col items-center justify-center min-h-screen my-16 pointer-events-none section-intro md:my-0">
         <div className="container relative z-10 flex flex-col items-center justify-center">
@@ -87,12 +99,15 @@ export default function Home() {
             }
             media={
               <motion.div
-                initial={{ opacity: 0, y: -100, rotateY: 50 }}
+                initial={{ opacity: 0, y: -100, rotateY: 0 }}
                 animate={{ opacity: 1, y: 0, rotateY: 0 }}
                 transition={{ duration: 1.5, ease: 'easeInOut' }}
                 className="w-full h-full px-4"
               >
-                <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" />
+                <div className="w-full h-full">
+                  <HeroSquink className="w-full h-full" />
+                </div>
+                {/* <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" /> */}
               </motion.div>
             }
           />
@@ -168,7 +183,7 @@ export default function Home() {
                 </Link>
               </div>
             }
-            media={<>👀</>}
+            media={<RustMedal />}
           />
           <div className="absolute inset-0 -z-10">
             <Orb hoverIntensity={0.4} rotateOnHover={false} hue={0} forceHoverState={false} />
@@ -204,9 +219,10 @@ export default function Home() {
         </div>
       </section>
       <section className="relative h-screen min-h-screen section-risc">
+        <Fish1 className="absolute top-20 left-0 w-[30px] h-[30px] animate-swim-right will-change-transform" />
         <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
           <MainCta
-            variant="left"
+            variant="right"
             title="PolkaVM for Max Efficiency"
             description="Get blazing fast execution and lower gas costs with PolkaVM RISC-V engine."
             level="h2"
@@ -222,7 +238,11 @@ export default function Home() {
                 </Link>
               </div>
             }
-            media={<></>}
+            media={
+              <div className="w-full h-[800px]">
+                <RiscV />
+              </div>
+            }
           />
         </div>
         <WaterLine className="absolute -top-10 left-0 h-auto w-[100vw]" />
