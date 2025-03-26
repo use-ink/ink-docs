@@ -11,7 +11,7 @@ main.page h1 {
 }
 
 main.page h2 {
-  font-size: 38px;
+  font-size: 44px;
 }
 
 @media (min-width: 768px) {
