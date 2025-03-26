@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar } from '../components/nav/nav'
-import { Footer } from '../components/footer'
+import { Footer } from '../components/footer/footer'
 import Head from '@docusaurus/Head'
 import classNames from 'classnames'
 import '../css/pages.css'

@@ -3,8 +3,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import clsx from 'clsx'
 import { motion } from 'motion/react'
 import { GetSupport } from './get-support'
-import { footerLinks } from '../config'
-import { ListItem } from './list-item'
+import { footerLinks } from '../../config'
+import { ListItem } from '../list-item'
 import FooterArms from '@site/static/img/footer-arms.svg'
 
 export function Footer({ className }: { className?: string }) {

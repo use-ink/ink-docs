@@ -36,7 +36,7 @@ export function MainCta({
           ) : (
             <h2 className={cn('p-0 m-0', classNames?.title)}>{title}</h2>
           )}
-          <p className={cn('text-lg font-[600] p-0 m-0 text-[#dcd7e0]', classNames?.description)}>{description}</p>
+          <p className={cn('font-[600] p-0 m-0 text-[#dcd7e0]', classNames?.description)}>{description}</p>
           <div className="flex justify-center">{cta}</div>
         </div>
       </div>
@@ -57,7 +57,7 @@ export function MainCta({
         ) : (
           <h2 className={cn('text-[48px] font-bold leading-[40px] p-0 m-0', classNames?.title)}>{title}</h2>
         )}
-        <p className={cn('text-lg font-[600] p-0 m-0 text-[#dcd7e0]', classNames?.description)}>{description}</p>
+        <p className={cn('font-[600] p-0 m-0 text-[#dcd7e0]', classNames?.description)}>{description}</p>
         {cta}
       </div>
       {media && (

@@ -16,15 +16,23 @@ export default function PageRiveDemo() {
     autoplay: true,
   })
 
+  const { RiveComponent: RiscV } = useRive({
+    src: useBaseUrl('animations/Risc-v.riv'),
+    autoplay: true,
+  })
+
   return (
     <Layout>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-center justify-center w-full gap-4">
         <h1>Rive Demo</h1>
         <div className="w-[500px] h-[500px] bg-transparent">
           <Rocket style={{ width: '100%', height: '100%', background: 'transparent' }} />
         </div>
         <div className="w-[500px] h-[500px] bg-transparent">
           <Medal style={{ width: '100%', height: '100%', background: 'transparent' }} />
+        </div>
+        <div className="w-[500px] h-[500px] bg-transparent">
+          <RiscV style={{ width: '100%', height: '100%', background: 'transparent' }} />
         </div>
       </div>
     </Layout>

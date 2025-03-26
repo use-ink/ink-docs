@@ -18,6 +18,12 @@ main.page h1 {
 
 main.page h2 {
   font-size: 44px;
+  line-height: 44px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 24px;
 }
 
 @media (min-width: 768px) {
@@ -27,6 +33,10 @@ main.page h2 {
   main.page h2 {
     font-size: 48px;
   }
+}
+
+main.page .container {
+  max-width: 1000px !important;
 }
 
 main.page a {

@@ -6,7 +6,7 @@ import { Overview } from './Overview'
 import { BuilderTrack } from './BuildTrack'
 import { EcosystemGrants } from './EcosystemGrants'
 import { Navbar } from '../nav/nav'
-import { Footer } from '../footer'
+import { Footer } from '../footer/footer'
 
 const InkubatorPage = () => {
   return (

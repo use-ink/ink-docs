@@ -76,7 +76,7 @@ importers:
         version: 5.5.0(react@19.0.0)
       react-spring:
         specifier: ^9.7.5
-        version: 9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.174.0))(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react-konva@18.2.10(@types/react@19.0.12)(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react-zdog@1.2.2)(react@19.0.0)(three@0.174.0)(zdog@1.1.3)
+        version: 9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.167.1))(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react-konva@18.2.10(@types/react@19.0.12)(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react-zdog@1.2.2)(react@19.0.0)(three@0.167.1)(zdog@1.1.3)
       tailwind-merge:
         specifier: ^3.0.2
         version: 3.0.2
@@ -86,6 +86,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
+      three:
+        specifier: ^0.167.1
+        version: 0.167.1
       usehooks-ts:
         specifier: ^2.12.1
         version: 2.16.0(react@19.0.0)
@@ -6834,8 +6837,8 @@ packages:
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
 
-  three@0.174.0:
-    resolution: {integrity: sha512-p+WG3W6Ov74alh3geCMkGK9NWuT62ee21cV3jEnun201zodVF4tCE5aZa2U122/mkLRmhJJUQmLLW1BH00uQJQ==}
+  three@0.167.1:
+    resolution: {integrity: sha512-gYTLJA/UQip6J/tJvl91YYqlZF47+D/kxiWrbTon35ZHlXEN0VOo+Qke2walF1/x92v55H6enomymg4Dak52kw==}
 
   throat@5.0.0:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
@@ -10172,15 +10175,15 @@ snapshots:
       '@react-spring/types': 9.7.5
       react: 19.0.0
 
-  '@react-spring/three@9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.174.0))(react@19.0.0)(three@0.174.0)':
+  '@react-spring/three@9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.167.1))(react@19.0.0)(three@0.167.1)':
     dependencies:
       '@react-spring/animated': 9.7.5(react@19.0.0)
       '@react-spring/core': 9.7.5(react@19.0.0)
       '@react-spring/shared': 9.7.5(react@19.0.0)
       '@react-spring/types': 9.7.5
-      '@react-three/fiber': 9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.174.0)
+      '@react-three/fiber': 9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.167.1)
       react: 19.0.0
-      three: 0.174.0
+      three: 0.167.1
 
   '@react-spring/types@9.7.5': {}
 
@@ -10213,7 +10216,7 @@ snapshots:
       '@swc/helpers': 0.5.15
       react: 19.0.0
 
-  '@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.174.0)':
+  '@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.167.1)':
     dependencies:
       '@babel/runtime': 7.27.0
       '@types/react-reconciler': 0.28.9(@types/react@19.0.12)
@@ -10226,7 +10229,7 @@ snapshots:
       react-use-measure: 2.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       scheduler: 0.25.0
       suspend-react: 0.1.3(react@19.0.0)
-      three: 0.174.0
+      three: 0.167.1
       use-sync-external-store: 1.4.0(react@19.0.0)
       zustand: 5.0.3(@types/react@19.0.12)(immer@9.0.21)(react@19.0.0)(use-sync-external-store@1.4.0(react@19.0.0))
     optionalDependencies:
@@ -15403,12 +15406,12 @@ snapshots:
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  react-spring@9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.174.0))(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react-konva@18.2.10(@types/react@19.0.12)(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react-zdog@1.2.2)(react@19.0.0)(three@0.174.0)(zdog@1.1.3):
+  react-spring@9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.167.1))(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react-konva@18.2.10(@types/react@19.0.12)(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react-zdog@1.2.2)(react@19.0.0)(three@0.167.1)(zdog@1.1.3):
     dependencies:
       '@react-spring/core': 9.7.5(react@19.0.0)
       '@react-spring/konva': 9.7.5(konva@9.3.20)(react-konva@18.2.10(@types/react@19.0.12)(konva@9.3.20)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@react-spring/native': 9.7.5(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)
-      '@react-spring/three': 9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.174.0))(react@19.0.0)(three@0.174.0)
+      '@react-spring/three': 9.7.5(@react-three/fiber@9.1.0(@types/react@19.0.12)(immer@9.0.21)(react-dom@19.0.0(react@19.0.0))(react-native@0.78.1(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@types/react@19.0.12)(react@19.0.0))(react@19.0.0)(three@0.167.1))(react@19.0.0)(three@0.167.1)
       '@react-spring/web': 9.7.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@react-spring/zdog': 9.7.5(react-dom@19.0.0(react@19.0.0))(react-zdog@1.2.2)(react@19.0.0)(zdog@1.1.3)
       react: 19.0.0
@@ -16238,7 +16241,7 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
-  three@0.174.0: {}
+  three@0.167.1: {}
 
   throat@5.0.0: {}
 
