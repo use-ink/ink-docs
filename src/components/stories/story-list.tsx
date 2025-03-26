@@ -10,6 +10,7 @@ export interface Story {
   logo: string
   image: string
   name: string
+  link: string
   backstory: React.ReactNode
 }
 
@@ -40,11 +41,13 @@ export function StoryList() {
             transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.3 : 0 }}
             className="w-full aspect-video"
           >
-            <img
-              src={story.image}
-              alt={story.name}
-              className="w-full rounded-[18px] border-[5px] border-solid border-[rgb(140,124,247)]"
-            />
+            <a href={story.link} target="_blank" rel="noreferrer" className="block w-full h-full">
+              <img
+                src={story.image}
+                alt={story.name}
+                className="w-full rounded-[18px] border-[5px] border-solid border-[rgb(140,124,247)]"
+              />
+            </a>
           </motion.div>
           <motion.div
             initial="hidden"
@@ -53,11 +56,11 @@ export function StoryList() {
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="flex flex-col gap-8 md:flex-row"
           >
-            <ImageContainer className="w-full md:!w-auto max-w-full md:max-w-[200px] h-24">
+            <ImageContainer className="w-full md:!w-auto max-w-full min-w-[250px] md:max-w-[200px] h-24">
               <img
                 src={useBaseUrl(story.logo)}
                 alt={`${story.name} logo`}
-                className="object-contain h-auto mix-blend-lighten"
+                className="object-contain h-auto mix-blend-lighten max-h-[40px]"
               />
             </ImageContainer>
             <div className="flex flex-col gap-2">
@@ -65,6 +68,7 @@ export function StoryList() {
               <div className="">{story.backstory}</div>
             </div>
           </motion.div>
+          {index !== stories.length - 1 && <hr className="my-10" />}
         </div>
       ))}
       <hr className="" />
