@@ -26,11 +26,11 @@ const head = (
 
 export default function PageBounties() {
   return (
-    <Layout className="relative" head={head}>
+    <Layout className="relative mt-16" head={head}>
       <section className="container flex flex-col my-0 mb-8 text-center">
         <BountiesBackground className="absolute -top-[80px] left-0 w-full -z-10" />
         <motion.h1
-          className="text-center mt-[31vw]"
+          className="text-center mt-[50vh]"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut' }}
@@ -38,7 +38,7 @@ export default function PageBounties() {
           ink! Bounties
         </motion.h1>
         <motion.p
-          className="max-w-lg mx-auto text-[17px] font-[600]"
+          className="max-w-lg mx-auto text-[18px] font-[600] text-[rgb(220,215,224)]"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut', delay: 0.2 }}

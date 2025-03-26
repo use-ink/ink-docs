@@ -58,7 +58,10 @@ export function BountyList() {
     <>
       {activeBounties.length > 0 && (
         <>
-          <h2>Active Bounties ({activeBounties.length})</h2>
+          <h2>
+            Active Bounties{' '}
+            <span className="text-[36px] font-[600] text-[rgb(140,124,247))]">({activeBounties.length})</span>
+          </h2>
           <div className="flex flex-col items-start justify-start gap-4">
             {activeBounties.map((bounty) => (
               <BountyCard key={bounty.title} bounty={bounty} />
@@ -73,8 +76,10 @@ export function BountyList() {
           <hr className="my-16" />
         </>
       )}
-      <h2>Past Bounties ({pastBounties.length})</h2>
-      <div className="flex flex-col gap-4 item">
+      <h2>
+        Past Bounties <span className="text-[36px] font-[600] text-[rgb(140,124,247)]">({pastBounties.length})</span>
+      </h2>
+      <div className="flex flex-col items-start justify-start gap-4">
         {pastBounties.map((bounty) => (
           <BountyCard key={bounty.title} bounty={bounty} />
         ))}
