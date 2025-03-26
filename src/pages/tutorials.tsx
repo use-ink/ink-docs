@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import Rocket from '@site/static/img/rocket.svg'
 import { Button } from '../components/ui/button'
 import Link from '@docusaurus/Link'
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
 const head = (
   <>
@@ -39,10 +40,15 @@ export default function PageTutorials() {
   return (
     <Layout className="container" head={head}>
       <div className="flex flex-col items-center justify-center max-w-[540px] min-h-[50vh] mx-auto text-center mt-[10vh]">
+        <img
+          src={useBaseUrl('/img/Constellation.svg')}
+          alt="constellation"
+          className="w-[450px] h-[450px] absolute left-[18vw] top-10"
+        />
         <motion.div
           className="w-[246px] h-[246px] rotate-[25deg]"
-          initial={{ opacity: 0, scale: 0.7, translateY: 200, translateX: -100, rotate: 40 }}
-          animate={{ opacity: 1, scale: 1, translateY: 0, translateX: 0, rotate: 30 }}
+          initial={{ opacity: 0, scale: 0.7, translateY: 200, translateX: -100, rotate: 30 }}
+          animate={{ opacity: 1, scale: 1, translateY: 0, translateX: 0, rotate: 25 }}
           transition={{
             duration: 1,
             opacity: { visualDuration: 0.1 },
@@ -58,7 +64,7 @@ export default function PageTutorials() {
           animate={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 1.5 }}
         >
-          <h1 className="font-bold text-[64px]">Tutorials</h1>
+          <h1 className="font-bold text-[64px]">ink! Tutorials</h1>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, translateY: 100 }}

@@ -112,7 +112,7 @@ export const projects: Project[] = [
     image: 'img/projects/inkanalyzer.avif',
   },
   {
-    logo: 'img/projects/drink-logo.svg',
+    logo: 'img/projects/drink-logo.png',
     title:
       'DRink! is a toolbox for ink! developers that allows for a fully functional ink! contract development without any running node.',
     about: (

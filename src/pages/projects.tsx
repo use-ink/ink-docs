@@ -36,15 +36,6 @@ export default function PageProjects() {
         >
           Explore Community Projects
         </motion.h1>
-        <motion.div
-          className="flex-row items-center gap-2 flexw"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: 'easeInOut', delay: 0.2 }}
-        >
-          <span className="block">Powered by</span>
-          <PolkadotLogo className="w-auto h-6" />
-        </motion.div>
       </div>
       <ProjectGrid />
     </Layout>

@@ -4,6 +4,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import { cn } from '../../util'
 import { motion } from 'framer-motion'
 import { projects } from './projects'
+import { ImageContainer } from '../image-container'
 
 export interface Project {
   logo: string
@@ -48,13 +49,13 @@ export default function ProjectGrid() {
                 className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start"
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="flex items-center justify-center overflow-hidden rounded-lg border-[rgba(140,124,247,.15)] border border-solid bg-[#241a38] mix-blend-lighten p-4">
+                  <ImageContainer className="max-w-[250px]">
                     <img
                       src={useBaseUrl(project.logo)}
                       alt={`${project.title} logo`}
-                      className="mix-blend-lighten max-w-[200px]"
+                      className="mix-blend-lighten max-w-[200px] max-h-[50px]"
                     />
-                  </div>
+                  </ImageContainer>
                 </div>
                 <div>
                   <div className="pb-6 mb-6 border-0 border-b-[3px] border-gray-700 border-dotted">
