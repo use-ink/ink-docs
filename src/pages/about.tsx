@@ -48,7 +48,7 @@ export default function PageAbout() {
 
   return (
     <Layout className="relative" head={head} ref={ref}>
-      <WaterLine className="absolute top-40 left-0 h-auto w-[100vw] -z-10 opacity-70" />
+      <WaterLine className="absolute top-56 lg:top-64 left-0 h-auto w-[100vw] -z-10 opacity-70" />
       <section className="relative flex flex-col items-center justify-center !max-w-[1000px] mx-auto my-24 md:my-12 lg:my-8 overflow-hidden text-center">
         <motion.h1
           className="text-center !text-[80px] md:!text-[150px] lg:!text-[210px] font-freude mix-blend-color-burn animate-float"
