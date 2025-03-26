@@ -12,6 +12,7 @@ import TentaclesLeft from '@site/static/img/home/Tentacles_l.svg'
 import TentaclesRight from '@site/static/img/home/Tentacles_r.svg'
 import MetaBalls from '../reactbits/Animations/MetaBalls/MetaBalls'
 import Particles from '../reactbits/Backgrounds/Particles/Particles'
+import Orb from '../reactbits/Backgrounds/Orb/Orb'
 
 const head = (
   <>
@@ -54,7 +55,7 @@ export default function Home() {
           disableRotation={false}
         />
       </div>
-      <section className="relative flex flex-col items-center justify-center min-h-screen my-16 pointer-events-none section-intro md:my-0">
+      <section className="container relative flex flex-col items-center justify-center min-h-screen my-16 pointer-events-none section-intro md:my-0">
         <div className="container relative z-10 flex flex-col items-center justify-center">
           <MainCta
             notice={
@@ -126,12 +127,12 @@ export default function Home() {
         </div>
         <div
           className="absolute inset-0 -z-0"
-          style={{ maskImage: 'radial-gradient(circle, transparent 0%, black 100%)' }}
+          style={{ maskImage: 'radial-gradient(circle, transparent 0%, transparent 30%, black 100%)' }}
         >
           <MetaBalls
             color="#bb82fa"
             cursorBallColor="#bb82fa"
-            cursorBallSize={1}
+            cursorBallSize={0.8}
             ballCount={15}
             animationSize={10}
             enableMouseInteraction={true}
@@ -168,6 +169,9 @@ export default function Home() {
             }
             media={<>👀</>}
           />
+          <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+            <Orb hoverIntensity={0.5} rotateOnHover={true} hue={0} forceHoverState={false} />
+          </div>
         </div>
       </section>
       <section className="h-screen section-risc"></section>
