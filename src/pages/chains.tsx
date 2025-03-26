@@ -9,6 +9,7 @@ import { ImageContainer } from '../components/image-container'
 import { Button } from '../components/ui/button'
 import CircleAnimation from '../components/chains/circle-animation'
 import { TriangleAlert } from 'lucide-react'
+import Link from '@docusaurus/Link'
 
 const head = (
   <>
@@ -54,7 +55,7 @@ export default function PageChains() {
             circleSize={'1000px'}
             animationDuration={80}
             className="border-dotted border-[rgba(189,130,253,0.2)] -z-10"
-            dotPosition={100}
+            start={250}
           >
             <div
               className="bg-[#bd84fb] rounded-full w-[100px] h-[100px] mx-auto"
@@ -65,7 +66,7 @@ export default function PageChains() {
               <img
                 src={useBaseUrl('/img/chains/pop-token.png')}
                 alt="chains"
-                className="w-[100px] h-[100px] mx-auto p-2"
+                className="w-[100px] h-[100px] mx-auto p-2 rotate-90"
               />
             </div>
           </CircleAnimation>
@@ -74,6 +75,7 @@ export default function PageChains() {
           <CircleAnimation
             circleSize={'700px'}
             animationDuration={35}
+            start={120}
             reverse
             className="border-solid border-[rgba(189,130,253,0.2)] -z-10"
           >
@@ -121,7 +123,7 @@ export default function PageChains() {
         className="relative items-center w-full text-center"
       >
         <a href="#chains" className="scroll-m-64">
-          <ArrowCircleDown size={32} weight="duotone" fill="rgb(140, 124, 247)" />
+          <ArrowCircleDown size={32} weight="duotone" fill="rgb(140, 124, 247)" className="animate-bounce" />
         </a>
       </motion.div>
       <section id="chains" className="container grid grid-cols-1 gap-4 pt-32 md:grid-cols-12">
@@ -288,9 +290,11 @@ export default function PageChains() {
           <hr className="my-10" />
           <div className="flex flex-row items-center justify-center gap-4">
             <p className="font-[600] text-[18px] mb-1">Want ink! smart contracts for your chain?</p>
-            <Button variant="secondary" size="lg">
-              Contact us
-            </Button>
+            <Link to="https://t.me/inkathon">
+              <Button variant="secondary" size="lg">
+                Contact us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

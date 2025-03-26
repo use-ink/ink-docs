@@ -22,32 +22,29 @@ export default function CircleAnimation({
   animationDuration = 4,
   reverse = false,
 }: CircleAnimationProps) {
-  // Convert circleSize to string if it's a number (adding px)
   const circleSizeValue = typeof circleSize === 'number' ? `${circleSize}px` : circleSize
 
-  // Use start if provided, otherwise fall back to dotPosition for backward compatibility
-  const initialRotation = start !== undefined ? start : dotPosition
-
-  // Container style
   const containerStyle: CSSProperties = {
     width: circleSizeValue,
     height: circleSizeValue,
     position: 'relative',
-  }
+    '--start-degree': `${start}deg`,
+    '--end-degree': `${start + 360}deg`,
+    '--reverse-end-degree': `${start - 360}deg`,
+  } as CSSProperties
 
   return (
     <div style={containerStyle}>
-      {/* Global styles for animations */}
       <style>
         {`
           @keyframes rotate {
-            from { transform: rotate(${initialRotation}deg); }
-            to { transform: rotate(${initialRotation + 360}deg); }
+            from { transform: rotate(var(--start-degree)); }
+            to { transform: rotate(var(--end-degree)); }
           }
           
           @keyframes rotate-reverse {
-            from { transform: rotate(${initialRotation}deg); }
-            to { transform: rotate(${initialRotation - 360}deg); }
+            from { transform: rotate(var(--start-degree)); }
+            to { transform: rotate(var(--reverse-end-degree)); }
           }
           
           @keyframes counter-rotate {
@@ -62,10 +59,8 @@ export default function CircleAnimation({
         `}
       </style>
 
-      {/* Circle border */}
       <div className={cn('absolute inset-0 border-2 rounded-full', className)}></div>
 
-      {/* Rotating wrapper - this rotates around the center */}
       <div
         className="absolute inset-0"
         style={{
@@ -73,7 +68,6 @@ export default function CircleAnimation({
           animation: `${reverse ? 'rotate-reverse' : 'rotate'} ${animationDuration}s linear infinite`,
         }}
       >
-        {/* This element is positioned at the top of the circle, exactly on the border */}
         <div
           className="absolute top-0 left-1/2"
           style={{
