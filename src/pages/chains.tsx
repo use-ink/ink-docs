@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowCircleDown, Heart } from '@phosphor-icons/react'
+import { ArrowCircleDown, ExclamationMark, Heart, TriangleDashed } from '@phosphor-icons/react'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
 import Layout from './layout'
@@ -8,6 +8,7 @@ import Admonition from '../theme/Admonition/index'
 import { ImageContainer } from '../components/image-container'
 import { Button } from '../components/ui/button'
 import CircleAnimation from '../components/chains/circle-animation'
+import { TriangleAlert } from 'lucide-react'
 
 const head = (
   <>
@@ -43,7 +44,7 @@ export default function PageChains() {
         className="absolute inset-0"
       ></div>
       <section
-        className="flex flex-col -mt-[80px] !pt-[80px] items-center justify-center min-h-[calc(90vh-80px)] text-center relative w-full overflow-hidden"
+        className="flex flex-col -mt-[80px] !pt-[80px] items-center justify-center min-h-[calc(90vh)] text-center relative w-full overflow-hidden"
         style={{
           mask: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0) 50%, rgb(0, 0, 0) 100%)',
         }}
@@ -51,15 +52,20 @@ export default function PageChains() {
         <div className="absolute">
           <CircleAnimation
             circleSize={'1000px'}
-            animationDuration={50}
+            animationDuration={80}
             className="border-dotted border-[rgba(189,130,253,0.2)] -z-10"
             dotPosition={100}
           >
-            <div className="bg-[rgb(189,132,251,0.2)] rounded-full w-[100px] h-[100px] mx-auto">
+            <div
+              className="bg-[#bd84fb] rounded-full w-[100px] h-[100px] mx-auto"
+              style={{
+                boxShadow: '6px 6px #5c4dc4',
+              }}
+            >
               <img
-                src={useBaseUrl('/img/chains/polkadot-token.svg')}
+                src={useBaseUrl('/img/chains/pop-token.png')}
                 alt="chains"
-                className="w-[100px] h-[100px] mx-auto"
+                className="w-[100px] h-[100px] mx-auto p-2"
               />
             </div>
           </CircleAnimation>
@@ -71,7 +77,12 @@ export default function PageChains() {
             reverse
             className="border-solid border-[rgba(189,130,253,0.2)] -z-10"
           >
-            <div className="bg-[rgb(189,132,251,0.2)] rounded-full w-[100px] h-[100px] mx-auto">
+            <div
+              className="bg-[#bd84fb] rounded-full w-[100px] h-[100px] mx-auto"
+              style={{
+                boxShadow: '6px 6px #5c4dc4',
+              }}
+            >
               <img
                 src={useBaseUrl('/img/chains/polkadot-token.svg')}
                 alt="chains"
@@ -97,7 +108,7 @@ export default function PageChains() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3, delay: 0.2, ease: 'easeInOut' }}
-            className="text-gray-200 font-[600] max-w-[500px]"
+            className="text-[rgb(220,215,224)] font-[600] max-w-[500px]"
           >
             Explore the different chains that you can deploy ink! smart contracts with, separated by version.
           </motion.p>
@@ -124,7 +135,7 @@ export default function PageChains() {
         </motion.div>
         <div className="flex flex-col gap-4 md:col-span-9">
           <h2>Introducing ink! v6</h2>
-          <Admonition type="note">
+          <Admonition type="color" title="Attention">
             <p>
               With ink! version 6 we are transitioning to a new execution engine: the{' '}
               <code className="whitespace-nowrap">pallet-revive</code> module of Polkadot SDK. This module executes
