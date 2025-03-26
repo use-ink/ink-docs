@@ -6,6 +6,12 @@
   background: rgb(19, 15, 33);
 }
 
+main.page h1,
+main.page h2,
+main.page h3 {
+  font-weight: 400;
+}
+
 main.page h1 {
   font-size: 42px;
 }

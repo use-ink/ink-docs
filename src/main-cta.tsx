@@ -44,10 +44,10 @@ export function MainCta({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-8 my-32 lg:grid-cols-2 lg:my-0">
+    <div className="grid grid-cols-1 gap-2 my-32 lg:grid-cols-2 lg:my-0">
       <div
         className={cn(
-          `flex flex-col gap-[30px] justify-center max-w-2xl text-center lg:text-left ${variant === 'left' ? '' : ''}`,
+          `flex flex-col gap-[30px] justify-center max-w-2xl text-center lg:text-left ${variant === 'left' ? 'order-1' : 'order-2'}`,
           classNames?.container,
         )}
       >
@@ -61,7 +61,7 @@ export function MainCta({
         {cta}
       </div>
       {media && (
-        <div className={cn(`${variant === 'left' ? ' order-2' : 'w-full order-1'}`, classNames?.media)}>{media}</div>
+        <div className={cn(`${variant === 'left' ? 'order-2' : 'w-full order-1'}`, classNames?.media)}>{media}</div>
       )}
     </div>
   )

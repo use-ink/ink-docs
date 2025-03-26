@@ -8,6 +8,7 @@ h3 {
   font-family: 'Freude', sans-serif;
   color: rgb(244, 241, 254);
   letter-spacing: normal;
+  font-weight: 400;
 }
 
 h2 {
@@ -35,4 +36,8 @@ button {
   background-color: transparent;
   border-color: transparent;
   border: none !important;
+}
+
+.container {
+  max-width: 1000px !important;
 }

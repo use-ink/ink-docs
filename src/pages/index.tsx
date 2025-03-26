@@ -13,6 +13,7 @@ import TentaclesRight from '@site/static/img/home/Tentacles_r.svg'
 import MetaBalls from '../reactbits/Animations/MetaBalls/MetaBalls'
 import Particles from '../reactbits/Backgrounds/Particles/Particles'
 import Orb from '../reactbits/Backgrounds/Orb/Orb'
+import WaterLine from '@site/static/img/water-line.svg'
 
 const head = (
   <>
@@ -55,7 +56,7 @@ export default function Home() {
           disableRotation={false}
         />
       </div>
-      <section className="container relative flex flex-col items-center justify-center min-h-screen my-16 pointer-events-none section-intro md:my-0">
+      <section className="relative flex flex-col items-center justify-center min-h-screen my-16 pointer-events-none section-intro md:my-0">
         <div className="container relative z-10 flex flex-col items-center justify-center">
           <MainCta
             notice={
@@ -143,40 +144,97 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="h-screen section-rust">
+      <section
+        className="h-screen section-rust"
+        style={{
+          background: 'linear-gradient(180deg,rgba(24,18,56,0) 0%,rgb(34,30,74) 100%)',
+        }}
+      >
         <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
           <MainCta
-            variant="left"
-            title="Rust Powered Protection"
+            variant="right"
+            title="Get Rust-Powered Protection Built-in"
             description="Deploy smart contracts with built-in safety guarantees from the world's most secure programming language."
             level="h2"
             cta={
               <div className="flex flex-col gap-4 md:flex-row md:gap-4">
-                <Link to="/docs" className="hover:scale-105 hover:-rotate-1 !transition-all duration-300">
-                  <Button size="lg">Start Building →</Button>
-                </Link>
-
-                <Link to="/inkubator" className="">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="!transition-all duration-300 hover:scale-105 hover:-rotate-1"
-                  >
-                    ink!ubator
+                <Link
+                  to="https://github.com/use-ink/ink-examples"
+                  className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
+                >
+                  <Button size="lg" variant="secondary">
+                    See ink! examples
                   </Button>
                 </Link>
               </div>
             }
             media={<>👀</>}
           />
-          <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-            <Orb hoverIntensity={0.5} rotateOnHover={true} hue={0} forceHoverState={false} />
+          <div className="absolute inset-0 -z-10">
+            <Orb hoverIntensity={0.4} rotateOnHover={false} hue={0} forceHoverState={false} />
           </div>
         </div>
       </section>
-      <section className="h-screen section-risc"></section>
-      <section className="relative h-screen section-composability">
-        <div className="absolute inset-0 h-full">
+      <section
+        className="min-h-screen section-solidity"
+        style={{
+          background: 'linear-gradient(180deg,#221e4a 0%,rgb(65,54,133) 100%)',
+        }}
+      >
+        <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
+          <MainCta
+            variant="left"
+            title="Solidity + MetaMask Compatible"
+            description="ink! can now speak with Solidity contracts and MetaMask out of the box. You can even use it to write parts of your dApp in Solidity and other parts in Rust with ink!"
+            level="h2"
+            cta={
+              <div className="flex flex-col gap-4 md:flex-row md:gap-4">
+                <Link
+                  to="https://github.com/use-ink/ink-examples"
+                  className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
+                >
+                  <Button size="lg" variant="secondary">
+                    See ink! examples
+                  </Button>
+                </Link>
+              </div>
+            }
+            media={<></>}
+          />
+        </div>
+      </section>
+      <section className="relative h-screen min-h-screen section-risc">
+        <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen">
+          <MainCta
+            variant="left"
+            title="PolkaVM for Max Efficiency"
+            description="Get blazing fast execution and lower gas costs with PolkaVM RISC-V engine."
+            level="h2"
+            cta={
+              <div className="flex flex-col gap-4 md:flex-row md:gap-4">
+                <Link
+                  to="https://github.com/use-ink/ink-examples"
+                  className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
+                >
+                  <Button size="lg" variant="secondary">
+                    Explore PolkaVM
+                  </Button>
+                </Link>
+              </div>
+            }
+            media={<></>}
+          />
+        </div>
+        <WaterLine className="absolute -top-10 left-0 h-auto w-[100vw]" />
+      </section>
+      <section
+        className="relative h-screen section-polkavm"
+        style={{ background: 'linear-gradient(180deg,#7565d9 0%,rgb(48,36,125) 51%)' }}
+      >
+        <div
+          className="absolute inset-0 h-full"
+          style={{ mask: 'linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%) add' }}
+        >
           <img
             decoding="async"
             loading="lazy"
