@@ -15,7 +15,7 @@ export interface Project {
 
 export default function ProjectGrid() {
   return (
-    <div className="container px-4 py-12 mx-auto md:px-6">
+    <div className="container px-4 pt-12 mx-auto md:px-6">
       <div className="">
         {projects.map((project, index) => {
           const ref = useRef<HTMLDivElement>(null)
@@ -33,7 +33,8 @@ export default function ProjectGrid() {
           return (
             <div
               key={project.title}
-              className={cn('grid grid-cols-1 lg:grid-cols-12 gap-8 min-h-[60vh] mb-16 pb-16', {
+              className={cn('grid grid-cols-1 lg:grid-cols-12 gap-8 pb-16', {
+                'mb-16': index !== projects.length - 1,
                 'border-0 border-b border-solid border-[rgba(189,130,253,.15)]': index !== projects.length - 1,
               })}
               style={{

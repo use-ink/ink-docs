@@ -3,6 +3,7 @@ import Layout from './layout'
 import PolkadotLogo from '@site/static/img/Polkadot_Logo_White.svg'
 import ProjectGrid from '../components/projects/project-grid'
 import { motion } from 'framer-motion'
+import { CTA } from '../components/cta'
 
 const head = (
   <>
@@ -38,6 +39,8 @@ export default function PageProjects() {
         </motion.h1>
       </div>
       <ProjectGrid />
+      <hr className="w-full my-12" />
+      <CTA text="Want to join the ink! community?" btnText="Say hi on Telegram" btnLink="https://t.me/inkathon" />
     </Layout>
   )
 }
