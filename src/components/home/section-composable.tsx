@@ -4,7 +4,7 @@ import Link from '@docusaurus/Link'
 
 import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
-import DeepSea from '@site/static/img/home/deepsea.svg'
+import DeepSea from '@site/static/img/footer.svg'
 import { useRive } from '@rive-app/react-canvas'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
@@ -47,17 +47,17 @@ export function SectionComposable() {
         />
       </div>
       <div
-        className="absolute bottom-0 left-0 h-auto"
+        className="absolute bottom-0 left-0 w-full h-auto"
         // style={{ mask: 'linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%) add' }}
       >
-        {/* <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" /> */}
-        <img
+        <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" />
+        {/* <img
           decoding="async"
           loading="lazy"
           src={useBaseUrl('img/home/footer.png')}
           className="object-cover object-bottom w-[100vw] h-full"
           alt="deep see"
-        />
+        /> */}
       </div>
     </section>
   )

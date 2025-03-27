@@ -16,7 +16,7 @@ export function SectionHero() {
   })
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen my-16 pointer-events-none section-intro md:my-0">
+    <section className="relative flex flex-col h-[710px] pointer-events-none section-intro md:my-0">
       <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center">
         <MainCta
           notice={
