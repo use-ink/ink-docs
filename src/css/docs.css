@@ -190,6 +190,10 @@ button:disabled {
   @apply bg-gradient-to-b from-[#000000cc] via-[#000000aa] to-transparent;
 }
 
+.navbar__link {
+  color: #fff;
+}
+
 .navbar__inner {
   z-index: 40;
 }
@@ -217,13 +221,18 @@ button:disabled {
 .navbar__search-input {
   @apply rounded-full;
   font-size: 14px;
-  width: 12rem;
+  width: 15rem;
   height: 2.5rem;
   box-shadow:
     0 12px 12px #0000001f,
     inset 0 0 1px #f4f1fe1a;
   background-color: #f4f1fe0d;
   color: var(--ifm-color-primary-lightest);
+  border-radius: 0.5rem;
+}
+
+.dropdown__menu {
+  background-color: #110a2dcc;
 }
 
 .squid {

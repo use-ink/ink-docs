@@ -7,7 +7,7 @@ export default function DocPaginator(props: Props): ReactNode {
   const { previous, next } = props
   return (
     <nav
-      className="pagination-nav docusaurus-mt-lg max-w-[880px]"
+      className="pagination-nav docusaurus-mt-lg"
       aria-label={translate({
         id: 'theme.docs.paginator.navAriaLabel',
         message: 'Docs pages',

@@ -15,9 +15,10 @@ interface NavItemProps {
       icon?: React.ReactNode
     }[]
   }
+  className?: string
 }
 
-export function NavItem({ item }: NavItemProps) {
+export function NavItem({ item, className }: NavItemProps) {
   const baseUrl = useBaseUrl('/').slice(0, -1)
 
   if (!item.links?.length) {
@@ -32,7 +33,7 @@ export function NavItem({ item }: NavItemProps) {
   }
 
   return (
-    <div className="relative group/nav-item">
+    <div className={cn('relative group/nav-item', className)}>
       <li className="flex items-center gap-1 font-[700] text-[16px] transition-colors outline-none cursor-pointer text-white group-hover/nav-item:text-primary hover:text-[#8c7cf7]">
         {item.title}
         <CaretDown
