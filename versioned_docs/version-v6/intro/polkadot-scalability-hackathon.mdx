@@ -1,53 +1,61 @@
 ---
-title: Welcome!
+title: Polkadot Scalability Hackathon
 hide_title: true
-slug: /
+slug: /polkadot-scalability-hackathon
 hide_table_of_contents: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<br />
+<img src={useBaseUrl('/img/title/polkadot-scalability-hackathon.svg')} title="The ink! 6.0 smart contracts toolkit release" width="800" style={{ marginBottom: 10 }} />
 
-<center>
-    <img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" width="800" style={{ marginBottom: 10 }} />
-</center>
+# Welcome _Polkadot Scalability Hackathon_ participants!
 
-## Introduction
+On this page we explain how you can participate with ink! v6.
 
-ink! is a programming language for smart contracts.
+Read more about the hackathon [here](https://www.encode.club/polkadot-scalability-hackathon).
 
-It's a domain-specific Rust language: contracts are normal Rust code.
+## You need to use ink! v6!
 
-We decided on Rust as it provides inherent safety-guarantees and
-a great performance. This translates to low user fees and makes it
-an ideal choice for scalable smart contracts.
+:::caution
+The current stable release of ink! (v5) is only compatible with WebAssembly and
+`pallet-contracts`. With v6 we are transitioning to `pallet-revive` and PolkaVM.
+`pallet-revive` is the execution environment for smart contracts on Kusama and
+Polkadot AssetHub.
 
-You can use all the normal Rust tooling ‒ clippy, crates.io, IDE’s, etc.
+ink! v6 is not yet released. This means you have to install our tools from the GitHub
+`master` branches and also depend on ink! `master` in your contracts `Cargo.toml`.
+:::
 
-Interoperability with Solidity contracts:
-Solidity developers can cross-contract call ink! contracts as if they were
-Solidity contracts.
+<br/>
+We did a writeup about this transition and the story behind it [here](./current-state.mdx).
+The chapter [Technical Background](../background/polkadot) of this documentation describes
+the larger architectural view.
 
-You can deploy ink! to blockchains built with <a href="https://github.com/paritytech/polkadot-sdk">Polkadot SDK</a>.
-See [here](https://use.ink) for a list of chains that support us.
+For the documentation of ink! v6 you need to make sure you are viewing the v6 version:
 
-:::note
-ink! v6 is no longer using WebAssembly and `pallet-contracts`!
-Instead we migrated to RISC-V, PolkaVM, and `pallet-revive`.
+<img src={useBaseUrl('/img/v6-dropdown.png')} width="400" />
 
-Read more about the transition [here](../faq/migrating-from-ink-5-to-6.md).
+If you already have an ink! v5 contract: there is a migration guide available [here](../faq/migration-from-ink-5-to-6.md).
+
+:::info
+ink! v6 is still work in progress, there are still rough edges and possibly bugs.
+
+You can find support in [our Telegram group](https://t.me/inkathon) or open issues in our repositories.
+<a href="https://t.me/inkathon">
+    <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=Telegram&label=ink!%20Support%20on%20Telegram&labelColor=white&color=blue" />
+</a>
 :::
 
 ## Fast Track
 
-Install Rust and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+Install Rust (>= 1.85) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 Download the binary for a local development node [here](https://github.com/use-ink/ink-node/releases).
 
 ```toml
-# Install our cli tool.
-# It wraps around `cargo build` to build contracts with optimal
+# Install our cli tool: `cargo-contract`.
+# It wraps around Rust's `cargo build` to build contracts with optimal
 # flags for blockchains. It also allows for deploying + interacting
 # with contracts.
 $ rustup component add rust-src
@@ -57,9 +65,13 @@ $ cargo install --locked --force --git https://github.com/use-ink/cargo-contract
 $ cargo contract new flipper && cd flipper
 $ cargo contract build --release
 
-# todo ink-node
+# Download our local development node.
+# Find the binary here: https://github.com/use-ink/ink-node/releases/tag/v0.43.0
 
-# Instantiate this contract on-chain.
+# Start your local development node in a separate shell session
+$ ink-node
+
+# Instantiate your contract on-chain.
 $ cargo contract instantiate --suri //Alice
 
 # Dry-run a call of it.
@@ -71,7 +83,13 @@ $ cargo contract call --suri //Alice --contract 0x… --message flip -x
 
 <br/>
 
+Please see the chapter [Getting started](../getting-started/setup.md) of this
+documentation for a deeper introduction.
+
 ## Smart Contract Examples
+
+You can find many contract examples in
+<a href="https://github.com/use-ink/ink-examples/tree/v6.x">the v6 branch of our `ink-examples` repository</a>.
 
 <div className="row">
     <div className="col text--center">
