@@ -22,9 +22,9 @@ export function Footer({ className }: { className?: string }) {
             initial={{ opacity: 0.9, x: '-10%', rotate: -5 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
             transition={{ duration: 2, ease: 'easeInOut' }}
-            className="max-w-[500px]"
+            className="max-w-[500px] will-change-transform"
           >
-            <FooterArms className="w-full -ml-3 origin-left animate-up-down" />
+            <FooterArms className="w-full -ml-3 origin-left animate-up-down will-change-transform" />
           </motion.div>
           <p className="text-[12px] text-gray-400 pl-8 lg:pl-16 mb-0">
             © use.ink {new Date().getFullYear()}. All rights reserved.

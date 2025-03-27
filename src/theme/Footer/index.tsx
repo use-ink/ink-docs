@@ -7,7 +7,7 @@ function Footer(): ReactNode {
   //   return null
   // }
 
-  return <FooterComponent />
+  return null
 }
 
 export default React.memo(Footer)

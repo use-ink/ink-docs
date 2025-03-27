@@ -22,7 +22,7 @@ export const navLinks = [
     links: [
       {
         label: 'Docs',
-        href: '/docs',
+        href: '/docs/v5',
         icon: <FileText size={20} weight="fill" />,
       },
       {
@@ -79,7 +79,7 @@ export const footerLinks = [
     links: [
       {
         label: 'Docs',
-        href: '/docs',
+        href: '/docs/v5',
         icon: <FileText size={20} weight="fill" />,
       },
       {
