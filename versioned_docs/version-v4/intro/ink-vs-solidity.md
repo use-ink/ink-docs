@@ -36,34 +36,34 @@ The following table gives a brief comparison of features between ink! and Solidi
 - [Solidity to ink! Guide](#solidity-to-ink-guide)
 - [Table of Contents](#table-of-contents)
 - [Converting a Solidity contract to ink!](#converting-a-solidity-contract-to-ink)
-    - [1. Generate a new ink! contract](#1-generate-a-new-ink-contract)
-    - [2. Build the contract](#2-build-the-contract)
-    - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
-    - [4. Convert each function](#4-convert-each-function)
+  - [1. Generate a new ink! contract](#1-generate-a-new-ink-contract)
+  - [2. Build the contract](#2-build-the-contract)
+  - [3. Convert Solidity class fields to Rust struct](#3-convert-solidity-class-fields-to-rust-struct)
+  - [4. Convert each function](#4-convert-each-function)
 - [Best Practices + Tips](#best-practices--tips)
 - [Syntax Equivalencies](#syntax-equivalencies)
-    - [`public function`](#public-function)
-    - [`mapping declaration`](#mapping-declaration)
-    - [`mapping usage`](#mapping-usage)
-    - [`struct`](#struct)
-    - [`assertions / requires`](#assertions--requires)
-    - [`timestamp`](#timestamp)
-    - [`contract caller`](#contract-caller)
-    - [`contract's address`](#contracts-address)
-    - [`bytes`](#bytes)
-    - [`uint256`](#uint256)
-    - [`payable`](#payable)
-    - [`received deposit / payment`](#received-deposit--payment)
-    - [`contract balance`](#contract-balance)
-    - [`transfer tokens from contract`](#transfer-tokens-from-contract)
-    - [`events & indexed`](#events--indexed)
-    - [`errors and returning`](#errors-and-returning)
-        - [`throw`](#throw)
-        - [`assert`](#assert)
-        - [`require and revert`](#require-and-revert)
-    - [`nested mappings + custom / advanced structures`](#nested-mappings--custom--advanced-structures)
-    - [`cross-contract calling`](#cross-contract-calling)
-    - [`submit generic transaction / dynamic cross-contract calling`](#submit-generic-transaction--dynamic-cross-contract-calling)
+  - [`public function`](#public-function)
+  - [`mapping declaration`](#mapping-declaration)
+  - [`mapping usage`](#mapping-usage)
+  - [`struct`](#struct)
+  - [`assertions / requires`](#assertions--requires)
+  - [`timestamp`](#timestamp)
+  - [`contract caller`](#contract-caller)
+  - [`contract's address`](#contracts-address)
+  - [`bytes`](#bytes)
+  - [`uint256`](#uint256)
+  - [`payable`](#payable)
+  - [`received deposit / payment`](#received-deposit--payment)
+  - [`contract balance`](#contract-balance)
+  - [`transfer tokens from contract`](#transfer-tokens-from-contract)
+  - [`events & indexed`](#events--indexed)
+  - [`errors and returning`](#errors-and-returning)
+    - [`throw`](#throw)
+    - [`assert`](#assert)
+    - [`require and revert`](#require-and-revert)
+  - [`nested mappings + custom / advanced structures`](#nested-mappings--custom--advanced-structures)
+  - [`cross-contract calling`](#cross-contract-calling)
+  - [`submit generic transaction / dynamic cross-contract calling`](#submit-generic-transaction--dynamic-cross-contract-calling)
 - [Limitations of ink! v3](#limitations-of-ink-v3)
 - [Troubleshooting Errors](#troubleshooting-errors)
 - [unit testing (off-chain)](#unit-testing-off-chain)
@@ -180,14 +180,15 @@ A few key differences are:
 ### 4. Convert each function
 
 - Start converting each function one by one.
-    - A recommended approach is to, if possible, skip cross-contract calls at first and use mock data instead
-    - This way off-chain unit tests can be written to test the core functionality
-        - unit tests are off-chain and do not work with cross-contract calls
-    - Once fully tested, start adding in cross-contract calls and perform on-chain manual + integration tests
+  - A recommended approach is to, if possible, skip cross-contract calls at first and use mock data instead
+  - This way off-chain unit tests can be written to test the core functionality
+    - unit tests are off-chain and do not work with cross-contract calls
+  - Once fully tested, start adding in cross-contract calls and perform on-chain manual + integration tests
 - Ensure that function's visibility (public, private) are matched in ink!
 - In Solidity, if a function returns a `bool success`, ink! will use a `Result<()>` instead (`Result::Ok` or `Result::Err`).
 
 Solidity return example:
+
 ```c++
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.1;
@@ -198,7 +199,7 @@ contract Example {
     constructor(){}
 
     function setData(uint128 newData) public returns (
-        bool success, 
+        bool success,
         string memory reason
         ) {
 
@@ -213,6 +214,7 @@ contract Example {
 ```
 
 The equivalent contract in ink!:
+
 ```rust
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
 
@@ -249,7 +251,6 @@ mod example {
     }
 }
 ```
-
 
 ## Best Practices + Tips
 
@@ -612,7 +613,7 @@ mod dao {
     impl Dao{
         #[ink(constructor)]
         pub fn new() -> Self {
-            Self { 
+            Self {
                 is_whitelisted: Mapping::default(),
                 proposals: Vec::new(),
             }
@@ -662,7 +663,7 @@ mod dao {
     impl Dao{
         #[ink(constructor)]
         pub fn new() -> Self {
-            Self { 
+            Self {
                 is_whitelisted: Mapping::default(),
                 proposals: Vec::new(),
             }
@@ -680,10 +681,10 @@ mod dao {
             let proposal = self.proposals
                 .get_mut(proposal_id as usize)
                 .unwrap();
-            
+
             proposal.voted_yes
                 .insert(Self::env().caller(), vote);
-        }        
+        }
 
         #[ink(message)]
         pub fn get_proposal(&self, proposal_id: u32) -> BTreeMap<AccountId, bool> {
@@ -732,7 +733,7 @@ crate-type = [
 ink-as-dependency = []
 ```
 
-`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](../basics/cross-contract-calling)).
+`ink-as-dependency` "tells the ink! code generator to always or never compile the smart contract as if it was used as a dependency of another ink! smart contract" ([source](../basics/cross-contract-calling.md)).
 
 Then, In the main contract's Cargo.toml, import the contract that will be cross-called.
 
@@ -854,8 +855,8 @@ Note: the `function_selector` bytes can be found in the generated `target/ink/<c
 ## Limitations of ink! v3
 
 - Multi-file projects are not supported with pure ink!
-    - implementing traits / interfaces will not work
-    - There are alternatives that do add this functionality such as OpenBrush
+  - implementing traits / interfaces will not work
+  - There are alternatives that do add this functionality such as OpenBrush
 - Nested structs and data structures can be difficult to use
 - Cross-contract calling prevents events from being emitted. See [here](https://github.com/use-ink/ink/issues/1000) for details.
 - Cross-contract calling can not be tested off-chain with unit tests.
@@ -905,7 +906,7 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 ## unit testing (off-chain)
 
 - Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
-- To run ink! tests, use the command `cargo test`. Add the `--nocapture` flag for debug prints to show. 
+- To run ink! tests, use the command `cargo test`. Add the `--nocapture` flag for debug prints to show.
 - From the contract module, make sure to make the contract struct and anything else that is going to be used in the unit tests public. For example:
 
 ```rust

@@ -12,6 +12,7 @@ In ink! contracts it is possible to call messages and constructors of other
 on-chain contracts.
 
 There are a few approaches to performing these cross-contract calls in ink!:
+
 1. Contract references (i.e `ContractRef`)
 1. Builders (i.e `CreateBuilder` and `CallBuilder`)
 
@@ -38,6 +39,7 @@ We will walk through the [`cross-contract-calls`](https://github.com/use-ink/ink
 example in order to demonstrate how cross-contract calls using contract references work.
 
 The general workflow will be:
+
 1. Prepare `OtherContract` to be imported to other contracts
 1. Import `OtherContract` into `BasicContractRef`
 1. Upload `OtherContract` on-chain
@@ -78,6 +80,7 @@ std = [
 ```
 
 Two things to note here:
+
 1. If we don't specify the `ink-as-dependency` feature we will end up with linking
    errors.
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
@@ -191,6 +194,7 @@ Data Ok(true)
 ```
 
 ## Builders
+
 The
 [`CreateBuilder`](https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CreateBuilder.html)
 and
@@ -200,6 +204,7 @@ offer low-level, flexible interfaces for performing cross-contract calls. The
 `CallBuilder` allows you to call messages on instantiated contracts.
 
 ### CreateBuilder
+
 The `CreateBuilder` offers an an easy way for you to **instantiate** a contract. Note
 that you'll still need this contract to have been previously uploaded.
 
@@ -214,14 +219,15 @@ In order to instantiate a contract you need a reference to your contract, just l
 [the previous section](#contract-references).
 
 Below is an example of how to instantiate a contract using the `CreateBuilder`. We will:
+
 - instantiate the uploaded contract with a `code_hash` of `0x4242...`
 - with no gas limit specified (`0` means unlimited)
 - sending `10` units of transferred value to the contract instance
 - instantiating with the `new` constructor
 - with the following arguments
-    - a `u8` with value `42`
-    - a `bool` with value `true`
-    - an array of 32 `u8` with value `0x10`
+  - a `u8` with value `42`
+  - a `bool` with value `true`
+  - an array of 32 `u8` with value `0x10`
 - generate the address (`AccountId`) using the specified `salt_bytes`
 - and we expect it to return a value of type `MyContractRef`
 
@@ -248,26 +254,29 @@ contract reference to call messages just like in the
 [previous section](#contract-references).
 
 ### CallBuilder
+
 The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
 are two main approaches to this: `Call`s and `DelegateCall`s. We will briefly cover both
 here.
 
 #### CallBuilder: Call
+
 When using `Call`s the `CallBuilder` requires an already instantiated contract.
 
 We saw an example of how to use the `CreateBuilder` to instantiate contracts in the
 [previous section](#contract-references).
 
 Below is an example of how to call a contract using the `CallBuilder`. We will:
+
 - make a regular `Call`
 - to a contract at the address `0x4242...`
 - with no gas limit specified (`0` means unlimited)
 - sending `10` units of transferred value to the contract instance
 - calling the `flip` message
 - with the following arguments
-    - a `u8` with value `42`
-    - a `bool` with value `true`
-    - an array of 32 `u8` with value `0x10`
+  - a `u8` with value `42`
+  - a `bool` with value `true`
+  - an array of 32 `u8` with value `0x10`
 - and we expect it to return a value of type `bool`
 
 ```rust
@@ -296,6 +305,7 @@ You will not be able to get any feedback about this at compile time. You will on
 find out your call failed at runtime!
 
 #### CallBuilder: Delegate Call
+
 You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics.
 If you need a refresher on what delegate calls are,
 [see this article](https://medium.com/coinmonks/delegatecall-calling-another-contract-function-in-solidity-b579f804178c).
@@ -304,13 +314,14 @@ In the case of `DelegateCall`s, we don't require an already instantiated contrac
 We only need the `code_hash` of an uploaded contract.
 
 Below is an example of how to delegate call a contract using the `CallBuilder`. We will:
+
 - make a `DelegateCall`
 - to a contract with a `code_hash` (not contract address!) of `0x4242...`
 - calling the `flip` message
 - with the following arguments
-    - a `u8` with value `42`
-    - a `bool` with value `true`
-    - an array of 32 `u8` with value `0x10`
+  - a `u8` with value `42`
+  - a `bool` with value `true`
+  - an array of 32 `u8` with value `0x10`
 - and we expect it to return an `i32`
 
 ```rust
@@ -327,10 +338,12 @@ let my_return_value = build_call::<DefaultEnvironment>()
 ```
 
 ### Builder Error Handling
+
 The `CreateBuilder` and the `CallBuilder` both offer error handling with the
 `try_instantiate()` and `try_invoke()` methods respectively.
 
 These allow contract developers to handle two types of errors:
+
 1. Errors from the underlying execution environment (e.g the Contracts pallet)
 2. Error from the programming language (e.g `LangError`s)
 

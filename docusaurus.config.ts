@@ -14,19 +14,6 @@ module.exports = {
   deploymentBranch: 'gh-pages',
   stylesheets: ['fonts/fonts.css'],
   scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
-  // plugins: [
-  //   [
-  //     '@docusaurus/plugin-client-redirects',
-  //     {
-  //       redirects: [
-  //         {
-  //           to: '/inkubator',
-  //           from: '/inkubator',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // ],
   themes: [
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
@@ -79,7 +66,7 @@ module.exports = {
             },
             current: {
               label: 'v5',
-              path: '',
+              path: 'v5',
               banner: 'none',
             },
             v4: {
@@ -118,6 +105,23 @@ module.exports = {
     },
   ],
   plugins: [
+    // [
+    //   '@docusaurus/plugin-client-redirects',
+    //   {
+    //     // redirects: [
+    //     //   {
+    //     //     to: '/inkubator',
+    //     //     from: '/ubator',
+    //     //   },
+    //     // ],
+    //     createRedirects(existingPath) {
+    //       if (existingPath.includes('/ubator')) {
+    //         return [existingPath.replace('/ubator', '/inkubator')]
+    //       }
+    //       return undefined // Return a falsy value: no redirect created
+    //     },
+    //   },
+    // ],
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
