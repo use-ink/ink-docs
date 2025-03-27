@@ -6,6 +6,7 @@ import { MainCta } from './main-cta'
 import TentaclesLeft from '@site/static/img/home/Tentacles_l.svg'
 import TentaclesRight from '@site/static/img/home/Tentacles_r.svg'
 import MetaBalls from '../../reactbits/Animations/MetaBalls/MetaBalls'
+import Orb from '@site/src/reactbits/Backgrounds/Orb/Orb'
 
 export function SectionInterop() {
   return (
@@ -16,6 +17,8 @@ export function SectionInterop() {
         <MainCta
           classNames={{
             container: 'max-w-lg',
+            description: 'max-w-[350px] text-center items-center w-full',
+            textWrapper: 'items-center',
           }}
           variant="center"
           title="Future-Proof Interoperability"
@@ -37,7 +40,7 @@ export function SectionInterop() {
           media={<></>}
         />
       </div>
-      <div
+      {/* <div
         className="absolute inset-0 -z-0"
         style={{ maskImage: 'radial-gradient(circle, transparent 0%, transparent 20%, black 70%)' }}
       >
@@ -53,6 +56,9 @@ export function SectionInterop() {
           clumpFactor={0.3}
           speed={0.1}
         />
+      </div> */}
+      <div className="absolute inset-0 -z-0">
+        <Orb hoverIntensity={0.4} rotateOnHover={false} hue={0} forceHoverState={false} />
       </div>
     </section>
   )

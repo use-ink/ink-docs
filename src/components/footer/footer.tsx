@@ -10,7 +10,7 @@ import FooterArms from '@site/static/img/footer-arms.svg'
 export function Footer({ className }: { className?: string }) {
   return (
     <footer
-      className={clsx('grid w-full pb-12 pt-24 mt-20 px-8 lg:pr-8 lg:pl-0', className)}
+      className={clsx('grid w-full pb-12 pt-24 mt-20 px-8 lg:pr-8 lg:pl-0 overflow-hidden', className)}
       style={{
         background: 'linear-gradient(0deg, rgb(29, 24, 74) 0%, rgb(17, 14, 43) 64.0514%, rgb(19, 15, 33) 100%)',
       }}

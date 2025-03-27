@@ -33,6 +33,7 @@ export function SectionSolidity() {
       <div className="container !max-w-[1000px] md:px-0 relative z-10 flex flex-col items-center justify-center min-h-screen">
         <MainCta
           classNames={{
+            container: 'order-4 lg:order-1 mt-8 lg:mb-0',
             media: 'flex items-center justify-center',
           }}
           variant="left"
@@ -46,7 +47,7 @@ export function SectionSolidity() {
           description="ink! can now speak with Solidity contracts and MetaMask out of the box. You can even use it to write parts of your dApp in Solidity and other parts in Rust with ink!"
           level="h2"
           cta={
-            <div className="flex flex-col gap-4 md:flex-row md:gap-4">
+            <div className="flex flex-col justify-center gap-4 lg:justify-start md:flex-row md:gap-4">
               <Link
                 to="https://github.com/use-ink/ink-examples"
                 className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
@@ -61,7 +62,7 @@ export function SectionSolidity() {
             <div className="relative w-[265px] h-[265px]">
               <div
                 className={clsx(
-                  'absolute bottom-0 right-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de,0_0_100px_#000a] hover:shadow-[10px_10px_0px_0px_#6957de,0_0_100px_#6957deaa] transition-shadow duration-500 p-2.5',
+                  'absolute bottom-0 right-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de,0_0_100px_#0004] hover:shadow-[10px_10px_0px_0px_#6957de,0_0_100px_#6957dea6] transition-shadow duration-500 p-2.5',
                 )}
                 style={{
                   transform: 'rotate(30deg) skewX(-12deg) skewY(-12deg)',
@@ -75,7 +76,7 @@ export function SectionSolidity() {
               </div>
               <div
                 className={clsx(
-                  'absolute top-0 left-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de,0_0_100px_#000a] hover:shadow-[10px_10px_0px_0px_#6957de,0_0_100px_#6957deaa] transition-shadow duration-500 p-2.5',
+                  'absolute top-0 left-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de,0_0_100px_#0004] hover:shadow-[10px_10px_0px_0px_#6957de,0_0_100px_#6957dea6] transition-shadow duration-500 p-2.5',
                 )}
                 style={{
                   transform: 'rotate(15deg) skewX(-15deg) skewY(-3deg)',

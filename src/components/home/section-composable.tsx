@@ -16,15 +16,21 @@ export function SectionComposable() {
   })
 
   return (
-    <section className="relative min-h-[80vh] overflow-visible" style={{ background: '#30247d' }}>
-      <div className="container relative z-10 flex flex-col items-center justify-center">
+    <section
+      className="relative min-h-[80vh] overflow-hidden"
+      style={{
+        background:
+          'linear-gradient(180deg,#2f247d 64%,var(--token-420fbc77-dab0-404b-b97a-ded7df998265, rgb(19, 15, 33)) 70%)',
+      }}
+    >
+      <div className="container relative z-10 flex flex-col items-center justify-center mb-72">
         <MainCta
           variant="left"
           title="Composable by Design"
           description="Learn how to build faster with reusable, modular smart contract components."
           level="h2"
           cta={
-            <div className="flex flex-col gap-4 md:flex-row md:gap-4">
+            <div className="flex flex-col justify-center gap-4 lg:justify-start md:flex-row md:gap-4">
               <Link
                 to="https://github.com/use-ink/ink-examples"
                 className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
@@ -41,19 +47,17 @@ export function SectionComposable() {
         />
       </div>
       <div
-        className="h-[400px]"
+        className="absolute bottom-0 left-0 h-auto"
         // style={{ mask: 'linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%) add' }}
       >
-        <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" />
-        {/* <img
-        decoding="async"
-        loading="lazy"
-        sizes="100vw"
-        srcSet="https://framerusercontent.com/images/QN8pq6Ny20mww2CWMxsJ7FI2w.png?scale-down-to=512 512w,https://framerusercontent.com/images/QN8pq6Ny20mww2CWMxsJ7FI2w.png?scale-down-to=1024 1024w,https://framerusercontent.com/images/QN8pq6Ny20mww2CWMxsJ7FI2w.png?scale-down-to=2048 2048w,https://framerusercontent.com/images/QN8pq6Ny20mww2CWMxsJ7FI2w.png 2200w"
-        src="https://framerusercontent.com/images/QN8pq6Ny20mww2CWMxsJ7FI2w.png?scale-down-to=2048"
-        className="object-cover w-full h-full"
-        alt="deep see"
-      /> */}
+        {/* <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" /> */}
+        <img
+          decoding="async"
+          loading="lazy"
+          src={useBaseUrl('img/home/footer.png')}
+          className="object-cover object-bottom w-[100vw] h-full"
+          alt="deep see"
+        />
       </div>
     </section>
   )

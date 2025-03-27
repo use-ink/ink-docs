@@ -26,7 +26,7 @@ export function SectionRust() {
           description="Deploy smart contracts with built-in safety guarantees from the world's most secure programming language."
           level="h2"
           cta={
-            <div className="flex flex-col gap-4 md:flex-row md:gap-4">
+            <div className="flex flex-col justify-center gap-4 lg:justify-start md:flex-row md:gap-4">
               <Link
                 to="https://github.com/use-ink/ink-examples"
                 className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
@@ -39,9 +39,6 @@ export function SectionRust() {
           }
           media={<RustMedal />}
         />
-        <div className="absolute inset-0 -z-10">
-          <Orb hoverIntensity={0.4} rotateOnHover={false} hue={0} forceHoverState={false} />
-        </div>
       </div>
     </section>
   )
