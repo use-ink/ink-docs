@@ -623,6 +623,26 @@ ul.menu__list li a {
   color: rgb(218, 185, 249);
 }
 
+/** TOGGLES **/
+
+details {
+  background-color: rgba(187, 221, 255, 0.08) !important;
+  border-color: rgba(140, 124, 247, 0.33) !important;
+  border-radius: 12px !important;
+  border-right-width: 2px !important;
+  border-bottom-width: 2px !important;
+  border-top-width: 0px !important;
+  border-left-width: 0px !important;
+}
+
+details summary::before {
+  border-left-color: rgba(189, 130, 253, 0.5) !important;
+}
+
+details [class^='collapsibleContent_'] {
+  border-top-color: rgba(79, 79, 79, 0.33);
+}
+
 /** ADMONITIONS **/
 
 .theme-admonition {

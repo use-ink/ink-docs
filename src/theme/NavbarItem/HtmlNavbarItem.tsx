@@ -1,15 +1,10 @@
-import React, {type ReactNode} from 'react';
-import clsx from 'clsx';
+import React, { type ReactNode } from 'react'
+import clsx from 'clsx'
 
-import type {Props} from '@theme/NavbarItem/HtmlNavbarItem';
+import type { Props } from '@theme/NavbarItem/HtmlNavbarItem'
 
-export default function HtmlNavbarItem({
-  value,
-  className,
-  mobile = false,
-  isDropdownItem = false,
-}: Props): ReactNode {
-  const Comp = isDropdownItem ? 'li' : 'div';
+export default function HtmlNavbarItem({ value, className, mobile = false, isDropdownItem = false }: Props): ReactNode {
+  const Comp = isDropdownItem ? 'li' : 'div'
   return (
     <Comp
       className={clsx(
@@ -19,7 +14,7 @@ export default function HtmlNavbarItem({
         },
         className,
       )}
-      dangerouslySetInnerHTML={{__html: value}}
+      dangerouslySetInnerHTML={{ __html: value }}
     />
-  );
+  )
 }

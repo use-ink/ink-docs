@@ -92,6 +92,7 @@ export default function DocsVersionDropdownNavbarItem({
       return {
         label: `ink! ${item.label}`,
         href: `${baseUrl}/${item.to.split('/').slice(2).join('/')}`,
+        icon: <span className="text-2xl">🔍</span>,
       }
     }),
   }
