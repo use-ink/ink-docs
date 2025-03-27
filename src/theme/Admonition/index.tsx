@@ -11,7 +11,7 @@ function getAdmonitionTypeComponent(type: AdmonitionType): ComponentType<Props> 
   if (component) {
     return component
   }
-  console.warn(`No admonition component found for admonition type "${type}". Using Info as fallback.`)
+  //console.warn(`No admonition component found for admonition type "${type}". Using Info as fallback.`)
   return AdmonitionTypes.info!
 }
 

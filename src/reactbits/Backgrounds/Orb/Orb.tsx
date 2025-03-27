@@ -2,7 +2,7 @@
 	Installed from https://reactbits.dev/ts/tailwind/
 */
 
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Renderer, Program, Mesh, Triangle, Vec3 } from 'ogl'
 
 interface OrbProps {
