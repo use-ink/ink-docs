@@ -1,8 +1,16 @@
 import React from 'react'
 import { Redirect } from '@docusaurus/router'
-import { useLatestVersion } from '@docusaurus/plugin-content-docs/client'
+import Head from '@docusaurus/Head'
 
 export default function DocsRedirect() {
-  const latestVersion = useLatestVersion('docs')
-  return <Redirect to={`/docs/${latestVersion.path}`} />
+  return (
+    <>
+      <Head>
+        {/* Canonical URL + Meta Tags */}
+        <link rel="canonical" href={'https://use.ink/docs/v5/'} />
+        <meta name="robots" content="noindex, follow" /> {/* Optional */}
+      </Head>
+      <Redirect to={'/ink-docs/docs/v5'} />
+    </>
+  )
 }
