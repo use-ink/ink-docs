@@ -10,8 +10,8 @@ import { Alignment, Fit, Layout } from '@rive-app/react-canvas'
 
 export function SectionHero() {
   return (
-    <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro md:my-0">
-      <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center">
+    <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro -mt-[40px]">
+      <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center mb-16">
         <MainCta
           classNames={{
             container: 'h-full',
@@ -54,6 +54,11 @@ export function SectionHero() {
                   src="animations/Hero_2.riv"
                   autoplay={true}
                   animations={['main', 'head', 'code', 'floating']}
+                  layout={
+                    new Layout({
+                      alignment: Alignment.Center,
+                    })
+                  }
                 />
               </div>
               {/* <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" /> */}

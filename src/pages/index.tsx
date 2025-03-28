@@ -63,12 +63,14 @@ export default function Home() {
       <div style={{ width: '100vw', height: '150vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
         <StarryBackground />
       </div>
-      <SectionHero />
-      <SectionInterop />
-      <SectionRust />
-      <SectionSolidity />
-      <SectionRisc />
-      <SectionComposable />
+      <div className="relative">
+        <SectionHero />
+        <SectionInterop />
+        <SectionRust />
+        <SectionSolidity />
+        <SectionRisc />
+        <SectionComposable />
+      </div>
     </Layout>
   )
 }
