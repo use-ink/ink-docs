@@ -13,8 +13,8 @@ export function SectionInterop() {
   return (
     <section className="relative flex flex-col items-center justify-center w-full overflow-hidden section-interop md:h-[820px]">
       <Clouds />
-      <TentaclesLeft className="absolute top-[200px] lg:top-0 h-full -left-[280px] max-w-[500px] z-10 pointer-events-none" />
-      <TentaclesRight className="absolute top-[100px] lg:top-0 -right-[380px] h-full origin-right max-w-[55%] 2xl:max-w-[1000px] z-10 pointer-events-none" />
+      <TentaclesLeft className="absolute top-[200px] lg:top-0 h-full left-0 origin-left max-w-[30%] z-30 pointer-events-none" />
+      <TentaclesRight className="absolute top-[100px] lg:top-0 -right-[380px] h-full origin-right max-w-[55%] 2xl:max-w-[1000px] z-30 pointer-events-none" />
       <div className="container relative z-10 flex flex-col items-center justify-center pointer-events-none">
         <BubbleContainer>
           <MainCta

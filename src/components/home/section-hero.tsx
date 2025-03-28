@@ -43,7 +43,7 @@ export function SectionHero() {
           }
           media={
             <motion.div
-              initial={{ opacity: 0, y: -100, rotateY: 0 }}
+              initial={{ opacity: 0, y: -100, rotateY: -180 }}
               animate={{ opacity: 1, y: 0, rotateY: 0 }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}
               className="w-full h-full px-4"
