@@ -7,10 +7,10 @@ import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
 import { RiveAnimation } from '../rive-animation'
 import { Alignment, Fit, Layout } from '@rive-app/react-canvas'
-
+import Hero from '@site/static/img/hero.svg'
 export function SectionHero() {
   return (
-    <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro -mt-[40px]">
+    <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro">
       <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center mb-16">
         <MainCta
           classNames={{
@@ -44,14 +44,14 @@ export function SectionHero() {
           }
           media={
             <motion.div
-              initial={{ opacity: 0, y: -100, scaleX: 0.5, scaleY: 0.5 }}
-              animate={{ opacity: 1, y: 0, scaleX: 1, scaleY: 1 }}
+              initial={{ opacity: 0, y: -100, rotateY: 90 }}
+              animate={{ opacity: 1, y: 0, rotateY: 0 }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}
               className="w-full h-full px-4"
             >
-              <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px]">
+              {/* <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px]">
                 <RiveAnimation
-                  src="animations/Hero_2.riv"
+                  src="animations/Hero.riv"
                   autoplay={true}
                   animations={['main', 'head', 'code', 'floating']}
                   layout={
@@ -60,8 +60,8 @@ export function SectionHero() {
                     })
                   }
                 />
-              </div>
-              {/* <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" /> */}
+              </div> */}
+              <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" />
             </motion.div>
           }
         />
