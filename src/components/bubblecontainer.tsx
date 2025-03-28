@@ -15,7 +15,7 @@ export function BubbleContainer({ children }: { children: ReactNode }) {
         overflow: 'visible',
         top: 'calc(30.864197530864217% - 500px / 2)',
       }}
-      className="w-full lg:w-[1000px] lg:h-[500px] px-[30px] py-[50px] lg:px-[60px] lg:py-[60px] justify-center"
+      className="w-full lg:w-[1000px] lg:h-[500px] px-[30px] py-[50px] lg:px-[60px] lg:py-[60px] justify-center mb-16 lg:mb-0"
     >
       {children}
     </div>

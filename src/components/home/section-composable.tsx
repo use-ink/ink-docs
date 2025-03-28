@@ -5,17 +5,12 @@ import Link from '@docusaurus/Link'
 import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
 import DeepSea from '@site/static/img/footer.svg'
-import { useRive } from '@rive-app/react-canvas'
+import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { BubbleContainer } from '../bubblecontainer'
+import { RiveAnimation } from '../rive-animation'
 
 export function SectionComposable() {
-  const { RiveComponent: SquinkEducator } = useRive({
-    src: useBaseUrl('animations/Squink-educator.riv'),
-    autoplay: true,
-    animations: ['squink', 'click', 'crab', 'idle'],
-  })
-
   return (
     <section
       className="relative lg:h-[810px] overflow-visible"
@@ -24,9 +19,12 @@ export function SectionComposable() {
           'linear-gradient(180deg,#2f247d 64%,var(--token-420fbc77-dab0-404b-b97a-ded7df998265, rgb(19, 15, 33)) 70%)',
       }}
     >
-      <div className="container relative z-10 flex flex-col items-center justify-center mb-72">
+      <div className="container relative z-10 flex flex-col items-center justify-center overflow-hidden mb-72">
         <BubbleContainer>
           <MainCta
+            classNames={{
+              media: 'flex flex-col items-center justify-center',
+            }}
             variant="left"
             title="Composable by Design"
             description="Learn how to build faster with reusable, modular smart contract components."
@@ -41,8 +39,8 @@ export function SectionComposable() {
               </div>
             }
             media={
-              <div className="relative w-[450px] h-[450px]">
-                <SquinkEducator />
+              <div className="relative w-[280px] h-[280px] lg:w-[450px] lg:h-[450px]">
+                <RiveAnimation src={useBaseUrl('animations/Squink-educator.riv')} />
               </div>
             }
           />
