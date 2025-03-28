@@ -49,7 +49,7 @@ export default function PageAbout() {
   return (
     <Layout className="relative" head={head} ref={ref}>
       <WaterLine className="absolute top-56 lg:top-64 left-0 h-auto w-[100vw] -z-10 opacity-70" />
-      <section className="relative flex flex-col items-center justify-center !max-w-[1000px] mx-auto my-24 md:my-12 lg:my-8 overflow-hidden text-center">
+      <section className="relative flex flex-col items-center justify-center !max-w-[1000px] mx-auto my-24 md:my-12 mt-28 md:mt-24 lg:mt-36 text-center">
         <motion.h1
           className="text-center !text-[80px] md:!text-[150px] lg:!text-[210px] font-freude mix-blend-color-burn animate-float"
           initial={{ opacity: 0, y: 50 }}
@@ -62,10 +62,10 @@ export default function PageAbout() {
       <section className="relative w-full h-0">
         <Fish1 className="absolute -top-20 left-0 w-[30px] h-[30px] animate-swim-right will-change-transform" />
       </section>
-      <section className="container grid !max-w-[1000px] grid-cols-1 gap-8 mx-auto md:grid-cols-2">
+      <section className="container grid !max-w-[1000px] grid-cols-1 gap-8 mx-auto md:grid-cols-2 mt-24">
         <div className="flex flex-col items-start gap-1">
           <h2 className="w-auto whitespace-nowrap">What is ink!?</h2>
-          <p className="text-balance font-[600] text-[21px]">
+          <p className="text-balance font-[500] text-[21px] leading-[28px]">
             <span className="font-bold text-[rgb(187,131,250)]">
               ink! is a programming language for smart contracts
             </span>{' '}
