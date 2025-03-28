@@ -5,17 +5,20 @@ import { cn } from '../../util'
 import { motion } from 'framer-motion'
 import { projects } from './projects'
 import { ImageContainer } from '../image-container'
+import Link from '@docusaurus/Link'
+import { ArrowUpRight } from '@phosphor-icons/react'
 
 export interface Project {
   logo: string
   title: string
   about: React.ReactNode
   image: string | React.ReactNode
+  link: string
 }
 
 export default function ProjectGrid() {
   return (
-    <div className="container px-4 pt-12 mx-auto md:px-6">
+    <div className="container px-4 pt-12 mx-auto md:px-6 !max-w-[1300px]">
       <div className="">
         {projects.map((project, index) => {
           const ref = useRef<HTMLDivElement>(null)
@@ -43,11 +46,9 @@ export default function ProjectGrid() {
             >
               <motion.div
                 ref={ref}
-                initial="hidden"
-                whileInView="visible"
                 variants={variants}
                 transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.5 : 0 }}
-                className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start"
+                className="order-1 lg:col-span-5 lg:sticky lg:top-24 lg:self-start lg:order-0"
               >
                 <div className="flex items-center gap-3 mb-8">
                   <ImageContainer className="max-w-[250px]">
@@ -58,7 +59,7 @@ export default function ProjectGrid() {
                     />
                   </ImageContainer>
                 </div>
-                <div>
+                <div className="pb-2">
                   <div className="pb-6 mb-6 border-0 border-b-[3px] border-gray-700 border-dotted">
                     <h4 className="mb-2 text-xs text-gray-500 uppercase font-[600]">PROJECT DESCRIPTION</h4>
                     <h3 className="m-0 text-xl font-semibold text-white font-montserrat">{project.title}</h3>
@@ -73,22 +74,31 @@ export default function ProjectGrid() {
 
               <motion.div
                 ref={ref}
-                initial="hidden"
-                whileInView="visible"
+                // initial="hidden"
+                // whileInView="visible"
                 variants={variantsImage}
                 transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.5 : 0 }}
-                className="relative lg:col-span-8 lg:sticky lg:top-24 lg:self-start"
+                className="sticky z-20 shadow-lg lg:col-span-7 top-24 lg:self-start order-0 lg:order-1"
               >
-                <div className="w-full overflow-hidden rounded-lg">
+                <div className="w-full overflow-hidden rounded-lg group">
                   {typeof project.image === 'string' ? (
                     <img
                       src={useBaseUrl(project.image)}
                       alt={project.title}
-                      className="w-full rounded-[18px] border-[5px] border-solid border-[rgb(140,124,247)]"
+                      className="w-full rounded-[18px] border-[5px] border-solid border-[#b782fc] aspect-video lg:aspect-auto object-cover object-top backdrop-blur-md"
                     />
                   ) : (
                     project.image
                   )}
+                  <div className="absolute rounded-[18px] border-[5px] inset-0 border-solid border-[#b782fc] transition-opacity duration-300 opacity-0 bg-black/90 group-hover:opacity-100 flex items-center justify-center">
+                    <Link
+                      to={project.link}
+                      className="flex flex-col items-center justify-center text-center text-white !no-underline"
+                    >
+                      <ArrowUpRight size={48} weight="bold" />
+                      <span className="text-[48px] font-freude !no-underline">Visit Website</span>
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             </div>

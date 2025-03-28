@@ -43,7 +43,7 @@ export default function PageTutorials() {
         <img
           src={useBaseUrl('/img/Constellation.svg')}
           alt="constellation"
-          className="w-[450px] h-[450px] absolute left-[18vw] top-10"
+          className="w-[450px] h-[450px] absolute left-[2vw] lg:left-[18vw] top-10"
         />
         <motion.div
           className="w-[246px] h-[246px] rotate-[25deg]"

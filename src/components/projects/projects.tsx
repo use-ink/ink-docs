@@ -4,6 +4,7 @@ import Drink from '@site/static/img/projects/drink.svg'
 
 export const projects: Project[] = [
   {
+    link: 'https://inkathon.xyz/',
     logo: 'img/projects/inkathon-logo.avif',
     title: 'Full-stack DApp boilerplate for ink! smart contracts',
     about: (
@@ -64,6 +65,7 @@ export const projects: Project[] = [
     image: 'img/projects/inkathon.png',
   },
   {
+    link: 'https://analyze.ink/',
     logo: 'img/projects/inkanalyzer-logo.avif',
     title: 'VSCode extension designed to help you develop smart contracts in ink!',
     about: (
@@ -112,6 +114,7 @@ export const projects: Project[] = [
     image: 'img/projects/inkanalyzer.avif',
   },
   {
+    link: 'https://github.com/use-ink/drink',
     logo: 'img/projects/drink-logo.png',
     title:
       'DRink! is a toolbox for ink! developers that allows for a fully functional ink! contract development without any running node.',
