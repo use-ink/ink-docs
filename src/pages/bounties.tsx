@@ -40,7 +40,7 @@ export default function PageBounties() {
         {/* <BountiesBackgroundSvg className="absolute bottom-0 left-0 w-full -z-10" /> */}
         <BountiesBackground className="w-full h-full" />
       </div>
-      <section className="container flex flex-col my-0 mb-8 text-center">
+      <section className="container flex flex-col mt-16 mb-8 text-center lg:mt-8">
         <motion.h1
           className="text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -50,7 +50,7 @@ export default function PageBounties() {
           ink! Bounties
         </motion.h1>
         <motion.p
-          className="max-w-lg mx-auto text-[18px] font-[600] text-[rgb(220,215,224)]"
+          className="mx-auto text-[18px] font-[600] text-[rgb(220,215,224)] max-w-[300px] lg:max-w-lg"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut', delay: 0.2 }}
@@ -68,7 +68,7 @@ export default function PageBounties() {
           </a>
         </motion.div>
       </section>
-      <section id="bounties" className="pt-16 container max-w-4xl mx-auto my-16 text-[17px] font-[500]">
+      <section id="bounties" className="pt-16 container max-w-4xl mx-auto mt-16 text-[17px] font-[500]">
         <BountyList />
       </section>
     </Layout>

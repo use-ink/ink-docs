@@ -86,12 +86,12 @@ export function BountyList() {
       </div>
       {activeBounties.length === 0 && (
         <>
-          <hr className="mt-16 mb-8" />
           <CTA
-            text="Not seeing a bounty you wish was available?"
+            text="Wish a new bounty was here?"
             btnText="Request bounty"
             btnLink="https://t.me/inkathon"
             btnVariant="default"
+            className="mt-16"
           />
         </>
       )}

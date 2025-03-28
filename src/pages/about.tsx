@@ -103,11 +103,13 @@ export default function PageAbout() {
             <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>
                 <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center text-[12px]">YEARS</h4>
-                <div className="font-[500] font-freude text-[40px] leading-[50px] text-center">&apos;19-&apos;24</div>
+                <div className="font-[500] text-[rgb(222,217,255)] font-freude text-[40px] leading-[50px] text-center">
+                  &apos;19-&apos;24
+                </div>
               </div>
             </ImageContainer>
             <div className="flex flex-col items-start flex-1">
-              <h4 className="text-[rgb(140,124,247)] tracking-[0.5px] uppercase font-[600] text-center text-[12px] mb-4">
+              <h4 className="text-[rgb(222,217,255)] tracking-[0.5px] uppercase font-[600] text-center text-[12px] mb-4">
                 The early years — a squink is born
               </h4>
               <p>
@@ -159,11 +161,13 @@ export default function PageAbout() {
             <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>
                 <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center text-[12px]">YEAR</h4>
-                <div className="font-[500] font-freude text-[40px] leading-[50px] text-center">2024</div>
+                <div className="font-[500] text-[rgb(222,217,255)] font-freude text-[40px] leading-[50px] text-center">
+                  2024
+                </div>
               </div>
             </ImageContainer>
             <div className="flex flex-col items-start flex-1">
-              <h4 className="text-[rgb(140,124,247)] tracking-[0.5px] uppercase font-[600] text-center text-[12px] mb-4">
+              <h4 className="text-[rgb(222,217,255)] tracking-[0.5px] uppercase font-[600] text-center text-[12px] mb-4">
                 Introducing the Alliance
               </h4>
               <p>
@@ -251,11 +255,13 @@ export default function PageAbout() {
             <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>
                 <h4 className="mb-0 text-gray-500 uppercase font-[600] text-center text-[12px]">TODAY</h4>
-                <div className="font-[500] font-freude text-[40px] leading-[50px] text-center">2025</div>
+                <div className="font-[500] text-[rgb(222,217,255)] font-freude text-[40px] leading-[50px] text-center">
+                  2025
+                </div>
               </div>
             </ImageContainer>
             <div className="flex flex-col items-start flex-1">
-              <h4 className="text-[rgb(140,124,247)] tracking-[0.5px] uppercase font-[600] text-center text-[12px] mb-4">
+              <h4 className="text-[rgb(222,217,255)] tracking-[0.5px] uppercase font-[600] text-center text-[12px] mb-4">
                 TRANSITION TO A Community Project
               </h4>
               <p>
