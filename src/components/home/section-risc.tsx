@@ -23,6 +23,7 @@ export function SectionRisc() {
           <MainCta
             classNames={{
               media: 'flex items-center justify-center',
+              textWrapper: '!ml-8',
             }}
             variant="right"
             title="PolkaVM for Max Efficiency"
@@ -41,13 +42,12 @@ export function SectionRisc() {
               </div>
             }
             media={
-              <div className="w-[100vw] lg:w-full h-[326px] lg:h-[800px]">
+              <div className="w-full h-[326px] lg:h-[600px] overflow-visible relative scale-[120%] lg:scale-[150%] lg:-ml-24 lg:-mt-8 mb-8 lg:mb-0">
                 <RiveAnimation
                   src="animations/Risc-v.riv"
                   autoplay={true}
                   layout={
                     new Layout({
-                      fit: Fit.Contain,
                       alignment: Alignment.Center,
                     })
                   }

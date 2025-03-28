@@ -29,7 +29,7 @@ export function SectionInterop() {
             level="h2"
             cta={
               <div className="flex flex-row gap-4 pointer-events-auto">
-                <Link to="/inkubator" className="">
+                <Link to="/docs" className="">
                   <Button
                     variant="secondary"
                     size="lg"

@@ -6,6 +6,7 @@ import { MainCta } from './main-cta'
 import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
 import { RiveAnimation } from '../rive-animation'
+import { Alignment, Fit, Layout } from '@rive-app/react-canvas'
 
 export function SectionHero() {
   return (
@@ -43,8 +44,8 @@ export function SectionHero() {
           }
           media={
             <motion.div
-              initial={{ opacity: 0, y: -100, rotateY: -180 }}
-              animate={{ opacity: 1, y: 0, rotateY: 0 }}
+              initial={{ opacity: 0, y: -100, scaleX: 0.5, scaleY: 0.5 }}
+              animate={{ opacity: 1, y: 0, scaleX: 1, scaleY: 1 }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}
               className="w-full h-full px-4"
             >
