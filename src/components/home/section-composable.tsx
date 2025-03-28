@@ -17,7 +17,7 @@ export function SectionComposable() {
 
   return (
     <section
-      className="relative min-h-[80vh] overflow-hidden"
+      className="relative lg:h-[810px] overflow-hidden"
       style={{
         background:
           'linear-gradient(180deg,#2f247d 64%,var(--token-420fbc77-dab0-404b-b97a-ded7df998265, rgb(19, 15, 33)) 70%)',

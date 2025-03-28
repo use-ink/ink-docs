@@ -7,13 +7,14 @@ import TentaclesLeft from '@site/static/img/home/Tentacles_l.svg'
 import TentaclesRight from '@site/static/img/home/Tentacles_r.svg'
 import MetaBalls from '../../reactbits/Animations/MetaBalls/MetaBalls'
 import Orb from '@site/src/reactbits/Backgrounds/Orb/Orb'
-
+import { Clouds } from './clouds'
 export function SectionInterop() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden section-interop">
+    <section className="relative flex flex-col items-center justify-center w-full overflow-hidden section-interop md:h-[820px]">
+      <Clouds />
       <TentaclesLeft className="absolute top-[200px] lg:top-0 h-full -left-[280px] max-w-[500px] z-10 pointer-events-none" />
       <TentaclesRight className="absolute top-[100px] lg:top-0 -right-[380px] h-full origin-right max-w-[55%] 2xl:max-w-[1000px] z-10 pointer-events-none" />
-      <div className="container relative z-10 flex flex-col items-center justify-center min-h-screen pointer-events-none">
+      <div className="container relative z-10 flex flex-col items-center justify-center pointer-events-none">
         <MainCta
           classNames={{
             container: 'max-w-lg',
@@ -57,7 +58,7 @@ export function SectionInterop() {
           speed={0.1}
         />
       </div> */}
-      <div className="absolute inset-0 -z-0">
+      <div className="absolute inset-0 hidden -z-0 md:block">
         <Orb hoverIntensity={0.4} rotateOnHover={false} hue={0} forceHoverState={false} />
       </div>
     </section>

@@ -5,20 +5,27 @@ import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
 import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
-import { useRive } from '@rive-app/react-canvas'
+import { Fit, Alignment, useRive, Layout } from '@rive-app/react-canvas'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
 export function SectionHero() {
   const { RiveComponent: HeroSquink } = useRive({
-    src: useBaseUrl('animations/Hero.riv'),
+    src: useBaseUrl('animations/Hero_2.riv'),
     autoplay: true,
     animations: ['main', 'head', 'code', 'floating'],
+    layout: new Layout({
+      fit: Fit.Contain,
+      alignment: Alignment.TopCenter,
+    }),
   })
 
   return (
-    <section className="relative flex flex-col h-[710px] pointer-events-none section-intro md:my-0">
+    <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro md:my-0">
       <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center">
         <MainCta
+          classNames={{
+            container: 'h-full',
+          }}
           notice={
             <a
               className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)] justify-center lg:justify-start pointer-events-auto"
@@ -31,7 +38,7 @@ export function SectionHero() {
           title="Build Rust-Based Smart Contracts"
           description="Create, manage, and deploy smart contracts with ink!"
           cta={
-            <div className="flex flex-col gap-4 mx-4 md:flex-row md:mx-0">
+            <div className="flex flex-col gap-3 md:flex-row">
               <Link to="/docs" className=" !transition-all duration-300 flex-1 lg:flex-none pointer-events-auto">
                 <Button size="lg" className="w-full lg:w-auto">
                   Start building
@@ -52,7 +59,7 @@ export function SectionHero() {
               transition={{ duration: 1.5, ease: 'easeInOut' }}
               className="w-full h-full px-4"
             >
-              <div className="w-full h-full">
+              <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px]">
                 <HeroSquink className="w-full h-full" />
               </div>
               {/* <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" /> */}

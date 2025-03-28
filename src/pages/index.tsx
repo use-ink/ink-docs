@@ -29,6 +29,7 @@ import { SectionSolidity } from '../components/home/section-solidity'
 import { SectionRust } from '../components/home/section-rust'
 import { SectionInterop } from '../components/home/section-interop'
 import { SectionHero } from '../components/home/section-hero'
+import { Clouds } from '../components/home/clouds'
 
 const head = (
   <>

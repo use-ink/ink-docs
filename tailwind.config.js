@@ -86,6 +86,14 @@ module.exports = {
           '0%, 100%': { transform: 'rotate(-1deg)' },
           '50%': { transform: 'rotate(5deg)' },
         },
+        clouds: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-100%)' },
+        },
+        zeppelin: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-100%)' },
+        },
       },
       backgroundImage: {
         waves: "url('/img/Waves.svg')",
@@ -107,6 +115,8 @@ module.exports = {
         'swim-left-right': 'swim-left-right 100s linear infinite',
         swim: 'swim 10s ease-in-out infinite',
         'up-down': 'up-down 15s ease-in-out infinite',
+        clouds: 'clouds 400s linear infinite',
+        zeppelin: 'zeppelin 100s linear infinite',
       },
     },
   },

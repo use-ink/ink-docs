@@ -13,7 +13,8 @@ main.page h3 {
 }
 
 main.page h1 {
-  font-size: 42px;
+  font-size: 46px;
+  line-height: 44px;
 }
 
 main.page h2 {
@@ -29,9 +30,10 @@ p {
 @media (min-width: 768px) {
   main.page h1 {
     font-size: 64px;
+    line-height: 58px;
   }
   main.page h2 {
-    font-size: 48px;
+    font-size: 44px;
   }
 }
 
