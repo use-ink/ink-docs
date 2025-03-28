@@ -5,20 +5,9 @@ import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
 import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
-import { Fit, Alignment, useRive, Layout } from '@rive-app/react-canvas'
-import useBaseUrl from '@docusaurus/useBaseUrl'
+import { RiveAnimation } from '../rive-animation'
 
 export function SectionHero() {
-  const { RiveComponent: HeroSquink } = useRive({
-    src: useBaseUrl('animations/Hero_2.riv'),
-    autoplay: true,
-    animations: ['main', 'head', 'code', 'floating'],
-    layout: new Layout({
-      fit: Fit.Contain,
-      alignment: Alignment.TopCenter,
-    }),
-  })
-
   return (
     <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro md:my-0">
       <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center">
@@ -60,7 +49,11 @@ export function SectionHero() {
               className="w-full h-full px-4"
             >
               <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px]">
-                <HeroSquink className="w-full h-full" />
+                <RiveAnimation
+                  src="animations/Hero_2.riv"
+                  autoplay={true}
+                  animations={['main', 'head', 'code', 'floating']}
+                />
               </div>
               {/* <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" /> */}
             </motion.div>

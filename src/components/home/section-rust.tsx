@@ -3,16 +3,13 @@ import Link from '@docusaurus/Link'
 
 import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
-import { useRive } from '@rive-app/react-canvas'
+import { Alignment, Fit, useRive } from '@rive-app/react-canvas'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { Clouds } from './clouds'
 import { BubbleContainer } from '../bubblecontainer'
+import { RiveAnimation } from '../rive-animation'
 
 export function SectionRust() {
-  const { RiveComponent: RustMedal } = useRive({
-    src: useBaseUrl('animations/Medal.riv'),
-    autoplay: true,
-  })
   return (
     <section
       className="relative flex flex-col items-center justify-center section-rust lg:h-[800px]"
@@ -40,7 +37,11 @@ export function SectionRust() {
                 </Link>
               </div>
             }
-            media={<RustMedal />}
+            media={
+              <div className="w-full mt-8 lg:mt-0 h-[300px] lg:h-[410px]">
+                <RiveAnimation src="animations/Medal.riv" autoplay={true} />
+              </div>
+            }
           />
         </BubbleContainer>
       </div>

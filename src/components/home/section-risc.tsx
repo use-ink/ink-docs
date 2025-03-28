@@ -6,16 +6,11 @@ import { MainCta } from './main-cta'
 import WaterLine from '@site/static/img/water-line.svg'
 
 import Fish1 from '@site/static/img/fishes/Fish-29.svg'
-import useBaseUrl from '@docusaurus/useBaseUrl'
-import { useRive } from '@rive-app/react-canvas'
+import { Layout, Fit, Alignment } from '@rive-app/react-canvas'
 import { BubbleContainer } from '../bubblecontainer'
+import { RiveAnimation } from '../rive-animation'
 
 export function SectionRisc() {
-  const { RiveComponent: RiscV } = useRive({
-    src: useBaseUrl('animations/Risc-v.riv'),
-    autoplay: true,
-  })
-
   return (
     <section
       className="relative flex flex-col items-center justify-center section-risc lg:h-[800px]"
@@ -46,8 +41,17 @@ export function SectionRisc() {
               </div>
             }
             media={
-              <div className="w-full h-[800px]">
-                <RiscV />
+              <div className="w-[100vw] lg:w-full h-[326px] lg:h-[800px]">
+                <RiveAnimation
+                  src="animations/Risc-v.riv"
+                  autoplay={true}
+                  layout={
+                    new Layout({
+                      fit: Fit.Contain,
+                      alignment: Alignment.Center,
+                    })
+                  }
+                />
               </div>
             }
           />

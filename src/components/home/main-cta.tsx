@@ -30,8 +30,9 @@ export function MainCta({
   if (variant === 'center') {
     return (
       <div className={cn('flex flex-col items-center text-center', classNames?.container)}>
-        {media && <div className={cn('w-full mb-8', classNames?.media)}>{media}</div>}
-        <div className={cn('flex flex-col gap-[30px] max-w-2xl', classNames?.textWrapper)}>
+        {media && <div className={cn('w-full', classNames?.media)}>{media}</div>}
+        <div className={cn('text-wrapper flex flex-col gap-[30px] max-w-2xl', classNames?.textWrapper)}>
+          {notice && <div className="text-sm text-gray-500">{notice}</div>}
           {level === 'h1' ? (
             <h1 className={cn('text-[64px] font-bold leading-[57px] p-0 m-0', classNames?.title)}>{title}</h1>
           ) : (
@@ -52,14 +53,16 @@ export function MainCta({
           classNames?.container,
         )}
       >
-        {notice && <div className="text-sm text-gray-500">{notice}</div>}
-        {level === 'h1' ? (
-          <h1 className={cn('text-[64px] font-bold leading-[57px] p-0 m-0', classNames?.title)}>{title}</h1>
-        ) : (
-          <h2 className={cn('font-bold p-0 m-0', classNames?.title)}>{title}</h2>
-        )}
-        <p className={cn('font-[600] p-0 m-0 text-[#dcd7e0]', classNames?.description)}>{description}</p>
-        {cta}
+        <div className={cn('text-wrapper flex flex-col gap-[30px] max-w-2xl', classNames?.textWrapper)}>
+          {notice && <div className="text-sm text-gray-500">{notice}</div>}
+          {level === 'h1' ? (
+            <h1 className={cn('text-[64px] font-bold leading-[57px] p-0 m-0', classNames?.title)}>{title}</h1>
+          ) : (
+            <h2 className={cn('font-bold p-0 m-0', classNames?.title)}>{title}</h2>
+          )}
+          <p className={cn('font-[600] p-0 m-0 text-[#dcd7e0]', classNames?.description)}>{description}</p>
+          {cta}
+        </div>
       </div>
       {media && (
         <div className={cn(`${variant === 'left' ? 'order-2' : 'w-full order-1'}`, classNames?.media)}>{media}</div>

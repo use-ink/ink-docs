@@ -44,12 +44,13 @@ export function SectionSolidity() {
           circleEdge={1}
         /> */}
       </div>
-      <div className="container !max-w-[1000px] md:px-0 relative z-10 flex flex-col items-center justify-center">
+      <div className="container !max-w-[1000px] relative z-10 flex flex-col items-center justify-center">
         <BubbleContainer>
           <MainCta
             classNames={{
-              container: 'order-4 lg:order-1 lg:mb-0 w-[400px]',
+              container: 'order-4 lg:order-1 lg:mb-0',
               media: 'flex items-center justify-center',
+              textWrapper: 'max-w-[400px]',
             }}
             variant="left"
             notice={
@@ -74,7 +75,7 @@ export function SectionSolidity() {
               </div>
             }
             media={
-              <div className="relative w-[265px] h-[265px]">
+              <div className="relative w-[265px] h-[265px] scale-75 lg:scale-100">
                 <div
                   className={clsx(
                     'absolute bottom-0 right-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de,0_0_100px_#0004] hover:shadow-[10px_10px_0px_0px_#6957de,0_0_100px_#6957dea6] transition-shadow duration-500 p-2.5',
@@ -85,7 +86,7 @@ export function SectionSolidity() {
                 >
                   <div className="flex items-center justify-center bg-white border-[#6957de] border-4 border-solid rounded-[24px]">
                     <div className="flex items-center p-4 text-black">
-                      <MetaMask className="w-[100px] h-[100px]" />
+                      <MetaMask className="w-[100px] h-[100px] lg:w-[100px] lg:h-[100px]" />
                     </div>
                   </div>
                 </div>
