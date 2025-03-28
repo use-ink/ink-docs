@@ -64,10 +64,21 @@ main.page code {
   font-size: 85%;
 }
 
+.nav-top .mask::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: #000; */
+}
+
 .nav-top .mask {
-  mask: linear-gradient(180deg, #000000 10%, rgba(0, 0, 0, 0) 130%) add;
-  backdrop-filter: blur(10px);
-  @apply bg-gradient-to-b from-[#000000cc] via-[#000000aa] to-transparent;
+  mask: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%) add;
+  /* backdrop-filter: blur(20px); */
+  background: linear-gradient(180deg, #000000 0%, #000000ee 60%, rgba(0, 0, 0, 0) 100%);
+  /* @apply bg-gradient-to-b from-[#000000dd] via-[#000000bb] to-transparent backdrop-blur-xl; */
 }
 
 .section-bg {
