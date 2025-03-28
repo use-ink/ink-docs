@@ -18,7 +18,7 @@ export function SectionComposable() {
 
   return (
     <section
-      className="relative lg:h-[810px] overflow-hidden"
+      className="relative lg:h-[810px] overflow-visible"
       style={{
         background:
           'linear-gradient(180deg,#2f247d 64%,var(--token-420fbc77-dab0-404b-b97a-ded7df998265, rgb(19, 15, 33)) 70%)',
@@ -49,10 +49,15 @@ export function SectionComposable() {
         </BubbleContainer>
       </div>
       <div
-        className="absolute bottom-0 left-0 w-full h-auto"
+        className="absolute bottom-0 left-0 w-full h-[810px] overflow-visible"
         // style={{ mask: 'linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%) add' }}
       >
-        <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" />
+        {/* <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" /> */}
+        <img
+          src={useBaseUrl('/img/footer.svg')}
+          className="object-cover object-bottom w-full h-full titleSpace"
+          alt="Deep Sea"
+        />
         {/* <img
           decoding="async"
           loading="lazy"
