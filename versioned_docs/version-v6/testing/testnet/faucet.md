@@ -14,13 +14,12 @@ This section has not yet been updated to ink! v6.
 TODO @peterwht Please review this page.
 :::
 
-### 1. Upload Contract Code
-
 # Faucet
 
 <!-- import Faucet from "./Faucet"; -->
 
-There is a faucet for [Paseo](https://faucet.polkadot.io/).
+The community-maintained Polkadot testnet "Paseo" provides a faucet: 
+[Paseo Faucet](https://faucet.polkadot.io/).
 By requesting funds from the link above you will receive `PAS`
 tokens to your account on this parachain.
 

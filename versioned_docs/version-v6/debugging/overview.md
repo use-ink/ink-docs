@@ -16,4 +16,7 @@ On a high-level there are two workflows for debugging your contract:
   workflow is described on the [Call Your Contract](../getting-started/calling.md) page.
 
 In each of those two options you have access to more detailed debugging
-information. We explain how to utilize this info in this chapter.
+information. 
+
+In this chapter we'll examine different debugging techniques using these
+two workflows.

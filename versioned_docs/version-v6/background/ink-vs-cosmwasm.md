@@ -4,6 +4,14 @@ slug: /background/ink-vs-cosmwasm
 hide_title: true
 ---
 
+<head>
+    <meta name="title" content="Polkadot's ink! vs. CosmWasm" />
+    <meta name="description" content="Comparison of Polkadot's ink! vs. CosmWasm." />
+    <meta name="keywords" content="Polkadot, ComsWasm, Cosmos, ink!, Smart Contracts" />
+    <meta property="og:title" content="ink! vs. CosmWasm" />
+    <meta property="og:description" content="Comparison of Polkadot's ink! vs. CosmWasm." />
+</head>
+
 ![Cosmwasm Title Picture](/img/title/cosmwasm.svg)
 
 :::caution

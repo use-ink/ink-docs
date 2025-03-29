@@ -7,22 +7,12 @@ slug: /contract-testing/drink
 ![Drink Title Picture](/img/title/drink.svg)
 
 :::note
-The DRink! specific information should be moved to either
-https://github.com/use-ink/drink or the ink! website (as a tutorial).
-
-Below should just be what is inside ink!. That's the `ink_sandbox` that can
-be used without `DRink!`:
-
-```rust
-#[ink_e2e::test(backend(runtime_only))]
-```
-
-todo
+TODO This page has not yet been reviewed for ink! v6.
 :::
 
 # DRink!
 
-Apart from the core ink! testing framework, Aleph Zero also provides the [DRink!](https://github.com/inkdevhub/drink) library.
+Apart from the core ink! testing framework, we also provide the [DRink!](https://github.com/use-ink/drink) library.
 It offers an intermediate solution between integration and E2E testing.
 
 Intuitively, DRink! maintains a full in-memory blockchain state and allows you to interact with it directly.

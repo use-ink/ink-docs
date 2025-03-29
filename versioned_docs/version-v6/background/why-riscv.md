@@ -5,7 +5,7 @@ slug: /background/why-riscv-and-polkavm-for-smart-contracts
 ---
 
 <head>
-    <meta name="description" content="Why RISC-V and PolkaVM for Smart Contracts?" />
+    <meta name="description" content="Discover available bounties and contribute to the ink! ecosystem." />
     <meta name="keywords" content="Polkadot, PolkaVM, RISC-V, RISCV, Smart Contracts" />
     <meta property="og:title" content="Why RISC-V and PolkaVM for Smart Contracts?" />
     <meta property="og:description" content="Discover available bounties and contribute to the ink! ecosystem." />
@@ -58,7 +58,7 @@ made to provide first-class support for Solidity contracts:
     closer to the EVM (e.g. types, events, and debugging was changed to be Solidity
     compatible).
 
-    * In the `pallet-contracts` era the idea for Solidity compatibility was a project
+    * In the `pallet-contracts` era, the idea for Solidity compatibility was a project
     called [Solang](https://github.com/hyperledger-solang/solang/). It's a Solidity
     compiler that parses Solidity syntax and outputs WebAssembly.
     Parsing the Solidity syntax turned out to be a complex undertaking. Solidity

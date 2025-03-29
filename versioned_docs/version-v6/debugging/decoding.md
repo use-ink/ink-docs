@@ -1,5 +1,5 @@
 ---
-title: Decoding raw transactions
+title: Decode raw transactions
 slug: /contract-debugging/decoding-transactions
 hide_title: true
 ---

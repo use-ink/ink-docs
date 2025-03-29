@@ -9,10 +9,10 @@ hide_title: true
 # Pre-compile
 
 We don't have any examples for debugging with pre-compiles yet. 
-Our intention add one here, once the pre-compile API in `pallet-revive`
-is clearer.
 
-The idea here is to implement a pre-compile that outputs log information
-to the node process console (`stdout` or `stderr`).
+Our intention is to add an explanation here, once the pre-compile API 
+in `pallet-revive` is released.
 
+The overarching with pre-compiles for debugging is to implement one that 
+outputs log information to the node process console (`stdout` or `stderr`).
 This pre-compile could then be called from within an ink! contract.

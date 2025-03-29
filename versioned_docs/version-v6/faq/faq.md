@@ -109,26 +109,7 @@ The two modes are as follows:
    are well behaving and allow for better debuggability than when trying to debug the same smart contract deployed
    on a chain.
 
-### Overflow Safety?
-
-:::caution
-TODO @davidsemakula Please review if still up to date.
-:::
-
-Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
-
-:::note
-There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the binary blob. This feature may change or be iterated on in the future.
-:::
-
-### What is the difference between memory and storage?
-
-In ink!, memory refers to computer memory, while storage refers to the on-chain storage
-used by a contract instance. Memory is temporary and only lasts until the contract
-execution is done, while storage is persistent and lasts over many contract executions.
-The contract storage is built on top of the runtime storage, and access is considered to be slow.
-
-### Why is Rust's standard library (stdlib) not available in ink!?
+<h3 id="why-no_std">Why is Rust's standard library (stdlib) not available in ink!?</h3>
 
 Rust's standard library consists of three different layers:
 
@@ -150,13 +131,32 @@ Rust's standard library consists of three different layers:
 
    >    The Rust Standard Library is the foundation of portable Rust software, a set of minimal and battle-tested shared abstractions for the broader Rust ecosystem.
 
-      It requires several operating system capabilities in order to work correctly such as input and
-      output systems for files, networking etc.
+   It requires several operating system capabilities in order to work correctly such as input and
+   output systems for files, networking etc.
 
-      Since our RISC-V compilation target does not support Rust's
-      standard library ink! authors cannot use it either for their own purposes. Instead the [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive)
-      tries to provide some common functionality that would otherwise be missing for common smart contract
-      operations.
+   Since our RISC-V compilation target does not support Rust's
+   standard library ink! authors cannot use it either for their own purposes. Instead the [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive)
+   tries to provide some common functionality that would otherwise be missing for common smart contract
+   operations.
+
+### Overflow Safety?
+
+:::caution
+TODO @davidsemakula Please review if still up to date.
+:::
+
+Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
+
+:::note
+There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the binary blob. This feature may change or be iterated on in the future.
+:::
+
+### What is the difference between memory and storage?
+
+In ink!, memory refers to computer memory, while storage refers to the on-chain storage
+used by a contract instance. Memory is temporary and only lasts until the contract
+execution is done, while storage is persistent and lasts over many contract executions.
+The contract storage is built on top of the runtime storage, and access is considered to be slow.
 
 ### How do I hash a value?
 

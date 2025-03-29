@@ -8,10 +8,12 @@ hide_title: true
 
 # Setup
 
+On this page we describe the pre-requisites for working with ink!.
+
 ## Rust & Cargo
 
-A pre-requisite for compiling smart contracts is to have a stable Rust version (>= 1.85) and Cargo installed.
-Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+A pre-requisite for compiling smart contracts is to install a stable Rust 
+version (>= 1.85) and `cargo`. Please see [the official Rust installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 ## ink! CLI
 

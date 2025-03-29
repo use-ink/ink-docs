@@ -7,11 +7,10 @@ slug: /macros-attributes/contract
 ![Text/contract Title Picture](/img/title/text/contract.svg)
 
 :::caution
-This page has not yet been written for ink! v6.
+This page has not yet been updated for ink! v6.
 
-TODO @davidsemakula Please add the `abi` header argument here.
+TODO @davidsemakula Please add the `abi` header argument.
 :::
-
 
 # \#[ink::contract]
 

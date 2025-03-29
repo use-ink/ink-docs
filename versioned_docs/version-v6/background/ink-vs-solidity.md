@@ -4,9 +4,21 @@ hide_title: true
 slug: /background/ink-vs-solidity
 ---
 
+<head>
+    <meta name="title" content="Polkadot's ink! vs. Solidity" />
+    <meta name="description" content="Comparison of Polkadot's ink! vs. Solidity." />
+    <meta name="keywords" content="Polkadot, Solidity, Ethereum, ink!, Smart Contracts" />
+    <meta property="og:title" content="Polkadot's ink! vs. Solidity" />
+    <meta property="og:description" content="Comparison of Polkadot's ink! vs. Solidity." />
+</head>
+
 ![Solidity Title Picture](/img/title/solidity.svg)
 
-TODO re-read in particular because of our migration to RISC-V
+:::caution
+This page has not been updated for ink! v6 yet.
+
+TODO @peterwht Please re-read this page.
+:::
 
 # ink! vs. Solidity
 

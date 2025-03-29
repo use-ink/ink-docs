@@ -213,14 +213,57 @@ certainly be improved before a production release.
 
 We've updated [the Debugging chapter](../debugging/overview.md) of this documentation
 to reflect the new workflow.
+We've also added a contract example to illustrate these new debugging strategies:
+[`debugging-strategies`](https://github.com/use-ink/ink/tree/master/integration-tests/public/debugging-strategies).
 
-## Removed Events
+### Removed Events
 In [#7164](https://github.com/paritytech/polkadot-sdk/pull/7164), Parity removed
 most smart-contract-specific events: `Called`, `ContractCodeUpdated, CodeStored`,
 `CodeRemoved`, `Terminated`, `Instantiated`, `DelegateCalled`,
 `StorageDepositTransferredAndHeld`, `StorageDepositTransferredAndReleased`.
 
 The `ContractEmitted` event (for events a contract emits) is still available.
+
+### `no_main`
+
+Previously ink! contracts started with this line:
+
+```rust
+#![cfg_attr(not(feature = "std"), no_std)]
+```
+
+This line instructs the Rust compiler to not link the Rust 
+standard library with your contract. 
+If you want to know about why:
+we have an entry 
+["Why is Rust's standard library (stdlib) not available in ink!?"](./faq.md)
+in our FAQ.
+
+With ink! v6, an additional crate-level attribute needs to be set:
+
+```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+```
+
+It instructs the compiler not to use the default `fn main() {}` function as the
+entry point for your smart contract. This is needed because PolkaVM uses a different
+entry point (the `deploy` function).
+
+### `substrate-contracts-node` can no longer be used
+The `substrate-contracts-node` is still maintained by Parity for ink! v5 and
+`pallet-contracts`, but it does not support `pallet-revive`.
+
+We've set up a new project in its place: [`ink-node`](https://github.com/use-ink/ink-node).
+As before, it functions as a simple local development node.
+It contains `pallet-revive` in a default configuration.
+You can find binary releases of the node [here](https://github.com/use-ink/ink-node/releases).
+
+### Solang can no longer be used
+It was previously possible to interact with Solidity contracts compiled via the 
+Solang compiler. As we have moved from WebAssembly/`pallet-contracts` to 
+PolkaVM/RISC-V/`pallet-revive`, users who want to deploy Solidity will use
+[the Parity `revive` compiler](https://github.com/paritytech/revive). It takes 
+Solidity contracts and compile them into RISC-V for PolkaVM.
 
 ## Interesting New Features
 
@@ -253,3 +296,19 @@ $ cargo contract build ---metadata <ink|solidity>
 ```
 
 Please see [#1930](https://github.com/use-ink/cargo-contract/pull/1930) for more information.
+
+#### Abiility to build contract with features during E2E tests
+We've added the possibility to set a feature to build a contract with during e2e tests:
+
+```rust
+#[ink_e2e::test(features = ["debug-info"])]
+```
+
+This allows for e.g. emitting debug events in the contract, which
+you can then check for in testing.
+Please see our [`debugging-strategies`](https://github.com/use-ink/ink/tree/master/integration-tests/public/debugging-strategies)
+example for a complete explainer.
+
+We've added a page [Debugging » Events](../debugging/events.md) to this documentation.
+We've also added a contract example that illustrates the usage:
+[`debugging-strategies`](https://github.com/use-ink/ink/tree/master/integration-tests/public/debugging-strategies).

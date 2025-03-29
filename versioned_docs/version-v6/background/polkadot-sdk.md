@@ -4,6 +4,13 @@ hide_title: true
 slug: /background/polkadot-sdk
 ---
 
+<head>
+    <meta name="description" content="Explanation of how ink! ties into Polkadot SDK and `pallet-revive`." />
+    <meta name="keywords" content="Polkadot SDK, ink!, pallet-revive, Smart Contracts" />
+    <meta property="og:title" content="How does ink! tie into Polkadot SDK?" />
+    <meta property="og:description" content="Explanation of how ink! ties into Polkadot SDK and `pallet-revive`." />
+</head>
+
 ![Polkadot SDK Title Picture](/img/title/polkadot.svg)
 
 # Polkadot SDK

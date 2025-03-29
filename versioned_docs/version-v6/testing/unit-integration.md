@@ -6,7 +6,11 @@ slug: /contract-testing/unit-integration-tests
 
 ![Testing1 Title Picture](/img/title/testing1.svg)
 
-# Unit Tests
+# Tests
+
+On this page we lay out the different use-cases for unit vs. integration tests.
+
+## Unit Tests
 
 Testing contracts off-chain is done by `cargo test` and users can simply use the standard Rust
 routines of creating unit test modules within the ink! project:
@@ -32,12 +36,12 @@ Messages can simply be called on the returned instance as if `MyContract::my_con
 
 See the [flipper example](https://github.com/use-ink/ink-examples/blob/main/flipper/lib.rs).
 
-# Integration Tests
+## Integration Tests
 
 For integration tests, the test is annotated with our `#[ink::test]`
-attribute instead of `#[test]`. Our attribute denotes that
+attribute instead of `#[test]`. This attribute denotes that
 the test is then executed in a simulated, mocked blockchain environment.
-here are functions available to influence how the test environment
+Here functions are available to influence how the test environment
 is configured (e.g. setting a specified balance of an account to
 simulate how a contract would behave when interacting with it).
 
@@ -61,18 +65,7 @@ currently only supports a `DefaultEnvironment`.
 See [here](../basics/environment.md) for an explanation of what an environment is.
 :::
 
-## How do you find out if your test requires the off-chain environment?
-
-Normally if the test recursively uses or invokes some contract methods that
-call a method defined in `self.env()` or `Self::env()`.
-
-An example is the following:
-
-```rust
-let caller: AccountId = self.env().caller();
-```
-
-## Example
+### Example
 
 ```rust
 #[cfg(test)]
@@ -90,4 +83,15 @@ mod tests {
         // test code that returns a Rust Result type
     }
 }
+```
+
+## How do you find out if a test requires the off-chain environment?
+
+If the test recursively uses or invokes methods that call a function defined
+in `self.env()` or `Self::env()`.
+
+An example is the following:
+
+```rust
+let caller: AccountId = self.env().caller();
 ```
