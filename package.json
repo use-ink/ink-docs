@@ -19,7 +19,8 @@
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve --port 8080",
     "cspell": "cspell \"**/*.{md,mdx}\"",
-    "migrate-image-links": "ts-node src/scripts/migrate-image-links.ts"
+    "migrate-image-links": "ts-node src/scripts/migrate-image-links.ts",
+    "create-llm-file": "yarn repomix"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
@@ -74,6 +75,7 @@
     "react-google-recaptcha": "^3.1.0",
     "react-icons": "^5.5.0",
     "react-spring": "^9.7.5",
+    "repomix": "^0.3.1",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
