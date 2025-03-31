@@ -36,7 +36,14 @@ const head = (
 
 export default function PageTutorialDemo() {
   return (
-    <Layout className="container" head={head}>
+    <Layout className="container" head={head} hasBackground={false}>
+      <div
+        className="absolute top-0 left-0 w-full h-[420px] bg-gradient-to-b from-[#241A38] to-[#1A122A] -z-10"
+        style={{
+          background:
+            'linear-gradient(180deg,var(--token-70e94412-5c00-40af-8b3d-721e6d69726c, #5344b8) 0%,rgba(171,171,171,0) 100%)',
+        }}
+      />
       <SingleTutorial />
     </Layout>
   )

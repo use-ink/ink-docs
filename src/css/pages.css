@@ -86,18 +86,29 @@ main.page code {
   mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%) add;
 }
 
-/* .section-interop {
-  background: linear-gradient(0deg, rgb(40, 29, 94) 0%, rgb(19, 14, 33) 100%);
-} */
+main.page .single-tutorial p {
+  font-size: 16px;
+  line-height: 22.6px;
+  color: rgb(220, 215, 224);
+  font-weight: 500;
+}
 
-/* .section-rust {
-  background: linear-gradient(rgb(40, 28, 94) 0%, rgb(90, 78, 189) 100%);
-} */
+main.page .single-tutorial h3 {
+  font-size: 21px;
+  line-height: 21px;
+  color: rgb(189, 130, 253);
+  @apply font-medium font-montserrat;
+}
 
-/* .section-risc {
-  background: linear-gradient(rgb(121, 104, 224) 0%, rgb(48, 36, 127) 100%);
-} */
+main.page .single-tutorial hr {
+  border-color: rgba(189, 130, 253, 0.1);
+  border-style: dotted;
+  border-bottom-width: 3px;
+  background-color: transparent;
+  height: 3px;
+}
 
-/* .section-composability {
-  background: linear-gradient(rgb(121, 104, 224) 0%, rgb(48, 36, 127) 100%);
-} */
+main.page .single-tutorial ul {
+  list-style-type: disc;
+  padding-left: 14px;
+}

@@ -32,11 +32,13 @@ export default function Layout({
   head,
   className,
   ref,
+  hasBackground = true,
 }: {
   children: React.ReactNode
   head?: React.ReactNode
   className?: string
   ref?: React.RefObject<HTMLDivElement>
+  hasBackground?: boolean
 }) {
   return (
     <>
@@ -46,7 +48,7 @@ export default function Layout({
         {children}
       </main>
       <Footer />
-      <div className="absolute inset-0 z-0 section-bg" />
+      {hasBackground && <div className="absolute inset-0 z-0 section-bg" />}
     </>
   )
 }
