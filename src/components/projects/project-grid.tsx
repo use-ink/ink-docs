@@ -80,12 +80,12 @@ export default function ProjectGrid() {
                 transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.5 : 0 }}
                 className="sticky z-20 shadow-lg lg:col-span-7 top-24 lg:self-start order-0 lg:order-1"
               >
-                <div className="w-full overflow-hidden rounded-lg group">
+                <div className="w-full overflow-hidden group border-[5px] border-solid border-[#b782fc] rounded-[18px]">
                   {typeof project.image === 'string' ? (
                     <img
                       src={useBaseUrl(project.image)}
                       alt={project.title}
-                      className="w-full rounded-[18px] border-[5px] border-solid border-[#b782fc] aspect-video lg:aspect-auto object-cover object-top backdrop-blur-md"
+                      className="block object-cover object-top w-full h-full backdrop-blur-md"
                     />
                   ) : (
                     project.image

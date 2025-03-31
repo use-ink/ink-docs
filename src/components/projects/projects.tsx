@@ -177,7 +177,7 @@ export const projects: Project[] = [
       </>
     ),
     image: (
-      <div className="p-[20%] bg-gradient-to-br from-[#8c7cf7] to-[rgb(189,130,253)] w-full rounded-[18px] border-[5px] border-solid border-[rgb(140,124,247)]">
+      <div className="p-[20%] bg-gradient-to-br from-[#8c7cf7] to-[rgb(189,130,253)] w-full">
         <Drink />
       </div>
     ),
