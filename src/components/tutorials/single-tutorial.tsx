@@ -2,11 +2,11 @@ import React from 'react'
 import Link from '@docusaurus/Link'
 import { CaretDoubleLeft } from '@phosphor-icons/react'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+
 import { RiveAnimation } from '../rive-animation'
 import { CTA } from '../cta'
+
 import TitleImage from '@site/static/img/title/heart.svg'
-import { NumberedHeadline } from './numbered-headline'
-import { TutorialBox } from './tutorial-box'
 
 export function SingleTutorial({ children, title }: { children: React.ReactNode; title: React.ReactNode }) {
   return (
@@ -25,7 +25,7 @@ export function SingleTutorial({ children, title }: { children: React.ReactNode;
             <h1 className="text-[30px] font-[700] !text-white my-0">{title}</h1>
           </div>
         </div>
-        <div className="relative w-[280px] h-[280px] lg:w-[420px] lg:h-[372px] scale-110">
+        <div className="relative w-[280px] h-[280px] lg:w-[420px] lg:h-[372px] scale-[120%]">
           <RiveAnimation src={useBaseUrl('animations/Squink-educator.riv')} autoplay={true} />
         </div>
       </section>
