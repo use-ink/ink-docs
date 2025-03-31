@@ -166,7 +166,7 @@ export const tutorials = [
   },
   {
     image: 'img/title/blockchain-fork.svg',
-    title: 'Running a Substrate Node',
+    title: 'Running a Substrate Node with a very long title that will be longer than two lines and be truncated',
     description: 'Learn how to run a Substrate node',
     link: '',
   },

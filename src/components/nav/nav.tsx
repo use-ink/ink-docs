@@ -65,7 +65,7 @@ export function Navbar({
         transition={{ duration: 0.4, ease: 'easeInOut' }}
       >
         <div className="absolute inset-0 z-0 mask"></div>
-        <div className="max-w-[1920px] mx-auto">
+        <div className="mx-auto">
           <div className="ml-6 mr-2 md:ml-8 md:mr-8 flex items-center h-[80px] justify-between md:justify-start">
             <div className="flex flex-row items-center">
               <div className="flex items-center mr-4">

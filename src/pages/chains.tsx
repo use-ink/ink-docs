@@ -59,12 +59,7 @@ export default function PageChains() {
             className="border-dotted border-[rgba(189,130,253,0.2)] -z-10"
             start={250}
           >
-            <div
-              className="bg-[#bd84fb] rounded-full w-[100px] h-[100px] mx-auto"
-              style={{
-                boxShadow: '6px 6px #5c4dc4',
-              }}
-            >
+            <div className="bg-[#bd84fb] rounded-full w-[100px] h-[100px] mx-auto">
               <img
                 src={useBaseUrl('/img/chains/pop-token.png')}
                 alt="chains"
@@ -81,12 +76,7 @@ export default function PageChains() {
             reverse
             className="border-solid border-[rgba(189,130,253,0.2)] -z-10"
           >
-            <div
-              className="bg-[#bd84fb] rounded-full w-[100px] h-[100px] mx-auto"
-              style={{
-                boxShadow: '6px 6px #5c4dc4',
-              }}
-            >
+            <div className="bg-[#bd84fb] rounded-full w-[100px] h-[100px] mx-auto">
               <img
                 src={useBaseUrl('/img/chains/polkadot-token.svg')}
                 alt="chains"
@@ -128,7 +118,7 @@ export default function PageChains() {
           <ArrowCircleDown size={32} weight="duotone" fill="rgb(140, 124, 247)" className="animate-bounce" />
         </a>
       </motion.div>
-      <section id="chains" className="container grid grid-cols-1 gap-4 pt-32 md:grid-cols-12">
+      <section id="chains" className="container grid grid-cols-1 gap-4 px-4 pt-32 md:grid-cols-12 md:px-0">
         <motion.div
           initial={{ opacity: 0, y: 50, x: -50, rotate: 10 }}
           animate={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
@@ -140,11 +130,14 @@ export default function PageChains() {
         <div className="flex flex-col gap-4 md:col-span-9">
           <h2>Introducing ink! v6</h2>
           <Admonition type="color" title="Attention">
-            <p>
+            <p className="text-[16px]">
               With ink! version 6 we are transitioning to a new execution engine: the{' '}
-              <code className="whitespace-nowrap">pallet-revive</code> module of Polkadot SDK. This module executes
-              smart contracts that are uploaded to it in the RISC-V bytecode format. This transition is currently
-              ongoing and we are working hard to an alpha release of ink! v6.
+              <Link to="https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive">
+                <code className="whitespace-nowrap">pallet-revive</code>
+              </Link>{' '}
+              module of Polkadot SDK. This module executes smart contracts that are uploaded to it in the RISC-V
+              bytecode format. This transition is currently ongoing and we are working hard to an alpha release of ink!
+              v6. ongoing and we are working hard to an alpha release of ink! v6.
               <br />
               <br />
               You can read more about the details that motivated this transition{' '}
@@ -157,7 +150,7 @@ export default function PageChains() {
           <p className="font-[600] text-[18px] mb-1">
             The two blockchains that have already added pallet-revive to their testnets are:
           </p>
-          <div className="flex flex-row gap-4">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
             <ImageContainer>
               <img
                 src={useBaseUrl('/img/chains/assethub.svg')}
@@ -169,7 +162,7 @@ export default function PageChains() {
               <img
                 src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
                 alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px] font-freude"
               />
             </ImageContainer>
           </div>
