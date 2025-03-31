@@ -23,16 +23,6 @@ export default function ProjectGrid() {
         {projects.map((project, index) => {
           const ref = useRef<HTMLDivElement>(null)
 
-          const variants = {
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 },
-          }
-
-          const variantsImage = {
-            hidden: { opacity: 0, x: 50 },
-            visible: { opacity: 1, x: 0 },
-          }
-
           return (
             <div
               key={project.title}
@@ -46,7 +36,9 @@ export default function ProjectGrid() {
             >
               <motion.div
                 ref={ref}
-                variants={variants}
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.5 : 0 }}
                 className="order-1 lg:col-span-5 lg:sticky lg:top-24 lg:self-start lg:order-0"
               >
@@ -74,9 +66,9 @@ export default function ProjectGrid() {
 
               <motion.div
                 ref={ref}
-                // initial="hidden"
-                // whileInView="visible"
-                variants={variantsImage}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.5 : 0 }}
                 className="sticky z-20 shadow-lg lg:col-span-7 top-24 lg:self-start order-0 lg:order-1"
               >
