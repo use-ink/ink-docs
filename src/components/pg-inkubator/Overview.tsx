@@ -10,10 +10,10 @@ export const Overview: React.FC = () => {
     <section className="mx-auto max-w-biggest lg:overflow-x-visible overflow-x-clip">
       <div className="z-10 px-4">
         <hgroup className="my-10 md:my-16">
-          <h2 className="w-full mx-auto text-5xl font-bold text-center font-montserrat dark:text-white">
+          <h2 className="w-full mx-auto text-5xl font-bold text-center dark:text-white font-freude">
             What is <b className="pr-2 text-brand-500">ink!ubator</b>?
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-center dark:text-white/70">
+          <p className="max-w-2xl mx-auto text-lg text-center text-[18px] font-[600]">
             ink!ubator is an initiative funded by the Polkadot Treasury&apos;s Bounty Program. It is designed to
             kickstart the ink! ecosystem on Polkadot, Kusama, and other Substrate chains in the following areas
           </p>

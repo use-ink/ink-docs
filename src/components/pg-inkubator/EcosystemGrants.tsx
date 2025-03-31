@@ -34,27 +34,27 @@ const INFRASTRUCTURE_EXAMPLES = [
 
 export const EcosystemGrants: React.FC = () => {
   return (
-    <section className="md:mt-28 mt-16">
+    <section className="mt-16 md:mt-28">
       <div className="px-4">
-        <div className="max-w-biggest mx-auto">
-          <div className="text-center w-full">
-            <h2 className="text-5xl font-semibold font-montserrat w-full text-brand-500">
-              <i className="font-bold text-black dark:text-white">Ecosystem</i> Grants
+        <div className="mx-auto max-w-biggest">
+          <div className="w-full text-center">
+            <h2 className="w-full text-5xl font-semibold font-freude text-brand-500">
+              <i className="font-bold text-black dark:text-white ">Ecosystem</i> Grants
             </h2>
-            <h3 className="p-0 m-0 mt-8 mx-auto max-w-3xl text-3xl dark:text-white/70 text-black/70">
+            <p className="max-w-3xl p-0 m-0 mx-auto mt-8 text-[18px] font-[600]">
               Ecosystem Grants are available for ink! projects that fall into one of the following categories:
-            </h3>
+            </p>
           </div>
 
           <div className="max-w-biggest">
-            <div className="flex flex-col md:flex-row items-start justify-between lg:mt-32 md:mt-16">
+            <div className="flex flex-col items-start justify-between md:flex-row lg:mt-32 md:mt-16">
               <div className="md:w-[40%] flex items-end max-w-2xl pt-8">
                 <ScrollPlayer animationData={Canary} />
               </div>
 
               <div className="md:max-w-2xl md:w-[55%]">
                 <h3 className="text-base opacity-[50%] uppercase font-montserrat w-full">Category 1</h3>
-                <h2 className="text-4xl opacity-90 font-semibold font-montserrat w-full">Canary DApp</h2>
+                <h2 className="w-full text-4xl font-semibold opacity-90 font-montserrat">Canary DApp</h2>
                 <p className="mt-8 dark:text-white/70 text-black/70">
                   A Canary dApp is one that could be deployed on to a value bearing network, but may not necessarily be
                   battle hardened enough for serious use cases. They are meant to be a step beyond simple tutorials
@@ -66,14 +66,14 @@ export const EcosystemGrants: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-start justify-between lg:mt-32 md:mt-16">
+            <div className="flex flex-col items-start justify-between md:flex-row lg:mt-32 md:mt-16">
               <div className="md:w-[40%] flex items-end max-w-2xl pt-8">
                 <ScrollPlayer animationData={CuttingEdge} />
               </div>
 
               <div className="md:max-w-2xl md:w-[55%]">
                 <h3 className="text-base opacity-[50%] uppercase font-montserrat w-full">Category 2</h3>
-                <h2 className="text-4xl opacity-90 font-semibold font-montserrat w-full">Technical Showcase</h2>
+                <h2 className="w-full text-4xl font-semibold opacity-90 font-montserrat">Technical Showcase</h2>
                 <p className="mt-8 dark:text-white/70 text-black/70">
                   This category implies developing a full-stack application that clearly demonstrates the advantages of
                   ink! over other smart contract languages (e.g. Solidity). In this category you should focus on opening
@@ -85,14 +85,14 @@ export const EcosystemGrants: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-start justify-between lg:mt-32 md:mt-16">
+            <div className="flex flex-col items-start justify-between md:flex-row lg:mt-32 md:mt-16">
               <div className="md:w-[40%] flex items-end max-w-2xl pt-8">
                 <ScrollPlayer animationData={Infrastructure} />
               </div>
 
               <div className="md:max-w-2xl md:w-[55%]">
                 <h3 className="text-base opacity-[50%] uppercase font-montserrat w-full">Category 3</h3>
-                <h2 className="text-5xl opacity-90 font-semibold font-montserrat w-full">Infrastructure</h2>
+                <h2 className="w-full text-5xl font-semibold opacity-90 font-montserrat">Infrastructure</h2>
                 <p className="mt-8 dark:text-white/70 text-black/70">
                   The goal of this track is to improve the ink! ecosystem&apos;s infrastructure and tooling. We welcome
                   you to be innovative and submit your ideas. We will prefer ideas that add differentiation to the
