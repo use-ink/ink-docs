@@ -12,5 +12,5 @@ export function RiveAnimation(params: UseRiveParameters) {
     ...params,
   })
 
-  return <RiveComponent />
+  return <RiveComponent className="w-full h-full will-change-transform" />
 }

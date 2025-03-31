@@ -4,8 +4,6 @@ import Link from '@docusaurus/Link'
 
 import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
-import DeepSea from '@site/static/img/footer.svg'
-import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
@@ -40,7 +38,7 @@ export function SectionComposable() {
             }
             media={
               <div className="relative w-[280px] h-[280px] lg:w-[450px] lg:h-[450px]">
-                <RiveAnimation src={useBaseUrl('animations/Squink-educator.riv')} />
+                <RiveAnimation src={useBaseUrl('animations/Squink-educator.riv')} autoplay={true} />
               </div>
             }
           />

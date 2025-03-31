@@ -3,8 +3,6 @@ import Link from '@docusaurus/Link'
 
 import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
-import { Alignment, Fit, useRive } from '@rive-app/react-canvas'
-import useBaseUrl from '@docusaurus/useBaseUrl'
 import { Clouds } from './clouds'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'

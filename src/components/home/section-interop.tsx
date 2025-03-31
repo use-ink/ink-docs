@@ -5,8 +5,6 @@ import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
 import TentaclesLeft from '@site/static/img/home/Tentacles_l.svg'
 import TentaclesRight from '@site/static/img/home/Tentacles_r.svg'
-import MetaBalls from '../../reactbits/Animations/MetaBalls/MetaBalls'
-import Orb from '@site/src/reactbits/Backgrounds/Orb/Orb'
 import { Clouds } from './clouds'
 import { BubbleContainer } from '../bubblecontainer'
 export function SectionInterop() {
@@ -44,26 +42,9 @@ export function SectionInterop() {
           />
         </BubbleContainer>
       </div>
-      {/* <div
-        className="absolute inset-0 -z-0"
-        style={{ maskImage: 'radial-gradient(circle, transparent 0%, transparent 20%, black 70%)' }}
-      >
-        <MetaBalls
-          color="#bb82fa"
-          cursorBallColor="#bb82fa"
-          cursorBallSize={0.8}
-          ballCount={15}
-          animationSize={10}
-          enableMouseInteraction={true}
-          enableTransparency={true}
-          hoverSmoothness={0.05}
-          clumpFactor={0.3}
-          speed={0.1}
-        />
-      </div> */}
-      <div className="absolute inset-0 hidden -z-0 md:block">
+      {/* <div className="absolute inset-0 hidden -z-0 md:block">
         <Orb hoverIntensity={0.4} rotateOnHover={false} hue={0} forceHoverState={false} />
-      </div>
+      </div> */}
     </section>
   )
 }

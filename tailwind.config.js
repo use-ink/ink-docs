@@ -116,7 +116,7 @@ module.exports = {
         swim: 'swim 10s ease-in-out infinite',
         'up-down': 'up-down 15s ease-in-out infinite',
         clouds: 'clouds 400s linear infinite',
-        zeppelin: 'zeppelin 100s linear infinite',
+        zeppelin: 'zeppelin 100s linear',
       },
     },
   },

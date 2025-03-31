@@ -5,21 +5,16 @@ import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
 import { MagicWand, Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
-import { SocialIcon } from '../footer/social-icon'
 import Solidity from '@site/static/img/solidity.svg'
 import MetaMask from '@site/static/img/metamask.svg'
 import clsx from 'clsx'
 import ShapeBlur from '@site/src/reactbits/Backgrounds/ShapeBlur/ShapeBlur'
 import { Clouds } from './clouds'
-import { useRive } from '@rive-app/react-canvas'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { BubbleContainer } from '../bubblecontainer'
+import { RiveAnimation } from '../rive-animation'
 
 export function SectionSolidity() {
-  const { RiveComponent: Zeppelin } = useRive({
-    src: useBaseUrl('animations/Zeppelin.riv'),
-    autoplay: true,
-  })
   return (
     <section
       className="relative flex flex-col items-center justify-center section-solidity lg:h-[800px] overflow-hidden"
@@ -30,7 +25,11 @@ export function SectionSolidity() {
       <Clouds className="absolute -top-24 left-1/4" />
       <div className="absolute top-0 left-1/2 translate-x-[180px] w-[240px] h-[240px] z-20 pointer-events-none">
         <div className="hidden w-full h-full will-change-transform animate-zeppelin md:block">
-          <Zeppelin />
+          <RiveAnimation
+            src={useBaseUrl('animations/Zeppelin.riv')}
+            autoplay={true}
+            animations={['airship', 'head', 'tentacle']}
+          />
         </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full">
@@ -54,7 +53,7 @@ export function SectionSolidity() {
             }}
             variant="left"
             notice={
-              <span className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)] justify-center lg:justify-start pointer-events-auto">
+              <span className="flex flex-row items-center gap-2 !text-[#ffc249] justify-center lg:justify-start pointer-events-auto">
                 <MagicWand size={16} weight="fill" className="inline animate-flip" />
                 <AnimatedText text="NEW FEATURE" element="span" className="text-[16px] font-[600]" />
               </span>
@@ -78,7 +77,7 @@ export function SectionSolidity() {
               <div className="relative w-[265px] h-[265px] scale-75 lg:scale-100">
                 <div
                   className={clsx(
-                    'absolute bottom-0 right-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de,0_0_100px_#0004] hover:shadow-[10px_10px_0px_0px_#6957de,0_0_100px_#6957dea6] transition-shadow duration-500 p-2.5',
+                    'absolute bottom-0 right-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] duration-500 p-2.5',
                   )}
                   style={{
                     transform: 'rotate(30deg) skewX(-12deg) skewY(-12deg)',
@@ -92,7 +91,7 @@ export function SectionSolidity() {
                 </div>
                 <div
                   className={clsx(
-                    'absolute top-0 left-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de,0_0_100px_#0004] hover:shadow-[10px_10px_0px_0px_#6957de,0_0_100px_#6957dea6] transition-shadow duration-500 p-2.5',
+                    'absolute top-0 left-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] duration-500 p-2.5',
                   )}
                   style={{
                     transform: 'rotate(15deg) skewX(-15deg) skewY(-3deg)',

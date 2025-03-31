@@ -10,7 +10,7 @@ export default function DocsRedirect() {
         <link rel="canonical" href={'https://use.ink/docs/v5/'} />
         <meta name="robots" content="noindex, follow" /> {/* Optional */}
       </Head>
-      <Redirect to={'/ink-docs/docs/v5'} />
+      <Redirect to={'/ink-docs/docs/v5/'} />
     </>
   )
 }

@@ -6,7 +6,7 @@ import { MainCta } from './main-cta'
 import WaterLine from '@site/static/img/water-line.svg'
 
 import Fish1 from '@site/static/img/fishes/Fish-29.svg'
-import { Layout, Fit, Alignment } from '@rive-app/react-canvas'
+import { Layout, Alignment } from '@rive-app/react-canvas'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
 
