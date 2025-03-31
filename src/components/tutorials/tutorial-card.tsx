@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 

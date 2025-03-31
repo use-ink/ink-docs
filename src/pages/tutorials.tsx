@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from './layout'
 import { ArrowCircleDown } from '@phosphor-icons/react/dist/ssr'
 import { tutorials } from '../config'
-import { TutorialCard } from '../components/tutorial-card'
+import { TutorialCard } from '../components/tutorials/tutorial-card'
 import { motion } from 'framer-motion'
 
 import Rocket from '@site/static/img/rocket.svg'

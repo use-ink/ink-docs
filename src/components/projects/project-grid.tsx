@@ -43,11 +43,11 @@ export default function ProjectGrid() {
                 className="order-1 lg:col-span-5 lg:sticky lg:top-24 lg:self-start lg:order-0"
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <ImageContainer className="max-w-[250px]">
+                  <ImageContainer className="!max-w-[250px] !h-[100px]">
                     <img
                       src={useBaseUrl(project.logo)}
                       alt={`${project.title} logo`}
-                      className="mix-blend-lighten max-w-[200px] max-h-[50px]"
+                      className="mix-blend-lighten max-w-[200px] max-h-[80px]"
                     />
                   </ImageContainer>
                 </div>
@@ -72,7 +72,7 @@ export default function ProjectGrid() {
                 transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.5 : 0 }}
                 className="sticky z-20 shadow-lg lg:col-span-7 top-24 lg:self-start order-0 lg:order-1"
               >
-                <div className="w-full overflow-hidden group border-[5px] border-solid border-[#b782fc] rounded-[18px]">
+                <div className="w-full overflow-hidden group border-[5px] border-solid border-[#b782fc] rounded-[18px] aspect-video md:aspect-auto">
                   {typeof project.image === 'string' ? (
                     <img
                       src={useBaseUrl(project.image)}
