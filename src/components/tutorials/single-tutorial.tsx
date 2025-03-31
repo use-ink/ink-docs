@@ -11,7 +11,7 @@ import TitleImage from '@site/static/img/title/heart.svg'
 export function SingleTutorial({ children, title }: { children: React.ReactNode; title: React.ReactNode }) {
   return (
     <div className="single-tutorial">
-      <section className="max-w-[1000px] mx-auto flex flex-col lg:flex-row gap-[36px] items-center">
+      <section className="max-w-[1000px] mx-auto flex flex-col lg:flex-row gap-[36px] items-center mb-4 lg:mb-0">
         <div className="gap-[120px] flex flex-col">
           <Link
             to="/tutorials"

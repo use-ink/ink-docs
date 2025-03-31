@@ -62,6 +62,7 @@ export default function PageTutorialDemo() {
           <NumberedHeadline number={2} level={2}>
             Deploy and interact with your smart contract!
           </NumberedHeadline>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
         </section>
         <hr className="" />
         <section className="">
