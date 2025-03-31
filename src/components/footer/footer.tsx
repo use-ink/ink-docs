@@ -1,7 +1,7 @@
 import React from 'react'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import clsx from 'clsx'
-import { motion } from 'motion/react'
+import { motion } from 'framer-motion'
 import { GetSupport } from './get-support'
 import { footerLinks } from '../../config'
 import { ListItem } from '../list-item'

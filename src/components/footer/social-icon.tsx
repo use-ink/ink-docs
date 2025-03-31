@@ -17,14 +17,16 @@ export function SocialIcon({
   const inner = (
     <div
       className={clsx(
-        'z-0 relative flex items-center justify-center w-[124px] h-[124px] bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de] hover:shadow-[10px_10px_0px_0px_#6957de] transition-shadow duration-500',
+        'z-0 relative flex items-center justify-center w-[124px] h-[124px] bg-[#8c7cf7] rounded-[30px] shadow-[8px_8px_0px_0px_#6957de] hover:shadow-[10px_10px_0px_0px_#6957de] transition-shadow duration-500 group',
         className,
       )}
     >
       <div
         className={`flex items-center justify-center w-[${size}px] h-[${size}px] bg-white border-[#6957de] border-4 border-solid rounded-[24px]`}
       >
-        <div className="flex items-center text-black ">{icon}</div>
+        <div className="flex items-center text-black group-hover:text-[#BD82FD] transition-colors duration-500">
+          {icon}
+        </div>
       </div>
     </div>
   )
@@ -36,7 +38,7 @@ export function SocialIcon({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative block transition-transform transform will-change-transform group"
+          className="relative flex items-center justify-center block transition-transform transform will-change-transform group"
         >
           {helpText && (
             <div className="absolute z-20 left-1/2 -translate-x-1/2 flex items-center justify-center w-auto p-3 min-w-[200px] max-w-[250px] text-center transition-all duration-700 border-2 shadow-lg opacity-0 pointer-events-none bg-white -top-1/2 rounded-2xl group-hover:opacity-[97%] group-hover:-top-8 font-[600] text-black">

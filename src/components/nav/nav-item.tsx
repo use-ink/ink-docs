@@ -39,7 +39,7 @@ export function NavItem({ item, className }: NavItemProps) {
         <CaretDown
           size={16}
           weight="fill"
-          className="w-4 h-4 transition-transform duration-200 group-hover/nav-item:rotate-180"
+          className="w-4 h-4 transition-transform duration-200 group-hover/nav-item:rotate-180 text-[rgb(140,124,247)]"
         />
       </li>
       <div

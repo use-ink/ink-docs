@@ -1,6 +1,5 @@
 import React from 'react'
-import { motion } from 'motion/react'
-import BountiesBackgroundSvg from '@site/static/img/Bounties.svg'
+import { motion } from 'framer-motion'
 import Layout from './layout'
 import { BountyList } from '../components/bounties/bounty-list'
 import { ArrowCircleDown } from '@phosphor-icons/react'
