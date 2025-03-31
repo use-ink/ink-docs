@@ -17,7 +17,7 @@
       "sortByChangesMaxCommits": 100
     }
   },
-  "include": ["docs/**", "versioned_docs/**"],
+  "include": ["docs/**"],
   "ignore": {
     "useGitignore": true,
     "useDefaultPatterns": true,
