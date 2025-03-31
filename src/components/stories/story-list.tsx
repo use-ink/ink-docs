@@ -37,6 +37,7 @@ export function StoryList() {
           <motion.div
             initial="hidden"
             whileInView="visible"
+            viewport={{ once: true }}
             variants={variantsImage}
             transition={{ duration: 1, ease: 'easeInOut', delay: index === 0 ? 0.3 : 0 }}
             className="w-full aspect-video"
@@ -54,17 +55,17 @@ export function StoryList() {
             whileInView="visible"
             variants={variants}
             transition={{ duration: 1, ease: 'easeInOut' }}
-            className="flex flex-col gap-8 md:flex-row"
+            className="flex flex-col gap-8 lg:flex-row"
           >
-            <ImageContainer className="w-full md:!w-auto max-w-full min-w-[250px] md:max-w-[200px] h-24">
+            <ImageContainer className="w-full lg:!w-auto max-w-full min-w-[250px] lg:max-w-[250px] h-24">
               <img
                 src={useBaseUrl(story.logo)}
                 alt={`${story.name} logo`}
-                className="object-contain h-auto mix-blend-lighten max-h-[40px]"
+                className="object-contain h-auto mix-blend-lighten max-h-[40px] px-4"
               />
             </ImageContainer>
-            <div className="flex flex-col gap-2">
-              <h4 className="text-xs text-gray-500 uppercase font-[600]">BACKSTORY</h4>
+            <div className="flex flex-col gap-[10px]">
+              <h4 className="text-xs text-gray-500 uppercase font-[600] pb-0 mb-0">BACKSTORY</h4>
               <div className="">{story.backstory}</div>
             </div>
           </motion.div>
