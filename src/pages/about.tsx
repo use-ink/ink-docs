@@ -94,11 +94,9 @@ export default function PageAbout() {
         <h2 className="mb-8">History of ink!</h2>
 
         <div className="flex flex-col items-start w-full gap-8">
-          <img
-            src={useBaseUrl('/img/about/ink-history.png')}
-            alt="ink! history"
-            className="shadow-xl rounded-[20px] aspect-video"
-          />
+          <div className="w-full overflow-hidden aspect-video border-[5px] border-solid border-[#b782fc] rounded-[20px]">
+            <img src={useBaseUrl('/img/about/ink-history.png')} alt="ink! history" className="object-cover" />
+          </div>
           <div className="flex flex-col items-start gap-8 md:flex-row">
             <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>
@@ -148,14 +146,10 @@ export default function PageAbout() {
             </div>
           </div>
         </div>
-        <hr className="my-12" />
+        <hr className="mt-12 mb-16" />
         <div className="flex flex-col items-start w-full gap-8">
-          <div className="w-full overflow-hidden aspect-video">
-            <img
-              src={useBaseUrl('/img/about/ink-alliance.png')}
-              alt="ink! history"
-              className="object-cover shadow-xl rounded-[20px]"
-            />
+          <div className="w-full overflow-hidden aspect-video border-[5px] border-solid border-[#b782fc] rounded-[20px]">
+            <img src={useBaseUrl('/img/about/ink-alliance.png')} alt="ink! history" className="object-cover" />
           </div>
           <div className="flex flex-col items-start gap-8 md:flex-row">
             <ImageContainer className="w-full md:!w-auto max-w-full">
@@ -234,23 +228,12 @@ export default function PageAbout() {
             </div>
           </div>
         </div>
-        <hr className="my-12" />
-        <div className="flex flex-col items-center justify-center gap-4 my-16 md:flex-row">
-          <p className="m-0">Want to join the ink! Alliance?</p>
-          <Link href="https://t.me/inkathon" className="text-blue-500">
-            <Button size="lg" variant="secondary">
-              Join our Telegram
-            </Button>
-          </Link>
-        </div>
-        <hr className="my-12" />
+        <hr className="mt-12 mb-16" />
 
         <div className="flex flex-col items-start w-full gap-8">
-          <img
-            src={useBaseUrl('/img/about/inkubator2-0.png')}
-            alt="ink! history"
-            className="shadow-xl rounded-[20px] aspect-video"
-          />
+          <div className="w-full overflow-hidden aspect-video border-[5px] border-solid border-[#b782fc] rounded-[20px]">
+            <img src={useBaseUrl('/img/about/inkubator2-0.png')} alt="ink! history" />
+          </div>
           <div className="flex flex-col items-start gap-8 md:flex-row">
             <ImageContainer className="w-full md:!w-auto max-w-full">
               <div>

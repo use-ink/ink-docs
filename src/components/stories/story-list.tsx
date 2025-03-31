@@ -26,7 +26,7 @@ export function StoryList() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col max-w-[1200px] mx-auto mt-8">
       {stories.map((story, index) => (
         <div
           key={story.name}
