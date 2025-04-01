@@ -14,6 +14,7 @@ import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem'
 import type { GlobalVersion, GlobalDoc, ActiveDocContext } from '@docusaurus/plugin-content-docs/client'
 import { NavItem, NavItemProps } from '@site/src/components/nav/nav-item'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 function getVersionMainDoc(version: GlobalVersion): GlobalDoc {
   return version.docs.find((doc) => doc.id === version.mainDocId)!
 }
@@ -35,6 +36,7 @@ export default function DocsVersionDropdownNavbarItem({
   const { search, hash } = useLocation()
   const activeDocContext = useActiveDocContext(docsPluginId)
   const versions = useVersions(docsPluginId)
+  const currentVersion = useCurrentVersion().label
   const { savePreferredVersionName } = useDocsPreferredVersion(docsPluginId)
 
   const baseUrl = useBaseUrl('/').split('/').slice(2).join('/')
@@ -90,7 +92,14 @@ export default function DocsVersionDropdownNavbarItem({
     href: dropdownTo,
     links: items.map((item) => {
       return {
-        label: `ink! ${item.label}`,
+        label: (
+          <div className="flex items-center text-white">
+            ink! {item.label}
+            {currentVersion === item.label && (
+              <span className="px-2 py-0.5 ml-4 text-black bg-white rounded-[8px] text-[12px]">latest</span>
+            )}
+          </div>
+        ),
         href: `${baseUrl}/${item.to.split('/').slice(2).join('/')}`.slice(0, -1),
       }
     }),
