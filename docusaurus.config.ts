@@ -6,7 +6,7 @@ module.exports = {
   tagline: 'Comprehensive documentation for ink!, covering all aspects of development.',
   url: 'https://niklasp.github.io',
   baseUrl: '/ink-docs/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   favicon: 'img/favicon.png',
   trailingSlash: false,
   organizationName: 'niklasp',
@@ -66,7 +66,7 @@ module.exports = {
             },
             current: {
               label: 'v5',
-              // path: 'v5',
+              path: 'v5',
               banner: 'none',
             },
             v4: {

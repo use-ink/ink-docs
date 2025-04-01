@@ -6,9 +6,13 @@ import { MainCta } from './main-cta'
 import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
 import { RiveAnimation } from '../rive-animation'
-import { Alignment, Fit, Layout } from '@rive-app/react-canvas'
-import Hero from '@site/static/img/hero.svg'
+import { Alignment, Layout } from '@rive-app/react-canvas'
+
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
+
 export function SectionHero() {
+  const currentVersion = useCurrentVersion()
+
   return (
     <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro">
       <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center mb-16">
@@ -32,7 +36,10 @@ export function SectionHero() {
           description="Create, manage, and deploy smart contracts with ink!"
           cta={
             <div className="flex flex-col gap-3 md:flex-row">
-              <Link to="/docs" className=" !transition-all duration-300 flex-1 lg:flex-none pointer-events-auto">
+              <Link
+                to={`/docs/${currentVersion?.label ?? 'v5'}`}
+                className=" !transition-all duration-300 flex-1 lg:flex-none pointer-events-auto"
+              >
                 <Button size="lg" className="w-full lg:w-auto">
                   Start building
                 </Button>

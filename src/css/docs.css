@@ -597,7 +597,7 @@ ul.menu__list li a {
   color: var(--ifm-color-primary);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: var(--ifm-dropdown-background-color) !important;
+  background: #110a2dee !important;
   @apply rounded-full !backdrop-blur-md;
   @apply !shadow-lg;
 }
