@@ -194,6 +194,7 @@ button:disabled {
 .docs-wrapper p {
   font-size: 16px;
   font-weight: 500;
+  line-height: 25.6px;
 }
 
 @media screen and (min-width: 996px) {
@@ -445,7 +446,7 @@ table.wallet-table * {
 
 .theme-doc-sidebar-container nav {
   mask-image: linear-gradient(to top, transparent 0%, black 30px);
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .menu__caret::before,

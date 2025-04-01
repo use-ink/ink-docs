@@ -6,12 +6,12 @@ import { useKeyboardNavigation } from '@docusaurus/theme-common/internal'
 import SkipToContent from '@theme/SkipToContent'
 import AnnouncementBar from '@theme/AnnouncementBar'
 import Navbar from '@theme/Navbar'
-import Footer from '@theme/Footer'
 import LayoutProvider from '@theme/Layout/Provider'
 import ErrorPageContent from '@theme/ErrorPageContent'
 import type { Props } from '@theme/Layout'
 import styles from './styles.module.css'
 import Head from '@docusaurus/Head'
+import { Footer } from '@site/src/components/footer/footer'
 
 export default function Layout(props: Props): ReactNode {
   const {
