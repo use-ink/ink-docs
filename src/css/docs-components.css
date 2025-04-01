@@ -21,6 +21,7 @@
   overflow: hidden;
   padding: 24px;
   position: relative;
+  margin-bottom: 12px;
 }
 
 .bubble-box p:last-child {
@@ -29,10 +30,17 @@
 
 .dotted-box {
   border-radius: 36px;
-  border: 1px dotted #8c7cf7;
+  border: 3px dotted rgba(140, 124, 247, 0.25);
   padding: 12px;
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dotted-box > * {
   border-radius: 24px;
+  width: 100%;
 }
