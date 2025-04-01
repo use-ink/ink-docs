@@ -9,7 +9,7 @@ export function GetSupport() {
   return (
     <div className="w-full pb-16">
       <div className="w-full mx-auto md:px-4 lg:px-10 xl:px-20">
-        <div className="grid grid-cols-2 gap-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-0 max-w-[1200px] mx-auto items-centers">
+        <div className="grid grid-cols-2 gap-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-0 max-w-[1200px] mx-auto items-center">
           {/* Telegram */}
           <motion.div
             initial={{ x: 100, rotate: 15, skewX: -15, skewY: -3 }}

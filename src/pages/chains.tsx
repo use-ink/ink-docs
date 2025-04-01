@@ -90,7 +90,7 @@ export default function PageChains() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
-            className="flex items-center gap-4 text-2xl font-bold"
+            className="flex items-center gap-4 text-2xl font-bold align-middle"
           >
             Chains that{' '}
             <span className="text-[rgb(255,38,112)] animate-heartbeat">
