@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/contract-testing/chain-snapshot
 ---
 
-<img src="/img/title/blockchain-fork.svg" className="titlePic" />
+![Blockchain Fork Title Picture](/img/title/blockchain-fork.svg)
 
 # Test your Contract with a Chain Snapshot
 

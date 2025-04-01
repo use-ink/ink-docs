@@ -4,7 +4,7 @@ hide_title: true
 slug: /testnet
 ---
 
-<img src="/img/title/testnet.svg" className="titlePic" />
+![Testnet Title Picture](/img/title/testnet.svg)
 
 # Contracts on Paseo
 

@@ -40,7 +40,7 @@ export const BigCTA: React.FC<BigCtaProps & React.HtmlHTMLAttributes<HTMLDivElem
       }}
       tabIndex={tabIndex}
       className={classNames(
-        'flex flex-col justify-between',
+        'flex flex-col justify-between transition-all duration-1000',
         'ring-brand-500 outline-brand-500 p-6 rounded-xl dark:border-background-700',
         'border-background-300 hover:cursor-pointer min-h-[180px] border-solid border',
         isHovering && 'text-white bg-brand-gradient',
@@ -52,7 +52,7 @@ export const BigCTA: React.FC<BigCtaProps & React.HtmlHTMLAttributes<HTMLDivElem
       }}
     >
       <span className="flex justify-between">
-        {title && <h5 className="uppercase text-base mb-12">{title}</h5>}
+        {title && <h5 className="mb-12 text-base uppercase">{title}</h5>}
         <CtaArrow className="h-6" white={isHovering} />
       </span>
 

@@ -2,11 +2,11 @@ build/
 node_modules/
 *.generated.*
 babel.config.js
-docusaurus.config.js
+docusaurus.config.ts
 sidebars.js
-versioned_docs/version-6.x/third-party-tools/swanky/Figure.tsx
-versioned_docs/version-6.x/testing/testnet/Faucet.tsx
-versioned_docs/version-4.x/third-party-tools/swanky/Figure.tsx
-versioned_docs/version-4.x/testnet/Faucet.tsx
+versioned_docs/version-v6/third-party-tools/swanky/Figure.tsx
+versioned_docs/version-v6/testing/testnet/Faucet.tsx
+versioned_docs/version-v4/third-party-tools/swanky/Figure.tsx
+versioned_docs/version-v4/testnet/Faucet.tsx
 docs/third-party-tools/swanky/Figure.tsx
 docs/testnet/Faucet.tsx

@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import { ClassNameable } from '../types'
 import { Link } from 'react-router-dom'
 import { ScrollPlayer } from '../ScrollPlayer'
-import { ClosedNotice } from './ClosedNotice'
 
 export interface InkubatorHeroProps extends ClassNameable {
   withLinkCTA?: boolean
@@ -19,40 +18,31 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
         className,
       )}
     >
-      <div className="max-w-biggest mx-auto">
+      <div className="mx-auto max-w-biggest">
+        <div className="absolute inset-0 -z-10 section-bg" />
         <div className={classNames('flex lg:flex-row flex-col justify-between mb-0 gap-6 px-4')}>
-          <h1
-            className={classNames(
-              'md:text-6xl text-5xl font-bold font-montserrat dark:text-white',
-              'align-middle md:max-w-xl',
-            )}
-          >
-            <span className="leading-tight">
-              Take your <SquinkText className="px-4 md:h-28 h-20 align-middle" />
-              <br />
-              <strong className="top-[-20px] align-middle relative">
-                project to <b className="text-brand-500">new</b>
-                <br />
-                <b className="text-brand-500 relative top-[-10px] leading-tight">depths.</b>
-              </strong>
-            </span>
-          </h1>
-          <div className="md:max-w-md lg:pt-8">
+          <h1 className="font-freude text-[64px] leading-[57px] max-w-2xl">Take your ink! project to new depths.</h1>
+          <div className="md:max-w-md lg:pt-6">
             <hgroup className="md:mb-10">
-              <h2 className="text-2xl dark:text-white/70 mb-2">
-                <span className="bg-light-background dark:bg-dark-background">
-                  ink!ubator provides access to core developers and a wealth of resources.
-                </span>
+              <h2 className="mb-2 text-[18px] leading-[28px] font-[600] font-montserrat">
+                <span className="">ink!ubator provides access to core developers and a wealth of resources.</span>
               </h2>
-              <h3 className="text-brand-500/80 font-semibold text-md italic">
+              <h3 className="text-[18px] leading-[28px] font-[600] font-montserrat">
                 <p>The first cohort has successfully concluded, and applications for the next cohort are now open.</p>
-                <p><a href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}>Read the final report of the first cohort here.</a></p>
+                <p>
+                  <a
+                    href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}
+                    className="text-brand-500"
+                  >
+                    Read the final report of the first cohort here.
+                  </a>
+                </p>
               </h3>
             </hgroup>
             {withLinkCTA && (
-              <div className="md:mb-0 mb-10">
+              <div className="mb-10 md:mb-0">
                 <Link
-                  to="/ubator"
+                  to="/inkubator"
                   className={classNames(
                     'py-4 px-6 bg-brand-500 hover:bg-brand-500/90 hover:text-dark-background text-center',
                     'transition duration-75 text-dark-background hover:no-underline rounded-full text-lg',
