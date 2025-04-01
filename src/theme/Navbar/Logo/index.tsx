@@ -5,9 +5,11 @@ import Squink from '@site/static/img/ink-squink.svg'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { motion } from 'framer-motion'
 import PolkadotLogo from '@site/static/img/Polkadot_Logo_White.svg'
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 
 export default function NavbarLogo(): ReactNode {
   const baseUrl = useBaseUrl('/')
+  const currentVersion = useCurrentVersion()
 
   return (
     <div className="flex ml-0 items-center justify-center gap-2 overflow-hidden group h-[calc(100%+1rem)]">
@@ -23,7 +25,10 @@ export default function NavbarLogo(): ReactNode {
         </div>
       </div>
       <div className="flex flex-row items-center gap-2">
-        <Link to={`${baseUrl}docs`} className="hidden no-underline hover:no-underline sm:block">
+        <Link
+          to={`${baseUrl}docs/${currentVersion?.label ?? 'v5'}`}
+          className="hidden no-underline hover:no-underline sm:block"
+        >
           <code className="text-[14px] rounded-full px-[5.8px] py-[1.6px] bg-[#8c7cf726] border-[#8c7cf71a] text-[#cac2ff]">
             /docs
           </code>

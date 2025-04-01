@@ -7,8 +7,10 @@ import { MainCta } from './main-cta'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
-
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 export function SectionComposable() {
+  const currentVersion = useCurrentVersion()
+
   return (
     <section
       className="relative lg:h-[810px] overflow-visible"
@@ -29,7 +31,10 @@ export function SectionComposable() {
             level="h2"
             cta={
               <div className="flex flex-col justify-center gap-4 lg:justify-start md:flex-row md:gap-4">
-                <Link to="/docs" className="hover:scale-105 hover:-rotate-1 !transition-all duration-300">
+                <Link
+                  to={`/docs/${currentVersion?.label ?? 'v5'}`}
+                  className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
+                >
                   <Button size="lg" variant="secondary">
                     Access the docs
                   </Button>
