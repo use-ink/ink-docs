@@ -38,7 +38,7 @@ export function SocialIcon({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative flex items-center justify-center block transition-transform transform will-change-transform group"
+          className="relative flex items-center justify-center transition-transform transform will-change-transform group"
         >
           {helpText && (
             <div className="absolute z-20 left-1/2 -translate-x-1/2 flex items-center justify-center w-auto p-3 min-w-[200px] max-w-[250px] text-center transition-all duration-700 border-2 shadow-lg opacity-0 pointer-events-none bg-white -top-1/2 rounded-2xl group-hover:opacity-[97%] group-hover:-top-8 font-[600] text-black">
