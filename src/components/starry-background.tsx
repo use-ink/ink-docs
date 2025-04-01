@@ -6,7 +6,7 @@ function generateStars(count: number) {
   return Array.from({ length: count }, () => ({
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
+    size: Math.random() * 4 + 1,
     parallax: Math.random() * 0.4 + 0.2, // parallax factor between 0.2 and 1
     animationDelay: Math.random() * 2,
   }))

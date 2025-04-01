@@ -9,7 +9,7 @@ import Rocket from '@site/static/img/rocket.svg'
 import { Button } from '../components/ui/button'
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
-
+import { StarryBackground } from '../components/starry-background'
 const head = (
   <>
     <title>Tutorials | ink!</title>
@@ -39,6 +39,7 @@ const head = (
 export default function PageTutorials() {
   return (
     <Layout className="container" head={head}>
+      <StarryBackground />
       <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto text-center mt-[10vh]">
         <img
           src={useBaseUrl('/img/Constellation.svg')}
