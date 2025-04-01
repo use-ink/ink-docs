@@ -45,7 +45,7 @@ export function SectionComposable() {
         </BubbleContainer>
       </div>
       <div
-        className="absolute bottom-0 left-0 w-full h-[810px] overflow-visible"
+        className="absolute bottom-0 left-0 w-full h-[810px] overflow-visible h-fit"
         // style={{ mask: 'linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%) add' }}
       >
         {/* <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" /> */}
