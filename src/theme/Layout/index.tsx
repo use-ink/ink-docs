@@ -35,20 +35,16 @@ export default function Layout(props: Props): ReactNode {
         <meta property="og:image:alt" content="ink! Documentation" />
         <meta property="og:image:type" content="image/png" />
       </Head>
-
+      <div className="absolute inset-0 z-0 section-bg" />
       <SkipToContent />
-
       <AnnouncementBar />
-
       <Navbar />
-
       <div
         id={SkipToContentFallbackId}
-        className={clsx(ThemeClassNames.wrapper.main, styles.mainWrapper, wrapperClassName)}
+        className={clsx('z-10', ThemeClassNames.wrapper.main, styles.mainWrapper, wrapperClassName)}
       >
         <ErrorBoundary fallback={(params) => <ErrorPageContent {...params} />}>{children}</ErrorBoundary>
       </div>
-
       {!noFooter && <Footer />}
     </LayoutProvider>
   )

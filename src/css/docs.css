@@ -37,10 +37,11 @@
   --doc-sidebar-width: 300px !important;
 
   --ifm-menu-link-padding-horizontal: 0px;
+  --ifm-navbar-height: 80px;
 }
 
 [data-theme='dark'] {
-  --ifm-background-color: #16102b !important;
+  --ifm-background-color: rgb(19, 15, 33) !important;
   --ifm-navbar-background-color: transparent !important;
   --ifm-navbar-search-input-placeholder-color: var(--ifm-color-primary-lightest) !important;
   --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%23d7b5ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
@@ -184,6 +185,22 @@ button:disabled {
   z-index: 40;
 }
 
+.docs-wrapper .navbar {
+  border-bottom: 1px solid rgba(189, 130, 253, 0.2);
+  background: rgba(19, 15, 33, 0.7);
+}
+
+@media screen and (min-width: 996px) {
+  .docs-wrapper .navbar {
+    backdrop-filter: blur(20px);
+    background: rgba(19, 15, 33, 0.2);
+  }
+
+  .docs-wrapper .navbar .mask {
+    display: none;
+  }
+}
+
 .navbar .mask {
   mask: linear-gradient(180deg, #000000 10%, rgba(0, 0, 0, 0) 130%) add;
   backdrop-filter: blur(10px);
@@ -191,7 +208,7 @@ button:disabled {
 }
 
 .navbar__link {
-  color: #fff;
+  color: rgb(244, 241, 254);
 }
 
 .navbar__inner {
@@ -408,7 +425,7 @@ table.wallet-table * {
 }
 
 .menu {
-  @apply !px-8 !pt-6 text-sm;
+  @apply !px-6 !pt-6 text-sm;
 }
 
 .theme-doc-sidebar-container {
@@ -528,6 +545,7 @@ ul.menu__list li a {
   transition: transform 0.3s ease-in-out;
   outline: none !important;
   border-radius: 12px;
+  color: rgb(218, 221, 225) !important;
 }
 
 .menu__link:hover {
@@ -535,6 +553,7 @@ ul.menu__list li a {
   transform: translate3d(5px, 0, 0);
   color: var(--ifm-color-primary-lightest);
   background: transparent;
+  color: #fff !important;
   /* background: linear-gradient(90deg, rgba(140, 124, 247, 0.1) 0%, rgba(255, 255, 255, 0) 84.6847%); */
 }
 
