@@ -72,7 +72,7 @@ export const projects: Project[] = [
       <>
         <p>
           Created by{' '}
-          <a href="https://x.com/davidsemakula" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/davidsemakula" target="_blank" rel="noopener noreferrer">
             David Semakula
           </a>
           , this VS extension comes with many nifty features, including but not limited to:
