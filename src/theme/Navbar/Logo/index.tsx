@@ -14,12 +14,12 @@ export default function NavbarLogo(): ReactNode {
       <div className="relative logo-wrap">
         <Link to={baseUrl} className="absolute top-0 left-0 z-10 w-full h-full cursor-pointer" />
         <Logo
-          className="transition-all will-change-transform duration-700 origin-left navbar__brand group-hover:translate-y-[-150%] !m-0"
+          className="transition-all will-change-transform duration-700 origin-left navbar__brand group-hover:translate-y-[-160%] !m-0"
           imageClassName="navbar__logo"
           titleClassName="navbar__title text--truncate"
         />
         <div className="absolute top-[150%] will-change-transform rotate-45 group-hover:-rotate-6 left-0 group-hover:translate-y-[-50%] transition-all duration-700 origin-left">
-          <Squink title="ink squink" className="w-[95px] h-[95px]" />
+          <Squink title="ink squink" className="w-[120px] h-[120px]" />
         </div>
       </div>
       <div className="flex flex-row items-center gap-2">
