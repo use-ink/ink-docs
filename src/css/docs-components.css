@@ -26,3 +26,13 @@
 .bubble-box p:last-child {
   margin-bottom: 0;
 }
+
+.dotted-box {
+  border-radius: 36px;
+  border: 1px dotted #8c7cf7;
+  padding: 12px;
+}
+
+.dotted-box > * {
+  border-radius: 24px;
+}

@@ -91,7 +91,7 @@ export default function DocsVersionDropdownNavbarItem({
     links: items.map((item) => {
       return {
         label: `ink! ${item.label}`,
-        href: `${baseUrl}/${item.to.split('/').slice(2).join('/')}`,
+        href: `${baseUrl}/${item.to.split('/').slice(2).join('/')}`.slice(0, -1),
       }
     }),
   }
