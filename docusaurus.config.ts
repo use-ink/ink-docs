@@ -66,7 +66,7 @@ module.exports = {
             },
             current: {
               label: 'v5',
-              path: 'v5',
+              // path: 'v5',
               banner: 'none',
             },
             v4: {
@@ -114,12 +114,12 @@ module.exports = {
             from: '/ubator',
           },
         ],
-        createRedirects(existingPath) {
-          if (existingPath.includes('/docs/')) {
-            return [existingPath.replace('/docs/', '/docs/v5/')]
-          }
-          return undefined // Return a falsy value: no redirect created
-        },
+        // createRedirects(existingPath) {
+        //   if (existingPath.includes('/docs/')) {
+        //     return [existingPath.replace('/docs/', '/docs/v5/')]
+        //   }
+        //   return undefined // Return a falsy value: no redirect created
+        // },
       },
     ],
     async function tailwindPlugin() {
