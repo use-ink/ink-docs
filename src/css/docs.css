@@ -38,6 +38,7 @@
 
   --ifm-menu-link-padding-horizontal: 0px;
   --ifm-navbar-height: 80px;
+  --ifm-toc-padding-horizontal: 1rem;
 }
 
 [data-theme='dark'] {
