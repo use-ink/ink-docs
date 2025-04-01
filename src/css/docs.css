@@ -484,6 +484,7 @@ table.wallet-table * {
 
 .menu__list .menu__list {
   margin-top: 0 !important;
+  border-top: 1px solid #8c7cf71a;
 }
 
 .table-of-contents__link {
@@ -530,6 +531,14 @@ ul.menu__list li a {
   margin-top: 0.4rem !important;
 }
 
+.theme-doc-sidebar-item-link-level-2.menu__list-item {
+  margin-top: 0rem !important;
+}
+
+.theme-doc-sidebar-item-link-level-2.menu__list-item:hover .menu__link {
+  color: rgb(189, 130, 253) !important;
+}
+
 /* first level menu */
 [data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > div > .menu__link {
   background: linear-gradient(90deg, rgba(140, 124, 247, 0.06) 0%, rgba(255, 255, 255, 0) 84.6847%);
@@ -539,10 +548,15 @@ ul.menu__list li a {
   transform: translate3d(0px, 0, 0);
 }
 
+:not(.menu__list-item--collapsed) > .menu__link {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
 /* nested menu links */
 
 .theme-doc-sidebar-item-link-level-2.menu__list-item {
-  margin-top: 0rem !important;
+  border-radius: 0 !important;
 }
 
 .menu__link {
