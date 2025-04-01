@@ -170,108 +170,136 @@ export default function PageChains() {
           <h2 className="mb-2 text-[rgba(187,178,247,0.66)]">ink! (up to v5)</h2>
           <p className="font-[600] text-[18px] mb-1">In Production:</p>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/aleph-zero.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/astar.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/shiden.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/phala.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/pendulum.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/amplitude.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/krest.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/ternoa.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
+            <Link to="https://alephzero.org/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/aleph-zero.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://astar.network/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/astar.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://shiden.astar.network/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/shiden.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="http://phala.network/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/phala.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://pendulumchain.org/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/pendulum.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://pendulumchain.org/amplitude">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/amplitude.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://krest.peaq.network/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/krest.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://www.ternoa.network/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/ternoa.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
           </div>
           <hr className="my-10" />
           <p className="font-[600] text-[18px] mb-1">Testnet now — Mainnet soon!</p>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/t3rn.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/enjin.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/zeitgeist.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/peaq.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/bitcountry.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
-            <ImageContainer>
-              <img
-                src={useBaseUrl('/img/chains/yerba.svg')}
-                alt="chains"
-                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-              />
-            </ImageContainer>
+            <Link to="https://t3rn.io/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/t3rn.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://enjin.io/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/enjin.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://zeitgeist.pm/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/zeitgeist.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://www.peaq.network/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/peaq.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://bit.country/">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/bitcountry.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
+            <Link to="https://github.com/yerbatech">
+              <ImageContainer>
+                <img
+                  src={useBaseUrl('/img/chains/yerba.svg')}
+                  alt="chains"
+                  className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+                />
+              </ImageContainer>
+            </Link>
           </div>
           <hr className="my-10" />
           <p className="font-[600] text-[18px] mb-1">ink! Testnet</p>
