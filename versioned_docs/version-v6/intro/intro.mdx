@@ -2,7 +2,6 @@
 title: Welcome!
 hide_title: true
 slug: /
-hide_table_of_contents: true
 ---
 
 <head>
@@ -18,11 +17,7 @@ hide_table_of_contents: true
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<br />
-
-<center>
-    <img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" width="800" style={{ marginBottom: 10 }} />
-</center>
+<img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
 
 ## Introduction
 
@@ -84,51 +79,46 @@ $ cargo contract call --suri //Alice --contract 0x… --message flip -x
 
 ## Smart Contract Examples
 
-<div className="row">
-    <div className="col text--center">
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    <div class="bubble-box [&_p]:!mb-0">
         <a href="https://github.com/use-ink/ink-examples/tree/main/flipper"><img src={useBaseUrl('/img/icons/flipper.svg')} width="100" /></a>
-        <p>
+        <p class="mb-0 text-center">
             Our "Hello, World!".<br/>
             <a href="https://github.com/use-ink/ink-examples/tree/main/flipper">» view example</a>
         </p>
     </div>
-    <div className="col text--center">
+    <div class="bubble-box [&_p]:!mb-0">
         <a href="https://github.com/use-ink/ink-examples/tree/main/erc20"><img src={useBaseUrl('/img/icons/erc20.svg')} width="100" /></a>
-        <p>
+        <p class="text-center text-red-500">
             An ERC-20 implementation.<br/>
             <a href="https://github.com/use-ink/ink-examples/tree/main/erc20">» view example</a>
         </p>
     </div>
-    <div className="col text--center">
+    <div class="bubble-box [&_p]:!mb-0">
         <a href="https://github.com/use-ink/ink-examples/tree/main/erc721"><img src={useBaseUrl('/img/icons/nft.svg')} width="100" /></a>
-        <p>
+        <p class="text-center">
             <a href="https://github.com/use-ink/ink-examples/tree/main/erc721">» view ERC-721</a>
             <br/>
             <a href="https://github.com/use-ink/ink-examples/tree/main/erc1155">» view ERC-1155</a>
         </p>
     </div>
-</div>
-
-<br />
-
-<div className="row">
-    <div className="col text--center">
+    <div class="bubble-box [&_p]:!mb-0">
         <a href="https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts"><img src={useBaseUrl('/img/icons/upgradable.svg')} width="100" /></a>
-        <p>
+        <p class="text-center">
             An upgradeable contract.<br/>
             <a href="https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts">» view example</a>
         </p>
     </div>
-    <div className="col text--center">
+    <div class="bubble-box [&_p]:!mb-0">
         <a href="https://github.com/use-ink/ink-examples/tree/main/multisig"><img src={useBaseUrl('/img/icons/multisig.svg')} width="100" /></a>
-        <p>
+        <p class="text-center">
             A multi-signature wallet.<br/>
             <a href="https://github.com/use-ink/ink-examples/tree/main/multisig">» view example</a>
         </p>
     </div>
-    <div className="col text--center">
+    <div class="bubble-box [&_p]:!mb-0">
         <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension"><img src={useBaseUrl('/img/icons/rand-extension.svg')} width="100" /></a>
-        <p>
+        <p class="text-center">
             Allow runtime access.<br/>
             <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension">» view example</a>
         </p>

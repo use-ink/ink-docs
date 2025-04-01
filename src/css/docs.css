@@ -39,6 +39,9 @@
   --ifm-menu-link-padding-horizontal: 0px;
   --ifm-navbar-height: 80px;
   --ifm-toc-padding-horizontal: 1rem;
+
+  --ifm-link-color: rgb(224, 191, 255);
+  --ifm-link-hover-color: rgb(189, 130, 253);
 }
 
 [data-theme='dark'] {
@@ -419,7 +422,7 @@ table.wallet-table * {
   margin-bottom: 20px;
 }
 
-.theme-doc-markdown img:first-of-type {
+.theme-doc-markdown > img:first-of-type {
   @apply mt-4;
 }
 
@@ -437,6 +440,10 @@ table.wallet-table * {
 
 [class^='docMainContainer_'] {
   @apply lg:!pl-3;
+}
+
+[class^='docMainContainer_'] a {
+  @apply underline;
 }
 
 .theme-doc-sidebar-container {
@@ -504,6 +511,7 @@ table.wallet-table * {
   border-color: transparent;
   padding: 8px;
   border-radius: 8px;
+  text-decoration: none !important;
 }
 .table-of-contents__link--active,
 .table-of-contents__link:hover {
@@ -779,5 +787,3 @@ details [class^='collapsibleContent_'] {
 .admonition-wrap-color > div {
   background: #bd82fd33 !important;
 }
-
-/** Custom usable classes **/
