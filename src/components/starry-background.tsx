@@ -2,70 +2,94 @@
 
 import React, { useEffect, useRef } from 'react'
 
-function generateStarPath(count: number): string {
-  return Array.from({ length: count }, () => {
-    const x = Math.random() * 500
-    const y = Math.random() * 500
-    const radius = (Math.floor(Math.random() * 3) + 1) / 2 // Random radius between 0.5-1.5
-    return `M ${x} ${y} m -${radius} 0 a ${radius} ${radius} 0 1 0 ${radius * 2} 0 a ${radius} ${radius} 0 1 0 -${radius * 2} 0`
-  }).join(' ')
+interface Star {
+  x: number
+  y: number
+  radius: number
+  opacity: number
+  speed: number
 }
 
 export function StarryBackground() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    function handleScroll() {
-      if (!containerRef.current) return
-      requestAnimationFrame(() => {
-        containerRef.current?.style.setProperty('--scroll', `${window.scrollY}px`)
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const dpr = window.devicePixelRatio || 1
+    const updateCanvasSize = () => {
+      canvas.width = window.innerWidth * dpr
+      canvas.height = window.innerHeight * dpr
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerHeight}px`
+      ctx.scale(dpr, dpr)
+    }
+    updateCanvasSize()
+
+    const stars: Star[] = Array.from({ length: 100 }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      radius: Math.random() * 1.5 + 0.5,
+      opacity: Math.random() * 0.3 + 0.4,
+      speed: Math.random() * 0.2 + 0.1,
+    }))
+
+    let scrollY = 0
+    let rafId: number
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Draw stars
+      stars.forEach((star) => {
+        let y = star.y - scrollY * star.speed
+
+        // Wrap stars to bottom when they move off the top
+        if (y < 0) {
+          y = window.innerHeight + (y % window.innerHeight)
+        }
+
+        ctx.beginPath()
+        ctx.arc(star.x, y, star.radius, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`
+        ctx.fill()
       })
+
+      // Apply linear gradient mask
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height)
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 1)')
+      gradient.addColorStop(0.7, 'rgba(0, 0, 0, 0)')
+
+      ctx.globalCompositeOperation = 'destination-in'
+      ctx.fillStyle = gradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.globalCompositeOperation = 'source-over'
+
+      rafId = requestAnimationFrame(render)
+    }
+
+    function handleScroll() {
+      scrollY = window.scrollY
+    }
+
+    function handleResize() {
+      updateCanvasSize()
     }
 
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
+    render()
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
-  return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 overflow-hidden pointer-events-none"
-      style={{
-        mask: 'linear-gradient(150deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%) add',
-      }}
-    >
-      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-        <defs>
-          <pattern id="stars1" width="500" height="500" patternUnits="userSpaceOnUse">
-            <path d={generateStarPath(50)} fill="white" opacity="0.6" />
-          </pattern>
-          <pattern id="stars2" width="500" height="500" patternUnits="userSpaceOnUse">
-            <path d={generateStarPath(30)} fill="white" opacity="0.8" />
-          </pattern>
-          <pattern id="stars3" width="500" height="500" patternUnits="userSpaceOnUse">
-            <path d={generateStarPath(20)} fill="white" opacity="1" />
-          </pattern>
-        </defs>
-
-        <rect
-          width="100%"
-          height="100%"
-          fill="url(#stars1)"
-          style={{ transform: 'translateY(calc(var(--scroll) * 0.1))' }}
-        />
-        <rect
-          width="100%"
-          height="100%"
-          fill="url(#stars2)"
-          style={{ transform: 'translateY(calc(var(--scroll) * 0.2))' }}
-        />
-        <rect
-          width="100%"
-          height="100%"
-          fill="url(#stars3)"
-          style={{ transform: 'translateY(calc(var(--scroll) * 0.3))' }}
-        />
-      </svg>
-    </div>
-  )
+  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none" style={{ zIndex: -1 }} />
 }
