@@ -526,7 +526,7 @@ ul.menu__list li a {
   border-radius: 8px;
 }
 
-.menu__list-item:not(:first-child) {
+.theme-doc-sidebar-item-category-level-1.menu__list-item:not(:first-child) {
   margin-top: 0.4rem !important;
 }
 
@@ -540,6 +540,10 @@ ul.menu__list li a {
 }
 
 /* nested menu links */
+
+.theme-doc-sidebar-item-link-level-2.menu__list-item {
+  margin-top: 0rem !important;
+}
 
 .menu__link {
   transition: transform 0.3s ease-in-out;
