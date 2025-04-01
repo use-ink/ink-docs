@@ -79,22 +79,22 @@ export const footerLinks = [
     links: [
       {
         label: 'Docs',
-        href: '/docs',
+        href: '/docs/',
         icon: <FileText size={20} weight="fill" />,
       },
       {
         label: 'Tutorials',
-        href: '/tutorials',
+        href: '/tutorials/',
         icon: <Shapes size={20} weight="fill" />,
       },
       {
         label: 'Chains',
-        href: '/chains',
+        href: '/chains/',
         icon: <Link size={20} />,
       },
       {
         label: 'Projects',
-        href: '/projects',
+        href: '/projects/',
         icon: <PaintBrush size={20} weight="fill" />,
       },
     ],
@@ -104,17 +104,17 @@ export const footerLinks = [
     links: [
       {
         label: 'About',
-        href: '/about',
+        href: '/about/',
         icon: <Info size={20} weight="fill" />,
       },
       {
         label: 'Bounties',
-        href: '/bounties',
+        href: '/bounties/',
         icon: <Target size={20} weight="fill" />,
       },
       {
         label: 'Stories',
-        href: '/stories',
+        href: '/stories/',
         icon: <BookOpen size={20} weight="fill" />,
       },
       {
@@ -129,7 +129,7 @@ export const footerLinks = [
     links: [
       {
         label: 'ink!ubator',
-        href: '/inkubator',
+        href: '/inkubator/',
         icon: <CoinVertical size={20} weight="fill" />,
       },
       {
@@ -139,12 +139,12 @@ export const footerLinks = [
       },
       {
         label: 'Brand Assets',
-        href: '/brand-assets',
+        href: '/brand-assets/',
         icon: <Images size={20} weight="fill" />,
       },
       {
         label: 'FAQ',
-        href: '/docs/faq',
+        href: '/docs/faq/',
         icon: <Question size={20} weight="fill" />,
       },
     ],

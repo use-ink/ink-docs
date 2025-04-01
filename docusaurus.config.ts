@@ -105,23 +105,23 @@ module.exports = {
     },
   ],
   plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          {
-            to: '/inkubator',
-            from: '/ubator',
-          },
-        ],
-        // createRedirects(existingPath) {
-        //   if (existingPath.includes('/docs/')) {
-        //     return [existingPath.replace('/docs/', '/docs/v5/')]
-        //   }
-        //   return undefined // Return a falsy value: no redirect created
-        // },
-      },
-    ],
+    // [
+    //   '@docusaurus/plugin-client-redirects',
+    //   {
+    //     redirects: [
+    //       {
+    //         to: '/inkubator',
+    //         from: '/ubator',
+    //       },
+    //     ],
+    //     // createRedirects(existingPath) {
+    //     //   if (existingPath.includes('/docs/')) {
+    //     //     return [existingPath.replace('/docs/', '/docs/v5/')]
+    //     //   }
+    //     //   return undefined // Return a falsy value: no redirect created
+    //     // },
+    //   },
+    // ],
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
