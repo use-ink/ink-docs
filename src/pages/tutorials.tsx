@@ -90,7 +90,7 @@ export default function PageTutorials() {
         </div>
         <div className="flex flex-col items-center justify-center gap-4 my-16 md:flex-row">
           <p className="m-0">Not seeing a tutorial you wish we offered?</p>
-          <Link href="https://github.com/paritytech/ink-tutorials/issues" className="text-blue-500">
+          <Link href="https://t.me/inkathon" className="text-blue-500">
             <Button size="lg" variant="secondary">
               Request a topic
             </Button>

@@ -153,39 +153,39 @@ export const footerLinks = [
 
 export const tutorials = [
   {
-    image: 'img/title/balloons-1.svg',
+    image: 'img/title/heart.svg',
     title: 'Creating an ink! Project',
     description: 'Learn how to get started with ink! and build your first contract',
-    link: '/tutorials/demo',
-  },
-  {
-    image: 'img/title/balloons-2.svg',
-    title: 'Compiling Your Contract',
-    description: 'Learn how to compile your contract',
-    link: '/tutorials/demo',
-  },
-  {
-    image: 'img/title/blockchain-fork.svg',
-    title: 'Running a Substrate Node with a very long title that will be longer than two lines and be truncated',
-    description: 'Learn how to run a Substrate node',
-    link: '/tutorials/demo',
+    link: 'docs/v5/getting-started/creating-an-ink-project',
   },
   {
     image: 'img/title/cargo-contract.svg',
+    title: 'Compiling Your Contract',
+    description: 'Learn how to compile your contract',
+    link: 'docs/v5/getting-started/building-your-contract',
+  },
+  {
+    image: 'img/title/substrate.svg',
+    title: 'Running a Substrate Node with a very long title that will be longer than two lines and be truncated',
+    description: 'Learn how to run a Substrate node',
+    link: 'docs/v5/getting-started/running-substrate',
+  },
+  {
+    image: 'img/title/rocket.svg',
     title: 'Deploying Your Contract',
     description: 'Learn how to deploy your contract',
-    link: '/tutorials/demo',
+    link: 'docs/v5/getting-started/deploy-your-contract',
   },
   {
-    image: 'img/title/blockchain-fork.svg',
+    image: 'img/title/frontend.svg',
     title: 'How to Call Your Contract',
     description: 'Learn how to call your contract',
-    link: '/tutorials/demo',
+    link: 'docs/v5/getting-started/calling-your-contract',
   },
   {
-    image: 'img/title/gas.svg',
+    image: 'img/title/magnifying-glass.svg',
     title: 'How to Troubleshoot',
     description: 'Learn how to troubleshoot your contract',
-    link: '/tutorials/demo',
+    link: 'docs/v5/getting-started/troubleshooting',
   },
 ]

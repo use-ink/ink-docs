@@ -23,7 +23,7 @@ export default function NavbarLogo(): ReactNode {
         </div>
       </div>
       <div className="flex flex-row items-center gap-2">
-        <Link to={`${baseUrl}docs`} className="no-underline hover:no-underline">
+        <Link to={`${baseUrl}docs`} className="hidden no-underline hover:no-underline sm:block">
           <code className="text-[14px] rounded-full px-[5.8px] py-[1.6px] bg-[#8c7cf726] border-[#8c7cf71a] text-[#cac2ff]">
             /docs
           </code>
