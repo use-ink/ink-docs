@@ -15,11 +15,14 @@ export function SectionHero() {
         <MainCta
           classNames={{
             container: 'h-full',
+            textWrapper: 'lg:w-[500px]',
           }}
           notice={
             <a
               className="flex flex-row items-center gap-2 !text-[#ffc249] hover:!text-[rgb(189,130,253)] justify-center lg:justify-start pointer-events-auto"
               href="https://github.com/use-ink/ink"
+              target="_blank"
+              rel="noreferrer"
             >
               <Star size={16} weight="fill" className="inline animate-flip" />
               <AnimatedText text="1.4K+ stars on GitHub!" element="span" className="text-[16px] font-[600]" />
@@ -44,12 +47,12 @@ export function SectionHero() {
           }
           media={
             <motion.div
-              initial={{ opacity: 0, y: -100, rotateY: 90 }}
-              animate={{ opacity: 1, y: 0, rotateY: 0 }}
+              initial={{ opacity: 0, y: -100, x: 10 }}
+              animate={{ opacity: 1, y: -10, x: 10 }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}
               className="w-full h-full px-4"
             >
-              {/* <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px]">
+              <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px] scale-100 lg:scale-125">
                 <RiveAnimation
                   src="animations/Hero.riv"
                   autoplay={true}
@@ -60,8 +63,8 @@ export function SectionHero() {
                     })
                   }
                 />
-              </div> */}
-              <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" />
+              </div>
+              {/* <Hero style={{ filter: 'drop-shadow(0 10px 10px #0003' }} className=" animate-float" /> */}
             </motion.div>
           }
         />
