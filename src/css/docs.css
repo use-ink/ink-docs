@@ -430,7 +430,11 @@ table.wallet-table * {
 }
 
 .menu {
-  @apply !px-6 !pt-6 text-sm;
+  @apply !pl-6 !pr-8 !pt-6 text-sm;
+}
+
+[class^='docMainContainer_'] {
+  @apply lg:!pl-3;
 }
 
 .theme-doc-sidebar-container {
