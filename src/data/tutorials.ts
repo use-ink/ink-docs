@@ -13,7 +13,7 @@ export const tutorials = [
   },
   {
     image: 'img/title/substrate.svg',
-    title: 'Running a Substrate Node with a very long title that will be longer than two lines and be truncated',
+    title: 'Running a Substrate Node',
     description: 'Learn how to run a Substrate node',
     link: 'docs/getting-started/running-substrate',
   },
