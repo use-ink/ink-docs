@@ -27,6 +27,23 @@ const head = (
   </>
 )
 
+const badges = [
+  {
+    name: 'Built with ink!',
+    markdown:
+      '[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge.svg)](https://github.com/use-ink/ink)',
+    flatMarkdown:
+      '[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge_flat.svg)](https://github.com/use-ink/ink)',
+  },
+  {
+    name: 'Built for ink!',
+    markdown:
+      '[![Built for ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink.svg)](https://github.com/use-ink/ink)',
+    flatMarkdown:
+      '[![Built for ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink-flat.svg)](https://github.com/use-ink/ink)',
+  },
+]
+
 export default function PageAssets() {
   const copyToClipboard = async (markdown: string) => {
     try {
@@ -93,14 +110,14 @@ export default function PageAssets() {
             <h2 className="!text-[21px] font-montserrat !font-[600] text-[rgb(189,130,253)]">Squink Mascot</h2>
             <div className="rounded-xl">
               <img
-                src={useBaseUrl('img/stickers/ink-stickers-2022.svg')}
+                src={useBaseUrl('img/stickers/ink-stickers.svg')}
                 alt="ink! stickers"
                 className="w-full h-full rounded-xl"
               />
             </div>
             <p>
               Download here:{' '}
-              <a href={useBaseUrl('img/stickers/ink-stickers-2022.svg')} download>
+              <a href={useBaseUrl('img/stickers/ink-stickers.svg')} download>
                 <code>ink-stickers.svg</code>
               </a>
               .
@@ -122,18 +139,23 @@ export default function PageAssets() {
                     'transition-all duration-300 cursor-pointer',
                     'hover:bg-[rgba(19,17,28,0.66)]',
                   )}
-                  onClick={() =>
-                    copyToClipboard(
-                      '[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge.svg)](https://github.com/use-ink/ink)',
-                    )
-                  }
+                  onClick={() => copyToClipboard(badges[0].markdown)}
                   role="button"
                   tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      copyToClipboard(badges[0].markdown)
+                    }
+                  }}
                 >
-                  [![Built with
-                  ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge.svg)](https://github.com/use-ink/ink)
+                  {badges[0].markdown}
                 </div>
-                <Button size="sm" variant="ghost" className="p-0 text-[rgb(189,130,253)]" onClick={copyToClipboard}>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="p-0 text-[rgb(189,130,253)]"
+                  onClick={() => copyToClipboard(badges[0].markdown)}
+                >
                   copy
                 </Button>
               </div>
@@ -149,26 +171,22 @@ export default function PageAssets() {
                     'transition-all duration-300 cursor-pointer',
                     'hover:bg-[rgba(19,17,28,0.66)]',
                   )}
-                  onClick={() =>
-                    copyToClipboard(
-                      '[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge.svg)](https://github.com/use-ink/ink)',
-                    )
-                  }
+                  onClick={() => copyToClipboard(badges[0].flatMarkdown)}
                   role="button"
                   tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      copyToClipboard(badges[0].flatMarkdown)
+                    }
+                  }}
                 >
-                  [![Built with
-                  ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge_flat.svg)](https://github.com/use-ink/ink)
+                  {badges[0].flatMarkdown}
                 </div>
                 <Button
                   size="sm"
                   variant="ghost"
                   className="p-0 text-[rgb(189,130,253)]"
-                  onClick={() =>
-                    copyToClipboard(
-                      '[![Built with ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/badge_flat.svg)](https://github.com/use-ink/ink)',
-                    )
-                  }
+                  onClick={() => copyToClipboard(badges[0].flatMarkdown)}
                 >
                   copy
                 </Button>
@@ -191,26 +209,22 @@ export default function PageAssets() {
                     'transition-all duration-300 cursor-pointer',
                     'hover:bg-[rgba(19,17,28,0.66)]',
                   )}
-                  onClick={() =>
-                    copyToClipboard(
-                      '[![Built for ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink.svg)](https://github.com/use-ink/ink)',
-                    )
-                  }
+                  onClick={() => copyToClipboard(badges[1].markdown)}
                   role="button"
                   tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      copyToClipboard(badges[1].markdown)
+                    }
+                  }}
                 >
-                  [![Built for
-                  ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink.svg)](https://github.com/use-ink/ink)
+                  {badges[1].markdown}
                 </div>
                 <Button
                   size="sm"
                   variant="ghost"
                   className="p-0 text-[rgb(189,130,253)]"
-                  onClick={() =>
-                    copyToClipboard(
-                      '[![Built for ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink.svg)](https://github.com/use-ink/ink)',
-                    )
-                  }
+                  onClick={() => copyToClipboard(badges[1].markdown)}
                 >
                   copy
                 </Button>
@@ -227,26 +241,22 @@ export default function PageAssets() {
                     'transition-all duration-300 cursor-pointer',
                     'hover:bg-[rgba(19,17,28,0.66)]',
                   )}
-                  onClick={() =>
-                    copyToClipboard(
-                      '[![Built for ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink-flat.svg)](https://github.com/use-ink/ink)',
-                    )
-                  }
+                  onClick={() => copyToClipboard(badges[1].flatMarkdown)}
                   role="button"
                   tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      copyToClipboard(badges[1].flatMarkdown)
+                    }
+                  }}
                 >
-                  [![Built for
-                  ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink-flat.svg)](https://github.com/use-ink/ink)
+                  {badges[1].flatMarkdown}
                 </div>
                 <Button
                   size="sm"
                   variant="ghost"
                   className="p-0 text-[rgb(189,130,253)]"
-                  onClick={() =>
-                    copyToClipboard(
-                      '[![Built for ink!](https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink-flat.svg)](https://github.com/use-ink/ink)',
-                    )
-                  }
+                  onClick={() => copyToClipboard(badges[1].flatMarkdown)}
                 >
                   copy
                 </Button>
