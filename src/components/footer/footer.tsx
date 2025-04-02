@@ -27,7 +27,7 @@ export function Footer({ className }: { className?: string }) {
   return (
     <footer
       className={clsx(
-        'grid w-full z-10 -mt-[40vh] lg:-mt-0 pb-12 pt-24 px-8 lg:pr-8 lg:pl-0 overflow-hidden',
+        'grid w-full z-10 -mt-[300px] lg:-mt-0 pb-12 pt-24 px-8 lg:pr-8 lg:pl-0 overflow-hidden',
         className,
       )}
       style={{
