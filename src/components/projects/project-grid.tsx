@@ -3,7 +3,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 import { cn } from '../../util'
 import { motion } from 'framer-motion'
-import { projects } from './projects'
+import { projects } from '../../data/projects'
 import { ImageContainer } from '../image-container'
 import Link from '@docusaurus/Link'
 import { ArrowUpRight } from '@phosphor-icons/react'

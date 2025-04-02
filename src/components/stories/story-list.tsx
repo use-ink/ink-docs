@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import useBaseUrl from '@docusaurus/useBaseUrl'
-import { stories } from './stories'
+import { stories } from '../../data/stories'
 import { cn } from '../../util'
 import { ImageContainer } from '../image-container'
 import { CTA } from '../cta'

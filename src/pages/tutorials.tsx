@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from './layout'
 import { ArrowCircleDown } from '@phosphor-icons/react/dist/ssr'
-import { tutorials } from '../config'
+import { tutorials } from '../data/tutorials'
 import { TutorialCard } from '../components/tutorials/tutorial-card'
 import { motion } from 'framer-motion'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Project } from './project-grid'
+import type { Project } from '../components/projects/project-grid'
 import Drink from '@site/static/img/projects/drink.svg'
 
 export const projects: Project[] = [

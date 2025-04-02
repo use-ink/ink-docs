@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story } from './story-list'
+import { Story } from '../components/stories/story-list'
 
 export const stories: Story[] = [
   {
