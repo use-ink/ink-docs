@@ -7,6 +7,7 @@ import { footerLinks } from '../../data/footer-links'
 import { ListItem } from '../list-item'
 import FooterArms from '@site/static/img/footer-arms.svg'
 import { useCurrentVersion } from '@site/src/hooks/use-current-version'
+import Link from '@docusaurus/Link'
 
 export function Footer({ className }: { className?: string }) {
   const currentVersion = useCurrentVersion()?.label
@@ -42,7 +43,9 @@ export function Footer({ className }: { className?: string }) {
             transition={{ duration: 2, ease: 'easeInOut' }}
             className="max-w-[500px] will-change-transform"
           >
-            <FooterArms className="w-full -ml-3 origin-left animate-up-down will-change-transform" />
+            <Link to={useBaseUrl('/')}>
+              <FooterArms className="w-full -ml-3 origin-left animate-up-down will-change-transform" />
+            </Link>
           </motion.div>
           <p className="text-[12px] text-gray-400 pl-8 lg:pl-16 mb-0">
             © use.ink {new Date().getFullYear()}. All rights reserved.
