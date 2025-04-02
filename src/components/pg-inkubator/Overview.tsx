@@ -28,11 +28,12 @@ export const Overview: React.FC = () => {
             <li
               key={title}
               className={classNames(
-                'rounded-xl md:p-6 p-4 border-solid border border-background-300 dark:border-background-700',
-                'backdrop-blur-md flex flex-col justify-between min-h-[180px]',
+                'flex items-center justify-center max-w-[300px] w-full h-auto rounded-[12px] border-[rgba(140,124,247,.15)]',
+                'border border-solid bg-[#241a38aa] !w-full !max-w-full p-8 backdrop-blur-sm',
+                'rounded-xl flex flex-col gap-8 !items-start',
               )}
             >
-              <img src={useBaseUrl(logo)} alt={title} className="w-10 mb-6" />
+              <img src={useBaseUrl(logo)} alt={title} className="w-10" />
               <h3 className="max-w-[180px] p-0 m-0">{title}</h3>
             </li>
           ))}
