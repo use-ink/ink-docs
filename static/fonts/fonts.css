@@ -18,12 +18,12 @@
   font-family: 'Freude';
   font-weight: 400;
   font-style: normal;
-  src: url('/static/fonts/Freude/Freude.eot');
+  src: url('/static/fonts/freude/Freude.eot');
   src:
-    url('/static/fonts/Freude/Freude.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Freude/Freude.woff') format('woff'),
-    url('/static/fonts/Freude/Freude.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Freude/Freude.woff') format('woff');
+    url('/static/fonts/freude/Freude.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/freude/Freude.woff') format('woff'),
+    url('/static/fonts/freude/Freude.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/freude/Freude.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
