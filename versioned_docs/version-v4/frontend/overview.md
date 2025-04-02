@@ -8,6 +8,14 @@ hide_title: true
 
 # Overview
 
+:::caution
+This page has not yet been updated to ink! v6.
+
+TODO @peterwht Please read this page and see what's still up to date.
+The idea was to no longer have tutorials on frontends here, but I would still keep
+some pointers around because it's such an obviously important topic.
+:::
+
 Now after you [wrote](../getting-started/creating.md), [compiled](../getting-started/compiling.md) and [deployed your smart contract](../getting-started/deploying.md), it is time to craft a user experience around it.
 
 This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
@@ -35,10 +43,6 @@ There are several levels of abstraction where you can start your journey creatin
 ### React and Next.js
 
 + [`inkathon`](https://github.com/scio-labs/inkathon) **(recommended)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
-
-### Examples
-
-For inspiration how to get started building your full stack dApp. Make sure to visit our [Smart Contracts Examples section](../examples/contracts.md) or [repository directly](https://github.com/use-ink/ink-examples). These examples not only offer the smart contract code but also have an accompanied frontend project. Checkout the `README.md` for details how to setup and run these frontend examples.
 
 ## Other Languages
 
