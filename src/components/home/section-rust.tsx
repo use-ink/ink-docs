@@ -6,7 +6,7 @@ import { MainCta } from './main-cta'
 import { Clouds } from './clouds'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
-import { Alignment, Layout } from '@rive-app/react-canvas'
+import { Alignment, Fit, Layout } from '@rive-app/react-canvas'
 
 export function SectionRust() {
   return (
@@ -44,6 +44,7 @@ export function SectionRust() {
                   layout={
                     new Layout({
                       alignment: Alignment.Center,
+                      fit: Fit.Contain,
                     })
                   }
                 />
