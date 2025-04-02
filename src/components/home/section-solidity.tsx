@@ -3,12 +3,11 @@ import Link from '@docusaurus/Link'
 
 import { Button } from '../ui/button'
 import { MainCta } from './main-cta'
-import { MagicWand, Star } from '@phosphor-icons/react'
+import { MagicWand } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
 import Solidity from '@site/static/img/solidity.svg'
 import MetaMask from '@site/static/img/metamask.svg'
 import clsx from 'clsx'
-import ShapeBlur from '@site/src/reactbits/Backgrounds/ShapeBlur/ShapeBlur'
 import { Clouds } from './clouds'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { BubbleContainer } from '../bubblecontainer'
@@ -31,17 +30,6 @@ export function SectionSolidity() {
             animations={['airship', 'head', 'tentacle']}
           />
         </div>
-      </div>
-      <div className="absolute top-0 left-0 w-full h-full">
-        {/* <ShapeBlur
-          variation={0}
-          pixelRatioProp={window.devicePixelRatio || 0.5}
-          shapeSize={1}
-          roundness={0.6}
-          borderSize={0.05}
-          circleSize={0.5}
-          circleEdge={1}
-        /> */}
       </div>
       <div className="container !max-w-[1000px] relative z-10 flex flex-col items-center justify-center">
         <BubbleContainer>
@@ -77,7 +65,7 @@ export function SectionSolidity() {
               <div className="relative w-[265px] h-[265px] scale-75 lg:scale-100">
                 <div
                   className={clsx(
-                    'absolute bottom-0 right-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] duration-500 p-2.5',
+                    'absolute bottom-0 right-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] shadow-[8px_8px_0px_0px_#6957de] rounded-[30px] duration-500 p-2.5',
                   )}
                   style={{
                     transform: 'rotate(30deg) skewX(-12deg) skewY(-12deg)',
@@ -91,7 +79,7 @@ export function SectionSolidity() {
                 </div>
                 <div
                   className={clsx(
-                    'absolute top-0 left-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] rounded-[30px] duration-500 p-2.5',
+                    'absolute top-0 left-0 z-0 h-fit w-fit flex items-center justify-center bg-[#8c7cf7] shadow-[8px_8px_0px_0px_#6957de] rounded-[30px] duration-500 p-2.5',
                   )}
                   style={{
                     transform: 'rotate(15deg) skewX(-15deg) skewY(-3deg)',
