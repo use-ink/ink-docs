@@ -29,7 +29,7 @@ export default function Layout(props: Props): ReactNode {
     <LayoutProvider>
       <PageMetadata title={title} description={description} />
       <Head>
-        <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/docs.png" />
+        <meta property="og:image" content="https://use.ink/img/opengraph/docs.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="ink! Documentation" />

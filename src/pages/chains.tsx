@@ -23,8 +23,8 @@ const head = (
       property="og:description"
       content="Information about blockchains hosting ink! smart contracts and their features."
     />
-    <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/chains.png" />
-    <meta property="og:url" content="https://niklasp.github.io/ink-docs/" />
+    <meta property="og:image" content="https://use.ink/img/opengraph/chains.png" />
+    <meta property="og:url" content="https://use.ink/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />
     <meta property="og:locale" content="en_US" />

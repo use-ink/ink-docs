@@ -12,7 +12,7 @@ const Inkubator = () => (
     <Head>
       <meta name="title" content={TITLE} />
       <meta name="description" content={DESCRIPTION} />
-      <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/home.png" />
+      <meta property="og:image" content="https://use.ink/img/opengraph/home.png" />
       <meta name="twitter:title" content={TITLE} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content="https://use.ink/img/twitter/inkubator-twitter.png" />

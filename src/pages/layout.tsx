@@ -12,8 +12,8 @@ const defaultHead = (
     <meta name="keywords" content="Smart contracts, Rust, Polkadot, PolkaVM, RISC-V" />
     <meta property="og:title" content="Smart Contracts on Polkadot in Rust | ink!" />
     <meta property="og:description" content="Build Rust-based smart contracts on Polkadot with ink!" />
-    <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/home.png" />
-    <meta property="og:url" content="https://niklasp.github.io/ink-docs/" />
+    <meta property="og:image" content="https://use.ink/img/opengraph/home.png" />
+    <meta property="og:url" content="https://use.ink/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />
     <meta property="og:locale" content="en_US" />

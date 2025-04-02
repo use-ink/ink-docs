@@ -22,8 +22,8 @@ const head = (
       property="og:description"
       content="ink! is the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM."
     />
-    <meta property="og:image" content="https://niklasp.github.io/ink-docs/img/opengraph/home.png" />
-    <meta property="og:url" content="https://niklasp.github.io/ink-docs/" />
+    <meta property="og:image" content="https://use.ink/img/opengraph/home.png" />
+    <meta property="og:url" content="https://use.ink/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ink!" />
     <meta property="og:locale" content="en_US" />
