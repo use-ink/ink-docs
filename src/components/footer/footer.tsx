@@ -6,8 +6,23 @@ import { GetSupport } from './get-support'
 import { footerLinks } from '../../config'
 import { ListItem } from '../list-item'
 import FooterArms from '@site/static/img/footer-arms.svg'
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 
 export function Footer({ className }: { className?: string }) {
+  const currentVersion = useCurrentVersion()?.label
+
+  const versionedFooterLinks = footerLinks.map((link) => {
+    return {
+      ...link,
+      links: link.links.map((link) => {
+        return {
+          ...link,
+          href: link.href?.replace('/docs', `/docs/${currentVersion ?? 'v5'}`),
+        }
+      }),
+    }
+  })
+
   return (
     <footer
       className={clsx('grid w-full pb-12 pt-24 mt-20 px-8 lg:pr-8 lg:pl-0 overflow-hidden', className)}
@@ -30,7 +45,7 @@ export function Footer({ className }: { className?: string }) {
             © use.ink {new Date().getFullYear()}. All rights reserved.
           </p>
         </div>
-        {footerLinks.map((link) => (
+        {versionedFooterLinks.map((link) => (
           <div className="flex flex-col gap-[10px]" key={link.title}>
             <h3
               className="font-montserrat text-[rgb(140,124,247)] mb-0 text-lg border-[#6057de] border-solid border-b border-x-0 border-t-0 font-[600] pb-2"
