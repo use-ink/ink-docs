@@ -52,7 +52,7 @@ export function SectionSolidity() {
             cta={
               <div className="flex flex-col justify-center gap-4 lg:justify-start md:flex-row md:gap-4">
                 <Link
-                  to="https://github.com/use-ink/ink-examples"
+                  to={'/docs/v6/background/solidity-metamask-compatibility'}
                   className="hover:scale-105 hover:-rotate-1 !transition-all duration-300"
                 >
                   <Button size="lg" variant="secondary">

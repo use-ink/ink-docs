@@ -116,8 +116,9 @@
       "standards/overview"
     ],
     "Technical Background": [
-      "background/why-rust",
+      "background/solidity-metamask-compat",
       "background/why-riscv",
+      "background/why-rust",
       "background/contracts-vs-rollups",
       "background/polkadot-sdk",
       "background/ink-vs-solidity",
