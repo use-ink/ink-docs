@@ -49,6 +49,7 @@ export default function PageAssets() {
     try {
       await navigator.clipboard.writeText(markdown)
     } catch (err) {
+      /* eslint-disable-next-line no-console */
       console.error('Failed to copy text: ', err)
     }
   }

@@ -33,7 +33,7 @@ export function SectionHero() {
             </a>
           }
           title="Build Rust-Based Smart Contracts"
-          description="Create, manage, and deploy smart contracts with ink!"
+          description="Build, test, and deploy smart contracts with ink!"
           cta={
             <div className="flex flex-col gap-3 md:flex-row">
               <Link

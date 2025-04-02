@@ -48,7 +48,9 @@ export default function PageTutorials() {
 
   return (
     <Layout className="container" head={head}>
-      <StarryBackground />
+      <div style={{ width: '100vw', height: '200vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
+        <StarryBackground />
+      </div>
       <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto text-center mt-[10vh]">
         <img
           src={useBaseUrl('/img/Constellation.svg')}

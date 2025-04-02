@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-
+import clsx from 'clsx'
 interface Star {
   x: number
   y: number
@@ -10,7 +10,7 @@ interface Star {
   speed: number
 }
 
-export function StarryBackground() {
+export function StarryBackground({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -91,5 +91,11 @@ export function StarryBackground() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none" style={{ zIndex: -1 }} />
+  return (
+    <canvas
+      ref={canvasRef}
+      className={clsx('absolute inset-0 pointer-events-none', className)}
+      style={{ zIndex: -1 }}
+    />
+  )
 }

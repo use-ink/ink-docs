@@ -38,7 +38,9 @@ const head = (
 export default function PageChains() {
   return (
     <Layout className="" head={head}>
-      <StarryBackground />
+      <div style={{ width: '100vw', height: '150vh', position: 'absolute', top: 0, left: 0 }}>
+        <StarryBackground />
+      </div>
       <div
         style={{
           mask: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%)',
