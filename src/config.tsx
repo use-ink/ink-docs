@@ -129,7 +129,7 @@ export const footerLinks = [
     links: [
       {
         label: 'ink!ubator',
-        href: '/inkubator/',
+        href: '/inkubator',
         icon: <CoinVertical size={20} weight="fill" />,
       },
       {
@@ -139,7 +139,7 @@ export const footerLinks = [
       },
       {
         label: 'Brand Assets',
-        href: '/brand-assets/',
+        href: '/brand-assets',
         icon: <Images size={20} weight="fill" />,
       },
       {
