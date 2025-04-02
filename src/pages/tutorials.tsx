@@ -48,14 +48,24 @@ export default function PageTutorials() {
 
   return (
     <Layout className="container" head={head}>
-      <div style={{ width: '100vw', height: '200vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
+      <div
+        style={{
+          width: '100vw',
+          height: '200vh',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          overflow: 'hidden',
+        }}
+      >
         <StarryBackground />
       </div>
       <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto text-center mt-[10vh]">
         <img
           src={useBaseUrl('/img/Constellation.svg')}
           alt="constellation"
-          className="w-[450px] h-[450px] absolute left-[2vw] lg:left-[18vw] top-10"
+          className="w-[246px] h-[246px] lg:w-[450px] lg:h-[450px] absolute left-[2vw] lg:left-[18vw] top-10"
         />
         <motion.div
           className="w-[246px] h-[246px] rotate-[25deg]"

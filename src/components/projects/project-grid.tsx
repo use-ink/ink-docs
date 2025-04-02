@@ -88,7 +88,7 @@ export default function ProjectGrid() {
                       className="flex flex-col items-center justify-center text-center text-white !no-underline"
                     >
                       <ArrowUpRight size={48} weight="bold" />
-                      <span className="text-[48px] font-freude !no-underline">Visit Website</span>
+                      <span className="text-[24px] md:text-[48px] font-freude !no-underline">Visit Website</span>
                     </Link>
                   </div>
                 </div>
