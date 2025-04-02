@@ -250,7 +250,7 @@ export default function PageAbout() {
               </h4>
               <p>
                 The{' '}
-                <a href="https://use.ink/inkubator/" target="_blank" rel="noreferrer">
+                <a href={useBaseUrl('/inkubator')} target="_blank" rel="noreferrer">
                   ink!ubator
                 </a>{' '}
                 is a community-driven funding program for advancing the ink! ecosystem. The first round of projects was
