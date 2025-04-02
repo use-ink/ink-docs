@@ -6,6 +6,7 @@ import { MainCta } from './main-cta'
 import WaterLine from '@site/static/img/water-line.svg'
 
 import Fish1 from '@site/static/img/fishes/Fish-29.svg'
+import Fish2 from '@site/static/img/fishes/Fish-21.svg'
 import { Layout, Alignment } from '@rive-app/react-canvas'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
@@ -13,11 +14,14 @@ import { RiveAnimation } from '../rive-animation'
 export function SectionRisc() {
   return (
     <section
-      className="relative flex flex-col items-center justify-center section-risc lg:h-[800px]"
+      className="relative flex flex-col items-center pt-28 lg:pt-0 justify-center section-risc lg:h-[800px]"
       style={{ background: 'linear-gradient(180deg,#7565da 0%,rgb(48,36,125) 51%)' }}
     >
-      <WaterLine className="absolute -top-4 md:-top-6 lg:-top-8 xl:-top-10 left-0 h-auto w-[100vw]" />
-      <Fish1 className="absolute top-20 left-0 w-[30px] h-[30px] animate-swim-right will-change-transform" />
+      <WaterLine className="absolute left-0 w-full h-auto -top-4 md:-top-6 lg:-top-8 xl:-top-10" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <Fish1 className="absolute top-4 right-20 w-[30px] h-[30px] animate-swim-left will-change-transform" />
+        <Fish2 className="absolute top-10 left-0 w-[100px] h-[60px] animate-swim-right will-change-transform" />
+      </div>
       <div className="container relative z-10 flex flex-col items-center justify-center">
         <BubbleContainer>
           <MainCta

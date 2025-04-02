@@ -8,18 +8,23 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
 import { useCurrentVersion } from '@site/src/hooks/use-current-version'
+import Fish1 from '@site/static/img/fishes/Fish-11.svg'
+
 export function SectionComposable() {
   const currentVersion = useCurrentVersion()
 
   return (
     <section
-      className="relative lg:h-[810px] overflow-visible"
+      className="relative lg:h-[810px] overflow-visible pt-16 lg:pt-0"
       style={{
         background:
           'linear-gradient(180deg,#2f247d 64%,var(--token-420fbc77-dab0-404b-b97a-ded7df998265, rgb(19, 15, 33)) 70%)',
       }}
     >
-      <div className="container relative z-10 flex flex-col items-center justify-center overflow-hidden mb-72">
+      <div className="absolute left-0 w-full h-full overflow-hidden -top-12">
+        <Fish1 className="absolute left-0 w-[110px] h-[110px] animate-swim-right will-change-transform" />
+      </div>
+      <div className="container relative z-10 flex flex-col items-center justify-center pb-48 overflow-hidden mb-72">
         <BubbleContainer>
           <MainCta
             classNames={{
@@ -54,11 +59,7 @@ export function SectionComposable() {
         // style={{ mask: 'linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%) add' }}
       >
         {/* <DeepSea className="w-full h-[810px] overflow-visible absolute bottom-0 left-0" /> */}
-        <img
-          src={useBaseUrl('/img/footer.svg')}
-          className="object-cover object-bottom w-full h-full titleSpace"
-          alt="Deep Sea"
-        />
+        <img src={useBaseUrl('/img/footer.svg')} className="object-cover object-bottom w-full h-full" alt="Deep Sea" />
         {/* <img
           decoding="async"
           loading="lazy"
