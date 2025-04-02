@@ -567,14 +567,22 @@ ul.menu__list li a {
   transform: translate3d(0px, 0, 0);
 }
 
-:not(.menu__list-item--collapsed) > .menu__link {
+.menu__list-item > div > .menu__link {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
+}
+
+.menu__list-item--collapsed > div > .menu__link {
+  transition: border-radius 0.5s ease-in-out;
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
 }
 
 /* nested menu links */
 
 .theme-doc-sidebar-item-link-level-2.menu__list-item {
+  transition: border-radius 0.5s ease-in-out;
   border-radius: 0 !important;
 }
 

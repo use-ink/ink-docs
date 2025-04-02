@@ -94,7 +94,7 @@ export default function DocsVersionDropdownNavbarItem({
       return {
         label: (
           <div className="flex items-center text-white">
-            ink! {item.label}
+            <span>ink! {item.label}</span>
             {currentVersion === item.label && (
               <span className="px-2 py-0.5 ml-4 text-black bg-white rounded-[8px] text-[12px]">latest</span>
             )}
@@ -106,16 +106,16 @@ export default function DocsVersionDropdownNavbarItem({
   }
   return (
     <>
-      {/* <DropdownNavbarItem
+      <DropdownNavbarItem
         {...props}
         mobile={mobile}
         label={dropdownLabel}
         to={dropdownTo}
         items={items}
         isActive={dropdownActiveClassDisabled ? () => false : undefined}
-        className="block lg:hidden"
-      /> */}
-      <NavItem item={versionItem} className="hidden lg:block" dropdownClassName="bg-[#171233f3]" />
+        className="block lg:!hidden"
+      />
+      <NavItem item={versionItem} className="hidden w-auto lg:block" dropdownClassName="bg-[#171233f3] w-[180px]" />
     </>
   )
 }

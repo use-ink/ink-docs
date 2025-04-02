@@ -33,7 +33,12 @@ export default function NavbarLogo(): ReactNode {
             /docs
           </code>
         </Link>
-        <Link to="https://polkadot.network" className="hidden no-underline hover:no-underline sm:block">
+        <a
+          href="https://polkadot.com"
+          className="hidden no-underline hover:no-underline sm:block"
+          target="_blank"
+          rel="noreferrer"
+        >
           <motion.div
             className="z-10 flex-row items-center gap-2 mt-1 ml-2"
             initial={{ opacity: 0 }}
@@ -43,7 +48,7 @@ export default function NavbarLogo(): ReactNode {
             <span className="block text-xs text-[#cac2ff]">Powered by</span>
             <PolkadotLogo className="w-auto h-[20px]" />
           </motion.div>
-        </Link>
+        </a>
       </div>
     </div>
   )
