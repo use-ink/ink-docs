@@ -34,7 +34,7 @@ For contract developers this means they can use ink! for writing smart contracts
 
 It's not hard to add new languages. There just needs to be a compiler for the language down to WebAssembly, then it's possible to implement the API of `pallet-contracts`. This API at the moment consists of about 50 functions for anything a smart contract may desire: storage access, cryptographic functionality, environmental information like block numbers, access to functions for getting random numbers or self-terminate the contract, etc. Not all of those have to be implemented in the language ‒ the ink! "Hello, World!" requires just six API functions. The following schema depicts this relationship:
 
-![](/img/ink-substrate.png)
+![](/img/ink-polkavm-riscv-solidity.svg)
 
 We think this design is more future-proof than some architectures found in competing ecosystems. There is no tight coupling between language and execution environment. WebAssembly is an industry standard and a multitude of programming languages can nowadays be compiled down to WebAssembly. If in, say ten years time, researchers come up with an innovative language for writing smart contracts (or a subset of an existing language) then as long as there is a WebAssembly compiler it will be easy to make this language compatible with `pallet-contracts`.
 

@@ -30,6 +30,8 @@ There are several levels of abstraction where you can start your journey creatin
 
 * [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(recommended)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
 
+- [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(recommended)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
+
 ### React
 
 - [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(recommended)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.

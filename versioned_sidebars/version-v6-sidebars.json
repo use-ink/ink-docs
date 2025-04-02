@@ -30,10 +30,7 @@
       {
         "type": "category",
         "label": "Metadata",
-        "items": [
-          "basics/metadata/ink-format",
-          "basics/metadata/solidity-format"
-        ],
+        "items": ["basics/metadata/ink-format", "basics/metadata/solidity-format"],
         "link": {
           "type": "doc",
           "id": "basics/metadata/metadata"
@@ -51,10 +48,7 @@
       {
         "type": "category",
         "label": "Testnet",
-        "items": [
-          "testing/testnet/overview",
-          "testing/testnet/faucet"
-        ],
+        "items": ["testing/testnet/overview", "testing/testnet/faucet"],
         "link": {
           "type": "doc",
           "id": "testing/testnet/overview"
@@ -109,12 +103,8 @@
         ]
       }
     ],
-    "Frontend Development": [
-      "frontend/overview"
-    ],
-    "Standards": [
-      "standards/overview"
-    ],
+    "Frontend Development": ["frontend/overview"],
+    "Standards": ["standards/overview"],
     "Technical Background": [
       "background/why-rust",
       "background/why-riscv",
