@@ -246,9 +246,8 @@ button:disabled {
 }
 
 .navbar__search-input {
-  @apply rounded-full;
+  @apply rounded-full lg:w-[15rem] lg:h-[2.5rem];
   font-size: 14px;
-  width: 15rem;
   height: 2.5rem;
   box-shadow:
     0 12px 12px #0000001f,

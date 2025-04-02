@@ -15,6 +15,7 @@ import type { GlobalVersion, GlobalDoc, ActiveDocContext } from '@docusaurus/plu
 import { NavItem, NavItemProps } from '@site/src/components/nav/nav-item'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { useCurrentVersion } from '@site/src/hooks/use-current-version'
+import { cn } from '@site/src/util'
 function getVersionMainDoc(version: GlobalVersion): GlobalDoc {
   return version.docs.find((doc) => doc.id === version.mainDocId)!
 }
@@ -113,7 +114,9 @@ export default function DocsVersionDropdownNavbarItem({
         to={dropdownTo}
         items={items}
         isActive={dropdownActiveClassDisabled ? () => false : undefined}
-        className="block lg:!hidden"
+        className={cn('block lg:!hidden', {
+          '!hidden': !mobile,
+        })}
       />
       <NavItem item={versionItem} className="hidden w-auto lg:block" dropdownClassName="bg-[#171233f3] w-[180px]" />
     </>
