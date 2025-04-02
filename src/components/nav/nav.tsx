@@ -19,7 +19,7 @@ import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 export function Navbar({
   className,
   cta = 'Start Building',
-  ctaLink = '/docs',
+  ctaLink = '',
   children,
   childrenRight,
 }: {
@@ -29,11 +29,11 @@ export function Navbar({
   children?: React.ReactNode
   childrenRight?: React.ReactNode
 }) {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const ctaHref = ctaLink.includes('http') ? ctaLink : useBaseUrl(ctaLink)
-  const logo = useBaseUrl('/img/text-white.svg')
-
   const currentVersion = useCurrentVersion()
+
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const ctaHref = ctaLink.includes('http') ? ctaLink : useBaseUrl(`docs/${currentVersion?.label ?? 'v5'}${ctaLink}`)
+  const logo = useBaseUrl('/img/text-white.svg')
 
   const versionedNavLinks = navLinks.map((item) => {
     return {
