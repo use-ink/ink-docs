@@ -112,6 +112,7 @@ module.exports = {
         flip: 'flip 3s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite',
         'swim-left': 'swim-left 100s linear infinite',
         'swim-right': 'swim-right 140s linear infinite',
+        'swim-right-slow': 'swim-right 190s linear infinite',
         'swim-left-right': 'swim-left-right 100s linear infinite',
         swim: 'swim 10s ease-in-out infinite',
         'up-down': 'up-down 15s ease-in-out infinite',

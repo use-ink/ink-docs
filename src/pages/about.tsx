@@ -224,6 +224,7 @@ export default function PageAbout() {
                 >
                   Good First Issues
                 </a>
+                .
               </p>
             </div>
           </div>
@@ -264,7 +265,7 @@ export default function PageAbout() {
                 .
               </p>
               <p>
-                Applications for the second round are currently open. The best way to follow this is to watch the
+                Applications for the second round are currently open. The best way to follow this is to watch the{' '}
                 <a href="https://github.com/use-inkubator/Ecosystem-Grants" target="_blank" rel="noreferrer">
                   ink!ubator 2.0 repository on GitHub
                 </a>

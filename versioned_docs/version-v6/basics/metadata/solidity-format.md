@@ -14,3 +14,4 @@ This page has not yet been written for ink! v6.
 TODO @davidsemakula
 :::
 
+## MetaMask Compatibility

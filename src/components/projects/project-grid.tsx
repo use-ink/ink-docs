@@ -3,7 +3,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 
 import { cn } from '../../util'
 import { motion } from 'framer-motion'
-import { projects } from './projects'
+import { projects } from '../../data/projects'
 import { ImageContainer } from '../image-container'
 import Link from '@docusaurus/Link'
 import { ArrowUpRight } from '@phosphor-icons/react'
@@ -88,7 +88,7 @@ export default function ProjectGrid() {
                       className="flex flex-col items-center justify-center text-center text-white !no-underline"
                     >
                       <ArrowUpRight size={48} weight="bold" />
-                      <span className="text-[48px] font-freude !no-underline">Visit Website</span>
+                      <span className="text-[24px] md:text-[48px] font-freude !no-underline">Visit Website</span>
                     </Link>
                   </div>
                 </div>

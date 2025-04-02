@@ -7,7 +7,11 @@ import TentaclesLeft from '@site/static/img/home/Tentacles_l.svg'
 import TentaclesRight from '@site/static/img/home/Tentacles_r.svg'
 import { Clouds } from './clouds'
 import { BubbleContainer } from '../bubblecontainer'
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
+
 export function SectionInterop() {
+  const currentVersion = useCurrentVersion()
+
   return (
     <section className="relative flex flex-col items-center justify-center w-full overflow-hidden section-interop md:h-[820px]">
       <Clouds />
@@ -27,7 +31,7 @@ export function SectionInterop() {
             level="h2"
             cta={
               <div className="flex flex-row gap-4 pointer-events-auto">
-                <Link to="/docs" className="">
+                <Link to={`/docs/${currentVersion?.label ?? 'v5'}`} className="">
                   <Button
                     variant="secondary"
                     size="lg"

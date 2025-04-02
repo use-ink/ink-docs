@@ -1,37 +1,33 @@
-import React, {type ReactNode, useState} from 'react';
-import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
-import {
-  useAnnouncementBar,
-  useScrollPosition,
-} from '@docusaurus/theme-common/internal';
-import {translate} from '@docusaurus/Translate';
-import DocSidebarItems from '@theme/DocSidebarItems';
-import type {Props} from '@theme/DocSidebar/Desktop/Content';
+import React, { type ReactNode, useState } from 'react'
+import clsx from 'clsx'
+import { ThemeClassNames } from '@docusaurus/theme-common'
+import { useAnnouncementBar, useScrollPosition } from '@docusaurus/theme-common/internal'
+import { translate } from '@docusaurus/Translate'
+import DocSidebarItems from '@theme/DocSidebarItems'
+import type { Props } from '@theme/DocSidebar/Desktop/Content'
 
-import styles from './styles.module.css';
+import styles from './styles.module.css'
+import Link from '@docusaurus/Link'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import { CaretDoubleLeft } from '@phosphor-icons/react/dist/ssr'
 
 function useShowAnnouncementBar() {
-  const {isActive} = useAnnouncementBar();
-  const [showAnnouncementBar, setShowAnnouncementBar] = useState(isActive);
+  const { isActive } = useAnnouncementBar()
+  const [showAnnouncementBar, setShowAnnouncementBar] = useState(isActive)
 
   useScrollPosition(
-    ({scrollY}) => {
+    ({ scrollY }) => {
       if (isActive) {
-        setShowAnnouncementBar(scrollY === 0);
+        setShowAnnouncementBar(scrollY === 0)
       }
     },
     [isActive],
-  );
-  return isActive && showAnnouncementBar;
+  )
+  return isActive && showAnnouncementBar
 }
 
-export default function DocSidebarDesktopContent({
-  path,
-  sidebar,
-  className,
-}: Props): ReactNode {
-  const showAnnouncementBar = useShowAnnouncementBar();
+export default function DocSidebarDesktopContent({ path, sidebar, className }: Props): ReactNode {
+  const showAnnouncementBar = useShowAnnouncementBar()
 
   return (
     <nav
@@ -45,10 +41,18 @@ export default function DocSidebarDesktopContent({
         styles.menu,
         showAnnouncementBar && styles.menuWithAnnouncementBar,
         className,
-      )}>
+      )}
+    >
+      <Link
+        to={useBaseUrl('/')}
+        className="ml-0.5 pb-4 text-[13px] font-[500] text-[rgb(220,215,224)] flex items-center gap-2 hover:!text-white"
+      >
+        <CaretDoubleLeft size={12} className="text-[#797979]" weight="bold" />
+        <span>Back to use.ink website</span>
+      </Link>
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems items={sidebar} activePath={path} level={1} />
       </ul>
     </nav>
-  );
+  )
 }

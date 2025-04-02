@@ -7,7 +7,7 @@ export default function DocPaginator(props: Props): ReactNode {
   const { previous, next } = props
   return (
     <nav
-      className="pagination-nav docusaurus-mt-lg"
+      className="mt-12 bubble-box"
       aria-label={translate({
         id: 'theme.docs.paginator.navAriaLabel',
         message: 'Docs pages',
@@ -15,7 +15,7 @@ export default function DocPaginator(props: Props): ReactNode {
       })}
     >
       <span className="pagination-nav__info">Continue Learning</span>
-      <div className="grid w-full grid-cols-2 gap-4">
+      <div className="grid w-full grid-cols-2 gap-4 [&>a]:!no-underline">
         {previous && (
           <PaginatorNavLink
             {...previous}

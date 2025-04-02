@@ -1,6 +1,5 @@
 import HeroAnimation from '../../../static/animations/inkubator.json'
 import React from 'react'
-import { SquinkText } from '../icons'
 import classNames from 'classnames'
 import { ClassNameable } from '../types'
 import { Link } from 'react-router-dom'
@@ -18,7 +17,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
         className,
       )}
     >
-      <div className="mx-auto max-w-biggest">
+      <div className="mx-auto max-w-[1000px]">
         <div className="absolute inset-0 -z-10 section-bg" />
         <div className={classNames('flex lg:flex-row flex-col justify-between mb-0 gap-6 px-4')}>
           <h1 className="font-freude text-[64px] leading-[57px] max-w-2xl">Take your ink! project to new depths.</h1>
@@ -55,7 +54,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
           </div>
         </div>
 
-        <ScrollPlayer animationData={HeroAnimation} className="mt-0 lg:w-[70%] w-full mx-auto" />
+        <ScrollPlayer animationData={HeroAnimation} className="w-full mx-auto mt-0" />
       </div>
     </section>
   )

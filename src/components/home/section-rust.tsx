@@ -37,7 +37,7 @@ export function SectionRust() {
             }
             media={
               <div className="w-full mt-8 lg:mt-0 h-[300px] lg:h-[410px]">
-                <RiveAnimation src="animations/Medal.riv" autoplay={true} />
+                <RiveAnimation src="animations/medal.riv" autoplay={true} />
               </div>
             }
           />

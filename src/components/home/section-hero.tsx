@@ -6,16 +6,20 @@ import { MainCta } from './main-cta'
 import { Star } from '@phosphor-icons/react'
 import { AnimatedText } from '../animated-text'
 import { RiveAnimation } from '../rive-animation'
-import { Alignment, Fit, Layout } from '@rive-app/react-canvas'
-import Hero from '@site/static/img/hero.svg'
+import { Alignment, Layout } from '@rive-app/react-canvas'
+
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
+
 export function SectionHero() {
+  const currentVersion = useCurrentVersion()
+
   return (
     <section className="relative flex flex-col lg:h-[710px] pointer-events-none section-intro">
       <div className="container lg:!px-0 relative z-10 flex flex-col items-center justify-center mb-16">
         <MainCta
           classNames={{
             container: 'h-full',
-            textWrapper: 'lg:w-[500px]',
+            textWrapper: 'lg:w-[500px] h-[65vh] lg:h-auto flex flex-col justify-center',
           }}
           notice={
             <a
@@ -29,10 +33,13 @@ export function SectionHero() {
             </a>
           }
           title="Build Rust-Based Smart Contracts"
-          description="Create, manage, and deploy smart contracts with ink!"
+          description="Build, test, and deploy smart contracts with ink!"
           cta={
             <div className="flex flex-col gap-3 md:flex-row">
-              <Link to="/docs" className=" !transition-all duration-300 flex-1 lg:flex-none pointer-events-auto">
+              <Link
+                to={`/docs/${currentVersion?.label ?? 'v5'}`}
+                className=" !transition-all duration-300 flex-1 lg:flex-none pointer-events-auto"
+              >
                 <Button size="lg" className="w-full lg:w-auto">
                   Start building
                 </Button>
@@ -50,9 +57,9 @@ export function SectionHero() {
               initial={{ opacity: 0, y: -100, x: 10 }}
               animate={{ opacity: 1, y: -10, x: 10 }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}
-              className="w-full h-full px-4"
+              className="w-full h-full px-0 overflow-hidden md:px-4"
             >
-              <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px] scale-100 lg:scale-125">
+              <div className="w-full mt-8 lg:mt-0 h-[550px] lg:h-[710px] scale-[115%] lg:scale-125">
                 <RiveAnimation
                   src="animations/Hero.riv"
                   autoplay={true}

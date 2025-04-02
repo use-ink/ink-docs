@@ -9,7 +9,7 @@ module.exports = {
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
   trailingSlash: false,
-  organizationName: 'niklasp',
+  organizationName: 'ink! Alliance',
   projectName: 'ink-docs',
   deploymentBranch: 'gh-pages',
   stylesheets: ['fonts/fonts.css'],
@@ -66,7 +66,7 @@ module.exports = {
             },
             current: {
               label: 'v5',
-              // path: 'v5',
+              path: 'v5',
               banner: 'none',
             },
             v4: {

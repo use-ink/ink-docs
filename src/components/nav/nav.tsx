@@ -12,8 +12,9 @@ import PolkadotLogo from '@site/static/img/Polkadot_Logo_White.svg'
 import { cn } from '../../util'
 import { NavItem } from './nav-item'
 import { Button } from '../ui/button'
-import { navLinks } from '../../config'
+import { navLinks } from '../../data/nav-links'
 import { ListItem } from '../list-item'
+import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 
 export function Navbar({
   className,
@@ -31,6 +32,20 @@ export function Navbar({
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const ctaHref = ctaLink.includes('http') ? ctaLink : useBaseUrl(ctaLink)
   const logo = useBaseUrl('/img/text-white.svg')
+
+  const currentVersion = useCurrentVersion()
+
+  const versionedNavLinks = navLinks.map((item) => {
+    return {
+      ...item,
+      links: item.links?.map((link) => {
+        return {
+          ...link,
+          href: link.href?.replace('/docs', `/docs/${currentVersion?.label ?? 'v5'}`),
+        }
+      }),
+    }
+  })
 
   const mobileNavLinks = [
     ...navLinks.filter((item) => item.title !== 'ink!ubator'),
@@ -85,7 +100,7 @@ export function Navbar({
             </div>
             <nav className="z-10 items-center flex-1 hidden navbar md:flex !bg-none !backdrop-filter-none">
               <div className="flex gap-6 mx-auto">
-                {navLinks.map((item) => (
+                {versionedNavLinks.map((item) => (
                   <NavItem key={item.title} item={item} />
                 ))}
               </div>

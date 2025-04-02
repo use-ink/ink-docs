@@ -37,8 +37,8 @@ const head = (
 export default function Home() {
   return (
     <Layout head={head} className="!mt-0">
-      <div style={{ width: '100vw', height: '150vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
-        <StarryBackground />
+      <div style={{ width: '100vw', height: '350vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
+        <StarryBackground className="!fixed" />
       </div>
       <div className="relative">
         <SectionHero />

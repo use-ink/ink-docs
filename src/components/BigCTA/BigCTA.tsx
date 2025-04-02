@@ -57,7 +57,7 @@ export const BigCTA: React.FC<BigCtaProps & React.HtmlHTMLAttributes<HTMLDivElem
       </span>
 
       {cta && (
-        <h3 className="md:text-7xl text-5xl font-montserrat m-0 font-bold leading-[120%]">
+        <h3 className="md:text-[3.77rem] text-5xl font-montserrat m-0 font-bold leading-[120%]">
           {emphasized && (
             <i className={classNames('mb-12 mr-6 underline', isHovering ? 'text-white' : 'text-brand-500')}>
               {emphasized}

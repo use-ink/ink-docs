@@ -13,13 +13,19 @@ export function AnimatedText({
   const defaultAnimation = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0 },
-    transition: { duration: 1, ease: 'linear', bounce: 0 },
+    transition: { duration: 1, ease: 'linear', bounce: 0, delay: 0.5 },
   }
 
   return (
     <Wrapper className={className}>
       <span className="sr-only">{text}</span>
-      <motion.span initial="hidden" animate="visible" aria-hidden transition={{ staggerChildren: 0.05 }}>
+      <motion.span
+        className="will-change-transform"
+        initial="hidden"
+        animate="visible"
+        aria-hidden
+        transition={{ staggerChildren: 0.06 }}
+      >
         {text.split(' ').map((word, index) => (
           <span key={index} className="inline-block">
             {word.split('').map((letter, index) => (

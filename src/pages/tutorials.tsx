@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from './layout'
 import { ArrowCircleDown } from '@phosphor-icons/react/dist/ssr'
-import { tutorials } from '../config'
+import { tutorials } from '../data/tutorials'
 import { TutorialCard } from '../components/tutorials/tutorial-card'
 import { motion } from 'framer-motion'
 
@@ -10,6 +10,7 @@ import { Button } from '../components/ui/button'
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { StarryBackground } from '../components/starry-background'
+import { useCurrentVersion } from '../hooks/use-current-version'
 const head = (
   <>
     <title>Tutorials | ink!</title>
@@ -37,14 +38,34 @@ const head = (
 )
 
 export default function PageTutorials() {
+  const currentVersion = useCurrentVersion()
+  const versionedTutorials = tutorials.map((tutorial) => {
+    return {
+      ...tutorial,
+      link: tutorial.link.replace('docs/', `docs/${currentVersion?.label ?? 'v5'}/`),
+    }
+  })
+
   return (
-    <Layout className="container" head={head}>
-      <StarryBackground />
+    <Layout className="container overflow-hidden" head={head}>
+      <div
+        style={{
+          width: '100vw',
+          height: '200vh',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          overflow: 'hidden',
+        }}
+      >
+        <StarryBackground />
+      </div>
       <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto text-center mt-[10vh]">
         <img
           src={useBaseUrl('/img/Constellation.svg')}
           alt="constellation"
-          className="w-[450px] h-[450px] absolute left-[2vw] lg:left-[18vw] top-10"
+          className="w-[246px] h-[246px] lg:w-[450px] lg:h-[450px] absolute left-[2vw] lg:left-[18vw] top-10"
         />
         <motion.div
           className="w-[246px] h-[246px] rotate-[25deg]"
@@ -85,7 +106,7 @@ export default function PageTutorials() {
       </div>
       <section id="tutorials" className="flex flex-col items-center justify-center max-w-[900px] mx-auto pt-20">
         <div className="grid grid-cols-1 gap-[36px] md:grid-cols-2">
-          {tutorials.map((tutorial) => (
+          {versionedTutorials.map((tutorial) => (
             <TutorialCard key={tutorial.title} {...tutorial} />
           ))}
         </div>

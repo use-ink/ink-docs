@@ -5,6 +5,7 @@ import renderRoutes from '@docusaurus/renderRoutes'
 import Layout from '@theme/Layout'
 
 import '../../css/docs.css'
+import '../../css/docs-components.css'
 
 import type { Props } from '@theme/DocVersionRoot'
 

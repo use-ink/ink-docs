@@ -5,9 +5,6 @@ import Head from '@docusaurus/Head'
 import classNames from 'classnames'
 import '../css/pages.css'
 
-import { StarryBackground } from '../components/starry-background'
-import Particles from '../reactbits/Backgrounds/Particles/Particles'
-
 const defaultHead = (
   <>
     <title>Smart Contracts on Polkadot in Rust | ink!</title>

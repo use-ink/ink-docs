@@ -7,6 +7,9 @@ import Content from '@theme/DocSidebar/Desktop/Content'
 import type { Props } from '@theme/DocSidebar/Desktop'
 
 import styles from './styles.module.css'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import Link from '@docusaurus/Link'
+import { CaretDoubleLeft } from '@phosphor-icons/react/dist/ssr'
 
 function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props) {
   const {
