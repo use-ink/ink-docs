@@ -607,6 +607,10 @@ ul.menu__list li a {
   z-index: 80;
 }
 
+.navbar__item.dropdown.dropdown--hoverable {
+  @apply block lg:hidden;
+}
+
 /** SEARCH BAR **/
 [class^='dropdownMenu_'] {
   /* Your styles here */

@@ -18,7 +18,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
         className,
       )}
     >
-      <div className="mx-auto max-w-biggest">
+      <div className="mx-auto max-w-[1000px]">
         <div className="absolute inset-0 -z-10 section-bg" />
         <div className={classNames('flex lg:flex-row flex-col justify-between mb-0 gap-6 px-4')}>
           <h1 className="font-freude text-[64px] leading-[57px] max-w-2xl">Take your ink! project to new depths.</h1>

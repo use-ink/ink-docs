@@ -43,12 +43,12 @@ export const BuilderTrackPhases: React.FC = () => {
   return (
     <ul
       className={classNames(
-        'list-none m-0 px-4 py-0 lg:flex-row justify-start flex-col',
-        'flex flex-wrap relative gap-6 w-full mx-auto justify-center',
+        'list-none m-0 px-4 py-0 lg:flex-row justify-start flex-col max-w-[1000px]',
+        'grid grid-cols-1 md:grid-cols-2 gap-6 w-full mx-auto justify-center',
       )}
     >
       {TRACK_PHASES.map((phase) => (
-        <li key={phase.title} className="w-full lg:max-w-[600px] p-0 m-0">
+        <li key={phase.title} className="w-full p-0 m-0">
           <InfoCard {...phase} className="h-full" />
         </li>
       ))}

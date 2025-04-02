@@ -36,7 +36,7 @@ export const EcosystemGrants: React.FC = () => {
   return (
     <section className="mt-16 md:mt-28">
       <div className="px-4">
-        <div className="mx-auto max-w-biggest">
+        <div className="mx-auto max-w-[1000px]">
           <div className="w-full text-center">
             <h2 className="w-full text-5xl font-semibold font-freude text-brand-500">
               <i className="font-bold text-black dark:text-white ">Ecosystem</i> Grants
@@ -46,7 +46,7 @@ export const EcosystemGrants: React.FC = () => {
             </p>
           </div>
 
-          <div className="max-w-biggest">
+          <div className="max-w-[1000px]">
             <div className="flex flex-col items-start justify-between md:flex-row lg:mt-32 md:mt-16">
               <div className="md:w-[40%] flex items-end max-w-2xl pt-8">
                 <ScrollPlayer animationData={Canary} />
