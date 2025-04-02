@@ -47,7 +47,7 @@ export default function PageTutorials() {
   })
 
   return (
-    <Layout className="container" head={head}>
+    <Layout className="container overflow-hidden" head={head}>
       <div
         style={{
           width: '100vw',
