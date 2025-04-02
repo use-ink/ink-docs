@@ -101,7 +101,7 @@ export default function DocsVersionDropdownNavbarItem({
             )}
           </div>
         ),
-        href: item.to,
+        href: item.to?.replace(/\/$/, ''),
       }
     }),
   }
