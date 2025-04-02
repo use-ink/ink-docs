@@ -4,6 +4,8 @@ hide_title: true
 slug: /inkubator-overview
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # ink!ubator
 
 <img src="/img/inkubator-tanks.svg" alt="ink!ubator" className="md:mb-12 mb-6 md:mt-6 mt-3" />
@@ -12,4 +14,4 @@ ink!ubator is an initiative funded by the Polkadot Treasury's Bounty Program. It
 
 import { BigCTA } from "/src/components/BigCTA";
 
-<BigCTA title="ink!ubator" emphasized="Learn" cta="more" url="/inkubator" tabIndex={0} />
+<BigCTA title="ink!ubator" emphasized="Learn" cta="more" url={useBaseUrl('/inkubator')} tabIndex={0} />
