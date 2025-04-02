@@ -19,7 +19,7 @@ export function SectionHero() {
         <MainCta
           classNames={{
             container: 'h-full',
-            textWrapper: 'lg:w-[500px]',
+            textWrapper: 'lg:w-[500px] h-[65vh] lg:h-auto flex flex-col justify-center',
           }}
           notice={
             <a
@@ -57,9 +57,9 @@ export function SectionHero() {
               initial={{ opacity: 0, y: -100, x: 10 }}
               animate={{ opacity: 1, y: -10, x: 10 }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}
-              className="w-full h-full px-4"
+              className="w-full h-full px-0 overflow-hidden md:px-4"
             >
-              <div className="w-full mt-8 lg:mt-0 h-[500px] lg:h-[710px] scale-100 lg:scale-125">
+              <div className="w-full mt-8 lg:mt-0 h-[550px] lg:h-[710px] scale-[115%] lg:scale-125">
                 <RiveAnimation
                   src="animations/Hero.riv"
                   autoplay={true}
