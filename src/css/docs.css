@@ -800,3 +800,17 @@ details [class^='collapsibleContent_'] {
 .admonition-wrap-color > div {
   background: #bd82fd33 !important;
 }
+
+/** SEARCH RESULTS **/
+
+[class^='searchResultItem_'] {
+  border-bottom: 1px solid #7c53822b !important;
+}
+
+[class^='searchResultItem_'] h1 {
+  font-size: 44px !important;
+}
+
+[class^='searchResultItem_'] h2 {
+  font-size: 27px !important;
+}

@@ -303,13 +303,15 @@ export default function PageChains() {
           </div>
           <hr className="my-10" />
           <p className="font-[600] text-[18px] mb-1">ink! Testnet</p>
-          <ImageContainer>
-            <img
-              src={useBaseUrl('/img/chains/assethub.svg')}
-              alt="chains"
-              className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-            />
-          </ImageContainer>
+          <Link to="https://onpop.io/">
+            <ImageContainer>
+              <img
+                src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+                alt="chains"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+              />
+            </ImageContainer>
+          </Link>
           <hr className="my-10" />
           <div className="flex flex-row items-center justify-center gap-4">
             <p className="font-[600] text-[18px] mb-1">Want ink! smart contracts for your chain?</p>
