@@ -10,6 +10,8 @@ import { RiveAnimation } from '../rive-animation'
 import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 import Fish1 from '@site/static/img/fishes/Fish-11.svg'
 import Fish2 from '@site/static/img/fishes/Fish-12.svg'
+import Fish3 from '@site/static/img/fishes/Fish-13.svg'
+
 export function SectionComposable() {
   const currentVersion = useCurrentVersion()
 
@@ -23,7 +25,8 @@ export function SectionComposable() {
     >
       <div className="absolute left-0 w-full h-full overflow-hidden -top-12">
         <Fish1 className="z-50 absolute left-28 w-[110px] h-[110px] animate-swim-right will-change-transform" />
-        <Fish2 className="z-50 absolute bottom-20 left-8 w-[110px] h-[110px] animate-swim-right-slow will-change-transform" />
+        <Fish2 className="z-50 absolute bottom-8 -left-16 w-[110px] h-[110px] animate-swim-right-slow will-change-transform" />
+        <Fish3 className="z-50 absolute bottom-28 -right-8 w-[110px] h-[110px] animate-swim-left will-change-transform" />
       </div>
       <div className="container relative z-10 flex flex-col items-center justify-center pb-48 overflow-hidden mb-72">
         <BubbleContainer>
