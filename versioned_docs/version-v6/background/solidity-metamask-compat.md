@@ -8,6 +8,11 @@ slug: /background/solidity-metamask-compatibility
     <meta name="keywords" content="Ethereum, MetaMask, Solidity, Hardhat, ink!" />
     <meta property="og:title" content="Solidity & MetaMask Compatibility" />
     <meta property="og:description" content="Explanation of ink!'s compatibility with Solidity and Ethereum tooling (MetaMask, block explorers, Hardhat, …)." />
+    <meta property="og:image" content="https://use-ink.com/img/opengraph/solidity-metamask.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Solidity and MetaMask" />
+    <meta property="og:image:type" content="image/jpg" />
 </head>
 
 ![Metadata Title Picture](/img/title/solidity.svg)
