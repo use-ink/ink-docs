@@ -548,7 +548,7 @@ ul.menu__list li a {
 }
 
 .theme-doc-sidebar-item-category-level-1.menu__list-item:not(:first-child) {
-  margin-top: 0.4rem !important;
+  margin-top: 0.55rem !important;
 }
 
 .theme-doc-sidebar-item-link-level-2.menu__list-item {
