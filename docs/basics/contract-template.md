@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/contract-template
 ---
 
-<img src="/img/title/macro.svg" className="titlePic" />
+![Macro Title Picture](/img/title/macro.svg)
 
 # Contract Template
 
@@ -91,9 +91,9 @@ e2e-tests = []
 
 Every ink! contract is required to contain:
 
-* Exactly one `#[ink(storage)]` struct.
-* At least one `#[ink(constructor)]` function.
-* At least one `#[ink(message)]` function.
+- Exactly one `#[ink(storage)]` struct.
+- At least one `#[ink(constructor)]` function.
+- At least one `#[ink(message)]` function.
 
 The scaffolded code will look similar to the following, we've
 changed the comments though to explain what is going on there

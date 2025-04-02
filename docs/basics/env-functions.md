@@ -3,7 +3,7 @@ title: Environment Functions
 slug: /basics/environment-functions
 ---
 
-<img src="/img/title/env-function.svg" className="titlePic" />
+![Env Function Title Picture](/img/title/env-function.svg)
 
 # Environment Functions
 

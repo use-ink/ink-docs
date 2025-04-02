@@ -4,7 +4,7 @@ slug: /basics/trait-definitions
 hide_title: true
 ---
 
-<img src="/img/title/text/trait.svg" className="titlePic" />
+![Text/trait Title Picture](/img/title/text/trait.svg)
 
 Through the `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
 

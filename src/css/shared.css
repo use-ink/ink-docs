@@ -1,0 +1,39 @@
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Freude', sans-serif;
+  color: rgb(244, 241, 254);
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 44px;
+  line-height: 44px;
+  font-weight: 400;
+}
+
+hr {
+  background-color: rgba(189, 130, 253, 0.15);
+}
+
+hr.dotted {
+  border-top: 3px dotted rgba(189, 130, 253, 0.1);
+  margin: 30px 0;
+  background: transparent;
+}
+
+.hamburger-react > div {
+  height: 4px !important;
+  box-shadow: 0 0 10px rgba(189, 130, 253, 0.5);
+}
+
+button {
+  background-color: transparent;
+  border-color: transparent;
+  border: none !important;
+}

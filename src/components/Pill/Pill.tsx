@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 import { ClassNameable } from '../types'
-
+import useBaseUrl from '@docusaurus/useBaseUrl'
 export interface PillProps extends ClassNameable {
   title: string
   icon: string
@@ -16,8 +16,8 @@ export const Pill: React.FC<PillProps> = ({ title, className, icon }) => {
         className,
       )}
     >
-      <img className="h-8 mr-4 p-0" src={icon} alt={title} />
-      <h4 className="m-0 p-0 text-xl">{title}</h4>
+      <img className="h-8 p-0 mr-4" src={useBaseUrl(icon)} alt={title} />
+      <h4 className="p-0 m-0 text-xl">{title}</h4>
     </span>
   )
 }

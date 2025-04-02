@@ -4,7 +4,7 @@ hide_title: true
 description: An overview of ink! linter
 ---
 
-<img src="/img/title/text/linter.svg" className="titlePic" />
+![Text/linter Title Picture](/img/title/text/linter.svg)
 
 # Overview
 ink! includes the linter - a security tool designed to identify typical security issues in smart contracts. The linter is meant to seamlessly fit into the smart contracts development process, ensuring that contracts are thoroughly checked during the build phase before they are deployed to the blockchain.

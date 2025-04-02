@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/contract-testing/end-to-end-e2e-testing
 ---
 
-<img src="/img/title/testing1.svg" className="titlePic" />
+![Testing1 Title Picture](/img/title/testing1.svg)
 
 # End-to-End (E2E) Tests
 

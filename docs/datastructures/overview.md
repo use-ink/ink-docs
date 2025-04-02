@@ -4,7 +4,7 @@ slug: /datastructures/overview
 hide_title: true
 ---
 
-<img src="/img/title/storage.svg" className="titlePic" />
+![Storage Title Picture](/img/title/storage.svg)
 
 # Overview
 
@@ -29,4 +29,4 @@ it can be used to prevent the contract from eagerly loading large storage fields
 during each contract call.
 Conceivably, it may be desirable to change certain aspects on how your contract deals with
 its storage variables. You can find out more about this in the section about the ink!
-[Storage Layout](./storage-layout.md).
+[Storage Layout](./storage-layout.mdx).

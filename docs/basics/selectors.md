@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/selectors
 ---
 
-<img src="/img/title/selector-hex.svg" className="titlePic" />
+![Selector Hex Title Picture](/img/title/selector-hex.svg)
 
 # Selectors
 

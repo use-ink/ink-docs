@@ -4,7 +4,7 @@ hide_title: true
 slug: /basics/metadata
 ---
 
-<img src="/img/title/metadata.svg" className="titlePic" />
+![Metadata Title Picture](/img/title/metadata.svg)
 
 # ink! Metadata
 

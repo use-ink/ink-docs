@@ -4,7 +4,7 @@ slug: /standards/overview
 hide_title: true
 ---
 
-<img src="/img/title/standards.svg" className="titlePic" />
+![Standards Title Picture](/img/title/standards.svg)
 
 # Overview
 
