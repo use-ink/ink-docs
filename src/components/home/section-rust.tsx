@@ -6,7 +6,6 @@ import { MainCta } from './main-cta'
 import { Clouds } from './clouds'
 import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
-import { Alignment, Fit, Layout } from '@rive-app/react-canvas'
 
 export function SectionRust() {
   return (
@@ -38,7 +37,7 @@ export function SectionRust() {
             }
             media={
               <div className="w-full mt-8 lg:mt-0 h-[300px] lg:h-[410px]">
-                <RiveAnimation src="animations/Medal.riv" autoplay={true} />
+                <RiveAnimation src="animations/medal.riv" autoplay={true} />
               </div>
             }
           />
