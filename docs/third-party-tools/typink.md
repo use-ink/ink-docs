@@ -18,16 +18,15 @@ Typink provides a type-safe, flexible, and efficient way to build ink! dApps:
 ✅ Decoupled Wallet Integration – Supports various wallet connectors or custom implementations. <br/>
 ✅ Multi-Chain Support – Effortlessly switch networks with lazy initialization. <br/>
 
-
 ## Quick look
 
 1. Fully Type-Safe React Hooks
 
-![Fully Type-Safe React Hooks](https://docs.dedot.dev/~gitbook/image?url=https%3A%2F%2F486742009-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FMrQp7F5eE70nr7yUHeEZ%252Fuploads%252F0O9vuGWWnB13Bt1sW28o%252Ftypink-suggestions.gif%3Falt%3Dmedia%26token%3Dd4ac08dc-0286-42ad-835a-a53038f7a74c&width=768&dpr=2&quality=100&sign=f35c0200&sv=2)
+![Fully Type-Safe React Hooks](/img/dedot1.gif)
 
 2. Built-in CLI `create-typink` to spin up new projects in seconds
 
-![create-typink](https://docs.dedot.dev/~gitbook/image?url=https%3A%2F%2F486742009-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FMrQp7F5eE70nr7yUHeEZ%252Fuploads%252FqzCwGVTJqyrqi8MSC6aW%252Fimage.png%3Falt%3Dmedia%26token%3D03aacbe8-996c-4c32-8284-c340570e512a&width=768&dpr=2&quality=100&sign=489982ed&sv=2)
+![create-typink](/img/dedot2.avif)
 
 ## Get started
 
@@ -42,4 +41,5 @@ Typink provides a type-safe, flexible, and efficient way to build ink! dApps:
 Join the [Dedot & Typink Telegram Group](https://t.me/JoinDedot) to ask questions, share ideas, and collaborate on ink! dApp development! Whether you’re looking for support or want to contribute, we’d love to have you on board. [Join us now!](https://t.me/JoinDedot)
 
 ---
+
 **Build with confidence. Build with Typink.**
