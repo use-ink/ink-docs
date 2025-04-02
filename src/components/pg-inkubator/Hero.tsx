@@ -55,7 +55,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
           </div>
         </div>
 
-        <ScrollPlayer animationData={HeroAnimation} className="mt-0 lg:w-[70%] w-full mx-auto" />
+        <ScrollPlayer animationData={HeroAnimation} className="w-full mx-auto mt-0" />
       </div>
     </section>
   )
