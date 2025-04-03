@@ -6,7 +6,7 @@
 <title data-rh="true">Migration: ink! v5 → v6 | Documentation | ink!</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://use.ink/docs/v6/faq/migrating-from-ink-5-to-6"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" property="og:image" content="https://use.ink/img/opengraph/docs.png"><meta data-rh="true" property="og:image:width" content="1200"><meta data-rh="true" property="og:image:height" content="630"><meta data-rh="true" property="og:image:alt" content="ink! Documentation"><meta data-rh="true" property="og:image:type" content="image/png"><meta data-rh="true" name="docusaurus_version" content="v6"><meta data-rh="true" name="docusaurus_tag" content="docs-default-v6"><meta data-rh="true" name="docsearch:version" content="v6"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-v6"><meta data-rh="true" property="og:title" content="Migration: ink! v5 → v6 | Documentation | ink!"><meta data-rh="true" name="description" content="We&#x27;ve made a number of breaking changes from ink! 5.x to ink! 6.0."><meta data-rh="true" property="og:description" content="We&#x27;ve made a number of breaking changes from ink! 5.x to ink! 6.0."><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://use.ink/docs/v6/faq/migrating-from-ink-5-to-6"><link data-rh="true" rel="alternate" href="https://use.ink/docs/v6/faq/migrating-from-ink-5-to-6" hreflang="en"><link data-rh="true" rel="alternate" href="https://use.ink/docs/v6/faq/migrating-from-ink-5-to-6" hreflang="x-default"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.abe5b994.css">
-<script src="/assets/js/runtime~main.95cfefe2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.462126b8.js" defer="defer"></script>
 <script src="/assets/js/main.2936f797.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -93,17 +93,19 @@ In this alpha release we just adhere to requiring the types that <code>pallet-re
 In an upcoming beta release this could be simplified to reduce UX friction by just
 using one type everywhere and converting to the <code>pallet-revive</code> one.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contract-address-h160">Contract Address: <code>H160</code><a href="#contract-address-h160" class="hash-link" aria-label="Direct link to contract-address-h160" title="Direct link to contract-address-h160">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contract-address-address--h160">Contract Address: <code>Address</code> / <code>H160</code><a href="#contract-address-address--h160" class="hash-link" aria-label="Direct link to contract-address-address--h160" title="Direct link to contract-address-address--h160">​</a></h4>
 <p>For a contract&#x27;s account, <code>pallet-revive</code> is using either the configured <code>AccountId</code> type
 of the <code>polkadot-sdk</code> runtime, or <code>H160</code>.</p>
-<p>Finding the <code>H160</code> for an <code>AccountId</code> is done via an address derivation scheme derived in
-<a href="https://github.com/paritytech/polkadot-sdk/pull/7662" target="_blank" rel="noopener noreferrer">#7662</a>.
+<p><code>Address</code> is a more semantically named type alias for <code>H160</code> defined in <code>ink_primitives</code>,
+and re-exported in the <code>ink</code> crate.</p>
+<p>Finding the <code>Address</code>/<code>H160</code> for an <code>AccountId</code> is done via an address derivation scheme
+derived in <a href="https://github.com/paritytech/polkadot-sdk/pull/7662" target="_blank" rel="noopener noreferrer">#7662</a>.
 After instantiating a contract, the address is no longer returned by <code>pallet-revive</code>.
 Instead one has to derive it from given parameters (see the linked PR). <code>cargo-contract</code>
 does that automatically.</p>
 <p>For contract instantiations and contract calls the pallet requires that a 1-to-1 mapping
-of an <code>AccountId</code> to a <code>H160</code> has been created. This can be done via the <code>map_account</code>/
-<code>unmap_account</code> API.
+of an <code>AccountId</code> to an <code>Address</code>/<code>H160</code> has been created. This can be done via the
+<code>map_account</code>/<code>unmap_account</code> API.
 The PR <a href="https://github.com/paritytech/polkadot-sdk/pull/6096" target="_blank" rel="noopener noreferrer">#6096</a> contains more
 information.</p>
 <p>Besides the publicly exposed crate functions, we&#x27;ve introduced a new subcommand
@@ -112,7 +114,7 @@ Polkadot SDK <code>AccountId</code> which it is mapped to.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="contract-hash-h256">Contract Hash: <code>H256</code><a href="#contract-hash-h256" class="hash-link" aria-label="Direct link to contract-hash-h256" title="Direct link to contract-hash-h256">​</a></h4>
 <p>For a contract&#x27;s hash value, <code>pallet-revive</code> uses a fixed <code>H256</code>, Previously,
 the <code>ink::Environment::Hash</code> type referenced the hash type being used for the
-contract&#x27;s hash. Now it&#x27;s just a fixed <code>H160</code>.</p>
+contract&#x27;s hash. Now it&#x27;s just a fixed <code>H256</code>.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="contract-delegates-can-no-longer-be-done-by-code">Contract delegates can no longer be done by code<a href="#contract-delegates-can-no-longer-be-done-by-code" class="hash-link" aria-label="Direct link to Contract delegates can no longer be done by code" title="Direct link to Contract delegates can no longer be done by code">​</a></h3>
 <p>In <code>pallet-contracts</code> (and hence up until ink! v5), a pattern for upgradeable
 contracts was to delegate the contract execution to a different code, e.g. to
