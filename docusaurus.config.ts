@@ -8,7 +8,6 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
-  trailingSlash: false,
   organizationName: 'use-ink',
   projectName: 'ink-docs',
   deploymentBranch: 'gh-pages',
