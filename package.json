@@ -20,7 +20,8 @@
     "serve": "docusaurus serve --port 8080",
     "cspell": "cspell \"**/*.{md,mdx}\"",
     "migrate-image-links": "ts-node src/scripts/migrate-image-links.ts",
-    "create-llm-file": "yarn repomix"
+    "create-llm-file": "yarn repomix",
+    "postinstall": "yarn create-llm-file"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
