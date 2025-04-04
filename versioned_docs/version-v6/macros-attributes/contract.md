@@ -31,41 +31,6 @@ proper code.
 The `#[ink::contract]` macro can be provided with some additional comma-separated
 header arguments:
 
-### `compile_as_dependency: bool`
-
-Tells the ink! code generator to **always** or **never**
-compile the smart contract as if it was used as a dependency of another ink!
-smart contract.
-
-Normally this flag is only really useful for ink! developers who
-want to inspect code generation of ink! smart contracts.
-The author is not aware of any particular practical use case for users that
-makes use of this flag but contract writers are encouraged to disprove this.
-
-Note that it is recommended to make use of the built-in crate feature
-`ink-as-dependency` to flag smart contract dependencies listed in a contract's
-`Cargo.toml` as actual dependencies to ink!.
-
-**Usage Example:**
-```rust
-#[ink::contract(compile_as_dependency = true)]
-mod my_contract {
-    #[ink(storage)]
-    pub struct MyStorage;
-
-    impl MyStorage {
-        #[ink(constructor)]
-        pub fn construct() -> Self { MyStorage {} }
-
-        #[ink(message)]
-        pub fn message(&self) {}
-    }
-    // ...
-}
-```
-
-**Default value:** Depends on the crate feature propagation of `Cargo.toml`.
-
 ### `env: impl Environment`
 
 Tells the ink! code generator which environment to use for the ink! smart contract.
