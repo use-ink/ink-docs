@@ -6,7 +6,7 @@
 <title data-rh="true">Welcome! | Documentation | ink!</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://use.ink/docs/v6/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" property="og:image" content="https://use.ink/img/opengraph/docs.png"><meta data-rh="true" property="og:image:width" content="1200"><meta data-rh="true" property="og:image:height" content="630"><meta data-rh="true" property="og:image:alt" content="ink! Documentation"><meta data-rh="true" property="og:image:type" content="image/png"><meta data-rh="true" name="docusaurus_version" content="v6"><meta data-rh="true" name="docusaurus_tag" content="docs-default-v6"><meta data-rh="true" name="docsearch:version" content="v6"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-v6"><meta data-rh="true" name="title" content="ink! Developer Documentation"><meta data-rh="true" name="description" content="Developer docs for ink!, the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM."><meta data-rh="true" name="keywords" content="Smart contracts, Rust, Polkadot, PolkaVM, RISC-V"><meta data-rh="true" property="og:title" content="ink! Developer Documentation"><meta data-rh="true" property="og:description" content="Developer docs for ink!, the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM."><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://use.ink/docs/v6/"><link data-rh="true" rel="alternate" href="https://use.ink/docs/v6/" hreflang="en"><link data-rh="true" rel="alternate" href="https://use.ink/docs/v6/" hreflang="x-default"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.a5f7ae78.css">
-<script src="/assets/js/runtime~main.8a6c2085.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d5a4cc67.js" defer="defer"></script>
 <script src="/assets/js/main.54c584d5.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -14,17 +14,11 @@
 <!-- -->
 <img src="/img/title/ink! 6.0.svg" title="The ink! 6.0 smart contracts toolkit release" style="margin-bottom:10px">
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="introduction">Introduction<a href="#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction">​</a></h2>
-<p>ink! is a programming language for smart contracts.</p>
-<p>It&#x27;s a domain-specific Rust language: contracts are normal Rust code.</p>
-<p>We decided on Rust as it provides inherent safety-guarantees and
-a great performance. This translates to low user fees and makes it
-an ideal choice for scalable smart contracts.</p>
-<p>You can use all the normal Rust tooling ‒ clippy, crates.io, IDE’s, etc.</p>
-<p>Interoperability with Solidity contracts:
-Solidity developers can cross-contract call ink! contracts as if they were
-Solidity contracts.</p>
-<p>You can deploy ink! to blockchains built with <a href="https://github.com/paritytech/polkadot-sdk">Polkadot SDK</a>.
-See <a href="https://use.ink" target="_blank" rel="noopener noreferrer">here</a> for a list of chains that support us.</p>
+<p>⚡️ use.ink helps you easily build safe, efficient smart contracts for Polkadot and Substrate-based blockchains.</p>
+<p>🚀 Write smart contracts in ink!, a domain-specific language built on top of Rust — combining safety, performance, and scalability.</p>
+<p>🛠 Use familiar Rust tooling like <code>clippy</code>, <code>cargo</code>, crates from <code>crates.io</code>, and popular IDEs for a seamless development experience.</p>
+<p>🤝 Interoperability with Solidity: Solidity developers can call ink! contracts just like other Solidity contracts, enabling cross-ecosystem collaboration.</p>
+<p>🌎 Deploy ink! smart contracts on blockchains built with the Polkadot SDK. <a href="/chains">Check supported chains here.</a></p>
 <div class="admonition-wrap-note admonition-wrap p-[5px] rounded-[12px] border border-solid my-2 border-l-[5px]"><div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M164,216a12,12,0,0,1-12,12H104a12,12,0,0,1,0-24h48A12,12,0,0,1,164,216Zm76.26-29.9L235.6,178a12,12,0,1,0-20.79,12l4.65,8.08a3.56,3.56,0,0,1,0,3.73,4.46,4.46,0,0,1-4,2.2H192a12,12,0,0,0,0,24h23.46a28.31,28.31,0,0,0,24.79-14.19A27.47,27.47,0,0,0,240.26,186.1ZM64,204H40.55a4.46,4.46,0,0,1-4-2.2,3.56,3.56,0,0,1,0-3.73L41.19,190A12,12,0,1,0,20.4,178l-4.66,8.09a27.47,27.47,0,0,0,0,27.71A28.31,28.31,0,0,0,40.55,228H64a12,12,0,0,0,0-24Zm138.17-48a12,12,0,0,0,10.39-18l-23-40a12,12,0,0,0-20.8,12l23,40A12,12,0,0,0,202.18,156ZM166.5,58,152.81,34.23a28.74,28.74,0,0,0-49.62,0L89.5,58a12,12,0,1,0,20.79,12L124,46.2a4.75,4.75,0,0,1,8,0L145.71,70a12,12,0,0,0,10.41,6,11.87,11.87,0,0,0,6-1.6A12,12,0,0,0,166.5,58ZM82.85,93.6A12,12,0,0,0,66.46,98l-23,40a12,12,0,0,0,20.8,12l23-40A12,12,0,0,0,82.85,93.6Z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>ink! v6 is no longer using WebAssembly and <code>pallet-contracts</code>!
 Instead we migrated to RISC-V, PolkaVM, and <code>pallet-revive</code>.</p><p>Read more about the transition <a href="/docs/v6/faq/migrating-from-ink-5-to-6">here</a>.</p></div></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="fast-track">Fast Track<a href="#fast-track" class="hash-link" aria-label="Direct link to Fast Track" title="Direct link to Fast Track">​</a></h2>
