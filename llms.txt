@@ -2310,7 +2310,7 @@ Given the above trait definition you can implement it as shown below:
 #[ink::contract]
 mod base_erc20 {
     /// We somehow cannot put the trait in the doc-test crate root due to bugs.
-    #[ink_lang::trait_definition]
+    #[ink::trait_definition]
     pub trait Erc20 {
         /// Returns the total supply of the ERC-20 smart contract.
         #[ink(message)]
