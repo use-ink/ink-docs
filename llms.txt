@@ -9470,6 +9470,37 @@ proper code.
 The `#[ink::contract]` macro can be provided with some additional comma-separated
 header arguments:
 
+### `keep_attr: String`
+
+Tells the ink! code generator which attributes should be passed to call builders.
+Call builders are used for making cross-contract calls and are automatically
+generated for contracts.
+
+**Usage Example:**
+
+```rust
+#[ink::contract(keep_attr = "foo, bar")]
+mod my_contract {
+    #[ink(storage)]
+    pub struct MyStorage;
+    
+    impl MyStorage {
+        #[ink(constructor)]
+        #[bar]
+        pub fn construct() -> Self { MyStorage {} }
+        
+        #[ink(message)]
+        #[foo]
+        pub fn message(&self) {}
+    }
+    
+    // ...
+}
+```
+
+**Allowed attributes by default:** `cfg`, `cfg_attr`, `allow`, `warn`, `deny`,
+`forbid`, `deprecated`, `must_use`, `doc`, `rustfmt`.
+
 ### `env: impl Environment`
 
 Tells the ink! code generator which environment to use for the ink! smart contract.
