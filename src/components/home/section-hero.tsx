@@ -19,7 +19,7 @@ export function SectionHero() {
         <MainCta
           classNames={{
             container: 'h-full',
-            textWrapper: 'lg:w-[500px] h-[65vh] lg:h-auto flex flex-col justify-center',
+            textWrapper: 'lg:w-[500px] min-h-[70vh] lg:h-auto flex flex-col justify-center',
           }}
           notice={
             <a
