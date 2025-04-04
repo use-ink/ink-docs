@@ -6,12 +6,6 @@ slug: /macros-attributes/contract
 
 ![Text/contract Title Picture](/img/title/text/contract.svg)
 
-:::caution
-This page has not yet been updated for ink! v6.
-
-TODO @davidsemakula Please add the `abi` header argument.
-:::
-
 # \#[ink::contract]
 
 The `#[ink::contract]` macro is the entry point for writing ink! smart contracts.
