@@ -9,7 +9,7 @@ import { BubbleContainer } from '../bubblecontainer'
 import { RiveAnimation } from '../rive-animation'
 import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 import Fish1 from '@site/static/img/fishes/Fish-11.svg'
-import Fish2 from '@site/static/img/fishes/Fish-12.svg'
+import Fish2 from '@site/static/img/fishes/Fish-14.svg'
 import Fish3 from '@site/static/img/fishes/Fish-13.svg'
 
 export function SectionComposable() {
