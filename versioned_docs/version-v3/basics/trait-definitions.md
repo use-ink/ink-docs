@@ -130,7 +130,7 @@ use ink_lang as ink;
 #[ink::contract]
 mod base_erc20 {
     /// We somehow cannot put the trait in the doc-test crate root due to bugs.
-    #[ink_lang::trait_definition]
+    #[ink::trait_definition]
     pub trait Erc20 {
         /// Constructs a new ERC-20 compliant smart contract using the initial supply.
         #[ink(constructor)]
