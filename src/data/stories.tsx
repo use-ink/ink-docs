@@ -3,8 +3,8 @@ import { Story } from '../components/stories/story-list'
 
 export const stories: Story[] = [
   {
-    logo: 'img/stories/azero.id-logo.avif',
-    image: 'img/stories/azero.id.avif',
+    logo: '/img/stories/azero.id-logo.avif',
+    image: '/img/stories/azero.id.avif',
     name: 'azero.id',
     link: 'https://azero.id/',
     backstory: (
@@ -17,8 +17,8 @@ export const stories: Story[] = [
     ),
   },
   {
-    logo: 'img/stories/artzero-logo.avif',
-    image: 'img/stories/artzero.avif',
+    logo: '/img/stories/artzero-logo.avif',
+    image: '/img/stories/artzero.avif',
     name: 'artzero',
     link: 'https://artzero.io',
     backstory: (
@@ -31,8 +31,8 @@ export const stories: Story[] = [
     ),
   },
   {
-    logo: 'img/stories/ike-logo.avif',
-    image: 'img/stories/ike.jpg',
+    logo: '/img/stories/ike-logo.avif',
+    image: '/img/stories/ike.jpg',
     name: 'IKE',
     link: 'https://ike.xyz',
     backstory: (
