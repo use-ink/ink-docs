@@ -68,9 +68,9 @@ export default function PageAssets() {
           </motion.h1>
         </div>
       </section>
-      <section className="flex flex-col items-center justify-center max-w-xl mx-auto my-12">
+      <section className="flex flex-col items-center justify-center max-w-xl pb-48 mx-auto my-12 lg:pb-0">
         <Card>
-          <CardContent>
+          <CardContent className="p-2 md:p-4">
             <p>
               Our primary logo is our squid mascot (named &quot;Squink&quot;) plus our text logo. Please use this
               combined logo if possible!
@@ -131,12 +131,12 @@ export default function PageAssets() {
               <img
                 src="https://raw.githubusercontent.com/use-ink/ink/master/.images/badge.svg"
                 alt="Built with ink! badge"
-                className="w-[160px] -ml-12"
+                className="w-[160px] ml-0 sm:-ml-12"
               />
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex flex-col items-center justify-center gap-3 mb-8 sm:flex-row">
                 <div
                   className={cn(
-                    'p-3 font-mono rounded-[12px] bg-[rgba(19,17,28,0.33)] text-[12px] overflow-scroll w-full border-[rgb(57,40,83)] border shadow-[rgba(0,0,0,0.33)_2px_2px_6px_0px_inset]',
+                    'p-2 md:p-3 font-mono rounded-[12px] bg-[rgba(19,17,28,0.33)] text-[12px] overflow-scroll w-full border-[rgb(57,40,83)] border shadow-[rgba(0,0,0,0.33)_2px_2px_6px_0px_inset]',
                     'transition-all duration-300 cursor-pointer',
                     'hover:bg-[rgba(19,17,28,0.66)]',
                   )}
@@ -163,9 +163,9 @@ export default function PageAssets() {
               <img
                 src="https://raw.githubusercontent.com/use-ink/ink/master/.images/badge_flat.svg"
                 alt="Built with ink! badge"
-                className="w-[160px] -ml-12"
+                className="w-[160px] ml-0 sm:-ml-12"
               />
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex flex-col items-center justify-center gap-3 mb-8 sm:flex-row">
                 <div
                   className={cn(
                     'p-3 font-mono rounded-[12px] bg-[rgba(19,17,28,0.33)] text-[12px] overflow-scroll w-full border-[rgb(57,40,83)] border shadow-[rgba(0,0,0,0.33)_2px_2px_6px_0px_inset]',
@@ -201,9 +201,9 @@ export default function PageAssets() {
               <img
                 src="https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink.svg"
                 alt="Built for ink! badge"
-                className="w-[160px] -ml-12"
+                className="w-[160px] ml-0 sm:-ml-12"
               />
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex flex-col items-center justify-center gap-3 mb-8 sm:flex-row">
                 <div
                   className={cn(
                     'p-3 font-mono rounded-[12px] bg-[rgba(19,17,28,0.33)] text-[12px] overflow-scroll w-full border-[rgb(57,40,83)] border shadow-[rgba(0,0,0,0.33)_2px_2px_6px_0px_inset]',
@@ -233,9 +233,9 @@ export default function PageAssets() {
               <img
                 src="https://raw.githubusercontent.com/use-ink/ink/master/.images/built-for-ink-flat.svg"
                 alt="Built for ink! badge"
-                className="w-[160px] -ml-12"
+                className="w-[160px] ml-0 sm:-ml-12"
               />
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex flex-col items-center justify-center gap-3 mb-8 sm:flex-row">
                 <div
                   className={cn(
                     'p-3 font-mono rounded-[12px] bg-[rgba(19,17,28,0.33)] text-[12px] overflow-scroll w-full border-[rgb(57,40,83)] border shadow-[rgba(0,0,0,0.33)_2px_2px_6px_0px_inset]',
@@ -266,7 +266,8 @@ export default function PageAssets() {
             <hr className="dotted" />
             <a href={useBaseUrl('img/logo/ink-brand-assets.zip')} download>
               <Button size="lg" variant="secondary" className="w-full">
-                Download all ink! brand assets
+                <span className="hidden lg:block">Download all ink! brand assets</span>
+                <span className="block lg:hidden">Download assets</span>
               </Button>
             </a>
           </CardContent>
