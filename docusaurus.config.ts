@@ -104,23 +104,36 @@ module.exports = {
     },
   ],
   plugins: [
-    // [
-    //   '@docusaurus/plugin-client-redirects',
-    //   {
-    //     redirects: [
-    //       {
-    //         to: '/inkubator',
-    //         from: '/ubator',
-    //       },
-    //     ],
-    //     // createRedirects(existingPath) {
-    //     //   if (existingPath.includes('/docs/')) {
-    //     //     return [existingPath.replace('/docs/', '/docs/v5/')]
-    //     //   }
-    //     //   return undefined // Return a falsy value: no redirect created
-    //     // },
-    //   },
-    // ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/inkubator',
+            from: '/ubator',
+          },
+        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/6.x/')) {
+            console.log('redirecting', existingPath, '/docs/v6/')
+            return [existingPath.replace('/6.x/', '/docs/v6/')]
+          }
+          if (existingPath.includes('/5.x/')) {
+            console.log('redirecting', existingPath, '/docs/v5/')
+            return [existingPath.replace('/5.x/', '/docs/v5/')]
+          }
+          if (existingPath.includes('/4.x/')) {
+            console.log('redirecting', existingPath, '/docs/v4/')
+            return [existingPath.replace('/4.x/', '/docs/v4/')]
+          }
+          if (existingPath.includes('/3.x/')) {
+            console.log('redirecting', existingPath, '/docs/v3/')
+            return [existingPath.replace('/3.x/', '/docs/v3/')]
+          }
+          return undefined // Return a falsy value: no redirect created
+        },
+      },
+    ],
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
