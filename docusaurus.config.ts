@@ -114,23 +114,18 @@ module.exports = {
           },
         ],
         createRedirects(existingPath) {
-          if (existingPath.includes('/6.x/')) {
+          if (existingPath.includes('/docs/v6/')) {
             console.log('redirecting', existingPath, '/docs/v6/')
-            return [existingPath.replace('/6.x/', '/docs/v6/')]
+            return [existingPath.replace('/docs/v6/', '/6.x/')]
           }
-          if (existingPath.includes('/5.x/')) {
+          if (existingPath.includes('/docs/v5/')) {
             console.log('redirecting', existingPath, '/docs/v5/')
-            return [existingPath.replace('/5.x/', '/docs/v5/')]
+            return [existingPath.replace('/docs/v5/', '/5.x/')]
           }
-          if (existingPath.includes('/4.x/')) {
+          if (existingPath.includes('/docs/v4/')) {
             console.log('redirecting', existingPath, '/docs/v4/')
-            return [existingPath.replace('/4.x/', '/docs/v4/')]
+            return [existingPath.replace('/docs/v4/', '/4.x/')]
           }
-          if (existingPath.includes('/3.x/')) {
-            console.log('redirecting', existingPath, '/docs/v3/')
-            return [existingPath.replace('/3.x/', '/docs/v3/')]
-          }
-          return undefined // Return a falsy value: no redirect created
         },
       },
     ],
