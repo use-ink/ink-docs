@@ -15,8 +15,9 @@ export function SectionInterop() {
   return (
     <section className="relative flex flex-col items-center justify-center w-full overflow-hidden section-interop md:h-[820px]">
       <Clouds />
-      <TentaclesLeft className="absolute top-[20px] lg:top-0 h-full -left-[100px] md:left-0 origin-left max-w-[30%] z-30 pointer-events-none" />
-      <TentaclesRight className="absolute top-[50px] lg:top-0 -right-[180px] md:-right-[280px] lg:-right-[380px] h-full origin-right max-w-[55%] 2xl:max-w-[1000px] z-30 pointer-events-none" />
+
+      <TentaclesLeft className="absolute hidden sm:block top-[20px] lg:top-0 h-full -left-[100px] md:left-0 origin-left max-w-[30%] z-30 pointer-events-none" />
+      <TentaclesRight className="absolute hidden sm:block top-[50px] lg:top-0 -right-[180px] md:-right-[280px] lg:-right-[380px] h-full origin-right max-w-[55%] 2xl:max-w-[1000px] z-30 pointer-events-none" />
       <div className="container relative z-10 flex flex-col items-center justify-center pointer-events-none">
         <BubbleContainer>
           <MainCta
@@ -46,9 +47,10 @@ export function SectionInterop() {
           />
         </BubbleContainer>
       </div>
-      {/* <div className="absolute inset-0 hidden -z-0 md:block">
-        <Orb hoverIntensity={0.4} rotateOnHover={false} hue={0} forceHoverState={false} />
-      </div> */}
+      <div className="relative h-[350px] w-full -mt-[100px] sm:hidden">
+        <TentaclesLeft className="absolute top-[full]  h-full left-[-25%] md:left-0 origin-left max-h-[90%] max-w-[80%] z-30 pointer-events-none" />
+        <TentaclesRight className="absolute top-[0px] -right-[40%] h-full origin-right max-w-[90%] z-30 pointer-events-none" />
+      </div>
     </section>
   )
 }
