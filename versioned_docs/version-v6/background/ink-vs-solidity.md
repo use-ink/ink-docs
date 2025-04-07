@@ -14,32 +14,26 @@ slug: /background/ink-vs-solidity
 
 ![Solidity Title Picture](/img/title/solidity.svg)
 
-:::caution
-This page has not been updated for ink! v6 yet.
-
-TODO @peterwht Please re-read this page.
-:::
-
 # ink! vs. Solidity
 
 The following table gives a brief comparison of features between ink! and Solidity:
 
 <div class="comparison">
 
-|                       | ink!                        | Solidity      |
-| :-------------------- | :-------------------------- | :------------ |
-| Virtual Machine       | Any Wasm VM                 | EVM           |
-| Encoding              | Wasm                        | EVM Byte Code |
-| Language              | Rust                        | Standalone    |
-| Overflow Protection   | Enabled by default          | Yes           |
-| Constructor Functions | Multiple                    | Single        |
-| Tooling               | Anything that supports Rust | Custom        |
-| Versioning            | Semantic                    | Semantic      |
-| Has Metadata?         | Yes                         | Yes           |
-| Multi-File Project    | Planned                     | Yes           |
-| Storage Entries       | Variable                    | 256 bits      |
-| Supported Types       | Docs                        | Docs          |
-| Has Interfaces?       | Yes (Rust Traits)           | Yes           |
+|                       | ink!                         | Solidity     |
+| :-------------------- |:-----------------------------|:-------------|
+| Virtual Machine       | PolkaVM                      | EVM          |
+| Encoding              | SCALE or Solidity ABI        | Solidity ABI |
+| Language              | Rust                         | Standalone   |
+| Overflow Protection   | Enabled by default           | Yes          |
+| Constructor Functions | Multiple                     | Single       |
+| Tooling               | Most tools that support Rust | Custom       |
+| Versioning            | Semantic                     | Semantic     |
+| Has Metadata?         | Yes                          | Yes          |
+| Multi-File Project    | Yes                          | Yes          |
+| Storage Entries       | Variable                     | 256 bits     |
+| Supported Types       | Docs                         | Docs         |
+| Has Interfaces?       | Yes (Rust Traits)            | Yes          |
 
 </div>
 
@@ -236,7 +230,10 @@ mod example {
 - If the Solidity contract uses a `string`, it is recommended to use a `Vec<u8>` to avoid the overhead of a `String`. See [here](https://substrate.stackexchange.com/questions/1174/why-is-it-a-bad-idea-to-use-string-in-an-ink-smart-contract) for more details on why. The smart contract should only contain the information that strictly needs to be placed on the blockchain and go through consensus. The UI should be used for displaying strings.
 - Double check all `.unwrap()`s performed. Solidity does not have as strict checking as ink! does. For example, a mapping field can be accessed as simple as `myMapping[someKey]`. ink!, however, requires `self.my_mapping.get(some_key).unwrap()`. A useful way to handle `None` cases is to use `.unwrap_or(some_val)`.
 - Run the contracts node with `ink-node -lerror,runtime::contracts=debug` for debug prints, and errors to be displayed in the nodes console.
-- When passing parameters to a helper, it is recommended to pass references (even for primitives) as Wasm is more efficient with references.
+- Just as in Solidity, ink! does not have floating point numbers due to the non-deterministic nature. Instead, the frontend should add decimal points as needed.
+
+<!-- TODO: commented out until validity of this is confirmed (references are more efficient for riscv, similar to WASM).
+- When passing parameters to a helper, it is recommended to pass references (even for primitives) as RISCV is more efficient with references.
   For example (see [erc20](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs) example):
 
 ```rust
@@ -261,8 +258,8 @@ fn balance_of_impl(&self, owner: &AccountId) -> Balance {
     self.balances.get(owner).unwrap_or_default()
 }
 ```
+-->
 
-- Just as in Solidity, ink! does not have floating point numbers due to the non-deterministic nature. Instead, the frontend should add decimal points as needed.
 
 ## Syntax Equivalencies
 
@@ -543,6 +540,7 @@ pub fn my_function(&self, return_error: bool) -> Result<()> {
 }
 ```
 
+<!-- TODO: needs to be reworked with ink!'s new storage (allowing nested mappings).
 ### `nested mappings + custom / advanced structures`
 
 In Solidity, it is easy to do nested mappings. It is not as straightforward in ink!.
@@ -664,8 +662,12 @@ mod dao {
 }
 ```
 
-### `cross-contract calling`
+-->
 
+### `cross-contract calling`
+See here to learn the different ways to do [cross-contract calling](../basics/cross-contract-calling.md)
+
+<!-- TODO: cleanup this section 
 In ink!, to do [cross-contract calling](../basics/cross-contract-calling.md), the contract will need to be added to the project. Ensure the contract is properly exporting its Structs. See the `erc20` contract example:
 
 ```rust
@@ -753,6 +755,7 @@ Now, to perform the cross-contract call:
 ```
 
 Note: as of now (ink! v3.3.1), when using cross-contract calls, emitting events will not work and compile errors will occur. See [issue #1000](https://github.com/use-ink/ink/issues/1000). Furthermore, the compiler will throw an error saying that (for example) Erc20Ref does not implement `SpreadAllocate`. This [issue #1149](https://github.com/use-ink/ink/issues/1149) explains more and has a workaround. These issues will be fixed in [issue #1134](https://github.com/use-ink/ink/issues/1134).
+-->
 
 ### `submit generic transaction / dynamic cross-contract calling`
 
@@ -853,35 +856,7 @@ mod call_contract {
 
 Note: the `function_selector` bytes can be found in the generated `target/ink/<contract-name>.json`.
 
-## Limitations of ink! v4
-
-- Multi-file projects are not supported with pure ink!
-  - implementing traits / interfaces will not work
-  - There are alternatives that do add this functionality such as OpenBrush
-
 ## Troubleshooting Errors
-
-- `ERROR: Validation of the Wasm failed.`
-
-```
-ERROR: Validation of the Wasm failed.
-
-ERROR: An unexpected panic function import was found in the contract Wasm.
-This typically goes back to a known bug in the Rust compiler:
-https://github.com/rust-lang/rust/issues/78744
-
-As a workaround try to insert `overflow-checks = false` into your `Cargo.toml`.
-This will disable safe math operations, but unfortunately we are currently not
-aware of a better workaround until the bug in the compiler is fixed.
-```
-
-**Solution**  
-Add the following to the contract Cargo.toml:
-
-```
-[profile.release]
-overflow-checks = false
-```
 
 - `"failed to load bitcode of module '...' "`
 
@@ -916,59 +891,10 @@ pub use self::mycontract::{
 };
 ```
 
-- Off-chain unit tests will not work with cross-contract calls.
-  One workaround to ensure unit tests are still passing is to provide mock data.
-
-An easy approach is to use conditional compiling with `#[cfg(test)]` and `#[cfg(not(test))]`.
-
-Note: This solution may not be the best option. A more effective approach can be found in our current E2E test. Please refer to [the showcased example here](https://github.com/use-ink/ink-examples/tree/main/multi-contract-caller).
-
-For example, here is a read-only ERC20 cross-contract call:
-
-```rust
-// only compiles when *not* running tests
-#[cfg(not(test))]
-fn get_token_balance(&self, caller: &AccountId) -> Balance {
-    // calls the external ERC-20 contract
-    self.token.balance_of(*caller)
-}
-
-// only compiles when running tests
-#[cfg(test)]
-fn get_token_balance(&self, _: &AccountId) -> Balance {
-    // arbitrary value
-    1
-}
-```
-
-And if the cross-contract call _writes_ to storage, a mock field can be added to the contract struct. For example:
-
-```rust
-#[ink(storage)]
-pub struct MyContract {
-    #[cfg(test)]
-    mock_field: SomeStruct, // will serve as a fake storage
-}
-
-...
-
-// on-chain, performs cross-contract call
-#[cfg(not(test))]
-fn do_some_write(&mut self) {
-    self.external_contract.write_to_field(0xDEADBEEF);
-}
-
-
-// testing environment only
-#[cfg(test)]
-fn do_some_write(&mut self) {
-    self.mock_field.my_fake_storage_item = 0xDEADBEEF;
-}
-```
-
+- For more complex testing that requires a running node, such as cross-contract calls,please refer to [the showcased example here](https://github.com/use-ink/ink-examples/tree/main/multi-contract-caller)
 - useful code to interact and modify the contract environment for testing
 
-[ink_env docs](https://docs.rs/ink_env/4.3.0/ink_env/index.html)
+[ink_env docs](https://docs.rs/ink_env/latest/ink_env/index.html)
 
 ```rust
 // get the default accounts (alice, bob, ...)
