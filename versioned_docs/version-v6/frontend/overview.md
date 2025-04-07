@@ -8,14 +8,6 @@ hide_title: true
 
 # Overview
 
-:::caution
-This page has not yet been updated to ink! v6.
-
-TODO @peterwht Please read this page and see what's still up to date.
-The idea was to no longer have tutorials on frontends here, but I would still keep
-some pointers around because it's such an obviously important topic.
-:::
-
 Now after you [wrote](../getting-started/creating.md), [compiled](../getting-started/compiling.md) and [deployed your smart contract](../getting-started/deploying.md), it is time to craft a user experience around it.
 
 This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
@@ -28,21 +20,30 @@ There are several levels of abstraction where you can start your journey creatin
 
 ### Using no libraries
 
-+ [RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction) **(not recommended)**: nodes participating in the blockchain network offer an [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
++ [RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction) **(not recommended)**: nodes participating in the blockchain network offer a [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
 
 ### Low level libraries
 
-+ [`@polkadot/api`](https://polkadot.js.org/docs/api) **(not recommended)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-contracts` runtime calls.
++ [`polkadot-api`](https://papi.how/getting-started) **(currently recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
 
-+ [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(recommended)**: abstraction on top of `@polkadot/api` for the `pallet-contracts`. Makes interaction with smart contracts more comfortable and type safe.
++ [`@polkadot/api`](https://polkadot.js.org/docs/api) **(not recommended)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-revive` runtime calls.
+
+### ink!-specific SDKs
++ [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(will be compatible with ink! v6 soon)**: is an SDK built for interacting with ink! smart contracts, offering type-safe deployment and easy usage.
+
++ [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(not compatible with ink! v6)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
+ 
++ [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(not compatible with ink! v6)**: abstraction on top of `@polkadot/api` for the `pallet-contracts`. Makes interaction with smart contracts more comfortable and type safe.
 
 ### React
 
-+ [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(recommended)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
++ [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(not compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
+
++ [`typink`](https://docs.dedot.dev/typink) **(not compatible with ink! v6)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors. [Getting started now!](../getting-started/typink)
 
 ### React and Next.js
 
-+ [`inkathon`](https://github.com/scio-labs/inkathon) **(recommended)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
++ [`inkathon`](https://github.com/scio-labs/inkathon) **(not compatible with ink! v6)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
 
 ## Other Languages
 
