@@ -107,19 +107,22 @@ This mapping is defined using the [`SolEncode`][sol-trait-encode] and
 for the following Rust/ink! primitive types creating a mapping
 to the corresponding Solidity ABI types as shown in the table below:
 
-| Rust/ink! type | Solidity ABI type | Notes                                                                                            |
-| -------------- | ----------------- |--------------------------------------------------------------------------------------------------|
-| `bool` | `bool` |                                                                                                  |
-| `iN` for `N ∈ {8,16,32,64,128}` | `intN` | e.g `i8` ↔ `int8`                                                                              |
-| `uN` for `N ∈ {8,16,32,64,128}` | `uintN` | e.g `u8` ↔ `uint8`                                                                             |
-| [`ink::U256`][ink-u256] | `uint256` |                                                                                                  |
-| `String` | `string` |                                                                                                  |
-| [`ink::Address`][ink-address] / [`H160`][ink-h160] | `address` | `ink::Address` is a type alias for the `ink::H160` type used for addresses in `pallet-revive`    |
-| `[T; N]` for `const N: usize` | `T[N]` | e.g. `[i8; 64]` ↔ `int8[64]`                                                                   |
-| `Vec<T>` | `T[]` | e.g. `Vec<i8>` ↔ `int8[]`                                                                      |
-| [`ink::SolBytes<u8>`][ink-sol-bytes] |  `bytes1` |                                                                                                  |
-| [`ink::SolBytes<[u8; N]>`][ink-sol-bytes] for `1 <= N <= 32` |  `bytesN` | e.g. `ink::SolBytes<[u8; 1]>` ↔ `bytes1`                                                       |
-| [`ink::SolBytes<Vec<u8>>`][ink-sol-bytes] |  `bytes` |                                                                                                  |
+| Rust/ink! type | Solidity ABI type | Notes |
+| -------------- | ----------------- | ----- |
+| `bool` | `bool` ||
+| `iN` for `N ∈ {8,16,32,64,128}` | `intN` | e.g `i8` ↔ `int8` |
+| `uN` for `N ∈ {8,16,32,64,128}` | `uintN` | e.g `u8` ↔ `uint8` |
+| [`ink::U256`][ink-u256] | `uint256` ||
+| `String` | `string` ||
+| `Box<str>` | `string` ||
+| [`ink::Address`][ink-address] / [`H160`][ink-h160] | `address` | `ink::Address` is a type alias for the `ink::H160` type used for addresses in `pallet-revive` |
+| `[T; N]` for `const N: usize` | `T[N]` | e.g. `[i8; 64]` ↔ `int8[64]` |
+| `Vec<T>` | `T[]` | e.g. `Vec<i8>` ↔ `int8[]` |
+| `Box<[T]>` | `T[]` | e.g. `Box<[i8]>` ↔ `int8[]` |
+| [`ink::SolBytes<u8>`][ink-sol-bytes] | `bytes1` ||
+| [`ink::SolBytes<[u8; N]>`][ink-sol-bytes] for `1 <= N <= 32` | `bytesN` | e.g. `ink::SolBytes<[u8; 1]>` ↔ `bytes1` |
+| [`ink::SolBytes<Vec<u8>>`][ink-sol-bytes] | `bytes` ||
+| [`ink::SolBytes<Box<[u8]>>`][ink-sol-bytes] | `bytes` ||
 | `(T1, T2, T3, ... T12)` | `(U1, U2, U3, ... U12)` | where `T1` ↔ `U1`, ... `T12` ↔ `U12` e.g. `(bool, u8, Address)` ↔ `(bool, uint8, address)` |
 
 [`SolEncode`][sol-trait-encode] is additionally implemented for reference and smart
@@ -127,9 +130,9 @@ pointer types below:
 
 | Rust/ink! type | Solidity ABI type | Notes |
 | -------------- | ----------------- | ----- |
-| `&str`, `&mut str`, `Box<str>` | `string` ||
+| `&str`, `&mut str` | `string` ||
 | `&T`, `&mut T`, `Box<T>` | `T` | e.g. `&i8 ↔ int8` |
-| `&[T]`, `&mut [T]`, `Box<[T]>` | `T[]` | e.g. `&[i8]` ↔ `int8[]` |
+| `&[T]`, `&mut [T]` | `T[]` | e.g. `&[i8]` ↔ `int8[]` |
 
 See the rustdoc for [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
 for instructions for implementing the traits for custom arbitrary types.
