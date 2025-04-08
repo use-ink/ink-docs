@@ -94,8 +94,7 @@ export default function PageTutorials() {
           transition={{ duration: 1.2, delay: 0.4 }}
         >
           <p className="text-[18px] font-semibold">
-            Explore step-by-step tutorials to help developers build and deploy ink! smart contracts on Polkadot and
-            beyond.
+            Explore step-by-step tutorials and learn how to build a dApp with ink! smart contracts.
           </p>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1 }}>
@@ -111,7 +110,7 @@ export default function PageTutorials() {
           ))}
         </div>
         <div className="flex flex-col items-center justify-center gap-4 my-16 md:flex-row">
-          <p className="m-0">Not seeing a tutorial you wish we offered?</p>
+          <p className="m-0">Do you have an idea or need for a tutorial?</p>
           <Link href="https://t.me/inkathon" className="text-blue-500">
             <Button size="lg" variant="secondary">
               Request a topic

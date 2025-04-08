@@ -106,7 +106,7 @@ export default function PageChains() {
             transition={{ duration: 1.3, delay: 0.2, ease: 'easeInOut' }}
             className="text-[rgb(220,215,224)] font-[600] max-w-[500px]"
           >
-            Explore the different chains that you can deploy ink! smart contracts with, separated by version.
+            Explore the different chains where you can deploy ink! smart contracts.
           </motion.p>
         </div>
       </section>
@@ -133,16 +133,16 @@ export default function PageChains() {
           <h2>Introducing ink! v6</h2>
           <Admonition type="color" title="Attention">
             <p className="text-[16px]">
-              With ink! version 6 we are transitioning to a new execution engine: the{' '}
+              ink! version 6 transitions to a new execution engine: the{' '}
               <Link to="https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive">
                 <code className="whitespace-nowrap">pallet-revive</code>
               </Link>{' '}
-              module of Polkadot SDK. This module executes smart contracts that are uploaded to it in the RISC-V
-              bytecode format. This transition is currently ongoing and we are working hard to an alpha release of ink!
-              v6. ongoing and we are working hard to an alpha release of ink! v6.
+              module of Polkadot SDK. This module executes smart contracts in RISC-V
+              bytecode format. The upgrade is currently ongoing and the alpha release of ink!
+              v6 is on its way!
               <br />
               <br />
-              You can read more about the details that motivated this transition{' '}
+              You can read more about the transition{' '}
               <a href="https://use.ink/6.x/current-state/" className="underline">
                 here
               </a>
@@ -150,7 +150,7 @@ export default function PageChains() {
             </p>
           </Admonition>
           <p className="font-[600] text-[18px] mb-1">
-            The two blockchains that have already added pallet-revive to their testnets are:
+            Chains hosting pallet-revive:
           </p>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
             <ImageContainer>
@@ -246,7 +246,7 @@ export default function PageChains() {
             </Link>
           </div>
           <hr className="my-10" />
-          <p className="font-[600] text-[18px] mb-1">Testnet now — Mainnet soon!</p>
+          <p className="font-[600] text-[18px] mb-1">Testnet</p>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
             <Link to="https://t3rn.io/">
               <ImageContainer>
@@ -319,7 +319,7 @@ export default function PageChains() {
             <p className="font-[600] text-[18px] mb-1">Want ink! smart contracts for your chain?</p>
             <Link to="https://t.me/inkathon">
               <Button variant="secondary" size="lg">
-                Contact us
+                Get support
               </Button>
             </Link>
           </div>
