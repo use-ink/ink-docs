@@ -120,7 +120,7 @@ module.exports = {
           }
           if (existingPath.includes('/docs/v5/')) {
             console.log('redirecting', existingPath, '/docs/v5/')
-            return [existingPath.replace('/docs/v5/', '/5.x/')]
+            return [existingPath.replace('/docs/v5/', '/')]
           }
           if (existingPath.includes('/docs/v4/')) {
             console.log('redirecting', existingPath, '/docs/v4/')
