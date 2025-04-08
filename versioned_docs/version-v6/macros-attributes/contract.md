@@ -115,7 +115,7 @@ to the corresponding Solidity ABI types as shown in the table below:
 | [`ink::U256`][ink-u256] | `uint256` ||
 | `String` | `string` ||
 | `Box<str>` | `string` ||
-| [`ink::Address`][ink-address] / [`H160`][ink-h160] | `address` | `ink::Address` is a type alias for the `ink::H160` type used for addresses in `pallet-revive` |
+| [`ink::Address`][ink-address] / [`ink::H160`][ink-h160] | `address` | `ink::Address` is a type alias for the `ink::H160` type used for addresses in `pallet-revive` |
 | `[T; N]` for `const N: usize` | `T[N]` | e.g. `[i8; 64]` ↔ `int8[64]` |
 | `Vec<T>` | `T[]` | e.g. `Vec<i8>` ↔ `int8[]` |
 | `Box<[T]>` | `T[]` | e.g. `Box<[i8]>` ↔ `int8[]` |
