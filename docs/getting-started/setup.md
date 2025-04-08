@@ -48,7 +48,7 @@ Options:
 ```
 
 :::tip Alternative
- If you're looking for a more guided, all-in-one developer experience—including project scaffolding with multiple templates, local network setup, and contract interaction you can also try [Pop CLI](../third-party-tools/pop-cli.md)
+ If you're looking for a more guided, all-in-one developer experience—including project scaffolding with multiple templates, local network setup, and contract interaction, you can also try [Pop CLI](../third-party-tools/pop-cli.md)
 :::
 ### Installation
 
