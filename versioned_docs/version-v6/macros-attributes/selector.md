@@ -6,13 +6,23 @@ hide_title: true
 
 ![Text/selector Title Picture](/img/title/text/selector.svg)
 
-:::caution
-This section has not yet been updated to ink! v6.
+:::note
+ink! v6 supports both the native ink! and [Solidity][sol-abi] ABI (Application Binary Interface) specifications
+for contract interactions (i.e. calling conventions used for message calls).
 
-TODO @davidsemakula Please review this page in light of our ABI updates. 
+When support for Solidity ABI calling conventions is enabled (see [here][ink-contract-abi] for details),
+Solidity ABI selectors for messages are **always** generated according to the
+[Solidity ABI specification for function selectors][sol-abi-selector].
+
+So the instructions below for **controlling message selectors only apply to native ink! ABI selectors**
+(i.e. message selector manual overrides are ignored when generating Solidity ABI selectors for messages).
+
+Learn more about ink!'s support for multiple ABIs [here][ink-contract-abi].
 :::
 
-### 1. Upload Contract Code
+[sol-abi]: https://docs.soliditylang.org/en/latest/abi-spec.html
+[sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
+[ink-contract-abi]: ./contract.md#abi-string
 
 Applicable to ink! messages and ink! constructors.
 
@@ -48,7 +58,7 @@ fn my_fallback(&self) {}
 … then the selector of `my_message_1` is `[0xC0, 0xDE, 0xCA, 0xFE]` and the selector of `my_message_2` is `[0, 0, 0, 42]`
 since setting the selector manually overrides the automatically generated selector.
 
-## Controlling the messages selector
+## Controlling message and constructor selectors
 
 Every ink! message and ink! constructor has a selector with which the
 message or constructor can be uniquely identified within the ink! smart contract.
