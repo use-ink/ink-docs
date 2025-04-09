@@ -6,12 +6,6 @@ hide_title: true
 
 ![Cross Contract Title Picture](/img/title/cross-contract.svg)
 
-:::caution
-This page has to be reviewed in light of our ABI changes.
-
-TODO @davidsemakula or @peterwht
-:::
-
 # Cross-Contract Calls
 
 In ink! contracts it is possible to call messages and constructors of other
@@ -19,7 +13,8 @@ on-chain contracts.
 
 There are a few approaches to performing these cross-contract calls in ink!:
 1. Contract references (i.e `ContractRef`)
-1. Builders (i.e `CreateBuilder` and `CallBuilder`)
+2. Builders (i.e `CreateBuilder` and `CallBuilder`)
+3. Calling Solidity ABI Encoded Contracts with `CallBuilder`
 
 Contract references can only be used for cross-contract calls to other ink! contracts.
 Builders can be used to issue cross-contract calls to any RISC-V contract, such as those
@@ -278,7 +273,7 @@ Below is an example of how to call a contract using the `CallBuilder`. We will:
 
 ```rust
 let my_return_value = build_call::<DefaultEnvironment>()
-    .call(AccountId::from([0x42; 32]))
+    .call(H160::from([0x42; 20]))
     .call_v1()
     .gas_limit(0)
     .transferred_value(10)
@@ -321,7 +316,7 @@ Below is an example of how to delegate call a contract using the `CallBuilder`. 
 
 ```rust
 let my_return_value = build_call::<DefaultEnvironment>()
-    .delegate(ink::primitives::Hash::from([0x42; 32]))
+    .delegate(H160::from([0x42; 20]))
     .exec_input(
         ExecutionInput::new(Selector::new(ink::selector_bytes!("flip")))
             .push_arg(42u8)
@@ -329,6 +324,23 @@ let my_return_value = build_call::<DefaultEnvironment>()
             .push_arg(&[0x10u8; 32])
     )
     .returns::<i32>()
+    .invoke();
+```
+
+### CallBuilder Solidity
+`CallBuilder` also allows you to call contracts that are Solidity ABI encoded. This enables interoperability between Solidity, ink!, and other Solidity ABI encoded contracts!
+
+This requires using a Solidity compatible function selector using a keccak256 hash of the function signature.
+
+```rust
+let my_return_value = build_call_solidity::<DefaultEnvironment>()
+    .call(H160::from([0x42; 20]))
+    .ref_time_limit(0)
+    .transferred_value(10)
+    .exec_input(
+        ExecutionInput::new([0xcd, 0xe4, 0xef, 0xa9].into()) // solidity selector: keccak256("flip()")
+    )
+    .returns::<bool>()
     .invoke();
 ```
 
@@ -347,13 +359,3 @@ See the documentation for
 and
 [`ink::LangError`](https://docs.rs/ink/6.0.0/ink/enum.LangError.html)
 for more details on proper error handling.
-
-:::tip
-
-Because the `CallBuilder` requires only a contract's `AccountId` and message `selector`,
-we can call Solidity contracts compiled using [Parity's revive compiler](https://github.com/paritytech/revive)
-compiler and deployed to a chain that supports the `pallet-revive`.
-
-TODO update link below to fitting example in the `ink-examples` repo
-See [here](https://github.com/xermicus/call_solidity) for an example of how to do that.
-:::
