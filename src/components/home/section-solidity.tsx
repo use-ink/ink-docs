@@ -47,7 +47,10 @@ export function SectionSolidity() {
               </span>
             }
             title="Solidity + MetaMask Compatible"
-            description="ink! can now speak with Solidity contracts and MetaMask out of the box. You can even use it to write parts of your dApp in Solidity and other parts in Rust with ink!"
+            description="ink! offers native compatibility with Solidity contracts and tooling
+            such as MetaMask, out of the box! By bridging these ecosystems, you can combine the
+            security and performance benefits of Rust with Solidity’s extensive developer community
+            and tooling."
             level="h2"
             cta={
               <div className="flex flex-col justify-center gap-4 lg:justify-start md:flex-row md:gap-4">

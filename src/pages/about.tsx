@@ -67,14 +67,14 @@ export default function PageAbout() {
           <h2 className="w-auto whitespace-nowrap">What is ink!?</h2>
           <p className="text-balance font-[500] text-[21px] leading-[28px]">
             <span className="font-bold text-[rgb(187,131,250)]">
-              ink! is a programming language for smart contracts
-            </span>{' '}
-            — one of several that blockchains built with the{' '}
+              ink! is a Rust-based domain-specific language (DSL) for writing smart contracts on chains built with
+              the{' '}
+            </span>
             <a href="https://polkadot.com/platform/sdk" target="_blank" rel="noreferrer">
               Polkadot SDK
             </a>{' '}
-            can choose from. It&apos;s an opinionated language created by Parity team members by extending the popular
-            Rust programming language with functionality needed to make it smart contract compatible.
+            . Created by Parity Technologies, ink! extends Rust with specialized functionalities to ensure seamless,
+            Polkadot-ready smart contract development.
           </p>
         </div>
         <div className="flex items-center justify-center">
@@ -119,15 +119,14 @@ export default function PageAbout() {
                 <Link to="https://polkadot.com" target="_blank" rel="noreferrer">
                   Polkadot
                 </Link>
-                ). Over the years, ink! grew into a sophisticated ecosystem and a community did form around it.
-                Throughout all this time Parity continued to allocate developer resources to the project, which is
-                amazing!
+                ). From the very beginning, ink! and Polkadot were developed side by side, resulting in a powerful smart
+                contract language that natively taps into the powerful features of the Polkadot ecosystem. Over the
+                years, ink! grew into a sophisticated ecosystem with a community of passionate teams and individuals.
               </p>
 
               <p>
-                In April 2024, ink! moved out of the Parity umbrella. Instead of one company, it is nowadays developed
-                and maintained by an alliance of individual developers, companies, and community teams altogether. You
-                can read more on our transition out of Parity{' '}
+                In April 2024, ink! moved out of the Parity umbrella. It is now developed and maintained by an alliance
+                of independent developers, companies, and community teams. You can read more about the transition{' '}
                 <Link to="https://x.com/ink_lang/status/1783877356819783916" target="_blank" rel="noreferrer">
                   here
                 </Link>
@@ -135,9 +134,9 @@ export default function PageAbout() {
               </p>
 
               <p>
-                We continue to work closely with Parity, we contribute code to Parity-maintained components and
-                regularly synchronize with Parity developers. Parity continues to be involved in ink! as well: in late
-                2024 SRLabs and the Parity security team conducted an audit of ink! v5 (
+                The alliance continues to collaborate closely with Parity by contributing code to Parity-led initiatives
+                and staying in sync with core developers. Parity remains actively involved as well: in late 2024, SRLabs
+                and Parity’s security team conducted an audit of ink! v5 (
                 <Link to="https://x.com/paritytech/status/1882492494661005760" target="_blank" rel="noreferrer">
                   read more here
                 </Link>
@@ -165,54 +164,47 @@ export default function PageAbout() {
                 Introducing the Alliance
               </h4>
               <p>
-                The ink! Alliance holds bi-weekly meetings about the continued development and direction of ink!. That
-                concerns all product aspects, from core development to for example putting out a public call for redoing
-                our old and clunky website to the shiny new thing you are currently surfing (
+                The ink! Alliance meets bi-weekly to plan development priorities, explore product improvements, and
+                manage community projects—such as developing the new ink! website (
                 <a
                   href="https://forum.polkadot.network/t/bounty-ink-documentation-website-upgrade/11747"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  see here for more info
+                  more info
                 </a>
-                ).
-              </p>
-              <p>
-                We record our meeting notes in{' '}
+                ). Meeting notes are publicly recorded in{' '}
                 <a href="https://github.com/use-ink/ink-alliance/tree/main" target="_blank" rel="noreferrer">
                   this repository
                 </a>
                 .
               </p>
               <p>
-                The Alliance also created a Use Ink Ltd. in the UK to which all licenses and intellectual property was
-                transferred.
-              </p>
-              <p>
-                The largest part of our funding comes from the Polkadot treasury. We are very happy about this continued
-                support! The treasury proposals are all open and transparent, our last big one was{' '}
+                To manage intellectual property, the Alliance established Use Ink Ltd. in the UK. Much of the funding
+                comes from the Polkadot Treasury, and the proposals are fully transparent—the latest major one can be
+                viewed
                 <a
                   href="https://forum.polkadot.network/t/treasury-ink-alliance-for-a-more-successful-plaza/9692"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  this one
+                  here
                 </a>
                 .
               </p>
               <p>
-                The funding got transferred to{' '}
+                Once approved, treasury funds are transferred to a{' '}
                 <a
                   href="https://assethub-polkadot.subscan.io/account/122izuBjb4jxdQcwbQZLCHSMDLZLzWZS2grTME5ihpDm7Shm"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  this multisig
+                  multisig wallet
                 </a>
-                , which is controlled by six curators with a threshold of 4/6 approvals.
+                , maintained by six curators (requiring 4 approvals).
               </p>
               <p>
-                If you are interested in contributing to ink! or joining one of these calls, just talk to us in the{' '}
+                If you&apos;d like to contribute to ink!, join the{' '}
                 <a href="https://t.me/inkathon" target="_blank" rel="noreferrer">
                   ink! Developers Group on Telegram
                 </a>{' '}
@@ -265,11 +257,11 @@ export default function PageAbout() {
                 .
               </p>
               <p>
-                Applications for the second round are currently open. The best way to follow this is to watch the{' '}
+                Applications for the second round are currently open. For the latest updates, visit the{' '}
                 <a href="https://github.com/use-inkubator/Ecosystem-Grants" target="_blank" rel="noreferrer">
-                  ink!ubator 2.0 repository on GitHub
+                  ink!ubator 2.0 repository
                 </a>
-                .
+                on GitHub.
               </p>
             </div>
           </div>

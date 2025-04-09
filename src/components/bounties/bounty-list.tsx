@@ -87,7 +87,7 @@ export function BountyList() {
       {activeBounties.length === 0 && (
         <>
           <CTA
-            text="Wish a new bounty was here?"
+            text="Do you have an idea for a bounty?"
             btnText="Request bounty"
             btnLink="https://t.me/inkathon"
             btnVariant="default"
