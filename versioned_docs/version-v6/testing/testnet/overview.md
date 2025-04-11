@@ -8,17 +8,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ![Testnet Title Picture](/img/title/testnet.svg)
 
-# Contracts on Paseo
+# Contracts on Paseo (using Pop Testnet)
 
-:::caution
-This section has not yet been updated to ink! v6.
-
-TODO @peterwht Please review this page.
-:::
-
-
-[Paseo](https://wiki.polkadot.network/docs/build-pdk#paseo-testnet) is a testnet for
-Polkadot and Kusama parachains.
+- [Paseo](https://wiki.polkadot.network/docs/build-pdk#paseo-testnet) is Polkadot's main testnet for parachains.  
+- [Pop](https://learn.onpop.io/contracts) is a parachain on Paseo that allows you to deploy smart contracts – and uses Paseo's token (PAS).
 
 ## How can I use it?
 ### (1) Create an Account
@@ -29,7 +22,7 @@ See [here](https://wiki.polkadot.network/docs/learn-account-generation) for a de
 
 ### (2) Get Testnet Tokens
 
-As a second step, you have to get `PAS` testnet tokens through the [Paseo Faucet](https://faucet.polkadot.io/).
+As a second step, you have to get `PAS` testnet tokens through the [Paseo Faucet](https://faucet.polkadot.io/). For Pop, make sure to select Asset Hub as the destination (see [this guide](https://learn.onpop.io/contracts/guides/bridge-tokens-to-pop-network) for details).
 
 Alternatively, you can use the [Matrix chat room](https://wiki.polkadot.network/docs/learn-DOT#getting-tokens-on-the-paseo-testnet).
 You must send a message like this:
