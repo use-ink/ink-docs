@@ -76,10 +76,11 @@ $ cargo contract build --release
 # Find the binary here: https://github.com/use-ink/ink-node/releases/tag/v0.43.0
 
 # Start your local development node in a separate shell session
-$ ink-node
+$ chmod +x ink-node (makes the node's binary executable)
+$ ink-node (starts the node, try `./ink-node` if the previous command doesn't work)
 
-# Instantiate your contract on-chain.
-$ cargo contract instantiate --suri //Alice
+# Instantiate this contract on-chain.
+$ cargo contract instantiate --suri //Alice --args true -x
 
 # Dry-run a call of it.
 $ cargo contract call --suri //Alice --contract 0x… --message get
