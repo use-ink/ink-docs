@@ -47,6 +47,9 @@ Options:
   -V, --version  Print version information
 ```
 
+:::tip Alternative
+ If you're looking for a more guided, all-in-one developer experience—including project scaffolding with multiple templates, local network setup, and contract interaction, you can also try [Pop CLI](../third-party-tools/pop-cli.md)
+:::
 ### Installation
 
 Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/use-ink/cargo-contract#installation).
