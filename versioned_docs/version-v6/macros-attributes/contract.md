@@ -92,67 +92,20 @@ generates entry points for both calling conventions. This means:
 - Call builders are generated for both ink! and Solidity ABI calling conventions,
   and a `_sol` suffix is used to disambiguate Solidity calls.
 
-Please note that your contract sizes will get larger if you support both the ink!
-and Solidity ABI.
+:::note
+Your contract sizes will get larger if you support both the ink! and Solidity ABI.
+:::
 
 For contracts that support Solidity ABI encoding (i.e. `abi = "sol"` or `abi = "all"`),
 all types used as constructor/message arguments and return types must define a mapping
-to an equivalent Solidity type.
-
-This mapping is defined using the [`SolEncode`][sol-trait-encode] and
-[`SolDecode`][sol-trait-decode] traits, which are analogs to `scale::Encode` and
-`scale::Decode` (but for Solidity ABI encoding/decoding).
-
-[`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode] are implemented
-for the following Rust/ink! primitive types creating a mapping
-to the corresponding Solidity ABI types as shown in the table below:
-
-| Rust/ink! type | Solidity ABI type | Notes |
-| -------------- | ----------------- | ----- |
-| `bool` | `bool` ||
-| `iN` for `N ∈ {8,16,32,64,128}` | `intN` | e.g `i8` ↔ `int8` |
-| `uN` for `N ∈ {8,16,32,64,128}` | `uintN` | e.g `u8` ↔ `uint8` |
-| [`ink::U256`][ink-u256] | `uint256` ||
-| `String` | `string` ||
-| `Box<str>` | `string` ||
-| [`ink::Address`][ink-address] / [`ink::H160`][ink-h160] | `address` | `ink::Address` is a type alias for the `ink::H160` type used for addresses in `pallet-revive` |
-| `[T; N]` for `const N: usize` | `T[N]` | e.g. `[i8; 64]` ↔ `int8[64]` |
-| `Vec<T>` | `T[]` | e.g. `Vec<i8>` ↔ `int8[]` |
-| `Box<[T]>` | `T[]` | e.g. `Box<[i8]>` ↔ `int8[]` |
-| [`ink::SolBytes<u8>`][ink-sol-bytes] | `bytes1` ||
-| [`ink::SolBytes<[u8; N]>`][ink-sol-bytes] for `1 <= N <= 32` | `bytesN` | e.g. `ink::SolBytes<[u8; 1]>` ↔ `bytes1` |
-| [`ink::SolBytes<Vec<u8>>`][ink-sol-bytes] | `bytes` ||
-| [`ink::SolBytes<Box<[u8]>>`][ink-sol-bytes] | `bytes` ||
-| `(T1, T2, T3, ... T12)` | `(U1, U2, U3, ... U12)` | where `T1` ↔ `U1`, ... `T12` ↔ `U12` e.g. `(bool, u8, Address)` ↔ `(bool, uint8, address)` |
-
-[`SolEncode`][sol-trait-encode] is additionally implemented for reference and smart
-pointer types below:
-
-| Rust/ink! type | Solidity ABI type | Notes |
-| -------------- | ----------------- | ----- |
-| `&str`, `&mut str` | `string` ||
-| `&T`, `&mut T`, `Box<T>` | `T` | e.g. `&i8 ↔ int8` |
-| `&[T]`, `&mut [T]` | `T[]` | e.g. `&[i8]` ↔ `int8[]` |
-
-See the rustdoc for [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
-for instructions for implementing the traits for custom arbitrary types.
-
-Please note that Rust's [coherence/orphan rules][rust-coherence] mean that you can
-only implement the [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
-traits for local types.
+to an equivalent Solidity type ([more details here][sol-type-mapping]).
 
 [ink-spec-selector]: https://use.ink/basics/selectors/
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 [sol-abi]: https://docs.soliditylang.org/en/latest/abi-spec.html
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
 [sol-abi-codec]: https://docs.soliditylang.org/en/latest/abi-spec.html#formal-specification-of-the-encoding
-[ink-u256]: https://docs.rs/ink/latest/ink/struct.U256.html
-[ink-address]: https://docs.rs/ink/latest/ink/type.Address.html
-[ink-h160]: https://docs.rs/ink/latest/ink/struct.H160.html
-[ink-sol-bytes]: https://docs.rs/ink/latest/ink/struct.SolBytes.html
-[sol-trait-encode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
-[sol-trait-decode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
-[rust-coherence]: https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence
+[sol-type-mapping]: ../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
 
 ### `keep_attr: String`
 
