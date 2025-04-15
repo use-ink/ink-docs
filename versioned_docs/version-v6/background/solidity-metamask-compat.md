@@ -20,12 +20,6 @@ slug: /background/solidity-metamask-compatibility
 
 # Solidity & MetaMask Compatibility
 
-:::caution
-This page has not yet been written for ink! v6.
-
-TODO @davidsemakula
-:::
-
 With ink! v6, we have introduced a new attribute argument `abi` for the `#[ink::contract]` macro.
 It allows building your contract in Solidity ABI compatibility mode ([more details here][contract-abi-arg]).
 
@@ -82,6 +76,11 @@ pointer types below:
 [ink-h160]: https://docs.rs/ink/latest/ink/struct.H160.html
 [ink-sol-bytes]: https://docs.rs/ink/latest/ink/struct.SolBytes.html
 
+:::note
+Rust's `Option` and `Result` types are notable omissions from the default mappings.
+This is because they don't have equivalent Solidity ABI types.
+:::
+
 ### Mappings for arbitrary custom types
 
 See the rustdoc for [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
@@ -94,6 +93,12 @@ traits for local types.
 :::
 
 [rust-coherence]: https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence
+
+:::caution
+The following sections have not yet been written for ink! v6.
+
+TODO @davidsemakula
+:::
 
 ## MetaMask
 
