@@ -18,25 +18,30 @@ which functions can be called in there or what their arguments
 are. This additional information that describes what the raw binary
 is about is called metadata — data that describes other data.
 
-Metadata is used to describe a contract in a language agnostic way. It is
-intended to be used by third party tools (e.g. UIs, block explorers) in order to correctly
-call contract functions and interpret events.
+Metadata is used to describe a contract in a language agnostic way. 
+It is intended to be used by third party tools (e.g. UIs, block explorers e.t.c) 
+in order to correctly call contract functions and interpret events.
 
 ink! supports two formats of metadata:
 
-* [The Solidity format](./solidity-format.md)
-* [Our own ink! format](./ink-format.md)
+* [Our own native ink! metadata format](./ink-format.md)
+* [The Solidity metadata format](./solidity-format.md)
 
-The reason why we support two formats is that Solidity is a subset of
-the types that Rust allows for. E.g. Rust's `Option` or `Result` are
-not supported by the Solidity type system.
+Supporting the Solidity metadata format allows developers to use Solidity tools
+(e.g. [ethers.js][ethers-js]) to transparently interact with 
+[Solidity ABI compatible ink! contracts][sol-compat].
 
 So developers have a choice which metadata they want to generate for a contract.
 They can decide when invoking `cargo-contract`:
 
-```bash
+```shell
 $ cargo contract build ---metadata <ink|solidity>
 ```
 
 Generating Solidity metadata is only possible if all constructor and message 
-arguments + return types can be mapped to fitting Solidity types.
+arguments and return types can be mapped to equivalent Solidity ABI types 
+([more details here][sol-type-mapping]).
+
+[ethers-js]: https://docs.ethers.org/
+[sol-compat]: ../../background/solidity-metamask-compat.md
+[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
