@@ -20,30 +20,31 @@ There are several levels of abstraction where you can start your journey creatin
 
 ### Using no libraries
 
-+ [RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction) **(not recommended)**: nodes participating in the blockchain network offer a [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
+- [RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction) **(not recommended)**: nodes participating in the blockchain network offer a [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
 
 ### Low level libraries
 
-+ [`polkadot-api`](https://papi.how/getting-started) **(currently recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
+- [`polkadot-api`](https://papi.how/getting-started) **(currently recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
 
-+ [`@polkadot/api`](https://polkadot.js.org/docs/api) **(not recommended)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-revive` runtime calls.
+- [`@polkadot/api`](https://polkadot.js.org/docs/api) **(not recommended)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-revive` runtime calls.
 
 ### ink!-specific SDKs
-+ [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(will be compatible with ink! v6 soon)**: is an SDK built for interacting with ink! smart contracts, offering type-safe deployment and easy usage.
 
-+ [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(not compatible with ink! v6)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
- 
-+ [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(not compatible with ink! v6)**: abstraction on top of `@polkadot/api` for the `pallet-contracts`. Makes interaction with smart contracts more comfortable and type safe.
+- [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(will be compatible with ink! v6 soon)**: is an SDK built for interacting with ink! smart contracts, offering type-safe deployment and easy usage.
+
+- [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(not compatible with ink! v6)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
+
+- [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(not compatible with ink! v6)**: abstraction on top of `@polkadot/api` for the `pallet-contracts`. Makes interaction with smart contracts more comfortable and type safe.
 
 ### React
 
-+ [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(not compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
+- [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(not compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
 
-+ [`typink`](https://docs.dedot.dev/typink) **(not compatible with ink! v6)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors. [Getting started now!](../getting-started/typink)
+- [`typink`](https://docs.dedot.dev/typink) **(not compatible with ink! v6)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors.
 
 ### React and Next.js
 
-+ [`inkathon`](https://github.com/scio-labs/inkathon) **(not compatible with ink! v6)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
+- [`inkathon`](https://github.com/scio-labs/inkathon) **(not compatible with ink! v6)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
 
 ## Other Languages
 
@@ -51,10 +52,10 @@ Of course the browser and JavaScript should not be the one and only platform for
 
 The following is a list of libraries which could be used to craft smart-contract dApps on other platforms than the web.
 
-+ [novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios): low level generic iOS SDK for substrate.
+- [novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios): low level generic iOS SDK for substrate.
 
-+ [novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android): low level Android SDK for substrate.
+- [novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android): low level Android SDK for substrate.
 
-+ [paritytech/subxt](https://github.com/paritytech/subxt): Rust library to submit extrinsics (transactions) to a substrate node via RPC.
+- [paritytech/subxt](https://github.com/paritytech/subxt): Rust library to submit extrinsics (transactions) to a substrate node via RPC.
 
-+ [polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md): Python library to interface with Substrate nodes.
+- [polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md): Python library to interface with Substrate nodes.
