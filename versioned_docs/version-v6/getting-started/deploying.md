@@ -33,9 +33,7 @@ and waste space on the blockchain.
 ## Using the Contracts UI
 
 :::caution
-This section on the Contracts UI has not yet been updated to ink! v6.
-
-TODO @peterwht Please review this section.
+For ink! v6 only, this section on the Contracts UI uses an alpha version of the UI.
 :::
 
 ### 1. Upload Contract Code
@@ -43,7 +41,7 @@ TODO @peterwht Please review this section.
 Here we will upload the contract code and instantiate one copy of the contract on the blockchain
 (which is usually why we upload the contract code in the first place):
 
-- Go to https://ui.use.ink
+- Go to https://inkv6alpha.netlify.app/
 - Click the **Add New Contract** button in the sidebar.
 - Click the **Upload New Contract Code** button in the Add New Contract page.
 - Choose an **Instantiation account** (e.g. ALICE).
@@ -57,7 +55,7 @@ Here we will upload the contract code and instantiate one copy of the contract o
 ### 2. Instantiate a Contract on the Blockchain
 
 Smart contracts exist as an extension of the account system on the blockchain. Thus creating an
-instance of this contract will create a new `AccountId` which will store any balance managed by the
+instance of this contract will create a new `AccountId` (ETH-compatible address) which will store any balance managed by the
 smart contract and allow us to interact with the contract.
 
 Now a screen displays the information that represents our smart contract. We are going to
@@ -73,10 +71,6 @@ The transaction is now queued, review your data and click **Upload and Instantia
 
 ![Flipper Instantiate Contract 03](/img/contracts-ui-2.png)
 
-When you click **Upload and Instantiate** you should see
-the extrinsic `instantiateWithCode` is processing, and a flurry of events appear including the
-creation of a new account (`system.NewAccount`) and the instantiation of the contract
-(`contracts.Instantiated`).
 You will be redirected to a new page, where you can interact with the newly created contract instance.
 
 ![Flipper Instantiate Success](/img/contracts-ui-3.png)
