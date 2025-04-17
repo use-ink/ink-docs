@@ -1154,45 +1154,6 @@ SubWallet is available on multiple platforms:
 For more information, visit the official [SubWallet website](https://www.subwallet.app/).
 ````
 
-## File: docs/funding-programs/overview.mdx
-````
----
-title: Overview
-hide_title: true
-slug: /funding-programs
----
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-![Funding Programs Title Picture](/img/title/funding-programs.svg)
-
-# Funding Programs
-
-You want to develop a public good for the ink! ecosystem and are
-looking for funding? On this page we list some pointers of where you can look.
-
-## ink!ubator
-
-ink!ubator is an initiative funded by the Polkadot Treasury's Bounty Program. It is designed to
-kickstart the ink! ecosystem on Polkadot, Kusama, and other Substrate chains.
-
-You can learn more <a href={useBaseUrl('/inkubator')}>here</a>.
-
-## Ecosystem Development Funds
-
-Nearly all chains that support ink! have some sort of ecosystem development program.
-We've listed [chains that support ink! here](../intro/where-to-deploy.mdx).
-
-## Treasuries
-
-A number of chains that support ink! have a treasury. In the case of Polkadot the
-treasury in on-chain with a governance process. Here, the community decides on
-where to best allocate funds.
-
-The [Polkadot](https://polkadot.polkassembly.io/) and [Kusama](https://kusama.polkassembly.io/)
-treasuries are examples. A number of ink! related proposals have been funded by both treasuries.
-````
-
 ## File: docs/basics/verification/contract-verification.md
 ````markdown
 ---
@@ -3260,165 +3221,6 @@ mod mycontract {
             }
         }
     /* --snip-- */
-    }
-}
-```
-````
-
-## File: docs/basics/trait-definitions.md
-````markdown
----
-title: Trait Definitions
-slug: /basics/trait-definitions
-hide_title: true
----
-
-![Text/trait Title Picture](/img/title/text/trait.svg)
-
-Through the `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
-
-This allows to define shared smart contract interfaces to different concrete implementations.
-Note that this ink! trait definition can be defined anywhere, even in another crate!
-
-See our [`ERC20-Trait example contract`](https://github.com/use-ink/ink-examples/blob/main/trait-erc20/lib.rs) 
-for an elaborate example which uses trait definitions.
-
-### Example
-
-Defined in the `base_erc20.rs` module.
-
-```rust
-#[ink::trait_definition]
-pub trait BaseErc20 {
-    /// Returns the total supply.
-    #[ink(message)]
-    fn total_supply(&self) -> Balance;
-
-    /// Transfers `amount` from caller to `to`.
-    #[ink(message, payable)]
-    fn transfer(&mut self, to: AccountId, amount: Balance);
-}
-```
-
-An ink! smart contract definition can then implement this trait definition as follows:
-
-```rust
-#[ink::contract]
-mod erc20 {
-    use base_erc20::BaseErc20;
-
-    #[ink(storage)]
-    pub struct Erc20 {
-        total_supply: Balance,
-        // more fields ...
-    }
-    
-    impl Erc20 {
-        /// Creates a new ERC-20 contract and initializes it with the initial supply for the instantiator.
-        #[ink(constructor)]
-        fn new(initial_supply: Balance) -> Self {
-            // implementation ...
-        }
-    }
-
-    impl BaseErc20 for Erc20 {
-        #[ink(message)]
-        fn total_supply(&self) -> Balance {
-            // implementation ...
-        }
-
-        #[ink(message, payable)]
-        fn transfer(&mut self, to: AccountId, amount: Balance) {
-            // implementation ...
-        }
-    }
-}
-```
-
-Calling the above `Erc20` explicitly through its trait implementation can be done just as if it was normal Rust code:
-
-```rust
-// --- Instantiating the ERC-20 contract:
-//
-let mut erc20 = <Erc20 as BaseErc20>::new(1000);
-// --- Is just the same as:
-use base_erc20::BaseErc20;
-let mut erc20 = Erc20::new(1000);
-
-// --- Retrieving the total supply:
-//
-assert_eq!(<Erc20 as BaseErc20>::total_supply(&erc20), 1000);
-// --- Is just the same as:
-use base_erc20::BaseErc20;
-assert_eq!(erc20.total_supply(), 1000);
-```
-
-There are still many limitations to ink! trait definitions and trait implementations.
-For example, it is not possible to define associated constants or types or have default implemented methods.
-These limitations exist because of technical intricacies, however, please expect that many of those will be tackled in future ink! releases.
-
-
-
-
-Marks trait definitions to ink! as special ink! trait definitions.
-
-There are some restrictions that apply to ink! trait definitions that
-this macro checks. Also ink! trait definitions are required to have specialized
-structure so that the main [`#[ink::contract]`](https://docs.rs/ink/5.0.0/ink/attr.contract.html) macro can
-properly generate code for its implementations.
-
-# Example: Definition
-
-```rust
-type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
-
-#[ink::trait_definition]
-pub trait Erc20 {
-    /// Returns the total supply of the ERC-20 smart contract.
-    #[ink(message)]
-    fn total_supply(&self) -> Balance;
-
-    // etc.
-}
-```
-
-# Example: Implementation
-
-Given the above trait definition you can implement it as shown below:
-
-```rust
-#[ink::contract]
-mod base_erc20 {
-    /// We somehow cannot put the trait in the doc-test crate root due to bugs.
-    #[ink_lang::trait_definition]
-    pub trait Erc20 {
-        /// Returns the total supply of the ERC-20 smart contract.
-        #[ink(message)]
-        fn total_supply(&self) -> Balance;
-    }
-
-    #[ink(storage)]
-    pub struct BaseErc20 {
-        total_supply: Balance,
-        // etc ..
-    }
-
-    impl BaseErc20 {
-        /// Constructs a new ERC-20 compliant smart contract using the initial supply.
-        #[ink(constructor)]
-        fn new(initial_supply: Balance) -> Self {
-            Self { total_supply: initial_supply }
-        }
-    }
-
-    impl Erc20 for BaseErc20 {
-        /// Returns the total supply of the ERC-20 smart contract.
-        #[ink(message)]
-        fn total_supply(&self) -> Balance {
-            self.total_supply
-        }
-
-        // etc ..
     }
 }
 ```
@@ -6695,66 +6497,43 @@ We've added an example of how to end-to-end test
 `call_runtime` [here](https://github.com/use-ink/ink-examples/tree/main/e2e-call-runtime).
 ````
 
-## File: docs/frontend/overview.md
-````markdown
+## File: docs/funding-programs/overview.mdx
+````
 ---
 title: Overview
-slug: /frontend/overview
 hide_title: true
+slug: /funding-programs
 ---
 
-![Frontend Title Picture](/img/title/frontend.svg)
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Overview
+![Funding Programs Title Picture](/img/title/funding-programs.svg)
 
-Now after you [wrote](../getting-started/creating.md), [compiled](../getting-started/compiling.md) and [deployed your smart contract](../getting-started/deploying.md), it is time to craft a user experience around it.
+# Funding Programs
 
-This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
+You want to develop a public good for the ink! ecosystem and are
+looking for funding? On this page we list some pointers of where you can look.
 
-Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, the tools for smart contract interaction with JavaScript are the most advanced as well. To be precise all JavaScript tools mentioned here, actually leverage TypeScript to offer a JavaScript and a typesafe TypeScript experience.
+## ink!ubator
 
-## JavaScript/TypeScript Tools
+ink!ubator is an initiative funded by the Polkadot Treasury's Bounty Program. It is designed to
+kickstart the ink! ecosystem on Polkadot, Kusama, and other Substrate chains.
 
-There are several levels of abstraction where you can start your journey creating a web frontend for your contracts. Each levels offers different advantages and disadvantages. The following list is of tools. They are sorted from the most generic no third party library way to interact with Polkadot's smart contracts to the most opinionated template using libraries and proven frontend frameworks.
+You can learn more <a href={useBaseUrl('/inkubator')}>here</a>.
 
-### Using no libraries
+## Ecosystem Development Funds
 
-- [RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction) **(not recommended)**: nodes participating in the blockchain network offer an [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
+Nearly all chains that support ink! have some sort of ecosystem development program.
+We've listed [chains that support ink! here](../intro/where-to-deploy.mdx).
 
-### Low level libraries
+## Treasuries
 
-- [`@polkadot/api`](https://polkadot.js.org/docs/api) **(not recommended)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-contracts` runtime calls.
+A number of chains that support ink! have a treasury. In the case of Polkadot the
+treasury in on-chain with a governance process. Here, the community decides on
+where to best allocate funds.
 
-- [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(recommended)**: abstraction on top of `@polkadot/api` for the `pallet-contracts`. Makes interaction with smart contracts more comfortable and type safe.
-
-* [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(recommended)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
-
-### React
-
-- [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(recommended)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
-- [`typink`](https://docs.dedot.dev/typink) **(recommended)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors. [Getting started now!](../getting-started/typink)
-
-### React and Next.js
-
-- [`inkathon`](https://github.com/scio-labs/inkathon) **(recommended)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
-
-### Examples
-
-For inspiration how to get started building your full stack dApp. Make sure to visit our [Smart Contracts Examples section](../examples/contracts.mdx) or [repository directly](https://github.com/use-ink/ink-examples). These examples not only offer the smart contract code but also have an accompanied frontend project. Checkout the `README.md` for details how to setup and run these frontend examples.
-
-## Other Languages
-
-Of course the browser and JavaScript should not be the one and only platform for smart contract frontends. It's just the most mature for smart contract frontend tooling.
-
-The following is a list of libraries which could be used to craft smart-contract dApps on other platforms than the web.
-
-- [novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios): low level generic iOS SDK for substrate.
-
-- [novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android): low level Android SDK for substrate.
-
-- [paritytech/subxt](https://github.com/paritytech/subxt): Rust library to submit extrinsics (transactions) to a substrate node via RPC.
-
-- [polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md): Python library to interface with Substrate nodes.
+The [Polkadot](https://polkadot.polkassembly.io/) and [Kusama](https://kusama.polkassembly.io/)
+treasuries are examples. A number of ink! related proposals have been funded by both treasuries.
 ````
 
 ## File: docs/getting-started/calling.md
@@ -10110,456 +9889,6 @@ mod erc20 {
 ```
 ````
 
-## File: docs/macros-attributes/contract.md
-````markdown
----
-title: "#[ink::contract]"
-hide_title: true
-slug: /macros-attributes/contract
----
-
-![Text/contract Title Picture](/img/title/text/contract.svg)
-
-# \#[ink::contract]
-
-The `#[ink::contract]` macro is the entry point for writing ink! smart contracts.
-
-If you are a beginner trying to learn ink! we recommend you to check out
-our extensive [ink! workshop](https://docs.substrate.io/tutorials/smart-contracts/).
-
-## Description
-
-The macro does analysis on the provided smart contract code and generates
-proper code.
-
-## Usage
-
-### Header Arguments
-
-The `#[ink::contract]` macro can be provided with some additional comma-separated
-header arguments:
-
-### `compile_as_dependency: bool`
-
-Tells the ink! code generator to **always** or **never**
-compile the smart contract as if it was used as a dependency of another ink!
-smart contract.
-
-Normally this flag is only really useful for ink! developers who
-want to inspect code generation of ink! smart contracts.
-The author is not aware of any particular practical use case for users that
-makes use of this flag but contract writers are encouraged to disprove this.
-
-Note that it is recommended to make use of the built-in crate feature
-`ink-as-dependency` to flag smart contract dependencies listed in a contract's
-`Cargo.toml` as actual dependencies to ink!.
-
-**Usage Example:**
-```rust
-#[ink::contract(compile_as_dependency = true)]
-mod my_contract {
-    #[ink(storage)]
-    pub struct MyStorage;
-
-    impl MyStorage {
-        #[ink(constructor)]
-        pub fn construct() -> Self { MyStorage {} }
-
-        #[ink(message)]
-        pub fn message(&self) {}
-    }
-    // ...
-}
-```
-
-**Default value:** Depends on the crate feature propagation of `Cargo.toml`.
-
-### `env: impl Environment`
-
-Tells the ink! code generator which environment to use for the ink! smart contract.
-The environment must implement the `Environment` (defined in `ink_env`) trait and provides
-all the necessary fundamental type definitions for `Balance`, `AccountId` etc.
-
-When using a custom `Environment` implementation for a smart contract all types
-that it exposes to the ink! smart contract and the mirrored types used in the runtime
-must be aligned with respect to SCALE encoding and semantics.
-
-**Usage Example:**
-
-Given a custom `Environment` implementation:
-```rust
-pub struct MyEnvironment;
-
-impl ink::env::Environment for MyEnvironment {
-    const MAX_EVENT_TOPICS: usize = 3;
-
-    type AccountId = u64;
-    type Balance = u128;
-    type Hash = [u8; 32];
-    type Timestamp = u64;
-    type BlockNumber = u32;
-    type ChainExtension = ::ink::env::NoChainExtension;
-}
-```
-A user might implement their ink! smart contract using the above custom `Environment`
-implementation as demonstrated below:
-
-```rust
-#[ink::contract(env = MyEnvironment)]
-mod my_contract {
-    pub struct MyEnvironment;
-
-    impl ink::env::Environment for MyEnvironment {
-        const MAX_EVENT_TOPICS: usize = 3;
-        type AccountId = u64;
-        type Balance = u128;
-        type Hash = [u8; 32];
-        type Timestamp = u64;
-        type BlockNumber = u32;
-        type ChainExtension = ::ink::env::NoChainExtension;
-    }
-
-    #[ink(storage)]
-    pub struct MyStorage;
-
-    impl MyStorage {
-        #[ink(constructor)]
-        pub fn construct() -> Self { MyStorage {} }
-
-        #[ink(message)]
-        pub fn message(&self) {}
-    }
-    // ...
-}
-```
-
-**Default value:** `DefaultEnvironment` defined in `ink_env` crate.
-
-## Analysis
-
-The `#[ink::contract]` macro fully analyses its input smart contract
-against invalid arguments and structure.
-
-Some example rules include but are not limited to:
-
-- There must be exactly one `#[ink(storage)]` struct.
-
-     This struct defines the layout of the storage that the ink! smart contract operates on.
-     The user is able to use a variety of built-in facilities, combine them in various ways
-     or even provide their own implementations of storage data structures.
-
-     For more information visit the `ink_storage` crate documentation.
-
-     **Example:**
-
-     ```rust
-     #[ink::contract]
-     mod flipper {
-         #[ink(storage)]
-         pub struct Flipper {
-             value: bool,
-         }
-
-         impl Flipper {
-             #[ink(constructor)]
-             pub fn construct() -> Self { Flipper { value: false } }
-
-             #[ink(message)]
-             pub fn message(&self) {}
-         }
-     }
-     ```
-
-- There must be at least one `#[ink(constructor)]` defined method.
-
-     Methods flagged with `#[ink(constructor)]` are special in that they are dispatchable
-     upon contract instantiation. A contract may define multiple such constructors which
-     allow users of the contract to instantiate a contract in multiple different ways.
-
-     **Example:**
-
-     Given the `Flipper` contract definition above we add an `#[ink(constructor)]`
-     as follows:
-
-     ```rust
-     #[ink::contract]
-     mod flipper {
-         #[ink(storage)]
-         pub struct Flipper {
-             value: bool,
-         }
-
-         impl Flipper {
-             #[ink(constructor)]
-             pub fn new(initial_value: bool) -> Self {
-                 Flipper { value: false }
-             }
-
-             #[ink(message)]
-             pub fn message(&self) {}
-         }
-     }
-     ```
-
-- There must be at least one `#[ink(message)]` defined method.
-
-     Methods flagged with `#[ink(message)]` are special in that they are dispatchable
-     upon contract invocation. The set of ink! messages defined for an ink! smart contract
-     define its API surface with which users are allowed to interact.
-
-     An ink! smart contract can have multiple such ink! messages defined.
-
-     **Note:**
-
-     - An ink! message with a `&self` receiver may only read state whereas an ink! message
-       with a `&mut self` receiver may mutate the contract's storage.
-
-     **Example:**
-
-     Given the `Flipper` contract definition above we add some `#[ink(message)]` definitions
-     as follows:
-
-     ```rust
-     #[ink::contract]
-     mod flipper {
-         #[ink(storage)]
-         pub struct Flipper {
-             value: bool,
-         }
-
-         impl Flipper {
-             #[ink(constructor)]
-             pub fn new(initial_value: bool) -> Self {
-                 Flipper { value: false }
-             }
-
-             /// Flips the current value.
-             #[ink(message)]
-             pub fn flip(&mut self) {
-                 self.value = !self.value;
-             }
-
-             /// Returns the current value.
-             #[ink(message)]
-             pub fn get(&self) -> bool {
-                 self.value
-             }
-         }
-     }
-     ```
-
-     **Payable Messages:**
-
-     An ink! message by default will reject calls that additional fund the smart contract.
-     Authors of ink! smart contracts can make an ink! message payable by adding the `payable`
-     flag to it. An example below:
-
-     Note that ink! constructors are always implicitly payable and thus cannot be flagged
-     as such.
-
-     ```rust
-     #[ink::contract]
-     mod flipper {
-         #[ink(storage)]
-         pub struct Flipper {
-             value: bool,
-         }
-
-         impl Flipper {
-             #[ink(constructor)]
-             pub fn new(initial_value: bool) -> Self {
-                 Flipper { value: false }
-             }
-
-             /// Flips the current value.
-             #[ink(message)]
-             #[ink(payable)] // You can either specify payable out-of-line.
-             pub fn flip(&mut self) {
-                 self.value = !self.value;
-             }
-
-             /// Returns the current value.
-             #[ink(message, payable)] // ...or specify payable inline.
-             pub fn get(&self) -> bool {
-                 self.value
-             }
-         }
-     }
-     ```
-
-     **Controlling the messages selector:**
-
-     Every ink! message and ink! constructor has a unique selector with which the
-     message or constructor can be uniquely identified within the ink! smart contract.
-     These selectors are mainly used to drive the contract's dispatch upon calling it.
-
-     An ink! smart contract author can control the selector of an ink! message or ink!
-     constructor using the `selector` flag. An example is shown below:
-
-     ```rust
-     #[ink::contract]
-     mod flipper {
-         #[ink(storage)]
-         pub struct Flipper {
-             value: bool,
-         }
-
-         impl Flipper {
-             #[ink(constructor)]
-             #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
-             pub fn new(initial_value: bool) -> Self {
-                 Flipper { value: false }
-             }
-
-             /// Flips the current value.
-             #[ink(message)]
-             #[ink(selector = "0xCAFEBABE")] // You can either specify selector out-of-line.
-             pub fn flip(&mut self) {
-                 self.value = !self.value;
-             }
-
-             /// Returns the current value.
-             #[ink(message, selector = "0xFEEDBEEF")] // ...or specify selector inline.
-             pub fn get(&self) -> bool {
-                 self.value
-             }
-         }
-     }
-     ```
-
-## Interacting with the Contract Executor
-
-The `ink_env` crate provides facilities to interact with the contract executor that
-connects ink! smart contracts with the outer world.
-
-For example it is possible to query the current call's caller via:
-
-```rust
-use ink_env;
-ink::env::test::run_test::<ink::env::DefaultEnvironment, _>(|_| {
-    let caller = ink::env::caller::<ink::env::DefaultEnvironment>();
-    let _caller = caller;
-    Ok(())
-}).unwrap();
-```
-
-However, ink! provides a much simpler way to interact with the contract executor
-via its environment accessor. An example below:
-
-```rust
-#[ink::contract]
-mod greeter {
-    #[ink(storage)]
-    pub struct Greeter;
-
-    impl Greeter {
-        #[ink(constructor)]
-        pub fn new() -> Self {
-            let caller = Self::env().caller();
-            let message = format!("thanks for instantiation {:?}", caller);
-            ink::env::debug_println(&message);
-            Greeter {}
-        }
-
-        #[ink(message, payable)]
-        pub fn fund(&mut self) {
-            let caller = self.env().caller();
-            let value = self.env().transferred_balance();
-            let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
-            ink::env::debug_println(&message);
-        }
-    }
-}
-```
-
-## Events
-
-An ink! smart contract may define events that it can emit during contract execution.
-Emitting events can be used by third party tools to query information about a contract's
-execution and state.
-
-The following example ink! contract shows how an event `Transferred` is defined and
-emitted in the `#[ink(constructor)]`.
-
-```rust
- #[ink::contract]
- mod erc20 {
-     /// Defines an event that is emitted every time value is transferred.
-     #[ink(event)]
-     pub struct Transferred {
-         from: Option<AccountId>,
-         to: Option<AccountId>,
-         value: Balance,
-     }
-
-     #[ink(storage)]
-     pub struct Erc20 {
-         total_supply: Balance,
-         // more fields ...
-     }
-
-     impl Erc20 {
-         #[ink(constructor)]
-         pub fn new(initial_supply: Balance) -> Self {
-             let caller = Self::env().caller();
-             Self::env().emit_event(Transferred {
-                 from: None,
-                 to: Some(caller),
-                 value: initial_supply,
-             });
-             Self { total_supply: initial_supply }
-         }
-
-         #[ink(message)]
-         pub fn total_supply(&self) -> Balance {
-             self.total_supply
-         }
-     }
- }
-```
-
-## Example: Flipper
-
-The below code shows the complete implementation of the so-called Flipper
-ink! smart contract.
-For us it acts as the "Hello, World!" of the ink! smart contracts because
-it is minimal while still providing some more or less useful functionality.
-
-It controls a single `bool` value that can be either `false` or `true`
-and allows the user to flip this value using the `Flipper::flip` message
-or retrieve the current value using `Flipper::get`.
-
-```rust
-#[ink::contract]
-pub mod flipper {
-    #[ink(storage)]
-    pub struct Flipper {
-        value: bool,
-    }
-
-    impl Flipper {
-        /// Creates a new flipper smart contract initialized with the given value.
-        #[ink(constructor)]
-        pub fn new(init_value: bool) -> Self {
-            Self { value: init_value }
-        }
-
-        /// Flips the current value of the Flipper's bool.
-        #[ink(message)]
-        pub fn flip(&mut self) {
-            self.value = !self.value;
-        }
-
-        /// Returns the current value of the Flipper's bool.
-        #[ink(message)]
-        pub fn get(&self) -> bool {
-            self.value
-        }
-    }
-}
-```
-````
-
 ## File: docs/macros-attributes/default.md
 ````markdown
 ---
@@ -12129,6 +11458,165 @@ $ curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8" -d
 ```
 ````
 
+## File: docs/basics/trait-definitions.md
+````markdown
+---
+title: Trait Definitions
+slug: /basics/trait-definitions
+hide_title: true
+---
+
+![Text/trait Title Picture](/img/title/text/trait.svg)
+
+Through the `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
+
+This allows to define shared smart contract interfaces to different concrete implementations.
+Note that this ink! trait definition can be defined anywhere, even in another crate!
+
+See our [`ERC20-Trait example contract`](https://github.com/use-ink/ink-examples/blob/main/trait-erc20/lib.rs) 
+for an elaborate example which uses trait definitions.
+
+### Example
+
+Defined in the `base_erc20.rs` module.
+
+```rust
+#[ink::trait_definition]
+pub trait BaseErc20 {
+    /// Returns the total supply.
+    #[ink(message)]
+    fn total_supply(&self) -> Balance;
+
+    /// Transfers `amount` from caller to `to`.
+    #[ink(message, payable)]
+    fn transfer(&mut self, to: AccountId, amount: Balance);
+}
+```
+
+An ink! smart contract definition can then implement this trait definition as follows:
+
+```rust
+#[ink::contract]
+mod erc20 {
+    use base_erc20::BaseErc20;
+
+    #[ink(storage)]
+    pub struct Erc20 {
+        total_supply: Balance,
+        // more fields ...
+    }
+    
+    impl Erc20 {
+        /// Creates a new ERC-20 contract and initializes it with the initial supply for the instantiator.
+        #[ink(constructor)]
+        fn new(initial_supply: Balance) -> Self {
+            // implementation ...
+        }
+    }
+
+    impl BaseErc20 for Erc20 {
+        #[ink(message)]
+        fn total_supply(&self) -> Balance {
+            // implementation ...
+        }
+
+        #[ink(message, payable)]
+        fn transfer(&mut self, to: AccountId, amount: Balance) {
+            // implementation ...
+        }
+    }
+}
+```
+
+Calling the above `Erc20` explicitly through its trait implementation can be done just as if it was normal Rust code:
+
+```rust
+// --- Instantiating the ERC-20 contract:
+//
+let mut erc20 = <Erc20 as BaseErc20>::new(1000);
+// --- Is just the same as:
+use base_erc20::BaseErc20;
+let mut erc20 = Erc20::new(1000);
+
+// --- Retrieving the total supply:
+//
+assert_eq!(<Erc20 as BaseErc20>::total_supply(&erc20), 1000);
+// --- Is just the same as:
+use base_erc20::BaseErc20;
+assert_eq!(erc20.total_supply(), 1000);
+```
+
+There are still many limitations to ink! trait definitions and trait implementations.
+For example, it is not possible to define associated constants or types or have default implemented methods.
+These limitations exist because of technical intricacies, however, please expect that many of those will be tackled in future ink! releases.
+
+
+
+
+Marks trait definitions to ink! as special ink! trait definitions.
+
+There are some restrictions that apply to ink! trait definitions that
+this macro checks. Also ink! trait definitions are required to have specialized
+structure so that the main [`#[ink::contract]`](https://docs.rs/ink/5.0.0/ink/attr.contract.html) macro can
+properly generate code for its implementations.
+
+# Example: Definition
+
+```rust
+type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
+
+#[ink::trait_definition]
+pub trait Erc20 {
+    /// Returns the total supply of the ERC-20 smart contract.
+    #[ink(message)]
+    fn total_supply(&self) -> Balance;
+
+    // etc.
+}
+```
+
+# Example: Implementation
+
+Given the above trait definition you can implement it as shown below:
+
+```rust
+#[ink::contract]
+mod base_erc20 {
+    /// We somehow cannot put the trait in the doc-test crate root due to bugs.
+    #[ink::trait_definition]
+    pub trait Erc20 {
+        /// Returns the total supply of the ERC-20 smart contract.
+        #[ink(message)]
+        fn total_supply(&self) -> Balance;
+    }
+
+    #[ink(storage)]
+    pub struct BaseErc20 {
+        total_supply: Balance,
+        // etc ..
+    }
+
+    impl BaseErc20 {
+        /// Constructs a new ERC-20 compliant smart contract using the initial supply.
+        #[ink(constructor)]
+        fn new(initial_supply: Balance) -> Self {
+            Self { total_supply: initial_supply }
+        }
+    }
+
+    impl Erc20 for BaseErc20 {
+        /// Returns the total supply of the ERC-20 smart contract.
+        #[ink(message)]
+        fn total_supply(&self) -> Balance {
+            self.total_supply
+        }
+
+        // etc ..
+    }
+}
+```
+````
+
 ## File: docs/third-party-tools/typink.md
 ````markdown
 ---
@@ -12176,4 +11664,514 @@ Join the [Dedot & Typink Telegram Group](https://t.me/JoinDedot) to ask question
 ---
 
 **Build with confidence. Build with Typink.**
+````
+
+## File: docs/frontend/overview.md
+````markdown
+---
+title: Overview
+slug: /frontend/overview
+hide_title: true
+---
+
+![Frontend Title Picture](/img/title/frontend.svg)
+
+# Overview
+
+Now after you [wrote](../getting-started/creating.md), [compiled](../getting-started/compiling.md) and [deployed your smart contract](../getting-started/deploying.md), it is time to craft a user experience around it.
+
+This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
+
+Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, the tools for smart contract interaction with JavaScript are the most advanced as well. To be precise all JavaScript tools mentioned here, actually leverage TypeScript to offer a JavaScript and a typesafe TypeScript experience.
+
+## JavaScript/TypeScript Tools
+
+There are several levels of abstraction where you can start your journey creating a web frontend for your contracts. Each levels offers different advantages and disadvantages. The following list is of tools. They are sorted from the most generic no third party library way to interact with Polkadot's smart contracts to the most opinionated template using libraries and proven frontend frameworks.
+
+### Using no libraries
+
+- [RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction) **(not recommended)**: nodes participating in the blockchain network offer an [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
+
+### Low level libraries
+- [`polkadot-api`](https://papi.how/getting-started) **(not recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
+ 
+- [`@polkadot/api`](https://polkadot.js.org/docs/api) **(not recommended)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-contracts` runtime calls.
+
+### ink!-specific SDKs
+- [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(recommended)**: is an SDK built for interacting with ink! smart contracts, offering type-safe deployment and easy usage.
+- [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(recommended)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
+- [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(recommended)**: abstraction on top of `@polkadot/api` for the `pallet-contracts`. Makes interaction with smart contracts more comfortable and type safe.
+
+### React
+
+- [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(recommended)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
+- [`typink`](https://docs.dedot.dev/typink) **(recommended)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors. [Getting started now!](../third-party-tools/typink.md)
+
+### React and Next.js
+
+- [`inkathon`](https://github.com/scio-labs/inkathon) **(recommended)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
+
+### Examples
+
+For inspiration how to get started building your full stack dApp. Make sure to visit our [Smart Contracts Examples section](../examples/contracts.mdx) or [repository directly](https://github.com/use-ink/ink-examples). These examples not only offer the smart contract code but also have an accompanied frontend project. Checkout the `README.md` for details how to setup and run these frontend examples.
+
+## Other Languages
+
+Of course the browser and JavaScript should not be the one and only platform for smart contract frontends. It's just the most mature for smart contract frontend tooling.
+
+The following is a list of libraries which could be used to craft smart-contract dApps on other platforms than the web.
+
+- [novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios): low level generic iOS SDK for substrate.
+
+- [novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android): low level Android SDK for substrate.
+
+- [paritytech/subxt](https://github.com/paritytech/subxt): Rust library to submit extrinsics (transactions) to a substrate node via RPC.
+
+- [polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md): Python library to interface with Substrate nodes.
+````
+
+## File: docs/macros-attributes/contract.md
+````markdown
+---
+title: "#[ink::contract]"
+hide_title: true
+slug: /macros-attributes/contract
+---
+
+![Text/contract Title Picture](/img/title/text/contract.svg)
+
+# \#[ink::contract]
+
+The `#[ink::contract]` macro is the entry point for writing ink! smart contracts.
+
+If you are a beginner trying to learn ink! we recommend you to check out
+our extensive [ink! workshop](https://docs.substrate.io/tutorials/smart-contracts/).
+
+## Description
+
+The macro does analysis on the provided smart contract code and generates
+proper code.
+
+## Usage
+
+### Header Arguments
+
+The `#[ink::contract]` macro can be provided with some additional comma-separated
+header arguments:
+
+### `keep_attr: String`
+
+Tells the ink! code generator which attributes should be passed to call builders.
+Call builders are used for making cross-contract calls and are automatically
+generated for contracts.
+
+**Usage Example:**
+
+```rust
+#[ink::contract(keep_attr = "foo, bar")]
+mod my_contract {
+    #[ink(storage)]
+    pub struct MyStorage;
+    
+    impl MyStorage {
+        #[ink(constructor)]
+        #[bar]
+        pub fn construct() -> Self { MyStorage {} }
+        
+        #[ink(message)]
+        #[foo]
+        pub fn message(&self) {}
+    }
+    
+    // ...
+}
+```
+
+**Allowed attributes by default:** `cfg`, `cfg_attr`, `allow`, `warn`, `deny`,
+`forbid`, `deprecated`, `must_use`, `doc`, `rustfmt`.
+
+### `env: impl Environment`
+
+Tells the ink! code generator which environment to use for the ink! smart contract.
+The environment must implement the `Environment` (defined in `ink_env`) trait and provides
+all the necessary fundamental type definitions for `Balance`, `AccountId` etc.
+
+When using a custom `Environment` implementation for a smart contract all types
+that it exposes to the ink! smart contract and the mirrored types used in the runtime
+must be aligned with respect to SCALE encoding and semantics.
+
+**Usage Example:**
+
+Given a custom `Environment` implementation:
+```rust
+pub struct MyEnvironment;
+
+impl ink::env::Environment for MyEnvironment {
+    const MAX_EVENT_TOPICS: usize = 3;
+
+    type AccountId = u64;
+    type Balance = u128;
+    type Hash = [u8; 32];
+    type Timestamp = u64;
+    type BlockNumber = u32;
+    type ChainExtension = ::ink::env::NoChainExtension;
+}
+```
+A user might implement their ink! smart contract using the above custom `Environment`
+implementation as demonstrated below:
+
+```rust
+#[ink::contract(env = MyEnvironment)]
+mod my_contract {
+    pub struct MyEnvironment;
+
+    impl ink::env::Environment for MyEnvironment {
+        const MAX_EVENT_TOPICS: usize = 3;
+        type AccountId = u64;
+        type Balance = u128;
+        type Hash = [u8; 32];
+        type Timestamp = u64;
+        type BlockNumber = u32;
+        type ChainExtension = ::ink::env::NoChainExtension;
+    }
+
+    #[ink(storage)]
+    pub struct MyStorage;
+
+    impl MyStorage {
+        #[ink(constructor)]
+        pub fn construct() -> Self { MyStorage {} }
+
+        #[ink(message)]
+        pub fn message(&self) {}
+    }
+    // ...
+}
+```
+
+**Default value:** `DefaultEnvironment` defined in `ink_env` crate.
+
+## Analysis
+
+The `#[ink::contract]` macro fully analyses its input smart contract
+against invalid arguments and structure.
+
+Some example rules include but are not limited to:
+
+- There must be exactly one `#[ink(storage)]` struct.
+
+     This struct defines the layout of the storage that the ink! smart contract operates on.
+     The user is able to use a variety of built-in facilities, combine them in various ways
+     or even provide their own implementations of storage data structures.
+
+     For more information visit the `ink_storage` crate documentation.
+
+     **Example:**
+
+     ```rust
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
+         }
+
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn construct() -> Self { Flipper { value: false } }
+
+             #[ink(message)]
+             pub fn message(&self) {}
+         }
+     }
+     ```
+
+- There must be at least one `#[ink(constructor)]` defined method.
+
+     Methods flagged with `#[ink(constructor)]` are special in that they are dispatchable
+     upon contract instantiation. A contract may define multiple such constructors which
+     allow users of the contract to instantiate a contract in multiple different ways.
+
+     **Example:**
+
+     Given the `Flipper` contract definition above we add an `#[ink(constructor)]`
+     as follows:
+
+     ```rust
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
+         }
+
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
+
+             #[ink(message)]
+             pub fn message(&self) {}
+         }
+     }
+     ```
+
+- There must be at least one `#[ink(message)]` defined method.
+
+     Methods flagged with `#[ink(message)]` are special in that they are dispatchable
+     upon contract invocation. The set of ink! messages defined for an ink! smart contract
+     define its API surface with which users are allowed to interact.
+
+     An ink! smart contract can have multiple such ink! messages defined.
+
+     **Note:**
+
+     - An ink! message with a `&self` receiver may only read state whereas an ink! message
+       with a `&mut self` receiver may mutate the contract's storage.
+
+     **Example:**
+
+     Given the `Flipper` contract definition above we add some `#[ink(message)]` definitions
+     as follows:
+
+     ```rust
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
+         }
+
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
+
+             /// Flips the current value.
+             #[ink(message)]
+             pub fn flip(&mut self) {
+                 self.value = !self.value;
+             }
+
+             /// Returns the current value.
+             #[ink(message)]
+             pub fn get(&self) -> bool {
+                 self.value
+             }
+         }
+     }
+     ```
+
+     **Payable Messages:**
+
+     An ink! message by default will reject calls that additional fund the smart contract.
+     Authors of ink! smart contracts can make an ink! message payable by adding the `payable`
+     flag to it. An example below:
+
+     Note that ink! constructors are always implicitly payable and thus cannot be flagged
+     as such.
+
+     ```rust
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
+         }
+
+         impl Flipper {
+             #[ink(constructor)]
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
+
+             /// Flips the current value.
+             #[ink(message)]
+             #[ink(payable)] // You can either specify payable out-of-line.
+             pub fn flip(&mut self) {
+                 self.value = !self.value;
+             }
+
+             /// Returns the current value.
+             #[ink(message, payable)] // ...or specify payable inline.
+             pub fn get(&self) -> bool {
+                 self.value
+             }
+         }
+     }
+     ```
+
+     **Controlling the messages selector:**
+
+     Every ink! message and ink! constructor has a unique selector with which the
+     message or constructor can be uniquely identified within the ink! smart contract.
+     These selectors are mainly used to drive the contract's dispatch upon calling it.
+
+     An ink! smart contract author can control the selector of an ink! message or ink!
+     constructor using the `selector` flag. An example is shown below:
+
+     ```rust
+     #[ink::contract]
+     mod flipper {
+         #[ink(storage)]
+         pub struct Flipper {
+             value: bool,
+         }
+
+         impl Flipper {
+             #[ink(constructor)]
+             #[ink(selector = "0xDEADBEEF")] // Works on constructors as well.
+             pub fn new(initial_value: bool) -> Self {
+                 Flipper { value: false }
+             }
+
+             /// Flips the current value.
+             #[ink(message)]
+             #[ink(selector = "0xCAFEBABE")] // You can either specify selector out-of-line.
+             pub fn flip(&mut self) {
+                 self.value = !self.value;
+             }
+
+             /// Returns the current value.
+             #[ink(message, selector = "0xFEEDBEEF")] // ...or specify selector inline.
+             pub fn get(&self) -> bool {
+                 self.value
+             }
+         }
+     }
+     ```
+
+## Interacting with the Contract Executor
+
+The `ink_env` crate provides facilities to interact with the contract executor that
+connects ink! smart contracts with the outer world.
+
+For example it is possible to query the current call's caller via:
+
+```rust
+use ink_env;
+ink::env::test::run_test::<ink::env::DefaultEnvironment, _>(|_| {
+    let caller = ink::env::caller::<ink::env::DefaultEnvironment>();
+    let _caller = caller;
+    Ok(())
+}).unwrap();
+```
+
+However, ink! provides a much simpler way to interact with the contract executor
+via its environment accessor. An example below:
+
+```rust
+#[ink::contract]
+mod greeter {
+    #[ink(storage)]
+    pub struct Greeter;
+
+    impl Greeter {
+        #[ink(constructor)]
+        pub fn new() -> Self {
+            let caller = Self::env().caller();
+            let message = format!("thanks for instantiation {:?}", caller);
+            ink::env::debug_println(&message);
+            Greeter {}
+        }
+
+        #[ink(message, payable)]
+        pub fn fund(&mut self) {
+            let caller = self.env().caller();
+            let value = self.env().transferred_balance();
+            let message = format!("thanks for the funding of {:?} from {:?}", value, caller);
+            ink::env::debug_println(&message);
+        }
+    }
+}
+```
+
+## Events
+
+An ink! smart contract may define events that it can emit during contract execution.
+Emitting events can be used by third party tools to query information about a contract's
+execution and state.
+
+The following example ink! contract shows how an event `Transferred` is defined and
+emitted in the `#[ink(constructor)]`.
+
+```rust
+ #[ink::contract]
+ mod erc20 {
+     /// Defines an event that is emitted every time value is transferred.
+     #[ink(event)]
+     pub struct Transferred {
+         from: Option<AccountId>,
+         to: Option<AccountId>,
+         value: Balance,
+     }
+
+     #[ink(storage)]
+     pub struct Erc20 {
+         total_supply: Balance,
+         // more fields ...
+     }
+
+     impl Erc20 {
+         #[ink(constructor)]
+         pub fn new(initial_supply: Balance) -> Self {
+             let caller = Self::env().caller();
+             Self::env().emit_event(Transferred {
+                 from: None,
+                 to: Some(caller),
+                 value: initial_supply,
+             });
+             Self { total_supply: initial_supply }
+         }
+
+         #[ink(message)]
+         pub fn total_supply(&self) -> Balance {
+             self.total_supply
+         }
+     }
+ }
+```
+
+## Example: Flipper
+
+The below code shows the complete implementation of the so-called Flipper
+ink! smart contract.
+For us it acts as the "Hello, World!" of the ink! smart contracts because
+it is minimal while still providing some more or less useful functionality.
+
+It controls a single `bool` value that can be either `false` or `true`
+and allows the user to flip this value using the `Flipper::flip` message
+or retrieve the current value using `Flipper::get`.
+
+```rust
+#[ink::contract]
+pub mod flipper {
+    #[ink(storage)]
+    pub struct Flipper {
+        value: bool,
+    }
+
+    impl Flipper {
+        /// Creates a new flipper smart contract initialized with the given value.
+        #[ink(constructor)]
+        pub fn new(init_value: bool) -> Self {
+            Self { value: init_value }
+        }
+
+        /// Flips the current value of the Flipper's bool.
+        #[ink(message)]
+        pub fn flip(&mut self) {
+            self.value = !self.value;
+        }
+
+        /// Returns the current value of the Flipper's bool.
+        #[ink(message)]
+        pub fn get(&self) -> bool {
+            self.value
+        }
+    }
+}
+```
 ````
