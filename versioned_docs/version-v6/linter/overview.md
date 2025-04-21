@@ -6,12 +6,6 @@ description: An overview of ink! linter
 
 ![Text/linter Title Picture](/img/title/text/linter.svg)
 
-:::caution
-This page has not yet been edited for ink! v6 yet.
-
-TODO @peterwht
-:::
-
 # Overview
 
 # Overview
