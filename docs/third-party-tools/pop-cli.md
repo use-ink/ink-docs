@@ -34,7 +34,7 @@ pop --help
 
 Start a new project quickly using Pop CLI `pop new contract` command:
 
-![pop new contract](/img/popnewcontract.gif)
+<img src="/img/popnewcontract.gif" alt="pop new contract"/>
 Once the project is generated, move into the new directory and build your parachain:
 
 ```
@@ -44,11 +44,11 @@ pop build --release
 
 Pop CLI integrates the [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) enabling you to easily spin up a local network for smart contract development and testing. This local environment is automatically launched when deploying your contract using the `pop up` command or running your e2e tests using the `pop test --e2e` command.
 
-![pop up contract](/img/popupcontract.gif)
+<img src="/img/popupcontract.gif" alt="pop up contract"/>
 After deployment, you can easily interact with your smart contract using the `pop call contract` command:
 
 ### Interact with your contract
-![pop call contract](/img/popcallcontract.gif)
+<img src="/img/popcallcontract.gif" alt="pop call contract"/>
 ## Where to Go Next
 For a comprehensive guide to all Pop CLI features and advanced usage, see the official [Pop CLI](https://learn.onpop.io/contracts) documentation.  
 
