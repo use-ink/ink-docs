@@ -103,6 +103,7 @@ module.exports = {
     Standards: ['standards/overview'],
     'Funding Programs': ['funding-programs/overview'],
     'Third Party Tools & Libraries': [
+      'third-party-tools/pop-cli',
       'third-party-tools/inkathon',
       {
         type: 'category',
