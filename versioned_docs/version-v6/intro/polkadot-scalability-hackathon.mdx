@@ -54,26 +54,21 @@ You can find support in [our Telegram group](https://t.me/inkathon) or open issu
 </a>
 :::
 
-## Fast Track
-
-Install Rust (>= 1.85) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+Install Rust and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
 Download the binary for a local development node [here](https://github.com/use-ink/ink-node/releases).
 
 ```toml
-# Install our cli tool: `cargo-contract`.
-# It wraps around Rust's `cargo build` to build contracts with optimal
+# Install our cli tool from the `6.0.0-alpha` release.
+# It wraps around `cargo build` to build contracts with optimal
 # flags for blockchains. It also allows for deploying + interacting
 # with contracts.
 $ rustup component add rust-src
-$ cargo install --locked --force --git https://github.com/use-ink/cargo-contract
+$ cargo install cargo-contract@6.0.0-alpha
 
 # Create a simple contract.
 $ cargo contract new flipper && cd flipper
 $ cargo contract build --release
-
-# Download our local development node.
-# Find the binary here: https://github.com/use-ink/ink-node/releases/tag/v0.43.0
 
 # Start your local development node in a separate shell session
 $ chmod +x ink-node (makes the node's binary executable)
@@ -89,6 +84,42 @@ $ cargo contract call --suri //Alice --contract 0x… --message get
 $ cargo contract call --suri //Alice --contract 0x… --message flip -x
 ```
 
+### Using the Contracts UI
+:::caution
+The Contracts UI for ink! v6 uses an alpha version of the interface: https://inkv6alpha.netlify.app/.
+:::
+
+- Upload your contract:
+
+    Follow the steps in [Deploy your Contract Using the Contracts UI](../getting-started/deploying.md#using-the-contracts-ui).
+
+- Interact with your contract:
+
+    Learn how in [Call your Contract Using the Contracts UI](../getting-started/calling.md#using-the-contracts-ui)
+
+
+### Where to Deploy your Ink!v6 Contracts
+<div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+  <img
+    src={useBaseUrl('/img/chains/assethub.svg')}
+    alt="chains"
+    className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+  />
+
+  <div className="flex flex-col items-center justify-center text-center">
+    <img
+      src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+      alt="chains"
+      className="w-auto h-[48px] mx-auto mix-blend-lighten font-freude"
+    />
+    <span className="mt-2 px-3 py-1 text-sm font-bold text-grey rounded-full shadow-md">
+      Coming soon
+    </span>
+  </div>
+</div>
+To deploy a contract to the Westend Asset Hub, you must get WND tokens. To do so, you can use the [Westend Faucet](https://faucet.polkadot.io/westend?parachain=1000). You need to specify the address where you want to receive the tokens from the faucet.
+
+For an overview of all currently supported chains, <a href={useBaseUrl('/chains')}>check the supported chains here.</a>
 <br/>
 
 Please see the chapter [Getting started](../getting-started/setup.md) of this
