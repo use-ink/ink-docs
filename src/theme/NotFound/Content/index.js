@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import Link from '@docusaurus/Link'
 export default function NotFoundContent({ className }) {
   return (
-    <main className={clsx('container margin-vert--xl', className)}>
+    <main className={clsx('container margin-vert--xl pb-48 lg:pb-20', className)}>
       <div className="row">
         <div className="col col--6 col--offset-3">
           <Heading as="h1" className="mb-12 text-center hero__title">
