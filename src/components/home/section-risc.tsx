@@ -46,7 +46,7 @@ export function SectionRisc() {
               </div>
             }
             media={
-              <div className="w-full h-[200px] md:h-[400px] lg:h-[600px] lg:overflow-visible relative scale-[115%] lg:scale-[150%] lg:-ml-24 lg:-mt-8 mb-8 lg:mb-0">
+              <div className="w-full h-[200px] md:h-[400px] lg:h-[600px]  relative scale-[115%] lg:scale-[150%] lg:-ml-24 lg:-mt-8 mb-8 lg:mb-0">
                 <RiveAnimation
                   src="animations/Risc-v.riv"
                   autoplay={true}
