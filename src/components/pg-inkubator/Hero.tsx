@@ -13,7 +13,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
   return (
     <section
       className={classNames(
-        "bg-[url('/img/terrain-lab-light.svg')] dark:bg-[url('/img/terrain-lab-dark.svg')] bg-cover bg-bottom",
+        "bg-[url('/img/terrain-lab-light.svg')] dark:bg-[url('/img/terrain-lab-dark.svg')] bg-cover bg-no-repeat bg-bottom",
         className,
       )}
     >
