@@ -48,6 +48,13 @@ module.exports = {
         },
       ],
     },
+    algolia: {
+      appId: 'I2MRSLMPI9',
+      apiKey: 'bf2083698833b7dd9a0c39a54e7f6abb',
+      indexName: 'use',
+      contextualSearch: true,
+      insights: true,
+    },
   },
   presets: [
     [
