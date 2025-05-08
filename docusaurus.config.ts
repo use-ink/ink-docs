@@ -112,6 +112,10 @@ module.exports = {
             to: '/inkubator',
             from: '/ubator',
           },
+          {
+            to: '/inkubator',
+            from: '/6.x/funding-programs',
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/docs/v6/')) {

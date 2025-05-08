@@ -109,6 +109,18 @@ export default function PageAssets() {
             </p>
             <hr className="dotted" />
             <h2 className="!text-[21px] font-montserrat !font-[600] text-[rgb(189,130,253)]">Squink Mascot</h2>
+            <div className="flex items-center justify-center p-8 mb-4 rounded-xl bg-gradient-to-br from-purple-500/50 to-purple-300/50">
+              <img src={useBaseUrl('img/ink-squink.svg')} alt="ink! squink" className="w-auto h-[300px] rounded-xl" />
+            </div>
+            <p>
+              Download here:{' '}
+              <a href={useBaseUrl('img/ink-squink.svg')} download>
+                <code>ink-squink.svg</code>
+              </a>
+              .
+            </p>
+            <hr className="dotted" />
+            <h2 className="!text-[21px] font-montserrat !font-[600] text-[rgb(189,130,253)]">ink! Stickers</h2>
             <div className="rounded-xl">
               <img
                 src={useBaseUrl('img/stickers/ink-stickers.svg')}
