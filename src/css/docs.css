@@ -813,3 +813,36 @@ details [class^='collapsibleContent_'] {
 [class^='searchResultItem_'] h2 {
   font-size: 27px !important;
 }
+
+.DocSearch-Form {
+  @apply !flex !flex-row;
+}
+
+[class^='navbarSearchContainer_'] {
+  @apply lg:w-full;
+}
+
+[class^='navbarSearchContainer_'] button {
+  background-color: #f4f1fe0d;
+  border-radius: 0.5rem;
+  box-shadow:
+    0 12px 12px #0000001f,
+    inset 0 0 1px #f4f1fe1a;
+  color: var(--ifm-color-primary-lightest);
+  font-size: 13px;
+  height: 2.5rem;
+}
+
+[class^='navbarSearchContainer_'] button:hover {
+  background-color: #f4f1fe1a;
+}
+
+.DocSearch-Search-Icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.DocSearch-Button-Placeholder {
+  font-size: 14px;
+  margin-right: 0.5rem;
+}
