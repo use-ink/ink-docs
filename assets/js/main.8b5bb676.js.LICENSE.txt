@@ -15,12 +15,6 @@ prismjs/prism.js:
 */
 
 /**
- * @license
- * Copyright 2019 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
-/**
  * @license React
  * react-dom-client.production.js
  *
