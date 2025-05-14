@@ -818,6 +818,10 @@ details [class^='collapsibleContent_'] {
   @apply !flex !flex-row;
 }
 
+.DocSearch-Reset {
+  width: auto;
+}
+
 [class^='navbarSearchContainer_'] {
   @apply lg:w-full;
 }
