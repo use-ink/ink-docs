@@ -13,16 +13,16 @@ module.exports = {
   deploymentBranch: 'gh-pages',
   stylesheets: ['fonts/fonts.css'],
   scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
-  themes: [
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        indexPages: true,
-        ignoreFiles: [/3.x/],
-        language: ['en', 'es'],
-      },
-    ],
-  ],
+  // themes: [
+  //   [
+  //     require.resolve('@easyops-cn/docusaurus-search-local'),
+  //     {
+  //       indexPages: true,
+  //       ignoreFiles: [/3.x/],
+  //       language: ['en', 'es'],
+  //     },
+  //   ],
+  // ],
   themeConfig: {
     prism: {
       theme: prismThemes.github,
