@@ -11416,7 +11416,7 @@ pop --help
 
 Start a new project quickly using Pop CLI `pop new contract` command:
 
-![pop new contract](/img/popnewcontract.gif)
+<img src="/img/popnewcontract.gif" alt="pop new contract"/>
 Once the project is generated, move into the new directory and build your parachain:
 
 ```
@@ -11426,11 +11426,11 @@ pop build --release
 
 Pop CLI integrates the [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) enabling you to easily spin up a local network for smart contract development and testing. This local environment is automatically launched when deploying your contract using the `pop up` command or running your e2e tests using the `pop test --e2e` command.
 
-![pop up contract](/img/popupcontract.gif)
+<img src="/img/popupcontract.gif" alt="pop up contract"/>
 After deployment, you can easily interact with your smart contract using the `pop call contract` command:
 
 ### Interact with your contract
-![pop call contract](/img/popcallcontract.gif)
+<img src="/img/popcallcontract.gif" alt="pop call contract"/>
 ## Where to Go Next
 For a comprehensive guide to all Pop CLI features and advanced usage, see the official [Pop CLI](https://learn.onpop.io/contracts) documentation.  
 
@@ -11604,6 +11604,90 @@ mod base_erc20 {
 ```
 ````
 
+## File: docs/getting-started/setup.md
+````markdown
+---
+title: Setup
+slug: /getting-started/setup
+hide_title: true
+---
+
+![Setup Title Picture](/img/title/setup.svg)
+
+# Setup
+
+In case you are looking for a guided tutorial directed
+towards beginners please check out our [Guided Tutorial](https://docs.substrate.io/tutorials/smart-contracts/).
+
+## Rust & Cargo
+
+A pre-requisite for compiling smart contracts is to have a stable Rust version and Cargo installed. Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+
+## ink! CLI
+
+The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
+a CLI tool for helping setting up and managing WebAssembly smart contracts written with ink!.
+
+You can find it [here on GitHub](https://github.com/use-ink/cargo-contract)
+and [here on crates.io](https://crates.io/crates/cargo-contract).
+
+The tool has a number of handy capabilities:
+
+```
+$ cargo contract       
+Utilities to develop Wasm smart contracts
+
+Usage: cargo contract <COMMAND>
+
+Commands:
+  new          Setup and create a new smart contract project
+  build        Compiles the contract, generates metadata, bundles both together in a `<name>.contract` file
+  check        Check that the code builds as Wasm; does not output any `<name>.contract` artifact to the `target/` directory
+  test         Test the smart contract off-chain
+  upload       Upload contract code
+  instantiate  Instantiate a contract
+  call         Call a contract
+  decode       Decodes a contracts input or output data (supplied in hex-encoding)
+  help         Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help information
+  -V, --version  Print version information
+```
+
+:::tip Alternative
+ If you're looking for a more guided, all-in-one developer experience—including project scaffolding with multiple templates, local network setup, and contract interaction, you can also try [Pop CLI](../third-party-tools/pop-cli.md)
+:::
+### Installation
+
+Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/use-ink/cargo-contract#installation).
+
+If everything worked, `cargo contract --help` should show you the above list of available commands.
+
+## Installing `substrate-contracts-node`
+
+The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) is
+a simple Substrate blockchain which is configured to include the Substrate module for
+smart contract functionality – the `contracts` pallet (see [How it Works](../intro/how-it-works.md) for more).
+It's a comfortable option if you want to get a quickstart.
+
+There are two ways of installing the node:
+
+### (1) Download the Binary
+This is the recommended method, you can
+[download a binary from our releases page](https://github.com/paritytech/substrate-contracts-node/releases)
+(Linux and Mac). 
+
+### (2) Build it yourself
+
+Alternatively you can build the node by yourself.
+This can take quite a while though!
+
+```bash
+cargo install contracts-node
+```
+````
+
 ## File: docs/third-party-tools/typink.md
 ````markdown
 ---
@@ -11715,90 +11799,6 @@ The following is a list of libraries which could be used to craft smart-contract
 - [paritytech/subxt](https://github.com/paritytech/subxt): Rust library to submit extrinsics (transactions) to a substrate node via RPC.
 
 - [polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md): Python library to interface with Substrate nodes.
-````
-
-## File: docs/getting-started/setup.md
-````markdown
----
-title: Setup
-slug: /getting-started/setup
-hide_title: true
----
-
-![Setup Title Picture](/img/title/setup.svg)
-
-# Setup
-
-In case you are looking for a guided tutorial directed
-towards beginners please check out our [Guided Tutorial](https://docs.substrate.io/tutorials/smart-contracts/).
-
-## Rust & Cargo
-
-A pre-requisite for compiling smart contracts is to have a stable Rust version and Cargo installed. Here's [an installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
-
-## ink! CLI
-
-The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
-a CLI tool for helping setting up and managing WebAssembly smart contracts written with ink!.
-
-You can find it [here on GitHub](https://github.com/use-ink/cargo-contract)
-and [here on crates.io](https://crates.io/crates/cargo-contract).
-
-The tool has a number of handy capabilities:
-
-```
-$ cargo contract       
-Utilities to develop Wasm smart contracts
-
-Usage: cargo contract <COMMAND>
-
-Commands:
-  new          Setup and create a new smart contract project
-  build        Compiles the contract, generates metadata, bundles both together in a `<name>.contract` file
-  check        Check that the code builds as Wasm; does not output any `<name>.contract` artifact to the `target/` directory
-  test         Test the smart contract off-chain
-  upload       Upload contract code
-  instantiate  Instantiate a contract
-  call         Call a contract
-  decode       Decodes a contracts input or output data (supplied in hex-encoding)
-  help         Print this message or the help of the given subcommand(s)
-
-Options:
-  -h, --help     Print help information
-  -V, --version  Print version information
-```
-
-:::tip Alternative
- If you're looking for a more guided, all-in-one developer experience—including project scaffolding with multiple templates, local network setup, and contract interaction, you can also try [Pop CLI](../third-party-tools/pop-cli.md)
-:::
-### Installation
-
-Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/use-ink/cargo-contract#installation).
-
-If everything worked, `cargo contract --help` should show you the above list of available commands.
-
-## Installing `substrate-contracts-node`
-
-The [substrate-contracts-node](https://github.com/paritytech/substrate-contracts-node) is
-a simple Substrate blockchain which is configured to include the Substrate module for
-smart contract functionality – the `contracts` pallet (see [How it Works](../intro/how-it-works.md) for more).
-It's a comfortable option if you want to get a quickstart.
-
-There are two ways of installing the node:
-
-### (1) Download the Binary
-This is the recommended method, you can
-[download a binary from our releases page](https://github.com/paritytech/substrate-contracts-node/releases)
-(Linux and Mac). 
-
-### (2) Build it yourself
-
-Alternatively you can build the node by yourself.
-This can take quite a while though!
-
-```bash
-cargo install contracts-node
-```
 ````
 
 ## File: docs/macros-attributes/contract.md
