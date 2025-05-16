@@ -135,7 +135,7 @@ $ cargo contract build
 and tested via:
 
 ```
-$ cargo test
+$ cargo contract test
 ```
 
 ### Deploy and Interact

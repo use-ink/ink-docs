@@ -208,7 +208,7 @@ export CONTRACT_HEX=0x2c75f0aa09dbfbfd49e6286a0f2edd3b4913f04a58b13391c79e96782f
 # process (typically of `ink-node`) for each test.
 export CONTRACTS_NODE_URL=ws://127.0.0.1:8000
 
-cargo test --features e2e-tests e2e_test_deployed_contract -- --ignored
+cargo contract test --features e2e-tests e2e_test_deployed_contract -- --ignored
 ```
 
 You will get output similar to the following:

@@ -878,7 +878,7 @@ mycontract = { path = "mycontract/", default-features = false, features = ["ink-
 ## unit testing (off-chain)
 
 - Unit tests are an integral part of smart-contract development and ensuring your code works off-chain before testing on-chain.
-- To run ink! tests, use the command `cargo test`. Add the `--nocapture` flag for debug prints to show.
+- To run ink! tests, use the command `cargo contract test`. Add the `--nocapture` flag for debug prints to show.
 - From the contract module, make sure to make the contract struct and anything else that is going to be used in the unit tests public. For example:
 
 ```rust
