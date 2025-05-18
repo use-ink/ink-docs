@@ -52,13 +52,13 @@ At the bottom of the `lib.rs` you'll see some simple test cases which verify the
 We can quickly test this code is functioning as expected:
 
 ```bash
-$ cargo test
+$ cargo contract test
 ```
 
 To which you should see a successful test completion:
 
 ```bash
-$ cargo test
+$ cargo contract test
 running 2 tests
 test flipper::tests::it_works ... ok
 test flipper::tests::default_works ... ok

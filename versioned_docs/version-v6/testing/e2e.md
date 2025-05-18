@@ -81,5 +81,5 @@ $ export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"
 And finally execute the following command to start e2e test execution.
 
 ```bash
-$ cargo test --features e2e-tests
+$ cargo contract test --features e2e-tests
 ```

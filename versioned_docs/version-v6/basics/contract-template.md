@@ -29,7 +29,7 @@ In the `lib.rs` file you find initial scaffolded code, which you can use as a st
 Quickly check that it compiles, and the trivial tests pass with:
 
 ```bash
-$ cargo test
+$ cargo contract test
 ```
 
 Also check that you can build the contract by running:
@@ -38,8 +38,8 @@ Also check that you can build the contract by running:
 $ cargo contract build
 ```
 
-`cargo test` builds the contract for `std`, `cargo contract build` for an 
-on-chain deployment (`no_std` with a RISC-V target).
+`cargo contract test` builds the contract for `std`, 
+`cargo contract build` for an on-chain deployment (`no_std` with a RISC-V target).
 
 If everything looks good, then we are ready to start programming!
 
@@ -84,7 +84,7 @@ std = [
 ink-as-dependency = []
 
 # This feature is just a convention, so that the end-to-end tests
-# are only executed if `cargo test` is explicitly invoked with
+# are only executed if `cargo contract test` is explicitly invoked with
 # `--features e2e-tests`.
 e2e-tests = []
 ```
