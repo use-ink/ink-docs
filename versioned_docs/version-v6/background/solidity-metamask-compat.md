@@ -20,18 +20,26 @@ slug: /background/solidity-metamask-compatibility
 
 # Solidity & MetaMask Compatibility
 
-With ink! v6, we have introduced a new attribute argument `abi` for the `#[ink::contract]` macro.
-It allows building your contract in Solidity ABI compatibility mode ([more details here][contract-abi-arg]).
+With ink! v6, we have introduced an `abi` field in a custom `ink-lang` table 
+in the [`package.metadata` table][package-metadata] of a contract's manifest
+file (i.e. the `Cargo.toml` file) - [more details here][abi-declaration].
+It allows building your contract in Solidity ABI compatibility mode.
 
-The implication of supporting Solidity ABI encoding is that all types used as constructor/message arguments 
-and return types must define a mapping to an equivalent Solidity type.
+```toml
+[package.metadata.ink-lang]
+abi = "sol"
+```
+
+The implication of supporting Solidity ABI encoding is that all types used as constructor/message argument 
+and return types, and event argument types must define a mapping to an equivalent Solidity ABI type.
 
 This mapping is defined using the [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode] traits, 
 which are analogs to [`scale::Encode` and `scale::Decode`][scale-codec] (but for Solidity ABI encoding/decoding).
 You won't be able to use Rust types for which no mapping to a Solidity type exists.
 An error about a missing trait implementation for this type will be thrown.
 
-[contract-abi-arg]: ../macros-attributes/contract.md#abi-string
+[package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
+[abi-declaration]: ../basics/abi#declaring-the-abi
 [sol-trait-encode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
 [sol-trait-decode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec

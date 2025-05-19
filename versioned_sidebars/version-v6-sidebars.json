@@ -29,6 +29,16 @@
       "basics/environment",
       {
         "type": "category",
+        "label": "ABI",
+        "items": [
+          "basics/abi/overview",
+          "basics/abi/ink",
+          "basics/abi/solidity",
+          "basics/abi/all"
+        ]
+      },
+      {
+        "type": "category",
         "label": "Metadata",
         "items": ["basics/metadata/ink-format", "basics/metadata/solidity-format"],
         "link": {
