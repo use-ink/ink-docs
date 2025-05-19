@@ -40,11 +40,11 @@
       {
         "type": "category",
         "label": "Metadata",
-        "items": ["basics/metadata/ink-format", "basics/metadata/solidity-format"],
-        "link": {
-          "type": "doc",
-          "id": "basics/metadata/metadata"
-        }
+        "items": [
+          "basics/metadata/overview",
+          "basics/metadata/ink-format",
+          "basics/metadata/solidity-format"
+        ]
       },
       "basics/xcm",
       "basics/contract-verification"

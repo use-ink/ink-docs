@@ -1,5 +1,5 @@
 ---
-title: Metadata
+title: Overview
 hide_title: true
 slug: /basics/metadata
 ---
@@ -39,8 +39,8 @@ $ cargo contract build ---metadata <ink|solidity>
 ```
 
 Generating Solidity metadata is only possible if all constructor and message 
-arguments and return types can be mapped to equivalent Solidity ABI types 
-([more details here][sol-type-mapping]).
+argument and return types, and event argument types can be mapped to 
+equivalent Solidity ABI types ([more details here][sol-type-mapping]).
 
 [ethers-js]: https://docs.ethers.org/
 [sol-compat]: ../../background/solidity-metamask-compat.md
