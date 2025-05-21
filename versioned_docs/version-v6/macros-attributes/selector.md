@@ -7,22 +7,26 @@ hide_title: true
 ![Text/selector Title Picture](/img/title/text/selector.svg)
 
 :::note
-ink! v6 supports both the native ink! and [Solidity][sol-abi] ABI (Application Binary Interface) specifications
-for contract interactions (i.e. calling conventions used for message calls).
+ink! v6 supports both the native ink! and [Solidity][sol-abi] ABI 
+(Application Binary Interface) specifications for contract interactions 
+(i.e. calling conventions used for message calls).
 
-When support for Solidity ABI calling conventions is enabled (see [here][ink-contract-abi] for details),
+When support for Solidity ABI calling conventions is enabled 
+(see [here][abi-declaration] for details), 
 Solidity ABI selectors for messages are **always** generated according to the
 [Solidity ABI specification for function selectors][sol-abi-selector].
 
-So the instructions below for **controlling message selectors only apply to native ink! ABI selectors**
-(i.e. message selector manual overrides are ignored when generating Solidity ABI selectors for messages).
+So the instructions below for **controlling message selectors only apply to 
+native ink! ABI selectors** (i.e. message selector manual overrides are ignored
+when generating Solidity ABI selectors for messages).
 
-Learn more about ink!'s support for multiple ABIs [here][ink-contract-abi].
+Learn more about ink!'s support for multiple ABIs [here][abi-support].
 :::
 
 [sol-abi]: https://docs.soliditylang.org/en/latest/abi-spec.html
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
-[ink-contract-abi]: ./contract.md#abi-string
+[abi-support]: ../basics/abi/overview.md
+[abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
 
 Applicable to ink! messages and ink! constructors.
 

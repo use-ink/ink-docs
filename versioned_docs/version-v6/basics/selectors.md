@@ -7,21 +7,25 @@ slug: /basics/selectors
 ![Selector Hex Title Picture](/img/title/selector-hex.svg)
 
 :::note
-ink! v6 supports both the native ink! and [Solidity][sol-abi] ABI (Application Binary Interface) specifications
-for contract interactions (i.e. calling conventions used for message calls).
+ink! v6 supports both the native ink! and [Solidity][sol-abi] ABI 
+(Application Binary Interface) specifications for contract interactions 
+(i.e. calling conventions used for message calls).
 
-When support for Solidity ABI calling conventions is enabled (see [here][ink-contract-abi] for details),
+When support for Solidity ABI calling conventions is enabled 
+(see [here][abi-declaration] for details),
 Solidity ABI selectors for messages are **always** generated according to the
 [Solidity ABI specification for function selectors][sol-abi-selector].
 
-So the specification below for message selector calculation only applies to native ink! ABI selectors.
+So the specification below for message selector calculation only applies to
+native ink! ABI selectors.
 
-Learn more about ink!'s support for multiple ABIs [here][ink-contract-abi].
+Learn more about ink!'s support for multiple ABIs [here][abi-support].
 :::
 
 [sol-abi]: https://docs.soliditylang.org/en/latest/abi-spec.html
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
-[ink-contract-abi]: ../macros-attributes/contract.md#abi-string
+[abi-support]: ../basics/abi/overview.md
+[abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
 
 # Selectors
 
@@ -100,8 +104,8 @@ To calculate the selector we:
 
 :::tip
 
-Don't worry if you're not able to calculate the `BLAKE2` hash of a string by hand. You
-can use [Shawn's Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/)
+Don't worry if you're not able to calculate the `BLAKE2` hash of a string by hand. 
+You can use [Shawn's Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/)
 to do it for you!
 
 :::
