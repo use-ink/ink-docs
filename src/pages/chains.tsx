@@ -152,10 +152,10 @@ export default function PageChains() {
           <p className="font-[600] text-[18px] mb-1">
             Chains hosting pallet-revive:
           </p>
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+          <div className="grid grid-cols-3 gap-4 lg:grid-cols-3">
             <ImageContainer>
               <img
-                src={useBaseUrl('/img/chains/assethub.svg')}
+                src={useBaseUrl('/img/chains/passethub.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
@@ -165,6 +165,13 @@ export default function PageChains() {
                 src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
                 alt="chains"
                 className="w-full h-full mx-auto mix-blend-lighten max-h-[48px] font-freude"
+              />
+            </ImageContainer>
+            <ImageContainer>
+              <img
+                src={useBaseUrl('/img/chains/assethub.svg')}
+                alt="chains"
+                className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
               />
             </ImageContainer>
           </div>
