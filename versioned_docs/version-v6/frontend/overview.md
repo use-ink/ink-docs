@@ -30,7 +30,7 @@ There are several levels of abstraction where you can start your journey creatin
 
 ### ink!-specific SDKs
 
-- [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(Compatible with ink! v6)**: is an SDK built for interacting with ink! smart contracts, offering type-safe deployment and easy usage.
+- [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(Compatible with ink! v6)**: is a PAPI SDK for interacting with ink! smart contracts, offering fully type-safe APIs for: deploying contracts, dry-running calls, sending messages, estimating gas and storage deposits, decoding events, and accessing on-chain storage of contracts.
 
 - [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(will be compatible with ink! v6 soon)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
 
