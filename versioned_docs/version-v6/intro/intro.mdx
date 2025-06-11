@@ -93,25 +93,44 @@ The Contracts UI for ink! v6 uses an alpha version of the interface: https://ink
 <br/>
 
 ### Where to Deploy your Ink!v6 Contracts
-<div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-  <img
-    src={useBaseUrl('/img/chains/assethub.svg')}
-    alt="chains"
-    className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-  />
+<div className="grid grid-cols-3 gap-4 lg:grid-cols-3">
+    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ftestnet-passet-hub.polkadot.io">
+        <img
+            src={useBaseUrl('/img/chains/passethub.svg')}
+            alt="chains"
+            className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+        />
+    </a>
 
-  <div className="flex flex-col items-center justify-center text-center">
-    <img
-      src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
-      alt="chains"
-      className="w-auto h-[48px] mx-auto mix-blend-lighten font-freude"
-    />
-    <span className="mt-2 px-3 py-1 text-sm font-bold text-grey rounded-full shadow-md">
-      Coming soon
-    </span>
-  </div>
+    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc2.paseo.popnetwork.xyz">
+        <img
+            src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
+            alt="chains"
+            className="w-auto h-[48px] mx-auto mix-blend-lighten font-freude"
+        />
+    </a>
+
+    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-westend-rpc.dwellir.com">
+        <img
+            src={useBaseUrl('/img/chains/assethub.svg')}
+            alt="chains"
+            className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
+        />
+    </a>
 </div>
-To deploy a contract to the Westend Asset Hub, you must get WND tokens. To do so, you can use the [Westend Faucet](https://faucet.polkadot.io/westend?parachain=1000). You need to specify the address where you want to receive the tokens from the faucet.
+<br/>
+
+- To deploy a contract to Passet Hub, you must get PAS tokens. To do so, you can use the [Passet Hub Faucet](https://faucet.polkadot.io/?parachain=1111). You need to specify the address where you want to receive the tokens from the faucet.
+
+- To deploy a contract to the Pop Network, you need to bridge tokens from Paseo (Asset Hub) to Pop. To do so, follow the guide [Get tokens on Pop (Testnet)](https://learn.onpop.io/contracts/guides/bridge-tokens-to-pop-network).
+
+- To deploy a contract to the Westend Asset Hub, you must get WND tokens. To do so, you can use the [Westend Faucet](https://faucet.polkadot.io/westend?parachain=1000). You need to specify the address where you want to receive the tokens from the faucet.
+
+:::info What’s the difference between Passet Hub, Westend, and Pop?
+ - Passet Hub: A stable, community-maintained testnet running the current Polkadot relay chain runtime. Ideal for testing parachains and smart contracts before mainnet deployment.
+ - Westend: an unstable environment for core protocol developers to preview upgrades and changes to the main protocol.
+ - [Pop](https://onpop.io/network/): A network for experimenting with smart contracts and cross-chain interoperability.
+:::
 
 For an overview of all currently supported chains, <a href={useBaseUrl('/chains')}>check the supported chains here.</a>
 
