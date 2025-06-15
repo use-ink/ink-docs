@@ -72,11 +72,3 @@ It may *optionally* include the following key:
 The ABI JSON content (i.e. the content of the `<contract-name>.abi` file) is also contained
 in the `<contract-name>.json` metadata file under the `"output.abi"` key.
 :::
-
-## MetaMask Compatibility
-
-:::caution
-This section has not yet been written for ink! v6.
-
-TODO @davidsemakula
-:::
