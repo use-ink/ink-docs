@@ -9,12 +9,12 @@ slug: /basics/abi
 # ABI (Application Binary Interface)
 
 An ABI (Application Binary Interface) defines a standard way to interact with contracts
-(i.e. it defines the calling conventions to use for message calls).
+(i.e. it defines the calling conventions to use for message/function calls).
 
 More concretely this entails:
-- Specifications for generating selectors which identify the entry points 
+- Specifications for computing (or defining) selectors which identify the entry points 
   for message/function calls
-- Specifications for encoding and decoding message/function arguments and return types, 
+- Specifications for encoding and decoding message/function argument and return types, 
   as well as event and error argument types
 
 With ink! v6, the ink! code generator supports two ABI specifications:

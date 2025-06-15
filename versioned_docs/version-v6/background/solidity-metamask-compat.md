@@ -91,7 +91,7 @@ pointer types below:
 
 :::note
 Rust's `Option` and `Result` types are notable omissions from the default mappings.
-This is because they don't have equivalent Solidity ABI types.
+This is because they don't have **semantically** equivalent Solidity ABI types.
 :::
 
 ### Mappings for arbitrary custom types
