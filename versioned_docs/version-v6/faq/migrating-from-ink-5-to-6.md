@@ -300,7 +300,7 @@ $ cargo contract build ---metadata <ink|solidity>
 
 Please see [#1930](https://github.com/use-ink/cargo-contract/pull/1930) for more information.
 
-#### Abiility to build contract with features during E2E tests
+### Ability to build contract with features during E2E tests
 We've added the possibility to set a feature to build a contract with during e2e tests:
 
 ```rust
