@@ -303,9 +303,9 @@ You can learn more about [supported ABI modes here][abi-declaration] and
 [sol-type-mapping]: ../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
 
 ### Cross-contract calling Solidity contracts
-:::info
-TODO (@davidsemakula)
-:::
+`CallBuilder` now allows you to call contracts that are Solidity ABI encoded.
+
+You can learn more [here](../basics/cross-contract-calling.md#callbuilder-solidity).
 
 ### Generate Solidity metadata for a Solidity ABI compatible ink! contract
 We added a new subcommand:

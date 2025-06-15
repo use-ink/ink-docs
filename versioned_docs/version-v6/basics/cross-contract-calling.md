@@ -328,7 +328,8 @@ let my_return_value = build_call::<DefaultEnvironment>()
 ```
 
 ### CallBuilder Solidity
-`CallBuilder` also allows you to call contracts that are Solidity ABI encoded. This enables interoperability between Solidity, ink!, and other Solidity ABI encoded contracts!
+`CallBuilder` also allows you to call contracts that are Solidity ABI encoded. 
+This enables interoperability between Solidity, ink!, and other Solidity ABI encoded contracts!
 
 This requires using a Solidity compatible function selector using a keccak256 hash of the function signature.
 
