@@ -273,7 +273,7 @@ Solidity contracts and compile them into RISC-V for PolkaVM.
 ### Solidity ABI compatible ink! contracts
 We are introducing an `abi` field in a custom `ink-lang` table
 in the [`package.metadata` table][package-metadata] of a contract's manifest
-file (i.e. the `Cargo.toml` file) .
+file (i.e. the `Cargo.toml` file).
 It allows building your contract in Solidity ABI compatibility mode
 when declared as follows:
 
