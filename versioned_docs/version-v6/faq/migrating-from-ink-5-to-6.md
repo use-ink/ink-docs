@@ -293,7 +293,7 @@ release.
 
 The other option is `abi = "all""`. In this mode, the generated contract
 will support both the ink! and Solidity ABI, however, the contract size
-will also get larger in this mode.
+will get larger.
 
 You can learn more about [supported ABI modes here][abi-declaration] and 
 [Rust/ink! to Solidity ABI type mappings here][sol-type-mapping].
