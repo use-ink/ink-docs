@@ -32,9 +32,9 @@ There are several levels of abstraction where you can start your journey creatin
 
 - [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(Compatible with ink! v6)**: is a PAPI SDK for interacting with ink! smart contracts, offering fully type-safe APIs for: deploying contracts, dry-running calls, sending messages, estimating gas and storage deposits, decoding events, and accessing on-chain storage of contracts.
 
-- [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(will be compatible with ink! v6 soon)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
+- [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(Compatible with ink! v6)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
 
-- [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(will be compatible with ink! v6 soon)**: abstraction on top of `@polkadot/api` for the `pallet-contracts`. Makes interaction with smart contracts more comfortable and type safe.
+- [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(Compatible with ink! v6)**: abstraction on top of `@polkadot/api` for the `pallet-contracts` and `pallet-revive`. Makes interaction with smart contracts more comfortable and type safe.
 
 ### React
 
@@ -42,7 +42,7 @@ There are several levels of abstraction where you can start your journey creatin
 
 - [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(not compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
 
-- [`typink`](https://docs.dedot.dev/typink) **(not compatible with ink! v6)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors.
+- [`typink`](https://docs.dedot.dev/typink) **(Compatible with ink! v6)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors.
 
 ### React and Next.js
 
