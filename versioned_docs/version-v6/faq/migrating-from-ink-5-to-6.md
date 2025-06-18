@@ -287,16 +287,14 @@ constructor/message argument and return types, and event argument types must
 define a mapping to an equivalent Solidity ABI type.
 You won't be able to use Rust types for which no mapping to a Solidity ABI type is defined.
 An error about a missing trait implementation for this type will be thrown.
+You can learn more about [Rust/ink! to Solidity ABI type mapping here][sol-type-mapping].
 
-The default currently is `abi = "ink"`, but we might change this before a production
-release.
+The default value for `abi` is currently `"ink"`, 
+but we might change this before a production release.
 
-The other option is `abi = "all""`. In this mode, the generated contract
+The other option is `abi = "all"`. In this mode, the generated contract
 will support both the ink! and Solidity ABI, however, the contract size
-will get larger.
-
-You can learn more about [supported ABI modes here][abi-declaration] and 
-[Rust/ink! to Solidity ABI type mappings here][sol-type-mapping].
+will get larger. You can learn more about [supported ABI modes here][abi-declaration].
 
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
 [abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
