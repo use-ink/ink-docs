@@ -47,8 +47,8 @@ This mapping is defined using the [`SolEncode`][sol-trait-encode] and
 You won't be able to use Rust types for which no mapping to a Solidity type exists.
 An error about a missing trait implementation for this type will be thrown.
 
-[sol-trait-encode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
-[sol-trait-decode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
+[sol-trait-encode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolEncode.html
+[sol-trait-decode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolDecode.html
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 
 ### Default/provided mappings
