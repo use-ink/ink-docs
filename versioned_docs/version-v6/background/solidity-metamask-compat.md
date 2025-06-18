@@ -47,8 +47,8 @@ This mapping is defined using the [`SolEncode`][sol-trait-encode] and
 You won't be able to use Rust types for which no mapping to a Solidity type exists.
 An error about a missing trait implementation for this type will be thrown.
 
-[sol-trait-encode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
-[sol-trait-decode]: https://docs.rs/ink/latest/ink/trait.SolEncode.html
+[sol-trait-encode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolEncode.html
+[sol-trait-decode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolDecode.html
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 
 ### Default/provided mappings
@@ -91,7 +91,7 @@ pointer types below:
 
 :::note
 Rust's `Option` and `Result` types are notable omissions from the default mappings.
-This is because they don't have equivalent Solidity ABI types.
+This is because they don't have **semantically** equivalent Solidity ABI types.
 :::
 
 ### Mappings for arbitrary custom types

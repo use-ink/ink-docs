@@ -270,37 +270,51 @@ Solidity contracts and compile them into RISC-V for PolkaVM.
 
 ## Interesting New Features
 
-### Cross-contract calling Solidity contracts
-We are introducing a new attribute `abi` for the `#[ink::contract]` macro.
-These are the values it takes:
+### Solidity ABI compatible ink! contracts
+We are introducing an `abi` field in a custom `ink-lang` table
+in the [`package.metadata` table][package-metadata] of a contract's manifest
+file (i.e. the `Cargo.toml` file).
+It allows building your contract in Solidity ABI compatibility mode
+when declared as follows:
 
-```rust
-#[ink::contract(abi = "all")]
-#[ink::contract(abi = "sol")]
-#[ink::contract(abi = "ink")]
+```toml
+[package.metadata.ink-lang]
+abi = "sol"
 ```
 
-The default currently is `abi = "ink"`, but we might change this before a production
-release.
-
-The implication of supporting Solidity ABI encoding is that there is a restriction on
-the types you can use as constructor/message arguments or return types.
-You won't be able to use Rust types for which no mapping to a Solidity type exists.
+The implication of supporting Solidity ABI encoding is that all types used as
+constructor/message argument and return types, and event argument types must
+define a mapping to an equivalent Solidity ABI type.
+You won't be able to use Rust types for which no mapping to a Solidity ABI type is defined.
 An error about a missing trait implementation for this type will be thrown.
+You can learn more about [Rust/ink! to Solidity ABI type mapping here][sol-type-mapping].
 
-Please note that your contract sizes will get larger if you support both the ink!
-and Solidity ABI.
+The default value for `abi` is currently `"ink"`, 
+but we might change this before a production release.
 
-### Generate Solidity metadata for an ink! contract
+The other option is `abi = "all"`. In this mode, the generated contract
+will support both the ink! and Solidity ABI, however, the contract size
+will get larger. You can learn more about [supported ABI modes here][abi-declaration].
+
+[package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
+[abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
+[sol-type-mapping]: ../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+
+### Cross-contract calling Solidity contracts
+`CallBuilder` now allows you to call contracts that are Solidity ABI encoded.
+
+You can learn more [here](../basics/cross-contract-calling.md#callbuilder-solidity).
+
+### Generate Solidity metadata for a Solidity ABI compatible ink! contract
 We added a new subcommand:
 
 ```bash
 $ cargo contract build ---metadata <ink|solidity>
 ```
 
-Please see [#1930](https://github.com/use-ink/cargo-contract/pull/1930) for more information.
+You can learn more [here](../basics/metadata/solidity-format.md).
 
-#### Abiility to build contract with features during E2E tests
+### Ability to build contract with features during E2E tests
 We've added the possibility to set a feature to build a contract with during e2e tests:
 
 ```rust
