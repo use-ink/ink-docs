@@ -44,7 +44,8 @@ in the [`package.metadata` table][package-metadata] e.g.
 abi = "sol"
 ```
 
-The default value for `abi` is `"ink"`. 
+The default value for `abi` is currently `"ink"`, 
+but we might change this before a production release. 
 
 Allowed values are `"ink"`, `"sol"` and `"all"`.
 
