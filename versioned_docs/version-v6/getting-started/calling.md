@@ -55,7 +55,7 @@ are emitted if they want clients to be able to pick up on them.
 For ink! v6 only, this section on the Contracts UI uses an alpha version of the UI.
 :::
 
-Go to https://inkv6alpha.netlify.app/
+Go to https://ui.use.ink/
 
 ### 1. `get()` function
 
