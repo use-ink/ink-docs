@@ -41,7 +41,8 @@ For ink! v6 only, this section on the Contracts UI uses an alpha version of the 
 Here we will upload the contract code and instantiate one copy of the contract on the blockchain
 (which is usually why we upload the contract code in the first place):
 
-- Go to https://inkv6alpha.netlify.app/
+- Go to https://ui.use.ink/
+- Make sure you have ink! v6 selected in the sidebar
 - Click the **Add New Contract** button in the sidebar.
 - Click the **Upload New Contract Code** button in the Add New Contract page.
 - Choose an **Instantiation account** (e.g. ALICE).
