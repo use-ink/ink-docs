@@ -302,3 +302,11 @@ The `cargo-contract` warning means this check for compatible types cannot be per
 
 If a chain indeed requires that contract developers have to use custom environment types,
 this should be communicated prominently by them. 
+
+### When an ink! contract is compiled with support for the Solidity ABI (abi = "sol" or "all"), does anything about its on-chain storage change?
+
+No. The internal storage representation of a contract is still done in the SCALE codec!
+
+The contract ABI only describes how external interactions with a contract are
+encoded/decoded.
+Using the Solidity ABI does not imply switching to a different storage layout!

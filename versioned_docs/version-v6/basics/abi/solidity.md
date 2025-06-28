@@ -31,6 +31,14 @@ argument and return types, and event argument types can be mapped to
 equivalent Solidity ABI types ([more details here][sol-type-mapping]).
 :::
 
+:::info
+The contract ABI only describes how external interactions with a contract are
+encoded/decoded. 
+The internal storage representation of a contract is still done in the SCALE codec!
+
+_Using the Solidity ABI does not imply switching to a different storage layout!_
+:::
+
 [sol-abi]: https://docs.soliditylang.org/en/latest/abi-spec.html
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
 [selector-attribute]: ../../macros-attributes/selector
