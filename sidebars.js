@@ -53,11 +53,7 @@ module.exports = {
       {
         type: 'category',
         label: 'Testnet',
-        items: ['testing/testnet/overview', 'testing/testnet/faucet'],
-        link: {
-          type: 'doc',
-          id: 'testing/testnet/overview',
-        },
+        items: ['testing/testnet/overview', 'testing/testnet/faucet']
       },
     ],
     'Macros & Attributes': [
