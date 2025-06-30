@@ -91,5 +91,5 @@
     "three": "^0.167.1",
     "usehooks-ts": "^2.12.1"
   },
-  "packageManager": "pnpm@^9.15.0"
+  "packageManager": "pnpm@10.8.1"
 }

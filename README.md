@@ -5,11 +5,15 @@ This is the documentation portal for [ink!](https://github.com/use-ink/ink). The
 Run it locally via
 
 ```bash
+# Enable Corepack to use the correct pnpm version specified in package.json
+corepack enable
+
+# Install dependencies and start the development server
 pnpm install
 pnpm start
 ```
 
-If you don't have pnpm installed, you can install it by following the instructions at [https://pnpm.io/installation](https://pnpm.io/installation)
+If you don't have pnpm installed, you can install it by following the instructions at [https://pnpm.io/installation](https://pnpm.io/installation), or use Corepack (recommended) which comes with Node.js 16.10+ and will automatically use the correct version specified in this project.
 
 We want to provide comprehensive documentation for anything you need to work with ink! here.
 
