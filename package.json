@@ -13,7 +13,7 @@
     "lint": "yarn eslint .",
     "fmt": "yarn prettier --write \"docs/**/*.{js,jsx,ts,tsx,mdx}\" \"src/**/*.{js,jsx,ts,tsx,mdx,css}\" && yarn eslint --fix .",
     "link-check": "markdown-link-check docs/**/*.md docs/**/*.mdx --config .github/workflows/mlc_config.json --quiet",
-    "link-check-v6": "markdown-link-check versioned_docs/version-v6/**/*.md versioned_docs/version-v6/**/*.mdx --config .github/workflows/mlc_config.json --quite",
+    "link-check-v6": "markdown-link-check versioned_docs/version-v6/**/*.md versioned_docs/version-v6/**/*.mdx --config .github/workflows/mlc_config.json --quiet",
     "build": "yarn lint && docusaurus build",
     "build:release": "yarn lint && ci-ghact-docs",
     "docs": "yarn build",
@@ -85,5 +85,6 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.167.1",
     "usehooks-ts": "^2.12.1"
-  }
+  },
+  "packageManager": "yarn@>=3.0.0"
 }
