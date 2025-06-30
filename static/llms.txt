@@ -1,5 +1,3 @@
-This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
-
 # Directory Structure
 ```
 docs/
@@ -1117,42 +1115,6 @@ import { BigCTA } from '/src/components/BigCTA'
   cta="the conversation"
   url="https://t.me/inkathon"
 />
-````
-
-## File: docs/third-party-tools/subwallet.md
-````markdown
----
-title: SubWallet
-slug: /getting-started/subwallet
----
-
-# SubWallet
-
-SubWallet is a comprehensive non-custodial wallet designed for the Polkadot, Substrate, and Ethereum ecosystems. It provides support for importing, managing, and interacting with various [smart contract types](https://docs.subwallet.app/main/#token-standard-support), including **PSP22** and **PSP34**.
-
-## Installation
-
-SubWallet is available on multiple platforms:
-
-- **Browser extension:** Available for Chrome, Firefox, Edge, and Brave.
-- **Mobile app:** Available for [Android](https://apps.apple.com/us/app/subwallet-polkadot-wallet/id1633050285) and [iOS](https://play.google.com/store/apps/details?id=app.subwallet.mobile).
-- **Web Dashboard:** Accessible through [Web Dashboard](https://web.subwallet.app/).
-
-## Getting Started
-
-1. [Install SubWallet](https://docs.subwallet.app/main/extension-user-guide/getting-started/install-subwallet)
-2. [Create or Import Wallet](https://docs.subwallet.app/main/extension-user-guide/account-management/create-a-new-account-with-seed-phrase)
-3. [Import Tokens](https://docs.subwallet.app/main/extension-user-guide/import-and-manage-customized-assets/import-and-manage-customized-tokens) (e.g., **PSP22**)
-4. [Import NFTs](https://docs.subwallet.app/main/extension-user-guide/import-and-manage-customized-assets/import-nft) (e.g., **PSP34**)
-5. [Transfer Tokens](https://docs.subwallet.app/main/extension-user-guide/receive-and-transfer-assets/transfer-tokens/single-chain-transfer) (e.g., **PSP22**)
-6. [Transfer NFTs](https://docs.subwallet.app/main/extension-user-guide/receive-and-transfer-assets/transfer-nft) (e.g., **PSP34**)
-
-## Documentation
-
-- [GitHub Repository](https://github.com/Koniverse/SubWallet-Extension/)
-- [User Manual](https://docs.subwallet.app/)
-
-For more information, visit the official [SubWallet website](https://www.subwallet.app/).
 ````
 
 ## File: docs/basics/verification/contract-verification.md
@@ -11443,6 +11405,42 @@ For a comprehensive guide to all Pop CLI features and advanced usage, see the of
 Join the [Pop Telegram Group](https://t.me/onpopio) to ask questions, share ideas, and collaborate.
 
 ---
+````
+
+## File: docs/third-party-tools/subwallet.md
+````markdown
+---
+title: SubWallet
+slug: /getting-started/subwallet
+---
+
+# SubWallet
+
+SubWallet is a comprehensive non-custodial wallet designed for the Polkadot, Substrate, and Ethereum ecosystems. It provides support for importing, managing, and interacting with various [smart contract types](https://docs.subwallet.app/main/#token-standard-support), including **PSP22** and **PSP34**.
+
+## Installation
+
+SubWallet is available on multiple platforms:
+
+- **Browser extension:** Available for Chrome, Firefox, Edge, and Brave.
+- **Mobile app:** Available for [Android](https://apps.apple.com/us/app/subwallet-polkadot-wallet/id1633050285) and [iOS](https://play.google.com/store/apps/details?id=app.subwallet.mobile).
+- **Web Dashboard:** Accessible through [Web Dashboard](https://web.subwallet.app/).
+
+## Getting Started
+
+1. [Install SubWallet](https://docs.subwallet.app/main/extension-user-guide/getting-started/install-subwallet)
+2. [Create or Import Wallet](https://docs.subwallet.app/main/extension-user-guide/account-management/create-a-new-account-with-seed-phrase)
+3. [Import Tokens](https://docs.subwallet.app/main/web-dashboard-user-guide/import-and-manage-customized-assets/import-and-manage-customized-tokens) (e.g., **PSP22**)
+4. [Import NFTs](https://docs.subwallet.app/main/web-dashboard-user-guide/import-and-manage-customized-assets/import-nfts) (e.g., **PSP34**)
+5. [Transfer Tokens](https://docs.subwallet.app/main/extension-user-guide/receive-and-transfer-assets/transfer-tokens/single-chain-transfer) (e.g., **PSP22**)
+6. [Transfer NFTs](https://docs.subwallet.app/main/extension-user-guide/receive-and-transfer-assets/transfer-nft) (e.g., **PSP34**)
+
+## Documentation
+
+- [GitHub Repository](https://github.com/Koniverse/SubWallet-Extension/)
+- [User Manual](https://docs.subwallet.app/)
+
+For more information, visit the official [SubWallet website](https://www.subwallet.app/).
 ````
 
 ## File: docs/basics/trait-definitions.md

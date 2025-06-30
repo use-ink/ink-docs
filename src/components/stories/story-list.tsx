@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { stories } from '../../data/stories'
 import { cn } from '../../util'

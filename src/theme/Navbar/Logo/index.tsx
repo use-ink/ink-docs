@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Logo from '@theme/Logo'
 import Squink from '@site/static/img/ink-squink.svg'
 import useBaseUrl from '@docusaurus/useBaseUrl'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import PolkadotLogo from '@site/static/img/Polkadot_Logo_White.svg'
 import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 

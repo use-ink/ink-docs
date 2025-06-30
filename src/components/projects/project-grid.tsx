@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
 import { cn } from '../../util'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { projects } from '../../data/projects'
 import { ImageContainer } from '../image-container'
 import Link from '@docusaurus/Link'
