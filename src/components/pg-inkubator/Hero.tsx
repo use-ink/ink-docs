@@ -2,7 +2,7 @@ import HeroAnimation from '../../../static/animations/inkubator.json'
 import React from 'react'
 import classNames from 'classnames'
 import { ClassNameable } from '../types'
-import { Link } from 'react-router-dom'
+import Link from '@docusaurus/Link'
 import { ScrollPlayer } from '../ScrollPlayer'
 
 export interface InkubatorHeroProps extends ClassNameable {
@@ -19,7 +19,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
     >
       <div className="mx-auto max-w-[1000px]">
         <div className="absolute inset-0 -z-10 section-bg" />
-        <div className={classNames('flex lg:flex-row flex-col justify-between mb-0 gap-6 px-4')}>
+        <div className={classNames('flex flex-col gap-6 justify-between px-4 mb-0 lg:flex-row')}>
           <h1 className="font-freude text-[64px] leading-[57px] max-w-2xl">Take your ink! project to new depths.</h1>
           <div className="md:max-w-md lg:pt-6">
             <hgroup className="md:mb-10">
@@ -41,10 +41,10 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
             {withLinkCTA && (
               <div className="mb-10 md:mb-0">
                 <Link
-                  to="/inkubator"
+                  href="/inkubator"
                   className={classNames(
-                    'py-4 px-6 bg-brand-500 hover:bg-brand-500/90 hover:text-dark-background text-center',
-                    'transition duration-75 text-dark-background hover:no-underline rounded-full text-lg',
+                    'px-6 py-4 text-center bg-brand-500 hover:bg-brand-500/90 hover:text-dark-background',
+                    'text-lg rounded-full transition duration-75 text-dark-background hover:no-underline',
                   )}
                 >
                   Learn More
@@ -54,7 +54,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
           </div>
         </div>
 
-        <ScrollPlayer animationData={HeroAnimation} className="w-full mx-auto mt-0" />
+        <ScrollPlayer animationData={HeroAnimation} className="mx-auto mt-0 w-full" />
       </div>
     </section>
   )

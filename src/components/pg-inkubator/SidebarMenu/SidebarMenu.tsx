@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from '@docusaurus/Link'
 import { Sidebar } from '../../../components/Sidebar'
 import { useUI } from '../../../hooks'
 import { Config } from '../config'
@@ -14,19 +14,19 @@ export const SidebarMenu: React.FC = () => {
 
   return (
     <Sidebar show={showSidebar} onClose={() => setShowSidebar(false)}>
-      <ul className="m-0 px-2 list-none">
+      <ul className="px-2 m-0 list-none">
         <li className="p-0 m-0">
-          <Link to="/" className={linkClasses}>
-            <i className="underline mr-2">View</i>
+          <Link href="/" className={linkClasses}>
+            <i className="mr-2 underline">View</i>
             ink! Documentation
           </Link>
         </li>
 
-        <li className="pt-2 mx-6 px-0 mb-2 border-b border-solid border-background-700/20 dark:border-background-300/20 border-t-0 border-x-0" />
+        <li className="px-0 pt-2 mx-6 mb-2 border-t-0 border-b border-solid border-background-700/20 dark:border-background-300/20 border-x-0" />
 
         <li className="p-0 m-0">
           <a href={Config.grantsApplicationURL} className={linkClasses} target="_blank" rel="noreferrer">
-            <i className="underline mr-2">Apply</i>
+            <i className="mr-2 underline">Apply</i>
             for an Ecosystem Grant
           </a>
         </li>

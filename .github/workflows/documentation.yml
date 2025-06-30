@@ -17,20 +17,10 @@ jobs:
           node-version: '22'
       - name: Enable Corepack
         run: corepack enable
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-      - name: Cache yarn dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Deploy
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm run build
   gh-release:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
@@ -61,6 +51,6 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "gh-actions"
-          yarn install --frozen-lockfile
-          yarn build
+          pnpm install --frozen-lockfile
+          pnpm run build
           npx docusaurus deploy
