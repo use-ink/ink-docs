@@ -29,7 +29,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Deploy
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
           yarn build
   gh-release:
     if: github.event_name != 'pull_request'
@@ -61,6 +61,6 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "gh-actions"
-          yarn install --frozen-lockfile
+          yarn install --immutable
           yarn build
           npx docusaurus deploy
