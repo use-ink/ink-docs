@@ -14,6 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 - [Pop](https://learn.onpop.io/contracts) is a parachain on Paseo that allows you to deploy smart contracts – and uses Paseo's token (PAS).
 
 ## How can I use it?
+
 ### (1) Create an Account
 
 As a first step, you should create an account. This can be done via command-line
