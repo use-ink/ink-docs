@@ -12,6 +12,8 @@
     "start": "docusaurus start --port 8080",
     "lint": "yarn eslint .",
     "fmt": "yarn prettier --write \"docs/**/*.{js,jsx,ts,tsx,mdx}\" \"src/**/*.{js,jsx,ts,tsx,mdx,css}\" && yarn eslint --fix .",
+    "link-check": "markdown-link-check docs/**/*.md docs/**/*.mdx --config .github/workflows/mlc_config.json --quiet",
+    "link-check-v6": "markdown-link-check versioned_docs/version-v6/**/*.md versioned_docs/version-v6/**/*.mdx --config .github/workflows/mlc_config.json --quite",
     "build": "yarn lint && docusaurus build",
     "build:release": "yarn lint && ci-ghact-docs",
     "docs": "yarn build",
@@ -34,6 +36,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.37.4",
+    "markdown-link-check": "^3.13.7",
     "prettier": "^3.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -82,5 +85,6 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.167.1",
     "usehooks-ts": "^2.12.1"
-  }
+  },
+  "packageManager": "yarn@3.5.0+sha256.e4fc5f94867cd0b492fb0a644f14e7b47c4387bc75d46b56e86db6d0f1a6cb97"
 }

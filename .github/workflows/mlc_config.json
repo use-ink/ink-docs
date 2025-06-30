@@ -23,6 +23,15 @@
     },
     {
       "pattern": "^https?://x.com"
+    },
+    {
+      "pattern": "\\{useBaseUrl\\("
+    },
+    {
+      "pattern": "^https?://substrate\\.io"
+    },
+    {
+      "pattern": "^https?://polkadot\\.network"
     }
   ]
 }
