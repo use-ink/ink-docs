@@ -85,5 +85,6 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.167.1",
     "usehooks-ts": "^2.12.1"
-  }
+  },
+  "packageManager": "yarn@4.9.2"
 }

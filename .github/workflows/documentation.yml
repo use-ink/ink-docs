@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
+      - name: Enable Corepack
+        run: corepack enable
       - name: Deploy
         run: |
           yarn install --frozen-lockfile
@@ -29,6 +31,8 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
+      - name: Enable Corepack
+        run: corepack enable
       - name: Add key to allow access to repository
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
