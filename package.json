@@ -90,5 +90,5 @@
     "three": "^0.167.1",
     "usehooks-ts": "^2.12.1"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@3.8.7"
 }
