@@ -8993,6 +8993,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs@npm:*":
+  version: 0.0.2
+  resolution: "fs@npm:0.0.2"
+  checksum: 3880da7d419d5a87d7127a9931ab533875a186ad0cd9bfd3334aa3fabe4f8bbfd3fedfb7c14a248a01181eaaea37e4141e6ff9f798eb48d04d7009f6b8008308
+  languageName: node
+  linkType: hard
+
 "fsevents@npm:~2.3.2":
   version: 2.3.3
   resolution: "fsevents@npm:2.3.3"
