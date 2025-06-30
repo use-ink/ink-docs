@@ -5,9 +5,11 @@ This is the documentation portal for [ink!](https://github.com/use-ink/ink). The
 Run it locally via
 
 ```bash
-yarn
-yarn start
+pnpm install
+pnpm start
 ```
+
+If you don't have pnpm installed, you can install it by following the instructions at [https://pnpm.io/installation](https://pnpm.io/installation)
 
 We want to provide comprehensive documentation for anything you need to work with ink! here.
 
