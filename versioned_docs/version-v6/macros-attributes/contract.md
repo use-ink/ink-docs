@@ -194,7 +194,7 @@ Some example rules include but are not limited to:
      **Note:**
 
      - An ink! message with a `&self` receiver may only read state whereas an ink! message
-       with a `&mut self` receiver may mutate the contract's storage.
+       with a `&mut self` receiver may modify state.
 
      **Example:**
 
@@ -236,6 +236,9 @@ Some example rules include but are not limited to:
      Authors of ink! smart contracts can make an ink! message payable by adding the `payable`
      flag to it. An example below:
 
+     Note that ink! messages are payable inherently modify the blockchain state, 
+     and therefore must have a `&mut self` receiver.
+
      Note that ink! constructors are always implicitly payable and thus cannot be flagged
      as such.
 
@@ -260,8 +263,14 @@ Some example rules include but are not limited to:
                  self.value = !self.value;
              }
 
-             /// Returns the current value.
+             /// Flips the current value.
              #[ink(message, payable)] // ...or specify payable inline.
+             pub fn flip_2(&mut self) {
+                 self.value = !self.value;
+             }
+
+             /// Returns the current value.
+             #[ink(message)]
              pub fn get(&self) -> bool {
                  self.value
              }
