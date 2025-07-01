@@ -31,7 +31,6 @@ const head = (
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="ink! logo" />
     <meta property="og:image:type" content="image/png" />
-    <script defer src="https://use-ink-data.netlify.app/script.js" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script>
   </>
 )
 

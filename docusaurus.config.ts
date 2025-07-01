@@ -12,7 +12,17 @@ module.exports = {
   projectName: 'ink-docs',
   deploymentBranch: 'gh-pages',
   stylesheets: ['fonts/fonts.css'],
-  scripts: [{ src: 'https://apisa.parity.io/latest.js', defer: true }],
+  scripts: [
+    { 
+      src: 'https://apisa.parity.io/latest.js', 
+      defer: true 
+    }, 
+    {
+      src: 'https://use-ink-data.netlify.app/script.js',
+      defer: true,
+      'data-website-id': 'c97b4e05-21a3-4873-8884-4fc81c38d6f0',
+    },
+],
   // themes: [
   //   [
   //     require.resolve('@easyops-cn/docusaurus-search-local'),
