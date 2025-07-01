@@ -19,6 +19,7 @@ const Inkubator = () => (
       <meta name="twitter:description" content={DESCRIPTION} />
       <meta name="twitter:site" content="@ink_lang" />
       <meta name="twitter:creator" content="@ink_lang" />
+      <script defer src="https://use-ink-data.netlify.app/script.js" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script>
     </Head>
     <BrowserOnly>
       {() => {
