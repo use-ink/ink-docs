@@ -1,5 +1,5 @@
 ---
-title: Migrating from ink! 3.x to 4.0
+title: "Migration: ink! v3 → v4"
 slug: /faq/migrating-from-ink-3-to-4
 ---
 
@@ -290,8 +290,8 @@ After:
 The storage layout under the `storage` key changed for v4. If you have an application
 that is using it consider reading the updated documentation:
 
-- [General storage documentation](../../versioned_docs/version-v4/datastructures/overview.md)
-- [Storage metadata format](../../versioned_docs/version-v4/datastructures/storage-in-metadata.md)
+- [General storage documentation](../../../versioned_docs/version-v4/datastructures/overview.md)
+- [Storage metadata format](../../../versioned_docs/version-v4/datastructures/storage-in-metadata.md)
 
 ## Removal of `AccountId` `Default` implementation
 

@@ -6,13 +6,19 @@ hide_title: true
 
 ![Text/chain Ext Title Picture](/img/title/text/chain-ext.svg)
 
+:::caution
+This page has not yet been edited for ink! v6 yet.
+
+TODO 
+:::
+
 In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
 via its well defined set of basic smart contract interface functions. This API already allows a whole variety of
 interaction between the `contracts-pallet` and the executed smart contract. For example it is possible
 to call and instantiate other smart contracts on the same chain, emit events, query context information
 or run built-in cryptographic hashing procedures.
 
-If this basic set of features is not enough for a particular Substrate built blockchain it is possible
+If this basic set of features is not enough for a particular Polkadot SDK built blockchain it is possible
 to easily extend this API using the so-called chain extension feature.
 
 <center>
@@ -24,7 +30,7 @@ to smart contract developers.
 
 :::note
 The ink! examples repository contains [the `rand-extension` example](https://github.com/use-ink/ink-examples/tree/main/rand-extension).
-This is a complete example of a chain extension implemented in both ink! and Substrate.
+This is a complete example of a chain extension implemented in both ink! and Polkadot SDK.
 :::
 
 ## Structure
@@ -471,7 +477,7 @@ It is possible to use multiple exposed chain extensions in the single environmen
 The declaration procedure of the chain extension stays the same.
 
 Suppose we want to combine two chain extension called `Psp22Extension` and `FetchRandom`, ink! provides
-a useful macro [`ink::combine_extensions!`](https://docs.rs/ink/5.0.0/ink/macro.combine_extensions.html) that allows to construct the structure combining 
+a useful macro [`ink::combine_extensions!`](https://docs.rs/ink/6.0.0/ink/macro.combine_extensions.html) that allows to construct the structure combining 
 the aforementioned chain extensions like so:
 ```rust
 ink::combine_extensions! {
@@ -516,7 +522,7 @@ and mock them for testing.
 ## Mocking Chain Extension
 
 You can mock chain extensions for unit testing purposes. 
-This can be achieved by implementing the [`ink::env::test::ChainExtension`](https://docs.rs/ink_env/5.0.0/ink_env/test/trait.ChainExtension.html) trait.
+This can be achieved by implementing the [`ink::env::test::ChainExtension`](https://docs.rs/ink_env/6.0.0/ink_env/test/trait.ChainExtension.html) trait.
 
 ```rust
 /// Opaque structure

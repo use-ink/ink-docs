@@ -12,13 +12,13 @@ In ink! contracts it is possible to call messages and constructors of other
 on-chain contracts.
 
 There are a few approaches to performing these cross-contract calls in ink!:
-
 1. Contract references (i.e `ContractRef`)
-1. Builders (i.e `CreateBuilder` and `CallBuilder`)
+2. Builders (i.e `CreateBuilder` and `CallBuilder`)
+3. Calling Solidity ABI Encoded Contracts with `CallBuilder`
 
 Contract references can only be used for cross-contract calls to other ink! contracts.
-Builders can be used to issue cross-contract calls to any Wasm contract, such as those
-written in ink!, Solang, or ask!.
+Builders can be used to issue cross-contract calls to any RISC-V contract, such as those
+written in ink! or Solidity.
 
 ## Contract References
 
@@ -39,7 +39,6 @@ We will walk through the [`cross-contract-calls`](https://github.com/use-ink/ink
 example in order to demonstrate how cross-contract calls using contract references work.
 
 The general workflow will be:
-
 1. Prepare `OtherContract` to be imported to other contracts
 1. Import `OtherContract` into `BasicContractRef`
 1. Upload `OtherContract` on-chain
@@ -80,7 +79,6 @@ std = [
 ```
 
 Two things to note here:
-
 1. If we don't specify the `ink-as-dependency` feature we will end up with linking
    errors.
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
@@ -138,7 +136,7 @@ pub fn flip_and_get(&mut self) -> bool {
 
 #### Uploading `OtherContract`
 
-You will need the [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node)
+You will need the [`ink-node`](https://github.com/use-ink/ink-node)
 running in the background for the next steps.
 
 We can upload `OtherContract` using `cargo-contract` as follows:
@@ -194,17 +192,15 @@ Data Ok(true)
 ```
 
 ## Builders
-
 The
-[`CreateBuilder`](https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CreateBuilder.html)
+[`CreateBuilder`](https://docs.rs/ink_env/6.0.0/ink_env/call/struct.CreateBuilder.html)
 and
-[`CallBuilder`](https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CallBuilder.html)
+[`CallBuilder`](https://docs.rs/ink_env/6.0.0/ink_env/call/struct.CallBuilder.html)
 offer low-level, flexible interfaces for performing cross-contract calls. The
 `CreateBuilder` allows you to instantiate already uploaded contracts, and the
 `CallBuilder` allows you to call messages on instantiated contracts.
 
 ### CreateBuilder
-
 The `CreateBuilder` offers an an easy way for you to **instantiate** a contract. Note
 that you'll still need this contract to have been previously uploaded.
 
@@ -219,15 +215,14 @@ In order to instantiate a contract you need a reference to your contract, just l
 [the previous section](#contract-references).
 
 Below is an example of how to instantiate a contract using the `CreateBuilder`. We will:
-
 - instantiate the uploaded contract with a `code_hash` of `0x4242...`
 - with no gas limit specified (`0` means unlimited)
 - sending `10` units of transferred value to the contract instance
 - instantiating with the `new` constructor
 - with the following arguments
-  - a `u8` with value `42`
-  - a `bool` with value `true`
-  - an array of 32 `u8` with value `0x10`
+    - a `u8` with value `42`
+    - a `bool` with value `true`
+    - an array of 32 `u8` with value `0x10`
 - generate the address (`AccountId`) using the specified `salt_bytes`
 - and we expect it to return a value of type `MyContractRef`
 
@@ -254,34 +249,31 @@ contract reference to call messages just like in the
 [previous section](#contract-references).
 
 ### CallBuilder
-
 The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
 are two main approaches to this: `Call`s and `DelegateCall`s. We will briefly cover both
 here.
 
 #### CallBuilder: Call
-
 When using `Call`s the `CallBuilder` requires an already instantiated contract.
 
 We saw an example of how to use the `CreateBuilder` to instantiate contracts in the
 [previous section](#contract-references).
 
 Below is an example of how to call a contract using the `CallBuilder`. We will:
-
 - make a regular `Call`
 - to a contract at the address `0x4242...`
 - with no gas limit specified (`0` means unlimited)
 - sending `10` units of transferred value to the contract instance
 - calling the `flip` message
 - with the following arguments
-  - a `u8` with value `42`
-  - a `bool` with value `true`
-  - an array of 32 `u8` with value `0x10`
+    - a `u8` with value `42`
+    - a `bool` with value `true`
+    - an array of 32 `u8` with value `0x10`
 - and we expect it to return a value of type `bool`
 
 ```rust
 let my_return_value = build_call::<DefaultEnvironment>()
-    .call(AccountId::from([0x42; 32]))
+    .call(H160::from([0x42; 20]))
     .call_v1()
     .gas_limit(0)
     .transferred_value(10)
@@ -305,7 +297,6 @@ You will not be able to get any feedback about this at compile time. You will on
 find out your call failed at runtime!
 
 #### CallBuilder: Delegate Call
-
 You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics.
 If you need a refresher on what delegate calls are,
 [see this article](https://medium.com/coinmonks/delegatecall-calling-another-contract-function-in-solidity-b579f804178c).
@@ -314,19 +305,18 @@ In the case of `DelegateCall`s, we don't require an already instantiated contrac
 We only need the `code_hash` of an uploaded contract.
 
 Below is an example of how to delegate call a contract using the `CallBuilder`. We will:
-
 - make a `DelegateCall`
 - to a contract with a `code_hash` (not contract address!) of `0x4242...`
 - calling the `flip` message
 - with the following arguments
-  - a `u8` with value `42`
-  - a `bool` with value `true`
-  - an array of 32 `u8` with value `0x10`
+    - a `u8` with value `42`
+    - a `bool` with value `true`
+    - an array of 32 `u8` with value `0x10`
 - and we expect it to return an `i32`
 
 ```rust
 let my_return_value = build_call::<DefaultEnvironment>()
-    .delegate(ink::primitives::Hash::from([0x42; 32]))
+    .delegate(H160::from([0x42; 20]))
     .exec_input(
         ExecutionInput::new(Selector::new(ink::selector_bytes!("flip")))
             .push_arg(42u8)
@@ -337,32 +327,36 @@ let my_return_value = build_call::<DefaultEnvironment>()
     .invoke();
 ```
 
-### Builder Error Handling
+### CallBuilder Solidity
+`CallBuilder` also allows you to call contracts that are Solidity ABI encoded. 
+This enables interoperability between Solidity, ink!, and other Solidity ABI encoded contracts!
 
+This requires using a Solidity compatible function selector using a keccak256 hash of the function signature.
+
+```rust
+let my_return_value = build_call_solidity::<DefaultEnvironment>()
+    .call(H160::from([0x42; 20]))
+    .ref_time_limit(0)
+    .transferred_value(10)
+    .exec_input(
+        ExecutionInput::new([0xcd, 0xe4, 0xef, 0xa9].into()) // solidity selector: keccak256("flip()")
+    )
+    .returns::<bool>()
+    .invoke();
+```
+
+### Builder Error Handling
 The `CreateBuilder` and the `CallBuilder` both offer error handling with the
 `try_instantiate()` and `try_invoke()` methods respectively.
 
 These allow contract developers to handle two types of errors:
-
 1. Errors from the underlying execution environment (e.g the Contracts pallet)
 2. Error from the programming language (e.g `LangError`s)
 
 See the documentation for
-[`try_instantiate`](https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
-[`try_invoke`](https://docs.rs/ink_env/5.0.0/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
-[`ink::env::Error`](https://docs.rs/ink_env/5.0.0/ink_env/enum.Error.html)
+[`try_instantiate`](https://docs.rs/ink_env/6.0.0/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
+[`try_invoke`](https://docs.rs/ink_env/6.0.0/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
+[`ink::env::Error`](https://docs.rs/ink_env/6.0.0/ink_env/enum.Error.html)
 and
-[`ink::LangError`](https://docs.rs/ink/5.0.0/ink/enum.LangError.html)
+[`ink::LangError`](https://docs.rs/ink/6.0.0/ink/enum.LangError.html)
 for more details on proper error handling.
-
-:::tip
-
-Because the `CallBuilder` requires only a contract's `AccountId` and message `selector`,
-we can call Solidity contracts compiled using the [Solang](https://github.com/hyperledger/solang)
-compiler and deployed to a chain that supports the `pallet-contracts`.
-See [here](https://github.com/xermicus/call_solidity) for an example of how to do that.
-
-The reverse, calls from Solidity to ink!, are **not** supported by Solang, but there are
-plans to implement this in the future.
-
-:::

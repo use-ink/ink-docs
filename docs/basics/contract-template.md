@@ -8,21 +8,20 @@ slug: /basics/contract-template
 
 # Contract Template
 
-On this page we'll go over how to create a basic contract and explain
-its elements.
+On this page we'll go over the elements of a basic contract.
 
 ## Creating a template
 
 Change into your working directory and run:
 
 ```bash
-cargo contract new foobar
+$ cargo contract new foobar
 ```
 
 This will create a new project folder named `foobar`.
 
 ```bash
-cd foobar/
+$ cd foobar/
 ```
 
 In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
@@ -30,14 +29,17 @@ In the `lib.rs` file you find initial scaffolded code, which you can use as a st
 Quickly check that it compiles, and the trivial tests pass with:
 
 ```bash
-cargo test
+$ cargo contract test
 ```
 
-Also check that you can build the Wasm file by running:
+Also check that you can build the contract by running:
 
 ```bash
-cargo contract build
+$ cargo contract build
 ```
+
+`cargo contract test` builds the contract for `std`, 
+`cargo contract build` for an on-chain deployment (`no_std` with a RISC-V target).
 
 If everything looks good, then we are ready to start programming!
 
@@ -64,7 +66,7 @@ edition = "2021"
 # `ink::env` is the `ink_env` crate that contains functions
 # to interact with a contract's environment (querying information
 # about a caller, the current block number, etc.).
-ink = { version = "5", default-features = false }
+ink = { version = "6", default-features = false }
 
 [dev-dependencies]
 # This developer dependency is for the End-to-End testing framework.
@@ -82,7 +84,7 @@ std = [
 ink-as-dependency = []
 
 # This feature is just a convention, so that the end-to-end tests
-# are only executed if `cargo test` is explicitly invoked with
+# are only executed if `cargo contract test` is explicitly invoked with
 # `--features e2e-tests`.
 e2e-tests = []
 ```
@@ -91,9 +93,9 @@ e2e-tests = []
 
 Every ink! contract is required to contain:
 
-- Exactly one `#[ink(storage)]` struct.
-- At least one `#[ink(constructor)]` function.
-- At least one `#[ink(message)]` function.
+* Exactly one `#[ink(storage)]` struct.
+* At least one `#[ink(constructor)]` function.
+* At least one `#[ink(message)]` function.
 
 The scaffolded code will look similar to the following, we've
 changed the comments though to explain what is going on there
@@ -106,7 +108,7 @@ on a high level.
 //
 // The Rust standard library is OS-dependent and Wasm is
 // architecture independent.
-#![cfg_attr(not(feature = "std"), no_std)]
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 // This is the ink! macro, the starting point for your contract.
 // Everything below it might look like Rust code, but it is actually

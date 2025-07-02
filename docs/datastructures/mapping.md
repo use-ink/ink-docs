@@ -8,7 +8,7 @@ hide_title: true
 
 # Working with Mapping
 
-In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/5.0.0/ink_storage/struct.Mapping.html).
+In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/6.0.0/ink_storage/struct.Mapping.html).
 
 Here is an example of a mapping from a user to a `Balance`:
 
@@ -29,7 +29,7 @@ The following example contract utilizes a `Mapping` so that anyone can deposit a
 balance for their own account:
 
 ```rust
-#![cfg_attr(not(feature = "std"), no_std)]
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 #[ink::contract]
 mod mycontract {
@@ -110,8 +110,8 @@ for n in 0..5 {
 Furthermore, it follows that mapping values do not have a contiguous storage layout, and it is
 not possible to iterate over the contents of a map.
 
-### Use fallible storage methods for dynamically sized values
 
+### Use fallible storage methods for dynamically sized values
 Reading from or writing to a `Mapping` implies encoding or decoding
 the according `Mapping` key and value. This happens transparently under the hood.
 However, because the static buffer used to store the encoded data is of limited

@@ -6,6 +6,16 @@ hide_title: true
 
 ![Storage Title Picture](/img/title/storage.svg)
 
+:::caution
+This page has not yet been edited for ink! v6.
+There are many mentions of `pallet-contracts` and its internals here.
+This info needs to be checked for validity in `pallet-revive`.
+
+We should also highlight that this is for the ink! Metadata Format.
+
+TODO
+:::
+
 # Storage Metadata Format
 
 The storage layout of a contract is reflected inside the metadata. It allows third-party
@@ -72,7 +82,7 @@ The storage will be reflected inside the metadata as like follows:
 
 We observe that the storage layout is represented as a tree, where tangible storage values
 end up inside a `leaf`. Because of
-[`Packed`](https://docs.rs/ink_storage_traits/5.0.0/ink_storage_traits/trait.Packed.html)
+[`Packed`](https://docs.rs/ink_storage_traits/6.0.0/ink_storage_traits/trait.Packed.html)
 encoding, leafs can share the same storage key, and
 in order to reach them you'd need to fetch and decode the whole storage cell under this key.
 

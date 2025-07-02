@@ -6,20 +6,41 @@ slug: /basics/selectors
 
 ![Selector Hex Title Picture](/img/title/selector-hex.svg)
 
+:::note
+ink! v6 supports both the native ink! and [Solidity][sol-abi] ABI 
+(Application Binary Interface) specifications for contract interactions 
+(i.e. calling conventions used for message calls).
+
+When support for Solidity ABI calling conventions is enabled 
+(see [here][abi-declaration] for details),
+Solidity ABI selectors for messages are **always** generated according to the
+[Solidity ABI specification for function selectors][sol-abi-selector].
+
+So the specification below for message selector calculation only applies to
+native ink! ABI selectors.
+
+Learn more about ink!'s support for multiple ABIs [here][abi-support].
+:::
+
+[sol-abi]: https://docs.soliditylang.org/en/latest/abi-spec.html
+[sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
+[abi-support]: ../basics/abi/overview.md
+[abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
+
 # Selectors
 
 Selectors in ink! are a language agnostic way of identifying constructors and messages.
 They are four-byte hexadecimal strings which look something like: `0x633aa551`.
 
 You can find the selector of an ink! constructor or message in your
-[contract metadata](./metadata.md) by looking for the `selector` field of the dispatchable
+[contract metadata](./metadata/overview.md) by looking for the `selector` field of the dispatchable
 you're interested in.
 
 Here is an example of how you can grab the message name and selector from your contract
 metadata using [`jq`](https://stedolan.github.io/jq/).
 
-```
-cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
+```bash
+$ cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
 "flip: 0x633aa551"
 ```
 
@@ -83,8 +104,8 @@ To calculate the selector we:
 
 :::tip
 
-Don't worry if you're not able to calculate the `BLAKE2` hash of a string by hand. You
-can use [Shawn's Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/)
+Don't worry if you're not able to calculate the `BLAKE2` hash of a string by hand. 
+You can use [Shawn's Substrate Utilities](https://www.shawntabrizi.com/substrate-js-utilities/)
 to do it for you!
 
 :::
