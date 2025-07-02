@@ -1,12 +1,18 @@
 ---
 title: Testing with Chain Snapshots
 hide_title: true
-slug: /basics/contract-testing/chain-snapshot
+slug: /contract-testing/chain-snapshot
 ---
 
 ![Blockchain Fork Title Picture](/img/title/blockchain-fork.svg)
 
 # Test your Contract with a Chain Snapshot
+
+:::caution
+This page has not yet been updated to ink! v6.
+
+TODO
+:::
 
 On this page we explain how to test ink! contracts with the
 fork of an existing chain. We'll take a snapshot of an existing
@@ -23,22 +29,22 @@ This is a powerful workflow that you can use to e.g.
 * …and much more!
 
 In the first section of this page we explain the general concept, using a local
-`substrate-contracts-node` that will play the role of our "live chain".
-The `substrate-contracts-node` is just for exemplary purposes, you can also 
+`ink-node` that will play the role of our "live chain".
+The `ink-node` is just for exemplary purposes, you can also 
 apply the exact same workflow to production chains like Astar, Aleph Zero,
 Pendulum and others.
 
 ## General Concept
 
 First you need a node that has produced some blocks with state. We'll
-use `substrate-contracts-node` for this purpose.
+use `ink-node` for this purpose.
 [See here](../getting-started/running.md) for how to run it.
 
 You should get output similar to:
 
 ```
-$ substrate-contracts-node
-2023-09-26 07:58:28.885  INFO main sc_cli::runner: Substrate Contracts Node    
+$ ink-node
+2023-09-26 07:58:28.885  INFO main sc_cli::runner: ink! Node
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ✌️  version 0.30.0-124c159ba94    
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ❤️  by Parity Technologies <admin@parity.io>, 2021-2023    
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: 📋 Chain specification: Development    
@@ -76,7 +82,7 @@ We will now set up [Chopsticks](https://github.com/AcalaNetwork/chopsticks),
 a powerful tool in our ecosystem that allows us to create a parallel reality
 of an existing network.
 
-We will run it and have it mirror the `substrate-contracts-node` that is already running
+We will run it and have it mirror the `ink-node` that is already running
 on our machine from the previous step.
 
 The following schema illustrates the setup that we will create:
@@ -100,7 +106,7 @@ db: ./db.sqlite
 
 :::info
 In the example above chopsticks will be mirroring up until block 1 from the
-`substrate-contracts-node`.
+`ink-node`.
 
 For production chains (like Aleph Zero or Astar) you would want to use a different
 block number and different endpoint. The Chopsticks repository already contains a
@@ -143,7 +149,7 @@ without affecting the node/chain on port 9944.
 
 ### Run ink! E2E Tests
 
-Recap: We have our "live" `substrate-contracts-node` running on port 9944
+Recap: We have our "live" `ink-node` running on port 9944
 and our test node with the branched state running on port 8000.
 
 Next we would like to run some tests against the contract on our forked chain. 
@@ -199,10 +205,10 @@ export CONTRACT_HEX=0x2c75f0aa09dbfbfd49e6286a0f2edd3b4913f04a58b13391c79e96782f
 
 # This env variable needs to be set to reference the Chopsticks node.
 # If this env variable is not set, `ink_e2e` will spawn a new node
-# process (typically of `substrate-contracts-node`) for each test.
+# process (typically of `ink-node`) for each test.
 export CONTRACTS_NODE_URL=ws://127.0.0.1:8000
 
-cargo test --features e2e-tests e2e_test_deployed_contract -- --ignored
+cargo contract test --features e2e-tests e2e_test_deployed_contract -- --ignored
 ```
 
 You will get output similar to the following:
@@ -224,7 +230,7 @@ $ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4F
 +-------+----------+--------+-------------------------+
 ```
 
-On the "original" `substrate-contracts-node` chain the boolean will be untouched.
+On the "original" `ink-node` chain the boolean will be untouched.
 
 ```
 $ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944

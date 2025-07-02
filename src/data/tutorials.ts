@@ -33,6 +33,6 @@ export const tutorials = [
     image: '/img/title/magnifying-glass.svg',
     title: 'How to Troubleshoot',
     description: 'Learn how to troubleshoot your contract',
-    link: 'docs/getting-started/troubleshooting',
+    link: 'docs/contract-debugging',
   },
 ]

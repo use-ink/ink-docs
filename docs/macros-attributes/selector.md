@@ -6,10 +6,32 @@ hide_title: true
 
 ![Text/selector Title Picture](/img/title/text/selector.svg)
 
+:::note
+ink! v6 supports both the native ink! and [Solidity][sol-abi] ABI 
+(Application Binary Interface) specifications for contract interactions 
+(i.e. calling conventions used for message calls).
+
+When support for Solidity ABI calling conventions is enabled 
+(see [here][abi-declaration] for details), 
+Solidity ABI selectors for messages are **always** generated according to the
+[Solidity ABI specification for function selectors][sol-abi-selector].
+
+So the instructions below for **controlling message selectors only apply to 
+native ink! ABI selectors** (i.e. message selector manual overrides are ignored
+when generating Solidity ABI selectors for messages).
+
+Learn more about ink!'s support for multiple ABIs [here][abi-support].
+:::
+
+[sol-abi]: https://docs.soliditylang.org/en/latest/abi-spec.html
+[sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
+[abi-support]: ../basics/abi/overview.md
+[abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
+
 Applicable to ink! messages and ink! constructors.
 
-By default ink! creates a selector for each message and constructor.
-This is necessary since the contract is compiled to a Wasm blob and functions are invoked by invoking the
+By default, ink! creates a selector for each message and constructor.
+This is necessary since the contract is compiled to a binary blob and functions are invoked by invoking the
 selector, which identifies a method ‒ method names are no longer available in these underlying layers.
 
 Using this attribute it is possible to specify a concrete dispatch selector for the flagged entity. This allows a contract author to precisely control the selectors of their APIs making it possible to rename their API without breakage.
@@ -21,6 +43,10 @@ A selector must be a `u32` decodable integer. For example
 
 An exception is the fallback selector `_`, allowing contract calls not matching any of the other message selectors to be dispatched to a fallback message. Fallback messages can be `payable`.
 
+:::info
+The term wildcard selector is just a synonym for fallback selector.
+:::
+
 ## Examples
 
 ```rust
@@ -31,12 +57,12 @@ fn my_message_1(&self) {}
 fn my_message_2(&self) {}
 
 #[ink(message, payable, selector = _)]
-fn my_fallback(&self) {}
+fn my_fallback(&mut self) {}
 ```
 … then the selector of `my_message_1` is `[0xC0, 0xDE, 0xCA, 0xFE]` and the selector of `my_message_2` is `[0, 0, 0, 42]`
 since setting the selector manually overrides the automatically generated selector.
 
-## Controlling the messages selector
+## Controlling message and constructor selectors
 
 Every ink! message and ink! constructor has a selector with which the
 message or constructor can be uniquely identified within the ink! smart contract.

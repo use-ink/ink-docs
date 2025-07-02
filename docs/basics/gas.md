@@ -21,7 +21,7 @@ The terms hereby refer to:
 
 `proofSize`: The amount of storage in bytes that a transaction is allowed to read.
 
-The term `refTime` comes from "reference time", referring to Substrate's Weights system, where
+The term `refTime` comes from "reference time", referring to the Polkadot SDK Weights system, where
 computation time is benchmarked on reference hardware. You can read more details
 [here](https://docs.polkadot.com/polkadot-protocol/glossary/#weight).
 
@@ -36,10 +36,10 @@ This Proof of Validity contains everything necessary to execute the block -- the
 that is executed plus the storage each contract reads and writes.
 
 :::info
-The terms above come from Substrate's "Weights V2" system.
-For ink!, Gas is a synonym to the concept called "Weight" in the Substrate framework.
-Blockchains that support ink! are built using Substrate which uses the concept of Weight
+Blockchains that support ink! are built using Polkadot SDK which uses the concept of Weight
 to describe the usage of resources.
+Specifically, the terms above come from the Polkadot SDK "Weights V2" system.
+For ink!, Gas is a synonym to the concept called "Weight" in this SDK.
 The Weights concept is similar to what smart contract developers might know from other
 ecosystems, but is more fine grained. It also tracks the utilized bandwidth, not just
 execution. For ink! smart contracts the utilized bandwidth is the `proofSize` explained above.

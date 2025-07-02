@@ -81,7 +81,7 @@ impl Proxy {
     /// - If the self receiver were `forward(&mut self)` here, this would not
     ///   have any effect whatsoever on the contract we forward to.
     #[ink(message, payable, selector = _)]
-    pub fn forward(&self) -> u32 {
+    pub fn forward(&mut self) -> u32 {
         ink::env::call::build_call::<ink::env::DefaultEnvironment>()
             .call(self.forward_to)
             .transferred_value(self.env().transferred_value())
@@ -152,10 +152,10 @@ Then let's define two messages that separately calls to update `addresses` and `
 ```rust
 /// Increment the current value using delegate call.
 #[ink(message)]
-pub fn inc_delegate(&self, hash: Hash) {
+pub fn inc_delegate(&self, contract_addr: ink::H160) {
     let selector = ink::selector_bytes!("inc");
     let _ = build_call::<DefaultEnvironment>()
-        .delegate(hash)
+        .delegate(contract_addr)
         // if the receiver is set to `&mut self`,
         // then any changes made in `inc_delegate()` before the delegate call
         // will be persisted, and any changes made within delegate call will be discarded.
@@ -172,10 +172,10 @@ pub fn inc_delegate(&self, hash: Hash) {
 /// Note that we don't need `set_tail_call(true)` flag
 /// because `Mapping` updates the storage instantly on-demand.
 #[ink(message)]
-pub fn add_entry_delegate(&mut self, hash: Hash) {
+pub fn add_entry_delegate(&mut self, contract_addr: ink::H160) {
     let selector = ink::selector_bytes!("append_address_value");
     let _ = build_call::<DefaultEnvironment>()
-        .delegate(hash)
+        .delegate(contract_addr)
         .exec_input(ExecutionInput::new(Selector::new(selector)))
         .returns::<()>()
         .try_invoke();
@@ -255,32 +255,6 @@ As you can see, delegatee's code looks like a normal ink! Smart Contract with so
 - `addresses` mapping key is identical
 - Constructor does not have any logic, as the code is never instantiated. (It can be, but plays no effect on the execution)
 
-### Delegate dependency locks
-
-In a delegator contract pattern, one contract delegates calls to another contract. 
-Thus it depends upon the contract code to which it delegates. Since on-chain contract code
-can be deleted by anybody if there are no instances of the contract on the chain, this would 
-break the `delegator` contract. To prevent this, the `delegator` contract can utilize the 
-`lock_delegate_dependency` and `unlock_delegate_dependency` host functions. Calling
-`lock_delegate_dependency` will prevent the code at the given hash from being deleted e.g.
-
-```rust
-self.env().lock_delegate_dependency(&code_hash);
-```
-
-A subsequent call to `unlock_delegate_dependency` from within the `delegator` contract 
-instance releases the lock from that contract, allowing that code at the given hash to be 
-deleted if no other instances of the contract or delegate dependency locks exist.
-
-```rust
-self.env().lock_delegate_dependency(&code_hash);
-```
-
-Note that these two methods can be called by anybody executing the contract, so it is the 
-responsibility of the contract developer to ensure correct access control.
-You can take a look at our [`upgradeable-contracts/delegator`](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts#delegator)
-example, which demonstrates the usage of these two functions.
-
 ## Note on the usage of wildcard selectors
 
 When working with cross-contract calls, developers are required to be aware of the some important changes.
@@ -308,11 +282,9 @@ Some useful properties:
 - `.set_clone_input(true)` clones the input of the caller's messages. It can be used with when `.set_tail_call(false)`.
 - `.set_forward_input(true)` consumes the input of the caller's message which can be used after.  It can be used with when `.set_tail_call(true)`. 
 
-
-
 ## Replacing Contract Code with `set_code_hash()`
 
-Following [Substrate's runtime upgradeability](https://docs.substrate.io/maintain/runtime-upgrades/) 
+Following [Polkadot SDK's runtime upgradeability](https://docs.polkadot.com/develop/parachains/maintenance/runtime-upgrades/) 
 philosophy, ink! also supports an easy way to update your contract code via the special function 
 [`set_code_hash()`](https://use-ink.github.io/ink/ink_env/fn.set_code_hash.html).
 
@@ -416,14 +388,12 @@ pub struct YourContract {
 
 :::note
 
-If your contract utilizes this approach, it no-longer holds a deterministic address assumption.
-You can no longer assume that a contract address identifies a specific code hash.
-Please refer to [the issue](https://github.com/paritytech/substrate/pull/10690#issuecomment-1025702389) 
-for more details.
+If your contract utilizes `set_code_hash`, it no-longer holds a deterministic address assumption.
+_You can no longer assume that a contract address identifies a specific code hash._
 
 :::
 
 ## Examples
 
-Examples of upgradable contracts can be found in the 
-[ink! repository](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts).
+Examples of upgradable contracts can be found in 
+[our contract examples repository](https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts).

@@ -75,14 +75,14 @@ module.exports = {
           editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
           lastVersion: 'current',
           versions: {
-            v6: {
-              label: 'v6',
-              path: 'v6',
+            v5: {
+              label: 'v5',
+              path: 'v5',
               banner: 'none',
             },
             current: {
-              label: 'v5',
-              path: 'v5',
+              label: 'v6',
+              path: 'v6',
               banner: 'none',
             },
             v4: {
