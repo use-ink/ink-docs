@@ -405,7 +405,7 @@ function myFunction() payable returns (uint64) {}
 
 ```rust
 #[ink(message, payable)]
-pub fn my_function(&self) -> u64 {}
+pub fn my_function(&mut self) -> u64 {}
 ```
 
 ### `received deposit / payment`

@@ -15,6 +15,9 @@ An ink! message by default will reject calls that additional fund the smart cont
 Authors of ink! smart contracts can make an ink! message payable by adding the `payable`
 flag to it. An example below:
 
+Note that ink! messages are payable inherently modify the blockchain state, 
+and therefore must have a `&mut self` receiver.
+
 Note that ink! constructors are always implicitly payable and thus cannot be flagged
 as such.
 
@@ -39,9 +42,15 @@ mod flipper {
         pub fn flip(&mut self) {
             self.value = !self.value;
         }
+        
+        /// Flips the current value.
+        #[ink(message, payable)] // or specify payable inline.
+        pub fn flip_2(&mut self) {
+            self.value = !self.value;
+        }
 
         /// Returns the current value.
-        #[ink(message, payable)] // or specify payable inline.
+        #[ink(message)]
         pub fn get(&self) -> bool {
             self.value
         }
@@ -53,7 +62,7 @@ mod flipper {
 
 ```rust
 #[ink(message, payable)]
-pub fn pay_me(&self) {
+pub fn pay_me(&mut self) {
     let _transferred = self.env().transferred_value();
 }
 ```

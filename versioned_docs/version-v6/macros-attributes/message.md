@@ -21,16 +21,16 @@ define its API surface with which users are allowed to interact.
 An ink! smart contract can have multiple such ink! messages defined.
 
 An ink! message with a `&self` receiver may only read state whereas an ink! message
-with a `&mut self` receiver may mutate the contract's storage.
+with a `&mut self` receiver may modify state.
 
 ```rust
 #[ink(message)]
-pub fn purely_reading(&self, from: AccountId) {
+pub fn read_only(&self, from: AccountId) {
     // actual implementation
 }
 
 #[ink(message)]
-pub fn mutates_storage(&mut self, from: AccountId) {
+pub fn modifies_state(&mut self, from: AccountId) {
     // actual implementation
 }
 ```
