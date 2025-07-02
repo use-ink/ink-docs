@@ -33,7 +33,7 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 - Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `6.0.0-alpha`.
 - Update your local `cargo-contract` installation to v6.0.0-alpha.
-- Use [ink-node](https://github.com/use-ink/ink-node) for local development instead of `substrate-contracts-node`.
+- Use [`ink-node`](https://github.com/use-ink/ink-node) for local development instead of `substrate-contracts-node`.
 - Read through this page.
 
 ## Compatibility
@@ -43,7 +43,7 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
   ```bash
   cargo install cargo-contract --version 6.0.0-alpha --locked
   ```
-- **polkadot**: >= v1.9.0
+- **`polkadot-sdk`**: >= `stable2506`
 - **ink-node**: >= v0.24.0
 
 ### How do I find out if a chain is compatible with ink! 6.0?
