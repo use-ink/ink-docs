@@ -15,7 +15,7 @@ An ink! message by default will reject calls that additional fund the smart cont
 Authors of ink! smart contracts can make an ink! message payable by adding the `payable`
 flag to it. An example below:
 
-Note that ink! messages are payable inherently modify the blockchain state, 
+Note that payable ink! messages inherently modify the blockchain state, 
 and therefore must have a `&mut self` receiver.
 
 Note that ink! constructors are always implicitly payable and thus cannot be flagged
