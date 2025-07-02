@@ -6,9 +6,9 @@ export default function DocsRedirect() {
   return (
     <>
       <Head>
-        <link rel="canonical" href={'https://use.ink/docs/v5/'} />
+        <link rel="canonical" href={'https://use.ink/docs/v6/'} />
       </Head>
-      <Redirect to={'/ink-docs/docs/v5/'} />
+      <Redirect to={'/ink-docs/docs/v6/'} />
     </>
   )
 }
