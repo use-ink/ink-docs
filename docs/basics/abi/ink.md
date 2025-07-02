@@ -26,6 +26,6 @@ This means:
 - Call builders (used for making cross-contract calls) are generated for ink! ABI
   calling conventions.
 
-[ink-spec-selector]: ../selectors
-[selector-attribute]: ../../macros-attributes/selector
+[ink-spec-selector]: ../selectors.md
+[selector-attribute]: ../../macros-attributes/selector.md
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec

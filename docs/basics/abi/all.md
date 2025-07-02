@@ -21,8 +21,8 @@ When the "all" ABI is specified, the ink! code generator follows both
 the ink! and Solidity ABI specifications, and generates entry points 
 for both calling conventions. This means:
 
-- For each message, two selectors are generated, one for [ink!](./ink) 
-  and another for [Solidity](./solidity) ABI.
+- For each message, two selectors are generated, one for [ink!](./ink.md) 
+  and another for [Solidity](./solidity.md) ABI.
 - Each selector is ABI specific and its entry point uses the corresponding
   input/output encoding/decoding scheme (i.e. entry points for ink! selectors use
   Parity's [SCALE Codec][scale-codec], while entry points for Solidity selectors
@@ -47,5 +47,5 @@ equivalent Solidity ABI types ([more details here][sol-type-mapping]).
 
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
-[selector-attribute]: ../../macros-attributes/selector
+[selector-attribute]: ../../macros-attributes/selector.md
 [sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
