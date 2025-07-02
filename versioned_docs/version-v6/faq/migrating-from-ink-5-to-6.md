@@ -20,17 +20,6 @@ and chains that include `pallet-revive`._
 We did a detailed write-up of the background to this development and the reasoning
 [here](https://use.ink/6.x/current-state). 
 
-Compatibility of this release:
-* Rust >= 1.85
-* [`cargo-contract` `v6.0.0-alpha`](https://github.com/use-ink/cargo-contract/releases/tag/v6.0.0-alpha)
-* [`ink-node/cd94b5f`](https://github.com/use-ink/ink-node/commit/cd94b5fa23ee04f2d541decf1ace3b9904d61cb2)
-* [`polkadot-sdk/f8c90b2a01ec77579bccd21ae17bd6ff2eeffd6a`](https://github.com/paritytech/polkadot-sdk/commit/f8c90b2a01ec77579bccd21ae17bd6ff2eeffd6a)
-
-In the following we'll describe the breaking changes on a high-level. The
-context to understand them is that the `pallet-revive` team has Ethereum/Solidity
-support as the number one priority. All their design decisions derive from that,
-they don't want to maintain code that is unnecessary for that objective.
-
 You can find the full changelog of the 6.0 release [here](https://github.com/use-ink/ink/blob/master/CHANGELOG.md#version-600).
 
 :::caution
@@ -42,15 +31,20 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## How to upgrade
 
-- Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `6`.
-- Update your local `cargo-contract` installation to 6.0.
+- Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `6.0.0-alpha`.
+- Update your local `cargo-contract` installation to v6.0.0-alpha.
+- Use [ink-node](https://github.com/use-ink/ink-node) for local development instead of `substrate-contracts-node`.
 - Read through this page.
 
 ## Compatibility
 
-- `>= polkadot-v1.9.0`
-- `pallet-contracts >= polkadot-v0.9.37`
-- `ink-node >= v0.24.0`
+- **Rust**: >= 1.85
+- **cargo-contract**: >= v6.0.0-alpha
+  ```bash
+  cargo install cargo-contract --version 6.0.0-alpha --locked
+  ```
+- **polkadot**: >= v1.9.0
+- **ink-node**: >= v0.24.0
 
 ### How do I find out if a chain is compatible with ink! 6.0?
 
@@ -79,25 +73,6 @@ The following chains are in production and support ink! 6.0.
         </a>
     </div>
 </div>
-
-### `cargo-contract` v6
-
-Together with ink! 6.0 we've released `cargo-contract` 6.0.
-You have to use `cargo-contract` >= 6.0 for ink! 6.0 contracts!
-
-You can upgrade via:
-
-```rust
-cargo install cargo-contract --version ^6 --locked
-```
-
-### Tooling & Libraries
-
-- Stable Rust >= 1.85
-- `cargo-contract` >= v6.0
-- `polkadot-js/api` and `polkadot-js/api-contract`: no support yet
-- [`use-inkathon`](https://github.com/scio-labs/use-inkathon): no support yet
-- [ink!athon](https://inkathon.xyz/): no support yet
 
 ## Important Changes
 
