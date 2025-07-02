@@ -84,7 +84,7 @@ repository acts as the basic template for a generic Cosmos node. With the additi
 [wasmd](https://github.com/CosmWasm/wasmd), the entry point for CosmWasm development.
 
 In terms of Polkadot SDK, [`polkadot-sdk-solochain-template`](https://github.com/paritytech/polkadot-sdk-solochain-template) is a basic generic template of a node.
-Similar to `x/wasm`, [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/susbtrate/frame/revive)
+Similar to `x/wasm`, [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive)
 is the module that adds RISC-V smart contract functionality to the chain. 
 We provide the [ink-node](https://github.com/use-ink/ink-node), which is analogous to `wasmd` — a basic template node 
 for smart contract development.
