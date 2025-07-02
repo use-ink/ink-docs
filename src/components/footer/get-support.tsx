@@ -3,7 +3,7 @@ import React from 'react'
 import { FaTelegram, FaYoutube, FaGithub } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { SocialIcon } from './social-icon'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 export function GetSupport() {
   return (

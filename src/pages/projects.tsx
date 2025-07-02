@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from './layout'
 import ProjectGrid from '../components/projects/project-grid'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { CTA } from '../components/cta'
 
 const head = (

@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import React from 'react'
 import classNames from 'classnames'
 import { ClassNameable } from '../types'
-import { Link } from 'react-router-dom'
+import Link from '@docusaurus/Link'
 
 export interface MenuLinkProps extends ClassNameable {
   title: string
@@ -17,13 +17,13 @@ export const DropdownMenu: React.FC<MenuLinkProps> = ({ title, items, className 
   )
 
   return (
-    <Menu as="div" className={classNames('relative inline-block text-left', className)}>
+    <Menu as="div" className={classNames('inline-block relative text-left', className)}>
       <div>
-        <Menu.Button className="inline-flex cursor-pointer font-montserrat justify-center border-0 w-full px-4 py-3 text-sm font-medium text-background-800 bg-brand-500 rounded-full hover:bg-brand-500/90 focus:outline-none focus:ring-0">
+        <Menu.Button className="inline-flex justify-center px-4 py-3 w-full text-sm font-medium rounded-full border-0 cursor-pointer font-montserrat text-background-800 bg-brand-500 hover:bg-brand-500/90 focus:outline-none focus:ring-0">
           {title}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 ml-2 -mr-1"
+            className="-mr-1 ml-2 w-5 h-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -45,8 +45,8 @@ export const DropdownMenu: React.FC<MenuLinkProps> = ({ title, items, className 
       >
         <Menu.Items
           className={classNames(
-            'absolute right-0 w-[320px] mt-8 origin-top-right bg-white border border-solid border-background-700',
-            'dark:bg-dark-background rounded-xl focus:outline-none overflow-x-hidden overflow-y-auto',
+            'absolute right-0 mt-8 bg-white border border-solid origin-top-right w-[320px] border-background-700',
+            'overflow-y-auto overflow-x-hidden rounded-xl dark:bg-dark-background focus:outline-none',
           )}
         >
           {items.map((item) => (
@@ -55,14 +55,14 @@ export const DropdownMenu: React.FC<MenuLinkProps> = ({ title, items, className 
                 <>
                   {item.href && (
                     <a href={item.href} className={linkClasses} target="_blank" rel="noreferrer">
-                      {item.emphasized && <i className="underline mr-2">{item.emphasized}</i>}
+                      {item.emphasized && <i className="mr-2 underline">{item.emphasized}</i>}
                       {item.title}
                     </a>
                   )}
 
                   {item.path && (
-                    <Link to={item.path} className={linkClasses}>
-                      {item.emphasized && <i className="underline mr-2">{item.emphasized}</i>}
+                    <Link href={item.path} className={linkClasses}>
+                      {item.emphasized && <i className="mr-2 underline">{item.emphasized}</i>}
                       {item.title}
                     </Link>
                   )}

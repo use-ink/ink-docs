@@ -10,18 +10,22 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "start": "docusaurus start --port 8080",
-    "lint": "yarn eslint .",
-    "fmt": "yarn prettier --write \"docs/**/*.{js,jsx,ts,tsx,mdx}\" \"src/**/*.{js,jsx,ts,tsx,mdx,css}\" && yarn eslint --fix .",
-    "build": "yarn lint && docusaurus build",
-    "build:release": "yarn lint && ci-ghact-docs",
-    "docs": "yarn build",
+    "lint": "pnpm run eslint .",
+    "fmt": "pnpm run prettier -- --write \"docs/**/*.{js,jsx,ts,tsx,mdx}\" \"src/**/*.{js,jsx,ts,tsx,mdx,css}\" && pnpm run eslint -- --fix .",
+    "link-check": "markdown-link-check docs/**/*.md docs/**/*.mdx --config .github/workflows/mlc_config.json --quiet",
+    "link-check-v6": "markdown-link-check versioned_docs/version-v6/**/*.md versioned_docs/version-v6/**/*.mdx --config .github/workflows/mlc_config.json --quiet",
+    "build": "pnpm run lint && docusaurus build",
+    "build:release": "pnpm run lint && ci-ghact-docs",
+    "docs": "pnpm run build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve --port 8080",
     "cspell": "cspell \"**/*.{md,mdx}\"",
     "migrate-image-links": "ts-node src/scripts/migrate-image-links.ts",
-    "create-llm-file": "yarn repomix",
-    "postinstall": "yarn create-llm-file"
+    "create-llm-file": "pnpx repomix",
+    "postinstall": "pnpm run create-llm-file",
+    "eslint": "eslint",
+    "prettier": "prettier"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
@@ -34,6 +38,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.37.4",
+    "markdown-link-check": "^3.13.7",
     "prettier": "^3.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -54,8 +59,9 @@
   "dependencies": {
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/plugin-client-redirects": "^3.7.0",
+    "@docusaurus/plugin-content-docs": "^3.8.1",
     "@docusaurus/preset-classic": "^3.7.0",
-    "@easyops-cn/docusaurus-search-local": "^0.46.1",
+    "@docusaurus/theme-common": "^3.8.1",
     "@headlessui/react": "^2.2.0",
     "@lottiefiles/lottie-player": "^2.0.3",
     "@mdx-js/react": "^3.0.0",
@@ -66,6 +72,7 @@
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.20.1",
     "hamburger-react": "^2.5.2",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.479.0",
@@ -75,6 +82,7 @@
     "prism-react-renderer": "^2.3.1",
     "react-google-recaptcha": "^3.1.0",
     "react-icons": "^5.5.0",
+    "react-router-dom": "^7.6.3",
     "react-spring": "^9.7.5",
     "repomix": "^0.3.1",
     "tailwind-merge": "^3.0.2",
@@ -82,5 +90,6 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.167.1",
     "usehooks-ts": "^2.12.1"
-  }
+  },
+  "packageManager": "pnpm@10.8.1"
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { Coins } from '@phosphor-icons/react'
 import { Cross as Hamburger } from 'hamburger-react'
 

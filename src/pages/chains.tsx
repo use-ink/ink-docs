@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { ArrowCircleDown, ExclamationMark, Heart, TriangleDashed } from '@phosphor-icons/react'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
