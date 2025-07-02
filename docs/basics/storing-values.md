@@ -32,7 +32,7 @@ they were primitive types.
 
 ### String, Vector and More
 
-The [`ink_prelude`](https://docs.rs/ink_prelude/6.0.0/ink_prelude/index.html) crate provides an efficient approach to import commonly used Rust types such as `String` and `Vec`, ensuring safe usage within an ink! contract.
+The [`ink_prelude`](https://docs.rs/ink_prelude/6.0.0-alpha/ink_prelude/index.html) crate provides an efficient approach to import commonly used Rust types such as `String` and `Vec`, ensuring safe usage within an ink! contract.
 
 This simplifies the type referencing process between the `std` and `no_std` environments. Typically, these types are defined within the `std` crate in the `std` environment, and the `alloc` crate in the `no_std` environment. Given that ink! smart contract code is compiled in both environments (`no_std` for production and `std` for unit tests), developers might find themselves writing intricate conditional compilation macros. The `ink_prelude` crate conveniently re-exports these types, eliminating this complexity.
 

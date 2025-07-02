@@ -8,7 +8,7 @@ slug: /basics/environment-functions
 # Environment Functions
 
 ink! exposes a number of handy environment functions.
-A full overview [is found here](https://docs.rs/ink_env/6.0.0/ink_env/#functions).
+A full overview [is found here](https://docs.rs/ink_env/6.0.0-alpha/ink_env/#functions).
 
 In an `#[ink(constructor)]`  use `Self::env()` to access those,
 in an `#[ink(message)]` use `self.env()`.

@@ -198,7 +198,7 @@ comes from the smart contracting language itself, and not the contract nor the u
 environment (i.e. `pallet-revive`).
 
 All ink! messages and constructors now return a `Result` which uses this as the `Error`
-variant (see the [`LangError`](https://docs.rs/ink/6.0.0/ink/enum.LangError.html) docs for more).
+variant (see the [`LangError`](https://docs.rs/ink/6.0.0-alpha/ink/enum.LangError.html) docs for more).
 
 :::
 
