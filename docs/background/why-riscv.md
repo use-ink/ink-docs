@@ -5,10 +5,10 @@ slug: /background/why-riscv-and-polkavm-for-smart-contracts
 ---
 
 <head>
-    <meta name="description" content="Discover available bounties and contribute to the ink! ecosystem." />
+    <meta name="description" content="What is PolkaVM? And what does it mean for smart contracts in Polkadot." />
     <meta name="keywords" content="Polkadot, PolkaVM, RISC-V, RISCV, Smart Contracts" />
     <meta property="og:title" content="Why RISC-V and PolkaVM for Smart Contracts?" />
-    <meta property="og:description" content="Discover available bounties and contribute to the ink! ecosystem." />
+    <meta property="og:description" content="What is PolkaVM? And what does it mean for smart contracts in Polkadot." />
     <meta property="og:image" content="https://use-ink.com/img/opengraph/riscv-polkavm.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

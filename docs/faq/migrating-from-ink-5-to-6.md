@@ -40,6 +40,7 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 - **Rust**: >= 1.85
 - **cargo-contract**: >= v6.0.0-alpha
+ 
   ```bash
   cargo install cargo-contract --version 6.0.0-alpha --locked
   ```
@@ -242,6 +243,19 @@ Solang compiler. As we have moved from WebAssembly/`pallet-contracts` to
 PolkaVM/RISC-V/`pallet-revive`, users who want to deploy Solidity will use
 [the Parity `revive` compiler](https://github.com/paritytech/revive). It takes 
 Solidity contracts and compile them into RISC-V for PolkaVM.
+
+### `payable` messages are now considered state-mutating
+
+To align with how Solidity is treated by `pallet-revive`, we decided on this
+breaking change.
+The implication is that you can no longer mark `&self` ink! messages as `payable`,
+they have to be `&mut self` now.
+
+```diff
+#[ink(message, payable)]
+-pub fn my_message(&self) {}
++pub fn my_message(&mut self) {}
+```
 
 ## Interesting New Features
 
