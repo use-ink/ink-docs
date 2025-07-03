@@ -86,10 +86,12 @@ export default function PageNews() {
           ))}
         </div>
         <div className="flex flex-col gap-4 justify-center items-center my-16 md:flex-row">
-          <p className="m-0">Want to read more ink! news?</p>
-          <Link href="https://medium.com/ink-news" className="text-blue-500">
+          <p className="m-0">
+            Share news with the ink! community
+          </p>
+          <Link href="https://t.me/inkathon" className="text-blue-500" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="secondary">
-              View all ink! news on Medium
+              Get in touch
             </Button>
           </Link>
         </div>
