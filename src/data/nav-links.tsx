@@ -1,5 +1,15 @@
 import React from 'react'
-import { BookOpen, Info, Link, PaintBrush, Shapes, Target, YoutubeLogo, FileText } from '@phosphor-icons/react'
+import {
+  BookOpen,
+  Info,
+  Link,
+  PaintBrush,
+  Shapes,
+  Target,
+  YoutubeLogo,
+  FileText,
+  Newspaper,
+} from '@phosphor-icons/react'
 
 export const navLinks = [
   {
@@ -34,6 +44,11 @@ export const navLinks = [
         label: 'About',
         href: '/about',
         icon: <Info size={20} weight="fill" />,
+      },
+      {
+        label: 'News',
+        href: '/news',
+        icon: <Newspaper size={20} weight="fill" />,
       },
       {
         label: 'Bounties',
