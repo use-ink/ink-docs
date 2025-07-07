@@ -30,6 +30,12 @@ export const tutorials = [
     link: 'docs/getting-started/calling-your-contract',
   },
   {
+    image: '/img/title/solidity.svg',
+    title: 'Solidity Frontend Libraries Compatibility',
+    description: 'Use Solidity  frontend tooling with ink! contracts',
+    link: 'docs/frontend/solidity-compatibility',
+  },
+  {
     image: '/img/title/magnifying-glass.svg',
     title: 'How to Troubleshoot',
     description: 'Learn how to troubleshoot your contract',
