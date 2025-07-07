@@ -57,6 +57,7 @@ docs/
     migrating-from-ink-5-to-6.md
   frontend/
     overview.md
+    solidity-compatibility.md
   getting-started/
     calling.md
     compiling.md
@@ -104,6 +105,845 @@ docs/
 ```
 
 # Files
+
+## File: docs/frontend/solidity-compatibility.md
+````markdown
+---
+title: Solidity Frontend Libraries Compatibility
+slug: /frontend/solidity-compatibility
+hide_title: true
+---
+
+![Use Solidity tooling](/img/title/solidity.svg)
+
+# Use Solidity Tooling with ink! Contracts
+:::caution
+The Rust/ink! to Solidity ABI type mapping is still a work in progress. Some limitations are known - [see details here](../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping).
+To ensure compatibility with the latest updates:
+- Install the latest `cargo-contract` from GitHub:
+```bash
+cargo install --locked --git https://github.com/use-ink/cargo-contract
+```
+- Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
+```toml
+ink = { git = "https://github.com/use-ink/ink.git", branch = "master", default-features = false, features = ["unstable-hostfn"] }
+```
+:::
+## Create and Compile with Solidity Compatibility
+
+To create your ink! contract, follow the [Create a new project](../getting-started/creating.md) guide:
+```bash
+cargo contract new flipper_evm
+cd flipper_evm
+```
+
+Then, in your `Cargo.toml`, change:
+```toml
+[package.metadata.ink-lang]
+abi = "ink"
+```
+to
+```toml
+[package.metadata.ink-lang]
+abi = "sol"
+```
+
+Now build the contract with Solidity metadata support:
+```bash
+cargo contract build --release --metadata solidity
+```
+More information in [Rust/ink! to Solidity ABI type mapping](../basics/metadata/solidity-format.md).
+
+
+## Using Hardhat & Ethers.js
+[Hardhat](https://hardhat.org/) is a popular Ethereum development framework. With [`@parity/hardhat-polkadot`](https://github.com/paritytech/hardhat-polkadot), you can use it to deploy and interact with `ink!` smart contracts on Polkadot-compatible environments. 
+
+This guide walks you through the essentials of using Hardhat to deploy and interact `ink!` smart contracts on Polkadot Hub.
+
+1. Create a Hardhat Project
+```bash
+mkdir hardhat-example
+cd hardhat-example
+npm init -y
+```
+To interact with Polkadot, Hardhat requires the following plugin to compile contracts to PolkaVM bytecode and to spawn a local node compatible with PolkaVM:
+```bash
+npm install --save-dev @parity/hardhat-polkadot
+```
+Initialize the project
+```bash
+npx hardhat-polkadot init
+npm install
+```
+:::note
+By default, it will create a basic project with a Solidity smart contract. If you want to work with Solidity—compiling and testing smart contracts—you can follow this guide [Compile your contract (Hardhat)](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/dev-environments/hardhat/#compile-your-contract). 
+In this tutorial, we’ll skip that step since we already have our `ink!` smart contract compiled.
+:::
+
+## Deploying Your Contract
+1. Connect Your Wallet
+
+In this guide, we'll use [MetaMask](https://metamask.io/) to connect to Polkadot Hub. To set up your wallet and network connection:
+- Follow this quick start: [Connect MetaMask to Polkadot](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/wallets/#metamask)
+
+- For more detailed configuration steps (RPC URL, chain ID, symbol, block explorer), refer to:
+👉 [Connect to Polkadot - Full Guide](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/connect-to-polkadot/)
+
+2. Get `PAS` Test Tokens
+
+Use the [Polkadot Hub Testnet faucet](https://faucet.polkadot.io/?parachain=1111) to fund your account with test PAS tokens.
+
+3. Export your private key and save it in your Hardhat environment:
+```bash
+npx hardhat vars set PRIVATE_KEY "INSERT_PRIVATE_KEY"
+```
+Replace `INSERT_PRIVATE_KEY` with your actual private key. For further details on private key exportation, refer to the article [How to export an account's private key](https://support.metamask.io/configure/accounts/how-to-export-an-accounts-private-key/).
+
+4. Configure `hardhat.config.js`
+
+:::info
+In this guide, we’ll deploy the contract to the Polkadot Hub Testnet. If you prefer to deploy to a local network instead, check out the [Local Development Environment](#local-development-environment) section for setup instructions.
+:::
+
+Update your Hardhat config with network settings for the Polkadot Hub Testnet:
+```js
+require('@nomicfoundation/hardhat-toolbox');
+
+require('@parity/hardhat-polkadot');
+
+const { vars } = require('hardhat/config');
+
+module.exports = {
+    ...
+    networks: {
+      hardhat: {
+        ...
+      },
+      polkadotHubTestnet: {
+        polkavm: true,
+        url: 'https://testnet-passet-hub-eth-rpc.polkadot.io',
+        accounts: [vars.get('PRIVATE_KEY')],
+      },
+  },
+};
+```
+5. After building the `ink!` smart contract with Solidity metadata, you'll find 3 key files in your contract’s target directory:
+- `<contract-name>.polkavm`: This is the raw contract bytecode that will be deployed on-chain.
+- `<contract-name>.abi`: follows the Solidity ABI JSON format for describing a contract's interface. It's used by tools for contract interaction (e.g. ethers.js)
+- `<contract-name>.json`: follows the Solidity contract metadata specification. It's used for reproducible builds/compilation and verification of deployed contracts (e.g. by block explorers and contract verification tools).
+
+You can create a script to deploy your contract using the above `.polkavm` and `.json` files. To do so, create a file called `scripts/deploy.js` and add some logic to deploy your contract.
+```js
+const hre = require('hardhat');
+const { join } = require('path');
+const { readFileSync } = require('fs');
+
+// Import the ABI of the contract from the flipper_evm.json file.
+const abi = require("../../target/ink/flipper_evm.json").output.abi;
+
+async function main() {
+    const [deployer] = await hre.ethers.getSigners();
+
+    // Fetch the bytecode of the contract.
+    const bytecodePath = join(__dirname, "../../target/ink", "flipper_evm.polkavm");
+    const bytecode = `0x${readFileSync(bytecodePath).toString('hex')}`;
+
+    const flipper = new hre.ethers.ContractFactory(abi, bytecode, deployer);
+
+    // Deploy the contract with the constructor arguments.
+    const contract = await flipper.deploy(true);
+    await contract.waitForDeployment();
+    
+    // Get the address of the deployed contract.
+    const address = await contract.getAddress();
+    console.log(`Contract deployed at: ${address}`);
+
+}
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
+
+Run your deployment script:
+```bash
+npx hardhat run scripts/deploy.js --network polkadotHubTestnet
+```
+
+This will print the smart contract address once deployment is complete. For example:
+```bash
+Contract deployed at: YOUR_CONTRACT_ADDRESS
+```
+:::note
+Make sure to save this address, you'll need it in the next step to interact with your deployed contract.
+:::
+
+## Interact with Your Deployed Contract
+
+Once deployed, you can create a script to interact with your contract. To do so, create a file called `scripts/interact.js` and add some logic to interact with the contract.
+
+```js
+const hre = require('hardhat');
+
+// Import the ABI of the contract from the flipper_evm.json file.
+const abi = require("../../target/ink/flipper_evm.json").output.abi;
+
+async function main() {
+    const [deployer] = await hre.ethers.getSigners();
+
+    // Replace with your deployed contract address
+    const contractAddress = 'INSERT_CONTRACT_ADDRESS';
+
+    const flipper = new hre.ethers.Contract(contractAddress, abi, deployer);
+    // Read contract state
+    const state = await flipper.get();
+    console.log(`State: ${state}`);
+
+    // Call the flip message
+    await flipper.flip();
+    // Read contract state again to see the change
+    const state_after = await flipper.get();
+    console.log(`State: ${state_after}`);
+
+}
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
+
+Run your interaction script:
+```bash
+npx hardhat run scripts/interact.js --network polkadotHubTestnet
+```
+
+### Local Development Environment
+Hardhat allows you to spin up a local testing environment to test and validate your smart contract functionalities before deploying to live networks. The `hardhat-polkadot` plugin provides support to spin up a local node with an ETH-RPC adapter for running local tests.
+1. Download `ink-node` and `eth-rpc` adapter.
+Download the latest release from:
+👉 https://github.com/use-ink/ink-node/releases
+
+The release includes:
+
+- `ink-node` binary (the PolkaVM-compatible node)
+- `eth-rpc` adapter binary (adapts the node to EVM-style JSON-RPC)
+
+2. Configure `hardhat.config.js`
+Update your Hardhat config to include the downloaded binaries:
+```js
+require('@nomicfoundation/hardhat-toolbox');
+
+require('@parity/hardhat-polkadot');
+
+/** @type import('hardhat/config').HardhatUserConfig */
+module.exports = {
+    ...
+    networks: {
+      hardhat: {
+        polkavm: true,
+        nodeConfig: {
+          nodeBinaryPath: 'INSERT_PATH_TO_INK_NODE',
+          rpcPort: 8000,
+          dev: true,
+        },
+        adapterConfig: {
+          adapterBinaryPath: 'INSERT_PATH_TO_ETH_RPC_ADAPTER',
+          dev: true,
+        },
+      },
+      localNode: {
+        polkavm: true,
+        url: `http://127.0.0.1:8545`,
+      },
+  },
+};
+```
+🔁 Replace `INSERT_PATH_TO_INK_NODE` and `INSERT_PATH_TO_ETH_RPC_ADAPTER` with the actual file paths to the binaries you downloaded.
+
+3. Start the local testing environment
+```bash
+npx hardhat node
+```
+This command will launch the `ink-node` along with the `eth-rpc` adapter, providing you with a complete testing environment ready for contract deployment and interaction. By default, the `ink-node` will be running on `localhost:8000` and the `eth-rpc` adapter on `localhost:8545`.
+
+4. Interact using Hardhat scripts with the flag `--network localNode`:
+```bash
+npx hardhat run scripts/interact.js --network localNode
+```
+````
+
+## File: docs/linter/rules/no_main.md
+````markdown
+---
+title: no_main
+hide_title: true
+description: no_main lint documentation
+---
+# no_main
+## What it does
+Checks if a contract is annotated with the `no_main` inner attribute.
+
+## Why is this necessary?
+Contracts must be annotated with `no_main` inner attribute when compiled for on-chain
+execution.
+
+## Example
+
+```rust
+// Bad: Contract does not contain the `no_main` attribute,
+// so it cannot be compiled to Wasm
+#![cfg_attr(not(feature = "std"), no_std)]
+#[ink::contract]
+mod my_contract { /* ... */ }
+```
+
+Use instead:
+
+```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+#[ink::contract]
+mod my_contract { /* ... */ }
+```
+````
+
+## File: docs/linter/rules/non_fallible_api.md
+````markdown
+---
+title: non_fallible_api
+hide_title: true
+description: non_fallible_api lint documentation
+---
+# non_fallible_api
+## What it does
+
+The lint detects potentially unsafe uses of methods for which there are safer alternatives.
+
+## Why is this bad?
+
+In some standard collections in ink!, there are two types of implementations: non-fallible
+(e.g. `get`) and fallible (e.g. `try_get`). Fallible alternatives are considered safer,
+as they perform additional checks for incorrect input parameters and return `Result::Err`
+when they are used improperly. On the other hand, non-fallible methods do not provide these
+checks and will panic on incorrect input, placing the responsibility on the user to
+implement these checks.
+
+For more context, see: [ink#1910](https://github.com/use-ink/ink/pull/1910).
+
+## Example
+
+Consider the contract that has the following `Mapping` field:
+
+```rust
+#[ink(storage)]
+pub struct Example { map: Mapping<String, AccountId> }
+```
+
+The following usage of the non-fallible API is unsafe:
+
+```rust
+// Bad: can panic if `input_string` doesn't fit into the static buffer
+self.map.insert(input_string, &self.sender);
+```
+
+It could be replaced with the fallible version of `Mapping::insert`:
+
+```rust
+// Good: returns Result::Err on incorrect input
+self.map.try_insert(input_string, &self.sender);
+```
+
+Otherwise, the user could explicitly check the encoded size of the argument in their code:
+
+```rust
+// Good: explicitly checked encoded size of the input
+if String::encoded_size(&input_string) < ink_env::BUFFER_SIZE {
+  self.map.insert(input_string, &self.sender);
+}
+```
+````
+
+## File: docs/linter/rules/primitive_topic.md
+````markdown
+---
+title: primitive_topic
+hide_title: true
+description: primitive_topic lint documentation
+---
+# primitive_topic
+## What it does
+Checks for ink! contracts that use the
+[`#[ink(topic)]`](../../macros-attributes/topic.md) annotation with primitive number
+types. Topics are discrete events for which it makes sense to filter. Typical examples of
+fields that should be filtered are `AccountId`, `bool` or `enum` variants.
+
+## Why is this bad?
+It typically doesn't make sense to annotate types like `u32` or `i32` as a topic, if those
+fields can take continuous values that could be anywhere between `::MIN` and `::MAX`. An
+example of a case where it doesn't make sense at all to have a topic on the storage field
+is something like `value: Balance` in the examle below.
+
+## Example
+```rust
+// Bad
+// It typically makes no sense to filter `Balance`, since its value may varies from `::MAX`
+// to `::MIN`.
+#[ink(event)]
+pub struct Transaction {
+    #[ink(topic)]
+    src: Option<AccountId>,
+    #[ink(topic)]
+    dst: Option<AccountId>,
+    #[ink(topic)]
+    value: Balance,
+}
+```
+
+Use instead:
+
+```rust
+// Good
+// Filtering transactions based on source and destination addresses.
+#[ink(event)]
+pub struct Transaction {
+    #[ink(topic)]
+    src: Option<AccountId>,
+    #[ink(topic)]
+    dst: Option<AccountId>,
+    value: Balance,
+}
+```
+````
+
+## File: docs/linter/rules/storage_never_freed.md
+````markdown
+---
+title: storage_never_freed
+hide_title: true
+description: storage_never_freed lint documentation
+---
+# storage_never_freed
+## What it does
+This lint ensures that for every storage field with a collection type, when there is an
+operation to insert new elements, there's also an operation for removing elements.
+
+## Why is this bad?
+When a user executes a contract function that writes to storage, they have to put a
+deposit down for the amount of storage space used. Whoever frees up that storage at some
+later point gets the deposit back. Therefore, it is always a good idea to make it possible
+for users to free up their storage space.
+
+## Example
+In the following example there is a storage field with the `Mapping` type that has an
+function that inserts new elements:
+
+```rust
+#[ink(storage)]
+pub struct Transaction {
+    values: Mapping<AccountId, AccountId>,
+}
+
+fn add_value(&mut self, k: &AccountId, v: &AccountId) {
+    // ...
+    self.values.insert(k, v);
+    // ...
+}
+```
+
+But, ideally, there also should be a function that allows the user to remove elements from
+the Mapping freeing storage space:
+
+```rust
+fn del_value(&mut self, k: &AccountId) {
+    // ...
+    self.values.remove(k);
+    // ...
+}
+```
+````
+
+## File: docs/linter/rules/strict_balance_equality.md
+````markdown
+---
+title: strict_balance_equality
+hide_title: true
+description: strict_balance_equality lint documentation
+---
+# strict_balance_equality
+## What it does
+Looks for strict equalities with balance in ink! contracts.
+
+## Why is this bad?
+The problem with strict balance equality is that it is always possible to forcibly send
+tokens to a contract. For example, using
+[`terminate_contract`](https://use-ink.github.io/ink/ink_env/fn.terminate_contract.html).
+In such a case, the condition involving the contract balance will work incorrectly, what
+may lead to security issues, including DoS attacks and draining contract's gas.
+
+## Known problems
+There are many ways to implement balance comparison in ink! contracts. This lint is not
+trying to be exhaustive. Instead, it addresses the most common cases that may occur in
+real-world contracts and focuses on precision and lack of false positives.
+
+## Example
+Assume, there is an attacker contract that sends all its funds to the target contract when
+terminated:
+
+```rust
+#[ink::contract]
+pub mod attacker {
+  // ...
+  #[ink(message)]
+  pub fn attack(&mut self, target: &AccountId) {
+      self.env().terminate_contract(target);
+  }
+}
+```
+
+If the target contains a condition with strict balance equality, this may be manipulated by
+the attacker:
+
+```rust
+#[ink::contract]
+pub mod target {
+  // ...
+  #[ink(message)]
+  pub fn do_something(&mut self) {
+      if self.env().balance() != 100 { // Bad: Strict balance equality
+          // ... some logic
+      }
+  }
+}
+```
+
+This could be mitigated using non-strict equality operators in the condition with the
+balance:
+
+```rust
+#[ink::contract]
+pub mod target {
+  // ...
+  #[ink(message)]
+  pub fn do_something(&mut self) {
+      if self.env().balance() < 100 { // Good: Non-strict equality
+          // ... some logic
+      }
+  }
+}
+```
+````
+
+## File: docs/testing/testnet/Faucet.tsx
+````typescript
+import React, { useMemo, useState } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
+
+const RECAPTCHA_SITE_KEY = '6LcgFI4nAAAAAATrEMoJ6zBacsx5udc1UhGFXemH'
+const FAUCET_URL = 'https://rococo-faucet.parity-testnet.parity.io/drip/web'
+
+const Faucet = () => {
+  const [captcha, setCaptcha] = useState<string | null>(null)
+  const acc = useMemo(() => {
+    if (typeof window === 'undefined') return '';
+    const params = new URLSearchParams(window?.location?.search);
+    return params?.get('acc') || undefined;
+  }, [])
+  const [address, setAddress] = useState<string | undefined>(acc)
+  const [hash, setHash] = useState<string>()
+  const [error, setError] = useState<string>()
+  const [inProgress, setInProgress] = useState(false)
+
+  const handleRequest = async () => {
+    try {
+      setHash(undefined)
+      setError(undefined)
+      setInProgress(true)
+
+      const body = {
+        address,
+        parachain_id: '1002',
+        recaptcha: captcha,
+      }
+
+      const fetchResult = await fetch(FAUCET_URL, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      const result = await fetchResult.json()
+      if ('error' in result) {
+        setError(result.error)
+      } else {
+        setHash(result.hash)
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e)
+      setError('Hmm... something went wrong.')
+    } finally {
+      setInProgress(false)
+    }
+  }
+
+  return (
+    <div className="faucetContainer">
+      <h3 className="faucetTitle">Get Testnet Tokens</h3>
+      <div className="faucetPlantContainer">
+        <img src="/img/plantOne.svg" alt="illustration of a sea grass plant" className="faucetPlantOne" />
+        <img src="/img/plantTwo.svg" alt="illustration of a sea plant" className="faucetPlantTwo" />
+      </div>
+      <div className="faucetHeroContainer">
+        <img src="/img/chest.svg" alt="treasure chest" className="faucetHeroImage" />
+      </div>
+      <form className="withHero">
+        <fieldset>
+          <label htmlFor="address-input">Your SS58 Address</label>
+          <input
+            className="addressInput"
+            id="address-input"
+            type="text"
+            value={address}
+            placeholder="e.g. 5HprbfKUFdN4qfweVbgRtqDPHfNtoi8NoWPE45e5bD5AEKiR"
+            onChange={(e) => {
+              setAddress(e.target.value)
+              setError(undefined)
+              setHash(undefined)
+            }}
+          />
+        </fieldset>
+        <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} onChange={setCaptcha} />
+        <button
+          disabled={inProgress || !captcha || !address}
+          onClick={async (e) => {
+            e.preventDefault()
+            await handleRequest()
+          }}
+        >
+          {inProgress ? 'Requesting...' : 'Request'}
+        </button>
+      </form>
+
+      <div className="faucetResultContainer">
+        {hash && (
+          <button
+            className="faucet-success w-full border-none"
+            onClick={() => window.open(`https://rococo.subscan.io/extrinsic/${hash}`, '_blank')}
+          >
+            <div className="faucet-success-ic">
+              <p className="faucet-success-msg">Your funds have been sent!</p>
+              <p className="faucet-success-cta">Click here to view the transaction</p>
+            </div>
+          </button>
+        )}
+        {error && <p className="error">{error}</p>}
+      </div>
+    </div>
+  )
+}
+
+export default Faucet
+````
+
+## File: docs/background/contracts-vs-rollups.md
+````markdown
+---
+title: Smart Contracts vs. Rollups
+hide_title: true
+slug: /background/smart-contracts-vs-polkadot-rollups
+---
+
+<head>
+    <meta name="description" content="Comparison of Polkadot Rollups/Parachains and Smart Contracts." />
+    <meta name="keywords" content="Polkadot, Rollups, Parachain, Smart Contracts" />
+    <meta property="og:title" content="Smart Contracts vs. Polkadot Rollups" />
+    <meta property="og:description" content="Comparison of Polkadot Rollups/Parachains and Smart Contracts." />
+</head>
+
+![Polkadot Title Picture](/img/title/polkadot.svg)
+
+# Smart Contracts vs. Polkadot Rollups
+
+One of the first questions we typically get when somebody learns about the Polkadot SDK SDK is when to develop a
+rollup (i.e. a parachain) vs. when to develop a smart contract.
+
+## The Difference
+The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Polkadot SDK terminology this state transition function is called the chain's _runtime_.
+
+The distinction to other ecosystems here is that, in the context of Polkadot, parachains and smart contracts exist at different layers of the stack: _smart contracts sit on top of parachains_. Parachains would usually be described as layer-1 blockchains — except for that they don't have to build their own security, are upgradable, and interoperable.
+
+## Polkadot Rollups
+It's noteworthy that a parachain's state transition function doesn't get further validated — it's up to the parachain how it utilizes its slot time. The parachain already pre-paid for its slot when it won the slot auction on Polkadot or Kusama. This means the parachain can build its own (blockchain) world! For example, it can decide on how transaction fees are charged ‒ or even if transaction fees are charged at all. These options are crucial when building new or more user-friendly business models. 
+
+Other distinguishing factors between parachains that we observe in the wild are differences in how governance works or the crypto-economics. There are some constraints on how the parachain can build its world though. Like physics in the real world it has to adhere to certain ground rules. For Polkadot and Kusama that's for example the consensus algorithm for the Relay Chain to communicate with the parachain. From those ground rules the advantages of Polkadot and Kusama emerge. Advantages like the aforementioned shared security, cross-chain communication, or guaranteed execution slot time.
+
+## Smart Contracts
+For smart contracts, on the other hand, an existing parachain has to include the `pallet-revive` for users to deploy smart contracts. The deployed smart contract is always untrusted code. Anyone (or any program) that has tokens of the chain can upload a smart contract without requiring permission. Smart contracts allow _permissionless_ deployment of _untrusted_ programs on a blockchain. The `pallet-revive` has to assume that these programs are adversarial, it has to put a number of safety pillars in place to ensure that the contract can not e.g. stall the chain or cause state corruption of other contracts. For `pallet-revive` those safety pillars include mechanisms like gas metering or deposits for storing data on-chain.
+
+_To restate this important distinction: developing a parachain runtime is different from developing a smart contract — a smart contract sits on top of a parachain_.
+
+## The Trade-off
+
+![Smart Contract vs. Rollup](/img/smart-contract-vs-rollup.svg)
+
+The trade-off is that with a parachain one has the freedom to decide on (nearly) all the rules that make up the parachain. With a smart contract one is constrained by what the chain allows and the safety pillars that necessarily have to be in place. A smart contract can never be as fast as a native pallet built in the parachain runtime ‒ there is too much logic in between.
+A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that.
+````
+
+## File: docs/background/ink-vs-cosmwasm.md
+````markdown
+---
+title: ink! vs. CosmWasm
+slug: /background/ink-vs-cosmwasm
+hide_title: true
+---
+
+<head>
+    <meta name="title" content="Polkadot's ink! vs. CosmWasm" />
+    <meta name="description" content="Comparison of Polkadot's ink! vs. CosmWasm." />
+    <meta name="keywords" content="Polkadot, ComsWasm, Cosmos, ink!, Smart Contracts" />
+    <meta property="og:title" content="ink! vs. CosmWasm" />
+    <meta property="og:description" content="Comparison of Polkadot's ink! vs. CosmWasm." />
+</head>
+
+![Cosmwasm Title Picture](/img/title/cosmwasm.svg)
+
+# ink! vs. CosmWasm
+
+This is a short comparison between [ink!](https://github.com/use-ink/ink/)
+and [CosmWasm](https://github.com/CosmWasm/cosmwasm) meant to onboard
+developers coming from the Cosmos ecosystem.
+
+## Architecture
+
+CosmWasm is modular, meaning that any blockchain using the Cosmos SDK can add smart
+contract support to their chain. That is similar to the [Polkadot SDK](https://polkadot.com/platform/sdk)
+approach, where chains have the option to add `pallet-revive` to their runtime.
+
+Aside from that, the architecture philosophy is likely the point where CosmWasm and ink!
+differ the most. CosmWasm follows the actor model design pattern, while ink! follows a
+synchronous execution model. That means some fundamental differences in how the source
+code is structured.
+
+The main entry point functions of CosmWasm contracts are:
+
+- `instantiate` which bootstraps the initial contract state (assuming it's already been
+  deployed).
+- `execute` which has the actor perform operations to its internal state.
+- `query` which retrieves data from the actor’s internal state.
+
+An ink! contract can have as many public dispatchables as the developer desires, and
+differently from CosmWasm, it doesn’t rely on JSON schemas for defining how the messages
+are structured.
+
+Instead, ink! makes heavy usage of Rust macros. The main ink! macros are:
+
+- `#[ink(constructor)]` which is called when the contract is deployed, and is responsible
+  for bootstrapping the initial contract state into the storage. It is analogous to the
+  CosmWasm `instantiate` function.
+- `#[ink(storage)]` which annotates a struct that represents the contract's internal
+  state.
+- `#[ink(message)]` which marks a function as a public dispatchable, meaning that it is
+  exposed in the contract interface to the outside world. This macro can make a function
+  behave analogously to CosmWasm’s `execute` and `query` functions. This depends on how it
+  affects the internal contract state and what the return types.
+- `#[ink(event)]` and `#[ink(topic)]` which annotates a struct and its members as the
+  events and topics that the contract might emit.
+
+There are other ink! macros, for which details can be found at [Macros & Attributes](../macros-attributes/overview.md).
+
+## Unit Testing
+
+Unit testing in CosmWasm is quite similar to ink!. Both use the conventional Rust
+`#[cfg(test)]` macro and set up a mock on-chain environment.
+
+While CosmWasm unit tests have different modules for each of the three main entry-point
+functions, ink! allows for a more generalised approach, where the `#[ink(test)]` macro is
+used for each unit test.
+
+You can read more about ink! unit tests [here](../testing/unit-integration.md).
+
+## Compiler
+
+CosmWasm uses [cargo-wasm](https://docs.rs/crate/cargo-wasm/latest) as its main
+compiler, while ink! uses [cargo-contract](https://github.com/use-ink/cargo-contract).
+`cargo-contract` is developed specifically for building, testing, and deploying
+ink! contracts.
+
+# Local Development Network
+
+In terms of local development networks, the [cosmos/gaia](https://github.com/cosmos/gaia)
+repository acts as the basic template for a generic Cosmos node. With the addition of the
+`x/wasm` module and some clean-up, this template repository becomes
+[wasmd](https://github.com/CosmWasm/wasmd), the entry point for CosmWasm development.
+
+In terms of Polkadot SDK, [`polkadot-sdk-solochain-template`](https://github.com/paritytech/polkadot-sdk-solochain-template) is a basic generic template of a node.
+Similar to `x/wasm`, [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive)
+is the module that adds RISC-V smart contract functionality to the chain. 
+We provide the [ink-node](https://github.com/use-ink/ink-node), which is analogous to `wasmd` — a basic template node 
+for smart contract development.
+
+## Testnets
+
+For CosmWasm development and on-chain testing, `wasmd` can be operated as a local setup
+(single or multiple nodes), or connected to the `cliffnet` public test network.
+
+For testing, ink! contracts can be deployed on a few different options:
+
+- Locally, on a single or multiple node setup of [`ink-node`](https://github.com/use-ink/ink-node).
+- Westend's [Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-westend-rpc.dwellir.com#/explorer)
+- [Pop Testnet](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc1.paseo.popnetwork.xyz#/explorer) (on Paseo). See [Pop CLI for one way to deploy](https://learn.onpop.io/contracts/pop-cli/up).
+
+## Development Workflow
+
+### Dependencies and Environment Setup
+
+The first step in CosmWasm development is to
+[install dependencies and setup the environment](https://docs.cosmwasm.com/core/installation),
+namely Rust, the WebAssembly target, `cargo-generate` and `cargo-run-script`.
+
+For ink! you can also find [a setup guide](../getting-started/setup.md) which will help you
+with dependencies, namely Rust, `cargo-contract` and `ink-node`.
+
+### Compile and Test
+
+CosmWasm provides a template at the
+[cw-template](https://github.com/CosmWasm/cw-template) repository. In order to generate a new project, all  you have to do is run:
+
+```
+$ cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
+```
+
+Replacing `PROJECT_NAME` with the name of your project.
+
+Similarly, ink! provides an
+[`examples`](https://github.com/use-ink/ink-examples/tree/main) directory of its
+main repository.
+
+A contract can be compiled from its directory via:
+
+```
+$ cargo contract build
+```
+
+and tested via:
+
+```
+$ cargo contract test
+```
+
+### Deploy and Interact
+
+CosmWasm contracts are deployed and instantiated with help of the `wasmd` executable. The
+list of step is provided [here](https://docs.cosmwasm.com/wasmd).
+
+It is possible to deploy and interact with ink! contracts using either a CLI
+(`cargo-contract`), or a web UI ([`contracts-ui`](https://ui.use.ink)).
+
+- [Instructions for `cargo-contract`](https://github.com/use-ink/cargo-contract/blob/master/crates/extrinsics/README.md)
+- [Instructions for `contracts-ui`](../getting-started/deploying.md)
+````
 
 ## File: docs/background/ink-vs-solidity.md
 ````markdown
