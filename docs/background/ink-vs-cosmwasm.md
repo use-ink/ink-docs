@@ -98,7 +98,7 @@ For testing, ink! contracts can be deployed on a few different options:
 
 - Locally, on a single or multiple node setup of [`ink-node`](https://github.com/use-ink/ink-node).
 - Westend's [Asset Hub](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-westend-rpc.dwellir.com#/explorer)
-- [Pop Testnet](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc1.paseo.popnetwork.xyz#/explorer) (on Paseo). See [Pop CLI for one way to deploy](https://learn.onpop.io/contracts/pop-cli/up).
+- [Pop Testnet](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc1.paseo.popnetwork.xyz#/explorer) (on Paseo). See [Pop CLI for one way to deploy](https://learn.onpop.io/contracts/guides/deploy).
 
 ## Development Workflow
 
