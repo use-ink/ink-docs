@@ -50,8 +50,8 @@ module.exports = {
     "Testing": [
       "testing/overview",
       "testing/unit-integration",
-      "testing/e2e",
       "testing/sandbox",
+      "testing/e2e",
       "testing/testing-with-live-state",
       {
         "type": "category",
@@ -110,13 +110,13 @@ module.exports = {
     "Frontend Development": ["frontend/overview"],
     "Standards": ["standards/overview"],
     "Technical Background": [
-      "background/solidity-metamask-compat",
-      "background/why-riscv",
-      "background/why-rust",
-      "background/contracts-vs-rollups",
       "background/polkadot-sdk",
+      "background/why-rust",
+      "background/why-riscv",
+      "background/solidity-metamask-compat",
       "background/ink-vs-solidity",
       "background/ink-vs-cosmwasm",
+      "background/contracts-vs-rollups",
       "background/migrate-to-parachain"
     ],
     "FAQ": [

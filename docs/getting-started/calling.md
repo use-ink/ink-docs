@@ -4,6 +4,9 @@ slug: /getting-started/calling-your-contract
 hide_title: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ![Frontend Title Picture](/img/title/frontend.svg)
 
 # Call Your Contract
@@ -49,11 +52,69 @@ are emitted if they want clients to be able to pick up on them.
 
 ![Contract execution via transaction](/img/events-revive.svg)
 
-## Using the Contracts UI
+## Using the Terminal
 
-:::caution
-For ink! v6 only, this section on the Contracts UI uses an alpha version of the UI.
-:::
+### 1. `get()` function
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  cargo contract instantiate --execute --suri //Alice --args true
+
+  # The output of this command will contain the contract address in
+  # this format: 
+  #     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
+  # Insert it in the command below.
+
+  cargo contract call 
+    --contract <insert-contract-address> 
+    --message get 
+    --suri //Alice
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  pop up --execute --suri //Alice --args true
+
+  # The output of this command will contain the contract address in
+  # this format: 
+  #     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
+  # Insert it in the command below.
+
+  pop call contract 
+    --contract <insert-contract-address> 
+    --message get 
+    --suri //Alice
+  ```
+  </TabItem>
+</Tabs>
+
+### 2. `flip()` function
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract call 
+    --contract <insert-contract-address>
+    --message flip
+    --execute
+    --suri //Alice
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop call contract 
+    --contract <insert-contract-address>
+    --message flip
+    --execute
+    --suri //Alice
+  ```
+  </TabItem>
+</Tabs>
+
+## Using the Contracts UI
 
 Go to https://ui.use.ink/
 
@@ -80,34 +141,3 @@ The alternative message to send with the UI is `flip()`. Again, accept the defau
 If the transaction was successful, we should then be able to go back to the `get()` function and see our updated storage:
 
 ![An image of Flipper RPC call with true](/img/contracts-ui-6.png)
-
-## Using `cargo-contract`
-
-Calling a contract can also be done via the command-line! 
-
-### 1. `get()` function
-
-```bash
-cargo contract build
-cargo contract instantiate --execute --suri //Alice --args true
-
-# The output of this command will contain the contract address in
-# this format: 
-#     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
-# Insert it in the command below.
-
-cargo contract call 
-  --contract <insert-contract-address> 
-  --message get 
-  --suri //Alice
-```
-
-### 2. `flip()` function
-
-```bash
-cargo contract call 
-  --contract <insert-contract-address>
-  --message flip
-  --execute
-  --suri //Alice
-```

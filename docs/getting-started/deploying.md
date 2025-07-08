@@ -4,15 +4,17 @@ slug: /getting-started/deploy-your-contract
 hide_title: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ![Rocket Title Picture](/img/title/rocket.svg)
 
 :::tip Pro Tip
-If you are using the Pop CLI, it can automatically launch `ink-node` for you.
+If you are using the Pop CLI it launches the `ink-node` automatically for you when you run `pop up`.
 :::
 
-# Deploy Your Contract
+# Launch a local node
 
 To deploy your contract locally, you need a running blockchain node that supports ink! smart contracts. The recommended option is [`ink-node`](https://github.com/use-ink/ink-node), a simple [Polkadot SDK](https://polkadot.com/platform/sdk) blockchain configured with the [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive) module for smart contracts.
 
@@ -37,7 +39,7 @@ You can interact with your node using `cargo-contract`, `pop` or [the Contracts 
 
 ![Connect to local node](/img/contracts-ui-local-node.png)
 
----
+## Deploy the contract
 
 Now that we have generated the contract binary from our source code and connected to a local node, we want to deploy this contract onto our local node.
 
@@ -51,6 +53,25 @@ The contract deployment process in Polkadot is split into two steps:
 2. Creating an instance of your contract
 
 With this pattern, contract code like the ERC20 standard can be put on the blockchain one single time, but instantiated any number of times. No need to continually upload the same source code over and waste space on the blockchain.
+
+## Using the Terminal
+
+With `cargo-contract` or `pop` it's just a simple sequence of:
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  cargo contract instantiate --suri //Alice --args true
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  pop up --suri //Alice --args true
+  ```
+  </TabItem>
+</Tabs>
 
 ## Using the Contracts UI
 
@@ -88,25 +109,3 @@ The transaction is now queued, review your data and click **Upload and Instantia
 You will be redirected to a new page, where you can interact with the newly created contract instance.
 
 ![Flipper Instantiate Success](/img/contracts-ui-3.png)
-
-## Using `cargo-contract`
-
-Contracts can be deployed via the command-line as well. With `cargo-contract` or `pop` it's just a simple sequence of:
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
-  ```bash
-  cargo contract build
-  cargo contract instantiate --suri //Alice --args true
-  ```
-  </TabItem>
-  <TabItem value="pop" label="Pop">
-  ```bash
-  pop build
-  pop up --suri //Alice --args true
-  ```
-  </TabItem>
-</Tabs>

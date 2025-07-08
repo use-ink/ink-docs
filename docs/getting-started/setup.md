@@ -11,7 +11,7 @@ hide_title: true
 On this page we describe the pre-requisites for working with ink!.
 
 :::tip Pro tip
- Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development.
+ Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
 :::
 
 ## Rust & Cargo
@@ -24,7 +24,14 @@ version (>= 1.85) and `cargo`. Please see [the official Rust installation guide]
 The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
 our CLI tool for setting up and managing smart contracts written with ink!.
 
-Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/use-ink/cargo-contract#installation).
+```bash
+cargo install cargo-contract --version 6.0.0-alpha --locked
+```
+
+Make sure you have the latest stable version of Rust installed:
+```bash
+rustup update stable
+```
 
 ## ink-node
 

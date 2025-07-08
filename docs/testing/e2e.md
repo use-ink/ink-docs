@@ -4,6 +4,9 @@ hide_title: true
 slug: /contract-testing/end-to-end-e2e-testing
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ![Testing1 Title Picture](/img/title/testing1.svg)
 
 # End-to-End (E2E) Tests
@@ -80,6 +83,15 @@ export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"
 
 And finally execute the following command to start e2e test execution.
 
-```bash
-cargo contract test --features e2e-tests
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract test --features e2e-tests
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop test --e2e
+  ```
+  </TabItem>
+</Tabs>
