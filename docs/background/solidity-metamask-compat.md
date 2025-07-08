@@ -107,15 +107,26 @@ traits for local types.
 
 [rust-coherence]: https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence
 
-:::caution
-The following sections have not yet been written for ink! v6.
-
-TODO @davidsemakula
-:::
-
 ## MetaMask
 
-…
+You can use [MetaMask](https://metamask.io/) to interact with your `ink!` smart contract via the Solidity ABI.
+
+To set up your wallet and connect to the appropriate network, follow this quick start guide: [Connect MetaMask to Polkadot Hub Testnet](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/wallets/#metamask)
+
+:::info Network Details – Polkadot Hub Testnet
+*Network name:* Polkadot Hub TestNet
+
+*Currency symbol:* PAS
+
+*Chain ID:* 420420422
+
+*RPC URL:* https://testnet-passet-hub-eth-rpc.polkadot.io
+
+*Block explorer URL:* https://blockscout-passet-hub.parity-testnet.parity.io/
+:::
+
+For more detailed configuration steps (RPC URL, chain ID, symbol, block explorer),see the complete guide:
+ [Connect to Polkadot - Full Guide](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/connect-to-polkadot/)
 
 ## Solidity Tooling.
 
