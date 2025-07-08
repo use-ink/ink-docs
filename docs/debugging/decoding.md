@@ -14,7 +14,7 @@ this data.
 
 ```bash
 # From your contract directory
-$ cargo contract decode message -d fe5bd8ea01000000
+cargo contract decode message -d fe5bd8ea01000000
 ```
 
 This command will output the method name and parameters encoded in the data payload:

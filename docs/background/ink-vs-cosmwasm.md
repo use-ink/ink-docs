@@ -117,7 +117,7 @@ CosmWasm provides a template at the
 [cw-template](https://github.com/CosmWasm/cw-template) repository. In order to generate a new project, all  you have to do is run:
 
 ```
-$ cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
+cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
 ```
 
 Replacing `PROJECT_NAME` with the name of your project.
@@ -129,13 +129,13 @@ main repository.
 A contract can be compiled from its directory via:
 
 ```
-$ cargo contract build
+cargo contract build
 ```
 
 and tested via:
 
 ```
-$ cargo contract test
+cargo contract test
 ```
 
 ### Deploy and Interact

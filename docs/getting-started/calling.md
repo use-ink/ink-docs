@@ -88,15 +88,15 @@ Calling a contract can also be done via the command-line!
 ### 1. `get()` function
 
 ```bash
-$ cargo contract build
-$ cargo contract instantiate --execute --suri //Alice --args true
+cargo contract build
+cargo contract instantiate --execute --suri //Alice --args true
 
 # The output of this command will contain the contract address in
 # this format: 
 #     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
 # Insert it in the command below.
 
-$ cargo contract call 
+cargo contract call 
   --contract <insert-contract-address> 
   --message get 
   --suri //Alice
@@ -105,7 +105,7 @@ $ cargo contract call
 ### 2. `flip()` function
 
 ```bash
-$ cargo contract call 
+cargo contract call 
   --contract <insert-contract-address>
   --message flip
   --execute

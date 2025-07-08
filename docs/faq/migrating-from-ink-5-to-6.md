@@ -298,7 +298,7 @@ You can learn more [here](../basics/cross-contract-calling.md#callbuilder-solidi
 We added a new subcommand:
 
 ```bash
-$ cargo contract build ---metadata <ink|solidity>
+cargo contract build ---metadata <ink|solidity>
 ```
 
 You can learn more [here](../basics/metadata/solidity-format.md).

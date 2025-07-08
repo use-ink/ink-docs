@@ -9,7 +9,6 @@ module.exports = {
       "getting-started/setup",
       "getting-started/creating",
       "getting-started/compiling",
-      "getting-started/running",
       "getting-started/deploying",
       "getting-started/calling"
     ],

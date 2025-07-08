@@ -40,7 +40,7 @@ Here is an example of how you can grab the message name and selector from your c
 metadata using [`jq`](https://stedolan.github.io/jq/).
 
 ```bash
-$ cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
+cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
 "flip: 0x633aa551"
 ```
 

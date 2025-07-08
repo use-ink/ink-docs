@@ -5,6 +5,8 @@ hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ![Cargo Contract Title Picture](/img/title/cargo-contract.svg)
 
@@ -12,9 +14,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Run the following command in your `flipper` directory to compile your smart contract:
 
-```bash
-$ cargo contract build
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  ```
+  </TabItem>
+</Tabs>
 
 This command will build the following for your contract: 
 a binary, a metadata file (which contains the
@@ -122,9 +133,18 @@ heavy-weight logic which increases the contract's size.
 For contracts that are supposed to run in production you should always build the
 contract with `--release`:
 
-```bash
-$ cargo contract build --release
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build --release
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build --release
+  ```
+  </TabItem>
+</Tabs>
 
 This will ensure that nothing unnecessary is compiled into the binary blob, making
 your contract faster and cheaper to deploy and execute.
@@ -133,3 +153,31 @@ your contract faster and cheaper to deploy and execute.
 With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs:
 the `--release` flag has to be passed explicitly to `cargo build`.
 :::
+
+## Test Your Contract
+If you created a new project using a template, you can find at the bottom of the lib.rs simple test cases which verify the functionality of the contract. We can quickly test this code is functioning as expected:
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract test
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop test
+  ```
+  </TabItem>
+</Tabs>
+
+To which you should see a successful test completion:
+
+```bash
+running 2 tests
+test flipper::tests::it_works ... ok
+test flipper::tests::default_works ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+```
+
+Learn more about the [testing strategies for ink! contracts](../testing/overview.md).

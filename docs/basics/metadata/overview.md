@@ -35,7 +35,7 @@ So developers have a choice which metadata they want to generate for a contract.
 They can decide when invoking `cargo-contract`:
 
 ```shell
-$ cargo contract build ---metadata <ink|solidity>
+cargo contract build ---metadata <ink|solidity>
 ```
 
 Generating Solidity metadata is only possible if all constructor and message 

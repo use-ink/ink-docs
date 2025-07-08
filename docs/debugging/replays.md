@@ -23,7 +23,7 @@ To replay a transaction, you can use [Chopstick](https://github.com/AcalaNetwork
 Assuming you have a node that you can connect to at `$ENDPOINT` and the transaction you want to replay is in block `$BLOCK_HASH`, you can use the following command:
 
 ```bash
-$ npx @acala-network/chopsticks@latest run-block \
+npx @acala-network/chopsticks@latest run-block \
     --endpoint $ENDPOINT \
     --block $BLOCK_HASH \
     --runtime-log-level 5 \
@@ -42,7 +42,7 @@ runtime::contracts           TRACE: call result ExecReturnValue { flags: (empty)
 From here, you can identify the call you are interested in and decode the data payload:
 
 ```bash
-$ echo 254, 91, 216, 234, 1, 0, 0, 0 \
+echo 254, 91, 216, 234, 1, 0, 0, 0 \
     | tr ',' ' ' \
     | xargs printf '%02x' \
     | xargs cargo contract decode message -d
@@ -67,7 +67,7 @@ You can also use [Chopstick](https://github.com/AcalaNetwork/chopsticks) to star
 This command starts a fork beginning at block `$BLOCK_HASH`. You can connect to this fork using `ws://localhost:8000` to submit extrinsics via PolkadotJs or `cargo contract`:
 
 ```bash
-$ npx @acala-network/chopsticks@latest \
+npx @acala-network/chopsticks@latest \
     --endpoint $ENDPOINT \
     --block $BLOCK_HASH \
     --runtime-log-level 5
@@ -76,7 +76,7 @@ $ npx @acala-network/chopsticks@latest \
 Here, for example, you can re-run the transaction that we decoded in the previous section:
 
 ```bash
-$ cargo contract call \
+cargo contract call \
     --contract $CONTRACT_ADDR \
     --message inc_by --args 1 \
     --suri //Alice \

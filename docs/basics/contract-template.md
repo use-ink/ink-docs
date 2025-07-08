@@ -15,13 +15,13 @@ On this page we'll go over the elements of a basic contract.
 Change into your working directory and run:
 
 ```bash
-$ cargo contract new foobar
+cargo contract new foobar
 ```
 
 This will create a new project folder named `foobar`.
 
 ```bash
-$ cd foobar/
+cd foobar/
 ```
 
 In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
@@ -29,13 +29,13 @@ In the `lib.rs` file you find initial scaffolded code, which you can use as a st
 Quickly check that it compiles, and the trivial tests pass with:
 
 ```bash
-$ cargo contract test
+cargo contract test
 ```
 
 Also check that you can build the contract by running:
 
 ```bash
-$ cargo contract build
+cargo contract build
 ```
 
 `cargo contract test` builds the contract for `std`, 
