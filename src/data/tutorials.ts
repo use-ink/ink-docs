@@ -32,7 +32,7 @@ export const tutorials = [
   {
     image: '/img/title/solidity.svg',
     title: 'Solidity Frontend Libraries Compatibility',
-    description: 'Use Solidity  frontend tooling with ink! contracts',
+    description: 'Use Solidity frontend tooling with ink! contracts',
     link: 'docs/frontend/solidity-compatibility',
   },
   {

@@ -70,7 +70,7 @@ By default, it will create a basic project with a Solidity smart contract. If yo
 In this tutorial, we’ll skip that step since we already have our `ink!` smart contract compiled.
 :::
 
-## Deploying Your Contract
+### Deploying Your Contract
 1. Connect Your Wallet
 
 In this guide, we'll use [MetaMask](https://metamask.io/) to connect to Polkadot Hub. To set up your wallet and network connection:
@@ -168,7 +168,7 @@ Contract deployed at: YOUR_CONTRACT_ADDRESS
 Make sure to save this address, you'll need it in the next step to interact with your deployed contract.
 :::
 
-## Interact with Your Deployed Contract
+### Interact with Your Deployed Contract
 
 Once deployed, you can create a script to interact with your contract. To do so, create a file called `scripts/interact.js` and add some logic to interact with the contract.
 
@@ -260,3 +260,8 @@ This command will launch the `ink-node` along with the `eth-rpc` adapter, provid
 ```bash
 npx hardhat run scripts/interact.js --network localNode
 ```
+
+## Other Libraries
+Solidity ABI compatibility lets you use a wide range of Ethereum-compatible libraries.
+
+📚 Learn more in [Explore the key libraries for interacting with smart contracts on Polkadot-based networks](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/libraries/)

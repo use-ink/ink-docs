@@ -108,7 +108,10 @@ module.exports = {
         ]
       }
     ],
-    "Frontend Development": ["frontend/overview"],
+    "Frontend Development": [
+      "frontend/overview",
+      "frontend/solidity-compatibility"
+    ],
     "Standards": ["standards/overview"],
     "Technical Background": [
       "background/solidity-metamask-compat",
