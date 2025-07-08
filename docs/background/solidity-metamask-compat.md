@@ -117,10 +117,18 @@ TODO @davidsemakula
 
 …
 
-## Hardhat, Foundry, etc.
+## Solidity Tooling.
 
-…
+You can deploy and interact with `ink!` smart contracts using popular Solidity tools like Hardhat and Foundry thanks to the Solidity-compatible ABI output.
+
+Full Tutorial: [Use Solidity Tooling with ink! Contracts](../frontend/solidity-compatibility.md)
+
+This guide walks through compiling an `ink!` contract with Solidity metadata, configuring Hardhat, deploying to the Polkadot Hub Testnet, and interacting with the contract using Ethers.js.
 
 ## Block explorers
 
-…
+PolkaVM smart contracts are compatible with Ethereum-style block explorers such as [BlockScout](https://www.blockscout.com/), which is already integrated with the Polkadot Hub Testnet.
+
+- [Polkadot Hub Testnet BlockScout](https://blockscout.testnet.polkadot.io)
+
+For additional information and instructions, check out: [Polkadot Smart Contract Block Explorers](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/block-explorers/)

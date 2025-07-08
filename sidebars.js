@@ -107,7 +107,10 @@ module.exports = {
         ]
       }
     ],
-    "Frontend Development": ["frontend/overview"],
+    "Frontend Development": [
+      "frontend/overview",
+      "frontend/solidity-compatibility"
+    ],
     "Technical Background": [
       "background/polkadot-sdk",
       "background/why-rust",
