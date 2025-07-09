@@ -57,12 +57,7 @@ module.exports = {
       "testing/unit-integration",
       "testing/sandbox",
       "testing/e2e",
-      {
-        "type": "category",
-        "label": "Testnet",
-        "items": ["testing/testnet/overview", "testing/testnet/faucet"]
-      },
-      "testing/testing-with-live-state"
+      // "testing/testing-with-live-state"
     ],
     "Debugging": [
       "debugging/overview",
@@ -71,7 +66,7 @@ module.exports = {
       "debugging/tracing",
       "debugging/sandbox",
       "debugging/decoding",
-      "debugging/replays",
+      // "debugging/replays",
       "debugging/pre-compiles"
     ],
     "Macros & Attributes": [
