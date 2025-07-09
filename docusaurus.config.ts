@@ -105,6 +105,7 @@ module.exports = {
           customCss: [
             require.resolve('./src/css/shared.css'),
             require.resolve('./src/css/faucet.css'),
+            require.resolve('./src/css/edit-button.css'),
             require.resolve('./static/fonts/fonts.css'),
           ],
         },
