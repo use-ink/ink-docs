@@ -5,6 +5,7 @@
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   margin-top: 2rem;
+  margin-right: 1rem;
   font-weight: 500;
   color: #ffffff !important;
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
@@ -22,11 +23,51 @@
   text-decoration: none !important;
 }
 
+/* Feedback Button Styling - Exact same colors as Edit button */
+.feedback-button {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  margin-top: 2rem;
+  font-weight: 500;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 0.5rem;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.feedback-button:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Container for both buttons */
+.doc-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 /* Dark mode adjustments */
 [data-theme='dark'] .theme-edit-this-page {
   background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
 }
 
 [data-theme='dark'] .theme-edit-this-page:hover {
+  background: linear-gradient(135deg, #3730a3 0%, #5b21b6 100%);
+}
+
+[data-theme='dark'] .feedback-button {
+  background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+}
+
+[data-theme='dark'] .feedback-button:hover {
   background: linear-gradient(135deg, #3730a3 0%, #5b21b6 100%);
 } 

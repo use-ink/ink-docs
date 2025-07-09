@@ -22,6 +22,10 @@ module.exports = {
       defer: true,
       'data-website-id': 'c97b4e05-21a3-4873-8884-4fc81c38d6f0',
     },
+    {
+      src: '/js/feedback-button.js',
+      defer: true
+    },
 ],
   // themes: [
   //   [
