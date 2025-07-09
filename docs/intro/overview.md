@@ -52,7 +52,7 @@ Understand the deeper technical aspects including why Rust and RISC-V were chose
 
 ## Quick Navigation
 
-- **New to ink!?** → Start with [Introduction to ink!](./intro2.mdx)
+- **New to ink!?** → Start with [Introduction to ink!](./intro.mdx)
 - **Ready to code?** → Jump to [Getting Started](../getting-started/setup.md)
 - **Need examples?** → Check out [Smart Contract Examples](https://github.com/use-ink/ink-examples)
 - **Migrating?** → See [Migration Guides](../faq/migrating-from-ink-5-to-6.md)
