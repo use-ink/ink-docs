@@ -18,7 +18,7 @@ _This is a major breaking change, ink! v6 is only compatible with `cargo-contrac
 and chains that include `pallet-revive`._
 
 We did a detailed write-up of the background to this development and the reasoning
-[here](https://use.ink/6.x/current-state). 
+[here](https://r0gue.medium.com/ink-project-state-q1-25-08441f4ac5d2). 
 
 You can find the full changelog of the 6.0 release [here](https://github.com/use-ink/ink/blob/master/CHANGELOG.md#version-600).
 

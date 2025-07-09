@@ -2,7 +2,6 @@ module.exports = {
   reference: {
     "Overview": [
       "intro/intro",
-      "intro/current-state",
       "faq/migrating-from-ink-5-to-6"
     ],
     "Getting started": [
@@ -52,12 +51,12 @@ module.exports = {
       "testing/unit-integration",
       "testing/sandbox",
       "testing/e2e",
-      "testing/testing-with-live-state",
       {
         "type": "category",
         "label": "Testnet",
         "items": ["testing/testnet/overview", "testing/testnet/faucet"]
-      }
+      },
+      "testing/testing-with-live-state"
     ],
     "Debugging": [
       "debugging/overview",
@@ -116,7 +115,7 @@ module.exports = {
       "background/solidity-metamask-compat",
       "background/ink-vs-solidity",
       "background/ink-vs-cosmwasm",
-      "background/contracts-vs-rollups",
+      "background/contracts-vs-parachains",
       "background/migrate-to-parachain"
     ],
     "FAQ": [
