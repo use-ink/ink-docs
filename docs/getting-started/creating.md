@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 ![Heart Title Picture](/img/title/heart.svg)
 
 ## Create a new project
-Make sure you are in your working directory, and then run:
+Make sure you have [installed the tooling](./setup.md) and that you are in the working directory, and then run:
 
 <Tabs>
   <TabItem value="cargo-contract" label="cargo-contract" default>
@@ -33,6 +33,10 @@ flipper
   └─ Cargo.toml     <-- Rust Dependencies and ink! Configuration
   └─ .gitignore
 ```
+
+:::tip
+The [Pop CLI](https://learn.onpop.io/contracts/guides/create-a-new-contract) has many templates to offer!
+:::
 
 ## Contract Source Code
 

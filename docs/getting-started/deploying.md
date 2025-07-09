@@ -10,17 +10,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ![Rocket Title Picture](/img/title/rocket.svg)
 
-:::tip Pro Tip
-If you are using the Pop CLI it launches the `ink-node` automatically for you when you run `pop up`.
-:::
+Deploying a smart contract is the process of making your contract available on a blockchain so that it can be interacted with by others. In the Polkadot ecosystem, 
+this involves uploading your compiled contract code to a chain that supports smart contracts (i.e. `pallet-revive`), and then creating an instance of your contract. 
+This page will guide you through the steps to deploy your ink! contract locally, using both the command line and the Contracts UI.
 
 # Launch a local node
 
-To deploy your contract locally, you need a running blockchain node that supports ink! smart contracts. The recommended option is [`ink-node`](https://github.com/use-ink/ink-node), a simple [Polkadot SDK](https://polkadot.com/platform/sdk) blockchain configured with the [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive) module for smart contracts.
-
-:::info
-You can read more about how ink!, `pallet-revive`, and Polkadot SDK are related in [our technical background section](../background/polkadot-sdk.md).
+:::tip Pro Tip
+The [Pop CLI](https://learn.onpop.io/contracts/guides/deploy) handles the `ink-node` for you, no need to install or launch.
 :::
+
+To deploy your contract locally, you need a running blockchain node that supports ink! smart contracts. The recommended option is `ink-node`, a simple Polkadot blockchain configured with the `pallet-revive` for smart contracts ([learn more](../background/polkadot-sdk.md)).
 
 After [installing `ink-node`](./setup.md#installing-ink-node), you can start a local development chain by running:
 
@@ -28,7 +28,7 @@ After [installing `ink-node`](./setup.md#installing-ink-node), you can start a l
 ink-node
 ```
 
-**Note:** `ink-node` uses the `--dev` flag by default. You may need to specify the `--dev` flag when running a development chain with another binary (e.g., using the Polkadot SDK Node Template).
+**Note:** `ink-node` uses the `--dev` flag by default. You may need to specify the `--dev` flag when running a different chain binary.
 
 <img src={useBaseUrl('/img/ink-node.png')} className="titlePic titleSpace" title="Screenshot of terminal starting a local node" />
 

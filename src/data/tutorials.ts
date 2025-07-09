@@ -12,12 +12,6 @@ export const tutorials = [
     link: 'docs/getting-started/building-your-contract',
   },
   {
-    image: '/img/title/substrate.svg',
-    title: 'Running a Substrate Node',
-    description: 'Learn how to run a Substrate node',
-    link: 'docs/getting-started/running-substrate',
-  },
-  {
     image: '/img/title/rocket.svg',
     title: 'Deploying Your Contract',
     description: 'Learn how to deploy your contract',

@@ -54,19 +54,16 @@ are emitted if they want clients to be able to pick up on them.
 
 ## Using the Terminal
 
+When you deployed your contract you received the contract address. Use this to interact with the contract.
+```bash
+Contract Address: 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
+```
+
 ### 1. `get()` function
 
 <Tabs>
   <TabItem value="cargo-contract" label="cargo-contract" default>
   ```bash
-  cargo contract build
-  cargo contract instantiate --execute --suri //Alice --args true
-
-  # The output of this command will contain the contract address in
-  # this format: 
-  #     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
-  # Insert it in the command below.
-
   cargo contract call 
     --contract <insert-contract-address> 
     --message get 
@@ -75,14 +72,6 @@ are emitted if they want clients to be able to pick up on them.
   </TabItem>
   <TabItem value="pop" label="Pop">
   ```bash
-  pop build
-  pop up --execute --suri //Alice --args true
-
-  # The output of this command will contain the contract address in
-  # this format: 
-  #     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
-  # Insert it in the command below.
-
   pop call contract 
     --contract <insert-contract-address> 
     --message get 
@@ -113,6 +102,10 @@ are emitted if they want clients to be able to pick up on them.
   ```
   </TabItem>
 </Tabs>
+
+:::tip
+For more info about interacting with your smart contract using the Pop CLI, [check this out](https://learn.onpop.io/contracts/guides/call-your-contract)!
+:::
 
 ## Using the Contracts UI
 

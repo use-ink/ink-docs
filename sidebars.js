@@ -1,15 +1,21 @@
 module.exports = {
   reference: {
-    "Overview": [
+    "Welcome!": [
       "intro/intro",
-      "faq/migrating-from-ink-5-to-6"
-    ],
-    "Getting started": [
-      "getting-started/setup",
-      "getting-started/creating",
-      "getting-started/compiling",
-      "getting-started/deploying",
-      "getting-started/calling"
+      "intro/overview",
+      {
+        "type": "category",
+        "label": "Getting started",
+        "items": [
+          "getting-started/setup",
+          "getting-started/creating",
+          "getting-started/compiling",
+          "getting-started/deploying",
+          "getting-started/calling"
+        ]
+      },
+      "intro/tutorials-examples",
+      "intro/where-to-deploy"
     ],
     "Basics": [
       "basics/contract-template",
