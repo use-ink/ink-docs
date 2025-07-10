@@ -43,6 +43,10 @@ module.exports = {
       defaultMode: 'dark',
       disableSwitch: false,
     },
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 2,
+    },
     navbar: {
       title: '',
       logo: {
@@ -142,10 +146,6 @@ module.exports = {
             banner: 'none',
           },
         },
-        // Limit table of contents to only show h2 headings
-        tocCollapsible: false,
-        tocMinHeadingLevel: 2,
-        tocMaxHeadingLevel: 2,
       },
     ],
     [
