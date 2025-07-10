@@ -125,14 +125,13 @@ To set up your wallet and connect to the appropriate network, follow this quick 
 *Block explorer URL:* https://blockscout-passet-hub.parity-testnet.parity.io/
 :::
 
-For more detailed configuration steps (RPC URL, chain ID, symbol, block explorer), see the complete guide:
- [Connect to Polkadot - Full Guide](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/connect-to-polkadot/)
+For step-by-step manual configuration instructions, see this guide: [Connect MetaMask to Polkadot Hub Testnet](https://docs.polkadot.com/develop/smart-contracts/wallets/#metamask).
 
-## Solidity Tooling.
+## Solidity Tooling
 
 You can deploy and interact with `ink!` smart contracts using popular Solidity tools like Hardhat and Foundry thanks to the Solidity-compatible ABI output.
 
-Full Tutorial: [Use Solidity Tooling with ink! Contracts](../frontend/solidity-compatibility.md)
+Full Tutorial: [Use Solidity Tooling with ink! Contracts](../integrations-and-sdks/ethereum-compatibility/overview.md)
 
 This guide walks through compiling an `ink!` contract with Solidity metadata, configuring Hardhat, deploying to the Polkadot Hub Testnet, and interacting with the contract using Ethers.js.
 

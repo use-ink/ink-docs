@@ -1,3 +1,5 @@
+const tutorialsData = require('./src/data/tutorialsData.js');
+
 module.exports = {
   reference: {
     "Overview": [
@@ -13,6 +15,7 @@ module.exports = {
       "getting-started/deploying",
       "getting-started/calling"
     ],
+    "Tutorials": tutorialsData.map(tut => tut.sidebarlink),
     "Basics": [
       "basics/contract-template",
       "basics/storing-values",
@@ -108,9 +111,28 @@ module.exports = {
         ]
       }
     ],
-    "Frontend Development": [
-      "frontend/overview",
-      "frontend/solidity-compatibility"
+    "Integration & SDKs": [
+      "integrations-and-sdks/overview",
+      {
+        "type": "category",
+        "label": "JavaScript/TypeScript",
+        "items": [
+          "integrations-and-sdks/javascript-typescript/core-libraries",
+          "integrations-and-sdks/javascript-typescript/react"
+        ]
+      },
+      "integrations-and-sdks/other-languages",
+      {
+        "type": "category",
+        "label": "Ethereum Compatibility",
+        "items": [
+          "integrations-and-sdks/ethereum-compatibility/overview",
+          "integrations-and-sdks/ethereum-compatibility/setup-solidity-abi",
+          "integrations-and-sdks/ethereum-compatibility/metamask-setup",
+          "integrations-and-sdks/ethereum-compatibility/hardhat-deployment",
+          "integrations-and-sdks/ethereum-compatibility/wagmi-integration"
+        ]
+      }
     ],
     "Standards": ["standards/overview"],
     "Technical Background": [
@@ -130,4 +152,4 @@ module.exports = {
       "faq/migrating-from-ink-3-to-4"
     ]
   },
-}
+};
