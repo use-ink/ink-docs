@@ -22,7 +22,7 @@ The [Pop CLI](https://learn.onpop.io/contracts/guides/deploy) handles the `ink-n
 
 To deploy your contract locally, you need a running blockchain node that supports ink! smart contracts. The recommended option is `ink-node`, a simple Polkadot blockchain configured with the `pallet-revive` for smart contracts ([learn more](../background/polkadot-sdk.md)).
 
-After [installing `ink-node`](./setup.md#installing-ink-node), you can start a local development chain by running:
+After [installing `ink-node`](./setup.md#ink-node), you can start a local development chain by running:
 
 ```bash
 ink-node

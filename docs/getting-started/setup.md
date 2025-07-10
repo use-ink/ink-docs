@@ -45,6 +45,33 @@ This is the recommended method, you can
 [download a binary from our releases page](https://github.com/use-ink/ink-node/releases)
 (Linux and Mac). 
 
+1. Go to the [ink-node releases page](https://github.com/use-ink/ink-node/releases)
+2. Under `Assets` of the latest release, download the appropriate binary for your platform:
+   - **Linux (ARM64)**: `ink-node-linux-arm64.tar.gz`
+   - **Linux (x86)**: `ink-node-linux.tar.gz`  
+   - **macOS**: `ink-node-mac-universal.tar.gz`
+
+3. Make the binary executable:
+   ```bash
+   chmod +x ./ink-node
+   ```
+
+#### Platform-specific Security Instructions
+
+**For macOS users:**
+When you first try to run `ink-node`, macOS may show a security warning.
+
+To allow the binary to run:
+1. Click the **question mark (?)** icon at the right top corner of the warning.
+2. Follow the Apple instructions that appear.
+3. Try running `ink-node` again and click **"Open Anyway"** when prompted.
+
+To confirm that `ink-node` is working correctly, run:
+```bash
+./ink-node --version
+```
+If you see version information, your installation is successful!
+
 ### (2) Build it yourself
 
 Alternatively, you can build the node by yourself.
