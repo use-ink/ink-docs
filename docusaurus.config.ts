@@ -122,6 +122,33 @@ module.exports = {
   ],
   plugins: [
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tutorials',
+        path: 'tutorials',
+        routeBasePath: 'tutorials',
+        sidebarPath: require.resolve('./tutorialsSidebars.js'),
+        editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
+        lastVersion: 'current',
+        versions: {
+          v5: {
+            label: 'v5',
+            path: 'v5',
+            banner: 'none',
+          },
+          current: {
+            label: 'v6',
+            path: 'v6',
+            banner: 'none',
+          },
+        },
+        // Limit table of contents to only show h2 headings
+        tocCollapsible: false,
+        tocMinHeadingLevel: 2,
+        tocMaxHeadingLevel: 2,
+      },
+    ],
+    [
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
