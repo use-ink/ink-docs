@@ -10,7 +10,6 @@ import { Button } from '../components/ui/button'
 import Link from '@docusaurus/Link'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import { StarryBackground } from '../components/starry-background'
-import { useCurrentVersion } from '../hooks/use-current-version'
 const head = (
   <>
     <title>Tutorials | ink!</title>
@@ -38,14 +37,6 @@ const head = (
 )
 
 export default function PageTutorials() {
-  const currentVersion = useCurrentVersion()
-  const versionedTutorials = tutorials.map((tutorial) => {
-    return {
-      ...tutorial,
-      link: tutorial.link.replace('docs/', `docs/${currentVersion?.label ?? 'v5'}/`),
-    }
-  })
-
   return (
     <Layout className="container overflow-hidden" head={head}>
       <div
@@ -105,7 +96,7 @@ export default function PageTutorials() {
       </div>
       <section id="tutorials" className="flex flex-col items-center justify-center max-w-[900px] mx-auto pt-20">
         <div className="grid grid-cols-1 gap-[36px] md:grid-cols-2">
-          {versionedTutorials.map((tutorial) => (
+          {tutorials.map((tutorial) => (
             <TutorialCard key={tutorial.title} {...tutorial} />
           ))}
         </div>
