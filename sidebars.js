@@ -83,7 +83,7 @@ module.exports = {
       "macros-attributes/selector",
       "macros-attributes/storage",
       "macros-attributes/topic",
-      "macros-attributes/chain-extension"
+      // "macros-attributes/chain-extension"
     ],
     "Storage & Data Structures": [
       "datastructures/overview",
@@ -108,7 +108,6 @@ module.exports = {
       }
     ],
     "Frontend Development": ["frontend/overview"],
-    "Standards": ["standards/overview"],
     "Technical Background": [
       "background/polkadot-sdk",
       "background/why-rust",

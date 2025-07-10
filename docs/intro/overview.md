@@ -36,9 +36,6 @@ Utilize ink!'s built-in security linter to identify common smart contract vulner
 ### **Frontend Development**
 Connect your contracts to web applications using TypeScript/JavaScript libraries, React hooks, and various SDK options for building complete dApps.
 
-### **Standards**
-Explore community-maintained standards for tokens (PSP-22), NFTs (PSP-34), and other common contract patterns.
-
 ### **Technical Background**
 Understand the deeper technical aspects including why Rust and RISC-V were chosen, how ink! compares to other smart contract languages, and when to choose smart contracts vs. parachains.
 
