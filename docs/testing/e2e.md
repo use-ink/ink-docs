@@ -1,5 +1,5 @@
 ---
-title: "Full e2e"
+title: "Full E2E"
 hide_title: true
 slug: /contract-testing/end-to-end-e2e-testing
 ---

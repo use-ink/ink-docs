@@ -1,5 +1,5 @@
 ---
-title: "Sandboxed e2e"
+title: "Sandboxed E2E"
 hide_title: true
 slug: /contract-testing/drink
 ---
