@@ -1,5 +1,22 @@
 module.exports = {
   tutorialsSidebar: [
-    "beginner/first-contract"
+    "overview",
+    {
+      type: "category",
+      label: "Getting Started",
+      items: [
+        "getting-started/creating-an-ink-project",
+        "getting-started/building-your-contract", 
+        "getting-started/deploy-your-contract",
+        "getting-started/calling-your-contract"
+      ]
+    },
+    {
+      type: "category", 
+      label: "Advanced Tutorials",
+      items: [
+        "advanced/contract-debugging"
+      ]
+    }
   ]
-}
+} 
