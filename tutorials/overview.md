@@ -1,6 +1,6 @@
 ---
 title: Tutorials Overview
-slug: /tutorials/
+slug: /overview
 hide_title: true
 ---
 
