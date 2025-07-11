@@ -101,79 +101,79 @@ function DocsVersionDropdown({ mobile, docsPluginId, dropdownActiveClassDisabled
   return <NavItem item={versionItem} />
 }
 
-// Component for tutorials context
-function TutorialsVersionDropdown({ mobile, dropdownActiveClassDisabled, dropdownItemsBefore, dropdownItemsAfter, ...props }: Props) {
-  const { search, hash } = useLocation()
-  const activeDocContext = useActiveDocContext('tutorials')
-  const versions = useVersions('tutorials')
-  const currentVersion = useCurrentVersion().label
-  const { savePreferredVersionName } = useDocsPreferredVersion('tutorials')
-  const dropdownVersion = useDocsVersionCandidates('tutorials')[0]
+// Component for tutorials context - kept for future use
+// function TutorialsVersionDropdown({ mobile, dropdownActiveClassDisabled, dropdownItemsBefore, dropdownItemsAfter, ...props }: Props) {
+//   const { search, hash } = useLocation()
+//   const activeDocContext = useActiveDocContext('tutorials')
+//   const versions = useVersions('tutorials')
+//   const currentVersion = useCurrentVersion().label
+//   const { savePreferredVersionName } = useDocsPreferredVersion('tutorials')
+//   const dropdownVersion = useDocsVersionCandidates('tutorials')[0]
 
-  function versionToLink(version: GlobalVersion): LinkLikeNavbarItemProps {
-    const targetDoc = getVersionTargetDoc(version, activeDocContext)
-    return {
-      label: version.label,
-      to: `${targetDoc.path}${search}${hash}`,
-      isActive: () => version === activeDocContext.activeVersion,
-      onClick: () => savePreferredVersionName(version.name),
-    }
-  }
+//   function versionToLink(version: GlobalVersion): LinkLikeNavbarItemProps {
+//     const targetDoc = getVersionTargetDoc(version, activeDocContext)
+//     return {
+//       label: version.label,
+//       to: `${targetDoc.path}${search}${hash}`,
+//       isActive: () => version === activeDocContext.activeVersion,
+//       onClick: () => savePreferredVersionName(version.name),
+//     }
+//   }
 
-  const items: LinkLikeNavbarItemProps[] = [
-    ...dropdownItemsBefore,
-    ...versions.map(versionToLink),
-    ...dropdownItemsAfter,
-  ]
+//   const items: LinkLikeNavbarItemProps[] = [
+//     ...dropdownItemsBefore,
+//     ...versions.map(versionToLink),
+//     ...dropdownItemsAfter,
+//   ]
 
-  const dropdownLabel = dropdownVersion.label
-  const dropdownTo = getVersionMainDoc(dropdownVersion).path
+//   const dropdownLabel = dropdownVersion.label
+//   const dropdownTo = getVersionMainDoc(dropdownVersion).path
 
-  const versionItem: NavItemProps = {
-    title: dropdownLabel,
-    href: dropdownTo,
-    links: items.map((item) => {
-      return {
-        label: (
-          <div className="flex items-center text-white">
-            <span>{item.label}</span>
-            {currentVersion === item.label && (
-              <span className="px-2 py-0.5 ml-4 text-black bg-white rounded-[8px] text-[12px]">latest</span>
-            )}
-          </div>
-        ),
-        href: item.to?.replace(/\/$/, ''),
-      }
-    }),
-  }
+//   const versionItem: NavItemProps = {
+//     title: dropdownLabel,
+//     href: dropdownTo,
+//     links: items.map((item) => {
+//       return {
+//         label: (
+//           <div className="flex items-center text-white">
+//             <span>{item.label}</span>
+//             {currentVersion === item.label && (
+//               <span className="px-2 py-0.5 ml-4 text-black bg-white rounded-[8px] text-[12px]">latest</span>
+//             )}
+//           </div>
+//         ),
+//         href: item.to?.replace(/\/$/, ''),
+//       }
+//     }),
+//   }
 
-  if (mobile) {
-    return (
-      <DefaultNavbarItem
-        {...props}
-        mobile={mobile}
-        label={translate({
-          id: 'theme.navbar.mobileVersionsDropdown.label',
-          message: 'Versions',
-          description: 'The label for the navbar versions dropdown on mobile view',
-        })}
-        to={getVersionMainDoc(dropdownVersion).path}
-      >
-        {items.map((linkLikeItem, i) => (
-          <DefaultNavbarItem
-            {...props}
-            key={i}
-            mobile={mobile}
-            {...linkLikeItem}
-            onClick={undefined}
-          />
-        ))}
-      </DefaultNavbarItem>
-    )
-  }
+//   if (mobile) {
+//     return (
+//       <DefaultNavbarItem
+//         {...props}
+//         mobile={mobile}
+//         label={translate({
+//           id: 'theme.navbar.mobileVersionsDropdown.label',
+//           message: 'Versions',
+//           description: 'The label for the navbar versions dropdown on mobile view',
+//         })}
+//         to={getVersionMainDoc(dropdownVersion).path}
+//       >
+//         {items.map((linkLikeItem, i) => (
+//           <DefaultNavbarItem
+//             {...props}
+//             key={i}
+//             mobile={mobile}
+//             {...linkLikeItem}
+//             onClick={undefined}
+//           />
+//         ))}
+//       </DefaultNavbarItem>
+//     )
+//   }
 
-  return <NavItem item={versionItem} />
-}
+//   return <NavItem item={versionItem} />
+// }
 
 export default function DocsVersionDropdownNavbarItem({
   mobile,
@@ -188,27 +188,19 @@ export default function DocsVersionDropdownNavbarItem({
   // Detect if we're in tutorials context
   const isInTutorials = pathname.startsWith('/tutorials')
   
+  // Hide version dropdown for tutorials
   if (isInTutorials) {
-    return (
-      <TutorialsVersionDropdown
-        mobile={mobile}
-        docsPluginId={docsPluginId}
-        dropdownActiveClassDisabled={dropdownActiveClassDisabled}
-        dropdownItemsBefore={dropdownItemsBefore}
-        dropdownItemsAfter={dropdownItemsAfter}
-        {...props}
-      />
-    )
-  } else {
-    return (
-      <DocsVersionDropdown
-        mobile={mobile}
-        docsPluginId={docsPluginId}
-        dropdownActiveClassDisabled={dropdownActiveClassDisabled}
-        dropdownItemsBefore={dropdownItemsBefore}
-        dropdownItemsAfter={dropdownItemsAfter}
-        {...props}
-      />
-    )
+    return null
   }
+  
+  return (
+    <DocsVersionDropdown
+      mobile={mobile}
+      docsPluginId={docsPluginId}
+      dropdownActiveClassDisabled={dropdownActiveClassDisabled}
+      dropdownItemsBefore={dropdownItemsBefore}
+      dropdownItemsAfter={dropdownItemsAfter}
+      {...props}
+    />
+  )
 }

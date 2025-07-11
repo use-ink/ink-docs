@@ -133,19 +133,6 @@ module.exports = {
         routeBasePath: 'tutorials',
         sidebarPath: require.resolve('./tutorialsSidebars.js'),
         editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
-        lastVersion: 'current',
-        versions: {
-          v5: {
-            label: 'v5',
-            path: 'v5',
-            banner: 'none',
-          },
-          current: {
-            label: 'v6',
-            path: 'v6',
-            banner: 'none',
-          },
-        },
       },
     ],
     [
