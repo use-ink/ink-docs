@@ -39,3 +39,16 @@ That's because it leverages LLVM as its backend to generate machine code for the
 The Rust compiler is a great help for that, since it reorders struct fields in order 
 to make each type as small as possible. Thus, Rust data structures are very compact,
 in many cases even more compact than in C.
+
+ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (eDSL):
+a domain-specific language of the Rust programming language.
+That means:
+
+* we allow only a subset of the Rust programming language features to be used
+  for writing smart contracts. For example, it is not possible do any 
+  multi-threading operations or access the web.
+* we provide annotations, macros, and primitives that are needed when writing
+  smart contracts. For example, annotations on what the smart contract's storage
+  struct is or what an event is.
+
+ink! is just standard Rust in a well-defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Polkadot SDK compatible RISC-V bytecode!

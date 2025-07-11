@@ -1,17 +1,21 @@
 module.exports = {
   reference: {
-    "Overview": [
+    "Welcome!": [
       "intro/intro",
-      "intro/current-state",
-      "faq/migrating-from-ink-5-to-6"
-    ],
-    "Getting started": [
-      "getting-started/setup",
-      "getting-started/creating",
-      "getting-started/compiling",
-      "getting-started/running",
-      "getting-started/deploying",
-      "getting-started/calling"
+      "intro/overview",
+      {
+        "type": "category",
+        "label": "Getting started",
+        "items": [
+          "getting-started/setup",
+          "getting-started/creating",
+          "getting-started/compiling",
+          "getting-started/deploying",
+          "getting-started/calling"
+        ]
+      },
+      "intro/tutorials-examples",
+      "intro/where-to-deploy"
     ],
     "Basics": [
       "basics/contract-template",
@@ -51,14 +55,9 @@ module.exports = {
     "Testing": [
       "testing/overview",
       "testing/unit-integration",
-      "testing/e2e",
       "testing/sandbox",
-      "testing/testing-with-live-state",
-      {
-        "type": "category",
-        "label": "Testnet",
-        "items": ["testing/testnet/overview", "testing/testnet/faucet"]
-      }
+      "testing/e2e",
+      // "testing/testing-with-live-state"
     ],
     "Debugging": [
       "debugging/overview",
@@ -67,7 +66,7 @@ module.exports = {
       "debugging/tracing",
       "debugging/sandbox",
       "debugging/decoding",
-      "debugging/replays",
+      // "debugging/replays",
       "debugging/pre-compiles"
     ],
     "Macros & Attributes": [
@@ -84,7 +83,7 @@ module.exports = {
       "macros-attributes/selector",
       "macros-attributes/storage",
       "macros-attributes/topic",
-      "macros-attributes/chain-extension"
+      // "macros-attributes/chain-extension"
     ],
     "Storage & Data Structures": [
       "datastructures/overview",
@@ -109,15 +108,14 @@ module.exports = {
       }
     ],
     "Frontend Development": ["frontend/overview"],
-    "Standards": ["standards/overview"],
     "Technical Background": [
-      "background/solidity-metamask-compat",
-      "background/why-riscv",
-      "background/why-rust",
-      "background/contracts-vs-rollups",
       "background/polkadot-sdk",
+      "background/why-rust",
+      "background/why-riscv",
+      "background/solidity-metamask-compat",
       "background/ink-vs-solidity",
       "background/ink-vs-cosmwasm",
+      "background/contracts-vs-parachains",
       "background/migrate-to-parachain"
     ],
     "FAQ": [

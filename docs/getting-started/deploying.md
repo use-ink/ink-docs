@@ -4,42 +4,80 @@ slug: /getting-started/deploy-your-contract
 hide_title: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ![Rocket Title Picture](/img/title/rocket.svg)
 
-# Deploy Your Contract
+Deploying a smart contract is the process of making your contract available on a blockchain so that it can be interacted with by others. In the Polkadot ecosystem, 
+this involves uploading your compiled contract code to a chain that supports smart contracts (i.e. `pallet-revive`), and then creating an instance of your contract. 
+This page will guide you through the steps to deploy your ink! contract locally, using both the command line and the Contracts UI.
 
-Now that we have generated the contract binary from our source code and connected to a local node, we want
-to deploy this contract onto our local node.
+# Launch a local node
 
-Smart contract deployment on `pallet-revive` is a little different than on traditional smart contract
-blockchains.
+:::tip Pro Tip
+The [Pop CLI](https://learn.onpop.io/contracts/guides/deploy) handles the `ink-node` for you, no need to install or launch.
+:::
 
-Whereas a completely new blob of smart contract source code is deployed each time you push a
-contract on other platforms, `pallet-revive` opts to optimize this behavior. For example, the standard
-ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the
-initial configuration (through the Solidity `constructor` function). Each of these instances take
-up space on the blockchain equivalent to the contract source code size, even though no code was
-actually changed.
+To deploy your contract locally, you need a running blockchain node that supports ink! smart contracts. The recommended option is `ink-node`, a simple Polkadot blockchain configured with the `pallet-revive` for smart contracts ([learn more](../background/polkadot-sdk.md)).
 
-For `pallet-revive`, the contract deployment process is split into two steps:
+After [installing `ink-node`](./setup.md#ink-node), you can start a local development chain by running:
+
+```bash
+ink-node
+```
+
+**Note:** `ink-node` uses the `--dev` flag by default. You may need to specify the `--dev` flag when running a different chain binary.
+
+<img src={useBaseUrl('/img/ink-node.png')} className="titlePic titleSpace" title="Screenshot of terminal starting a local node" />
+
+You can interact with your node using `cargo-contract`, `pop` or [the Contracts UI](https://ui.use.ink/). If you use the Contracts UI, you have to configure it to connect to the locally running node:
+
+- Click on the dropdown selector at the top left corner.
+- Choose "Local Node".
+
+![Connect to local node](/img/contracts-ui-local-node.png)
+
+## Deploy the contract
+
+Now that we have generated the contract binary from our source code and connected to a local node, we want to deploy this contract onto our local node.
+
+Smart contract deployment on Polkadot is a little different than on traditional smart contract blockchains.
+
+For example, the standard ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the initial configuration (through the Solidity `constructor` function). Each of these instances take up space on the blockchain equivalent to the contract source code size, even though no code was actually changed.
+
+The contract deployment process in Polkadot is split into two steps:
 
 1. Putting your contract code on the blockchain
 2. Creating an instance of your contract
 
-With this pattern, contract code like the ERC20 standard can be put on the blockchain one single
-time, but instantiated any number of times. No need to continually upload the same source code over
-and waste space on the blockchain.
+With this pattern, contract code like the ERC20 standard can be put on the blockchain one single time, but instantiated any number of times. No need to continually upload the same source code over and waste space on the blockchain.
+
+## Using the Terminal
+
+With `cargo-contract` or `pop` it's just a simple sequence of:
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  cargo contract instantiate --suri //Alice --args true
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  pop up --suri //Alice --args true
+  ```
+  </TabItem>
+</Tabs>
 
 ## Using the Contracts UI
 
-:::caution
-For ink! v6 only, this section on the Contracts UI uses an alpha version of the UI.
-:::
-
 ### 1. Upload Contract Code
 
-Here we will upload the contract code and instantiate one copy of the contract on the blockchain
-(which is usually why we upload the contract code in the first place):
+Here we will upload the contract code and instantiate one copy of the contract on the blockchain (which is usually why we upload the contract code in the first place):
 
 - Go to https://ui.use.ink/
 - Make sure you have ink! v6 selected in the sidebar
@@ -47,20 +85,16 @@ Here we will upload the contract code and instantiate one copy of the contract o
 - Click the **Upload New Contract Code** button in the Add New Contract page.
 - Choose an **Instantiation account** (e.g. ALICE).
 - Give the contract a descriptive **Name** (e.g. Flipper Contract).
-- Drag the `flipper.contract` file that contains the bundled binary blob and metadata into the drag
-  & drop area. You will see the UI parse the metadata and enabling the button that takes you to the next step.
+- Drag the `flipper.contract` file that contains the bundled binary blob and metadata into the drag & drop area. You will see the UI parse the metadata and enabling the button that takes you to the next step.
 - Click the **Next** button
 
 ![Flipper Instantiate Contract 01](/img/contracts-ui-0.png)
 
 ### 2. Instantiate a Contract on the Blockchain
 
-Smart contracts exist as an extension of the account system on the blockchain. Thus creating an
-instance of this contract will create a new `AccountId` (ETH-compatible address) which will store any balance managed by the
-smart contract and allow us to interact with the contract.
+Smart contracts exist as an extension of the account system on the blockchain. Thus creating an instance of this contract will create a new `AccountId` (ETH-compatible address) which will store any balance managed by the smart contract and allow us to interact with the contract.
 
-Now a screen displays the information that represents our smart contract. We are going to
-instantiate a copy of the smart contract:
+Now a screen displays the information that represents our smart contract. We are going to instantiate a copy of the smart contract:
 
 - Accept the default options for the contract **Deployment Constructor**.
 - Accept the default options **Max Gas Allowed** of `200000`.
@@ -75,13 +109,3 @@ The transaction is now queued, review your data and click **Upload and Instantia
 You will be redirected to a new page, where you can interact with the newly created contract instance.
 
 ![Flipper Instantiate Success](/img/contracts-ui-3.png)
-
-## Using `cargo-contract`
-
-Contracts can be deployed via the command-line as well. With `cargo-contract`
-it's just a simple sequence of:
-
-```bash
-$ cargo contract build
-$ cargo contract instantiate --suri //Alice --args true
-```

@@ -1,29 +1,29 @@
 ---
-title: Smart Contracts vs. Rollups
+title: Smart Contracts vs. Parachains
 hide_title: true
-slug: /background/smart-contracts-vs-polkadot-rollups
+slug: /background/smart-contracts-vs-parachains
 ---
 
 <head>
-    <meta name="description" content="Comparison of Polkadot Rollups/Parachains and Smart Contracts." />
-    <meta name="keywords" content="Polkadot, Rollups, Parachain, Smart Contracts" />
-    <meta property="og:title" content="Smart Contracts vs. Polkadot Rollups" />
-    <meta property="og:description" content="Comparison of Polkadot Rollups/Parachains and Smart Contracts." />
+    <meta name="description" content="Comparison of Polkadot Parachains and Smart Contracts." />
+    <meta name="keywords" content="Polkadot, Parachain, Smart Contracts" />
+    <meta property="og:title" content="Smart Contracts vs. Polkadot Parachains" />
+    <meta property="og:description" content="Comparison of Polkadot Parachains and Smart Contracts." />
 </head>
 
 ![Polkadot Title Picture](/img/title/polkadot.svg)
 
-# Smart Contracts vs. Polkadot Rollups
+# Smart Contracts vs. Polkadot Parachains
 
-One of the first questions we typically get when somebody learns about the Polkadot SDK SDK is when to develop a
-rollup (i.e. a parachain) vs. when to develop a smart contract.
+One of the first questions we typically get when somebody learns about the Polkadot SDK is when to develop a
+parachain vs. when to develop a smart contract.
 
 ## The Difference
 The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Polkadot SDK terminology this state transition function is called the chain's _runtime_.
 
 The distinction to other ecosystems here is that, in the context of Polkadot, parachains and smart contracts exist at different layers of the stack: _smart contracts sit on top of parachains_. Parachains would usually be described as layer-1 blockchains — except for that they don't have to build their own security, are upgradable, and interoperable.
 
-## Polkadot Rollups
+## Polkadot Parachains
 It's noteworthy that a parachain's state transition function doesn't get further validated — it's up to the parachain how it utilizes its slot time. The parachain already pre-paid for its slot when it won the slot auction on Polkadot or Kusama. This means the parachain can build its own (blockchain) world! For example, it can decide on how transaction fees are charged ‒ or even if transaction fees are charged at all. These options are crucial when building new or more user-friendly business models. 
 
 Other distinguishing factors between parachains that we observe in the wild are differences in how governance works or the crypto-economics. There are some constraints on how the parachain can build its world though. Like physics in the real world it has to adhere to certain ground rules. For Polkadot and Kusama that's for example the consensus algorithm for the Relay Chain to communicate with the parachain. From those ground rules the advantages of Polkadot and Kusama emerge. Advantages like the aforementioned shared security, cross-chain communication, or guaranteed execution slot time.
@@ -35,9 +35,7 @@ _To restate this important distinction: developing a parachain runtime is differ
 
 ## The Trade-off
 
-![Smart Contract vs. Rollup](/img/smart-contract-vs-rollup.svg)
+![Smart Contract vs. Parachain](/img/smart-contract-vs-parachain.svg)
 
 The trade-off is that with a parachain one has the freedom to decide on (nearly) all the rules that make up the parachain. With a smart contract one is constrained by what the chain allows and the safety pillars that necessarily have to be in place. A smart contract can never be as fast as a native pallet built in the parachain runtime ‒ there is too much logic in between.
-A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that.
-
-
+A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that. 

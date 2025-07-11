@@ -1,12 +1,12 @@
 ---
-title: Migrate an ink! contract to a Rollup
+title: Migrate an ink! contract to a Parachain
 hide_title: true
 slug: /background/migrate-ink-contracts-to-polkadot-frame-parachain-rollup
 ---
 
 ![Polkadot Title Picture](/img/title/polkadot.svg)
 
-# Migrate an ink! contract to a Polkadot SDK Runtime
+# Migrate an ink! contract to a Parachain
 
 Smart contracts written in ink! are a great starting point for developing applications in the Polkadot ecosystem. Developers can go from an idea to a fully functioning web3 application "in production" in a matter of hours or days. This allows faster feedback on ideas, to validate whether there is user demand in the first place, and to easily iterate and refine the implementation.
 
@@ -23,7 +23,7 @@ Much of the difficulty in launching a parachain comes in configuring a node impl
 
 ## Utilizing existing FRAME pallets
 
-There is a rich library of FRAME pallets, which may provide a drop in replacement for some (or all) of your smart contract functionality. For example, for a [PSP22](../standards/overview.md) (similar to ERC20) fungible token contract, this could be replaced either by the native Parachain token itself via `pallet_balances` or by an asset on `pallet_assets`. Governance functions could be replaced by e.g. `pallet_democracy`, and so on. See [`polkadot-sdk`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame) for a range of pre-built pallets which can be used to handle some common functions.
+There is a rich library of FRAME pallets, which may provide a drop in replacement for some (or all) of your smart contract functionality. For example, for a ERC20 fungible token contract, this could be replaced either by the native Parachain token itself via `pallet_balances` or by an asset on `pallet_assets`. Governance functions could be replaced by e.g. `pallet_democracy`, and so on. See [`polkadot-sdk`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame) for a range of pre-built pallets which can be used to handle some common functions.
 
 ## Similarities and differences between ink! and `FRAME`
 

@@ -38,12 +38,12 @@ Pendulum and others.
 
 First you need a node that has produced some blocks with state. We'll
 use `ink-node` for this purpose.
-[See here](../getting-started/running.md) for how to run it.
+[See here](../getting-started/deploying.md) for how to run it.
 
 You should get output similar to:
 
 ```
-$ ink-node
+ink-node
 2023-09-26 07:58:28.885  INFO main sc_cli::runner: ink! Node
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ✌️  version 0.30.0-124c159ba94    
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ❤️  by Parity Technologies <admin@parity.io>, 2021-2023    
@@ -68,7 +68,7 @@ cargo contract instantiate --suri //Alice --args true -x
 You can check that the contract exists by querying its state via `cargo-contract`:
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
@@ -135,7 +135,7 @@ If you now execute the `cargo-contract` storage command against this node, you'l
 that the `flipper` contract exists there as well:
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
@@ -222,7 +222,7 @@ If you query the contract storage on our Chopsticks fork, you'll see that the E2
 flipped the boolean:
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
@@ -233,7 +233,7 @@ $ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4F
 On the "original" `ink-node` chain the boolean will be untouched.
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+

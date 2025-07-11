@@ -1,5 +1,5 @@
 ---
-title: Polkadot SDK
+title: Polkadot SDK and ink!
 hide_title: true
 slug: /background/polkadot-sdk
 ---
@@ -15,13 +15,13 @@ slug: /background/polkadot-sdk
 
 # Polkadot SDK
 
-ink! is a programming language for smart contracts; blockchains built with [the Polkadot SDK](https://polkadot.com/platform/sdk)
+ink! is a programming language for smart contracts; blockchains built with [the Polkadot SDK](https://github.com/paritytech/polkadot-sdk)
 can choose from a number of smart contract languages which one(s) they want to support.
 ink! is one of them. It is an opinionated language that we have built by extending the popular Rust programming language with functionality needed to make it smart contract compatible.
 
 ## How does ink! tie into Polkadot SDK?
 
-[Polkadot SDK](https://polkadot.com/platform/sdk) is a framework for building blockchains – those can be standalone blockchains or blockchains connected to [Kusama](http://kusama.network) or [Polkadot](http://polkadot.network), so called _parachains_. The Polkadot SDK contains a number of modules, in Polkadot SDK terminology those are called _pallets_. Polkadot SDK comes with a set of pallets for many requirements modern blockchains typically have – staking, fungible tokens, non-fungible tokens, governance, etc.
+[Polkadot SDK](https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/index.html) is a framework for building blockchains – those can be standalone blockchains or blockchains connected to [Kusama](http://kusama.network) or [Polkadot](http://polkadot.network), so called _parachains_. The Polkadot SDK contains a number of modules, in Polkadot SDK terminology those are called _pallets_. Polkadot SDK comes with a set of pallets for many requirements modern blockchains typically have – staking, fungible tokens, non-fungible tokens, governance, etc.
 
 Polkadot SDK also ships with a module for smart contracts, this module is called [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive).
 If a parachain is developed in the Polkadot SDK it can easily add smart contract functionality by including this pallet.

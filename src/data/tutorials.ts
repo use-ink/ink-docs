@@ -15,7 +15,7 @@ export const tutorials = [
     image: '/img/title/cargo-contract.svg',
     title: 'Compiling Your Contract',
     description: 'Learn how to compile your contract',
-    link: 'tutorials/getting-started/building-your-contract',
+    link: 'docs/getting-started/building-your-contract',
   },
   {
     image: '/img/title/rocket.svg',
