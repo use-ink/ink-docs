@@ -51,7 +51,7 @@ module.exports = {
         srcDark: '/img/text-white.svg',
       },
       items: [
-        {
+                {
           type: 'docsVersionDropdown',
           position: 'right',
           dropdownActiveClassDisabled: true,
@@ -121,6 +121,16 @@ module.exports = {
     },
   ],
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tutorials',
+        path: 'tutorials',
+        routeBasePath: 'tutorials',
+        sidebarPath: require.resolve('./sidebars-tutorials.js'),
+        editUrl: 'https://github.com/use-ink/ink-docs/edit/master/',
+      },
+    ],
     [
       '@docusaurus/plugin-client-redirects',
       {
