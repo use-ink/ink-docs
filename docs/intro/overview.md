@@ -30,7 +30,7 @@ Deep dive into ink!'s powerful macro system that transforms your Rust code into 
 ### **[Storage & Data Structures](../datastructures/overview.md)**
 Understand how to efficiently store and manage data in your contracts, from simple values to complex mappings and custom data structures.
 
-### **[Linter](/linter/overview.md)**
+### **[Linter](../linter/overview.md)**
 Utilize ink!'s built-in security linter to identify common smart contract vulnerabilities and ensure your code follows best practices.
 
 ### **[Frontend Development](../frontend/overview.md)**
