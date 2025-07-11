@@ -144,7 +144,7 @@ _To restate this important distinction: developing a parachain runtime is differ
 
 ## The Trade-off
 
-![Smart Contract vs. Parachain](/img/smart-contract-vs-rollup.svg)
+![Smart Contract vs. Parachain](/img/smart-contract-vs-parachain.svg)
 
 The trade-off is that with a parachain one has the freedom to decide on (nearly) all the rules that make up the parachain. With a smart contract one is constrained by what the chain allows and the safety pillars that necessarily have to be in place. A smart contract can never be as fast as a native pallet built in the parachain runtime ‒ there is too much logic in between.
 A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that.
