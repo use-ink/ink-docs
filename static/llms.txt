@@ -105,51 +105,6 @@ docs/
 
 # Files
 
-## File: docs/background/contracts-vs-parachains.md
-````markdown
----
-title: Smart Contracts vs. Parachains
-hide_title: true
-slug: /background/smart-contracts-vs-parachains
----
-
-<head>
-    <meta name="description" content="Comparison of Polkadot Parachains and Smart Contracts." />
-    <meta name="keywords" content="Polkadot, Parachain, Smart Contracts" />
-    <meta property="og:title" content="Smart Contracts vs. Polkadot Parachains" />
-    <meta property="og:description" content="Comparison of Polkadot Parachains and Smart Contracts." />
-</head>
-
-![Polkadot Title Picture](/img/title/polkadot.svg)
-
-# Smart Contracts vs. Polkadot Parachains
-
-One of the first questions we typically get when somebody learns about the Polkadot SDK is when to develop a
-parachain vs. when to develop a smart contract.
-
-## The Difference
-The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Polkadot SDK terminology this state transition function is called the chain's _runtime_.
-
-The distinction to other ecosystems here is that, in the context of Polkadot, parachains and smart contracts exist at different layers of the stack: _smart contracts sit on top of parachains_. Parachains would usually be described as layer-1 blockchains — except for that they don't have to build their own security, are upgradable, and interoperable.
-
-## Polkadot Parachains
-It's noteworthy that a parachain's state transition function doesn't get further validated — it's up to the parachain how it utilizes its slot time. The parachain already pre-paid for its slot when it won the slot auction on Polkadot or Kusama. This means the parachain can build its own (blockchain) world! For example, it can decide on how transaction fees are charged ‒ or even if transaction fees are charged at all. These options are crucial when building new or more user-friendly business models. 
-
-Other distinguishing factors between parachains that we observe in the wild are differences in how governance works or the crypto-economics. There are some constraints on how the parachain can build its world though. Like physics in the real world it has to adhere to certain ground rules. For Polkadot and Kusama that's for example the consensus algorithm for the Relay Chain to communicate with the parachain. From those ground rules the advantages of Polkadot and Kusama emerge. Advantages like the aforementioned shared security, cross-chain communication, or guaranteed execution slot time.
-
-## Smart Contracts
-For smart contracts, on the other hand, an existing parachain has to include the `pallet-revive` for users to deploy smart contracts. The deployed smart contract is always untrusted code. Anyone (or any program) that has tokens of the chain can upload a smart contract without requiring permission. Smart contracts allow _permissionless_ deployment of _untrusted_ programs on a blockchain. The `pallet-revive` has to assume that these programs are adversarial, it has to put a number of safety pillars in place to ensure that the contract can not e.g. stall the chain or cause state corruption of other contracts. For `pallet-revive` those safety pillars include mechanisms like gas metering or deposits for storing data on-chain.
-
-_To restate this important distinction: developing a parachain runtime is different from developing a smart contract — a smart contract sits on top of a parachain_.
-
-## The Trade-off
-
-![Smart Contract vs. Parachain](/img/smart-contract-vs-parachain.svg)
-
-The trade-off is that with a parachain one has the freedom to decide on (nearly) all the rules that make up the parachain. With a smart contract one is constrained by what the chain allows and the safety pillars that necessarily have to be in place. A smart contract can never be as fast as a native pallet built in the parachain runtime ‒ there is too much logic in between.
-A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that.
-````
-
 ## File: docs/background/ink-vs-solidity.md
 ````markdown
 ---
@@ -4358,6 +4313,51 @@ let caller: AccountId = self.env().caller();
 ```
 ````
 
+## File: docs/background/contracts-vs-parachains.md
+````markdown
+---
+title: Smart Contracts vs. Parachains
+hide_title: true
+slug: /background/smart-contracts-vs-parachains
+---
+
+<head>
+    <meta name="description" content="Comparison of Polkadot Parachains and Smart Contracts." />
+    <meta name="keywords" content="Polkadot, Parachain, Smart Contracts" />
+    <meta property="og:title" content="Smart Contracts vs. Polkadot Parachains" />
+    <meta property="og:description" content="Comparison of Polkadot Parachains and Smart Contracts." />
+</head>
+
+![Polkadot Title Picture](/img/title/polkadot.svg)
+
+# Smart Contracts vs. Polkadot Parachains
+
+One of the first questions we typically get when somebody learns about the Polkadot SDK is when to develop a
+parachain vs. when to develop a smart contract.
+
+## The Difference
+The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Polkadot SDK terminology this state transition function is called the chain's _runtime_.
+
+The distinction to other ecosystems here is that, in the context of Polkadot, parachains and smart contracts exist at different layers of the stack: _smart contracts sit on top of parachains_. Parachains would usually be described as layer-1 blockchains — except for that they don't have to build their own security, are upgradable, and interoperable
+
+## Polkadot Parachains
+It's noteworthy that a parachain's state transition function doesn't get further validated — it's up to the parachain how it utilizes its slot time. The parachain already pre-paid for its slot when it won the slot auction on Polkadot or Kusama. This means the parachain can build its own (blockchain) world! For example, it can decide on how transaction fees are charged ‒ or even if transaction fees are charged at all. These options are crucial when building new or more user-friendly business models. 
+
+Other distinguishing factors between parachains that we observe in the wild are differences in how governance works or the crypto-economics. There are some constraints on how the parachain can build its world though. Like physics in the real world it has to adhere to certain ground rules. For Polkadot and Kusama that's for example the consensus algorithm for the Relay Chain to communicate with the parachain. From those ground rules the advantages of Polkadot and Kusama emerge. Advantages like the aforementioned shared security, cross-chain communication, or guaranteed execution slot time.
+
+## Smart Contracts
+For smart contracts, on the other hand, an existing parachain has to include the `pallet-revive` for users to deploy smart contracts. The deployed smart contract is always untrusted code. Anyone (or any program) that has tokens of the chain can upload a smart contract without requiring permission. Smart contracts allow _permissionless_ deployment of _untrusted_ programs on a blockchain. The `pallet-revive` has to assume that these programs are adversarial, it has to put a number of safety pillars in place to ensure that the contract can not e.g. stall the chain or cause state corruption of other contracts. For `pallet-revive` those safety pillars include mechanisms like gas metering or deposits for storing data on-chain.
+
+_To restate this important distinction: developing a parachain runtime is different from developing a smart contract — a smart contract sits on top of a parachain_.
+
+## The Trade-off
+
+![Smart Contract vs. Parachain](/img/smart-contract-vs-parachain.svg)
+
+The trade-off is that with a parachain one has the freedom to decide on (nearly) all the rules that make up the parachain. With a smart contract one is constrained by what the chain allows and the safety pillars that necessarily have to be in place. A smart contract can never be as fast as a native pallet built in the parachain runtime ‒ there is too much logic in between.
+A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that.
+````
+
 ## File: docs/background/ink-vs-cosmwasm.md
 ````markdown
 ---
@@ -4770,57 +4770,6 @@ That means:
   struct is or what an event is.
 
 ink! is just standard Rust in a well-defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Polkadot SDK compatible RISC-V bytecode!
-````
-
-## File: docs/basics/metadata/overview.md
-````markdown
----
-title: Overview
-hide_title: true
-slug: /basics/metadata
----
-
-![Metadata Title Picture](/img/title/metadata-revive.svg)
-
-# Metadata
-
-You can think of "Metadata" this way: when a contract is built,
-the product of this process is a binary (the `.polkavm` file) that 
-contains just the bytecode of your contract. 
-
-Without further information it's
-not possible to know what this bytecode refers to. For example,
-which functions can be called in there or what their arguments
-are. This additional information that describes what the raw binary
-is about is called metadata — data that describes other data.
-
-Metadata is used to describe a contract in a language agnostic way. 
-It is intended to be used by third party tools (e.g. UIs, block explorers e.t.c) 
-in order to correctly call contract functions and interpret events.
-
-ink! supports two formats of metadata:
-
-* [Our own native ink! metadata format](./ink-format.md)
-* [The Solidity metadata format](./solidity-format.md)
-
-Supporting the Solidity metadata format allows developers to use Solidity tools
-(e.g. [ethers.js][ethers-js]) to transparently interact with 
-[Solidity ABI compatible ink! contracts][sol-compat].
-
-So developers have a choice which metadata they want to generate for a contract.
-They can decide when invoking `cargo-contract`:
-
-```shell
-cargo contract build ---metadata <ink|solidity>
-```
-
-Generating Solidity metadata is only possible if all constructor and message 
-argument and return types, and event argument types can be mapped to 
-equivalent Solidity ABI types ([more details here][sol-type-mapping]).
-
-[ethers-js]: https://docs.ethers.org/
-[sol-compat]: ../../background/solidity-metamask-compat.md
-[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
 ````
 
 ## File: docs/basics/metadata/solidity-format.md
@@ -9285,137 +9234,6 @@ tests at the top will test the lower layers of the pyramid as part
 of them.
 ````
 
-## File: docs/testing/sandbox.md
-````markdown
----
-title: "Sandboxed e2e"
-hide_title: true
-slug: /contract-testing/drink
----
-
-![Drink Title Picture](/img/title/drink.svg)
-
-:::note
-TODO This page has not yet been reviewed for ink! v6.
-:::
-
-# DRink!
-
-Apart from the core ink! testing framework, we also provide the [DRink!](https://github.com/use-ink/drink) library.
-It offers an intermediate solution between integration and E2E testing.
-
-Intuitively, DRink! maintains a full in-memory blockchain state and allows you to interact with it directly.
-This gives a notably robust methodology in contrast to the off-chain engine facilitated by the `ink::test` macro.
-Nevertheless, it is essential to note that the absence of the entire node layer makes the environment less realistic compared to the comprehensive setup employed in the end-to-end tests.
-
-## Comparison to the other testing strategies
-
-To better assess when DRink! performs better than other testing methods, it is crucial to gain a deeper understanding of the consequences of its unique design and the trade-offs it entails.
-
-1. **Speed:** since DRink! doesn't spawn any node or background process, everything happens locally, within the testing thread.
-This means that the execution can be synchronous and significantly faster than the E2E tests.
-Therefore, its performance should be comparable to the unit or integration testing.
-Also, there is no block production or finalization delay, which is a noticeable factor in the E2E tests.
-Thanks to that, we can launch long-running simulations in a reasonable time.
-
-2. **Testing multiple contracts:** since we are working with a full blockchain state, we can perform any interaction with the contracts, which includes working with mutliple contracts at the same time.
-Of course, this is the same as in the E2E tests, but it is not possible in either the unit or integration tests.
-
-3. **Working with arbitrary runtimes:** similarly to the E2E tests, where we can spawn any node with customized runtime (Polkadot's term for the state transition function), in DRink! tests we can work with any blockchain runtime we want.
-
-4. **Full control over runtime state:** we hold the state of the blockchain and exercise full control over it, so we can easily manipulate it however we want.
-This covers manipulating block number, timestamp, account balances, etc.
-Some of these are also possible in the E2E tests, but usually they require more effort or overhead.
-
-5. **Powerful features:** thanks to the unique design of DRink!, we can easily take advantage of some powerful, not available in other testing strategies, features:
-
-   - **contract mocking:** you can mock any contract or message you want, specifying the default behavior or the exact return value.
-   - **enhanced debugging and call tracing:** you can get more insights into the contract execution process, like stack trace, debug buffers and more.
-
-Nevertheless, there are some drawbacks of DRink! as well:
-
-1. **No node layer:** since we don't spawn any node, we don't have access to the node layer, which means that we can't test any node-related functionality, like RPC calls, block production, etc.
-
-2. **Artificial, isolated environment:** this is the main trade-off of DRink!.
-It might give a false sense of security, while in the real environment, the contract could behave differently.
-The discrepancy can be mitigated by a careful and precise simulation and setup of the environment, but it is still a factor to consider.
-
-3. **No typed contract API:** currently, DRink! works with string-encoded arguments and values, which means that we lose the type safety and convenience that was present in the other testing frameworks.
-Fortunately, this is going to change soon, as there is an ongoing effort to integrate it with [ink-wrapper](https://github.com/Cardinal-Cryptography/ink-wrapper) library.
-
-## When to use `DRink!`?
-
-Usually, DRink! is a good choice for the development phase of your project.
-When the iteration speed is crucial, and you want to quickly test your contracts, DRink! will offer a versatile, yet highly efficient testing environment.
-However, you must not forget that it is not a replacement for the E2E tests, which should be run before the deployment to the production network, as well as in your CI/CD pipelines.
-
-DRink! also comes in handy when you need to:
- - mock some parts of your contract suite
- - debug the execution process
- - launch long-running simulations, that would normally take a lot of time when relying on a real block-time
-
-## How to use DRink!?
-
-There are three ways to use DRink!:
-
-### Directly as a library
-
-This way you gain access to full DRink! power in your test suites.
-
-`drink` library is continuously published to [crates.io](https://crates.io/crates/drink), so you can use it in your project with either `cargo add drink` or by adding the following line to your `Cargo.toml`:
-```toml
-drink = { version = "0.8" }
-```
-
-Then, you can write your tests like this:
-```rust
-#[cfg(test)]
-mod tests {
-    /// This will take care of building all contract dependencies in the compilation phase and gather all contract 
-    /// bundles (metadata and the compiled code) into a single registry.
-    #[drink::contract_bundle_provider]
-    enum BundleProvider {}
-
-   /// Within `drink::test` macro, you are provided with a `session` object, which is a wrapper around the
-   /// blockchain state. You can use it to deploy contracts, call their methods, and more.
-    #[drink::test]
-    fn deploy_and_call_a_contract(mut session: Session) -> Result<(), Box<dyn Error>> {
-        let result: bool = sesison
-            .deploy_bundle_and(BundleProvider::local(), "new", &["true"], NO_SALT, NO_ENDOWMENT)?
-            .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
-            .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
-            .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
-            .call("get", NO_ARGS, NO_ENDOWMENT)??;
-        assert_eq!(result, false);
-    }
-}
-```
-
-You can check some helpful and verbose examples [here](https://github.com/inkdevhub/drink/tree/main/examples), including the [**quick start guide**](https://github.com/inkdevhub/drink/tree/main/examples/quick-start-with-drink).
-
-### As an alternative backend to ink!'s E2E testing framework
-
-DRink! is already integrated with the ink! framework and can be used as a drop-in replacement for the standard E2E testing environment.
-Just use corresponding argument in the test macro:
-```rust
-#[ink_e2e::test(backend(runtime_only))]
-```
-to your test function and you have just switched from E2E testcase to DRink!-based one, that doesn't use any running node in the background!
-
-For a full example check out [ink! repository](https://github.com/use-ink/ink-examples/tree/main/e2e-runtime-only-backend).
-
-### With a command line tool
-
-We provide a CLI which puts DRink! behind friendly TUI.
-For more details, consult [its README](https://github.com/inkdevhub/drink/blob/main/drink-cli/README.md).
-
-Similarly to `drink` library, `drink-cli` is published to [crates.io](https://crates.io/crates/drink-cli) as well.
-You can install it with:
-```shell
-cargo install drink-cli
-```
-````
-
 ## File: docs/background/migrate-to-parachain.md
 ````markdown
 ---
@@ -9721,6 +9539,53 @@ Alternatively the state could be initialized via dispatchable extrinsic(s) which
 ### Adjusting UIs
 
 User interfaces will need to be adjusted to interact with a pallet rather than a contract. This should be relatively straightforward since client libraries usually have first-class support for interacting with Polkadot SDK pallets, and the signing etc. should already be integrated.
+````
+
+## File: docs/basics/metadata/overview.md
+````markdown
+---
+title: Overview
+hide_title: true
+slug: /basics/metadata
+---
+
+![Metadata Title Picture](/img/title/metadata-revive.svg)
+
+# Metadata
+
+You can think of "Metadata" this way: when a contract is built,
+the product of this process is a binary (the `.polkavm` file) that 
+contains just the bytecode of your contract. 
+
+Without further information it's
+not possible to know what this bytecode refers to. For example,
+which functions can be called in there or what their arguments
+are. This additional information that describes what the raw binary
+is about is called metadata — data that describes other data.
+
+Metadata is used to describe a contract in a language agnostic way. 
+It is intended to be used by third party tools (e.g. UIs, block explorers e.t.c) 
+in order to correctly call contract functions and interpret events.
+
+ink! supports two formats of metadata:
+
+* [Our own native ink! metadata format](./ink-format.md)
+* [The Solidity metadata format](./solidity-format.md)
+
+Supporting the Solidity metadata format allows developers to use Solidity tools
+(e.g. [ethers.js][ethers-js]) to transparently interact with 
+[Solidity ABI compatible ink! contracts][sol-compat].
+
+So developers have a choice which metadata they want to generate for a contract.
+They can decide when using the `--metadata` flag with `ink` or `solidity.
+
+Generating Solidity metadata is only possible if all constructor and message 
+argument and return types, and event argument types can be mapped to 
+equivalent Solidity ABI types ([more details here][sol-type-mapping]).
+
+[ethers-js]: https://docs.ethers.org/
+[sol-compat]: ../../background/solidity-metamask-compat.md
+[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
 ````
 
 ## File: docs/basics/contract-verification.md
@@ -10140,76 +10005,6 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 Learn more about the [testing strategies for ink! contracts](../testing/overview.md).
 ````
 
-## File: docs/intro/overview.md
-````markdown
----
-title: Overview
-hide_title: true
-slug: /overview
----
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
-
-Welcome to the ink! documentation, the Rust-based smart contract language for the Polkadot ecosystem. This documentation will take you from your first "Hello, World!" contract to building sophisticated decentralized applications.
-
-## Overview
-
-### **Getting Started**
-Begin your ink! journey with setup instructions, creating your first contract, and deploying it to a blockchain. Perfect for newcomers to both ink! and smart contract development.
-
-### **Basics**
-Master the fundamental concepts of ink! development including storage, contract interactions, events, and the ABI system that enables interoperability with other languages like Solidity.
-
-### **Testing**
-Learn comprehensive testing strategies from unit tests to end-to-end testing, including working with testing tools like DRink! for robust contract development.
-
-### **Debugging**
-Discover tools and techniques for debugging your contracts, from event logging to tracing execution and using development tools.
-
-### **Macros & Attributes**
-Deep dive into ink!'s powerful macro system that transforms your Rust code into smart contracts, including storage annotations, message definitions, and event handling.
-
-### **Storage & Data Structures**
-Understand how to efficiently store and manage data in your contracts, from simple values to complex mappings and custom data structures.
-
-### **Linter**
-Utilize ink!'s built-in security linter to identify common smart contract vulnerabilities and ensure your code follows best practices.
-
-### **Frontend Development**
-Connect your contracts to web applications using TypeScript/JavaScript libraries, React hooks, and various SDK options for building complete dApps.
-
-### **Technical Background**
-Understand the deeper technical aspects including why Rust and RISC-V were chosen, how ink! compares to other smart contract languages, and when to choose smart contracts vs. parachains.
-
-## Key Features of ink! v6
-
-- **RISC-V & PolkaVM**: Modern execution environment for better performance
-- **Solidity Compatibility**: Seamless interoperability with Ethereum ecosystem
-- **Rust Ecosystem**: Access to existing Rust libraries and tooling
-- **Type Safety**: Compile-time guarantees for safer smart contracts
-- **Polkadot Integration**: Native support for cross-chain functionality
-
-## Quick Navigation
-
-- **New to ink!?** → Start with [Introduction to ink!](./intro.mdx)
-- **Ready to code?** → Jump to [Getting Started](../getting-started/setup.md)
-- **Need examples?** → Check out [Smart Contract Examples](https://github.com/use-ink/ink-examples)
-- **Migrating?** → See [Migration Guides](../faq/migrating-from-ink-5-to-6.md)
-- **Having issues?** → Visit [FAQ](../faq/faq.md)
-
-## Community & Support
-
-ink! is actively developed and maintained by Parity Technologies with strong community support. Whether you're building simple utilities or complex DeFi protocols, this documentation will guide you through every step of your ink! development journey.
-
-## What is ink!?
-
-<img src={useBaseUrl('/img/what-is-ink.png')} width="250" style={{ borderRadius: 10, border: '1px solid slategrey' }} />
-
-ink! is a programming language for writing smart contracts...
-````
-
 ## File: docs/linter/overview.md
 ````markdown
 ---
@@ -10267,6 +10062,137 @@ pub fn test(&mut self) {
     #[cfg_attr(dylint_lib = "ink_linting", allow(strict_balance_equality))]
     if self.env().balance() == 10 { /* ... */ }
 }
+```
+````
+
+## File: docs/testing/sandbox.md
+````markdown
+---
+title: "Sandboxed E2E"
+hide_title: true
+slug: /contract-testing/drink
+---
+
+![Drink Title Picture](/img/title/drink.svg)
+
+:::note
+TODO This page has not yet been reviewed for ink! v6.
+:::
+
+# DRink!
+
+Apart from the core ink! testing framework, we also provide the [DRink!](https://github.com/use-ink/drink) library.
+It offers an intermediate solution between integration and E2E testing.
+
+Intuitively, DRink! maintains a full in-memory blockchain state and allows you to interact with it directly.
+This gives a notably robust methodology in contrast to the off-chain engine facilitated by the `ink::test` macro.
+Nevertheless, it is essential to note that the absence of the entire node layer makes the environment less realistic compared to the comprehensive setup employed in the end-to-end tests.
+
+## Comparison to the other testing strategies
+
+To better assess when DRink! performs better than other testing methods, it is crucial to gain a deeper understanding of the consequences of its unique design and the trade-offs it entails.
+
+1. **Speed:** since DRink! doesn't spawn any node or background process, everything happens locally, within the testing thread.
+This means that the execution can be synchronous and significantly faster than the E2E tests.
+Therefore, its performance should be comparable to the unit or integration testing.
+Also, there is no block production or finalization delay, which is a noticeable factor in the E2E tests.
+Thanks to that, we can launch long-running simulations in a reasonable time.
+
+2. **Testing multiple contracts:** since we are working with a full blockchain state, we can perform any interaction with the contracts, which includes working with mutliple contracts at the same time.
+Of course, this is the same as in the E2E tests, but it is not possible in either the unit or integration tests.
+
+3. **Working with arbitrary runtimes:** similarly to the E2E tests, where we can spawn any node with customized runtime (Polkadot's term for the state transition function), in DRink! tests we can work with any blockchain runtime we want.
+
+4. **Full control over runtime state:** we hold the state of the blockchain and exercise full control over it, so we can easily manipulate it however we want.
+This covers manipulating block number, timestamp, account balances, etc.
+Some of these are also possible in the E2E tests, but usually they require more effort or overhead.
+
+5. **Powerful features:** thanks to the unique design of DRink!, we can easily take advantage of some powerful, not available in other testing strategies, features:
+
+   - **contract mocking:** you can mock any contract or message you want, specifying the default behavior or the exact return value.
+   - **enhanced debugging and call tracing:** you can get more insights into the contract execution process, like stack trace, debug buffers and more.
+
+Nevertheless, there are some drawbacks of DRink! as well:
+
+1. **No node layer:** since we don't spawn any node, we don't have access to the node layer, which means that we can't test any node-related functionality, like RPC calls, block production, etc.
+
+2. **Artificial, isolated environment:** this is the main trade-off of DRink!.
+It might give a false sense of security, while in the real environment, the contract could behave differently.
+The discrepancy can be mitigated by a careful and precise simulation and setup of the environment, but it is still a factor to consider.
+
+3. **No typed contract API:** currently, DRink! works with string-encoded arguments and values, which means that we lose the type safety and convenience that was present in the other testing frameworks.
+Fortunately, this is going to change soon, as there is an ongoing effort to integrate it with [ink-wrapper](https://github.com/Cardinal-Cryptography/ink-wrapper) library.
+
+## When to use `DRink!`?
+
+Usually, DRink! is a good choice for the development phase of your project.
+When the iteration speed is crucial, and you want to quickly test your contracts, DRink! will offer a versatile, yet highly efficient testing environment.
+However, you must not forget that it is not a replacement for the E2E tests, which should be run before the deployment to the production network, as well as in your CI/CD pipelines.
+
+DRink! also comes in handy when you need to:
+ - mock some parts of your contract suite
+ - debug the execution process
+ - launch long-running simulations, that would normally take a lot of time when relying on a real block-time
+
+## How to use DRink!?
+
+There are three ways to use DRink!:
+
+### Directly as a library
+
+This way you gain access to full DRink! power in your test suites.
+
+`drink` library is continuously published to [crates.io](https://crates.io/crates/drink), so you can use it in your project with either `cargo add drink` or by adding the following line to your `Cargo.toml`:
+```toml
+drink = { version = "0.8" }
+```
+
+Then, you can write your tests like this:
+```rust
+#[cfg(test)]
+mod tests {
+    /// This will take care of building all contract dependencies in the compilation phase and gather all contract 
+    /// bundles (metadata and the compiled code) into a single registry.
+    #[drink::contract_bundle_provider]
+    enum BundleProvider {}
+
+   /// Within `drink::test` macro, you are provided with a `session` object, which is a wrapper around the
+   /// blockchain state. You can use it to deploy contracts, call their methods, and more.
+    #[drink::test]
+    fn deploy_and_call_a_contract(mut session: Session) -> Result<(), Box<dyn Error>> {
+        let result: bool = sesison
+            .deploy_bundle_and(BundleProvider::local(), "new", &["true"], NO_SALT, NO_ENDOWMENT)?
+            .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
+            .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
+            .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
+            .call("get", NO_ARGS, NO_ENDOWMENT)??;
+        assert_eq!(result, false);
+    }
+}
+```
+
+You can check some helpful and verbose examples [here](https://github.com/inkdevhub/drink/tree/main/examples), including the [**quick start guide**](https://github.com/inkdevhub/drink/tree/main/examples/quick-start-with-drink).
+
+### As an alternative backend to ink!'s E2E testing framework
+
+DRink! is already integrated with the ink! framework and can be used as a drop-in replacement for the standard E2E testing environment.
+Just use corresponding argument in the test macro:
+```rust
+#[ink_e2e::test(backend(runtime_only))]
+```
+to your test function and you have just switched from E2E testcase to DRink!-based one, that doesn't use any running node in the background!
+
+For a full example check out [ink! repository](https://github.com/use-ink/ink-examples/tree/main/e2e-runtime-only-backend).
+
+### With a command line tool
+
+We provide a CLI which puts DRink! behind friendly TUI.
+For more details, consult [its README](https://github.com/inkdevhub/drink/blob/main/drink-cli/README.md).
+
+Similarly to `drink` library, `drink-cli` is published to [crates.io](https://crates.io/crates/drink-cli) as well.
+You can install it with:
+```shell
+cargo install drink-cli
 ```
 ````
 
@@ -11147,140 +11073,6 @@ The Flipper contract is nothing more than a `bool` which gets flipped from `true
 Now that we are feeling confident things are working, we can actually compile the contract in the next step.
 ````
 
-## File: docs/intro/intro.mdx
-````
----
-title: Introduction
-hide_title: true
-slug: /
----
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-<img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
-
-## What is ink!?
-
-ink! is a programming language for writing smart contracts that combines the power and safety of Rust with blockchain development.
-
-Here's what makes ink! special:
-
-**Built on Rust**: ink! takes the popular Rust programming language and adds everything you need for smart contract development. You get all of Rust's safety features like memory safety and type safety, plus access to the vast Rust ecosystem.
-
-**Smart Contract Ready**: While ink! uses Rust as its foundation, it's specifically designed for smart contracts. This means:
-- Only the Rust features that make sense for smart contracts are available (no multi-threading or web access)
-- Special annotations and macros are provided for smart contract needs
-- Built-in support for storage, events, and contract interactions
-
-**Simple but Powerful**: ink! uses special `#[ink(...)]` attribute macros to turn your Rust code into smart contracts. These macros tell ink! what different parts of your code represent; like storage, functions that can be called, or events that can be emitted.
-
-**Compile to RISC-V**: Your ink! contracts compile to RISC-V bytecode that runs efficiently on blockchains, giving you both performance and compatibility.
-
-## What can you do with it?
-
-ink! opens up a world of possibilities for blockchain development across the Polkadot ecosystem:
-
-### Build Smart Contracts for Polkadot Blockchains
-
-With ink!, you can write smart contracts that run on any blockchain built with the Polkadot SDK that includes the `pallet-revive` module. This includes many parachains and standalone chains in the Polkadot ecosystem.
-
-- **DeFi Applications**: Build decentralized exchanges, lending protocols, and other financial applications
-
-- **NFT Platforms**: Create marketplaces, games, and digital collectible platforms  
-
-- **Cross-Chain Applications**: Take advantage of Polkadot's interoperability to build applications that work across multiple blockchains
-
-- **Utility Contracts**: From simple storage contracts to complex business logic, ink! can handle it all
-
-### Flexible Development Paths
-
-ink! provides different approaches depending on your needs:
-
-- **Prototype Quickly**: Start with a smart contract to test your idea and get user feedback
-- **Enhanced Chain Features**: Use precompiles to access special blockchain functionality beyond basic smart contracts
-- **Scale to Parachains**: Later migrate successful contracts to dedicated parachains for better performance and lower costs
-
-### Interoperability
-
-One of ink!'s unique advantages is its compatibility with Solidity. This means:
-- Solidity developers can call ink! contracts seamlessly
-- You can use existing Ethereum tools and frameworks
-- Easy migration between different blockchain ecosystems
-
----
-
-Want to learn more about ink!'s relationship with the Polkadot ecosystem and its various use cases? Check out our detailed guide on [Polkadot SDK and ink!](../background/polkadot-sdk.md).
-
-Ready to get started? Head to our [Getting Started](../getting-started/setup.md) guide to begin building your first ink! smart contract.
-````
-
-## File: docs/frontend/overview.md
-````markdown
----
-title: Overview
-slug: /frontend/overview
-hide_title: true
----
-
-![Frontend Title Picture](/img/title/frontend.svg)
-
-# Overview
-
-Now after you build your smart contract it is time to craft a user experience around it.
-
-This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
-
-Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, the tools for smart contract interaction with JavaScript are the most advanced as well. To be precise, all JavaScript tools mentioned here, actually leverage TypeScript to offer a JavaScript and a typesafe TypeScript experience.
-
-## JavaScript/TypeScript Tools
-
-There are several levels of abstraction where you can start your journey creating a web frontend for your contracts. Each levels offers different advantages and disadvantages. The following list is of tools. They are sorted from the most generic no third party library way to interact with Polkadot's smart contracts to the most opinionated template using libraries and proven frontend frameworks.
-
-### Using no libraries
-
-- **[RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction)** **(not recommended)**: nodes participating in the blockchain network offer a [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
-
-### Low level libraries
-
-- **[Papi](https://papi.how/getting-started)** **(recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
-
-- **[Polkadot JS](https://polkadot.js.org/docs/api)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-revive` runtime calls.
-
-### ink!-specific SDKs
-
-- **[Papi's `ink-sdk`](https://papi.how/sdks/ink-sdk)**: is a PAPI SDK for interacting with ink! smart contracts, offering fully type-safe APIs for: deploying contracts, dry-running calls, sending messages, estimating gas and storage deposits, decoding events, and accessing on-chain storage of contracts.
-
-- **[Dedot](https://docs.dedot.dev/ink-smart-contracts/intro)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
-
-- **[Polkadot JS Contracts](https://polkadot.js.org/docs/api-contract)**: abstraction on top of Polkadot JS for the `pallet-contracts` and `pallet-revive`. Makes interaction with smart contracts more comfortable and type safe.
-
-### React
-
-- **[ReactiveDOT](https://reactivedot.dev/)**: A reactive library for building Substrate front-ends.
-
-- **[useInkathon](https://github.com/scio-labs/use-inkathon)** **(not yet compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using Polkadot JS.
-
-- **[typink](https://docs.dedot.dev/typink)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors.
-
-### React and Next.js
-
-- **[inkathon](https://github.com/scio-labs/inkathon)** **(will be compatible with ink! v6 soon)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
-
-## Other Languages
-
-Of course the browser and JavaScript should not be the one and only platform for smart contract frontends. It's just the most mature for smart contract frontend tooling.
-
-The following is a list of libraries which could be used to craft smart-contract dApps on other platforms than the web.
-
-- **[novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios)**: low level generic iOS SDK for substrate.
-
-- **[novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android)**: low level Android SDK for substrate.
-
-- **[paritytech/subxt](https://github.com/paritytech/subxt)**: Rust library to submit transactions to a substrate node via RPC.
-
-- **[polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md)**: Python library to interface with Substrate nodes.
-````
-
 ## File: docs/getting-started/calling.md
 ````markdown
 ---
@@ -11421,105 +11213,135 @@ If the transaction was successful, we should then be able to go back to the `get
 ![An image of Flipper RPC call with true](/img/contracts-ui-6.png)
 ````
 
-## File: docs/testing/e2e.md
+## File: docs/intro/intro.mdx
+````
+---
+title: Introduction
+hide_title: true
+slug: /
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
+
+## What is ink!?
+
+ink! is a programming language for writing smart contracts that combines the power and safety of Rust with blockchain development.
+
+Here's what makes ink! special:
+
+**Built on Rust**: ink! takes the popular Rust programming language and adds everything you need for smart contract development. You get all of Rust's safety features like memory safety and type safety, plus access to the vast Rust ecosystem.
+
+**Smart Contract Ready**: While ink! uses Rust as its foundation, it's specifically designed for smart contracts. This means:
+- Special annotations and macros are provided for smart contract needs
+- Built-in support for storage, events, and contract interactions
+
+**Simple but Powerful**: ink! uses special `#[ink(...)]` attribute macros to turn your Rust code into smart contracts. These macros tell ink! what different parts of your code represent; like storage, functions that can be called, or events that can be emitted.
+
+**Compile to RISC-V**: Your ink! contracts compile to RISC-V bytecode that runs efficiently on blockchains, giving you both performance and compatibility.
+
+## What can you do with it?
+
+ink! opens up a world of possibilities for blockchain development across the Polkadot ecosystem:
+
+### Build Smart Contracts for Polkadot Blockchains
+
+With ink!, you can write smart contracts that run on any blockchain built with the Polkadot SDK that includes the `pallet-revive` module. This includes many parachains and standalone chains in the Polkadot ecosystem.
+
+- **DeFi Applications**: Build decentralized exchanges, lending protocols, and other financial applications
+
+- **NFT Platforms**: Create marketplaces, games, and digital collectible platforms  
+
+- **Cross-Chain Applications**: Take advantage of Polkadot's interoperability to build applications that work across multiple blockchains
+
+- **Utility Contracts**: From simple storage contracts to complex business logic, ink! can handle it all
+
+### Flexible Development Paths
+
+ink! provides different approaches depending on your needs:
+
+- **Prototype Quickly**: Start with a smart contract to test your idea and get user feedback
+- **Enhanced Chain Features**: Use precompiles to access special blockchain functionality beyond basic smart contracts
+- **Scale to Parachains**: Later migrate successful contracts to dedicated parachains for better performance and lower costs
+
+### Composability
+
+One of ink!'s unique advantages is its compatibility with Solidity. This means:
+- Solidity developers can call ink! contracts seamlessly
+- You can use existing Ethereum tools and frameworks
+- Easy migration between different blockchain ecosystems
+
+Want to learn more about ink!'s relationship with the Polkadot ecosystem and its various use cases? Check out our detailed guide on [Polkadot SDK and ink!](../background/polkadot-sdk.md).
+
+Ready to get started? Head to our [Getting Started](../getting-started/setup.md) guide to begin building your first ink! smart contract.
+````
+
+## File: docs/frontend/overview.md
 ````markdown
 ---
-title: "Full e2e"
+title: Overview
+slug: /frontend/overview
 hide_title: true
-slug: /contract-testing/end-to-end-e2e-testing
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+![Frontend Title Picture](/img/title/frontend.svg)
 
-![Testing1 Title Picture](/img/title/testing1.svg)
+# Overview
 
-# End-to-End (E2E) Tests
+Now, after building your smart contract, it's time to craft a user experience around it.
 
-E2E testing enables developers to write a test that will not only test the contract in an
-isolated manner; instead the contract will be tested _together_ with all components that
-will be involved on-chain – so from end to end. This way of testing resembles closely
-how the contract will actually behave in production.
+This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
 
-As part of the test, the contract will be compiled and deployed to a Polkadot SDK node that
-is running in the background. ink! offers API functions that enable developers to then
-interact with the contract via transactions that they create and submit to the blockchain.
+Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, the tools for smart contract interaction with JavaScript are the most advanced as well. To be precise, all JavaScript tools mentioned here, actually leverage TypeScript to offer a JavaScript and a typesafe TypeScript experience.
 
-You as a developer can define assertions on the outcome of their transactions, such as checking
-for state mutations, transaction failures or incurred gas costs.
+## JavaScript/TypeScript Tools
 
-Your chain configuration will be tested together with the smart contract. And if your
-chain has pallets that are involved with the smart contract execution, those will be
-part of the test execution as well.
+There are several levels of abstraction where you can start your journey creating a web frontend for your contracts. Each levels offers different advantages and disadvantages. The following list is of tools. They are sorted from the most generic no third party library way to interact with Polkadot's smart contracts to the most opinionated template using libraries and proven frontend frameworks.
 
-ink! does not put any requirements on the Polkadot SDK node in the background – for example,
-you can run a node that contains a snapshot of a live network.
+### Using no libraries
 
-## Example
+- **[RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction)** **(not recommended)**: nodes participating in the blockchain network offer a [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
 
-The following code example illustrates a basic E2E test for the
-[flipper example](https://github.com/use-ink/ink-examples/blob/main/flipper/lib.rs).
+### Low level libraries
 
-```rust
-#[ink_e2e::test]
-async fn default_works<Client: E2EBackend>(mut client: Client) -> E2EResult<()> {
-    // When the function is entered, the contract was already
-    // built in the background via `cargo contract build`.
-    // The `client` object exposes an interface to interact
-    // with the Polkadot SDK node.
-    
-    // given
-    let mut constructor = FlipperRef::new_default();
+- **[Papi](https://papi.how/getting-started)** **(recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
 
-    // when
-    let contract = client
-        .instantiate("flipper", &ink_e2e::bob(), &mut constructor)
-        .submit()
-        .await
-        .expect("instantiate failed");
-    let call_builder = contract.call_builder::<Flipper>();
+- **[Polkadot JS](https://polkadot.js.org/docs/api)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-revive` runtime calls.
 
-    // then
-    let get = call_builder.get();
-    let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await?;
-    assert!(matches!(get_res.return_value(), false));
+### ink!-specific SDKs
 
-    Ok(())
-}
-```
+- **[Papi's `ink-sdk`](https://papi.how/sdks/ink-sdk)**: is a PAPI SDK for interacting with ink! smart contracts, offering fully type-safe APIs for: deploying contracts, dry-running calls, sending messages, estimating gas and storage deposits, decoding events, and accessing on-chain storage of contracts.
 
-You can run the above test by going to the `flipper` folder in
-[the ink! examples directory](https://github.com/use-ink/ink-examples/tree/main).
+- **[Dedot](https://docs.dedot.dev/ink-smart-contracts/intro)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
 
-Before you can run the test, you have to install a Polkadot SDK
-node with `pallet-revive`. By default, e2e tests require that you install [`ink-node`](https://github.com/use-ink/ink-node). You do not need to run it in the background since the node is started for each test independently.
-The easiest way is to 
-[download a binary from our releases page](https://github.com/use-ink/ink-node/releases)
-(Linux and Mac).
-Alternatively, you can build the node by yourself.
-The build instructions and pre-requisites can be found
-[here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).
+- **[Polkadot JS Contracts](https://polkadot.js.org/docs/api-contract)**: abstraction on top of Polkadot JS for the `pallet-contracts` and `pallet-revive`. Makes interaction with smart contracts more comfortable and type safe.
 
-If you want to run any other node with `pallet-revive` you need to change `CONTRACTS_NODE` environment variable:
+### React
 
-```bash
-export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"
-```
+- **[ReactiveDOT](https://reactivedot.dev/)**: A reactive library for building Substrate front-ends.
 
-And finally execute the following command to start e2e test execution.
+- **[useInkathon](https://github.com/scio-labs/use-inkathon)** **(not yet compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using Polkadot JS.
 
-<Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
-  ```bash
-  cargo contract test --features e2e-tests
-  ```
-  </TabItem>
-  <TabItem value="pop" label="Pop">
-  ```bash
-  pop test --e2e
-  ```
-  </TabItem>
-</Tabs>
+- **[typink](https://docs.dedot.dev/typink)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors.
+
+### React and Next.js
+
+- **[inkathon](https://github.com/scio-labs/inkathon)** **(will be compatible with ink! v6 soon)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
+
+## Other Languages
+
+Of course the browser and JavaScript should not be the one and only platform for smart contract frontends. It's just the most mature for smart contract frontend tooling.
+
+The following is a list of libraries which could be used to craft smart-contract dApps on other platforms than the web.
+
+- **[novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios)**: low level generic iOS SDK for substrate.
+
+- **[novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android)**: low level Android SDK for substrate.
+
+- **[paritytech/subxt](https://github.com/paritytech/subxt)**: Rust library to submit transactions to a substrate node via RPC.
+
+- **[polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md)**: Python library to interface with Substrate nodes.
 ````
 
 ## File: docs/getting-started/deploying.md
@@ -11637,6 +11459,151 @@ You will be redirected to a new page, where you can interact with the newly crea
 ![Flipper Instantiate Success](/img/contracts-ui-3.png)
 ````
 
+## File: docs/intro/overview.md
+````markdown
+---
+title: Overview
+hide_title: true
+slug: /overview
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
+
+Welcome to the ink! documentation, the Rust-based smart contract language for the Polkadot ecosystem. This documentation will take you from your first "Hello, World!" contract to building sophisticated decentralized applications.
+
+## Overview
+
+### **[Getting Started](../getting-started/creating.md)**
+Begin your ink! journey with setup instructions, creating your first contract, and deploying it to a blockchain. Perfect for newcomers to both ink! and smart contract development.
+
+### **[Basics](../basics/contract-template.md)**
+Master the fundamental concepts of ink! development including storage, contract interactions, events, and the ABI system that enables interoperability with other languages like Solidity.
+
+### **[Testing](../testing/overview.md)**
+Learn comprehensive testing strategies from unit tests to end-to-end testing, including working with testing tools like DRink! for robust contract development.
+
+### **[Debugging](../debugging/overview.md)**
+Discover tools and techniques for debugging your contracts, from event logging to tracing execution and using development tools.
+
+### **[Macros & Attributes](../macros-attributes/overview.md)**
+Deep dive into ink!'s powerful macro system that transforms your Rust code into smart contracts, including storage annotations, message definitions, and event handling.
+
+### **[Storage & Data Structures](../datastructures/overview.md)**
+Understand how to efficiently store and manage data in your contracts, from simple values to complex mappings and custom data structures.
+
+### **[Linter](../linter/overview.md)**
+Utilize ink!'s built-in security linter to identify common smart contract vulnerabilities and ensure your code follows best practices.
+
+### **[Frontend Development](../frontend/overview.md)**
+Connect your contracts to web applications using TypeScript/JavaScript libraries, React hooks, and various SDK options for building complete dApps.
+
+### **[Technical Background](../background/polkadot-sdk.md)**
+Understand the deeper technical aspects including why Rust and RISC-V were chosen, how ink! compares to other smart contract languages, and when to choose smart contracts vs. parachains.
+````
+
+## File: docs/testing/e2e.md
+````markdown
+---
+title: "Full E2E"
+hide_title: true
+slug: /contract-testing/end-to-end-e2e-testing
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+![Testing1 Title Picture](/img/title/testing1.svg)
+
+# End-to-End (E2E) Tests
+
+E2E testing enables developers to write a test that will not only test the contract in an
+isolated manner; instead the contract will be tested _together_ with all components that
+will be involved on-chain – so from end to end. This way of testing resembles closely
+how the contract will actually behave in production.
+
+As part of the test, the contract will be compiled and deployed to a Polkadot SDK node that
+is running in the background. ink! offers API functions that enable developers to then
+interact with the contract via transactions that they create and submit to the blockchain.
+
+You as a developer can define assertions on the outcome of their transactions, such as checking
+for state mutations, transaction failures or incurred gas costs.
+
+Your chain configuration will be tested together with the smart contract. And if your
+chain has pallets that are involved with the smart contract execution, those will be
+part of the test execution as well.
+
+ink! does not put any requirements on the Polkadot SDK node in the background – for example,
+you can run a node that contains a snapshot of a live network.
+
+## Example
+
+The following code example illustrates a basic E2E test for the
+[flipper example](https://github.com/use-ink/ink-examples/blob/main/flipper/lib.rs).
+
+```rust
+#[ink_e2e::test]
+async fn default_works<Client: E2EBackend>(mut client: Client) -> E2EResult<()> {
+    // When the function is entered, the contract was already
+    // built in the background via `cargo contract build`.
+    // The `client` object exposes an interface to interact
+    // with the Polkadot SDK node.
+    
+    // given
+    let mut constructor = FlipperRef::new_default();
+
+    // when
+    let contract = client
+        .instantiate("flipper", &ink_e2e::bob(), &mut constructor)
+        .submit()
+        .await
+        .expect("instantiate failed");
+    let call_builder = contract.call_builder::<Flipper>();
+
+    // then
+    let get = call_builder.get();
+    let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await?;
+    assert!(matches!(get_res.return_value(), false));
+
+    Ok(())
+}
+```
+
+You can run the above test by going to the `flipper` folder in
+[the ink! examples directory](https://github.com/use-ink/ink-examples/tree/main).
+
+Before you can run the test, you have to install a Polkadot SDK
+node with `pallet-revive`. By default, e2e tests require that you install [`ink-node`](https://github.com/use-ink/ink-node). You do not need to run it in the background since the node is started for each test independently.
+The easiest way is to 
+[download a binary from our releases page](https://github.com/use-ink/ink-node/releases)
+(Linux and Mac).
+Alternatively, you can build the node by yourself.
+The build instructions and pre-requisites can be found
+[here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).
+
+If you want to run any other node with `pallet-revive` you need to change `CONTRACTS_NODE` environment variable:
+
+```bash
+export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"
+```
+
+And finally execute the following command to start e2e test execution.
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract test --features e2e-tests
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop test --e2e
+  ```
+  </TabItem>
+</Tabs>
+````
+
 ## File: docs/getting-started/setup.md
 ````markdown
 ---
@@ -11663,7 +11630,7 @@ version (>= 1.85) and `cargo`. Please see [the official Rust installation guide]
 ## cargo-contract
 
 The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
-ink!'s CLI tool for setting up and managing smart contracts written with ink!.
+it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
 ```bash
 cargo install cargo-contract --version 6.0.0-alpha --locked
@@ -11682,22 +11649,15 @@ a simple Polkadot SDK blockchain with smart contract functionality. It's a comfo
 There are two ways of installing the node:
 
 ### (1) Download the Binary
-This is the recommended method, you can
-[download a binary from our releases page](https://github.com/use-ink/ink-node/releases)
-(Linux and Mac). 
-
-1. Go to the [ink-node releases page](https://github.com/use-ink/ink-node/releases)
-2. Under `Assets` of the latest release, download the appropriate binary for your platform:
+Go to the [ink-node releases page](https://github.com/use-ink/ink-node/releases). Under `Assets` of the latest release, download the appropriate binary for your platform:
    - **Linux (ARM64)**: `ink-node-linux-arm64.tar.gz`
    - **Linux (x86)**: `ink-node-linux.tar.gz`  
    - **macOS**: `ink-node-mac-universal.tar.gz`
 
-3. Make the binary executable:
+Make the binary executable:
    ```bash
    chmod +x ./ink-node
    ```
-
-#### Platform-specific Security Instructions
 
 **For macOS users:**
 When you first try to run `ink-node`, macOS may show a security warning.
