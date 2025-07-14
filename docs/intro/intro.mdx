@@ -1,184 +1,60 @@
 ---
-title: Welcome!
+title: Introduction
 hide_title: true
 slug: /
 ---
-
-<head>
-    <meta name="title" content="ink! Developer Documentation" />
-    <meta
-      name="description"
-      content="Developer docs for ink!, the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM."
-    />
-    <meta name="keywords" content="Smart contracts, Rust, Polkadot, PolkaVM, RISC-V" />
-    <meta property="og:title" content="ink! Developer Documentation" />
-    <meta property="og:description" content="Developer docs for ink!, the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM." />
-</head>
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
 
-## Introduction
+## What is ink!?
 
-⚡️ ink! helps you easily build safe, efficient smart contracts for Polkadot and Substrate-based blockchains.
+ink! is a programming language for writing smart contracts that combines the power and safety of Rust with blockchain development.
 
-🚀 Write smart contracts in ink!, a domain-specific language built on top of Rust — combining safety, performance, and scalability.
+Here's what makes ink! special:
 
-🛠 Use familiar Rust tooling like <code>clippy</code>, <code>cargo</code>, crates from <code>crates.io</code>, and popular IDEs for a seamless development experience.
+**Built on Rust**: ink! takes the popular Rust programming language and adds everything you need for smart contract development. You get all of Rust's safety features like memory safety and type safety, plus access to the vast Rust ecosystem.
 
-🤝 Interoperability with Solidity: Solidity developers can call ink! contracts just like other Solidity contracts, enabling cross-ecosystem collaboration.
+**Smart Contract Ready**: While ink! uses Rust as its foundation, it's specifically designed for smart contracts. This means:
+- Special annotations and macros are provided for smart contract needs
+- Built-in support for storage, events, and contract interactions
 
-:::caution
-The latest release, [v6.0.0-alpha](https://github.com/use-ink/ink/releases/tag/v6.0.0-alpha), is an **alpha version**.
+**Simple but Powerful**: ink! uses special `#[ink(...)]` attribute macros to turn your Rust code into smart contracts. These macros tell ink! what different parts of your code represent; like storage, functions that can be called, or events that can be emitted.
 
-`ink! v6.0.0` introduces support for both native ink! and Solidity ABI specifications.  
-However, Solidity compatibility is **still under development** and may be incomplete or unstable in this alpha release.
-:::
+**Compile to RISC-V**: Your ink! contracts compile to RISC-V bytecode that runs efficiently on blockchains, giving you both performance and compatibility.
 
-🌎 Deploy ink! smart contracts on blockchains built with the Polkadot SDK. <a href={useBaseUrl('/chains')}>Check supported chains here.</a>
+## What can you do with it?
 
-:::note
-ink! v6 is no longer using WebAssembly and `pallet-contracts`!
-Instead we migrated to RISC-V, PolkaVM, and `pallet-revive`.
+ink! opens up a world of possibilities for blockchain development across the Polkadot ecosystem:
 
-Read more about the transition [here](../faq/migrating-from-ink-5-to-6.md).
-:::
+### Build Smart Contracts for Polkadot Blockchains
 
-## Fast Track
+With ink!, you can write smart contracts that run on any blockchain built with the Polkadot SDK that includes the `pallet-revive` module. This includes many parachains and standalone chains in the Polkadot ecosystem.
 
-Install Rust and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+- **DeFi Applications**: Build decentralized exchanges, lending protocols, and other financial applications
 
-Download the binary for a local development node [here](https://github.com/use-ink/ink-node/releases).
+- **NFT Platforms**: Create marketplaces, games, and digital collectible platforms  
 
-```toml
-# Install our cli tool from the `6.0.0-alpha` release.
-# It wraps around `cargo build` to build contracts with optimal
-# flags for blockchains. It also allows for deploying + interacting
-# with contracts.
-$ rustup component add rust-src
-$ cargo install cargo-contract@6.0.0-alpha
+- **Cross-Chain Applications**: Take advantage of Polkadot's interoperability to build applications that work across multiple blockchains
 
-# Create a simple contract.
-$ cargo contract new flipper && cd flipper
-$ cargo contract build --release
+- **Utility Contracts**: From simple storage contracts to complex business logic, ink! can handle it all
 
-# Start your local development node in a separate shell session
-$ chmod +x ink-node (makes the node's binary executable)
-$ ink-node (starts the node, try `./ink-node` if the previous command doesn't work)
+### Flexible Development Paths
 
-# Instantiate this contract on-chain.
-$ cargo contract instantiate --suri //Alice --args true -x
+ink! provides different approaches depending on your needs:
 
-# Dry-run a call of it.
-$ cargo contract call --suri //Alice --contract 0x… --message get
+- **Prototype Quickly**: Start with a smart contract to test your idea and get user feedback
+- **Enhanced Chain Features**: Use precompiles to access special blockchain functionality beyond basic smart contracts
+- **Scale to Parachains**: Later migrate successful contracts to dedicated parachains for better performance and lower costs
 
-# Execute a contract call, as a transaction on-chain.
-$ cargo contract call --suri //Alice --contract 0x… --message flip -x
-```
+### Composability
 
-### Using the Contracts UI
-:::caution
-The Contracts UI for ink! v6 uses an alpha version of the interface: https://inkv6alpha.netlify.app/.
-:::
+One of ink!'s unique advantages is its compatibility with Solidity. This means:
+- Solidity developers can call ink! contracts seamlessly
+- You can use existing Ethereum tools and frameworks
+- Easy migration between different blockchain ecosystems
 
-- Upload your contract:
+Want to learn more about ink!'s relationship with the Polkadot ecosystem and its various use cases? Check out our detailed guide on [Polkadot SDK and ink!](../background/polkadot-sdk.md).
 
-    Follow the steps in [Deploy your Contract Using the Contracts UI](../getting-started/deploying.md#using-the-contracts-ui).
-
-- Interact with your contract:
-
-    Learn how in [Call your Contract Using the Contracts UI](../getting-started/calling.md#using-the-contracts-ui)
-
-<br/>
-
-### Where to Deploy your Ink!v6 Contracts
-<div className="grid grid-cols-3 gap-4 lg:grid-cols-3">
-    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ftestnet-passet-hub.polkadot.io">
-        <img
-            src={useBaseUrl('/img/chains/passethub.svg')}
-            alt="chains"
-            className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-        />
-    </a>
-
-    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc2.paseo.popnetwork.xyz">
-        <img
-            src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
-            alt="chains"
-            className="w-auto h-[48px] mx-auto mix-blend-lighten font-freude"
-        />
-    </a>
-
-    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-westend-rpc.dwellir.com">
-        <img
-            src={useBaseUrl('/img/chains/assethub.svg')}
-            alt="chains"
-            className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-        />
-    </a>
-</div>
-<br/>
-
-- To deploy a contract to Passet Hub, you must get PAS tokens. To do so, you can use the [Passet Hub Faucet](https://faucet.polkadot.io/?parachain=1111). You need to specify the address where you want to receive the tokens from the faucet.
-
-- To deploy a contract to the Pop Network, you need to bridge tokens from Paseo (Asset Hub) to Pop. To do so, follow the guide [Get tokens on Pop (Testnet)](https://learn.onpop.io/contracts/guides/bridge-tokens-to-pop-network).
-
-- To deploy a contract to the Westend Asset Hub, you must get WND tokens. To do so, you can use the [Westend Faucet](https://faucet.polkadot.io/westend?parachain=1000). You need to specify the address where you want to receive the tokens from the faucet.
-
-:::info What’s the difference between Passet Hub, Westend, and Pop?
- - Passet Hub: A stable, community-maintained testnet running the current Polkadot relay chain runtime. Ideal for testing parachains and smart contracts before mainnet deployment.
- - Westend: an unstable environment for core protocol developers to preview upgrades and changes to the main protocol.
- - [Pop](https://onpop.io/network/): A network for experimenting with smart contracts and cross-chain interoperability.
-:::
-
-For an overview of all currently supported chains, <a href={useBaseUrl('/chains')}>check the supported chains here.</a>
-
-## Smart Contract Examples
-
-<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-    <div class="bubble-box [&_p]:!mb-0">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/flipper"><img src={useBaseUrl('/img/icons/flipper.svg')} width="100" /></a>
-        <p class="mb-0 text-center">
-            Our "Hello, World!".<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/flipper">» view example</a>
-        </p>
-    </div>
-    <div class="bubble-box [&_p]:!mb-0">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/erc20"><img src={useBaseUrl('/img/icons/erc20.svg')} width="100" /></a>
-        <p class="text-center text-red-500">
-            An ERC-20 implementation.<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/erc20">» view example</a>
-        </p>
-    </div>
-    <div class="bubble-box [&_p]:!mb-0">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/erc721"><img src={useBaseUrl('/img/icons/nft.svg')} width="100" /></a>
-        <p class="text-center">
-            <a href="https://github.com/use-ink/ink-examples/tree/main/erc721">» view ERC-721</a>
-            <br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/erc1155">» view ERC-1155</a>
-        </p>
-    </div>
-    <div class="bubble-box [&_p]:!mb-0">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts"><img src={useBaseUrl('/img/icons/upgradable.svg')} width="100" /></a>
-        <p class="text-center">
-            An upgradeable contract.<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/upgradeable-contracts">» view example</a>
-        </p>
-    </div>
-    <div class="bubble-box [&_p]:!mb-0">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/multisig"><img src={useBaseUrl('/img/icons/multisig.svg')} width="100" /></a>
-        <p class="text-center">
-            A multi-signature wallet.<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/multisig">» view example</a>
-        </p>
-    </div>
-    <div class="bubble-box [&_p]:!mb-0">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension"><img src={useBaseUrl('/img/icons/rand-extension.svg')} width="100" /></a>
-        <p class="text-center">
-            Allow runtime access.<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension">» view example</a>
-        </p>
-    </div>
-</div>
-
+Ready to get started? Head to our [Getting Started](../getting-started/setup.md) guide to begin building your first ink! smart contract.

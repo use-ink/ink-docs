@@ -33,7 +33,7 @@ To perform a build with extra code analysis (i.e. the ink! linting rules), run t
 following command within the contract directory:
 
 ```bash
-$ cargo contract build --lint
+cargo contract build --lint
 ```
 
 This command compiles the contract and applies all linting checks. You can find the complete list of lints along with their descriptions in this documentation.

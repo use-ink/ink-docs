@@ -4,6 +4,9 @@ hide_title: true
 slug: /basics/contract-template
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ![Macro Title Picture](/img/title/macro.svg)
 
 # Contract Template
@@ -14,29 +17,56 @@ On this page we'll go over the elements of a basic contract.
 
 Change into your working directory and run:
 
-```bash
-$ cargo contract new foobar
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract new foobar
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop new foobar
+  ```
+  </TabItem>
+</Tabs>
 
 This will create a new project folder named `foobar`.
 
 ```bash
-$ cd foobar/
+cd foobar/
 ```
 
 In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
 
 Quickly check that it compiles, and the trivial tests pass with:
 
-```bash
-$ cargo contract test
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract test
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop test
+  ```
+  </TabItem>
+</Tabs>
 
 Also check that you can build the contract by running:
 
-```bash
-$ cargo contract build
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  ```
+  </TabItem>
+</Tabs>
 
 `cargo contract test` builds the contract for `std`, 
 `cargo contract build` for an on-chain deployment (`no_std` with a RISC-V target).

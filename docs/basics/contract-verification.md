@@ -20,16 +20,6 @@ process must recompile the contract in an identical host environment to
 which it was originally built. The simplest way to do this is using a Docker
 container.
 
-:::note
-Contract verification tools are available from `cargo-contract` version 6.0 on.
-To install it, run
-
-```bash
-$ cargo install cargo-contract --locked --version ^6
-```
-
-:::
-
 ## Verifiable build
 
 As mentioned earlier, due to the non-deterministic nature of Rust compilation,
@@ -111,7 +101,7 @@ make sure you are executing the build in the parent directory in order to mount 
 of all contracts to be visible. Specify a relative manifest path to the root contract:
 
 ```bash
-$ cargo contract build 
+cargo contract build 
     --verifiable
     --manifest-path ink-project-a/Cargo.toml
 ```
