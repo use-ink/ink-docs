@@ -133,6 +133,10 @@ module.exports = {
             to: '/inkubator',
             from: '/6.x/funding-programs',
           },
+          {
+            to: '/docs/v6/background/smart-contracts-vs-parachains',
+            from: '/docs/v6/background/smart-contracts-vs-rollups',
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/docs/v6/')) {
