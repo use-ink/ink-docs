@@ -2,7 +2,7 @@
 ```
 docs/
   background/
-    contracts-vs-rollups.md
+    contracts-vs-parachains.md
     ink-vs-cosmwasm.md
     ink-vs-solidity.md
     migrate-to-parachain.md
@@ -59,15 +59,15 @@ docs/
     overview.md
   getting-started/
     calling.md
-    cargo-contract.md
     compiling.md
     creating.md
     deploying.md
-    running.md
     setup.md
   intro/
-    current-state.mdx
     intro.mdx
+    overview.md
+    tutorials-examples.md
+    where-to-deploy.md
   linter/
     rules/
       no_main.md
@@ -91,8 +91,6 @@ docs/
     selector.md
     storage.md
     topic.md
-  standards/
-    overview.md
   testing/
     testnet/
       faucet.md
@@ -107,34 +105,34 @@ docs/
 
 # Files
 
-## File: docs/background/contracts-vs-rollups.md
+## File: docs/background/contracts-vs-parachains.md
 ````markdown
 ---
-title: Smart Contracts vs. Rollups
+title: Smart Contracts vs. Parachains
 hide_title: true
-slug: /background/smart-contracts-vs-polkadot-rollups
+slug: /background/smart-contracts-vs-parachains
 ---
 
 <head>
-    <meta name="description" content="Comparison of Polkadot Rollups/Parachains and Smart Contracts." />
-    <meta name="keywords" content="Polkadot, Rollups, Parachain, Smart Contracts" />
-    <meta property="og:title" content="Smart Contracts vs. Polkadot Rollups" />
-    <meta property="og:description" content="Comparison of Polkadot Rollups/Parachains and Smart Contracts." />
+    <meta name="description" content="Comparison of Polkadot Parachains and Smart Contracts." />
+    <meta name="keywords" content="Polkadot, Parachain, Smart Contracts" />
+    <meta property="og:title" content="Smart Contracts vs. Polkadot Parachains" />
+    <meta property="og:description" content="Comparison of Polkadot Parachains and Smart Contracts." />
 </head>
 
 ![Polkadot Title Picture](/img/title/polkadot.svg)
 
-# Smart Contracts vs. Polkadot Rollups
+# Smart Contracts vs. Polkadot Parachains
 
-One of the first questions we typically get when somebody learns about the Polkadot SDK SDK is when to develop a
-rollup (i.e. a parachain) vs. when to develop a smart contract.
+One of the first questions we typically get when somebody learns about the Polkadot SDK is when to develop a
+parachain vs. when to develop a smart contract.
 
 ## The Difference
 The distinction here is that in the context of Polkadot and Kusama a parachain leases a slot for a couple of months for up to two years. The deal with a lease is that the parachain gets a fixed slot for executing its business logic (typically referred to as its _state transition function_) and can persist its modified state in a block. In Polkadot SDK terminology this state transition function is called the chain's _runtime_.
 
 The distinction to other ecosystems here is that, in the context of Polkadot, parachains and smart contracts exist at different layers of the stack: _smart contracts sit on top of parachains_. Parachains would usually be described as layer-1 blockchains — except for that they don't have to build their own security, are upgradable, and interoperable.
 
-## Polkadot Rollups
+## Polkadot Parachains
 It's noteworthy that a parachain's state transition function doesn't get further validated — it's up to the parachain how it utilizes its slot time. The parachain already pre-paid for its slot when it won the slot auction on Polkadot or Kusama. This means the parachain can build its own (blockchain) world! For example, it can decide on how transaction fees are charged ‒ or even if transaction fees are charged at all. These options are crucial when building new or more user-friendly business models. 
 
 Other distinguishing factors between parachains that we observe in the wild are differences in how governance works or the crypto-economics. There are some constraints on how the parachain can build its world though. Like physics in the real world it has to adhere to certain ground rules. For Polkadot and Kusama that's for example the consensus algorithm for the Relay Chain to communicate with the parachain. From those ground rules the advantages of Polkadot and Kusama emerge. Advantages like the aforementioned shared security, cross-chain communication, or guaranteed execution slot time.
@@ -146,7 +144,7 @@ _To restate this important distinction: developing a parachain runtime is differ
 
 ## The Trade-off
 
-![Smart Contract vs. Rollup](/img/smart-contract-vs-rollup.svg)
+![Smart Contract vs. Parachain](../../static/img/smart-contract-vs-parachain.svg)
 
 The trade-off is that with a parachain one has the freedom to decide on (nearly) all the rules that make up the parachain. With a smart contract one is constrained by what the chain allows and the safety pillars that necessarily have to be in place. A smart contract can never be as fast as a native pallet built in the parachain runtime ‒ there is too much logic in between.
 A smart contract on the other hand has less friction for developing and deploying it. Developers don't have to take care of governance, crypto-economics, etc. One just needs a few tokens and can go on its merry way deploying a smart contract. It's as simple as that.
@@ -273,7 +271,7 @@ CosmWasm provides a template at the
 [cw-template](https://github.com/CosmWasm/cw-template) repository. In order to generate a new project, all  you have to do is run:
 
 ```
-$ cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
+cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
 ```
 
 Replacing `PROJECT_NAME` with the name of your project.
@@ -285,13 +283,13 @@ main repository.
 A contract can be compiled from its directory via:
 
 ```
-$ cargo contract build
+cargo contract build
 ```
 
 and tested via:
 
 ```
-$ cargo contract test
+cargo contract test
 ```
 
 ### Deploy and Interact
@@ -1242,14 +1240,14 @@ Hash::from([0x01; 32])
 ## File: docs/background/migrate-to-parachain.md
 ````markdown
 ---
-title: Migrate an ink! contract to a Rollup
+title: Migrate an ink! contract to a Parachain
 hide_title: true
 slug: /background/migrate-ink-contracts-to-polkadot-frame-parachain-rollup
 ---
 
 ![Polkadot Title Picture](/img/title/polkadot.svg)
 
-# Migrate an ink! contract to a Polkadot SDK Runtime
+# Migrate an ink! contract to a Parachain
 
 Smart contracts written in ink! are a great starting point for developing applications in the Polkadot ecosystem. Developers can go from an idea to a fully functioning web3 application "in production" in a matter of hours or days. This allows faster feedback on ideas, to validate whether there is user demand in the first place, and to easily iterate and refine the implementation.
 
@@ -1266,7 +1264,7 @@ Much of the difficulty in launching a parachain comes in configuring a node impl
 
 ## Utilizing existing FRAME pallets
 
-There is a rich library of FRAME pallets, which may provide a drop in replacement for some (or all) of your smart contract functionality. For example, for a [PSP22](../standards/overview.md) (similar to ERC20) fungible token contract, this could be replaced either by the native Parachain token itself via `pallet_balances` or by an asset on `pallet_assets`. Governance functions could be replaced by e.g. `pallet_democracy`, and so on. See [`polkadot-sdk`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame) for a range of pre-built pallets which can be used to handle some common functions.
+There is a rich library of FRAME pallets, which may provide a drop in replacement for some (or all) of your smart contract functionality. For example, for a ERC20 fungible token contract, this could be replaced either by the native Parachain token itself via `pallet_balances` or by an asset on `pallet_assets`. Governance functions could be replaced by e.g. `pallet_democracy`, and so on. See [`polkadot-sdk`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame) for a range of pre-built pallets which can be used to handle some common functions.
 
 ## Similarities and differences between ink! and `FRAME`
 
@@ -1549,7 +1547,7 @@ User interfaces will need to be adjusted to interact with a pallet rather than a
 ## File: docs/background/polkadot-sdk.md
 ````markdown
 ---
-title: Polkadot SDK
+title: Polkadot SDK and ink!
 hide_title: true
 slug: /background/polkadot-sdk
 ---
@@ -1565,13 +1563,13 @@ slug: /background/polkadot-sdk
 
 # Polkadot SDK
 
-ink! is a programming language for smart contracts; blockchains built with [the Polkadot SDK](https://polkadot.com/platform/sdk)
+ink! is a programming language for smart contracts; blockchains built with [the Polkadot SDK](https://github.com/paritytech/polkadot-sdk)
 can choose from a number of smart contract languages which one(s) they want to support.
 ink! is one of them. It is an opinionated language that we have built by extending the popular Rust programming language with functionality needed to make it smart contract compatible.
 
 ## How does ink! tie into Polkadot SDK?
 
-[Polkadot SDK](https://polkadot.com/platform/sdk) is a framework for building blockchains – those can be standalone blockchains or blockchains connected to [Kusama](http://kusama.network) or [Polkadot](http://polkadot.network), so called _parachains_. The Polkadot SDK contains a number of modules, in Polkadot SDK terminology those are called _pallets_. Polkadot SDK comes with a set of pallets for many requirements modern blockchains typically have – staking, fungible tokens, non-fungible tokens, governance, etc.
+[Polkadot SDK](https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/index.html) is a framework for building blockchains – those can be standalone blockchains or blockchains connected to [Kusama](http://kusama.network) or [Polkadot](http://polkadot.network), so called _parachains_. The Polkadot SDK contains a number of modules, in Polkadot SDK terminology those are called _pallets_. Polkadot SDK comes with a set of pallets for many requirements modern blockchains typically have – staking, fungible tokens, non-fungible tokens, governance, etc.
 
 Polkadot SDK also ships with a module for smart contracts, this module is called [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive).
 If a parachain is developed in the Polkadot SDK it can easily add smart contract functionality by including this pallet.
@@ -1921,6 +1919,19 @@ That's because it leverages LLVM as its backend to generate machine code for the
 The Rust compiler is a great help for that, since it reorders struct fields in order 
 to make each type as small as possible. Thus, Rust data structures are very compact,
 in many cases even more compact than in C.
+
+ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (eDSL):
+a domain-specific language of the Rust programming language.
+That means:
+
+* we allow only a subset of the Rust programming language features to be used
+  for writing smart contracts. For example, it is not possible do any 
+  multi-threading operations or access the web.
+* we provide annotations, macros, and primitives that are needed when writing
+  smart contracts. For example, annotations on what the smart contract's storage
+  struct is or what an event is.
+
+ink! is just standard Rust in a well-defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Polkadot SDK compatible RISC-V bytecode!
 ````
 
 ## File: docs/basics/abi/all.md
@@ -2518,11 +2529,7 @@ Supporting the Solidity metadata format allows developers to use Solidity tools
 [Solidity ABI compatible ink! contracts][sol-compat].
 
 So developers have a choice which metadata they want to generate for a contract.
-They can decide when invoking `cargo-contract`:
-
-```shell
-$ cargo contract build ---metadata <ink|solidity>
-```
+They can decide when using the `--metadata` flag with `ink` or `solidity.
 
 Generating Solidity metadata is only possible if all constructor and message 
 argument and return types, and event argument types can be mapped to 
@@ -2548,7 +2555,7 @@ slug: /basics/metadata/solidity
 Solidity compatible metadata is generated by building a [Solidity ABI compatible ink! contract][sol-compat] using 
 
 ```shell
-$ cargo contract build ---metadata solidity
+cargo contract build ---metadata solidity
 ```
 
 This generates 2 metadata files in your contract's target directory:
@@ -2619,6 +2626,9 @@ hide_title: true
 slug: /basics/contract-template
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ![Macro Title Picture](/img/title/macro.svg)
 
 # Contract Template
@@ -2629,29 +2639,56 @@ On this page we'll go over the elements of a basic contract.
 
 Change into your working directory and run:
 
-```bash
-$ cargo contract new foobar
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract new foobar
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop new foobar
+  ```
+  </TabItem>
+</Tabs>
 
 This will create a new project folder named `foobar`.
 
 ```bash
-$ cd foobar/
+cd foobar/
 ```
 
 In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
 
 Quickly check that it compiles, and the trivial tests pass with:
 
-```bash
-$ cargo contract test
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract test
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop test
+  ```
+  </TabItem>
+</Tabs>
 
 Also check that you can build the contract by running:
 
-```bash
-$ cargo contract build
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  ```
+  </TabItem>
+</Tabs>
 
 `cargo contract test` builds the contract for `std`, 
 `cargo contract build` for an on-chain deployment (`no_std` with a RISC-V target).
@@ -2844,16 +2881,6 @@ process must recompile the contract in an identical host environment to
 which it was originally built. The simplest way to do this is using a Docker
 container.
 
-:::note
-Contract verification tools are available from `cargo-contract` version 6.0 on.
-To install it, run
-
-```bash
-$ cargo install cargo-contract --locked --version ^6
-```
-
-:::
-
 ## Verifiable build
 
 As mentioned earlier, due to the non-deterministic nature of Rust compilation,
@@ -2935,7 +2962,7 @@ make sure you are executing the build in the parent directory in order to mount 
 of all contracts to be visible. Specify a relative manifest path to the root contract:
 
 ```bash
-$ cargo contract build 
+cargo contract build 
     --verifiable
     --manifest-path ink-project-a/Cargo.toml
 ```
@@ -3845,7 +3872,7 @@ Here is an example of how you can grab the message name and selector from your c
 metadata using [`jq`](https://stedolan.github.io/jq/).
 
 ```bash
-$ cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
+cat target/ink/flipper.json | jq '.spec.messages[0] | "\(.label): \(.selector)"'
 "flip: 0x633aa551"
 ```
 
@@ -5783,7 +5810,7 @@ this data.
 
 ```bash
 # From your contract directory
-$ cargo contract decode message -d fe5bd8ea01000000
+cargo contract decode message -d fe5bd8ea01000000
 ```
 
 This command will output the method name and parameters encoded in the data payload:
@@ -5903,7 +5930,7 @@ hide_title: true
 On a high-level there are two workflows for debugging your contract:
 
 * You can write tests using one of the mechanisms described on the
-  [Contract Testing](./overview.md) page.
+  [Contract Testing](../testing/overview.md) page.
 * You can interact with your contract via a UI or command-line. The  
   workflow is described on the [Call Your Contract](../getting-started/calling.md) page.
 
@@ -5963,7 +5990,7 @@ To replay a transaction, you can use [Chopstick](https://github.com/AcalaNetwork
 Assuming you have a node that you can connect to at `$ENDPOINT` and the transaction you want to replay is in block `$BLOCK_HASH`, you can use the following command:
 
 ```bash
-$ npx @acala-network/chopsticks@latest run-block \
+npx @acala-network/chopsticks@latest run-block \
     --endpoint $ENDPOINT \
     --block $BLOCK_HASH \
     --runtime-log-level 5 \
@@ -5982,7 +6009,7 @@ runtime::contracts           TRACE: call result ExecReturnValue { flags: (empty)
 From here, you can identify the call you are interested in and decode the data payload:
 
 ```bash
-$ echo 254, 91, 216, 234, 1, 0, 0, 0 \
+echo 254, 91, 216, 234, 1, 0, 0, 0 \
     | tr ',' ' ' \
     | xargs printf '%02x' \
     | xargs cargo contract decode message -d
@@ -6007,7 +6034,7 @@ You can also use [Chopstick](https://github.com/AcalaNetwork/chopsticks) to star
 This command starts a fork beginning at block `$BLOCK_HASH`. You can connect to this fork using `ws://localhost:8000` to submit extrinsics via PolkadotJs or `cargo contract`:
 
 ```bash
-$ npx @acala-network/chopsticks@latest \
+npx @acala-network/chopsticks@latest \
     --endpoint $ENDPOINT \
     --block $BLOCK_HASH \
     --runtime-log-level 5
@@ -6016,7 +6043,7 @@ $ npx @acala-network/chopsticks@latest \
 Here, for example, you can re-run the transaction that we decoded in the previous section:
 
 ```bash
-$ cargo contract call \
+cargo contract call \
     --contract $CONTRACT_ADDR \
     --message inc_by --args 1 \
     --suri //Alice \
@@ -7711,7 +7738,7 @@ _This is a major breaking change, ink! v6 is only compatible with `cargo-contrac
 and chains that include `pallet-revive`._
 
 We did a detailed write-up of the background to this development and the reasoning
-[here](https://use.ink/6.x/current-state). 
+[here](https://r0gue.medium.com/ink-project-state-q1-25-08441f4ac5d2). 
 
 You can find the full changelog of the 6.0 release [here](https://github.com/use-ink/ink/blob/master/CHANGELOG.md#version-600).
 
@@ -7991,7 +8018,7 @@ You can learn more [here](../basics/cross-contract-calling.md#callbuilder-solidi
 We added a new subcommand:
 
 ```bash
-$ cargo contract build ---metadata <ink|solidity>
+cargo contract build ---metadata <ink|solidity>
 ```
 
 You can learn more [here](../basics/metadata/solidity-format.md).
@@ -8025,11 +8052,11 @@ hide_title: true
 
 # Overview
 
-Now after you [wrote](../getting-started/creating.md), [compiled](../getting-started/compiling.md) and [deployed your smart contract](../getting-started/deploying.md), it is time to craft a user experience around it.
+Now, after building your smart contract, it's time to craft a user experience around it.
 
 This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
 
-Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, the tools for smart contract interaction with JavaScript are the most advanced as well. To be precise all JavaScript tools mentioned here, actually leverage TypeScript to offer a JavaScript and a typesafe TypeScript experience.
+Although we love Rust, the native language of the web is JavaScript. Thereby naturally the best tools for creating web experiences are available for JavaScript. Hence, the tools for smart contract interaction with JavaScript are the most advanced as well. To be precise, all JavaScript tools mentioned here, actually leverage TypeScript to offer a JavaScript and a typesafe TypeScript experience.
 
 ## JavaScript/TypeScript Tools
 
@@ -8037,33 +8064,33 @@ There are several levels of abstraction where you can start your journey creatin
 
 ### Using no libraries
 
-- [RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction) **(not recommended)**: nodes participating in the blockchain network offer a [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
+- **[RPC Interface](https://wiki.polkadot.network/docs/build-node-interaction)** **(not recommended)**: nodes participating in the blockchain network offer a [JSON RPC interface](https://www.jsonrpc.org/) to interact with the blockchains state and capabilities.
 
 ### Low level libraries
 
-- [`polkadot-api`](https://papi.how/getting-started) **(currently recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
+- **[Papi](https://papi.how/getting-started)** **(recommended)**: fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains.
 
-- [`@polkadot/api`](https://polkadot.js.org/docs/api) **(not recommended)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-revive` runtime calls.
+- **[Polkadot JS](https://polkadot.js.org/docs/api)**: allows for most general interaction with Polkadot-SDK based blockchains from JavaScript. In order to talk to smart-contracts, one would use the `pallet-revive` runtime calls.
 
 ### ink!-specific SDKs
 
-- [`@polkadot-api/sdk-ink`](https://papi.how/sdks/ink-sdk) **(Compatible with ink! v6)**: is a PAPI SDK for interacting with ink! smart contracts, offering fully type-safe APIs for: deploying contracts, dry-running calls, sending messages, estimating gas and storage deposits, decoding events, and accessing on-chain storage of contracts.
+- **[Papi's `ink-sdk`](https://papi.how/sdks/ink-sdk)**: is a PAPI SDK for interacting with ink! smart contracts, offering fully type-safe APIs for: deploying contracts, dry-running calls, sending messages, estimating gas and storage deposits, decoding events, and accessing on-chain storage of contracts.
 
-- [`dedot`](https://docs.dedot.dev/ink-smart-contracts/intro) **(Compatible with ink! v6)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
+- **[Dedot](https://docs.dedot.dev/ink-smart-contracts/intro)**: Next-gen TypeScript client for Polkadot & Polkadot SDK-based networks, offering fully type-safe APIs for interacting with ink! smart contracts. Dedot simplifies the process of generating TypeScript bindings for your contracts, deploying them, executing queries and transactions, performing dry runs for validation, and decoding contract events with full type safety.
 
-- [`@polkadot/api-contract`](https://polkadot.js.org/docs/api-contract) **(Compatible with ink! v6)**: abstraction on top of `@polkadot/api` for the `pallet-contracts` and `pallet-revive`. Makes interaction with smart contracts more comfortable and type safe.
+- **[Polkadot JS Contracts](https://polkadot.js.org/docs/api-contract)**: abstraction on top of Polkadot JS for the `pallet-contracts` and `pallet-revive`. Makes interaction with smart contracts more comfortable and type safe.
 
 ### React
 
-- [`ReactiveDOT`](https://reactivedot.dev/) **(Compatible with ink! v6)**: A reactive library for building Substrate front-ends.
+- **[ReactiveDOT](https://reactivedot.dev/)**: A reactive library for building Substrate front-ends.
 
-- [`useInkathon`](https://github.com/scio-labs/use-inkathon) **(not compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using `@polkadot/api` & `@polkadot/api-contract`.
+- **[useInkathon](https://github.com/scio-labs/use-inkathon)** **(not yet compatible with ink! v6)**: A hooks library for the popular frontend javascript framework React with focus on smart-contract interactions. Built using Polkadot JS.
 
-- [`typink`](https://docs.dedot.dev/typink) **(Compatible with ink! v6)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors.
+- **[typink](https://docs.dedot.dev/typink)**: A comprehensive toolkit designed to simplify and accelerate ink! dApp development. Typink provides fully type-safe React hooks to streamlines interactions with ink! smart contracts, ensuring a seamless developer experience. With its built-in CLI, Typink enables you to bootstrap new projects in seconds, offering multi-chain support and flexible options for wallet connectors.
 
 ### React and Next.js
 
-- [`inkathon`](https://github.com/scio-labs/inkathon) **(will be compatible with ink! v6 soon)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
+- **[inkathon](https://github.com/scio-labs/inkathon)** **(will be compatible with ink! v6 soon)**: Full Stack web app template using the popular full stack template `Nextjs`. Itself is using `useInkathon`. The fastest way to get up and running with a smart contract and a corresponding web app.
 
 ## Other Languages
 
@@ -8071,13 +8098,13 @@ Of course the browser and JavaScript should not be the one and only platform for
 
 The following is a list of libraries which could be used to craft smart-contract dApps on other platforms than the web.
 
-- [novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios): low level generic iOS SDK for substrate.
+- **[novasamatech/substrate-sdk-ios](https://github.com/novasamatech/substrate-sdk-ios)**: low level generic iOS SDK for substrate.
 
-- [novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android): low level Android SDK for substrate.
+- **[novasamatech/substrate-sdk-android](https://github.com/novasamatech/substrate-sdk-android)**: low level Android SDK for substrate.
 
-- [paritytech/subxt](https://github.com/paritytech/subxt): Rust library to submit extrinsics (transactions) to a substrate node via RPC.
+- **[paritytech/subxt](https://github.com/paritytech/subxt)**: Rust library to submit transactions to a substrate node via RPC.
 
-- [polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md): Python library to interface with Substrate nodes.
+- **[polkascan/py-substrate-interface](https://github.com/polkascan/py-substrate-interface/blob/master/docs/usage/ink-contract-interfacing.md)**: Python library to interface with Substrate nodes.
 ````
 
 ## File: docs/getting-started/calling.md
@@ -8087,6 +8114,9 @@ title: Call your contract
 slug: /getting-started/calling-your-contract
 hide_title: true
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ![Frontend Title Picture](/img/title/frontend.svg)
 
@@ -8133,11 +8163,62 @@ are emitted if they want clients to be able to pick up on them.
 
 ![Contract execution via transaction](/img/events-revive.svg)
 
-## Using the Contracts UI
+## Using the Terminal
 
-:::caution
-For ink! v6 only, this section on the Contracts UI uses an alpha version of the UI.
+When you deployed your contract you received the contract address. Use this to interact with the contract.
+```bash
+Contract Address: 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
+```
+
+### 1. `get()` function
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract call 
+    --contract <insert-contract-address> 
+    --message get 
+    --suri //Alice
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop call contract 
+    --contract <insert-contract-address> 
+    --message get 
+    --suri //Alice
+  ```
+  </TabItem>
+</Tabs>
+
+### 2. `flip()` function
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract call 
+    --contract <insert-contract-address>
+    --message flip
+    --execute
+    --suri //Alice
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop call contract 
+    --contract <insert-contract-address>
+    --message flip
+    --execute
+    --suri //Alice
+  ```
+  </TabItem>
+</Tabs>
+
+:::tip
+For more info about interacting with your smart contract using the Pop CLI, [check this out](https://learn.onpop.io/contracts/guides/call-your-contract)!
 :::
+
+## Using the Contracts UI
 
 Go to https://ui.use.ink/
 
@@ -8164,111 +8245,6 @@ The alternative message to send with the UI is `flip()`. Again, accept the defau
 If the transaction was successful, we should then be able to go back to the `get()` function and see our updated storage:
 
 ![An image of Flipper RPC call with true](/img/contracts-ui-6.png)
-
-## Using `cargo-contract`
-
-Calling a contract can also be done via the command-line! 
-
-### 1. `get()` function
-
-```bash
-$ cargo contract build
-$ cargo contract instantiate --execute --suri //Alice --args true
-
-# The output of this command will contain the contract address in
-# this format: 
-#     Contract 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
-# Insert it in the command below.
-
-$ cargo contract call 
-  --contract <insert-contract-address> 
-  --message get 
-  --suri //Alice
-```
-
-### 2. `flip()` function
-
-```bash
-$ cargo contract call 
-  --contract <insert-contract-address>
-  --message flip
-  --execute
-  --suri //Alice
-```
-````
-
-## File: docs/getting-started/cargo-contract.md
-````markdown
----
-title: Install cargo-contract
-slug: /cargo-contract-cli
----
-
-`cargo-contract` is a command-line (CLI) tool that helps you set up and manage
-smart contracts written with ink!.
-
-The tool has a number of handy capabilities:
-
-```
-$ cargo contract       
-Utilities to develop ink! smart contracts
-
-Usage: cargo contract <COMMAND>
-
-Commands:
-  new              Setup and create a new smart contract project
-  build            Compiles the contract, generates metadata, bundles both together in a `<name>.contract` file
-  check            Check that the code builds for PolkaVM; does not output any `<name>.contract` artifact to the `target/` directory
-  upload           Upload contract code
-  instantiate      Instantiate a contract
-  call             Call a contract
-  account          Account handling and information
-  encode           Encodes a contracts input calls and their arguments
-  decode           Decodes a contracts input or output data (supplied in hex-encoding)
-  remove           Remove contract code
-  info             Display information about a contract
-  storage          Inspect the on-chain storage of a contract
-  verify           Verifies that a given contract binary matches the build result of the specified workspace
-  generate-schema  Generates schema from the current metadata specification
-  verify-schema    Verify schema from the current metadata specification
-  rpc              Make a raw RPC call
-  help             Print this message or the help of the given subcommand(s)
-
-Options:
-  -h, --help     Print help
-  -V, --version  Print version
-```
-
-## Installation
-
-Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/use-ink/cargo-contract#installation).
-
-You can then use `cargo contract --help` to start exploring the commands made available to you.
-
-## Usage
-
-In order to initialize a new ink! project you can use:
-
-```bash
-$ cargo contract new flipper
-```
-
-This will create a folder `flipper` in your work directory.
-The folder contains a scaffold `Cargo.toml` and a `lib.rs`, which both contain the necessary building blocks for using ink!.
-
-The `lib.rs` contains our hello world contract ‒ the `Flipper`, which we explain in the next section.
-
-In order to build the contract just execute these commands in the `flipper` folder:
-
-```bash
-$ cargo contract build
-```
-
-As a result you'll get the file `target/flipper.contract`. It's a JSON which bundles the contract's
-metadata and its RISC-V binary blob. This file needs to be used when deploying the contract.
-You additionally get the individual `target/flipper.polkavm` and `target/flipper.json` in the folder as well.
-The `.polkavm` extension is used because the interpreter for the RISC-V bytecode
-is a component called [PolkaVM](http://github.com/paritytech/polkavm).
 ````
 
 ## File: docs/getting-started/compiling.md
@@ -8280,6 +8256,8 @@ hide_title: true
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ![Cargo Contract Title Picture](/img/title/cargo-contract.svg)
 
@@ -8287,9 +8265,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Run the following command in your `flipper` directory to compile your smart contract:
 
-```bash
-$ cargo contract build
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  ```
+  </TabItem>
+</Tabs>
 
 This command will build the following for your contract: 
 a binary, a metadata file (which contains the
@@ -8397,9 +8384,18 @@ heavy-weight logic which increases the contract's size.
 For contracts that are supposed to run in production you should always build the
 contract with `--release`:
 
-```bash
-$ cargo contract build --release
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build --release
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build --release
+  ```
+  </TabItem>
+</Tabs>
 
 This will ensure that nothing unnecessary is compiled into the binary blob, making
 your contract faster and cheaper to deploy and execute.
@@ -8408,6 +8404,34 @@ your contract faster and cheaper to deploy and execute.
 With this behavior `cargo-contract` mirrors how `cargo` behaves for Rust programs:
 the `--release` flag has to be passed explicitly to `cargo build`.
 :::
+
+## Test Your Contract
+If you created a new project using a template, you can find at the bottom of the lib.rs simple test cases which verify the functionality of the contract. We can quickly test this code is functioning as expected:
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract test
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop test
+  ```
+  </TabItem>
+</Tabs>
+
+To which you should see a successful test completion:
+
+```bash
+running 2 tests
+test flipper::tests::it_works ... ok
+test flipper::tests::default_works ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+```
+
+Learn more about the [testing strategies for ink! contracts](../testing/overview.md).
 ````
 
 ## File: docs/getting-started/creating.md
@@ -8418,33 +8442,28 @@ slug: /getting-started/creating-an-ink-project
 hide_title: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ![Heart Title Picture](/img/title/heart.svg)
 
-# Creating an ink! Project
-
-ink! is an [Embedded Domain Specific Language](https://wiki.haskell.org/Embedded_domain_specific_language) (eDSL):
-a domain-specific language of the Rust programming language.
-That means:
-
-* we allow only a subset of the Rust programming language features to be used
-  for writing smart contracts. For example, it is not possible do any 
-  multi-threading operations or access the web.
-* we provide annotations, macros, and primitives that are needed when writing
-  smart contracts. For example, annotations on what the smart contract's storage
-  struct is or what an event is.
-
-ink! is just standard Rust in a well-defined "contract format" with specialized `#[ink(…)]` attribute macros. These attribute macros tell ink! what the different parts of your Rust smart contract represent, and ultimately allow ink! to do all the magic needed to create Polkadot SDK compatible RISC-V bytecode!
-
 ## Create a new project
-Use the ink! CLI to generate an initial smart contract with some scaffolding code.
+Make sure you have [installed the tooling](./setup.md) and that you are in the working directory, and then run:
 
-Make sure you are in your working directory, and then run:
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract new flipper
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop new contract
+  ```
+  </TabItem>
+</Tabs>
 
-```bash
-$ cargo contract new flipper
-```
-
-This command will create a new project folder named `flipper` with this content:
+This command will create a new project folder named `flipper` with:
 
 ```
 flipper
@@ -8453,6 +8472,10 @@ flipper
   └─ .gitignore
 ```
 
+:::tip
+The [Pop CLI](https://learn.onpop.io/contracts/guides/create-a-new-contract) has many templates to offer!
+:::
+
 ## Contract Source Code
 
 For the `lib.rs` file, `cargo-contract` automatically generates the source code for the "Flipper" contract, which is about the simplest "smart" contract you can build. You can take a sneak peak as to what will come by looking at the source code here:
@@ -8460,27 +8483,7 @@ For the `lib.rs` file, `cargo-contract` automatically generates the source code 
 
 The Flipper contract is nothing more than a `bool` which gets flipped from `true` to `false` through the `flip()` function. 
 
-## Testing Your Contract
-
-At the bottom of the `lib.rs` you'll see some simple test cases which verify the functionality of the contract.
-We can quickly test this code is functioning as expected:
-
-```bash
-$ cargo contract test
-```
-
-To which you should see a successful test completion:
-
-```bash
-$ cargo contract test
-running 2 tests
-test flipper::tests::it_works ... ok
-test flipper::tests::default_works ... ok
-
-test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
-```
-
-Now that we are feeling confident things are working, we can actually compile this contract to a RISC-V binary in the next step.
+Now that we are feeling confident things are working, we can actually compile the contract in the next step.
 ````
 
 ## File: docs/getting-started/deploying.md
@@ -8491,42 +8494,80 @@ slug: /getting-started/deploy-your-contract
 hide_title: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ![Rocket Title Picture](/img/title/rocket.svg)
 
-# Deploy Your Contract
+Deploying a smart contract is the process of making your contract available on a blockchain so that it can be interacted with by others. In the Polkadot ecosystem, 
+this involves uploading your compiled contract code to a chain that supports smart contracts (i.e. `pallet-revive`), and then creating an instance of your contract. 
+This page will guide you through the steps to deploy your ink! contract locally, using both the command line and the Contracts UI.
 
-Now that we have generated the contract binary from our source code and connected to a local node, we want
-to deploy this contract onto our local node.
+# Launch a local node
 
-Smart contract deployment on `pallet-revive` is a little different than on traditional smart contract
-blockchains.
+:::tip Pro Tip
+The [Pop CLI](https://learn.onpop.io/contracts/guides/deploy) handles the `ink-node` for you, no need to install or launch.
+:::
 
-Whereas a completely new blob of smart contract source code is deployed each time you push a
-contract on other platforms, `pallet-revive` opts to optimize this behavior. For example, the standard
-ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the
-initial configuration (through the Solidity `constructor` function). Each of these instances take
-up space on the blockchain equivalent to the contract source code size, even though no code was
-actually changed.
+To deploy your contract locally, you need a running blockchain node that supports ink! smart contracts. The recommended option is `ink-node`, a simple Polkadot blockchain configured with the `pallet-revive` for smart contracts ([learn more](../background/polkadot-sdk.md)).
 
-For `pallet-revive`, the contract deployment process is split into two steps:
+After [installing `ink-node`](./setup.md#ink-node), you can start a local development chain by running:
+
+```bash
+ink-node
+```
+
+**Note:** `ink-node` uses the `--dev` flag by default. You may need to specify the `--dev` flag when running a different chain binary.
+
+<img src={useBaseUrl('/img/ink-node.png')} className="titlePic titleSpace" title="Screenshot of terminal starting a local node" />
+
+You can interact with your node using `cargo-contract`, `pop` or [the Contracts UI](https://ui.use.ink/). If you use the Contracts UI, you have to configure it to connect to the locally running node:
+
+- Click on the dropdown selector at the top left corner.
+- Choose "Local Node".
+
+![Connect to local node](/img/contracts-ui-local-node.png)
+
+## Deploy the contract
+
+Now that we have generated the contract binary from our source code and connected to a local node, we want to deploy this contract onto our local node.
+
+Smart contract deployment on Polkadot is a little different than on traditional smart contract blockchains.
+
+For example, the standard ERC20 token has been deployed to Ethereum thousands of times, sometimes only with changes to the initial configuration (through the Solidity `constructor` function). Each of these instances take up space on the blockchain equivalent to the contract source code size, even though no code was actually changed.
+
+The contract deployment process in Polkadot is split into two steps:
 
 1. Putting your contract code on the blockchain
 2. Creating an instance of your contract
 
-With this pattern, contract code like the ERC20 standard can be put on the blockchain one single
-time, but instantiated any number of times. No need to continually upload the same source code over
-and waste space on the blockchain.
+With this pattern, contract code like the ERC20 standard can be put on the blockchain one single time, but instantiated any number of times. No need to continually upload the same source code over and waste space on the blockchain.
+
+## Using the Terminal
+
+With `cargo-contract` or `pop` it's just a simple sequence of:
+
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract build
+  cargo contract instantiate --suri //Alice --args true
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop build
+  pop up --suri //Alice --args true
+  ```
+  </TabItem>
+</Tabs>
 
 ## Using the Contracts UI
 
-:::caution
-For ink! v6 only, this section on the Contracts UI uses an alpha version of the UI.
-:::
-
 ### 1. Upload Contract Code
 
-Here we will upload the contract code and instantiate one copy of the contract on the blockchain
-(which is usually why we upload the contract code in the first place):
+Here we will upload the contract code and instantiate one copy of the contract on the blockchain (which is usually why we upload the contract code in the first place):
 
 - Go to https://ui.use.ink/
 - Make sure you have ink! v6 selected in the sidebar
@@ -8534,20 +8575,16 @@ Here we will upload the contract code and instantiate one copy of the contract o
 - Click the **Upload New Contract Code** button in the Add New Contract page.
 - Choose an **Instantiation account** (e.g. ALICE).
 - Give the contract a descriptive **Name** (e.g. Flipper Contract).
-- Drag the `flipper.contract` file that contains the bundled binary blob and metadata into the drag
-  & drop area. You will see the UI parse the metadata and enabling the button that takes you to the next step.
+- Drag the `flipper.contract` file that contains the bundled binary blob and metadata into the drag & drop area. You will see the UI parse the metadata and enabling the button that takes you to the next step.
 - Click the **Next** button
 
 ![Flipper Instantiate Contract 01](/img/contracts-ui-0.png)
 
 ### 2. Instantiate a Contract on the Blockchain
 
-Smart contracts exist as an extension of the account system on the blockchain. Thus creating an
-instance of this contract will create a new `AccountId` (ETH-compatible address) which will store any balance managed by the
-smart contract and allow us to interact with the contract.
+Smart contracts exist as an extension of the account system on the blockchain. Thus creating an instance of this contract will create a new `AccountId` (ETH-compatible address) which will store any balance managed by the smart contract and allow us to interact with the contract.
 
-Now a screen displays the information that represents our smart contract. We are going to
-instantiate a copy of the smart contract:
+Now a screen displays the information that represents our smart contract. We are going to instantiate a copy of the smart contract:
 
 - Accept the default options for the contract **Deployment Constructor**.
 - Accept the default options **Max Gas Allowed** of `200000`.
@@ -8562,63 +8599,6 @@ The transaction is now queued, review your data and click **Upload and Instantia
 You will be redirected to a new page, where you can interact with the newly created contract instance.
 
 ![Flipper Instantiate Success](/img/contracts-ui-3.png)
-
-## Using `cargo-contract`
-
-Contracts can be deployed via the command-line as well. With `cargo-contract`
-it's just a simple sequence of:
-
-```bash
-$ cargo contract build
-$ cargo contract instantiate --suri //Alice --args true
-```
-````
-
-## File: docs/getting-started/running.md
-````markdown
----
-title: Run a local node
-slug: /getting-started/running-substrate
-hide_title: true
----
-
-import useBaseUrl from '@docusaurus/useBaseUrl'
-
-![Run an ink! node](/img/title/cargo-contract.svg)
-
-# Run a local node
-
-The [`ink-node`](https://github.com/use-ink/ink-node) is a simple 
-[Polkadot SDK](https://polkadot.com/platform/sdk) blockchain. It is 
-configured to include the [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive) module,
-which adds support for smart contracts.
-Specifically this module allows uploading and executing RISC-V smart
-contracts to a blockchain.
-
-:::info
-You can read more about how ink!, `pallet-revive`, and Polkadot SDK
-are related in [our technical background section](../background/polkadot-sdk.md).
-:::
-
-[After successfully installing `ink-node`](./setup.md#installing-ink-node),
-you can start a local development chain by running:
-
-```bash
-$ ink-node
-```
-
-**Note:** `ink-node` uses the `--dev` flag by default. 
-You may need to specify the `--dev` flag when you want to run a development chain with another binary (e.g using the Polkadot SDK Node Template).
-
-<img src={useBaseUrl('/img/ink-node.png')} className="titlePic titleSpace" title="Screenshot of terminal starting a local node" />
-
-You can interact with your node using `cargo-contract` or [the Contracts UI](https://contracts-ui.substrate.io).
-If you use the Contracts UI, you have to configure it to connect to the locally running node:
-
-- Click on the dropdown selector at the top left corner.
-- Choose "Local Node".
-
-![Connect to local node](/img/contracts-ui-local-node.png)
 ````
 
 ## File: docs/getting-started/setup.md
@@ -8635,67 +8615,60 @@ hide_title: true
 
 On this page we describe the pre-requisites for working with ink!.
 
+:::tip Pro tip
+ Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
+:::
+
 ## Rust & Cargo
 
 A pre-requisite for compiling smart contracts is to install a stable Rust 
 version (>= 1.85) and `cargo`. Please see [the official Rust installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
-## ink! CLI
+## cargo-contract
 
 The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
-our CLI tool for help with setting up and managing smart contracts written with ink!.
-
-The tool has a number of handy capabilities:
+it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
 ```bash
-$ cargo contract --help
-Utilities to develop ink! smart contracts
-
-Usage: cargo contract <COMMAND>
-
-Commands:
-  new              Setup and create a new smart contract project
-  build            Compiles the contract, generates metadata, bundles both together in a `<name>.contract` file
-  check            Check that the code builds for PolkaVM; does not output any `<name>.contract` artifact to the `target/` directory
-  upload           Upload contract code
-  instantiate      Instantiate a contract
-  call             Call a contract
-  account          Account handling and information
-  encode           Encodes a contracts input calls and their arguments
-  decode           Decodes a contracts input or output data (supplied in hex-encoding)
-  remove           Remove contract code
-  info             Display information about a contract
-  storage          Inspect the on-chain storage of a contract
-  verify           Verifies that a given contract binary matches the build result of the specified workspace
-  generate-schema  Generates schema from the current metadata specification
-  verify-schema    Verify schema from the current metadata specification
-  rpc              Make a raw RPC call
-  help             Print this message or the help of the given subcommand(s)
-
-Options:
-  -h, --help     Print help
-  -V, --version  Print version
+cargo install cargo-contract --version 6.0.0-alpha --locked
 ```
 
-### Installation
+Make sure you have the latest stable version of Rust installed:
+```bash
+rustup update stable
+```
 
-Please see the installation instructions in the `cargo-contract` repository [here](https://github.com/use-ink/cargo-contract#installation).
-
-If everything worked, `cargo contract --help` should show you the above list of available commands.
-
-## Installing `ink-node`
+## ink-node
 
 The [ink-node](https://github.com/use-ink/ink-node) is
-a simple Polkadot SDK blockchain which is configured to include the Polkadot SDK module for
-smart contract functionality – the `pallet-revive` (see [Polkadot SDK](../background/polkadot-sdk.md) for more).
-It's a comfortable option for local development and testing.
+a simple Polkadot SDK blockchain with smart contract functionality. It's a comfortable option for local development and testing.
 
 There are two ways of installing the node:
 
 ### (1) Download the Binary
-This is the recommended method, you can
-[download a binary from our releases page](https://github.com/use-ink/ink-node/releases)
-(Linux and Mac). 
+Go to the [ink-node releases page](https://github.com/use-ink/ink-node/releases). Under `Assets` of the latest release, download the appropriate binary for your platform:
+   - **Linux (ARM64)**: `ink-node-linux-arm64.tar.gz`
+   - **Linux (x86)**: `ink-node-linux.tar.gz`  
+   - **macOS**: `ink-node-mac-universal.tar.gz`
+
+Make the binary executable:
+   ```bash
+   chmod +x ./ink-node
+   ```
+
+**For macOS users:**
+When you first try to run `ink-node`, macOS may show a security warning.
+
+To allow the binary to run:
+1. Click the **question mark (?)** icon at the right top corner of the warning.
+2. Follow the Apple instructions that appear.
+3. Try running `ink-node` again and click **"Open Anyway"** when prompted.
+
+To confirm that `ink-node` is working correctly, run:
+```bash
+./ink-node --version
+```
+If you see version information, your installation is successful!
 
 ### (2) Build it yourself
 
@@ -8706,289 +8679,143 @@ The build instructions and pre-requisites can be found
 [here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).
 ````
 
-## File: docs/intro/current-state.mdx
-````
----
-title: Project State 2025
-slug: /current-state
-hide_title: true
----
-
-import useBaseUrl from '@docusaurus/useBaseUrl'
-
-<img src={useBaseUrl('/img/title/q1-25.svg')} className="titlePic titleSpace" />
-
-## 🤗 Time at Parity (2019-2024)
-
-In 2019, ink! started out as a small project at Parity. It grew into a sophisticated
-ecosystem over the years and a community did form around it.
-Throughout all these years Parity continued to allocate developer resources to the
-project, which is amazing!
-
-In April 2024, ink! moved out of the Parity umbrella. Instead of one company,
-it is nowadays developed and maintained by an alliance of individual developers,
-companies, and community teams altogether.
-You can read more on our transition out of Parity
-[here](https://x.com/ink_lang/status/1783877356819783916).
-
-We continue to work closely with Parity, we contribute code to Parity-maintained
-components and regularly synchronize with Parity developers. Parity continues to
-be involved in ink! as well: in late 2024 SRLabs and the Parity security team
-conducted an audit of ink! v5 ([read more here](https://x.com/paritytech/status/1882492494661005760)).
-
-## 🧑‍🔬 Exploring alternatives to WebAssembly (2023)
-
-From ink! v1 to v5, the execution platform was Substrate's smart contracts
-module [`pallet-contracts`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts/).
-This pallet required the smart contracts that were uploaded to be in the WebAssembly
-(Wasm) bytecode format. So ink! contracts were always compiled to a WebAssembly binary.
-This could be done by invoking `cargo build`/`rustc` directly or via our CLI tool
-[`cargo-contract`](https://github.com/use-ink/cargo-contract) (which executes the
-Rust compiler with optimal flags for smart contracts).
-
-As an ongoing research project Parity was always looking at alternatives to WebAssembly
-for smart contract execution. Some of those investigations are
-persisted in the Polkadot Forum. The forum post on [the eBPF investigation](https://forum.polkadot.network/t/ebpf-contracts-hackathon/1084)
-(eBPF is used in Solana) highlights some shortcomings of WebAssembly for smart contracts.
-
-During 2023, Parity core developer Jan Bujak ([@koute](https://github.com/koute)) did another
-exploration on alternatives for WebAssembly. [His forum post](https://forum.polkadot.network/t/exploring-alternatives-to-wasm-for-smart-contracts/2434)
-gives a great overview on how he landed at RISC-V and its potential.
-His explorations yielded promising results and a new project
-was started: [PolkaVM](https://github.com/paritytech/polkavm)
-([the announcement contains more info](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)).
-PolkaVM is intended to be a very fast RISC-V based virtual machine. Jan
-regularly shared performance benchmarks in the Polkadot Forum. Those were very
-good and got community enthusiasm started.
-For blockchains a very fast performance correlates with transaction throughput
-and transaction costs, which implies improved scalability and reduced costs for users.
-Eventually an idea emerged: move the Substrate stack in the long-term to RISC-V
-instead of WebAssembly.
-
-## 🤝 RISC-V + `pallet-revive` (2025)
-
-As migrating the Substrate stack from WebAssembly to RISC-V is a highly complex
-undertaking, it was found that smart contracts are an ideal starting point
-to kick off this migration in a clearly delimited component.
-
-Parity subsequently forked Substrate's `pallet-contracts` into a new project called
-[`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive).
-Smart contracts that are uploaded to this new pallet have to be
-in the RISC-V bytecode format, and no longer in WebAssembly.
-
-Besides the contract binary format, a number of other significant changes were
-made to provide first-class support for Solidity contracts:
-
-    * Extensive changes were made in the inner logic of the pallet to bring its behavior
-    closer to the EVM (e.g. types, events, and debugging was changed to be Solidity
-    compatible).
-
-    * In the `pallet-contracts` era, the idea for Solidity compatibility was a project
-    called [Solang](https://github.com/hyperledger-solang/solang/). It's a Solidity
-    compiler that parses Solidity syntax and outputs WebAssembly.
-    Parsing the Solidity syntax turned out to be a complex undertaking. Solidity
-    as a language is also evolving and provided a moving target.<br/><br/>
-    As an iteration on that approach, for `pallet-revive` Parity started a new
-    project called [`revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive/src) ᠆
-    a compiler from the Solidity bytecode YUL to a RISC-V
-    contract that can be executed on `pallet-revive`.
-    This bytecode is more stable than the language syntax. Plus Solidity developers
-    can continue to use the Solidity compiler `solc` to compile their contracts.
-
-    * An RPC wrapper that maps Ethereum RPC's onto Substrate was created.
-
-At the time of writing, `pallet-revive` is deployed to the Polkadot testnet Westend
-(on the AssetHub parachain).
-A launch on Polkadot's canary network Kusama is targeted for early Q2/25.
-The Polkadot launch is targeted for Q3/25.
-
-## 🙌 Migrating ink! to RISC-V + `pallet-revive` (currently wip)
-
-`pallet-revive` and RISC-V are seen as the future of smart contracts in the Polkadot
-ecosystem. We agree with that vision and are excited to work on making the ink! stack
-ready for it!
-In autumn 2024 the ink! Alliance created [a Polkadot treasury proposal](https://forum.polkadot.network/t/treasury-ink-alliance-for-a-more-successful-plaza/9692)
-around this.
-The Polkadot community signaled its alignment and gave us the mandate of
-migrating ink! to this new stack.
-
-Hence, v5 of ink! and `cargo-contract` are the last ones supporting `pallet-contracts`
-and Wasm. We can still backport important fixes, but the coming releases (`>= v6`) will
-all no longer be compatible. In case you want to create a PR for a backport, we have
-v5 release branches [here](https://github.com/use-ink/ink/tree/v5.x) and [here](https://github.com/use-ink/cargo-contract/tree/v5.x.x).
-
-The current state of this migration is that the `master` branches of
-[ink!](https://github.com/use-ink/ink) and [`cargo-contract`](https://github.com/use-ink/cargo-contract)
-are compatible with `polkadot-sdk` + `pallet-revive` + PolkaVM from Jan 7, 2025.
-That's the date to which we've caught up so far. We are working on catching up
-to present day and aim to have a pre-release 6.0.0-alpha of both ink! and
-`cargo-contract` out in March 2025.
-
-We are actively working on [this migration guide](/docs/v6/faq/migrating-from-ink-5-to-6).
-All breaking changes and new features will eventually be documented there.
-
-What has not yet been migrated is [Contracts UI](https://github.com/use-ink/contracts-ui)
-and external libraries (such as [ink!athon](https://inkathon.xyz/), the
-[ink! Analyzer VS Code extension](https://marketplace.visualstudio.com/items?itemName=ink-analyzer.ink-analyzer),
-`polkadot-js`, …).
-We are in contact with the maintainers of these external libraries about migrating as well.
-
-## 💸 ink!ubator 2.0
-
-The <a href={useBaseUrl('/inkubator')}>ink!ubator</a> is a funding program for advancing the ink! ecosystem.
-The first round of projects was completed in autumn 2024! A final summary was posted
-by Toma, one of the curators, on the Polkadot Forum [here](https://forum.polkadot.network/t/final-report-of-ink-ubator/10120).
-
-Applications for the second cohort are now open.
-See [the ink!ubator 2.0 repository](https://github.com/use-inkubator/Ecosystem-Grants)
-on GitHub for more details.
-
-## ❓Questions?
-
-In case you have any questions, the best way to reach out is in
-[our Telegram group](https://t.me/inkathon) or the
-[Polkadot Forum](https://forum.polkadot.network/).
-````
-
 ## File: docs/intro/intro.mdx
 ````
 ---
-title: Welcome!
+title: Introduction
 hide_title: true
 slug: /
 ---
-
-<head>
-    <meta name="title" content="ink! Developer Documentation" />
-    <meta
-      name="description"
-      content="Developer docs for ink!, the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM."
-    />
-    <meta name="keywords" content="Smart contracts, Rust, Polkadot, PolkaVM, RISC-V" />
-    <meta property="og:title" content="ink! Developer Documentation" />
-    <meta property="og:description" content="Developer docs for ink!, the Rust smart contract language of Polkadot. Running on RISC-V and PolkaVM." />
-</head>
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
 
-## Introduction
+## What is ink!?
 
-⚡️ ink! helps you easily build safe, efficient smart contracts for Polkadot and Substrate-based blockchains.
+ink! is a programming language for writing smart contracts that combines the power and safety of Rust with blockchain development.
 
-🚀 Write smart contracts in ink!, a domain-specific language built on top of Rust — combining safety, performance, and scalability.
+Here's what makes ink! special:
 
-🛠 Use familiar Rust tooling like <code>clippy</code>, <code>cargo</code>, crates from <code>crates.io</code>, and popular IDEs for a seamless development experience.
+**Built on Rust**: ink! takes the popular Rust programming language and adds everything you need for smart contract development. You get all of Rust's safety features like memory safety and type safety, plus access to the vast Rust ecosystem.
 
-🤝 Interoperability with Solidity: Solidity developers can call ink! contracts just like other Solidity contracts, enabling cross-ecosystem collaboration.
+**Smart Contract Ready**: While ink! uses Rust as its foundation, it's specifically designed for smart contracts. This means:
+- Special annotations and macros are provided for smart contract needs
+- Built-in support for storage, events, and contract interactions
 
-:::caution
-The latest release, [v6.0.0-alpha](https://github.com/use-ink/ink/releases/tag/v6.0.0-alpha), is an **alpha version**.
+**Simple but Powerful**: ink! uses special `#[ink(...)]` attribute macros to turn your Rust code into smart contracts. These macros tell ink! what different parts of your code represent; like storage, functions that can be called, or events that can be emitted.
 
-`ink! v6.0.0` introduces support for both native ink! and Solidity ABI specifications.  
-However, Solidity compatibility is **still under development** and may be incomplete or unstable in this alpha release.
-:::
+**Compile to RISC-V**: Your ink! contracts compile to RISC-V bytecode that runs efficiently on blockchains, giving you both performance and compatibility.
 
-🌎 Deploy ink! smart contracts on blockchains built with the Polkadot SDK. <a href={useBaseUrl('/chains')}>Check supported chains here.</a>
+## What can you do with it?
 
-:::note
-ink! v6 is no longer using WebAssembly and `pallet-contracts`!
-Instead we migrated to RISC-V, PolkaVM, and `pallet-revive`.
+ink! opens up a world of possibilities for blockchain development across the Polkadot ecosystem:
 
-Read more about the transition [here](../faq/migrating-from-ink-5-to-6.md).
-:::
+### Build Smart Contracts for Polkadot Blockchains
 
-## Fast Track
+With ink!, you can write smart contracts that run on any blockchain built with the Polkadot SDK that includes the `pallet-revive` module. This includes many parachains and standalone chains in the Polkadot ecosystem.
 
-Install Rust and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+- **DeFi Applications**: Build decentralized exchanges, lending protocols, and other financial applications
 
-Download the binary for a local development node [here](https://github.com/use-ink/ink-node/releases).
+- **NFT Platforms**: Create marketplaces, games, and digital collectible platforms  
 
-```toml
-# Install our cli tool from the `6.0.0-alpha` release.
-# It wraps around `cargo build` to build contracts with optimal
-# flags for blockchains. It also allows for deploying + interacting
-# with contracts.
-$ rustup component add rust-src
-$ cargo install cargo-contract@6.0.0-alpha
+- **Cross-Chain Applications**: Take advantage of Polkadot's interoperability to build applications that work across multiple blockchains
 
-# Create a simple contract.
-$ cargo contract new flipper && cd flipper
-$ cargo contract build --release
+- **Utility Contracts**: From simple storage contracts to complex business logic, ink! can handle it all
 
-# Start your local development node in a separate shell session
-$ chmod +x ink-node (makes the node's binary executable)
-$ ink-node (starts the node, try `./ink-node` if the previous command doesn't work)
+### Flexible Development Paths
 
-# Instantiate this contract on-chain.
-$ cargo contract instantiate --suri //Alice --args true -x
+ink! provides different approaches depending on your needs:
 
-# Dry-run a call of it.
-$ cargo contract call --suri //Alice --contract 0x… --message get
+- **Prototype Quickly**: Start with a smart contract to test your idea and get user feedback
+- **Enhanced Chain Features**: Use precompiles to access special blockchain functionality beyond basic smart contracts
+- **Scale to Parachains**: Later migrate successful contracts to dedicated parachains for better performance and lower costs
 
-# Execute a contract call, as a transaction on-chain.
-$ cargo contract call --suri //Alice --contract 0x… --message flip -x
-```
+### Composability
 
-### Using the Contracts UI
-:::caution
-The Contracts UI for ink! v6 uses an alpha version of the interface: https://inkv6alpha.netlify.app/.
-:::
+One of ink!'s unique advantages is its compatibility with Solidity. This means:
+- Solidity developers can call ink! contracts seamlessly
+- You can use existing Ethereum tools and frameworks
+- Easy migration between different blockchain ecosystems
 
-- Upload your contract:
+Want to learn more about ink!'s relationship with the Polkadot ecosystem and its various use cases? Check out our detailed guide on [Polkadot SDK and ink!](../background/polkadot-sdk.md).
 
-    Follow the steps in [Deploy your Contract Using the Contracts UI](../getting-started/deploying.md#using-the-contracts-ui).
+Ready to get started? Head to our [Getting Started](../getting-started/setup.md) guide to begin building your first ink! smart contract.
+````
 
-- Interact with your contract:
+## File: docs/intro/overview.md
+````markdown
+---
+title: Overview
+hide_title: true
+slug: /overview
+---
 
-    Learn how in [Call your Contract Using the Contracts UI](../getting-started/calling.md#using-the-contracts-ui)
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<br/>
+<img src={useBaseUrl('/img/title/ink! 6.0.svg')} title="The ink! 6.0 smart contracts toolkit release" style={{ marginBottom: 10 }} />
 
-### Where to Deploy your Ink!v6 Contracts
-<div className="grid grid-cols-3 gap-4 lg:grid-cols-3">
-    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ftestnet-passet-hub.polkadot.io">
-        <img
-            src={useBaseUrl('/img/chains/passethub.svg')}
-            alt="chains"
-            className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-        />
-    </a>
+Welcome to the ink! documentation, the Rust-based smart contract language for the Polkadot ecosystem. This documentation will take you from your first "Hello, World!" contract to building sophisticated decentralized applications.
 
-    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc2.paseo.popnetwork.xyz">
-        <img
-            src={useBaseUrl('/img/chains/polkadot-pop-network.svg')}
-            alt="chains"
-            className="w-auto h-[48px] mx-auto mix-blend-lighten font-freude"
-        />
-    </a>
+## Overview
 
-    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fasset-hub-westend-rpc.dwellir.com">
-        <img
-            src={useBaseUrl('/img/chains/assethub.svg')}
-            alt="chains"
-            className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]"
-        />
-    </a>
-</div>
-<br/>
+### **[Getting Started](../getting-started/creating.md)**
+Begin your ink! journey with setup instructions, creating your first contract, and deploying it to a blockchain. Perfect for newcomers to both ink! and smart contract development.
 
-- To deploy a contract to Passet Hub, you must get PAS tokens. To do so, you can use the [Passet Hub Faucet](https://faucet.polkadot.io/?parachain=1111). You need to specify the address where you want to receive the tokens from the faucet.
+### **[Basics](../basics/contract-template.md)**
+Master the fundamental concepts of ink! development including storage, contract interactions, events, and the ABI system that enables interoperability with other languages like Solidity.
 
-- To deploy a contract to the Pop Network, you need to bridge tokens from Paseo (Asset Hub) to Pop. To do so, follow the guide [Get tokens on Pop (Testnet)](https://learn.onpop.io/contracts/guides/bridge-tokens-to-pop-network).
+### **[Testing](../testing/overview.md)**
+Learn comprehensive testing strategies from unit tests to end-to-end testing, including working with testing tools like DRink! for robust contract development.
 
-- To deploy a contract to the Westend Asset Hub, you must get WND tokens. To do so, you can use the [Westend Faucet](https://faucet.polkadot.io/westend?parachain=1000). You need to specify the address where you want to receive the tokens from the faucet.
+### **[Debugging](../debugging/overview.md)**
+Discover tools and techniques for debugging your contracts, from event logging to tracing execution and using development tools.
 
-:::info What’s the difference between Passet Hub, Westend, and Pop?
- - Passet Hub: A stable, community-maintained testnet running the current Polkadot relay chain runtime. Ideal for testing parachains and smart contracts before mainnet deployment.
- - Westend: an unstable environment for core protocol developers to preview upgrades and changes to the main protocol.
- - [Pop](https://onpop.io/network/): A network for experimenting with smart contracts and cross-chain interoperability.
-:::
+### **[Macros & Attributes](../macros-attributes/overview.md)**
+Deep dive into ink!'s powerful macro system that transforms your Rust code into smart contracts, including storage annotations, message definitions, and event handling.
 
-For an overview of all currently supported chains, <a href={useBaseUrl('/chains')}>check the supported chains here.</a>
+### **[Storage & Data Structures](../datastructures/overview.md)**
+Understand how to efficiently store and manage data in your contracts, from simple values to complex mappings and custom data structures.
+
+### **[Linter](../linter/overview.md)**
+Utilize ink!'s built-in security linter to identify common smart contract vulnerabilities and ensure your code follows best practices.
+
+### **[Frontend Development](../frontend/overview.md)**
+Connect your contracts to web applications using TypeScript/JavaScript libraries, React hooks, and various SDK options for building complete dApps.
+
+### **[Technical Background](../background/polkadot-sdk.md)**
+Understand the deeper technical aspects including why Rust and RISC-V were chosen, how ink! compares to other smart contract languages, and when to choose smart contracts vs. parachains.
+````
+
+## File: docs/intro/tutorials-examples.md
+````markdown
+---
+title: Tutorials and Examples
+slug: /getting-started/tutorials-and-examples
+hide_title: true
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+![Heart Title Picture](/img/title/heart.svg)
+
+# Tutorials and Examples
+
+## Tutorials
+
+Ready to dive deeper into ink! development? Check out our [tutorials](/tutorials) that will guide you through building real-world decentralised applications step by step.
+
+### Contribute a Tutorial
+
+Have you built something awesome with ink!? We'd love to feature your tutorial! 
+
+**Help the community learn by contributing your own tutorial.** Whether it's a unique use case, an innovative pattern, or a step-by-step guide for beginners, your contribution makes a difference.
+
+[Learn how to contribute tutorials →](https://github.com/use-ink/ink-alliance/tree/main/tutorials)
 
 ## Smart Contract Examples
+
+Explore ready-to-use [smart contract examples](https://github.com/use-ink/ink-examples) to understand different patterns and use cases:
 
 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
     <div class="bubble-box [&_p]:!mb-0">
@@ -9035,6 +8862,63 @@ For an overview of all currently supported chains, <a href={useBaseUrl('/chains'
         </p>
     </div>
 </div>
+````
+
+## File: docs/intro/where-to-deploy.md
+````markdown
+---
+title: Where to Deploy
+slug: /where-to-deploy
+hide_title: true
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+![Rocket Title Picture](/img/title/rocket.svg)
+
+# Where to Deploy Your ink! Contracts
+
+Ready to deploy your ink! smart contracts? You have several options depending on your needs, from local development to live testnets. Here's your complete guide to deploying ink! v6 contracts.
+
+## Local Development
+
+Perfect for initial development and testing, check out [deploying your first contract](./../getting-started/deploying.md).
+
+## Live Testnets
+
+Make sure you have a Polkadot account, check out the [guide](https://support.polkadot.network/support/solutions/articles/65000098878-how-to-create-a-dot-account) or [video](https://www.youtube.com/watch?v=DNU0p5G0Gqc) on how to do this.
+
+### Passet Hub
+Passet hub is Polkadot's 
+
+<div className="grid grid-cols-3 gap-4 mb-4">
+    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ftestnet-passet-hub.polkadot.io">
+        <img src={useBaseUrl('/img/chains/passethub.svg')} alt="Paseo Asset Hub" className="w-full h-full mx-auto mix-blend-lighten max-h-[48px]" />
+    </a>
+</div>
+
+Getting Started:
+1. **Get PAS Tokens**: Use the [Passet Hub Faucet](https://faucet.polkadot.io/?parachain=1111)
+2. **Developer Console**: https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpasset-hub-paseo.ibp.network#/explorer
+3. **URL**: `wss://testnet-passet-hub.polkadot.io`
+
+### Pop Network
+**Experimental parachain for smart contracts and cross-chain features**
+
+<div className="grid grid-cols-3 gap-4 mb-4">
+    <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc2.paseo.popnetwork.xyz">
+        <img src={useBaseUrl('/img/chains/polkadot-pop-network.svg')} alt="Pop Network" className="w-auto h-[48px] mx-auto mix-blend-lighten" />
+    </a>
+</div>
+
+**Getting Started:**
+1. **Get PAS tokens on Pop**: Follow [this guide](https://learn.onpop.io/contracts/guides/bridge-tokens-to-pop-network) to transfer from Paseo to Pop
+2. **Developer Console**: https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc1.paseo.popnetwork.xyz#/explorer
+3. **URL**: `wss://rpc1.paseo.popnetwork.xyz`
+
+### Ready to deploy
+
+Check out how to deploy your contract [here](../getting-started/deploying.md).
 ````
 
 ## File: docs/linter/rules/no_main.md
@@ -9334,7 +9218,7 @@ To perform a build with extra code analysis (i.e. the ink! linting rules), run t
 following command within the contract directory:
 
 ```bash
-$ cargo contract build --lint
+cargo contract build --lint
 ```
 
 This command compiles the contract and applies all linting checks. You can find the complete list of lints along with their descriptions in this documentation.
@@ -10989,100 +10873,6 @@ pub struct Transferred {
 ```
 ````
 
-## File: docs/standards/overview.md
-````markdown
----
-title: Overview
-slug: /standards/overview
-hide_title: true
----
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-![Standards Title Picture](/img/title/standards.svg)
-
-:::caution
-This page has not yet been edited for ink! v6 yet.
-
-TODO @peterwht
-:::
-
-# Overview
-
-Standards are maintained by the community initiative ink!hub.
-You can find them here: [github.com/inkdevhub/standards](https://github.com/inkdevhub/standards).
-
-## Wallet Support
-
-<table className="wallet-table text--center">
-    <tr>
-        <th></th>
-        <th className="text--left">Contract Interactions</th>
-        <th className="text--left">Tokens (PSP-22)</th>
-        <th className="text--left">NFTs (PSP-34)</th>
-    </tr>
-    <tr>
-        <th>
-            <a href="https://www.subwallet.app/" title="SubWallet" >
-                <img src={useBaseUrl('/img/wallets/subwallet.svg')} className="wallet" alt="SubWallet" width="200"/>
-            </a>
-        </th>
-        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
-        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
-        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
-    </tr>
-    <tr>
-        <th>
-            <a href="https://polkadot.js.org/extension/" title="Polkadot{.js}">
-                <img src={useBaseUrl('/img/wallets/polkadot-js.svg')} className="wallet" alt="Polkadot{.js}" width="200"/>
-            </a>
-        </th>
-        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark" /></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>
-            <a href="https://www.talisman.xyz/" title="Talisman">
-                <img src={useBaseUrl('/img/wallets/talisman.svg')} className="wallet" alt="Talisman" width="200"/>
-            </a>
-        </th>
-        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark"/></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>
-            <a href="https://metamask.io" title="MetaMask">
-                <img src={useBaseUrl('/img/wallets/metamask.svg')} className="wallet" alt="metamask" width="200"/>
-            </a>
-        </th>
-        <td><img src={useBaseUrl('/img/icons/checkmark1.svg')} className="checkmark"/></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-
-
-## PSP-22
-
-A standard for a fungible token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts).
-
-This proposal aims to define the standard fungible token interface for WebAssembly smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
-
-## PSP-34
-
-A standard for a Non-Fungible Token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts).
-
-This proposal aims to define the standard Non-Fungible Token interface for WebAssembly smart contracts, just like [EIP-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) for the Ethereum ecosystem.
-
-## PSP-37
-
-A standard for a Multi Token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/contracts).
-
-This proposal aims to define the standard Multi Token interface for WebAssembly smart contracts, just like [EIP-1155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md) for the Ethereum ecosystem.
-````
-
 ## File: docs/testing/testnet/faucet.md
 ````markdown
 ---
@@ -11275,10 +11065,13 @@ Once you have `PAS` on Paseo you can [bridge them from Paseo to Pop](https://lea
 ## File: docs/testing/e2e.md
 ````markdown
 ---
-title: "E2E: Node Process"
+title: "Full E2E"
 hide_title: true
 slug: /contract-testing/end-to-end-e2e-testing
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ![Testing1 Title Picture](/img/title/testing1.svg)
 
@@ -11351,14 +11144,23 @@ The build instructions and pre-requisites can be found
 If you want to run any other node with `pallet-revive` you need to change `CONTRACTS_NODE` environment variable:
 
 ```bash
-$ export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"
+export CONTRACTS_NODE="YOUR_CONTRACTS_NODE_PATH"
 ```
 
 And finally execute the following command to start e2e test execution.
 
-```bash
-$ cargo contract test --features e2e-tests
-```
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ```bash
+  cargo contract test --features e2e-tests
+  ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+  ```bash
+  pop test --e2e
+  ```
+  </TabItem>
+</Tabs>
 ````
 
 ## File: docs/testing/overview.md
@@ -11388,7 +11190,7 @@ of them.
 ## File: docs/testing/sandbox.md
 ````markdown
 ---
-title: "E2E: Sandbox"
+title: "Sandboxed E2E"
 hide_title: true
 slug: /contract-testing/drink
 ---
@@ -11558,12 +11360,12 @@ Pendulum and others.
 
 First you need a node that has produced some blocks with state. We'll
 use `ink-node` for this purpose.
-[See here](../getting-started/running.md) for how to run it.
+[See here](../getting-started/deploying.md) for how to run it.
 
 You should get output similar to:
 
 ```
-$ ink-node
+ink-node
 2023-09-26 07:58:28.885  INFO main sc_cli::runner: ink! Node
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ✌️  version 0.30.0-124c159ba94    
 2023-09-26 07:58:28.887  INFO main sc_cli::runner: ❤️  by Parity Technologies <admin@parity.io>, 2021-2023    
@@ -11588,7 +11390,7 @@ cargo contract instantiate --suri //Alice --args true -x
 You can check that the contract exists by querying its state via `cargo-contract`:
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
@@ -11655,7 +11457,7 @@ If you now execute the `cargo-contract` storage command against this node, you'l
 that the `flipper` contract exists there as well:
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
@@ -11742,7 +11544,7 @@ If you query the contract storage on our Chopsticks fork, you'll see that the E2
 flipped the boolean:
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:8000
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
@@ -11753,7 +11555,7 @@ $ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4F
 On the "original" `ink-node` chain the boolean will be untouched.
 
 ```
-$ cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
+cargo contract storage --contract 5FgRdaReCLFtwbzYiVd2hoz9P3oERdNy2njnFmUBHu4FYg7s --url=ws://localhost:9944
 +-------+----------+--------+-------------------------+
 | Index | Root Key | Parent | Value                   |
 +=====================================================+
