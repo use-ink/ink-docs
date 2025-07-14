@@ -22,7 +22,7 @@ version (>= 1.85) and `cargo`. Please see [the official Rust installation guide]
 ## cargo-contract
 
 The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
-ink!'s CLI tool for setting up and managing smart contracts written with ink!.
+it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
 ```bash
 cargo install cargo-contract --version 6.0.0-alpha --locked

@@ -8,7 +8,7 @@ hide_title: true
 
 # Overview
 
-Now after you build your smart contract it is time to craft a user experience around it.
+Now, after building your smart contract, it's time to craft a user experience around it.
 
 This experience can take many shapes from mobile app to interactive terminal applications. In this section we are focusing on the most prominent shape in web3 right now, web apps.
 
