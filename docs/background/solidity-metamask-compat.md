@@ -107,20 +107,38 @@ traits for local types.
 
 [rust-coherence]: https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence
 
-:::caution
-The following sections have not yet been written for ink! v6.
-
-TODO @davidsemakula
-:::
-
 ## MetaMask
 
-…
+You can use [MetaMask](https://metamask.io/) to interact with your `ink!` smart contract via the Solidity ABI.
 
-## Hardhat, Foundry, etc.
+To set up your wallet and connect to the appropriate network, follow this quick start guide: [Connect MetaMask to Polkadot Hub Testnet](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/wallets/#metamask)
 
-…
+:::info Network Details – Polkadot Hub Testnet
+*Network name:* Polkadot Hub TestNet
+
+*Currency symbol:* PAS
+
+*Chain ID:* 420420422
+
+*RPC URL:* https://testnet-passet-hub-eth-rpc.polkadot.io
+
+*Block explorer URL:* https://blockscout-passet-hub.parity-testnet.parity.io/
+:::
+
+For step-by-step manual configuration instructions, see this guide: [Connect MetaMask to Polkadot Hub Testnet](https://docs.polkadot.com/develop/smart-contracts/wallets/#metamask).
+
+## Solidity Tooling
+
+You can deploy and interact with `ink!` smart contracts using popular Solidity tools like Hardhat and Foundry thanks to the Solidity-compatible ABI output.
+
+Full Tutorial: [Use Solidity Tooling with ink! Contracts](../integrations-and-sdks/ethereum-compatibility/overview.md)
+
+This guide walks through compiling an `ink!` contract with Solidity metadata, configuring Hardhat, deploying to the Polkadot Hub Testnet, and interacting with the contract using Ethers.js.
 
 ## Block explorers
 
-…
+PolkaVM smart contracts are compatible with Ethereum-style block explorers such as [BlockScout](https://www.blockscout.com/), which is already integrated with the Polkadot Hub Testnet.
+
+- [Polkadot Hub Testnet BlockScout](https://blockscout.testnet.polkadot.io)
+
+For additional information and instructions, check out: [Polkadot Smart Contract Block Explorers](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/block-explorers/)

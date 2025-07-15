@@ -107,7 +107,29 @@ module.exports = {
         ]
       }
     ],
-    "Frontend Development": ["frontend/overview"],
+    "Integration & SDKs": [
+      "integrations-and-sdks/overview",
+      {
+        "type": "category",
+        "label": "JavaScript/TypeScript",
+        "items": [
+          "integrations-and-sdks/javascript-typescript/core-libraries",
+          "integrations-and-sdks/javascript-typescript/react"
+        ]
+      },
+      "integrations-and-sdks/other-languages",
+      {
+        "type": "category",
+        "label": "Ethereum Compatibility",
+        "items": [
+          "integrations-and-sdks/ethereum-compatibility/overview",
+          "integrations-and-sdks/ethereum-compatibility/setup-solidity-abi",
+          "integrations-and-sdks/ethereum-compatibility/metamask-setup",
+          "integrations-and-sdks/ethereum-compatibility/hardhat-deployment",
+          "integrations-and-sdks/ethereum-compatibility/wagmi-integration"
+        ]
+      }
+    ],
     "Technical Background": [
       "background/polkadot-sdk",
       "background/why-rust",
