@@ -10,12 +10,12 @@ module.exports = {
         "getting-started/calling-your-contract"
       ]
     },
-    {
-      type: "category", 
-      label: "Solidity Compatibility",
-      items: [
-        // Future tutorials will be added here
-      ]
-    }
+    // {
+    //   type: "category", 
+    //   label: "Solidity Compatibility",
+    //   items: [
+    //     // Future tutorials will be added here
+    //   ]
+    // }
   ]
 } 
