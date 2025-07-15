@@ -8,10 +8,7 @@ hide_title: true
 
 # Precompiles
 
-Precompiles are pre-defined functions implemented directly into the blockchain's runtime, unlike smart
-contracts that execute within the virtual machine. This makes heavy operations cheaper and also turns
-precompiles into adapters that let smart contracts call into chain features. Precompiles exist at
-predetermined addresses and offer optimized performance with lower gas costs than equivalent contract
+[Precompiles](https://docs.polkadot.com/develop/smart-contracts/precompiles/) are pre-defined functions implemented directly into the blockchain's runtime, unlike smart contracts that execute within the virtual machine. This makes heavy operations cheaper and also turns precompiles into adapters that let smart contracts call into chain features. Precompiles exist at predetermined addresses and offer optimized performance with lower gas costs than equivalent contract
 implementations.
 
 ## Using Precompiles in ink! Contracts
