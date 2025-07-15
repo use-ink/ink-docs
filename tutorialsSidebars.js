@@ -1,6 +1,5 @@
 module.exports = {
   tutorialsSidebar: [
-    "overview",
     {
       type: "category",
       label: "Getting Started",
@@ -11,12 +10,12 @@ module.exports = {
         "getting-started/calling-your-contract"
       ]
     },
-    {
-      type: "category", 
-      label: "Advanced Tutorials",
-      items: [
-        "advanced/contract-debugging"
-      ]
-    }
+    // {
+    //   type: "category", 
+    //   label: "Solidity Compatibility",
+    //   items: [
+    //     // Future tutorials will be added here
+    //   ]
+    // }
   ]
 } 
