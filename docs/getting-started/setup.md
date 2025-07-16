@@ -30,7 +30,7 @@ version (>= 1.85) and `cargo`. Please see [the official Rust installation guide]
       it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
       ```bash
-      cargo install cargo-contract --version 6.0.0-alpha --locked
+      cargo install --locked --git https://github.com/use-ink/cargo-contract
       ```
 
       Make sure you have the latest stable version of Rust installed:
@@ -45,10 +45,6 @@ version (>= 1.85) and `cargo`. Please see [the official Rust installation guide]
       Pop CLI supports ink! v6 through the polkavm-contracts feature flag:
       ```bash
       cargo install pop-cli --no-default-features --locked -F polkavm-contracts,parachain,telemetry
-      ```
-       Make sure you have the latest stable version of Rust installed:
-      ```bash
-      rustup update stable
       ```
   </TabItem>
 </Tabs>
