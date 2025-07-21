@@ -369,7 +369,7 @@ address caller = msg.sender;
 
 ```rust
 // ink!
-let caller: AccountId = self.env().caller();
+let caller: Address = self.env().caller();
 ```
 
 ### `contract's address`
