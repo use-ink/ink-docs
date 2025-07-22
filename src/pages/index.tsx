@@ -37,7 +37,7 @@ const head = (
 export default function Home() {
   return (
     <Layout head={head} className="!mt-0">
-      <div style={{ width: '100vw', height: '350vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
+      <div style={{ width: '100%', height: '350vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
         <StarryBackground className="!fixed" />
       </div>
       <div className="relative">
