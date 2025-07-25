@@ -23,6 +23,7 @@ This means:
   [Solidity ABI specification for function selectors][sol-abi-selector].
 - Message selector manual overrides using the [`selector` attribute][selector-attribute] are ignored.
 - [Solidity ABI encoding][sol-abi-codec] is used for input/output encoding/decoding.
+- Only one constructor can be defined for the contract.
 - Call builders are generated for Solidity ABI calling conventions.
 
 :::note
