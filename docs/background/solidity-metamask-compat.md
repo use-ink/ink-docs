@@ -121,9 +121,84 @@ pointer types below:
 [ink-sol-bytes]: https://docs.rs/ink/latest/ink/struct.SolBytes.html
 [sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
 
+### Handling the `Result<T, E>` type
+
+Rust's `Result<T, E>` type doesn't have a **semantically** equivalent Solidity ABI type,
+because [Solidity enums][sol-enum] are field-less, so no composable mapping is provided.
+
+However, `Result<T, E>` types are supported as the return type of messages
+and constructors, and they're handled at language level as follows:
+- When returning the `Result::Ok` variant, where `T` implements `SolEncode`,
+  `T` is encoded as "normal" Solidity ABI return data.
+- When returning the `Result::Err` variant, `E` must implement `SolErrorEncode`,
+  ink! will set the revert flag in the execution environment,
+  and `E` will be encoded as [Solidity revert error data][sol-revert],
+  with the error data representation depending on the `SolErrorEncode` implementation.
+- Similarly, for decoding, `T` must implement `SolDecode`,
+  while `E` must implement `SolErrorDecode`, and the returned data is decoded as `T`
+  (i.e. `Result::Ok`) or `E` (i.e. `Result::Err`) depending on whether
+  the revert flag is set (i.e. `E` if the revert flag is NOT set, and `T` otherwise).
+
+[sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
+
+The `SolErrorEncode` and `SolErrorDecode` traits define the highest level interfaces
+for encoding and decoding an arbitrary Rust/ink! error type as Solidity ABI revert error data.
+
+Default implementations for both `SolErrorEncode` and `SolErrorDecode` are provided for unit
+(i.e. `()`), and these are equivalent to reverting with no error data in Solidity
+(i.e. empty output buffer).
+
+For arbitrary custom error types, `Derive` macros are provided for automatically generating
+implementations of `SolErrorEncode` and `SolErrorDecode` for structs and enums for which
+all fields (if any) implement `SolEncode` and `SolDecode`.
+- For structs, the struct name is used as the name of the [Solidity custom error][sol-custom-error]
+  while the fields (if any) are the parameters
+- For enums, each variant is its own [Solidity custom error][sol-custom-error],
+  with the variant name being the custom error name, and the fields (if any) being the parameters
+
+[sol-custom-error]: https://soliditylang.org/blog/2021/04/21/custom-errors/
+
+```rust
+use ink::{SolErrorDecode, SolErrorEncode};
+
+// Represented as a Solidity custom error with no parameters
+#[derive(SolErrorDecode, SolErrorEncode)]
+struct UnitError;
+
+// Represented as a Solidity custom error with parameters
+#[derive(SolErrorDecode, SolErrorEncode)]
+struct ErrorWithParams(bool, u8, String);
+
+// Represented as a Solidity custom error with parameters
+#[derive(SolErrorDecode, SolErrorEncode)]
+struct ErrorWithNamedParams {
+    status: bool,
+    count: u8,
+    reason: String,
+}
+
+// Represented as multiple Solidity custom errors
+// (i.e. each variant represents a Solidity custom error)
+#[derive(SolErrorDecode, SolErrorEncode)]
+enum MultipleErrors {
+    UnitError,
+    ErrorWithParams(bool, u8, String),
+    ErrorWithNamedParams {
+        status: bool,
+        count: u8,
+        reason: String,
+    }
+}
+```
+
 :::note
-Rust's `Result` type is a notable omission from the default mappings.
-This is because it doesn't have a **semantically** equivalent Solidity ABI type.
+For other [Solidity `revert`][sol-revert] error data representations (e.g. legacy revert strings),
+you can implement `SolErrorEncode` and `SolErrorDecode` manually to match those representations.
+:::
+
+:::note
+Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement the
+`SolErrorEncode` and `SolErrorDecode` traits for local types.
 :::
 
 ### Mappings for arbitrary custom types
