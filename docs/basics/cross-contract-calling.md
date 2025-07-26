@@ -33,6 +33,14 @@ dependency of your own contract.
 If you want to interact with a contract that is already on-chain you will need to use the
 [`Builders`](#builders) approach instead.
 
+:::note
+In ["all" ABI mode][abi-all], the generated contract references are generic over 
+an ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) which specifies 
+the ABI specification used for cross-contract calls.
+:::
+
+[abi-all]: ./abi/all.md
+
 ### `BasicContractRef` walkthrough
 
 We will walk through the [`cross-contract-calls`](https://github.com/use-ink/ink-examples/tree/master/cross-contract-calls)
