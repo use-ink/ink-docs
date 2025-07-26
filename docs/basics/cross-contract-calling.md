@@ -316,6 +316,19 @@ signature.
 You will not be able to get any feedback about this at compile time. You will only
 find out your call failed at runtime!
 
+:::note
+To call messages from a contract that uses a different [ABI][abi] than your contract,
+you can instead use the `build_call_abi` utility, which takes both the environment
+and the ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as generic parameters.
+
+```rust
+build_call_abi::<DefaultEnvironment, ink::abi::Sol>()
+```
+
+You can see a full example of an ink! contract calling a Solidity ABI encoded contract
+in the ["CallBuilder Solidity" example below](#callbuilder-solidity).
+:::
+
 #### CallBuilder: Delegate Call
 You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics.
 If you need a refresher on what delegate calls are,
@@ -351,10 +364,10 @@ let my_return_value = build_call::<DefaultEnvironment>()
 `CallBuilder` also allows you to call contracts that are Solidity ABI encoded. 
 This enables interoperability between Solidity, ink!, and other Solidity ABI encoded contracts!
 
-This requires using a Solidity compatible function selector using a keccak256 hash of the function signature.
+This requires using a Solidity compatible function selector using a `keccak256` hash of the function signature.
 
 ```rust
-let my_return_value = build_call_solidity::<DefaultEnvironment>()
+let my_return_value = build_call_abi::<DefaultEnvironment, ink::abi::Sol>()
     .call(H160::from([0x42; 20]))
     .ref_time_limit(0)
     .transferred_value(10)
