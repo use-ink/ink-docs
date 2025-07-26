@@ -256,6 +256,18 @@ Since `CreateBuilder::instantiate()` returns a contract reference, we can use th
 contract reference to call messages just like in the
 [previous section](#contract-references).
 
+:::note
+To instantiate a contract that uses a different [ABI][abi] than your contract, 
+you can instead use the `build_create_abi` utility, which takes both a contract reference 
+and the ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as generic parameters.
+
+```rust
+build_create_abi::<MyContractRef, ink::abi::Sol>()
+```
+:::
+
+[abi]: ./abi/overview.md
+
 ### CallBuilder
 The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
 are two main approaches to this: `Call`s and `DelegateCall`s. We will briefly cover both
