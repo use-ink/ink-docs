@@ -35,6 +35,11 @@ The implication of supporting Solidity ABI encoding is that all types used as
 constructor/message argument and return types, and event argument types must 
 define a mapping to an equivalent Solidity ABI type.
 
+:::note
+This is similar to the requirement to implement `scale::Encode` and `scale::Decode`
+for Rust types used in the public interfaces of ink!/"native" ABI encoded contracts.
+:::
+
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
 [abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
 
@@ -44,7 +49,7 @@ This mapping is defined using the [`SolEncode`][sol-trait-encode] and
 [`SolDecode`][sol-trait-decode] traits, which are analogs to 
 [`scale::Encode` and `scale::Decode`][scale-codec] 
 (but for Solidity ABI encoding/decoding).
-You won't be able to use Rust types for which no mapping to a Solidity type exists.
+You won't be able to use Rust types for which no mapping to a Solidity type is defined.
 An error about a missing trait implementation for this type will be thrown.
 
 [sol-trait-encode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolEncode.html
