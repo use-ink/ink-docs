@@ -203,8 +203,70 @@ Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement
 
 ### Mappings for arbitrary custom types
 
-See the rustdoc for [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
-for instructions for implementing the traits for arbitrary custom types.
+For arbitrary custom types, `Derive` macros are provided for automatically generating
+implementations of `SolEncode` and `SolDecode`
+- For structs where all fields (if any) implement `SolEncode` and `SolDecode` respectively,
+  including support for generic types
+- For enums where all variants are either [unit-only][enum-unit-only] or [field-less][enum-field-less]
+  (see notes below for the rationale for this limitation)
+
+[enum-unit-only]: https://doc.rust-lang.org/reference/items/enumerations.html#r-items.enum.unit-only
+[enum-field-less]: https://doc.rust-lang.org/reference/items/enumerations.html#r-items.enum.fieldless
+
+```rust
+use ink_macro::{SolDecode, SolEncode};
+
+#[derive(SolDecode, SolEncode)]
+struct UnitStruct;
+
+#[derive(SolDecode, SolEncode)]
+struct TupleStruct(bool, u8, String);
+
+#[derive(SolDecode, SolEncode)]
+struct FieldStruct {
+    status: bool,
+    count: u8,
+    reason: String,
+}
+
+#[derive(SolDecode, SolEncode)]
+enum SimpleEnum {
+    One,
+    Two,
+    Three,
+}
+
+#[derive(SolDecode, SolEncode)]
+struct NestedStruct {
+    unit: UnitStruct,
+    tuple: TupleStruct,
+    fields: FieldStruct,
+    enumerate: SimpleEnum,
+}
+
+#[derive(SolDecode, SolEncode)]
+struct GenericStruct<T> {
+    concrete: u8,
+    generic: T,
+}
+```
+
+:::note
+Solidity has no **semantic** equivalent for Rust/ink! enums with fields
+(i.e. [Solidity enums][sol-enum] can only express the equivalent of Rust [unit-only][enum-unit-only]
+or [field-less][enum-field-less] enums).
+
+So mapping complex Rust enums (i.e. enums with fields) to "equivalent" Solidity representations
+typically yields complex structures based on tuples (at [Solidity ABI encoding][sol-abi-types] level)
+and structs (at Solidity language level).
+
+Because of this, the `Derive` macros for `SolEncode` and `SolDecode` do NOT generate implementations
+for enums with fields.
+
+However, you can define custom representations for these types by manually implementing
+the [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
+(see linked rustdoc for instructions).
+:::
 
 :::note
 Rust's [coherence/orphan rules][rust-coherence] mean that you can
