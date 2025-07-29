@@ -38,7 +38,7 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## Compatibility
 
-- **Rust**: >= 1.85
+- **Rust**: >= 1.87
 - **cargo-contract**: >= v6.0.0-alpha
  
   ```bash
