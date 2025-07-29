@@ -12,7 +12,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Tutorials
 
-Ready to dive deeper into ink! development? Check out our [tutorials](/tutorials/overview) that will guide you through building real-world decentralised applications step by step.
+Ready to dive deeper into ink! development? Check out our [tutorials](/tutorials/overview.md) that will guide you through building real-world decentralised applications step by step.
 
 ### Contribute a Tutorial
 
@@ -20,7 +20,7 @@ Have you built something awesome with ink!? We'd love to feature your tutorial!
 
 **Help the community learn by contributing your own tutorial.** Whether it's a unique use case, an innovative pattern, or a step-by-step guide for beginners, your contribution makes a difference.
 
-[Learn how to contribute tutorials →](/tutorials/guide)
+[Learn how to contribute tutorials →](/tutorials/guide.md)
 
 ## Smart Contract Examples
 
