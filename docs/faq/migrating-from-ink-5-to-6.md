@@ -278,6 +278,11 @@ You won't be able to use Rust types for which no mapping to a Solidity ABI type 
 An error about a missing trait implementation for this type will be thrown.
 You can learn more about [Rust/ink! to Solidity ABI type mapping here][sol-type-mapping].
 
+:::note
+This is similar to the requirement to implement `scale::Encode` and `scale::Decode`
+for Rust types used in the public interfaces of ink!/"native" ABI encoded contracts.
+:::
+
 The default value for `abi` is currently `"ink"`, 
 but we might change this before a production release.
 

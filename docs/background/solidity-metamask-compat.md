@@ -35,6 +35,11 @@ The implication of supporting Solidity ABI encoding is that all types used as
 constructor/message argument and return types, and event argument types must 
 define a mapping to an equivalent Solidity ABI type.
 
+:::note
+This is similar to the requirement to implement `scale::Encode` and `scale::Decode`
+for Rust types used in the public interfaces of ink!/"native" ABI encoded contracts.
+:::
+
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
 [abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
 
@@ -44,7 +49,7 @@ This mapping is defined using the [`SolEncode`][sol-trait-encode] and
 [`SolDecode`][sol-trait-decode] traits, which are analogs to 
 [`scale::Encode` and `scale::Decode`][scale-codec] 
 (but for Solidity ABI encoding/decoding).
-You won't be able to use Rust types for which no mapping to a Solidity type exists.
+You won't be able to use Rust types for which no mapping to a Solidity type is defined.
 An error about a missing trait implementation for this type will be thrown.
 
 [sol-trait-encode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolEncode.html
@@ -74,6 +79,32 @@ to the corresponding Solidity ABI types as shown in the table below:
 | [`ink::SolBytes<Vec<u8>>`][ink-sol-bytes] | `bytes` ||
 | [`ink::SolBytes<Box<[u8]>>`][ink-sol-bytes] | `bytes` ||
 | `(T1, T2, T3, ... T12)` | `(U1, U2, U3, ... U12)` | where `T1` ↔ `U1`, ... `T12` ↔ `U12` e.g. `(bool, u8, Address)` ↔ `(bool, uint8, address)` |
+| `Option<T>` | `(bool, T)` | e.g. `Option<u8>` ↔ `(bool, uint8)`|
+
+:::note
+Rust's `Option<T>` type doesn't have a **semantically** equivalent Solidity ABI type,
+because [Solidity enums][sol-enum] are field-less.
+
+So `Option<T>` is mapped to a tuple representation instead (i.e. `(bool, T)`),
+because this representation allows preservation of semantic information in Solidity,
+by using the `bool` as a "flag" indicating the variant
+(i.e. `false` for `None` and `true` for `Some`) such that:
+- `Option::None` is mapped to `(false, <default_value>)`
+  where `<default_value>` is the zero bytes only representation of `T`
+  (e.g. `0u8` for `u8` or `Vec::new()` for `Vec<T>`)
+- `Option::Some(value)` is mapped to `(true, value)`
+
+The resulting type in Solidity can be represented as a struct with a field for the "flag"
+and another for the data.
+
+Note that `enum` in Solidity is encoded as `uint8` in [Solidity ABI encoding][sol-abi-types],
+while the encoding for `bool` is equivalent to the encoding of `uint8`,
+with `true` equivalent to `1` and `false` equivalent to `0`.
+Therefore, the `bool` "flag" can be safely interpreted as a `bool` or `enum` (or even `uint8`)
+in Solidity code.
+:::
+
+[sol-enum]: https://docs.soliditylang.org/en/latest/types.html#enums
 
 [`SolEncode`][sol-trait-encode] is additionally implemented for reference and smart
 pointer types below:
@@ -88,16 +119,154 @@ pointer types below:
 [ink-address]: https://docs.rs/ink/latest/ink/type.Address.html
 [ink-h160]: https://docs.rs/ink/latest/ink/struct.H160.html
 [ink-sol-bytes]: https://docs.rs/ink/latest/ink/struct.SolBytes.html
+[sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
+
+### Handling the `Result<T, E>` type
+
+Rust's `Result<T, E>` type doesn't have a **semantically** equivalent Solidity ABI type,
+because [Solidity enums][sol-enum] are field-less, so no composable mapping is provided.
+
+However, `Result<T, E>` types are supported as the return type of messages
+and constructors, and they're handled at language level as follows:
+- When returning the `Result::Ok` variant, where `T` implements `SolEncode`,
+  `T` is encoded as "normal" Solidity ABI return data.
+- When returning the `Result::Err` variant, `E` must implement `SolErrorEncode`,
+  ink! will set the revert flag in the execution environment,
+  and `E` will be encoded as [Solidity revert error data][sol-revert],
+  with the error data representation depending on the `SolErrorEncode` implementation.
+- Similarly, for decoding, `T` must implement `SolDecode`,
+  while `E` must implement `SolErrorDecode`, and the returned data is decoded as `T`
+  (i.e. `Result::Ok`) or `E` (i.e. `Result::Err`) depending on whether
+  the revert flag is set (i.e. `E` if the revert flag is NOT set, and `T` otherwise).
+
+[sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
+
+The `SolErrorEncode` and `SolErrorDecode` traits define the highest level interfaces
+for encoding and decoding an arbitrary Rust/ink! error type as Solidity ABI revert error data.
+
+Default implementations for both `SolErrorEncode` and `SolErrorDecode` are provided for unit
+(i.e. `()`), and these are equivalent to reverting with no error data in Solidity
+(i.e. empty output buffer).
+
+For arbitrary custom error types, `Derive` macros are provided for automatically generating
+implementations of `SolErrorEncode` and `SolErrorDecode` for structs and enums for which
+all fields (if any) implement `SolEncode` and `SolDecode`.
+- For structs, the struct name is used as the name of the [Solidity custom error][sol-custom-error]
+  while the fields (if any) are the parameters
+- For enums, each variant is its own [Solidity custom error][sol-custom-error],
+  with the variant name being the custom error name, and the fields (if any) being the parameters
+
+[sol-custom-error]: https://soliditylang.org/blog/2021/04/21/custom-errors/
+
+```rust
+use ink::{SolErrorDecode, SolErrorEncode};
+
+// Represented as a Solidity custom error with no parameters
+#[derive(SolErrorDecode, SolErrorEncode)]
+struct UnitError;
+
+// Represented as a Solidity custom error with parameters
+#[derive(SolErrorDecode, SolErrorEncode)]
+struct ErrorWithParams(bool, u8, String);
+
+// Represented as a Solidity custom error with parameters
+#[derive(SolErrorDecode, SolErrorEncode)]
+struct ErrorWithNamedParams {
+    status: bool,
+    count: u8,
+    reason: String,
+}
+
+// Represented as multiple Solidity custom errors
+// (i.e. each variant represents a Solidity custom error)
+#[derive(SolErrorDecode, SolErrorEncode)]
+enum MultipleErrors {
+    UnitError,
+    ErrorWithParams(bool, u8, String),
+    ErrorWithNamedParams {
+        status: bool,
+        count: u8,
+        reason: String,
+    }
+}
+```
 
 :::note
-Rust's `Option` and `Result` types are notable omissions from the default mappings.
-This is because they don't have **semantically** equivalent Solidity ABI types.
+For other [Solidity `revert`][sol-revert] error data representations (e.g. legacy revert strings),
+you can implement `SolErrorEncode` and `SolErrorDecode` manually to match those representations.
+:::
+
+:::note
+Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement the
+`SolErrorEncode` and `SolErrorDecode` traits for local types.
 :::
 
 ### Mappings for arbitrary custom types
 
-See the rustdoc for [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
-for instructions for implementing the traits for arbitrary custom types.
+For arbitrary custom types, `Derive` macros are provided for automatically generating
+implementations of `SolEncode` and `SolDecode`
+- For structs where all fields (if any) implement `SolEncode` and `SolDecode` respectively,
+  including support for generic types
+- For enums where all variants are either [unit-only][enum-unit-only] or [field-less][enum-field-less]
+  (see notes below for the rationale for this limitation)
+
+[enum-unit-only]: https://doc.rust-lang.org/reference/items/enumerations.html#r-items.enum.unit-only
+[enum-field-less]: https://doc.rust-lang.org/reference/items/enumerations.html#r-items.enum.fieldless
+
+```rust
+use ink_macro::{SolDecode, SolEncode};
+
+#[derive(SolDecode, SolEncode)]
+struct UnitStruct;
+
+#[derive(SolDecode, SolEncode)]
+struct TupleStruct(bool, u8, String);
+
+#[derive(SolDecode, SolEncode)]
+struct FieldStruct {
+    status: bool,
+    count: u8,
+    reason: String,
+}
+
+#[derive(SolDecode, SolEncode)]
+enum SimpleEnum {
+    One,
+    Two,
+    Three,
+}
+
+#[derive(SolDecode, SolEncode)]
+struct NestedStruct {
+    unit: UnitStruct,
+    tuple: TupleStruct,
+    fields: FieldStruct,
+    enumerate: SimpleEnum,
+}
+
+#[derive(SolDecode, SolEncode)]
+struct GenericStruct<T> {
+    concrete: u8,
+    generic: T,
+}
+```
+
+:::note
+Solidity has no **semantic** equivalent for Rust/ink! enums with fields
+(i.e. [Solidity enums][sol-enum] can only express the equivalent of Rust [unit-only][enum-unit-only]
+or [field-less][enum-field-less] enums).
+
+So mapping complex Rust enums (i.e. enums with fields) to "equivalent" Solidity representations
+typically yields complex structures based on tuples (at [Solidity ABI encoding][sol-abi-types] level)
+and structs (at Solidity language level).
+
+Because of this, the `Derive` macros for `SolEncode` and `SolDecode` do NOT generate implementations
+for enums with fields.
+
+However, you can define custom representations for these types by manually implementing
+the [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
+(see linked rustdoc for instructions).
+:::
 
 :::note
 Rust's [coherence/orphan rules][rust-coherence] mean that you can

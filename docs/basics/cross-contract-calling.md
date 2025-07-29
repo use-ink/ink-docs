@@ -33,6 +33,14 @@ dependency of your own contract.
 If you want to interact with a contract that is already on-chain you will need to use the
 [`Builders`](#builders) approach instead.
 
+:::note
+In ["all" ABI mode][abi-all], the generated contract references are generic over 
+an ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) which specifies 
+the ABI specification used for cross-contract calls.
+:::
+
+[abi-all]: ./abi/all.md
+
 ### `BasicContractRef` walkthrough
 
 We will walk through the [`cross-contract-calls`](https://github.com/use-ink/ink-examples/tree/master/cross-contract-calls)
@@ -248,6 +256,18 @@ Since `CreateBuilder::instantiate()` returns a contract reference, we can use th
 contract reference to call messages just like in the
 [previous section](#contract-references).
 
+:::note
+To instantiate a contract that uses a different [ABI][abi] than your contract, 
+you can instead use the `build_create_abi` utility, which takes both a contract reference 
+and the ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as generic parameters.
+
+```rust
+build_create_abi::<MyContractRef, ink::abi::Sol>()
+```
+:::
+
+[abi]: ./abi/overview.md
+
 ### CallBuilder
 The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
 are two main approaches to this: `Call`s and `DelegateCall`s. We will briefly cover both
@@ -296,6 +316,19 @@ signature.
 You will not be able to get any feedback about this at compile time. You will only
 find out your call failed at runtime!
 
+:::note
+To call messages from a contract that uses a different [ABI][abi] than your contract,
+you can instead use the `build_call_abi` utility, which takes both the environment
+and the ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as generic parameters.
+
+```rust
+build_call_abi::<DefaultEnvironment, ink::abi::Sol>()
+```
+
+You can see a full example of an ink! contract calling a Solidity ABI encoded contract
+in the ["CallBuilder Solidity" example below](#callbuilder-solidity).
+:::
+
 #### CallBuilder: Delegate Call
 You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics.
 If you need a refresher on what delegate calls are,
@@ -331,10 +364,10 @@ let my_return_value = build_call::<DefaultEnvironment>()
 `CallBuilder` also allows you to call contracts that are Solidity ABI encoded. 
 This enables interoperability between Solidity, ink!, and other Solidity ABI encoded contracts!
 
-This requires using a Solidity compatible function selector using a keccak256 hash of the function signature.
+This requires using a Solidity compatible function selector using a `keccak256` hash of the function signature.
 
 ```rust
-let my_return_value = build_call_solidity::<DefaultEnvironment>()
+let my_return_value = build_call_abi::<DefaultEnvironment, ink::abi::Sol>()
     .call(H160::from([0x42; 20]))
     .ref_time_limit(0)
     .transferred_value(10)

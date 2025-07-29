@@ -32,20 +32,31 @@ for both calling conventions. This means:
   ink! ABI entry points but ignored for Solidity ABI entry points
   (i.e. Solidity selectors are **always** generated according to the
   [Solidity ABI specification for function selectors][sol-abi-selector]).
-- Call builders are generated for both ink! and Solidity ABI calling conventions,
-  and a `_sol` suffix is used to disambiguate Solidity calls.
+- Multiple constructors are supported (as per the ink! ABI), however, 
+  if multiple constructors are defined, then one of the constructors
+  must be annotated with the [`default` attribute][default-attribute] 
+  to identify it as the constructor to use for Solidity ABI encoded instantiation.
+  Note that if only a single constructor is defined, 
+  then the `default` attribute annotation is unnecessary.
+- Generated call builders (and [contract references][contract-refs]) support 
+  both ink! and Solidity ABI calling conventions, by accepting an ABI marker type 
+  (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as a generic type parameter 
+  which specifies the ABI specification to use for calls.
 
 :::note
 Your contract sizes will get larger if you support both the ink! and Solidity ABI.
 :::
 
 :::note
-The "all" ABI mode can only be used if all constructor and message
-argument and return types, and event argument types can be mapped to
-equivalent Solidity ABI types ([more details here][sol-type-mapping]).
+The "all" ABI mode can only be used if all message argument and return types, 
+the argument and return type of the constructor used for Solidity ABI encoded instantiation, 
+and event argument types can be mapped to equivalent Solidity ABI types 
+([more details here][sol-type-mapping]).
 :::
 
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
 [selector-attribute]: ../../macros-attributes/selector.md
+[default-attribute]: ../../macros-attributes/default.md
+[contract-refs]: ../cross-contract-calling.md#contract-references
 [sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
