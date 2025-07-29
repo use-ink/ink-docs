@@ -38,6 +38,9 @@
     },
     {
       "pattern": "^https?://metamask.io"
+    },
+    {
+      "pattern": "^https://use\\.ink/tutorials/"
     }
   ]
 }
