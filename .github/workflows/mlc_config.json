@@ -40,7 +40,10 @@
       "pattern": "^https?://metamask.io"
     },
     {
-      "pattern": "^https://use\\.ink/tutorials/"
+      "pattern": "https://use\\.ink/tutorials/overview"
+    },
+    {
+      "pattern": "https://use\\.ink/tutorials/guide"
     }
   ]
 }
