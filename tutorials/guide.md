@@ -11,9 +11,9 @@ By contributing a tutorial you're helping other developers learn to build with i
 
 ### How to Contribute
 
-1. **Choose a Topic**: Check out the list of tutorial [ideas](ideas.md) for inspiration or suggest your own by [submitting a PR to the file](https://github.com/use-ink/ink-docs/edit/main/tutorials/ideas.md). After it is approved it can be worked on!
+1. **Choose a Topic**: Check out the list of tutorial [ideas](ideas.md) for inspiration, suggest an idea by [submitting a PR](https://github.com/use-ink/ink-docs/edit/main/tutorials/ideas.md), or start right away!
 2. **Follow the Template**: Use the provided [template](template) to structure your tutorial. This ensures consistency and ensures a certain level of quality that is required.
-3. **Write Your Tutorial**: Create your tutorial and submit a pull request to this repository.
+3. **Write Your Tutorial**: Create your tutorial and submit a pull request to this repository. Check out this example of how to add a tutorial (TODO: add link to tutorial added).
 
 ### Reward System
 
