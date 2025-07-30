@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.37cee77d.css">
-<script src="/assets/js/runtime~main.6eb86e90.js" defer="defer"></script>
-<script src="/assets/js/main.ae88ec50.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0201fecd.js" defer="defer"></script>
+<script src="/assets/js/main.ae7def3d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -34,6 +34,23 @@ This page will guide you through the steps to deploy your ink! contract locally,
 <li>Choose &quot;Local Node&quot;.</li>
 </ul>
 <p><img decoding="async" loading="lazy" alt="Connect to local node" src="/assets/images/contracts-ui-local-node-2ab5a113ff09e674805bb52bcac8b53c.png" width="2272" height="1544" class="img_Tjeo"></p>
+<h1>Set up a Local Polkadot Hub Environment</h1>
+<p>You can easily launch a full Polkadot Hub setup locally using the <a href="https://learn.onpop.io/contracts/guides/deploy" target="_blank" rel="noopener noreferrer">Pop CLI</a>. This includes a local relay chain and one or more system parachains, allowing for end-to-end smart contract development and testing.</p>
+<p>To spin up the environment with the Paseo relay chain and system chains like <code>asset-hub</code> and <code>passet-hub</code>, run:</p>
+<div class="language-bash codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-bash codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">  pop up paseo -p asset-hub,passet-hub</span><br></span></code></pre></div></div>
+<p>This command will launch:</p>
+<ul>
+<li>
+<p>A local Paseo relay chain</p>
+</li>
+<li>
+<p><a href="/docs/v6/where-to-deploy#passet-hub">Passet Hub</a> as a parachain, connected and ready to deploy smart contracts</p>
+</li>
+</ul>
+<p>You can also include additional system parachains in your local environment, such as <code>people</code> and <code>pop</code>, by extending the command:</p>
+<div class="language-bash codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-bash codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">  pop up paseo -p asset-hub,passet-hub,people,pop</span><br></span></code></pre></div></div>
+<p>Need more options or configuration details? Check out the CLI help:</p>
+<div class="language-bash codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-bash codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">  pop up paseo --help </span><br></span></code></pre></div></div>
 <h2 class="anchor anchorWithStickyNavbar_mSTA" id="deploy-the-contract">Deploy the contract<a href="#deploy-the-contract" class="hash-link" aria-label="Direct link to Deploy the contract" title="Direct link to Deploy the contract">​</a></h2>
 <p>Now that we have generated the contract binary from our source code and connected to a local node, we want to deploy this contract onto our local node.</p>
 <p>Smart contract deployment on Polkadot is a little different than on traditional smart contract blockchains.</p>

@@ -8710,6 +8710,32 @@ You can interact with your node using `cargo-contract`, `pop` or [the Contracts 
 
 ![Connect to local node](/img/contracts-ui-local-node.png)
 
+
+# Set up a Local Polkadot Hub Environment
+
+You can easily launch a full Polkadot Hub setup locally using the [Pop CLI](https://learn.onpop.io/contracts/guides/deploy). This includes a local relay chain and one or more system parachains, allowing for end-to-end smart contract development and testing.
+
+
+To spin up the environment with the Paseo relay chain and system chains like `asset-hub` and `passet-hub`, run:
+```bash
+  pop up paseo -p asset-hub,passet-hub
+```
+This command will launch:
+
+- A local Paseo relay chain
+
+- [Passet Hub](../intro/where-to-deploy.md#passet-hub) as a parachain, connected and ready to deploy smart contracts
+
+You can also include additional system parachains in your local environment, such as `people` and `pop`, by extending the command:
+```bash
+  pop up paseo -p asset-hub,passet-hub,people,pop
+```
+
+Need more options or configuration details? Check out the CLI help:
+```bash
+  pop up paseo --help 
+```
+
 ## Deploy the contract
 
 Now that we have generated the contract binary from our source code and connected to a local node, we want to deploy this contract onto our local node.
@@ -8790,6 +8816,9 @@ slug: /getting-started/setup
 hide_title: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ![Setup Title Picture](/img/title/setup.svg)
 
 # Setup
@@ -8805,19 +8834,33 @@ On this page we describe the pre-requisites for working with ink!.
 A pre-requisite for compiling smart contracts is to install a stable Rust 
 version (>= 1.85) and `cargo`. Please see [the official Rust installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
-## cargo-contract
+<Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract" default>
+      ## cargo-contract
 
-The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
-it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
+      The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
+      it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
-```bash
-cargo install cargo-contract --version 6.0.0-alpha --locked
-```
+      ```bash
+      cargo install --locked --git https://github.com/use-ink/cargo-contract
+      ```
 
-Make sure you have the latest stable version of Rust installed:
-```bash
-rustup update stable
-```
+      Make sure you have the latest stable version of Rust installed:
+      ```bash
+      rustup update stable
+      ```
+  </TabItem>
+  <TabItem value="pop" label="Pop">
+   ## Pop CLI
+      Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
+
+      Pop CLI supports ink! v6 through the polkavm-contracts feature flag:
+      ```bash
+      cargo install pop-cli --no-default-features --locked -F polkavm-contracts,parachain,telemetry
+      ```
+  </TabItem>
+</Tabs>
+
 
 ## ink-node
 
