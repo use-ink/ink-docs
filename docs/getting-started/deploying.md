@@ -39,6 +39,32 @@ You can interact with your node using `cargo-contract`, `pop` or [the Contracts 
 
 ![Connect to local node](/img/contracts-ui-local-node.png)
 
+
+# Set up a Local Polkadot Hub Environment
+
+You can easily launch a full Polkadot Hub setup locally using the [Pop CLI](https://learn.onpop.io/contracts/guides/deploy). This includes a local relay chain and one or more system parachains, allowing for end-to-end smart contract development and testing.
+
+
+To spin up the environment with the Paseo relay chain and system chains like `asset-hub` and `passet-hub`, run:
+```bash
+  pop up paseo -p asset-hub,passet-hub
+```
+This command will launch:
+
+- A local Paseo relay chain
+
+- [Passet Hub](../intro/where-to-deploy.md#passet-hub) as a parachain, connected and ready to deploy smart contracts
+
+You can also include additional system parachains in your local environment, such as `people` and `pop`, by extending the command:
+```bash
+  pop up paseo -p asset-hub,passet-hub,people,pop
+```
+
+Need more options or configuration details? Check out the CLI help:
+```bash
+  pop up paseo --help 
+```
+
 ## Deploy the contract
 
 Now that we have generated the contract binary from our source code and connected to a local node, we want to deploy this contract onto our local node.
