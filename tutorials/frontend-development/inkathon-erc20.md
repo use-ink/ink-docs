@@ -61,7 +61,7 @@ bun run codegen
 If you're using an already deployed contract, you can skip this section.
 :::
 
-We’ll deploy the contract to [Passet Hub](intro/where-to-deploy#passet-hub)
+We’ll deploy the contract to Passet Hub
 ```bash
 # Executed from the /contracts directory
 # If `CHAIN` is not set, it will default to `dev`
@@ -122,7 +122,7 @@ Update `frontend/src/components/web3/contract-card.tsx` to replace Flipper logic
 ### 4.1. Querying the Contract
 To read values like `total_supply` or an account’s balance, use storage queries or message calls:
 
-#### 4.1.1. Get Total Supply (via [storage]((https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs#L16)))
+#### 4.1.1. Get Total Supply (via [storage](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs#L16))
 
 ```ts
 const [erc20TotalSupply, setErc20TotalSupply] = useState<FixedSizeArray<4, bigint>>()
