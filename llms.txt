@@ -1718,10 +1718,8 @@ to the corresponding Solidity ABI types as shown in the table below:
 | `[T; N]` for `const N: usize` | `T[N]` | e.g. `[i8; 64]` ↔ `int8[64]` |
 | `Vec<T>` | `T[]` | e.g. `Vec<i8>` ↔ `int8[]` |
 | `Box<[T]>` | `T[]` | e.g. `Box<[i8]>` ↔ `int8[]` |
-| [`ink::SolBytes<u8>`][ink-sol-bytes] | `bytes1` ||
-| [`ink::SolBytes<[u8; N]>`][ink-sol-bytes] for `1 <= N <= 32` | `bytesN` | e.g. `ink::SolBytes<[u8; 1]>` ↔ `bytes1` |
-| [`ink::SolBytes<Vec<u8>>`][ink-sol-bytes] | `bytes` ||
-| [`ink::SolBytes<Box<[u8]>>`][ink-sol-bytes] | `bytes` ||
+| `ink::sol::FixedBytes<N>` for `1 <= N <= 32` | `bytesN` | e.g. `FixedBytes<32>` ↔ `bytes32`, `FixedBytes<N>` is just a newtype wrapper for `[u8; N]` that also implements `From<u8>` |
+| `ink::sol::DynBytes` | `bytes` | `DynBytes` is just a newtype wrapper for `Vec<u8>` that also implements `From<Box<[u8]>>` |
 | `(T1, T2, T3, ... T12)` | `(U1, U2, U3, ... U12)` | where `T1` ↔ `U1`, ... `T12` ↔ `U12` e.g. `(bool, u8, Address)` ↔ `(bool, uint8, address)` |
 | `Option<T>` | `(bool, T)` | e.g. `Option<u8>` ↔ `(bool, uint8)`|
 
@@ -1762,7 +1760,6 @@ pointer types below:
 [ink-u256]: https://docs.rs/ink/latest/ink/struct.U256.html
 [ink-address]: https://docs.rs/ink/latest/ink/type.Address.html
 [ink-h160]: https://docs.rs/ink/latest/ink/struct.H160.html
-[ink-sol-bytes]: https://docs.rs/ink/latest/ink/struct.SolBytes.html
 [sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
 
 ### Handling the `Result<T, E>` type
