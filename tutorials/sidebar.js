@@ -3,6 +3,13 @@ module.exports = {
     'overview',
     {
       type: 'category',
+      label: 'Frontend Development',
+      items: [
+        'frontend-development/inkathon-erc20',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Ethereum Compatibility',
       items: [
         'ethereum-compatibility/overview',
