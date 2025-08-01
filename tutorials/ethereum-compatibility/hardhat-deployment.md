@@ -1,7 +1,6 @@
 ---
 title: Hardhat Deployment
-slug: /integrations-and-sdks/ethereum-compatibility/hardhat-deployment
-hide_title: true
+sidebar_position: 4
 ---
 
 # Deploy with Hardhat & Ethers.js
