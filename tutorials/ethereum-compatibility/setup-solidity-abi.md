@@ -14,37 +14,37 @@ Before starting, ensure you have the latest tools installed:
 :::caution Latest Tools Required
 To ensure compatibility with the latest updates:
 - Install the latest `cargo-contract` from GitHub:
-  ```bash
-  cargo install --locked --git https://github.com/use-ink/cargo-contract
-  ```
+``bash
+cargo install --locked --git https://github.com/use-ink/cargo-contract
+```
 - Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
-  ```toml
-  ink = { git = "https://github.com/use-ink/ink.git", branch = "master", default-features = false, features = ["unstable-hostfn"] }
-  ```
+```toml
+ink = { git = "https://github.com/use-ink/ink.git", branch = "master", default-features = false, features = ["unstable-hostfn"] }
+```
 :::
 
 ## Create and Configure Your Contract
 
 1. **Create a new ink! contract**
 
-   ```bash
-   cargo contract new flipper_evm
-   cd flipper_evm
-   ```
+```bash
+cargo contract new flipper_evm
+cd flipper_evm
+```
 
 2. **Configure Solidity ABI generation** in your `Cargo.toml`. Change:
 
-   ```toml
-   [package.metadata.ink-lang]
-   abi = "ink"
-   ```
+```toml
+[package.metadata.ink-lang]
+abi = "ink"
+```
 
-   to:
+to:
 
-   ```toml
-   [package.metadata.ink-lang]
-   abi = "sol"
-   ```
+```toml
+[package.metadata.ink-lang]
+abi = "sol"
+```
 
 ## Build with Solidity Metadata
 
