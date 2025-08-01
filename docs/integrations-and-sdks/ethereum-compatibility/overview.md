@@ -12,12 +12,12 @@ ink! smart contracts can be made compatible with Ethereum tooling and libraries 
 
 ## What's Covered
 
-This section provides step-by-step guides for:
+Follow the tutorials below for step-by-step guides:
 
-1. **[Setting up Solidity ABI](./setup-solidity-abi.md)**: Configure your ink! contract to generate Solidity-compatible ABI
-2. **[MetaMask Setup](./metamask-setup.md)**: Connect MetaMask wallet to Polkadot networks
-3. **[Hardhat Deployment](./hardhat-deployment.md)**: Deploy and interact with ink! contracts using Hardhat
-4. **[Wagmi Integration](./wagmi-integration.md)**: Build frontend dApps using Wagmi and React
+1. **[Setting up Solidity ABI](/tutorials/ethereum-compatibility/setup-solidity-abi)**: Configure your ink! contract to generate Solidity-compatible ABI
+2. **[MetaMask Setup](/tutorials/ethereum-compatibility/metamask-setup)**: Connect MetaMask wallet to Polkadot networks
+3. **[Hardhat Deployment](/tutorials/ethereum-compatibility/hardhat-deployment)**: Deploy and interact with ink! contracts using Hardhat
+4. **[Wagmi Integration](/tutorials/ethereum-compatibility/wagmi-integration)**: Build frontend dApps using Wagmi and React
 
 ## Important Considerations
 

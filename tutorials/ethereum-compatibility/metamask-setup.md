@@ -1,7 +1,6 @@
 ---
 title: MetaMask Setup
-slug: /integrations-and-sdks/ethereum-compatibility/metamask-setup
-hide_title: true
+sidebar_position: 3
 ---
 
 # MetaMask Setup

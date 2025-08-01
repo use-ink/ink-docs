@@ -123,10 +123,6 @@ module.exports = {
         "label": "Ethereum Compatibility",
         "items": [
           "integrations-and-sdks/ethereum-compatibility/overview",
-          "integrations-and-sdks/ethereum-compatibility/setup-solidity-abi",
-          "integrations-and-sdks/ethereum-compatibility/metamask-setup",
-          "integrations-and-sdks/ethereum-compatibility/hardhat-deployment",
-          "integrations-and-sdks/ethereum-compatibility/wagmi-integration"
         ]
       }
     ],

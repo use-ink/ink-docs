@@ -1,7 +1,6 @@
 ---
 title: Wagmi Integration
-slug: /integrations-and-sdks/ethereum-compatibility/wagmi-integration
-hide_title: true
+sidebar_position: 5
 ---
 
 # Build dApps with Wagmi

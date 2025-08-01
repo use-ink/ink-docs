@@ -1,7 +1,6 @@
 ---
 title: Setup Solidity ABI
-slug: /integrations-and-sdks/ethereum-compatibility/setup-solidity-abi
-hide_title: true
+sidebar_position: 2
 ---
 
 # Setup Solidity ABI
@@ -26,7 +25,7 @@ ink = { git = "https://github.com/use-ink/ink.git", branch = "master", default-f
 
 ## Create and Configure Your Contract
 
-1. **Create a new ink! contract** following the [Create a new project](../../getting-started/creating.md) guide:
+1. **Create a new ink! contract**
 
 ```bash
 cargo contract new flipper_evm
@@ -72,7 +71,3 @@ With Solidity ABI configured, you can now:
 - [Set up MetaMask](./metamask-setup.md) to connect to Polkadot networks
 - [Use Hardhat](./hardhat-deployment.md) for deployment and interaction
 - [Build frontends with Wagmi](./wagmi-integration.md)
-
-## More Information
-
-For detailed information about the type mapping between Rust/ink! and Solidity, see [Rust/ink! to Solidity ABI type mapping](../../basics/metadata/solidity-format.md).
