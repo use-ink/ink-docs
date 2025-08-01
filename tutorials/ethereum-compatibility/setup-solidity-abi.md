@@ -14,7 +14,7 @@ Before starting, ensure you have the latest tools installed:
 :::caution Latest Tools Required
 To ensure compatibility with the latest updates:
 - Install the latest `cargo-contract` from GitHub:
-``bash
+```bash
 cargo install --locked --git https://github.com/use-ink/cargo-contract
 ```
 - Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
