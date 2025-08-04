@@ -3,6 +3,8 @@ title: Building a Frontend with Inkathon
 sidebar_position: 1
 ---
 
+![Frontend Title Picture](/img/title/frontend.svg)
+
 # Building a Frontend for an ink! ERC20 Smart Contract with Inkathon
 
 In this tutorial, you'll learn how to build a frontend interface that interacts with an ERC20 smart contract written in ink! on a Substrate-based chain. You'll start from the [Inkathon](https://github.com/scio-labs/inkathon) boilerplate, remove the default Flipper contract, and integrate a new ERC20 contract. 
