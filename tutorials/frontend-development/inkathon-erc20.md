@@ -195,8 +195,6 @@ toast.promise(tx, {
 ```
 
 
-### Conclusion
-
 You’ve successfully replaced the default Flipper contract in Inkathon with an ERC20 ink! contract, deployed it to a testnet, and built a frontend interface using Inkathon, PAPI ink-sdk, and ReactiveDOT.
 
 If you'd like to explore or customize the full React component that interacts with the ERC20 contract, here's the complete implementation of  `frontend/src/components/web3/contract-card.tsx`: 
@@ -379,7 +377,7 @@ export function ContractCard() {
 }
 ```
 
-### Conclusion
+### Resources
 
 - [Inkathon GitHub](https://github.com/scio-labs/inkathon)
 - [PAPI ink-sdk](https://papi.how/sdks/ink-sdk)
