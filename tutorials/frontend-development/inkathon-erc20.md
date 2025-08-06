@@ -17,19 +17,19 @@ Before you begin, make sure you have:
 - Understand ink! and Rust at a basic level.
 - Set up your development environment with the Pop CLI: [Guide](https://learn.onpop.io/welcome/install-pop-cli)
 - Installed [Node.js](https://nodejs.org/en).
+- [Bun](https://bun.sh/) package manage
 
 ### Getting Started
 
 ### 1. Setup the Inkathon Boilerplate
 
 ```bash
-git clone https://github.com/scio-labs/inkathon.git
-cd inkathon
+# https://docs.inkathon.xyz/#create-your-project
+npx create-inkathon-app@latest
+cd <project>
 
-# Install the dependencies
-pnpm install
 # Start the project
-pnpm run dev
+bun run dev
 ```
 
 ### 2. Add the ERC20 Smart Contract
@@ -381,6 +381,7 @@ export function ContractCard() {
 
 ### Resources
 
+- [Inkathon Docs](https://docs.inkathon.xyz/)
 - [Inkathon GitHub](https://github.com/scio-labs/inkathon)
 - [PAPI ink-sdk](https://papi.how/sdks/ink-sdk)
 - [ReactiveDOT](https://reactivedot.dev/)
