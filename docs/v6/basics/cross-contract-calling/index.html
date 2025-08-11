@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.dc7a1013.css">
-<script src="/assets/js/runtime~main.d6b5bd27.js" defer="defer"></script>
-<script src="/assets/js/main.4c99fcae.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d571b894.js" defer="defer"></script>
+<script src="/assets/js/main.52630ab5.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -85,7 +85,7 @@ like normal Rust methods!</p>
 <p>You will need the <a href="https://github.com/use-ink/ink-node" target="_blank" rel="noopener noreferrer"><code>ink-node</code></a>
 running in the background for the next steps.</p>
 <p>We can upload <code>OtherContract</code> using <code>cargo-contract</code> as follows:</p>
-<div class="language-text codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-text codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain"># In the `basic_contract_ref` directory</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">cargo contract build --manifest-path other_contract/Cargo.toml</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice</span><br></span></code></pre></div></div>
+<div class="language-text codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-text codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain"># In the `basic_contract_ref` directory</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">cargo contract build --manifest-path other_contract/Cargo.toml</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice -x</span><br></span></code></pre></div></div>
 <p>If successful, this will output in a <code>code_hash</code> similar to:</p>
 <div class="language-text codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-text codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">Code hash &quot;0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa&quot;</span><br></span></code></pre></div></div>
 <p>We can then use this <code>code_hash</code> to instantiate our <code>BasicContractRef</code> contract.</p>
