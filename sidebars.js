@@ -27,6 +27,7 @@ module.exports = {
       "basics/trait-definitions",
       "basics/gas",
       "basics/cross-contract-calling",
+      "basics/precompiles",
       "basics/upgradeability",
       "basics/env-functions",
       "basics/environment",
