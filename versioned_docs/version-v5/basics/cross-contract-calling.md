@@ -146,7 +146,7 @@ We can upload `OtherContract` using `cargo-contract` as follows:
 ```
 # In the `basic_contract_ref` directory
 cargo contract build --manifest-path other_contract/Cargo.toml
-cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice
+cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice -x
 ```
 
 If successful, this will output in a `code_hash` similar to:
