@@ -19,7 +19,7 @@ cargo install --locked --git https://github.com/use-ink/cargo-contract
 ```
 - Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
 ```toml
-ink = { git = "https://github.com/use-ink/ink.git", branch = "master", default-features = false, features = ["unstable-hostfn"] }
+ink = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
 ```
 :::
 
