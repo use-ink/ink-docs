@@ -62,8 +62,8 @@ This command will generate:
 ## Understanding the Output
 
 After building, you'll find additional files in your `target/ink/` directory:
-- `*.json` - Solidity ABI file
-- Contract metadata compatible with Ethereum tooling
+- `*.abi` - Solidity ABI file compatible with Ethereum tooling for contract interaction.
+- `*.json` - Contract metadata compatible with Ethereum tooling for reproducible builds and contract verification.
 
 ## Next Steps
 
