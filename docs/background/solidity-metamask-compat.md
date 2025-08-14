@@ -134,7 +134,7 @@ and constructors, and they're handled at language level as follows:
 - Similarly, for decoding, `T` must implement `SolDecode`,
   while `E` must implement `SolErrorDecode`, and the returned data is decoded as `T`
   (i.e. `Result::Ok`) or `E` (i.e. `Result::Err`) depending on whether
-  the revert flag is set (i.e. `E` if the revert flag is NOT set, and `T` otherwise).
+  the revert flag is set (i.e. `E` if the revert flag is set, and `T` otherwise).
 
 [sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
 
@@ -166,7 +166,7 @@ struct UnitError;
 #[derive(SolErrorDecode, SolErrorEncode)]
 struct ErrorWithParams(bool, u8, String);
 
-// Represented as a Solidity custom error with parameters
+// Represented as a Solidity custom error with named parameters
 #[derive(SolErrorDecode, SolErrorEncode)]
 struct ErrorWithNamedParams {
     status: bool,
