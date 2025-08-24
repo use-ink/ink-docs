@@ -257,6 +257,17 @@ they have to be `&mut self` now.
 +pub fn my_message(&mut self) {}
 ```
 
+### Removed `call_runtime` and Chain Extensions
+
+The `pallet-revive` no longer provides a host function to call into the runtime.
+Parity removed this feature as the runtime can change and changes could potentially
+break already deployed contracts.
+
+The way to go instead would be to create a pre-compile contract and have your
+contract invoke either a cross-contract call or a delegate call into that one.
+
+This is also the migration path recommended for Chain Extensions.
+
 ## Interesting New Features
 
 ### Solidity ABI compatible ink! contracts
