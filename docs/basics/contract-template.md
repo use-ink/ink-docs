@@ -96,11 +96,11 @@ edition = "2021"
 # `ink::env` is the `ink_env` crate that contains functions
 # to interact with a contract's environment (querying information
 # about a caller, the current block number, etc.).
-ink = { version = "6", default-features = false }
+ink = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
 
 [dev-dependencies]
 # This developer dependency is for the End-to-End testing framework.
-ink_e2e = { path = "../../crates/e2e" }
+ink_e2e = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
 
 [lib]
 name = "foobar"
