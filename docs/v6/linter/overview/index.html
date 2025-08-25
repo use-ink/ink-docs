@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.dc7a1013.css">
-<script src="/assets/js/runtime~main.ff5dd352.js" defer="defer"></script>
-<script src="/assets/js/main.3f4ed278.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.3117382c.js" defer="defer"></script>
+<script src="/assets/js/main.70edfec0.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -25,7 +25,7 @@
 <h2 class="anchor anchorWithStickyNavbar_mSTA" id="installation">Installation<a href="#installation" class="hash-link" aria-label="Direct link to Installation" title="Direct link to Installation">​</a></h2>
 <p>Our linter requires two crates and a fixed Rust toolchain version. You can use
 these commands to install the required dependencies:</p>
-<div class="language-bash codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-bash codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">export TOOLCHAIN_VERSION=nightly-2025-02-20</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">rustup install $TOOLCHAIN_VERSION</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">rustup component add rust-src --toolchain $TOOLCHAIN_VERSION</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">rustup run $TOOLCHAIN_VERSION cargo install cargo-dylint dylint-link</span><br></span></code></pre></div></div>
+<div class="language-bash codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-bash codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">export TOOLCHAIN_VERSION=nightly-2025-05-14</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">rustup install $TOOLCHAIN_VERSION</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">rustup component add rust-src --toolchain $TOOLCHAIN_VERSION</span><br></span><span class="token-line" style="color:#9a86fd"><span class="token plain">rustup run $TOOLCHAIN_VERSION cargo install cargo-dylint dylint-link</span><br></span></code></pre></div></div>
 <p>Note that the linter requires this specific version of the toolchain,
 since it uses the internal Rust compiler API. That&#x27;s also why we require
 nightly for the linter, these internal crates are not accessible on stable.</p>
