@@ -16,7 +16,7 @@ Our linter requires two crates and a fixed Rust toolchain version. You can use
 these commands to install the required dependencies:
 
 ```bash
-export TOOLCHAIN_VERSION=nightly-2025-02-20
+export TOOLCHAIN_VERSION=nightly-2025-05-14
 rustup install $TOOLCHAIN_VERSION
 rustup component add rust-src --toolchain $TOOLCHAIN_VERSION
 rustup run $TOOLCHAIN_VERSION cargo install cargo-dylint dylint-link

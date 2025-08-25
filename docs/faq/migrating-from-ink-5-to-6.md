@@ -42,7 +42,7 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 - **cargo-contract**: >= v6.0.0-alpha
  
   ```bash
-  cargo install cargo-contract --version 6.0.0-alpha --locked
+  cargo install --force --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.1
   ```
 - **`polkadot-sdk`**: >= `stable2506`
 - **ink-node**: >= v0.24.0
