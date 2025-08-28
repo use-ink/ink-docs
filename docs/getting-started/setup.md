@@ -55,9 +55,15 @@ version (>= 1.85) and `cargo`. Please see [the official Rust installation guide]
 The [ink-node](https://github.com/use-ink/ink-node) is
 a simple Polkadot SDK blockchain with smart contract functionality. It's a comfortable option for local development and testing.
 
-There are two ways of installing the node:
+There are three ways of installing the node:
 
-### (1) Download the Binary
+### (1) Install the ink-node
+
+```
+cargo install ink-node
+```
+
+### (2) Download the Binary
 Go to the [ink-node releases page](https://github.com/use-ink/ink-node/releases). Under `Assets` of the latest release, download the appropriate binary for your platform:
    - **Linux (ARM64)**: `ink-node-linux-arm64.tar.gz`
    - **Linux (x86)**: `ink-node-linux.tar.gz`  
@@ -82,7 +88,7 @@ To confirm that `ink-node` is working correctly, run:
 ```
 If you see version information, your installation is successful!
 
-### (2) Build it yourself
+### (3) Build it yourself
 
 Alternatively, you can build the node by yourself.
 This can take a while though!
