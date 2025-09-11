@@ -75,11 +75,7 @@ those should be explained here or on another page.
 
 ### How can my smart contract interact with the runtime?
 
-:::caution
-TODO review
-:::
-
-See the [Chain Extensions](../macros-attributes/chain-extension.md) section for more information.
+See the [Pre-compiles](../basics/precompiles.md) section for more information.
 
 ### How can I use ink! with a Polkadot SDK chain with a custom chain config?
 
