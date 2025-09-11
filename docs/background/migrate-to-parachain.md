@@ -14,7 +14,7 @@ For many applications, smart contracts are good enough. However, they are expose
     
 1. Sharing of blockspace with other smart contracts, volatile "gas" fees.
 2. Default model enforces gas fees being paid by the end user.
-3. Relative poor performance of interpreted smart contract (untrusted) code compared to pre-compiled Parachain runtime (trusted) code.
+3. Relative poor performance of interpreted smart contract (untrusted) code compared to precompiled Parachain runtime (trusted) code.
 4. Limited access to the host chain environment and any special functionality provided by an extensive suite of customisable FRAME pallets.
 
 Once a web3 application has proven it can work, the team may consider "upgrading" to a Parachain to unlock the full power of a dedicated App Chain. Compared to developing and deploying a smart contract, this requires considerably more time and expertise, which is why we encourage to start with ink! where possible, at least at the prototype stage.
@@ -39,7 +39,7 @@ Next we can assume some familiarity with the execution environment, after all a 
 
 The biggest difference is that a contract is user uploaded and therefore untrusted code, so there are restrictions to what the contract is able to do and it will perform slower because it is interpreted. For example, a contract can only read and write from its own sandboxed storage.
 
-Runtime code built using `FRAME` is trusted, can be pre-compiled and therefore executes significantly faster (though that may change if/when contracts are able to target [PolkaVM](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)). Pallets have direct access to other pallets and have full access to the Parachain storage, and the permissioning can be configured as desired.
+Runtime code built using `FRAME` is trusted, can be precompiled and therefore executes significantly faster (though that may change if/when contracts are able to target [PolkaVM](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)). Pallets have direct access to other pallets and have full access to the Parachain storage, and the permissioning can be configured as desired.
 
 Because ink! is executing in a more constrained environment, it is able to be much more opinionated and therefore a simpler language. Because execution is metered (pay as you go execution by the user), there is no need to worry about benchmarking for "weight" calculation. `FRAME` is more powerful, but necessarily more complicated.
 

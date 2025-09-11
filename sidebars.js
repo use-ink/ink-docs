@@ -50,6 +50,7 @@ module.exports = {
         ]
       },
       "basics/xcm",
+      "basics/precompiles",
       "basics/contract-verification"
     ],
     "Testing": [
@@ -83,7 +84,6 @@ module.exports = {
       "macros-attributes/selector",
       "macros-attributes/storage",
       "macros-attributes/topic",
-      // "macros-attributes/chain-extension"
     ],
     "Storage & Data Structures": [
       "datastructures/overview",

@@ -173,9 +173,6 @@ You can check default types in the [Environment](../environment.md) section.
   - `accountId`: The type describing an account address.
   - `balance`: The type describing balance values.
   - `blockNumber`: The type describing a block number. 
-  - `chainExtension`: The type describing the chain extension for the environment. 
-For more information about usage and definition check [this section](../../macros-attributes/chain-extension.md).
-  - `maxEventTopics`: The maximum number of supported event topics provided by the runtime.
   - `timestamp`: the type describing a timestamp.
 - `events`: The events of the contract.
     - `label`: The label of the event.

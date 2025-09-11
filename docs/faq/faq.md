@@ -75,7 +75,7 @@ those should be explained here or on another page.
 
 ### How can my smart contract interact with the runtime?
 
-See the [Pre-compiles](../basics/precompiles.md) section for more information.
+See the [Precompiles](../basics/precompiles.md) section for more information.
 
 ### How can I use ink! with a Polkadot SDK chain with a custom chain config?
 
@@ -161,7 +161,7 @@ therefore very efficient to use. We currently support a handful of those, you
 can view the complete list [here](https://docs.rs/ink_env/6.0.0-alpha/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
-[Chain Extensions](../macros-attributes/chain-extension.md)
+[Precompiles](../basics/precompiles.md)
 or make a proposal to include it into the default set of the `pallet-revive`.
 
 Using one of the built-in crypto hashes can be done as explained here:
