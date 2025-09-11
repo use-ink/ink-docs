@@ -894,7 +894,7 @@ pub use self::mycontract::{
 - For more complex testing that requires a running node, such as cross-contract calls,please refer to [the showcased example here](https://github.com/use-ink/ink-examples/tree/main/multi-contract-caller)
 - useful code to interact and modify the contract environment for testing
 
-[ink_env docs](https://docs.rs/ink_env/latest/ink_env/index.html)
+[ink_env docs](https://use-ink.github.io/ink/ink_env/)
 
 ```rust
 // get the default accounts (alice, bob, ...)

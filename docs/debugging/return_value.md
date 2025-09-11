@@ -9,7 +9,7 @@ hide_title: true
 # Return an error message
 
 You can return a specific error message from your contract via 
-[`ink::return_value(REVERT, err);`](https://docs.rs/ink_env/5.1.1/ink_env/fn.return_value.html).
+[`ink::return_value(REVERT, err);`](https://use-ink.github.io/ink/ink_env/fn.return_value.html).
 
 If you do a dry-run of the contract call, you can read this data.
 
