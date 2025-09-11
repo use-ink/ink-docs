@@ -68,7 +68,7 @@ module.exports = {
       "debugging/sandbox",
       "debugging/decoding",
       // "debugging/replays",
-      "debugging/pre-compiles"
+      "debugging/precompiles"
     ],
     "Macros & Attributes": [
       "macros-attributes/overview",
