@@ -28,6 +28,7 @@ docs/
     events.md
     gas.md
     mutating-values.md
+    precompiles.md
     reading-values.md
     selectors.md
     storing-values.md
@@ -45,7 +46,7 @@ docs/
     decoding.md
     events.md
     overview.md
-    pre-compiles.md
+    precompiles.md
     replays.md
     return_value.md
     sandbox.md
@@ -84,7 +85,6 @@ docs/
     overview.md
   macros-attributes/
     anonymous.md
-    chain-extension.md
     constructor.md
     contract.md
     default.md
@@ -1208,7 +1208,7 @@ pub use self::mycontract::{
 - For more complex testing that requires a running node, such as cross-contract calls,please refer to [the showcased example here](https://github.com/use-ink/ink-examples/tree/main/multi-contract-caller)
 - useful code to interact and modify the contract environment for testing
 
-[ink_env docs](https://docs.rs/ink_env/latest/ink_env/index.html)
+[ink_env docs](https://use-ink.github.io/ink/ink_env/)
 
 ```rust
 // get the default accounts (alice, bob, ...)
@@ -1261,7 +1261,7 @@ For many applications, smart contracts are good enough. However, they are expose
     
 1. Sharing of blockspace with other smart contracts, volatile "gas" fees.
 2. Default model enforces gas fees being paid by the end user.
-3. Relative poor performance of interpreted smart contract (untrusted) code compared to pre-compiled Parachain runtime (trusted) code.
+3. Relative poor performance of interpreted smart contract (untrusted) code compared to precompiled Parachain runtime (trusted) code.
 4. Limited access to the host chain environment and any special functionality provided by an extensive suite of customisable FRAME pallets.
 
 Once a web3 application has proven it can work, the team may consider "upgrading" to a Parachain to unlock the full power of a dedicated App Chain. Compared to developing and deploying a smart contract, this requires considerably more time and expertise, which is why we encourage to start with ink! where possible, at least at the prototype stage.
@@ -1286,7 +1286,7 @@ Next we can assume some familiarity with the execution environment, after all a 
 
 The biggest difference is that a contract is user uploaded and therefore untrusted code, so there are restrictions to what the contract is able to do and it will perform slower because it is interpreted. For example, a contract can only read and write from its own sandboxed storage.
 
-Runtime code built using `FRAME` is trusted, can be pre-compiled and therefore executes significantly faster (though that may change if/when contracts are able to target [PolkaVM](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)). Pallets have direct access to other pallets and have full access to the Parachain storage, and the permissioning can be configured as desired.
+Runtime code built using `FRAME` is trusted, can be precompiled and therefore executes significantly faster (though that may change if/when contracts are able to target [PolkaVM](https://forum.polkadot.network/t/announcing-polkavm-a-new-risc-v-based-vm-for-smart-contracts-and-possibly-more/3811)). Pallets have direct access to other pallets and have full access to the Parachain storage, and the permissioning can be configured as desired.
 
 Because ink! is executing in a more constrained environment, it is able to be much more opinionated and therefore a simpler language. Because execution is metered (pay as you go execution by the user), there is no need to worry about benchmarking for "weight" calculation. `FRAME` is more powerful, but necessarily more complicated.
 
@@ -1610,7 +1610,7 @@ An example for this is [Pop Network](https://onpop.io/).
 ### Use Case 2: Smart Contracts as "second-class citizens"
 There is another not so obvious use case for `pallet-revive`: smart contracts as “second-class citizens” on an existing chain. By this we mean that the central value proposition of the chain has nothing to do with smart contracts, but it still includes them as an add-on.
 
-We provide an API (called [chain extensions](../macros-attributes/chain-extension.md)) with which a parachain can expose certain parts of its business logic to smart contract developers. Through this, smart contract developers can utilize the business logic primitives of the chain to build a new application on top of it. Think for example of a decentralized exchange blockchain. This chain would in its simplest form have an order book to place bids and asks ‒ there is no need for taking untrusted, Turing-complete, programs from the outside. The parachain could decide to expose the order book into smart contracts though, giving external developers the option of building new applications that utilize the order book. For example, to upload trading algorithms as smart contracts to the chain.
+The `pallet-revive` provides a [Precompile API](../basics/precompiles.md) with which a parachain can expose certain parts of its business logic to smart contract developers. Through this, smart contract developers can utilize the business logic primitives of the chain to build a new application on top of it. Think for example of a decentralized exchange blockchain. This chain would in its simplest form have an order book to place bids and asks ‒ there is no need for taking untrusted, Turing-complete, programs from the outside. The parachain could decide to expose the order book into smart contracts though, giving external developers the option of building new applications that utilize the order book. For example, to upload trading algorithms as smart contracts to the chain.
 
 Smart contracts here are an opportunity to up the user engagement and drive usage of the chain's native token. And the billing for utilizing the chain comes already built-in with the pallet ‒ users have to pay gas fees for the execution of their smart contract.
 
@@ -1696,8 +1696,8 @@ This mapping is defined using the [`SolEncode`][sol-trait-encode] and
 You won't be able to use Rust types for which no mapping to a Solidity type is defined.
 An error about a missing trait implementation for this type will be thrown.
 
-[sol-trait-encode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolEncode.html
-[sol-trait-decode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolDecode.html
+[sol-trait-encode]: https://use-ink.github.io/ink/ink/trait.SolEncode.html
+[sol-trait-decode]: https://use-ink.github.io/ink/ink/trait.SolDecode.html
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 
 ### Default/provided mappings
@@ -1757,9 +1757,9 @@ pointer types below:
 | `&T`, `&mut T`, `Box<T>` | `T` | e.g. `&i8 ↔ int8` |
 | `&[T]`, `&mut [T]` | `T[]` | e.g. `&[i8]` ↔ `int8[]` |
 
-[ink-u256]: https://docs.rs/ink/latest/ink/struct.U256.html
-[ink-address]: https://docs.rs/ink/latest/ink/type.Address.html
-[ink-h160]: https://docs.rs/ink/latest/ink/struct.H160.html
+[ink-u256]: https://use-ink.github.io/ink/ink//struct.U256.html
+[ink-address]: https://use-ink.github.io/ink/ink//type.Address.html
+[ink-h160]: https://use-ink.github.io/ink/ink//struct.H160.html
 [sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
 
 ### Handling the `Result<T, E>` type
@@ -2520,9 +2520,6 @@ You can check default types in the [Environment](../environment.md) section.
   - `accountId`: The type describing an account address.
   - `balance`: The type describing balance values.
   - `blockNumber`: The type describing a block number. 
-  - `chainExtension`: The type describing the chain extension for the environment. 
-For more information about usage and definition check [this section](../../macros-attributes/chain-extension.md).
-  - `maxEventTopics`: The maximum number of supported event topics provided by the runtime.
   - `timestamp`: the type describing a timestamp.
 - `events`: The events of the contract.
     - `label`: The label of the event.
@@ -2545,7 +2542,7 @@ comes from the smart contracting language itself, and not the contract nor the u
 environment (i.e. `pallet-revive`).
 
 All ink! messages and constructors now return a `Result` which uses this as the `Error`
-variant (see the [`LangError`](https://docs.rs/ink/6.0.0-alpha/ink/enum.LangError.html) docs for more).
+variant (see the [`LangError`](https://use-ink.github.io/ink/ink/enum.LangError.html) docs for more).
 
 :::
 
@@ -2919,11 +2916,11 @@ edition = "2021"
 # `ink::env` is the `ink_env` crate that contains functions
 # to interact with a contract's environment (querying information
 # about a caller, the current block number, etc.).
-ink = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
+ink = { git = "https://github.com/use-ink/ink.git", tag = "v6.0.0-alpha.3", default-features = false, features = ["unstable-hostfn"] }
 
 [dev-dependencies]
 # This developer dependency is for the End-to-End testing framework.
-ink_e2e = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
+ink_e2e = { git = "https://github.com/use-ink/ink.git", tag = "v6.0.0-alpha.3", default-features = false }
 
 [lib]
 name = "foobar"
@@ -3378,9 +3375,9 @@ Data Ok(true)
 
 ## Builders
 The
-[`CreateBuilder`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CreateBuilder.html)
+[`CreateBuilder`](https://use-ink.github.io/ink/ink_env/call/struct.CreateBuilder.html)
 and
-[`CallBuilder`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CallBuilder.html)
+[`CallBuilder`](https://use-ink.github.io/ink/ink_env/call/struct.CallBuilder.html)
 offer low-level, flexible interfaces for performing cross-contract calls. The
 `CreateBuilder` allows you to instantiate already uploaded contracts, and the
 `CallBuilder` allows you to call messages on instantiated contracts.
@@ -3564,11 +3561,11 @@ These allow contract developers to handle two types of errors:
 2. Error from the programming language (e.g `LangError`s)
 
 See the documentation for
-[`try_instantiate`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
-[`try_invoke`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
-[`ink::env::Error`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/enum.Error.html)
+[`try_instantiate`](https://use-ink.github.io/ink/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
+[`try_invoke`](https://use-ink.github.io/ink/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
+[`ink::env::Error`](https://use-ink.github.io/ink/ink_env/enum.Error.html)
 and
-[`ink::LangError`](https://docs.rs/ink/6.0.0-alpha/ink/enum.LangError.html)
+[`ink::LangError`](https://use-ink.github.io/ink/ink/enum.LangError.html)
 for more details on proper error handling.
 ````
 
@@ -3584,7 +3581,7 @@ slug: /basics/environment-functions
 # Environment Functions
 
 ink! exposes a number of handy environment functions.
-A full overview [is found here](https://docs.rs/ink_env/6.0.0-alpha/ink_env/#functions).
+A full overview [is found here](https://use-ink.github.io/ink/ink_env/#functions).
 
 In an `#[ink(constructor)]`  use `Self::env()` to access those,
 in an `#[ink(message)]` use `self.env()`.
@@ -3592,14 +3589,14 @@ So `Self::env().caller()` or `self.env().caller()`.
 
 Some handy functions include:
 
-* [`caller()`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.caller.html): Returns the address of the caller of the executed contract.
-* [`address()`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.address.html): Returns the address of the executed contract.
-* [`balance()`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.balance.html): Returns the balance of the executed contract.
-* [`block_number()`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.block_number.html): Returns the current block number.
-* [`emit_event(…)`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.emit_event.html): Emits an event with the given event data.
-* [`transfer(…)`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.transfer.html): Transfers value from the contract to the destination account ID.
-* [`hash_bytes(…)`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.hash_bytes.html): Conducts the crypto hash of the given input and stores the result in output.
-* […and many more](https://docs.rs/ink_env/6.0.0-alpha/ink_env/#functions).
+* [`caller()`](https://use-ink.github.io/ink/ink_env/fn.caller.html): Returns the address of the caller of the executed contract.
+* [`address()`](https://use-ink.github.io/ink/ink_env/fn.address.html): Returns the address of the executed contract.
+* [`balance()`](https://use-ink.github.io/ink/ink_env/fn.balance.html): Returns the balance of the executed contract.
+* [`block_number()`](https://use-ink.github.io/ink/ink_env/fn.block_number.html): Returns the current block number.
+* [`emit_event(…)`](https://use-ink.github.io/ink/ink_env/fn.emit_event.html): Emits an event with the given event data.
+* [`transfer(…)`](https://use-ink.github.io/ink/ink_env/fn.transfer.html): Transfers value from the contract to the destination account ID.
+* [`hash_bytes(…)`](https://use-ink.github.io/ink/ink_env/fn.hash_bytes.html): Conducts the crypto hash of the given input and stores the result in output.
+* […and many more](https://use-ink.github.io/ink/ink_env/#functions).
 ````
 
 ## File: docs/basics/environment.md
@@ -3995,6 +3992,23 @@ impl MyContract {
 ```
 ````
 
+## File: docs/basics/precompiles.md
+````markdown
+---
+title: Precompiles
+slug: /basics/precompiles
+hide_title: true
+---
+
+![Gas Title Picture](/img/title/gas.svg)
+
+## Precompiles
+
+:::caution
+This section has not yet been created.
+:::
+````
+
 ## File: docs/basics/reading-values.md
 ````markdown
 ---
@@ -4213,7 +4227,7 @@ they were primitive types.
 
 ### String, Vector and More
 
-The [`ink_prelude`](https://docs.rs/ink_prelude/6.0.0-alpha/ink_prelude/index.html) crate provides an efficient approach to import commonly used Rust types such as `String` and `Vec`, ensuring safe usage within an ink! contract.
+The [`ink_prelude`](https://use-ink.github.io/ink/ink_prelude/) crate provides an efficient approach to import commonly used Rust types such as `String` and `Vec`, ensuring safe usage within an ink! contract.
 
 This simplifies the type referencing process between the `std` and `no_std` environments. Typically, these types are defined within the `std` crate in the `std` environment, and the `alloc` crate in the `no_std` environment. Given that ink! smart contract code is compiled in both environments (`no_std` for production and `std` for unit tests), developers might find themselves writing intricate conditional compilation macros. The `ink_prelude` crate conveniently re-exports these types, eliminating this complexity.
 
@@ -4450,7 +4464,7 @@ Marks trait definitions to ink! as special ink! trait definitions.
 
 There are some restrictions that apply to ink! trait definitions that
 this macro checks. Also ink! trait definitions are required to have specialized
-structure so that the main [`#[ink::contract]`](https://docs.rs/ink/6.0.0-alpha/ink/attr.contract.html) macro can
+structure so that the main [`#[ink::contract]`](https://use-ink.github.io/ink/ink/attr.contract.html) macro can
 properly generate code for its implementations.
 
 # Example: Definition
@@ -4934,7 +4948,7 @@ TODO
 XCM allows for cross-chain communications, enabling ink! smart contract to interact with other chains.
 You can learn more about XCM in the [Polkadot Wiki](https://wiki.polkadot.network/docs/learn/xcm).
 
-As of ink! v5.1.0, two new functions, [`xcm_execute`](https://docs.rs/ink_env/5.1.0/ink_env/fn.xcm_execute.html) and [`xcm_send`](https://docs.rs/ink_env/5.1.0/ink_env/fn.xcm_send.html), have been introduced.
+As of ink! v5.1.0, two new functions, [`xcm_execute`](https://use-ink.github.io/ink/ink_env/fn.xcm_execute.html) and [`xcm_send`](https://use-ink.github.io/ink/ink_env/fn.xcm_send.html), have been introduced.
 These functions enable sending and executing XCM from within ink! contracts.
 
 :::info
@@ -4943,7 +4957,7 @@ In versions of ink! prior to v5.1.0, the [call_runtime](https://docs.rs/ink/5.1.
 
 ## `xcm_execute`
 
-The [`xcm_execute`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
+The [`xcm_execute`](https://use-ink.github.io/ink/ink//struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
 
 The following code snippet demonstrates how to use `xcm_execute` to perform a [reserve-backed transfer](https://wiki.polkadot.network/docs/learn/xcm/journey/transfers-reserve#1-initiatereservewithdraw):
 
@@ -4983,7 +4997,7 @@ pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
 
 ## `xcm_send`
 
-The [`xcm_send`](https://docs.rs/ink_env/5.1.0/ink_env/fn.xcm_send.html) function enables sending XCM to be executed by another chain.
+The [`xcm_send`](https://use-ink.github.io/ink/ink_env/fn.xcm_send.html) function enables sending XCM to be executed by another chain.
 Messages sent originate from the contract's account. Consequently, the receiving chain will process the message using the contract's sovereign account as the origin.
 
 The following example demonstrates how to use `xcm_send`. In this example, we send an XCM to the relay chain.
@@ -5049,14 +5063,14 @@ also create their own custom data structures.
 
 ## Using custom types on storage
 Any custom type wanting to be compatible with ink! storage must implement the
-[`Storable`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/trait.Storable.html)
+[`Storable`](https://use-ink.github.io/ink/ink_storage_traits/trait.Storable.html)
 trait, so it can be SCALE
-[`encoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Encode.html)
+[`encoded`](https://docs.rs/parity-scale-codec/latest/parity_scale_codec/trait.Encode.html)
 and
-[`decoded`](https://docs.rs/parity-scale-codec/3.2.2/parity_scale_codec/trait.Decode.html).
+[`decoded`](https://docs.rs/parity-scale-codec/latest/parity_scale_codec/trait.Decode.html).
 Additionally, the traits
-[`StorageLayout`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/trait.StorageLayout.html)
-and [`TypeInfo`](https://docs.rs/scale-info/2.3.1/scale_info/trait.TypeInfo.html)
+[`StorageLayout`](https://use-ink.github.io/ink/ink_storage_traits//trait.StorageLayout.html)
+and [`TypeInfo`](https://docs.rs/scale-info/latest/scale_info/trait.TypeInfo.html)
 are required as well. But don't worry, usually these traits can just be derived:
 
 ```rust
@@ -5077,7 +5091,7 @@ pub struct ContractStorage {
 ```
 
 Even better: there is a macro
-[`#[ink::storage_item]`](https://docs.rs/ink_macro/6.0.0-alpha/ink_macro/attr.storage_item.html),
+[`#[ink::storage_item]`](https://use-ink.github.io/ink/ink_macro/attr.storage_item.html),
 which derives all necessary traits for you. If there is no need to implement any special
 behavior, the above code example can be simplified further as follows:
 
@@ -5100,10 +5114,10 @@ the relevant trait documentations for more information.
 :::note
 
 The `#[ink::storage_item]` macro is responsible for storage key calculation of 
-non-[`Packed`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/trait.Packed.html) 
+non-[`Packed`](https://use-ink.github.io/ink/ink_storage_traits//trait.Packed.html) 
 types. Without it, the key for non-`Packed` fields will be zero. Using this macro is 
 necessary if you don't plan to use a
-[`ManualKey`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/struct.ManualKey.html) 
+[`ManualKey`](https://use-ink.github.io/ink/ink_storage_traits//struct.ManualKey.html) 
 on a non-`Packed` type.
 
 Types with custom implementations of the ink! storage traits can still use this macro only 
@@ -5116,7 +5130,7 @@ for key calculation by disabling the derives: `#[ink::storage_item(derive = fals
 It is possible to use generic data types in your storage, as long as any generic type
 satisfies the required storage trait bounds. In fact, we already witnessed this in the
 previous sections about the
-[`Mapping`](https://docs.rs/ink_storage/6.0.0-alpha/ink_storage/struct.Mapping.html).
+[`Mapping`](https://use-ink.github.io/ink/ink_storage/struct.Mapping.html).
 
 Let's say you want a mapping where accessing a non-existent key should just return
 it's default value, akin to how mappings work in Solidity. Additionally, you want to know
@@ -5194,7 +5208,7 @@ hide_title: true
 
 # Working with Mapping
 
-In this section we demonstrate how to work with ink! [`Mapping`](https://docs.rs/ink_storage/6.0.0-alpha/ink_storage/struct.Mapping.html).
+In this section we demonstrate how to work with ink! [`Mapping`](https://use-ink.github.io/ink/ink_storage/struct.Mapping.html).
 
 Here is an example of a mapping from a user to a `Balance`:
 
@@ -5405,8 +5419,8 @@ hide_title: true
 
 The `ink_storage` crate acts as the standard storage library for ink! smart contracts.
 At the moment it provides two primitives for interacting with storage,
-[`Mapping`](https://docs.rs/ink_storage/6.0.0-alpha/ink_storage/struct.Mapping.html)
-and [`Lazy`](https://docs.rs/ink_storage/6.0.0-alpha/ink_storage/struct.Lazy.html).
+[`Mapping`](https://use-ink.github.io/ink/ink_storage/struct.Mapping.html)
+and [`Lazy`](https://use-ink.github.io/ink/ink_storage/struct.Lazy.html).
 
 `Mapping` is a mapping of key-value pairs directly to the contract storage. It is very
 similar to traditional hash tables and comparable to the `mapping` type Solidity offers.
@@ -5513,7 +5527,7 @@ The storage will be reflected inside the metadata as like follows:
 
 We observe that the storage layout is represented as a tree, where tangible storage values
 end up inside a `leaf`. Because of
-[`Packed`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/trait.Packed.html)
+[`Packed`](https://use-ink.github.io/ink/ink_storage_traits//trait.Packed.html)
 encoding, leafs can share the same storage key, and
 in order to reach them you'd need to fetch and decode the whole storage cell under this key.
 
@@ -5594,7 +5608,7 @@ You'll need to account for that as well.
 
 With that in mind, to directly access storage items of any on-chain contract using a
 childState [`RPC call`](https://polkadot.js.org/apps/#/rpc), you'll need the following:
-- The child trie ID of the contract, represented as a [`PrefixedStorageKey`](https://docs.rs/sp-storage/10.0.0/sp_storage/struct.PrefixedStorageKey.html)
+- The child trie ID of the contract, represented as a [`PrefixedStorageKey`](https://docs.rs/sp-storage/latest/sp_storage/struct.PrefixedStorageKey.html)
 - The hashed storage key of the storage field
 
 ### Finding the contracts child trie ID
@@ -5725,7 +5739,7 @@ extent, the storage API works similar to a traditional key-value database.
 ## Packed vs Non-Packed layout
 
 Types that can be stored entirely under a single storage cell are considered
-[`Packed`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/trait.Packed.html).
+[`Packed`](https://use-ink.github.io/ink/ink_storage_traits//trait.Packed.html).
 By default, ink! tries to store all storage struct fields under a single storage cell.
 Consequentially, with a `Packed` storage layout, any message interacting with the contract
 storage will always need to operate on the entire contract storage struct.
@@ -5830,10 +5844,10 @@ large or sparse arrays on contract storage, consider using a `Mapping` instead.
 ## Manual vs. Automatic Key Generation
 
 By default, keys are calculated automatically for you, thanks to the
-[`AutoKey`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/struct.AutoKey.html)
+[`AutoKey`](https://use-ink.github.io/ink/ink_storage_traits//struct.AutoKey.html)
 primitive. They'll be generated at compile time and ruled out for conflicts.
 However, for non-`Packed` types like `Lazy` or the `Mapping`, the
-[`ManualKey`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/struct.ManualKey.html)
+[`ManualKey`](https://use-ink.github.io/ink/ink_storage_traits//struct.ManualKey.html)
 primitive allows manual control over the storage key of a field like so:
 
 ```rust
@@ -5895,7 +5909,7 @@ hide_title: true
 # Working with `StorageVec`
 
 In this section we demonstrate how to work with ink!'s
-[`StorageVec`](https://docs.rs/ink_storage/6.0.0-alpha/ink_storage/struct.StorageVec.html).
+[`StorageVec`](https://use-ink.github.io/ink/ink_storage/struct.StorageVec.html).
 
 ## Example: Using a `StorageVec`
 
@@ -6025,7 +6039,7 @@ Hence, the same considerations apply to `StorageVec` too:
 ## Rust Docs
 
 See here for the Rust documentation of this data structure:
-[`StorageVec`](https://docs.rs/ink_storage/6.0.0-alpha/ink_storage/struct.StorageVec.html).
+[`StorageVec`](https://use-ink.github.io/ink/ink_storage/struct.StorageVec.html).
 ````
 
 ## File: docs/debugging/decoding.md
@@ -6177,26 +6191,26 @@ In this chapter we'll examine different debugging techniques using these
 two workflows.
 ````
 
-## File: docs/debugging/pre-compiles.md
+## File: docs/debugging/precompiles.md
 ````markdown
 ---
-title: Pre-compiles
-slug: /contract-debugging/pre-compiles
+title: Precompiles
+slug: /contract-debugging/precompiles
 hide_title: true
 ---
 
 ![Magnifying Glass Title Picture](/img/title/magnifying-glass.svg)
 
-# Pre-compile
+# Precompile
 
-We don't have any examples for debugging with pre-compiles yet. 
+We don't have any examples for debugging with precompiles yet. 
 
-Our intention is to add an explanation here, once the pre-compile API 
+Our intention is to add an explanation here, once the precompile API 
 in `pallet-revive` is released.
 
-The overarching with pre-compiles for debugging is to implement one that 
+The overarching with precompiles for debugging is to implement one that 
 outputs log information to the node process console (`stdout` or `stderr`).
-This pre-compile could then be called from within an ink! contract.
+This precompile could then be called from within an ink! contract.
 ````
 
 ## File: docs/debugging/replays.md
@@ -6312,7 +6326,7 @@ hide_title: true
 # Return an error message
 
 You can return a specific error message from your contract via 
-[`ink::return_value(REVERT, err);`](https://docs.rs/ink_env/5.1.1/ink_env/fn.return_value.html).
+[`ink::return_value(REVERT, err);`](https://use-ink.github.io/ink/ink_env/fn.return_value.html).
 
 If you do a dry-run of the contract call, you can read this data.
 
@@ -6554,17 +6568,13 @@ those should be explained here or on another page.
 
 ### How can my smart contract interact with the runtime?
 
-:::caution
-TODO review
-:::
-
-See the [Chain Extensions](../macros-attributes/chain-extension.md) section for more information.
+See the [Precompiles](../basics/precompiles.md) section for more information.
 
 ### How can I use ink! with a Polkadot SDK chain with a custom chain config?
 
 Please see [this section](../macros-attributes/contract.md#env-impl-environment) in our documentation.
 
-Detailed documentation is found in [the Rust docs](https://docs.rs/ink_macro/6.0.0-alpha/ink_macro/attr.contract.html#header-arguments)
+Detailed documentation is found in [the Rust docs](https://use-ink.github.io/ink/ink_macro/attr.contract.html#header-arguments)
 for the `#[ink(contract)]` macro. It allows you to specify your environment a la
 `#[ink::contract(env = MyEnvironment)]`.
 
@@ -6641,15 +6651,15 @@ The contract storage is built on top of the runtime storage, and access is consi
 
 A number of crypto hashes are built into [`pallet-revive`](../background/polkadot-sdk.md) and
 therefore very efficient to use. We currently support a handful of those, you
-can view the complete list [here](https://docs.rs/ink_env/6.0.0-alpha/ink_env/hash/trait.CryptoHash.html).
+can view the complete list [here](https://use-ink.github.io/ink/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
-[Chain Extensions](../macros-attributes/chain-extension.md)
+[Precompiles](../basics/precompiles.md)
 or make a proposal to include it into the default set of the `pallet-revive`.
 
 Using one of the built-in crypto hashes can be done as explained here:
-* [`self.env().hash_bytes()`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.hash_bytes.html)
-* [`self.env().hash_encoded()`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.hash_encoded.html)
+* [`self.env().hash_bytes()`](https://use-ink.github.io/ink/ink_env/fn.hash_bytes.html)
+* [`self.env().hash_encoded()`](https://use-ink.github.io/ink/ink_env/fn.hash_encoded.html)
 
 ### Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?
 
@@ -6747,7 +6757,7 @@ and you should only persist items which you need to derive state transitions
 in your contract.
 
 If you still, for some reason, need to use `String`, then you should use
-the `String` [from the ink! prelude](https://docs.rs/ink_prelude/6.0.0-alpha/ink_prelude/string/struct.String.html).
+the `String` [from the ink! prelude](https://use-ink.github.io/ink/ink_prelude/string/struct.String.html).
 
 <h3 id="type-comparison">Getting a warning in <code>cargo-contract</code> about type compatibility?</h3>
 
@@ -7642,7 +7652,7 @@ The argument type changed from `u32` to `u16`:
 
 The top level macro `#[ink::chain_extension]` now _requires_ an `(extension = N: u16)` argument to support multiple chain extensions.
 If you are using only one extension, the ID can be any `u16` number,
-otherwise please consult the [`#[ink::chain_extension]` macro documentation](../macros-attributes/chain-extension.md)
+otherwise please consult the [`#[ink::chain_extension]` macro documentation](https://use.ink/docs/v5/macros-attributes/chain-extension).
 
 ```diff
 -#[ink::chain_extension]
@@ -7994,14 +8004,14 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## Compatibility
 
-- **Rust**: >= 1.87
-- **cargo-contract**: >= v6.0.0-alpha
+- **Rust**: >= 1.88
+- **cargo-contract**: >= v6.0.0-alpha.3
  
   ```bash
-  cargo install --force --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.2
+  cargo install --force --locked --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.3
   ```
-- **`polkadot-sdk`**: >= `stable2506`
-- **ink-node**: >= v0.24.0
+- **`polkadot-sdk`**: [this branch](https://github.com/use-ink/polkadot-sdk/tree/pallet-revive-with-system-and-storage-precompiles)
+- **ink-node**: >= v0.45.1
 
 ### How do I find out if a chain is compatible with ink! 6.0?
 
@@ -8219,8 +8229,8 @@ The `pallet-revive` no longer provides a host function to call into the runtime.
 Parity removed this feature as the runtime can change and changes could potentially
 break already deployed contracts.
 
-The way to go instead would be to create a pre-compile contract and have your
-contract invoke either a cross-contract call or a delegate call into that one.
+The way to go instead would be to create [a precompile contract](../basics/precompiles.md))
+and have your contract invoke either a cross-contract call or a delegate call into that one.
 
 This is also the migration path recommended for Chain Extensions.
 
@@ -8846,7 +8856,7 @@ version (>= 1.85) and `cargo`. Please see [the official Rust installation guide]
       it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
       ```bash
-      cargo install --force --tag v6.0.0-alpha.2 --git https://github.com/use-ink/cargo-contract
+      cargo install --force --locked --tag v6.0.0-alpha.3 --git https://github.com/use-ink/cargo-contract
       ```
 
       Make sure you have the latest stable version of Rust installed:
@@ -8938,11 +8948,11 @@ The Rust/ink! to Solidity ABI type mapping is still a work in progress. Some lim
 To ensure compatibility with the latest updates:
 - Install the latest `cargo-contract` from GitHub:
 ```bash
-cargo install --force --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.2
+cargo install --force --locked --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.3
 ```
 - Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
 ```toml
-ink = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
+ink = { git = "https://github.com/use-ink/ink.git", tag = "v6.0.0-alpha.3", default-features = false, features = ["unstable-hostfn"] }
 ```
 :::
 ````
@@ -9754,575 +9764,6 @@ pub struct MyEvent {
     field_2: bool,
 }
 ```
-````
-
-## File: docs/macros-attributes/chain-extension.md
-````markdown
----
-title: "#[ink::chain_extension]"
-slug: /macros-attributes/chain-extension
-hide_title: true
----
-
-![Text/chain Ext Title Picture](/img/title/text/chain-ext.svg)
-
-:::caution
-This page has not yet been edited for ink! v6 yet.
-
-TODO 
-:::
-
-In the default configuration of the `contracts-pallet` a smart contract can only interact with the runtime
-via its well defined set of basic smart contract interface functions. This API already allows a whole variety of
-interaction between the `contracts-pallet` and the executed smart contract. For example it is possible
-to call and instantiate other smart contracts on the same chain, emit events, query context information
-or run built-in cryptographic hashing procedures.
-
-If this basic set of features is not enough for a particular Polkadot SDK built blockchain it is possible
-to easily extend this API using the so-called chain extension feature.
-
-<center>
-  <img src="/img/venn.png" width="50%" />
-</center>
-
-With chain extensions you can expose parts of your runtime logic
-to smart contract developers.
-
-:::note
-The ink! examples repository contains [the `rand-extension` example](https://github.com/use-ink/ink-examples/tree/main/rand-extension).
-This is a complete example of a chain extension implemented in both ink! and Polkadot SDK.
-:::
-
-## Structure
-
-The interface consists of an error code that indicates lightweight errors
-as well as the definition of some chain extension methods.
-
-The overall structure follows that of a simple Rust trait definition.
-The error code is defined as an associated type definition of the trait definition.
-The methods are defined as associated trait methods without implementation.
-
-Chain extension methods must not have a `self` receiver such as `&self` or `&mut self`
-and must have inputs and output that implement SCALE codec. Their return value follows
-specific rules that can be altered using the `handle_status` attribute and
-alternation between  `Result` and Non-`Result` types which are described in more detail below.
-
-## Usage
-
-Usually the chain extension definition using this proc. macro is provided
-by the author of the chain extension in a separate crate.
-ink! smart contracts using this chain extension simply depend on this crate
-and use its associated environment definition in order to make use of
-the methods provided by the chain extension.
-
-## Macro Attributes
-
-The macro supports only one required argument: `extension = N: u16`.
-The runtime may have several chain extensions at the same time. The `extension`
-identifier points to the corresponding chain extension in the runtime.
-The value should be the same as during the definition of the chain extension.
-You can consult the 
-[chain extension module documentation](https://paritytech.github.io/polkadot-sdk/master/pallet_contracts/chain_extension/index.html)
-if you are unsure how to find the chain extension code.
-Otherwise, you should consult the target chain's documentation 
-for specifications of any chain extensions it exposes.
-
-:::note
-If the chain extension is not used in a tuple in the runtime configuration, 
-`extension = N: u16` can take any `u16` number.
-:::
-
-## Method Attributes
-
-There are two different attributes with which the chain extension methods
-can be flagged:
-
-| Attribute | Required | Default Value | Description |
-|:----------|:--------:|:--------------|:-----------:|
-| `ink(function = N: u16)` | Yes | - | Determines the unique function ID within the chain extension. |
-| `ink(handle_status = flag: bool)` | Optional | `true` | Assumes that the returned status code of the chain extension method always indicates success and therefore always loads and decodes the output buffer of the call. |
-
-As with all ink! attributes multiple of them can either appear in a contiguous list:
-
-```rust
-type Access = i32;
-
-#[ink::chain_extension(extension = 12)]
-pub trait MyChainExtension {
-    type ErrorCode = i32;
-
-    #[ink(function = 5, handle_status = false)]
-    fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
-}
-```
-
-…or as multiple standalone ink! attributes applied to the same item:
-
-```rust
-type Access = i32;
-
-#[ink::chain_extension(extension = 12)]
-pub trait MyChainExtension {
-  type ErrorCode = i32;
-
-  #[ink(function = 5)]
-  #[ink(handle_status = false)]
-  fn key_access_for_account(key: &[u8], account: &[u8]) -> Access;
-}
-```
-
-## Details: `handle_status`
-
-Default value: `true`
-
-By default all chain extension methods should return a `Result<T, E>` where `E: From<Self::ErrorCode>`.
-The `Self::ErrorCode` represents the error code of the chain extension.
-This means that a smart contract calling such a chain extension method first queries the returned
-status code of the chain extension method and only loads and decodes the output if the returned
-status code indicates a successful call.
-This design was chosen as it is more efficient when no output besides the error
-code is required for a chain extension call. When designing a chain extension try to utilize the
-error code to return errors and only use the output buffer for information that does not fit in
-a single `u32` value.
-
-A chain extension method that is flagged with `handle_status = false` assumes that the returned error code
-will always indicate success. Therefore it will always load and decode the output buffer and loses
-the `E: From<Self::ErrorCode` constraint for the call.
-
-Note that if a chain extension method does not return `Result<T, E>` where `E: From<Self::ErrorCode>`,
-but `handle_status = true` it will still return a value of type `Result<T, Self::ErrorCode>`.
-
-## Usage: `handle_status` + `Result<T, E>` return type
-
-Use both `handle_status = false` and non-`Result` return type for the same chain extension method
-if a call to it may never fail and never returns a `Result` type.
-
-## Combinations
-
-Due to the possibility to flag a chain extension method with `handle_status` and either (1) return `Result<T, E>`
-or (2) return just `T`
-there are 4 different cases with slightly varying semantics:
-
-| `handle_status` | Returns `Result<T, E>` | Effects |
-|:---------------:|:----------------:|:--------|
-|`true` |`true` | The chain extension method is required to return a value of type `Result<T, E>` where `E: From<Self::ErrorCode>`. A call will always check if the returned status code indicates success and only then will load and decode the value in the output buffer. |
-|`true` |`false`| The chain extension method may return any non-`Result` type. A call will always check if the returned status code indicates success and only then will load and decode the value in the output buffer. The actual return type of the chain extension method is still `Result<T, Self::ErrorCode>` when the chain extension method was defined to return a value of type `T`. |
-|`false`|`true` | The chain extension method is required to return a value of type `Result<T, E>`. A call will always assume that the returned status code indicates success and therefore always load and decode the output buffer directly. |
-|`false`|`false`| The chain extension method may return any non-`Result` type. A call will always assume that the returned status code indicates success and therefore always load and decode the output buffer directly. |
-
-## Error Code
-
-Every chain extension defines exactly one `ErrorCode` using the following syntax:
-
-```rust
-#[ink::chain_extension]
-pub trait MyChainExtension {
-    type ErrorCode = MyErrorCode;
-
-    // more definitions ...
-}
-```
-
-The defined `ErrorCode` must implement `FromStatusCode` which should be implemented as a
-more or less trivial conversion from the `u32` status code to a `Result<(), Self::ErrorCode>`.
-The `Ok(())` value indicates that the call to the chain extension method was successful.
-
-By convention an error code of `0` represents success.
-However, chain extension authors may use whatever suits their needs.
-
-## Example: Definition
-
-In the below example a chain extension is defined that allows its users to read and write
-from and to the runtime storage using access privileges:
-
-```rust
-/// Custom chain extension to read to and write from the runtime.
-#[ink::chain_extension(extension = 12)]
-pub trait RuntimeReadWrite {
-    type ErrorCode = ReadWriteErrorCode;
-
-    /// Reads from runtime storage.
-    ///
-    /// # Note
-    ///
-    /// Actually returns a value of type `Result<Vec<u8>, Self::ErrorCode>`.
-    #[ink(function = 1, returns_result = false)]
-    fn read(key: &[u8]) -> Vec<u8>;
-
-    ///
-    /// Reads from runtime storage.
-    ///
-    /// Returns the number of bytes read and up to 32 bytes of the
-    /// read value. Unused bytes in the output are set to 0.
-    ///
-    /// # Errors
-    ///
-    /// If the runtime storage cell stores a value that requires more than
-    /// 32 bytes.
-    ///
-    /// # Note
-    ///
-    /// This requires `ReadWriteError` to implement `From<ReadWriteErrorCode>`
-    /// and may potentially return any `Self::ErrorCode` through its return value.
-    #[ink(function = 2)]
-    fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
-
-    /// Writes into runtime storage.
-    ///
-    /// # Note
-    ///
-    /// Actually returns a value of type `Result<(), Self::ErrorCode>`.
-    #[ink(function = 3)]
-    fn write(key: &[u8], value: &[u8]);
-
-    /// Returns the access allowed for the key for the caller.
-    ///
-    /// # Note
-    ///
-    /// Assumes to never fail the call and therefore always returns `Option<Access>`.
-    #[ink(function = 4, handle_status = false)]
-    fn access(key: &[u8]) -> Option<Access>;
-
-    /// Unlocks previously acquired permission to access key.
-    ///
-    /// # Errors
-    ///
-    /// If the permission was not granted.
-    ///
-    /// # Note
-    ///
-    /// Assumes the call to never fail and therefore does _NOT_ require `UnlockAccessError`
-    /// to implement `From<Self::ErrorCode>` as in the `read_small` method above.
-    #[ink(function = 5, handle_status = false)]
-    fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
-}
-
-#[ink::scale_derive(Encode, Decode, TypeInfo)]
-pub enum ReadWriteErrorCode {
-  InvalidKey,
-  CannotWriteToKey,
-  CannotReadFromKey,
-}
-
-#[ink::scale_derive(Encode, Decode, TypeInfo)]
-pub enum ReadWriteError {
-  ErrorCode(ReadWriteErrorCode),
-  BufferTooSmall { required_bytes: u32 },
-}
-
-impl From<ReadWriteErrorCode> for ReadWriteError {
-  fn from(error_code: ReadWriteErrorCode) -> Self {
-    Self::ErrorCode(error_code)
-  }
-}
-
-impl From<scale::Error> for ReadWriteError {
-  fn from(_: scale::Error) -> Self {
-    panic!("encountered unexpected invalid SCALE encoding")
-  }
-}
-
-#[ink::scale_derive(Encode, Decode, TypeInfo)]
-pub struct UnlockAccessError {
-  reason: String,
-}
-
-impl From<scale::Error> for UnlockAccessError {
-  fn from(_: scale::Error) -> Self {
-    panic!("encountered unexpected invalid SCALE encoding")
-  }
-}
-
-#[ink::scale_derive(Encode, Decode, TypeInfo)]
-pub enum Access {
-  ReadWrite,
-  ReadOnly,
-  WriteOnly,
-}
-
-impl ink::env::chain_extension::FromStatusCode for ReadWriteErrorCode {
-  fn from_status_code(status_code: u32) -> Result<(), Self> {
-    match status_code {
-      0 => Ok(()),
-      1 => Err(Self::InvalidKey),
-      2 => Err(Self::CannotWriteToKey),
-      3 => Err(Self::CannotReadFromKey),
-      _ => panic!("encountered unknown status code"),
-    }
-  }
-}
-```
-
-All the error types and other utility types used in the chain extension definition
-above are often required to implement various traits such as SCALE's `Encode` and `Decode`
-as well as `scale-info`'s `TypeInfo` trait.
-
-A full example of the above chain extension definition can be seen
-[here](https://github.com/use-ink/ink/blob/017f71d60799b764425334f86b732cc7b7065fe6/crates/lang/macro/tests/ui/chain_extension/simple.rs).
-
-## Example: Environment
-
-In order to allow ink! smart contracts to use the above defined chain extension it needs
-to be integrated into an `Environment` definition as shown below:
-
-```rust
-type RuntimeReadWrite = i32;
-
-use ink::env::{Environment, DefaultEnvironment};
-
-pub enum CustomEnvironment {}
-
-impl Environment for CustomEnvironment {
-    const MAX_EVENT_TOPICS: usize =
-        <DefaultEnvironment as Environment>::MAX_EVENT_TOPICS;
-
-    type AccountId = <DefaultEnvironment as Environment>::AccountId;
-    type Balance = <DefaultEnvironment as Environment>::Balance;
-    type Hash = <DefaultEnvironment as Environment>::Hash;
-    type BlockNumber = <DefaultEnvironment as Environment>::BlockNumber;
-    type Timestamp = <DefaultEnvironment as Environment>::Timestamp;
-
-    type ChainExtension = RuntimeReadWrite;
-}
-```
-
-Above we defined the `CustomEnvironment` which defaults to ink!'s `DefaultEnvironment`
-for all constants and types but the `ChainExtension` type which is assigned to our newly
-defined chain extension.
-
-## Example: Usage
-
-An ink! smart contract can use the above defined chain extension through the `Environment`
-definition defined in the last example section using the `env` macro parameter as
-shown below.
-
-Note that chain extension methods are accessible through `Self::extension()` or
-`self.extension()`. For example as in `Self::extension().read(..)` or `self.extension().read(..)`.
-
-```rust
-#[ink::contract(env = CustomEnvironment)]
-mod read_writer {
-
-    #[ink(storage)]
-    pub struct ReadWriter {}
-
-    impl ReadWriter {
-        #[ink(constructor)]
-        pub fn new() -> Self { Self {} }
-
-        #[ink(message)]
-        pub fn read(&self, key: Vec<u8>) -> Result<Vec<u8>, ReadWriteErrorCode> {
-            self.env()
-                .extension()
-                .read(&key)
-        }
-
-        #[ink(message)]
-        pub fn read_small(&self, key: Vec<u8>) -> Result<(u32, [u8; 32]), ReadWriteError> {
-            self.env()
-                .extension()
-                .read_small(&key)
-        }
-
-        #[ink(message)]
-        pub fn write(
-            &self,
-            key: Vec<u8>,
-            value: Vec<u8>,
-        ) -> Result<(), ReadWriteErrorCode> {
-            self.env()
-                .extension()
-                .write(&key, &value)
-        }
-
-        #[ink(message)]
-        pub fn access(&self, key: Vec<u8>) -> Option<Access> {
-            self.env()
-                .extension()
-                .access(&key)
-        }
-
-        #[ink(message)]
-        pub fn unlock_access(&self, key: Vec<u8>, access: Access) -> Result<(), UnlockAccessError> {
-            self.env()
-                .extension()
-                .unlock_access(&key, access)
-        }
-    }
-
-    /// Custom chain extension to read to and write from the runtime.
-    #[ink::chain_extension(extension = 12)]
-    pub trait RuntimeReadWrite {
-          type ErrorCode = ReadWriteErrorCode;
-          #[ink(function = 1)]
-          fn read(key: &[u8]) -> Vec<u8>;
-          #[ink(function = 2)]
-          fn read_small(key: &[u8]) -> Result<(u32, [u8; 32]), ReadWriteError>;
-          #[ink(function = 3)]
-          fn write(key: &[u8], value: &[u8]);
-          #[ink(function = 4, handle_status = false)]
-          fn access(key: &[u8]) -> Option<Access>;
-          #[ink(function = 5, handle_status = false)]
-          fn unlock_access(key: &[u8], access: Access) -> Result<(), UnlockAccessError>;
-    }
-
-    #[ink::scale_derive(Encode, Decode, TypeInfo)]
-    pub enum ReadWriteErrorCode {
-          InvalidKey,
-          CannotWriteToKey,
-          CannotReadFromKey,
-    }
-
-    #[ink::scale_derive(Encode, Decode, TypeInfo)]
-    pub enum ReadWriteError {
-          ErrorCode(ReadWriteErrorCode),
-          BufferTooSmall { required_bytes: u32 },
-    }
-    impl From<ReadWriteErrorCode> for ReadWriteError {
-         fn from(error_code: ReadWriteErrorCode) -> Self {
-             Self::ErrorCode(error_code)
-         }
-    }
-    impl From<scale::Error> for ReadWriteError {
-         fn from(_: scale::Error) -> Self {
-             panic!("encountered unexpected invalid SCALE encoding")
-         }
-    }
-
-    #[ink::scale_derive(Encode, Decode, TypeInfo)]
-    pub struct UnlockAccessError {
-         reason: String,
-    }
-    impl From<scale::Error> for UnlockAccessError {
-         fn from(_: scale::Error) -> Self {
-             panic!("encountered unexpected invalid SCALE encoding")
-         }
-    }
-    #[ink::scale_derive(Encode, Decode, TypeInfo)]
-    pub enum Access {
-         ReadWrite,
-         ReadOnly,
-         WriteOnly,
-    }
-    impl ink::env::chain_extension::FromStatusCode for ReadWriteErrorCode {
-         fn from_status_code(status_code: u32) -> Result<(), Self> {
-             match status_code {
-                 0 => Ok(()),
-                 1 => Err(Self::InvalidKey),
-                 2 => Err(Self::CannotWriteToKey),
-                 3 => Err(Self::CannotReadFromKey),
-                 _ => panic!("encountered unknown status code"),
-             }
-         }
-    }
-    pub enum CustomEnvironment {}
-    impl ink::env::Environment for CustomEnvironment {
-         const MAX_EVENT_TOPICS: usize =
-             <ink::env::DefaultEnvironment as ink::env::Environment>::MAX_EVENT_TOPICS;
-
-         type AccountId = <ink::env::DefaultEnvironment as ink::env::Environment>::AccountId;
-         type Balance = <ink::env::DefaultEnvironment as ink::env::Environment>::Balance;
-         type Hash = <ink::env::DefaultEnvironment as ink::env::Environment>::Hash;
-         type BlockNumber = <ink::env::DefaultEnvironment as ink::env::Environment>::BlockNumber;
-         type Timestamp = <ink::env::DefaultEnvironment as ink::env::Environment>::Timestamp;
-
-         type ChainExtension = RuntimeReadWrite;
-    }
-}
-```
-
-## Using Multiple Chain Extensions
-
-It is possible to use multiple exposed chain extensions in the single environment of a smart contract.
-The declaration procedure of the chain extension stays the same.
-
-Suppose we want to combine two chain extension called `Psp22Extension` and `FetchRandom`, ink! provides
-a useful macro [`ink::combine_extensions!`](https://docs.rs/ink/6.0.0-alpha/ink/macro.combine_extensions.html) that allows to construct the structure combining 
-the aforementioned chain extensions like so:
-```rust
-ink::combine_extensions! {
-    /// This extension combines the `FetchRandom` and `Psp22Extension` extensions.
-    /// It is possible to combine any number of extensions in this way.
-    ///
-    /// This structure is an instance that is returned by the `self.env().extension()` call.
-    pub struct CombinedChainExtension {
-        /// The instance of the `Psp22Extension` chain extension.
-        ///
-        /// It provides you access to `PSP22` functionality.
-        pub psp22: Psp22Extension,
-        /// The instance of the `FetchRandom` chain extension.
-        ///
-        /// It provides you access to randomness functionality.
-        pub rand: FetchRandom,
-    }
-}
-```
-
-The combined structure is called `CombinedChainExtension`, and we can refer to it 
-when specifying the chain extension type in `Environment`:
-```rust
-type ChainExtension = CombinedChainExtension;
-```
-
-Each extension's method can be called by accessing it via the name of the field of `CombineChainExtension`:
-```rust
-self.env().extension().rand.<method_name_in_rand_ext>()
-// or
-self.env().extension().psp22.<method_name_in_psp22_ext>()
-// e.g.
-self.env().extension().psp22.total_supply()
-```
-
-:::note
-The ink! repository contains the [full example](https://github.com/use-ink/ink-examples/tree/main/combined-extension) illustrating how to combine existing chain extensions 
-and mock them for testing.
-:::
-
-
-## Mocking Chain Extension
-
-You can mock chain extensions for unit testing purposes. 
-This can be achieved by implementing the [`ink::env::test::ChainExtension`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/test/trait.ChainExtension.html) trait.
-
-```rust
-/// Opaque structure
-struct MockedPSP22Extension;
-
-// Implementing 
-impl ink::env::test::ChainExtension for MockedPSP22Extension {
-    fn ext_id(&self) -> u16 {
-        // It is identifier used by `psp22_extension::Psp22Extension` extension.
-        // Must be the same as the once specified in `#[ink::chain_extension(extension = _)]`
-        13
-    }
-
-    // Call dispatcher.
-    // Call specific code based on the function id which is dispatched from the contract/
-    fn call(&mut self, func_id: u16, _input: &[u8], output: &mut Vec<u8>) -> u32 {
-        match func_id {
-            // `func_id` of the `total_supply` function.
-            // must match `#[ink(function = _)]` of the corresponding method
-            0x162d => {
-                ink::scale::Encode::encode_to(&TOTAL_SUPPLY, output);
-                0
-            },
-            // Other functions
-            _ => {
-                1
-            }
-        }
-    }
-}
-```
-
-## Technical Limitations
-
-- Due to technical limitations it is not possible to refer to the `ErrorCode` associated type
-  using `Self::ErrorCode` anywhere within the chain extension and its defined methods.
-  Instead chain extension authors should directly use the error code type when required.
-  This limitation might be lifted in future versions of ink!.
-- It is not possible to declare other chain extension traits as super traits or super
-  chain extensions of another.
 ````
 
 ## File: docs/macros-attributes/constructor.md
@@ -12103,7 +11544,7 @@ You then have fine-grained control over how a contract is called;
 for example you can influence the block advancement, the value transferred to it,
 by which account it is called, which storage it is run with, etc..
 
-See the [`examples/erc20`](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs) contract on how to utilize those or [the documentation](https://docs.rs/ink/6.0.0-alpha/ink/attr.test.html) for details.
+See the [`examples/erc20`](https://github.com/use-ink/ink-examples/blob/main/erc20/lib.rs) contract on how to utilize those or [the documentation](https://use-ink.github.io/ink/ink/attr.test.html) for details.
 
 At the moment there are some known limitations to our off-chain environment,
 and we are working on making it behave as close to the real chain environment

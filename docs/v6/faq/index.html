@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.dc7a1013.css">
-<script src="/assets/js/runtime~main.ab1d34df.js" defer="defer"></script>
-<script src="/assets/js/main.ef69fe96.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.e143d18a.js" defer="defer"></script>
+<script src="/assets/js/main.afb255e1.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -59,11 +59,10 @@ be encoded and decoded respectively etc.</p>
 those should be explained here or on another page.</p></div></div></div>
 <h1>Cross-Contract Calls</h1>
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="how-can-my-smart-contract-interact-with-the-runtime">How can my smart contract interact with the runtime?<a href="#how-can-my-smart-contract-interact-with-the-runtime" class="hash-link" aria-label="Direct link to How can my smart contract interact with the runtime?" title="Direct link to How can my smart contract interact with the runtime?">​</a></h3>
-<div class="admonition-wrap-caution admonition-wrap p-[5px] rounded-[12px] border border-solid my-2 border-l-[5px]"><div class="theme-admonition theme-admonition-caution admonition_ryXn alert alert--warning"><div class="admonitionHeading_bY5t"><span class="admonitionIcon_WwqN"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M116,132V80a12,12,0,0,1,24,0v52a12,12,0,0,1-24,0ZM236,91.55v72.9a19.86,19.86,0,0,1-5.86,14.14l-51.55,51.55A19.85,19.85,0,0,1,164.45,236H91.55a19.85,19.85,0,0,1-14.14-5.86L25.86,178.59A19.86,19.86,0,0,1,20,164.45V91.55a19.86,19.86,0,0,1,5.86-14.14L77.41,25.86A19.85,19.85,0,0,1,91.55,20h72.9a19.85,19.85,0,0,1,14.14,5.86l51.55,51.55A19.86,19.86,0,0,1,236,91.55Zm-24,1.66L162.79,44H93.21L44,93.21v69.58L93.21,212h69.58L212,162.79ZM128,156a16,16,0,1,0,16,16A16,16,0,0,0,128,156Z"></path></svg></span>caution</div><div class="admonitionContent_Q9KL"><p>TODO review</p></div></div></div>
-<p>See the <a href="/docs/v6/macros-attributes/chain-extension">Chain Extensions</a> section for more information.</p>
+<p>See the <a href="/docs/v6/basics/precompiles">Precompiles</a> section for more information.</p>
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="how-can-i-use-ink-with-a-polkadot-sdk-chain-with-a-custom-chain-config">How can I use ink! with a Polkadot SDK chain with a custom chain config?<a href="#how-can-i-use-ink-with-a-polkadot-sdk-chain-with-a-custom-chain-config" class="hash-link" aria-label="Direct link to How can I use ink! with a Polkadot SDK chain with a custom chain config?" title="Direct link to How can I use ink! with a Polkadot SDK chain with a custom chain config?">​</a></h3>
 <p>Please see <a href="/docs/v6/macros-attributes/contract#env-impl-environment">this section</a> in our documentation.</p>
-<p>Detailed documentation is found in <a href="https://docs.rs/ink_macro/6.0.0-alpha/ink_macro/attr.contract.html#header-arguments" target="_blank" rel="noopener noreferrer">the Rust docs</a>
+<p>Detailed documentation is found in <a href="https://use-ink.github.io/ink/ink_macro/attr.contract.html#header-arguments" target="_blank" rel="noopener noreferrer">the Rust docs</a>
 for the <code>#[ink(contract)]</code> macro. It allows you to specify your environment a la
 <code>#[ink::contract(env = MyEnvironment)]</code>.</p>
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="what-does-the-cfg_attrnotfeature--std-no_std-no_main-at-the-beginning-of-each-contract-mean">What does the <code>#![cfg_attr(not(feature = &quot;std&quot;), no_std, no_main)]</code> at the beginning of each contract mean?<a href="#what-does-the-cfg_attrnotfeature--std-no_std-no_main-at-the-beginning-of-each-contract-mean" class="hash-link" aria-label="Direct link to what-does-the-cfg_attrnotfeature--std-no_std-no_main-at-the-beginning-of-each-contract-mean" title="Direct link to what-does-the-cfg_attrnotfeature--std-no_std-no_main-at-the-beginning-of-each-contract-mean">​</a></h3>
@@ -124,14 +123,14 @@ The contract storage is built on top of the runtime storage, and access is consi
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="how-do-i-hash-a-value">How do I hash a value?<a href="#how-do-i-hash-a-value" class="hash-link" aria-label="Direct link to How do I hash a value?" title="Direct link to How do I hash a value?">​</a></h3>
 <p>A number of crypto hashes are built into <a href="/docs/v6/background/polkadot-sdk"><code>pallet-revive</code></a> and
 therefore very efficient to use. We currently support a handful of those, you
-can view the complete list <a href="https://docs.rs/ink_env/6.0.0-alpha/ink_env/hash/trait.CryptoHash.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
+can view the complete list <a href="https://use-ink.github.io/ink/ink_env/hash/trait.CryptoHash.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p>If you have the urgent need for another crypto hash you could introduce it through
-<a href="/docs/v6/macros-attributes/chain-extension">Chain Extensions</a>
+<a href="/docs/v6/basics/precompiles">Precompiles</a>
 or make a proposal to include it into the default set of the <code>pallet-revive</code>.</p>
 <p>Using one of the built-in crypto hashes can be done as explained here:</p>
 <ul>
-<li><a href="https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.hash_bytes.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_bytes()</code></a></li>
-<li><a href="https://docs.rs/ink_env/6.0.0-alpha/ink_env/fn.hash_encoded.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_encoded()</code></a></li>
+<li><a href="https://use-ink.github.io/ink/ink_env/fn.hash_bytes.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_bytes()</code></a></li>
+<li><a href="https://use-ink.github.io/ink/ink_env/fn.hash_encoded.html" target="_blank" rel="noopener noreferrer"><code>self.env().hash_encoded()</code></a></li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="why-is-it-not-possible-to-use-floating-point-data-types-in-ink-how-do-i-implement-returning-a-decimal-number">Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?<a href="#why-is-it-not-possible-to-use-floating-point-data-types-in-ink-how-do-i-implement-returning-a-decimal-number" class="hash-link" aria-label="Direct link to Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?" title="Direct link to Why is it not possible to use floating point data types in ink!? How do I implement returning a decimal number?">​</a></h3>
 <p>Floats are cool for all kinds of reasons, but they also have one important
@@ -207,7 +206,7 @@ used for user interactions and should live in your UI and not on the chain.</p>
 and you should only persist items which you need to derive state transitions
 in your contract.</p>
 <p>If you still, for some reason, need to use <code>String</code>, then you should use
-the <code>String</code> <a href="https://docs.rs/ink_prelude/6.0.0-alpha/ink_prelude/string/struct.String.html" target="_blank" rel="noopener noreferrer">from the ink! prelude</a>.</p>
+the <code>String</code> <a href="https://use-ink.github.io/ink/ink_prelude/string/struct.String.html" target="_blank" rel="noopener noreferrer">from the ink! prelude</a>.</p>
 <h3 id="type-comparison">Getting a warning in <code>cargo-contract</code> about type compatibility?</h3>
 <p>ink! and Polkadot SDK both support the possibility of deciding to deviate
 from the default types for <code>Balance</code>, <code>BlockNumber</code>, etc.

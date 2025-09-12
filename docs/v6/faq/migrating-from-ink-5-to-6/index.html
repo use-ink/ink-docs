@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.dc7a1013.css">
-<script src="/assets/js/runtime~main.ab1d34df.js" defer="defer"></script>
-<script src="/assets/js/main.ef69fe96.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.e143d18a.js" defer="defer"></script>
+<script src="/assets/js/main.afb255e1.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -42,17 +42,17 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.<
 <h2 class="anchor anchorWithStickyNavbar_mSTA" id="compatibility">Compatibility<a href="#compatibility" class="hash-link" aria-label="Direct link to Compatibility" title="Direct link to Compatibility">​</a></h2>
 <ul>
 <li>
-<p><strong>Rust</strong>: &gt;= 1.87</p>
+<p><strong>Rust</strong>: &gt;= 1.88</p>
 </li>
 <li>
-<p><strong>cargo-contract</strong>: &gt;= v6.0.0-alpha</p>
-<div class="language-bash codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-bash codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">cargo install --force --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.2</span><br></span></code></pre></div></div>
+<p><strong>cargo-contract</strong>: &gt;= v6.0.0-alpha.3</p>
+<div class="language-bash codeBlockContainer_Wzms theme-code-block" style="--prism-background-color:#2a2734;--prism-color:#9a86fd"><div class="codeBlockContent_l36C"><pre tabindex="0" class="prism-code language-bash codeBlock_G1eo thin-scrollbar" style="background-color:#2a2734;color:#9a86fd"><code class="codeBlockLines_SGTf"><span class="token-line" style="color:#9a86fd"><span class="token plain">cargo install --force --locked --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.3</span><br></span></code></pre></div></div>
 </li>
 <li>
-<p><strong><code>polkadot-sdk</code></strong>: &gt;= <code>stable2506</code></p>
+<p><strong><code>polkadot-sdk</code></strong>: <a href="https://github.com/use-ink/polkadot-sdk/tree/pallet-revive-with-system-and-storage-precompiles" target="_blank" rel="noopener noreferrer">this branch</a></p>
 </li>
 <li>
-<p><strong>ink-node</strong>: &gt;= v0.24.0</p>
+<p><strong>ink-node</strong>: &gt;= v0.45.1</p>
 </li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="how-do-i-find-out-if-a-chain-is-compatible-with-ink-60">How do I find out if a chain is compatible with ink! 6.0?<a href="#how-do-i-find-out-if-a-chain-is-compatible-with-ink-60" class="hash-link" aria-label="Direct link to How do I find out if a chain is compatible with ink! 6.0?" title="Direct link to How do I find out if a chain is compatible with ink! 6.0?">​</a></h3>
@@ -188,8 +188,8 @@ they have to be <code>&amp;mut self</code> now.</p>
 <p>The <code>pallet-revive</code> no longer provides a host function to call into the runtime.
 Parity removed this feature as the runtime can change and changes could potentially
 break already deployed contracts.</p>
-<p>The way to go instead would be to create a pre-compile contract and have your
-contract invoke either a cross-contract call or a delegate call into that one.</p>
+<p>The way to go instead would be to create <a href="/docs/v6/basics/precompiles">a precompile contract</a>)
+and have your contract invoke either a cross-contract call or a delegate call into that one.</p>
 <p>This is also the migration path recommended for Chain Extensions.</p>
 <h2 class="anchor anchorWithStickyNavbar_mSTA" id="interesting-new-features">Interesting New Features<a href="#interesting-new-features" class="hash-link" aria-label="Direct link to Interesting New Features" title="Direct link to Interesting New Features">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="solidity-abi-compatible-ink-contracts">Solidity ABI compatible ink! contracts<a href="#solidity-abi-compatible-ink-contracts" class="hash-link" aria-label="Direct link to Solidity ABI compatible ink! contracts" title="Direct link to Solidity ABI compatible ink! contracts">​</a></h3>
