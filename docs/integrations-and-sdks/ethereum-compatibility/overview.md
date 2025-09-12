@@ -27,10 +27,10 @@ The Rust/ink! to Solidity ABI type mapping is still a work in progress. Some lim
 To ensure compatibility with the latest updates:
 - Install the latest `cargo-contract` from GitHub:
 ```bash
-cargo install --force --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.2
+cargo install --force --locked --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.3
 ```
 - Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
 ```toml
-ink = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
+ink = { git = "https://github.com/use-ink/ink.git", tag = "v6.0.0-alpha.3", default-features = false, features = ["unstable-hostfn"] }
 ```
 :::

@@ -173,9 +173,6 @@ You can check default types in the [Environment](../environment.md) section.
   - `accountId`: The type describing an account address.
   - `balance`: The type describing balance values.
   - `blockNumber`: The type describing a block number. 
-  - `chainExtension`: The type describing the chain extension for the environment. 
-For more information about usage and definition check [this section](../../macros-attributes/chain-extension.md).
-  - `maxEventTopics`: The maximum number of supported event topics provided by the runtime.
   - `timestamp`: the type describing a timestamp.
 - `events`: The events of the contract.
     - `label`: The label of the event.
@@ -198,7 +195,7 @@ comes from the smart contracting language itself, and not the contract nor the u
 environment (i.e. `pallet-revive`).
 
 All ink! messages and constructors now return a `Result` which uses this as the `Error`
-variant (see the [`LangError`](https://docs.rs/ink/6.0.0-alpha/ink/enum.LangError.html) docs for more).
+variant (see the [`LangError`](https://use-ink.github.io/ink/ink/enum.LangError.html) docs for more).
 
 :::
 

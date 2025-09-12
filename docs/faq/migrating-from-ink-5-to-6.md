@@ -38,14 +38,14 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## Compatibility
 
-- **Rust**: >= 1.87
-- **cargo-contract**: >= v6.0.0-alpha
+- **Rust**: >= 1.88
+- **cargo-contract**: >= v6.0.0-alpha.3
  
   ```bash
-  cargo install --force --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.2
+  cargo install --force --locked --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.3
   ```
-- **`polkadot-sdk`**: >= `stable2506`
-- **ink-node**: >= v0.24.0
+- **`polkadot-sdk`**: [this branch](https://github.com/use-ink/polkadot-sdk/tree/pallet-revive-with-system-and-storage-precompiles)
+- **ink-node**: >= v0.45.1
 
 ### How do I find out if a chain is compatible with ink! 6.0?
 
@@ -263,8 +263,8 @@ The `pallet-revive` no longer provides a host function to call into the runtime.
 Parity removed this feature as the runtime can change and changes could potentially
 break already deployed contracts.
 
-The way to go instead would be to create a pre-compile contract and have your
-contract invoke either a cross-contract call or a delegate call into that one.
+The way to go instead would be to create [a precompile contract](../basics/precompiles.md))
+and have your contract invoke either a cross-contract call or a delegate call into that one.
 
 This is also the migration path recommended for Chain Extensions.
 

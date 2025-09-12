@@ -82,7 +82,7 @@ The storage will be reflected inside the metadata as like follows:
 
 We observe that the storage layout is represented as a tree, where tangible storage values
 end up inside a `leaf`. Because of
-[`Packed`](https://docs.rs/ink_storage_traits/6.0.0-alpha/ink_storage_traits/trait.Packed.html)
+[`Packed`](https://use-ink.github.io/ink/ink_storage_traits//trait.Packed.html)
 encoding, leafs can share the same storage key, and
 in order to reach them you'd need to fetch and decode the whole storage cell under this key.
 
@@ -163,7 +163,7 @@ You'll need to account for that as well.
 
 With that in mind, to directly access storage items of any on-chain contract using a
 childState [`RPC call`](https://polkadot.js.org/apps/#/rpc), you'll need the following:
-- The child trie ID of the contract, represented as a [`PrefixedStorageKey`](https://docs.rs/sp-storage/10.0.0/sp_storage/struct.PrefixedStorageKey.html)
+- The child trie ID of the contract, represented as a [`PrefixedStorageKey`](https://docs.rs/sp-storage/latest/sp_storage/struct.PrefixedStorageKey.html)
 - The hashed storage key of the storage field
 
 ### Finding the contracts child trie ID

@@ -201,9 +201,9 @@ Data Ok(true)
 
 ## Builders
 The
-[`CreateBuilder`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CreateBuilder.html)
+[`CreateBuilder`](https://use-ink.github.io/ink/ink_env/call/struct.CreateBuilder.html)
 and
-[`CallBuilder`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CallBuilder.html)
+[`CallBuilder`](https://use-ink.github.io/ink/ink_env/call/struct.CallBuilder.html)
 offer low-level, flexible interfaces for performing cross-contract calls. The
 `CreateBuilder` allows you to instantiate already uploaded contracts, and the
 `CallBuilder` allows you to call messages on instantiated contracts.
@@ -387,9 +387,9 @@ These allow contract developers to handle two types of errors:
 2. Error from the programming language (e.g `LangError`s)
 
 See the documentation for
-[`try_instantiate`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
-[`try_invoke`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
-[`ink::env::Error`](https://docs.rs/ink_env/6.0.0-alpha/ink_env/enum.Error.html)
+[`try_instantiate`](https://use-ink.github.io/ink/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
+[`try_invoke`](https://use-ink.github.io/ink/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
+[`ink::env::Error`](https://use-ink.github.io/ink/ink_env/enum.Error.html)
 and
-[`ink::LangError`](https://docs.rs/ink/6.0.0-alpha/ink/enum.LangError.html)
+[`ink::LangError`](https://use-ink.github.io/ink/ink/enum.LangError.html)
 for more details on proper error handling.
