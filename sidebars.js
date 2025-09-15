@@ -79,6 +79,7 @@ module.exports = {
       "macros-attributes/event",
       "macros-attributes/implementation",
       "macros-attributes/message",
+      "macros-attributes/name",
       "macros-attributes/namespace",
       "macros-attributes/payable",
       "macros-attributes/selector",
