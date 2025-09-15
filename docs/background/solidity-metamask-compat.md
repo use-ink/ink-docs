@@ -113,9 +113,9 @@ pointer types below:
 | `&T`, `&mut T`, `Box<T>` | `T` | e.g. `&i8 ↔ int8` |
 | `&[T]`, `&mut [T]` | `T[]` | e.g. `&[i8]` ↔ `int8[]` |
 
-[ink-u256]: https://use-ink.github.io/ink/ink//struct.U256.html
-[ink-address]: https://use-ink.github.io/ink/ink//type.Address.html
-[ink-h160]: https://use-ink.github.io/ink/ink//struct.H160.html
+[ink-u256]: https://use-ink.github.io/ink/ink/struct.U256.html
+[ink-address]: https://use-ink.github.io/ink/ink/type.Address.html
+[ink-h160]: https://use-ink.github.io/ink/ink/struct.H160.html
 [sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
 
 ### Handling the `Result<T, E>` type
