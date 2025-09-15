@@ -159,13 +159,13 @@ all fields (if any) implement `SolEncode` and `SolDecode`.
 For convenience, the [`#[ink::error]`][ink-error] attribute macro is also provided for automatically deriving the following traits:
 - [`SolErrorEncode`][sol-error-encode]: for encoding a custom type as revert error data
 - [`SolErrorDecode`][sol-error-decode]: for decoding revert error data into a custom type
-- `SolErrorMetadata`: for generating [Solidity ABI metadata][sol-abi-json]
+- `SolErrorMetadata`: for generating [Solidity ABI metadata][sol-abi-json] (gated behind the `std` feature)
 
 [sol-error-encode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorEncode.html
 [sol-error-decode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorDecode.html
 [sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
 [sol-custom-error]: https://soliditylang.org/blog/2021/04/21/custom-errors/
-[ink-error]: https://use-ink.github.io/ink/ink/attr.error.html
+[ink-error]: ../macros-attributes/error.md
 [sol-abi-json]: https://docs.soliditylang.org/en/latest/abi-spec.html#json
 
 ```rust
