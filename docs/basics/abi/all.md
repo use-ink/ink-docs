@@ -40,6 +40,8 @@ for both calling conventions. This means:
   then the `default` attribute annotation is unnecessary.
 - Call builders and [contract references][contract-refs] are generated for
   both ink! and Solidity ABI calling conventions.
+- Both an ink! and Solidity ABI encoded event are emitted for each call to
+  `Self::env().emit_event()` or `self.env().emit_event()`.
 
 :::note
 Your contract sizes will get larger if you support both the ink! and Solidity ABI.
