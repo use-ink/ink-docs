@@ -156,24 +156,29 @@ all fields (if any) implement `SolEncode` and `SolDecode`.
 - For enums, each variant is its own [Solidity custom error][sol-custom-error],
   with the variant name being the custom error name, and the fields (if any) being the parameters
 
+For convenience, the [`#[ink::error]`][ink-error] attribute macro is also provided for automatically deriving the following traits:
+- [`SolErrorEncode`][sol-error-encode]: for encoding a custom type as revert error data
+- [`SolErrorDecode`][sol-error-decode]: for decoding revert error data into a custom type
+- `SolErrorMetadata`: for generating [Solidity ABI metadata][sol-abi-json]
+
 [sol-error-encode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorEncode.html
 [sol-error-decode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorDecode.html
 [sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
 [sol-custom-error]: https://soliditylang.org/blog/2021/04/21/custom-errors/
+[ink-error]: https://use-ink.github.io/ink/ink/attr.error.html
+[sol-abi-json]: https://docs.soliditylang.org/en/latest/abi-spec.html#json
 
 ```rust
-use ink::{SolErrorDecode, SolErrorEncode};
-
 // Represented as a Solidity custom error with no parameters
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 struct UnitError;
 
 // Represented as a Solidity custom error with parameters
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 struct ErrorWithParams(bool, u8, String);
 
 // Represented as a Solidity custom error with named parameters
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 struct ErrorWithNamedParams {
     status: bool,
     count: u8,
@@ -182,7 +187,7 @@ struct ErrorWithNamedParams {
 
 // Represented as multiple Solidity custom errors
 // (i.e. each variant represents a Solidity custom error)
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 enum MultipleErrors {
     UnitError,
     ErrorWithParams(bool, u8, String),
@@ -193,6 +198,11 @@ enum MultipleErrors {
     }
 }
 ```
+
+:::note
+In ["ink" and "all" ABI mode][abi-declaration], the [`#[ink::error]`][ink-error] attribute macro
+will also derive implementations of the [`scale::Encode` and `scale::Decode`][scale-codec] traits.
+:::
 
 :::note
 For other [Solidity `revert`][sol-revert] error data representations (e.g. legacy revert strings),
