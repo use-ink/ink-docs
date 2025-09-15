@@ -4,7 +4,7 @@ slug: /macros-attributes/name
 hide_title: true
 ---
 
-![Text/namespace Title Picture](/img/title/text/namespace.svg)
+![Text/name Title Picture](/img/title/text/name.svg)
 
 Applicable to ink! messages, ink! constructors and ink! events.
 
