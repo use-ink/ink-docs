@@ -247,7 +247,7 @@ pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
 ```
 
 :::note
-In ["all" ABI mode][abi-all], both an in ink! and Solidity ABI encoded event are emitted
+In ["all" ABI mode][abi-all], both an ink! and Solidity ABI encoded event are emitted
 for each call to `Self::env().emit_event()` or `self.env().emit_event()`.
 
 To emit a single event for a specific ABI, 2 additional ABI-specific utilities are provided
