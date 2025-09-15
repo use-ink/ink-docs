@@ -26,7 +26,7 @@ In versions of ink! prior to v5.1.0, the [call_runtime](https://docs.rs/ink/5.1.
 
 ## `xcm_execute`
 
-The [`xcm_execute`](https://use-ink.github.io/ink/ink//struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
+The [`xcm_execute`](https://use-ink.github.io/ink/ink/struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
 
 The following code snippet demonstrates how to use `xcm_execute` to perform a [reserve-backed transfer](https://wiki.polkadot.network/docs/learn/xcm/journey/transfers-reserve#1-initiatereservewithdraw):
 

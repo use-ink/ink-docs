@@ -34,12 +34,18 @@ If you want to interact with a contract that is already on-chain you will need t
 [`Builders`](#builders) approach instead.
 
 :::note
-In ["all" ABI mode][abi-all], the generated contract references are generic over 
-an ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) which specifies 
-the ABI specification used for cross-contract calls.
+In ["all" ABI mode][abi-all], contract references are generated for both ink!/native
+and Solidity ABI calling conventions, with the Solidity ABI specific contract reference
+named with an additional `Sol` suffix
+(e.g. `ContractRefSol` for a contract named `Contract`).
+
+Note that, this `Sol` suffix is not necessary in ["sol" ABI mode][abi-sol]
+(i.e. for a contract named `Contract`, `ContractRef` will use the Solidity ABI
+calling conventions in "sol" ABI mode).
 :::
 
 [abi-all]: ./abi/all.md
+[abi-sol]: ./abi/solidity.md
 
 ### `BasicContractRef` walkthrough
 
@@ -258,11 +264,10 @@ contract reference to call messages just like in the
 
 :::note
 To instantiate a contract that uses a different [ABI][abi] than your contract, 
-you can instead use the `build_create_abi` utility, which takes both a contract reference 
-and the ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as generic parameters.
+you can instead use an ABI-specific utility (i.e. `build_create_sol` or `build_create_ink`)
 
 ```rust
-build_create_abi::<MyContractRef, ink::abi::Sol>()
+build_create_sol::<MyContractRef>()
 ```
 :::
 
@@ -318,11 +323,10 @@ find out your call failed at runtime!
 
 :::note
 To call messages from a contract that uses a different [ABI][abi] than your contract,
-you can instead use the `build_call_abi` utility, which takes both the environment
-and the ABI marker type (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as generic parameters.
+you can instead use an ABI-specific utility (i.e. `build_call_sol` or `build_call_ink`).
 
 ```rust
-build_call_abi::<DefaultEnvironment, ink::abi::Sol>()
+build_call_sol::<DefaultEnvironment>()
 ```
 
 You can see a full example of an ink! contract calling a Solidity ABI encoded contract
@@ -367,7 +371,7 @@ This enables interoperability between Solidity, ink!, and other Solidity ABI enc
 This requires using a Solidity compatible function selector using a `keccak256` hash of the function signature.
 
 ```rust
-let my_return_value = build_call_abi::<DefaultEnvironment, ink::abi::Sol>()
+let my_return_value = build_call_sol::<DefaultEnvironment>()
     .call(H160::from([0x42; 20]))
     .ref_time_limit(0)
     .transferred_value(10)
