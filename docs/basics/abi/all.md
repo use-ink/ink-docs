@@ -38,10 +38,8 @@ for both calling conventions. This means:
   to identify it as the constructor to use for Solidity ABI encoded instantiation.
   Note that if only a single constructor is defined, 
   then the `default` attribute annotation is unnecessary.
-- Generated call builders (and [contract references][contract-refs]) support 
-  both ink! and Solidity ABI calling conventions, by accepting an ABI marker type 
-  (i.e. `ink::abi::Ink` or `ink::abi::Sol`) as a generic type parameter 
-  which specifies the ABI specification to use for calls.
+- Call builders and [contract references][contract-refs] are generated for
+  both ink! and Solidity ABI calling conventions.
 
 :::note
 Your contract sizes will get larger if you support both the ink! and Solidity ABI.
