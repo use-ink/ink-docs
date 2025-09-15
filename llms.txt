@@ -8040,7 +8040,7 @@ mentioned above.
 For the above mentioned four functions please see the respective sections on this page,
 there we explain how to find out if a chain supports them there.
 
-You can use the [polakdot.js app](https://polkadot.js.org/apps/) to connect to the chain and check if
+You can use the [polkadot.js app](https://polkadot.js.org/apps/) to connect to the chain and check if
 `reviveApi` is available under Developer » Runtime calls.
 
 <img src={useBaseUrl('/img/pallet-revive-available.png')} />
