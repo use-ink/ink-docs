@@ -36,29 +36,28 @@ constructor/message argument and return types, and event argument types must
 define a mapping to an equivalent Solidity ABI type.
 
 :::note
-This is similar to the requirement to implement `scale::Encode` and `scale::Decode`
+This is similar to the requirement to implement [`scale::Encode` and `scale::Decode`][scale-codec]
 for Rust types used in the public interfaces of ink!/"native" ABI encoded contracts.
 :::
 
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
 [abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
+[scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 
 ## Rust/ink! to Solidity ABI type mapping
 
-This mapping is defined using the [`SolEncode`][sol-trait-encode] and 
-[`SolDecode`][sol-trait-decode] traits, which are analogs to 
-[`scale::Encode` and `scale::Decode`][scale-codec] 
+This mapping is defined using the [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode] traits,
+which are analogs to [`scale::Encode` and `scale::Decode`][scale-codec]
 (but for Solidity ABI encoding/decoding).
 You won't be able to use Rust types for which no mapping to a Solidity type is defined.
 An error about a missing trait implementation for this type will be thrown.
 
-[sol-trait-encode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolEncode.html
-[sol-trait-decode]: https://docs.rs/ink/6.0.0-alpha/ink/trait.SolDecode.html
-[scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
+[sol-encode]: https://use-ink.github.io/ink/ink/trait.SolEncode.html
+[sol-decode]: https://use-ink.github.io/ink/ink/trait.SolDecode.html
 
 ### Default/provided mappings
 
-[`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode] are implemented
+[`SolEncode`][sol-encode] and [`SolDecode`][sol-decode] are implemented
 for the following Rust/ink! primitive types creating a mapping
 to the corresponding Solidity ABI types as shown in the table below:
 
@@ -74,10 +73,16 @@ to the corresponding Solidity ABI types as shown in the table below:
 | `[T; N]` for `const N: usize` | `T[N]` | e.g. `[i8; 64]` ↔ `int8[64]` |
 | `Vec<T>` | `T[]` | e.g. `Vec<i8>` ↔ `int8[]` |
 | `Box<[T]>` | `T[]` | e.g. `Box<[i8]>` ↔ `int8[]` |
-| `ink::sol::FixedBytes<N>` for `1 <= N <= 32` | `bytesN` | e.g. `FixedBytes<32>` ↔ `bytes32`, `FixedBytes<N>` is just a newtype wrapper for `[u8; N]` that also implements `From<u8>` |
-| `ink::sol::DynBytes` | `bytes` | `DynBytes` is just a newtype wrapper for `Vec<u8>` that also implements `From<Box<[u8]>>` |
+| [`ink::sol::FixedBytes<N>`][ink-fixed-bytes] for `1 <= N <= 32` | `bytesN` | e.g. `FixedBytes<32>` ↔ `bytes32`, `FixedBytes<N>` is just a newtype wrapper for `[u8; N]` that also implements `From<u8>` |
+| [`ink::sol::DynBytes`][ink-dyn-bytes] | `bytes` | `DynBytes` is just a newtype wrapper for `Vec<u8>` that also implements `From<Box<[u8]>>` |
 | `(T1, T2, T3, ... T12)` | `(U1, U2, U3, ... U12)` | where `T1` ↔ `U1`, ... `T12` ↔ `U12` e.g. `(bool, u8, Address)` ↔ `(bool, uint8, address)` |
 | `Option<T>` | `(bool, T)` | e.g. `Option<u8>` ↔ `(bool, uint8)`|
+
+[ink-u256]: https://use-ink.github.io/ink/ink/struct.U256.html
+[ink-address]: https://use-ink.github.io/ink/ink/type.Address.html
+[ink-h160]: https://use-ink.github.io/ink/ink/struct.H160.html
+[ink-fixed-bytes]: https://use-ink.github.io/ink/ink/sol/struct.FixedBytes.html
+[ink-dyn-bytes]: https://use-ink.github.io/ink/ink/sol/struct.DynBytes.html
 
 :::note
 Rust's `Option<T>` type doesn't have a **semantically** equivalent Solidity ABI type,
@@ -103,8 +108,9 @@ in Solidity code.
 :::
 
 [sol-enum]: https://docs.soliditylang.org/en/latest/types.html#enums
+[sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
 
-[`SolEncode`][sol-trait-encode] is additionally implemented for reference and smart
+[`SolEncode`][sol-encode] is additionally implemented for reference and smart
 pointer types below:
 
 | Rust/ink! type | Solidity ABI type | Notes |
@@ -112,11 +118,9 @@ pointer types below:
 | `&str`, `&mut str` | `string` ||
 | `&T`, `&mut T`, `Box<T>` | `T` | e.g. `&i8 ↔ int8` |
 | `&[T]`, `&mut [T]` | `T[]` | e.g. `&[i8]` ↔ `int8[]` |
+| [`ink::sol::ByteSlice`][ink-byte-slice] | `bytes` | `ByteSlice` is a just newtype wrapper for `&[u8]` |
 
-[ink-u256]: https://docs.rs/ink/latest/ink/struct.U256.html
-[ink-address]: https://docs.rs/ink/latest/ink/type.Address.html
-[ink-h160]: https://docs.rs/ink/latest/ink/struct.H160.html
-[sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
+[ink-byte-slice]: https://use-ink.github.io/ink/ink/sol/struct.ByteSlice.html
 
 ### Handling the `Result<T, E>` type
 
@@ -127,19 +131,18 @@ However, `Result<T, E>` types are supported as the return type of messages
 and constructors, and they're handled at language level as follows:
 - When returning the `Result::Ok` variant, where `T` implements `SolEncode`,
   `T` is encoded as "normal" Solidity ABI return data.
-- When returning the `Result::Err` variant, `E` must implement `SolErrorEncode`,
+- When returning the `Result::Err` variant, `E` must implement [`SolErrorEncode`][sol-error-encode],
   ink! will set the revert flag in the execution environment,
   and `E` will be encoded as [Solidity revert error data][sol-revert],
-  with the error data representation depending on the `SolErrorEncode` implementation.
+  with the error data representation depending on the [`SolErrorEncode`][sol-error-encode] implementation.
 - Similarly, for decoding, `T` must implement `SolDecode`,
-  while `E` must implement `SolErrorDecode`, and the returned data is decoded as `T`
+  while `E` must implement [`SolErrorDecode`][sol-error-decode], and the returned data is decoded as `T`
   (i.e. `Result::Ok`) or `E` (i.e. `Result::Err`) depending on whether
   the revert flag is set (i.e. `E` if the revert flag is set, and `T` otherwise).
 
-[sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
-
-The `SolErrorEncode` and `SolErrorDecode` traits define the highest level interfaces
-for encoding and decoding an arbitrary Rust/ink! error type as Solidity ABI revert error data.
+The [`SolErrorEncode`][sol-error-encode] and [`SolErrorDecode`][sol-error-decode] traits define 
+the highest level interfaces for encoding and decoding an arbitrary Rust/ink! error type as 
+Solidity ABI revert error data.
 
 Default implementations for both `SolErrorEncode` and `SolErrorDecode` are provided for unit
 (i.e. `()`), and these are equivalent to reverting with no error data in Solidity
@@ -153,21 +156,29 @@ all fields (if any) implement `SolEncode` and `SolDecode`.
 - For enums, each variant is its own [Solidity custom error][sol-custom-error],
   with the variant name being the custom error name, and the fields (if any) being the parameters
 
+For convenience, the [`#[ink::error]`][ink-error] attribute macro is also provided for automatically deriving the following traits:
+- [`SolErrorEncode`][sol-error-encode]: for encoding a custom type as revert error data
+- [`SolErrorDecode`][sol-error-decode]: for decoding revert error data into a custom type
+- `SolErrorMetadata`: for generating [Solidity ABI metadata][sol-abi-json]
+
+[sol-error-encode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorEncode.html
+[sol-error-decode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorDecode.html
+[sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
 [sol-custom-error]: https://soliditylang.org/blog/2021/04/21/custom-errors/
+[ink-error]: https://use-ink.github.io/ink/ink/attr.error.html
+[sol-abi-json]: https://docs.soliditylang.org/en/latest/abi-spec.html#json
 
 ```rust
-use ink::{SolErrorDecode, SolErrorEncode};
-
 // Represented as a Solidity custom error with no parameters
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 struct UnitError;
 
 // Represented as a Solidity custom error with parameters
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 struct ErrorWithParams(bool, u8, String);
 
 // Represented as a Solidity custom error with named parameters
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 struct ErrorWithNamedParams {
     status: bool,
     count: u8,
@@ -176,7 +187,7 @@ struct ErrorWithNamedParams {
 
 // Represented as multiple Solidity custom errors
 // (i.e. each variant represents a Solidity custom error)
-#[derive(SolErrorDecode, SolErrorEncode)]
+#[ink::error]
 enum MultipleErrors {
     UnitError,
     ErrorWithParams(bool, u8, String),
@@ -189,8 +200,14 @@ enum MultipleErrors {
 ```
 
 :::note
+In ["ink" and "all" ABI mode][abi-declaration], the [`#[ink::error]`][ink-error] attribute macro
+will also derive implementations of the [`scale::Encode` and `scale::Decode`][scale-codec] traits.
+:::
+
+:::note
 For other [Solidity `revert`][sol-revert] error data representations (e.g. legacy revert strings),
-you can implement `SolErrorEncode` and `SolErrorDecode` manually to match those representations.
+you can implement [`SolErrorEncode`][sol-error-encode] and [`SolErrorDecode`][sol-error-decode]
+manually to match those representations.
 :::
 
 :::note
@@ -201,7 +218,7 @@ Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement
 ### Mappings for arbitrary custom types
 
 For arbitrary custom types, `Derive` macros are provided for automatically generating
-implementations of `SolEncode` and `SolDecode`
+implementations of [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode]
 - For structs where all fields (if any) implement `SolEncode` and `SolDecode` respectively,
   including support for generic types
 - For enums where all variants are either [unit-only][enum-unit-only] or [field-less][enum-field-less]
@@ -261,13 +278,13 @@ Because of this, the `Derive` macros for `SolEncode` and `SolDecode` do NOT gene
 for enums with fields.
 
 However, you can define custom representations for these types by manually implementing
-the [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
+the [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode]
 (see linked rustdoc for instructions).
 :::
 
 :::note
 Rust's [coherence/orphan rules][rust-coherence] mean that you can
-only implement the [`SolEncode`][sol-trait-encode] and [`SolDecode`][sol-trait-decode]
+only implement the [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode]
 traits for local types.
 :::
 

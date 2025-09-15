@@ -444,7 +444,7 @@ The argument type changed from `u32` to `u16`:
 
 The top level macro `#[ink::chain_extension]` now _requires_ an `(extension = N: u16)` argument to support multiple chain extensions.
 If you are using only one extension, the ID can be any `u16` number,
-otherwise please consult the [`#[ink::chain_extension]` macro documentation](../macros-attributes/chain-extension.md)
+otherwise please consult the [`#[ink::chain_extension]` macro documentation](https://use.ink/docs/v5/macros-attributes/chain-extension).
 
 ```diff
 -#[ink::chain_extension]

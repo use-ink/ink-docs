@@ -17,7 +17,7 @@ TODO
 XCM allows for cross-chain communications, enabling ink! smart contract to interact with other chains.
 You can learn more about XCM in the [Polkadot Wiki](https://wiki.polkadot.network/docs/learn/xcm).
 
-As of ink! v5.1.0, two new functions, [`xcm_execute`](https://docs.rs/ink_env/5.1.0/ink_env/fn.xcm_execute.html) and [`xcm_send`](https://docs.rs/ink_env/5.1.0/ink_env/fn.xcm_send.html), have been introduced.
+As of ink! v5.1.0, two new functions, [`xcm_execute`](https://use-ink.github.io/ink/ink_env/fn.xcm_execute.html) and [`xcm_send`](https://use-ink.github.io/ink/ink_env/fn.xcm_send.html), have been introduced.
 These functions enable sending and executing XCM from within ink! contracts.
 
 :::info
@@ -26,7 +26,7 @@ In versions of ink! prior to v5.1.0, the [call_runtime](https://docs.rs/ink/5.1.
 
 ## `xcm_execute`
 
-The [`xcm_execute`](https://docs.rs/ink/latest/ink/struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
+The [`xcm_execute`](https://use-ink.github.io/ink/ink/struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
 
 The following code snippet demonstrates how to use `xcm_execute` to perform a [reserve-backed transfer](https://wiki.polkadot.network/docs/learn/xcm/journey/transfers-reserve#1-initiatereservewithdraw):
 
@@ -66,7 +66,7 @@ pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
 
 ## `xcm_send`
 
-The [`xcm_send`](https://docs.rs/ink_env/5.1.0/ink_env/fn.xcm_send.html) function enables sending XCM to be executed by another chain.
+The [`xcm_send`](https://use-ink.github.io/ink/ink_env/fn.xcm_send.html) function enables sending XCM to be executed by another chain.
 Messages sent originate from the contract's account. Consequently, the receiving chain will process the message using the contract's sovereign account as the origin.
 
 The following example demonstrates how to use `xcm_send`. In this example, we send an XCM to the relay chain.
