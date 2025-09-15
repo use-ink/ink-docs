@@ -82,9 +82,12 @@ pub struct Transferred {
     amount: u128,
 }
 ```
-> Note that generics are [not currently supported](https://github.com/use-ink/ink/issues/2044)
-> , so the concrete types of `Environment` 
-> specific types such as `AccountId` must match up with the types used in the contract.
+
+:::note
+Generics are [not currently supported](https://github.com/use-ink/ink/issues/2044),
+so the concrete types of `Environment` specific types such as `AccountId`
+must match up with the types used in the contract.
+:::
 
 This definition can exist within a contract definition module (inline events), in a different 
 module in the same crate or even in a different crate to be shared by multiple contracts.
@@ -98,37 +101,48 @@ using the new `event` attribute macro directly will behave exactly the same.
 
 ### Topics
 
-When an event is emitted, 0 or more topics can be associated with it. The event is then indexed 
-together with other events with the same topic value.
+When an event is emitted, up to 4 topics (including the signature topic, if any) can be associated with it.
+The event is then indexed together with other events with the same topic value.
 
 An event's fields can be annotated with `#[ink(topic)]` (see example), which will result in a 
 topic derived from the value of that field being emitted together with the event.
 
-Topics are by default a 32 byte array (`[u8; 32]`), although this is configurable on the 
-Polkadot SDK runtime level. If the SCALE encoded bytes of a field value are `<= 32`, then the 
-encoded bytes are used directly as the topic value. 
+Topics are a 32 byte array (`[u8; 32]`), and the topic value is encoded as follows:
 
-For example, in the common case of indexing a field of type `AccountId`, where the default 
-`AccountId` type is 32 bytes in length, the topic value will be the encoded account id itself. This 
-makes it easy to filter for all events which have a topic of a specific `AccountId`.
+- If the SCALE encoded bytes of a field value are `<= 32`,
+  then the encoded bytes are used directly as the topic value.
+  If necessary, the topic value is padded on the right side with zero-bytes such that its length is 32 bytes.
+  - For example, in the common case of indexing a field of type `AccountId`, where the default
+    `AccountId` type is 32 bytes in length, the topic value will be the encoded account id itself.
+    This makes it easy to filter for all events which have a topic of a specific `AccountId`.
+- If the size of the SCALE encoded bytes of the field value exceeds 32,
+  then the encoded bytes are hashed using the `Blake2x256` hash function.
 
-If however the size of the encoded bytes of the value of a field exceeds 32, then the encoded 
-bytes will be hashed using the `Blake2x256` hasher.
+:::note
+The topic encoding specification above only applies to native/ink! ABI encoded events.
 
-> Topics are a native concept in the Polkadot SDK, and can be queried via [`EventTopics`](https://docs.rs/frame-system/latest/frame_system/pallet/storage_types/struct.EventTopics.html)
+For Solidity ABI encoded events, topics (and event data) are encoded according to the
+[Solidity ABI specification for events][sol-abi-events] and [indexed event parameters][sol-abi-topics].
+:::
 
-How to choose which fields to make topics? A good rule of thumb is to ask yourself if somebody 
-might want to search for this topic. For this reason the `amount` in the example `Transferred` event
-above was not made indexable ‒ there will most probably be a lot of different events with differing
-amounts each.
+[sol-abi-events]: https://docs.soliditylang.org/en/latest/abi-spec.html#events
+[sol-abi-topics]: https://docs.soliditylang.org/en/latest/abi-spec.html#encoding-of-indexed-event-parameters
 
-#### Signature Topic
+:::note
+Topics are a native concept in the Polkadot SDK, and can be queried via [`EventTopics`](https://docs.rs/frame-system/latest/frame_system/pallet/storage_types/struct.EventTopics.html)
+:::
 
-By default all events have a signature topic. This allows indexing of all events of the same 
-type, emitted by different contracts. The `#[ink::event]` macro generates a signature topic at 
-compile time by hashing the name of the event concatenated with the *names of the types* of the all 
-the field 
-names:
+### How to choose which fields to make topics?
+A good rule of thumb is to ask yourself if somebody might want to search for this topic.
+For this reason the `amount` in the example `Transferred` event above was not made indexable ‒
+there will most probably be a lot of different events with differing amounts each.
+
+### Signature Topic
+
+By default all events have a signature topic.
+This allows indexing of all events of the same type, emitted by different contracts.
+The `#[ink::event]` macro generates a signature topic at compile time by
+hashing the name of the event concatenated with the *names of the types* of all the fields:
 ```
 blake2b("Event(field1_type,field2_type)")`
 ```
@@ -137,18 +151,25 @@ So for our `Transferred` example it will be:
 blake2b("Transferred(Option<AccountId>,Option<AccountId>,u128)")`
 ```
 
+:::note
+The signature topic computation specification above only applies to native/ink! ABI encoded events.
+
+For Solidity ABI encoded events, the signature topic is computed as the event signature
+according to the [Solidity ABI specification for events][sol-abi-events].
+:::
+
 :::caution
 Important caveat: because the *name* of the field type is used, refactoring an event 
-definition to use a type alias or a fully qualified type will change the signature topic, even
-though the underlying type is the same. Two otherwise identical definitions of an event with the 
-same name and same field types but different field type names will have different signature 
-topics.
+definition to use a type alias or a fully qualified type will change the signature topic,
+even though the underlying type is the same.
+Two otherwise identical definitions of an event with the same name and same field types
+but different field type names will have different signature topics.
 :::
 
 When decoding events emitted from a contract, signature topics are now required to determine which 
 type of event to decode into. 
 
-#### Anonymous Events
+### Anonymous Events
 
 Events annotated with `anonymous` will not have a signature topic generated and published with the
 event.
@@ -179,10 +200,11 @@ may be desirable for some contracts, and would be a small gas cost optimization 
 
 However, when interacting with the contract from a client, no signature topic means that another 
 way is required to determine the type of the event to be decoded into (i.e. how do we know it is 
-a `Transferred` event, not an `Approval` event. One way would be to try decoding for each type 
-of event defined in the metadata of the contract until one succeeds. If calling a specific 
-`message`, it may be known up front what type of event that message will raise, so the client 
-code could just decode into that event directly.
+a `Transferred` event, not an `Approval` event.
+One way would be to try decoding for each type of event defined in the metadata of the contract
+until one succeeds.
+If calling a specific `message`, it may be known up front what type of event that message will raise,
+so the client code could just decode into that event directly.
 
 ## Emitting Events in a Constructor
 
@@ -224,12 +246,24 @@ pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
 }
 ```
 
+:::note
+In ["all" ABI mode][abi-all], both an in ink! and Solidity ABI encoded event are emitted
+for each call to `Self::env().emit_event()` or `self.env().emit_event()`.
+
+To emit a single event for a specific ABI, 2 additional ABI-specific utilities are provided
+in "all" ABI mode:
+- `emit_event_ink`: emits a single ink! ABI encoded event.
+- `emit_event_sol`: emits a single Solidity ABI encoded event.
+:::
+
+[abi-all]: ./abi/all.md
+
 ## Cost of using Events
 
 When using events and topics, developers should be mindful of the costs associated. 
 
-Firstly: if optimizing for contract size, using events will increase the size of the final code size. So 
-minimizing or eliminating event usage where necessary will reduce contract size. The same can be 
-said for the execution (aka gas) costs when using events. We recommend considering the cost of 
-events when using them, and measuring the code size and gas costs with different usage patterns 
-when optimizing.
+Firstly: if optimizing for contract size, using events will increase the size of the final code size.
+So minimizing or eliminating event usage where necessary will reduce contract size.
+The same can be said for the execution (aka gas) costs when using events.
+We recommend considering the cost of events when using them,
+and measuring the code size and gas costs with different usage patterns when optimizing.
