@@ -74,10 +74,16 @@ to the corresponding Solidity ABI types as shown in the table below:
 | `[T; N]` for `const N: usize` | `T[N]` | e.g. `[i8; 64]` ↔ `int8[64]` |
 | `Vec<T>` | `T[]` | e.g. `Vec<i8>` ↔ `int8[]` |
 | `Box<[T]>` | `T[]` | e.g. `Box<[i8]>` ↔ `int8[]` |
-| `ink::sol::FixedBytes<N>` for `1 <= N <= 32` | `bytesN` | e.g. `FixedBytes<32>` ↔ `bytes32`, `FixedBytes<N>` is just a newtype wrapper for `[u8; N]` that also implements `From<u8>` |
-| `ink::sol::DynBytes` | `bytes` | `DynBytes` is just a newtype wrapper for `Vec<u8>` that also implements `From<Box<[u8]>>` |
+| [`ink::sol::FixedBytes<N>`][ink-fixed-bytes] for `1 <= N <= 32` | `bytesN` | e.g. `FixedBytes<32>` ↔ `bytes32`, `FixedBytes<N>` is just a newtype wrapper for `[u8; N]` that also implements `From<u8>` |
+| [`ink::sol::DynBytes`][ink-dyn-bytes] | `bytes` | `DynBytes` is just a newtype wrapper for `Vec<u8>` that also implements `From<Box<[u8]>>` |
 | `(T1, T2, T3, ... T12)` | `(U1, U2, U3, ... U12)` | where `T1` ↔ `U1`, ... `T12` ↔ `U12` e.g. `(bool, u8, Address)` ↔ `(bool, uint8, address)` |
 | `Option<T>` | `(bool, T)` | e.g. `Option<u8>` ↔ `(bool, uint8)`|
+
+[ink-u256]: https://use-ink.github.io/ink/ink/struct.U256.html
+[ink-address]: https://use-ink.github.io/ink/ink/type.Address.html
+[ink-h160]: https://use-ink.github.io/ink/ink/struct.H160.html
+[ink-fixed-bytes]: https://use-ink.github.io/ink/ink/sol/struct.FixedBytes.html
+[ink-dyn-bytes]: https://use-ink.github.io/ink/ink/sol/struct.DynBytes.html
 
 :::note
 Rust's `Option<T>` type doesn't have a **semantically** equivalent Solidity ABI type,
@@ -103,6 +109,7 @@ in Solidity code.
 :::
 
 [sol-enum]: https://docs.soliditylang.org/en/latest/types.html#enums
+[sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
 
 [`SolEncode`][sol-trait-encode] is additionally implemented for reference and smart
 pointer types below:
@@ -112,11 +119,9 @@ pointer types below:
 | `&str`, `&mut str` | `string` ||
 | `&T`, `&mut T`, `Box<T>` | `T` | e.g. `&i8 ↔ int8` |
 | `&[T]`, `&mut [T]` | `T[]` | e.g. `&[i8]` ↔ `int8[]` |
+| [`ink::sol::ByteSlice`][ink-byte-slice] | `bytes` | `ByteSlice` is a just newtype wrapper for `&[u8]` |
 
-[ink-u256]: https://use-ink.github.io/ink/ink/struct.U256.html
-[ink-address]: https://use-ink.github.io/ink/ink/type.Address.html
-[ink-h160]: https://use-ink.github.io/ink/ink/struct.H160.html
-[sol-abi-types]: https://docs.soliditylang.org/en/latest/abi-spec.html#mapping-solidity-to-abi-types
+[ink-byte-slice]: https://use-ink.github.io/ink/ink/sol/struct.ByteSlice.html
 
 ### Handling the `Result<T, E>` type
 
