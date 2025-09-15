@@ -45,7 +45,7 @@ calling conventions in "sol" ABI mode).
 :::
 
 [abi-all]: ./abi/all.md
-[abi-sol]: ./abi/sol.md
+[abi-sol]: ./abi/solidity.md
 
 ### `BasicContractRef` walkthrough
 
