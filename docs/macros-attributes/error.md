@@ -4,7 +4,7 @@ slug: /macros-attributes/error
 hide_title: true
 ---
 
-![Text/error Title Picture](/img/title/text/event2.svg)
+![Text/error Title Picture](/img/title/text/error.svg)
 
 Applicable on `struct` and `enum` definitions.
 
