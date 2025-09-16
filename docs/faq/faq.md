@@ -137,15 +137,41 @@ Rust's standard library consists of three different layers:
 
 ### Overflow Safety?
 
-:::caution
-TODO @davidsemakula Please review if still up to date.
-:::
+Being written in Rust, ink! provides robust overflow/underflow safety using compiler-level overflow checks as follows:
+- `const` integer arithmetic operations (i.e. expressions involving only `const` integer operands)
+  are checked for overflows at compile-time (e.g. `255u8 + 1` will lead to a compilation error due to overflow).
+- For dynamic integer arithmetic operations, ink! (more specifically [`cargo-contract`][cargo-contract])
+  automatically enables Rust's ["overflow-checks" instrumentation][rustc-overflow-checks],
+  which automatically adds dynamic/runtime checks that panic on overflow.
 
-Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
+[cargo-contract]: ../getting-started/setup.md#cargo-contract
+[rustc-overflow-checks]: https://doc.rust-lang.org/rustc/codegen-options/index.html#overflow-checks
+
+However, where possible, it's preferred to explicitly handle the possibility of overflow
+using the following family of methods that are provided for primitive numeric types in Rust:
+- `wrapping_*` methods for explicit wrapping behaviour (e.g. [`wrapping_add`][wrapping-add])
+- `checked_*` methods which return `None` in case of overflow (e.g. [`checked_add`][checked-add])
+- `saturating_*` methods which saturate at the type's minimum or maximum value
+  (e.g. [`saturating_add`][saturating-add])
+- `overflowing_*` methods which return the value and a `bool` flag indicating whether
+  an overflow occurred (e.g. [`overflowing_add`][overflowing-add])
+
+[wrapping-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.wrapping_add
+[checked-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.checked_add
+[saturating-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.saturating_add
+[overflowing-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.overflowing_add
 
 :::note
-There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the binary blob. This feature may change or be iterated on in the future.
+Unlike default `rustc`/`cargo` behavior, ink! (more specifically [`cargo-contract`][cargo-contract])
+automatically enables dynamic overflow checks in release mode by default
+(i.e. dynamic overflow checks are enabled when compiling with `cargo contract build --release`).
+
+However, `cargo-contract` still allows you to override this behavior using the
+["overflow-checks" setting][cargo-overflow-checks] for the release profile in
+your contract's manifest file (i.e. `Cargo.toml`).
 :::
+
+[cargo-overflow-checks]: https://doc.rust-lang.org/cargo/reference/profiles.html#overflow-checks
 
 ### What is the difference between memory and storage?
 
