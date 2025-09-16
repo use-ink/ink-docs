@@ -173,6 +173,32 @@ your contract's manifest file (i.e. `Cargo.toml`).
 
 [cargo-overflow-checks]: https://doc.rust-lang.org/cargo/reference/profiles.html#overflow-checks
 
+:::caution
+Apart from [integer arithmetic operations][arithmetic-operations], another cause of implicit overflows
+is [integer type cast expressions (i.e. `as` conversions)][as-conversions].
+
+However, unlike integer arithmetic operations, Rust's ["overflow-checks" instrumentation][rustc-overflow-checks]
+doesn't add overflow checks for integer type cast expressions (e.g. `256u16 as u8`).
+The motivation for this decision is explained [here][overflow-rfc-as].
+
+As a less robust alternative, ink! provides a `cargo contract lint` command,
+which (in addition to our [custom lints][custom-lints]) enables the following [`clippy`][clippy] lints to check for
+overflowing/underflowing and lossy integer type cast expressions **in the local crate**
+(i.e. the following lints only check code from the local crate, they don't check code from dependencies).
+- https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+- https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_wrap
+- https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+In the future, ink! may provide more robust checks for overflows due integer type cast expressions
+(i.e. `as` conversions).
+:::
+
+[arithmetic-operations]: https://doc.rust-lang.org/reference/expressions/operator-expr.html#arithmetic-and-logical-binary-operators
+[as-conversions]: https://doc.rust-lang.org/reference/expressions/operator-expr.html#semantics
+[overflow-rfc-as]: https://rust-lang.github.io/rfcs/0560-integer-overflow.html#making-as-be-checked
+[custom-lints]: ../linter/overview.md
+[clippy]: https://doc.rust-lang.org/clippy/
+
 ### What is the difference between memory and storage?
 
 In ink!, memory refers to computer memory, while storage refers to the on-chain storage
