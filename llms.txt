@@ -10380,6 +10380,24 @@ The following traits are derived depending on the ABI mode:
 [abi-sol]: ../basics/abi/solidity.md
 [abi-all]: ../basics/abi/all.md
 
+## Example
+
+```rust
+#[ink::error]
+struct UnitError;
+
+#[ink::error]
+enum MultipleErrors {
+    UnitError,
+    ErrorWithParams(bool, u8, String),
+    ErrorWithNamedParams {
+        status: bool,
+        count: u8,
+        reason: String,
+    }
+}
+```
+
 :::note
 See our [Solidity ABI compatibility docs][sol-result] for more details about
 handling Solidity ABI encoded [revert error data][sol-revert].
