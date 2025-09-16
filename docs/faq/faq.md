@@ -137,15 +137,67 @@ Rust's standard library consists of three different layers:
 
 ### Overflow Safety?
 
-:::caution
-TODO @davidsemakula Please review if still up to date.
-:::
+Being written in Rust, ink! provides robust overflow/underflow safety using compiler-level overflow checks as follows:
+- `const` integer arithmetic operations (i.e. expressions involving only `const` integer operands)
+  are checked for overflows at compile-time (e.g. `255u8 + 1` will lead to a compilation error due to overflow).
+- For dynamic integer arithmetic operations, ink! (more specifically [`cargo-contract`][cargo-contract])
+  automatically enables Rust's ["overflow-checks" instrumentation][rustc-overflow-checks],
+  which automatically adds dynamic/runtime checks that panic on overflow.
 
-Being written in Rust, ink! can provide compile-time overflow/underflow safety. Using a Rust compiler configuration, you can specify whether you want to support overflowing math, or if you want contract execution to panic when overflows occur. No need to continually import "Safe Math" libraries, although Rust also provides [integrated checked, wrapped, and saturated math functions](https://doc.rust-lang.org/std/primitive.u32.html).
+[cargo-contract]: ../getting-started/setup.md#cargo-contract
+[rustc-overflow-checks]: https://doc.rust-lang.org/rustc/codegen-options/index.html#overflow-checks
+
+However, where possible, it's preferred to explicitly handle the possibility of overflow
+using the following family of methods that are provided for primitive numeric types in Rust:
+- `wrapping_*` methods for explicit wrapping behaviour (e.g. [`wrapping_add`][wrapping-add])
+- `checked_*` methods which return `None` in case of overflow (e.g. [`checked_add`][checked-add])
+- `saturating_*` methods which saturate at the type's minimum or maximum value
+  (e.g. [`saturating_add`][saturating-add])
+- `overflowing_*` methods which return the value and a `bool` flag indicating whether
+  an overflow occurred (e.g. [`overflowing_add`][overflowing-add])
+
+[wrapping-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.wrapping_add
+[checked-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.checked_add
+[saturating-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.saturating_add
+[overflowing-add]: https://doc.rust-lang.org/std/primitive.u8.html#method.overflowing_add
 
 :::note
-There are some known issues regarding functionality of compiler level overflow checks and the resulting size of the binary blob. This feature may change or be iterated on in the future.
+Unlike default `rustc`/`cargo` behavior, ink! (more specifically [`cargo-contract`][cargo-contract])
+automatically enables dynamic overflow checks in release mode by default
+(i.e. dynamic overflow checks are enabled when compiling with `cargo contract build --release`).
+
+However, `cargo-contract` still allows you to override this behavior using the
+["overflow-checks" setting][cargo-overflow-checks] for the release profile in
+your contract's manifest file (i.e. `Cargo.toml`).
 :::
+
+[cargo-overflow-checks]: https://doc.rust-lang.org/cargo/reference/profiles.html#overflow-checks
+
+:::caution
+Apart from [integer arithmetic operations][arithmetic-operations], another cause of implicit overflows
+is [integer type cast expressions (i.e. `as` conversions)][as-conversions].
+
+However, unlike integer arithmetic operations, Rust's ["overflow-checks" instrumentation][rustc-overflow-checks]
+doesn't add overflow checks for integer type cast expressions (e.g. `256u16 as u8`).
+The motivation for this decision is explained [here][overflow-rfc-as].
+
+As a less robust alternative, ink! provides a `cargo contract lint` command,
+which (in addition to our [custom lints][custom-lints]) enables the following [`clippy`][clippy] lints to check for
+overflowing/underflowing and lossy integer type cast expressions **in the local crate**
+(i.e. the following lints only check code from the local crate, they don't check code from dependencies).
+- https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_truncation
+- https://rust-lang.github.io/rust-clippy/master/index.html#cast_possible_wrap
+- https://rust-lang.github.io/rust-clippy/master/index.html#cast_sign_loss
+
+In the future, ink! may provide more robust checks for overflows due integer type cast expressions
+(i.e. `as` conversions).
+:::
+
+[arithmetic-operations]: https://doc.rust-lang.org/reference/expressions/operator-expr.html#arithmetic-and-logical-binary-operators
+[as-conversions]: https://doc.rust-lang.org/reference/expressions/operator-expr.html#semantics
+[overflow-rfc-as]: https://rust-lang.github.io/rfcs/0560-integer-overflow.html#making-as-be-checked
+[custom-lints]: ../linter/overview.md
+[clippy]: https://doc.rust-lang.org/clippy/
 
 ### What is the difference between memory and storage?
 
