@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.dc7a1013.css">
-<script src="/assets/js/runtime~main.861d3a17.js" defer="defer"></script>
-<script src="/assets/js/main.c7d6adb5.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.41a26d85.js" defer="defer"></script>
+<script src="/assets/js/main.90fd3ab9.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -38,6 +38,9 @@ This restriction is intentional ‒ returning a complete data structure with a p
 content is an anti-pattern for smart contracts. Just think about the unpredictable gas costs.</p>
 <p>If you <em>really really</em> need to return a data structure in its entirety then use the ones from
 <code>ink_prelude</code> (e.g. <code>ink_prelude::vec::Vec</code>). Those implement <code>scale::Encode</code>.</p>
+<div class="admonition-wrap-note admonition-wrap p-[5px] rounded-[12px] border border-solid my-2 border-l-[5px]"><div class="theme-admonition theme-admonition-note admonition_ryXn alert alert--secondary"><div class="admonitionHeading_bY5t"><span class="admonitionIcon_WwqN"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M164,216a12,12,0,0,1-12,12H104a12,12,0,0,1,0-24h48A12,12,0,0,1,164,216Zm76.26-29.9L235.6,178a12,12,0,1,0-20.79,12l4.65,8.08a3.56,3.56,0,0,1,0,3.73,4.46,4.46,0,0,1-4,2.2H192a12,12,0,0,0,0,24h23.46a28.31,28.31,0,0,0,24.79-14.19A27.47,27.47,0,0,0,240.26,186.1ZM64,204H40.55a4.46,4.46,0,0,1-4-2.2,3.56,3.56,0,0,1,0-3.73L41.19,190A12,12,0,1,0,20.4,178l-4.66,8.09a27.47,27.47,0,0,0,0,27.71A28.31,28.31,0,0,0,40.55,228H64a12,12,0,0,0,0-24Zm138.17-48a12,12,0,0,0,10.39-18l-23-40a12,12,0,0,0-20.8,12l23,40A12,12,0,0,0,202.18,156ZM166.5,58,152.81,34.23a28.74,28.74,0,0,0-49.62,0L89.5,58a12,12,0,1,0,20.79,12L124,46.2a4.75,4.75,0,0,1,8,0L145.71,70a12,12,0,0,0,10.41,6,11.87,11.87,0,0,0,6-1.6A12,12,0,0,0,166.5,58ZM82.85,93.6A12,12,0,0,0,66.46,98l-23,40a12,12,0,0,0,20.8,12l23-40A12,12,0,0,0,82.85,93.6Z"></path></svg></span>note</div><div class="admonitionContent_Q9KL"><p>In <a href="/docs/v6/basics/abi/solidity">&quot;sol&quot;</a> and <a href="/docs/v6/basics/abi/all">&quot;all&quot;</a> ABI mode, the return value of a message
+must either implement <a href="https://use-ink.github.io/ink/ink/trait.SolEncode.html" target="_blank" rel="noopener noreferrer"><code>SolEncode</code></a>, or be a <code>Result&lt;T,E&gt;</code> type
+where <code>T</code> implements <a href="https://use-ink.github.io/ink/ink/trait.SolEncode.html" target="_blank" rel="noopener noreferrer"><code>SolEncode</code></a> and <code>E</code> implements <a href="https://use-ink.github.io/ink/ink/sol/trait.SolErrorEncode.html" target="_blank" rel="noopener noreferrer"><code>SolErrorEncode</code></a>.</p><p>See our <a href="/docs/v6/background/solidity-metamask-compatibility">Solidity ABI compatibility docs</a> for more details.</p></div></div></div>
 <h2 class="anchor anchorWithStickyNavbar_mSTA" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h2>
 <p>Given the <code>Flipper</code> contract definition above we add some <code>#[ink(message)]</code> definitions
 as follows:</p>
