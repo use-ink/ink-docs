@@ -48,6 +48,19 @@ content is an anti-pattern for smart contracts. Just think about the unpredictab
 If you _really really_ need to return a data structure in its entirety then use the ones from
 `ink_prelude` (e.g. `ink_prelude::vec::Vec`). Those implement `scale::Encode`.
 
+:::note
+In ["sol"][abi-sol] and ["all"][abi-all] ABI mode, the return value of a message
+must either implement [`SolEncode`][sol-encode], or be a `Result<T,E>` type
+where `T` implements [`SolEncode`][sol-encode] and `E` implements [`SolErrorEncode`][sol-error-encode].
+
+See our [Solidity ABI compatibility docs][sol-abi-compat] for more details.
+:::
+
+[abi-all]: ../basics/abi/all.md
+[abi-sol]: ../basics/abi/solidity.md
+[sol-encode]: https://use-ink.github.io/ink/ink/trait.SolEncode.html
+[sol-error-encode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorEncode.html
+[sol-abi-compat]: ../background/solidity-metamask-compat.md
 
 ## Example
 
