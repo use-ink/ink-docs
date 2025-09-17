@@ -1,5 +1,5 @@
 ---
-title: Solidity & MetaMask Compatibility
+title: Ethereum Compatibility
 hide_title: true
 slug: /background/solidity-metamask-compatibility
 ---
@@ -294,4 +294,4 @@ traits for local types.
 
 You can deploy and interact with `ink!` smart contracts using popular Solidity tools like Hardhat and Foundry thanks to the Solidity-compatible ABI output.
 
-Full Tutorial: [Use Solidity Tooling with ink! Contracts](../integrations-and-sdks/ethereum-compatibility/overview.md)
+Full Tutorial: [Use Solidity Tooling with ink! Contracts](/tutorials/ethereum-compatibility/overview)
