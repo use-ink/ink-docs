@@ -21,5 +21,5 @@ This section covers:
 - **[JavaScript/TypeScript Libraries](./javascript-typescript/core-libraries.md)**: Core libraries and tools for JavaScript/TypeScript development
 - **[React Ecosystem](./javascript-typescript/react.md)**: React-specific frameworks and hooks for ink! integration
 - **[Other Languages](./other-languages.md)**: SDKs and libraries for Python, Rust, mobile development, and more
-- **[Ethereum Compatibility](./ethereum-compatibility/overview.md)**: Tools and guides for using Ethereum tooling (MetaMask, Hardhat, Wagmi) with ink! contracts
+- **[Ethereum Compatibility](./ethereum-compatibility.md)**: Use Solidity ABI compatibility mode to deploy and interact with ink! contracts using popular Ethereum tools like MetaMask, Hardhat, and Foundry
 

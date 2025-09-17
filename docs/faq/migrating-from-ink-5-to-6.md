@@ -303,7 +303,7 @@ will get larger. You can learn more about [supported ABI modes here][abi-declara
 
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
 [abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
-[sol-type-mapping]: ../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+[sol-type-mapping]: ../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping
 
 ### Cross-contract calling Solidity contracts
 `CallBuilder` now allows you to call contracts that are Solidity ABI encoded.

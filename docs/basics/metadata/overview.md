@@ -39,5 +39,5 @@ argument and return types, and event argument types can be mapped to
 equivalent Solidity ABI types ([more details here][sol-type-mapping]).
 
 [ethers-js]: https://docs.ethers.org/
-[sol-compat]: ../../background/solidity-metamask-compat.md
-[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+[sol-compat]: ../../integrations-and-sdks/ethereum-compatibility.md
+[sol-type-mapping]: ../../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping

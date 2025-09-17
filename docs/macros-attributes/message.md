@@ -60,7 +60,7 @@ See our [Solidity ABI compatibility docs][sol-abi-compat] for more details.
 [abi-sol]: ../basics/abi/solidity.md
 [sol-encode]: https://use-ink.github.io/ink/ink/trait.SolEncode.html
 [sol-error-encode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorEncode.html
-[sol-abi-compat]: ../background/solidity-metamask-compat.md
+[sol-abi-compat]: ../integrations-and-sdks/ethereum-compatibility.md
 
 ## Example
 

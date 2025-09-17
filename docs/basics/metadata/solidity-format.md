@@ -27,11 +27,11 @@ arguments and return types can be mapped to equivalent Solidity ABI types
 ([more details here][sol-type-mapping]).
 :::
 
-[sol-compat]: ../../background/solidity-metamask-compat.md
+[sol-compat]: ../../integrations-and-sdks/ethereum-compatibility.md
 [sol-abi-json]: https://docs.soliditylang.org/en/latest/abi-spec.html#json
 [sol-metadata]: https://docs.soliditylang.org/en/latest/metadata.html
 [ethers-js]: https://docs.ethers.org/
-[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+[sol-type-mapping]: ../../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping
 
 ## `<contract-name>.abi`
 
