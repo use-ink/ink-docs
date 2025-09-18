@@ -9,28 +9,38 @@ import TabItem from '@theme/TabItem';
 
 ![Setup Title Picture](/img/title/setup.svg)
 
-:::tip Pro tip
- Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
-:::
-
 # Setup
 
 On this page we describe the pre-requisites for working with ink!.
+
+:::tip Pro tip
+ Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
+:::
 
 ## Rust & Cargo
 
 A pre-requisite for compiling smart contracts is to install a stable Rust 
 version (>= 1.88) and `cargo`. Please see [the official Rust installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
-## Tooling
-
 <Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
+  <TabItem value="pop" label="Pop" default>
+   ## Pop CLI
+      Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
 
-      Install [`cargo-contract`](https://github.com/use-ink/cargo-contract), a CLI tool for setting up and managing ink! smart contracts:
-
+      Pop CLI supports ink! v6 through the polkavm-contracts feature flag:
       ```bash
       cargo install --force --locked --version 6.0.0-beta cargo-contract
+      cargo install pop-cli --no-default-features --locked -F polkavm-contracts,parachain,telemetry
+      ```
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract + ink-node">
+      ## cargo-contract
+
+      The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
+      it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
+
+      ```bash
+      cargo install --force --locked --tag v6.0.0-beta --git https://github.com/use-ink/cargo-contract
       ```
 
       Make sure you have the latest stable version of Rust installed:
@@ -38,7 +48,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
       rustup update stable
       ```
 
-      ### ink-node
+      ## ink-node
 
       The [ink-node](https://github.com/use-ink/ink-node) is
       a simple Polkadot SDK blockchain with smart contract functionality. It's a comfortable option for local development and testing.
@@ -70,7 +80,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
       ```
       If you see version information, your installation is successful!
 
-      ### (2) Install or Build it yourself
+      ### (2) Build it yourself
 
       Alternatively, you can build the node by yourself.
       This can take a while though!
@@ -78,19 +88,4 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
       The build instructions and pre-requisites can be found
       [here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).
   </TabItem>
-    <TabItem value="pop" label="Pop">
-       Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with an enhanced developer experience.
-
-       ```bash
-       cargo install --git https://github.com/r0gue-io/pop-cli.git --branch v6.0.0-alpha.4 --locked
-       ```
-
-       **Pop CLI advantages over `cargo-contract`:**
-       - **Automated setup**: Handles all required installations and dependencies for you
-       - **Contract templates**: Access to a range of pre-built contract templates
-       - **Interactive UI**: Deploy and interact with contracts through an interactive command-line interface
-       - **Built-in `ink-node`**: Automatically manages the `ink-node` without manual configuration
-       - **Easy local network setup**: Quickly spin up local development networks
-       - **Wallet integration**: Seamless wallet connection and management
-    </TabItem>
 </Tabs>

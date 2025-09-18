@@ -13,14 +13,14 @@ import TabItem from '@theme/TabItem';
 Make sure you have [installed the tooling](./setup.md) and that you are in the working directory, and then run:
 
 <Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
-  ```bash
-  cargo contract new flipper
-  ```
-  </TabItem>
-  <TabItem value="pop" label="Pop">
+  <TabItem value="pop" label="Pop" default>
   ```bash
   pop new contract
+  ```
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+  ```bash
+  cargo contract new flipper
   ```
   </TabItem>
 </Tabs>
