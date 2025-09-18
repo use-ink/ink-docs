@@ -120,19 +120,12 @@ module.exports = {
         ]
       },
       "integrations-and-sdks/other-languages",
-      {
-        "type": "category",
-        "label": "Ethereum Compatibility",
-        "items": [
-          "integrations-and-sdks/ethereum-compatibility/overview",
-        ]
-      }
+      "integrations-and-sdks/ethereum-compatibility",
     ],
     "Technical Background": [
       "background/polkadot-sdk",
       "background/why-rust",
       "background/why-riscv",
-      "background/solidity-metamask-compat",
       "background/ink-vs-solidity",
       "background/ink-vs-cosmwasm",
       "background/contracts-vs-parachains",

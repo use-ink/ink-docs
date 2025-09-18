@@ -33,8 +33,8 @@ Understand how to efficiently store and manage data in your contracts, from simp
 ### **[Linter](../linter/overview.md)**
 Utilize ink!'s built-in security linter to identify common smart contract vulnerabilities and ensure your code follows best practices.
 
-### **[Frontend Development](../integrations-and-sdks/overview.md)**
-Connect your contracts to web applications using TypeScript/JavaScript libraries, React hooks, and various SDK options for building complete dApps.
+### **[Integrations and SDKs](../integrations-and-sdks/overview.md)**
+Connect your contracts to web applications using TypeScript/JavaScript libraries, React hooks, Solidity Tooling, and various SDK options for building complete dApps.
 
 ### **[Technical Background](../background/polkadot-sdk.md)**
 Understand the deeper technical aspects including why Rust and RISC-V were chosen, how ink! compares to other smart contract languages, and when to choose smart contracts vs. parachains.

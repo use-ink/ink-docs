@@ -59,4 +59,4 @@ and event argument types can be mapped to equivalent Solidity ABI types
 [selector-attribute]: ../../macros-attributes/selector.md
 [default-attribute]: ../../macros-attributes/default.md
 [contract-refs]: ../cross-contract-calling.md#contract-references
-[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+[sol-type-mapping]: ../../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping

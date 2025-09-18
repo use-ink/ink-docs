@@ -53,4 +53,4 @@ handling Solidity ABI encoded [revert error data][sol-revert].
 :::
 
 [sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
-[sol-result]: ../background/solidity-metamask-compat.md#handling-the-resultt-e-type
+[sol-result]: ../integrations-and-sdks/ethereum-compatibility.md#handling-the-resultt-e-type
