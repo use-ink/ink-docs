@@ -52,38 +52,50 @@ are emitted if they want clients to be able to pick up on them.
 
 ![Contract execution via transaction](/img/events-revive.svg)
 
-## Using the Terminal
-
 When you deployed your contract you received the contract address. Use this to interact with the contract.
 ```bash
 Contract Address: 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
 ```
 
-### 1. `get()` function
+Choose your preferred method to call your contract:
 
 <Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
-  ```bash
-  cargo contract call 
-    --contract <insert-contract-address> 
-    --message get 
-    --suri //Alice
-  ```
-  </TabItem>
-  <TabItem value="pop" label="Pop">
+  <TabItem value="pop" label="Pop" default>
+  Pop CLI provides a simple way to interact with your deployed contracts.
+
+  ### Read contract state (`get()` function)
+
   ```bash
   pop call contract 
     --contract <insert-contract-address> 
     --message get 
     --suri //Alice
   ```
+
+  ### Modify contract state (`flip()` function)
+
+  ```bash
+  pop call contract 
+    --contract <insert-contract-address>
+    --message flip
+    --execute
+    --suri //Alice
+  ```
+
+  For more detailed information about Pop CLI contract interaction, see the [Pop CLI call guide](https://learn.onpop.io/contracts/guides/call-your-contract).
   </TabItem>
-</Tabs>
+  <TabItem value="cargo-contract" label="cargo-contract">
+  ### Read contract state (`get()` function)
 
-### 2. `flip()` function
+  ```bash
+  cargo contract call 
+    --contract <insert-contract-address> 
+    --message get 
+    --suri //Alice
+  ```
 
-<Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
+  ### Modify contract state (`flip()` function)
+
   ```bash
   cargo contract call 
     --contract <insert-contract-address>
@@ -92,45 +104,31 @@ Contract Address: 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
     --suri //Alice
   ```
   </TabItem>
-  <TabItem value="pop" label="Pop">
-  ```bash
-  pop call contract 
-    --contract <insert-contract-address>
-    --message flip
-    --execute
-    --suri //Alice
-  ```
+  <TabItem value="contracts-ui" label="Contracts UI">
+  Go to https://ui.use.ink/
+
+  ### Read contract state (`get()` function)
+
+  We set the initial value of the Flipper contract
+  `value` to `false` when we instantiated the contract. Let's check that this is the case.
+
+  In the **Message to Send** section, select the "**get(): bool**" message and accept the default
+  values for the other options.
+
+  Press **"Read"** and confirm that it returns the value `false`:
+
+  ![An image of Flipper RPC call with false](/img/contracts-ui-4.png)
+
+  ### Modify contract state (`flip()` function)
+
+  So let's make the value turn `true` now!
+
+  The alternative message to send with the UI is `flip()`. Again, accept the default values for the other options and click **Call contract**
+
+  ![An image of a Flipper transaction](/img/contracts-ui-5.png)
+
+  If the transaction was successful, we should then be able to go back to the `get()` function and see our updated storage:
+
+  ![An image of Flipper RPC call with true](/img/contracts-ui-6.png)
   </TabItem>
 </Tabs>
-
-:::tip
-For more info about interacting with your smart contract using the Pop CLI, [check this out](https://learn.onpop.io/contracts/guides/call-your-contract)!
-:::
-
-## Using the Contracts UI
-
-Go to https://ui.use.ink/
-
-### 1. `get()` function
-
-We set the initial value of the Flipper contract
-`value` to `false` when we instantiated the contract. Let's check that this is the case.
-
-In the **Message to Send** section, select the "**get(): bool**" message and accept the default
-values for the other options.
-
-Press **"Read"** and confirm that it returns the value `false`:
-
-![An image of Flipper RPC call with false](/img/contracts-ui-4.png)
-
-### 2. `flip()` function
-
-So let's make the value turn `true` now!
-
-The alternative message to send with the UI is `flip()`. Again, accept the default values for the other options and click **Call contract**
-
-![An image of a Flipper transaction](/img/contracts-ui-5.png)
-
-If the transaction was successful, we should then be able to go back to the `get()` function and see our updated storage:
-
-![An image of Flipper RPC call with true](/img/contracts-ui-6.png)
