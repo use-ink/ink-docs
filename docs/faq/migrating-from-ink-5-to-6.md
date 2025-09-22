@@ -38,14 +38,7 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## Compatibility
 
-- **Rust**: >= 1.88
-- **cargo-contract**: >= v6.0.0-alpha.3
- 
-  ```bash
-  cargo install --force --locked --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.3
-  ```
-- **`polkadot-sdk`**: [this branch](https://github.com/use-ink/polkadot-sdk/tree/pallet-revive-with-system-and-storage-precompiles)
-- **ink-node**: >= v0.45.1
+For the latest compatibility requirements, see the [setup instructions](/docs/v6/getting-started/setup).
 
 ### How do I find out if a chain is compatible with ink! 6.0?
 
