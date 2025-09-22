@@ -15,14 +15,14 @@ import TabItem from '@theme/TabItem';
 Run the following command in your `flipper` directory to compile your smart contract:
 
 <Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
-  ```bash
-  cargo contract build
-  ```
-  </TabItem>
-  <TabItem value="pop" label="Pop">
+  <TabItem value="pop" label="Pop" default>
   ```bash
   pop build
+  ```
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+  ```bash
+  cargo contract build
   ```
   </TabItem>
 </Tabs>
@@ -134,14 +134,14 @@ For contracts that are supposed to run in production you should always build the
 contract with `--release`:
 
 <Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
-  ```bash
-  cargo contract build --release
-  ```
-  </TabItem>
-  <TabItem value="pop" label="Pop">
+  <TabItem value="pop" label="Pop" default>
   ```bash
   pop build --release
+  ```
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+  ```bash
+  cargo contract build --release
   ```
   </TabItem>
 </Tabs>
@@ -158,14 +158,14 @@ the `--release` flag has to be passed explicitly to `cargo build`.
 If you created a new project using a template, you can find at the bottom of the lib.rs simple test cases which verify the functionality of the contract. We can quickly test this code is functioning as expected:
 
 <Tabs>
-  <TabItem value="cargo-contract" label="cargo-contract" default>
-  ```bash
-  cargo contract test
-  ```
-  </TabItem>
-  <TabItem value="pop" label="Pop">
+  <TabItem value="pop" label="Pop" default>
   ```bash
   pop test
+  ```
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+  ```bash
+  cargo contract test
   ```
   </TabItem>
 </Tabs>
