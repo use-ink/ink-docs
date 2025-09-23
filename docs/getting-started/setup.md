@@ -89,7 +89,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
        - **Automated setup**: Handles all required installations and dependencies for you
        - **Contract templates**: Access to a range of pre-built contract templates
        - **Interactive UI**: Deploy and interact with contracts through an interactive command-line interface
-       - **Built-in ink-node**: Automatically manages the ink-node without manual configuration
+       - **Built-in `ink-node`**: Automatically manages the `ink-node` without manual configuration
        - **Easy local network setup**: Quickly spin up local development networks
        - **Wallet integration**: Seamless wallet connection and management
     </TabItem>
