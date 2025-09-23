@@ -85,7 +85,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
        cargo install --git https://github.com/r0gue-io/pop-cli.git --branch  v6.0.0-alpha.3 --no-default-features --locked -F polkavm-contracts,chain,telemetry
        ```
 
-       **Pop CLI advantages over cargo-contract:**
+       **Pop CLI advantages over `cargo-contract`:**
        - **Automated setup**: Handles all required installations and dependencies for you
        - **Contract templates**: Access to a range of pre-built contract templates
        - **Interactive UI**: Deploy and interact with contracts through an interactive command-line interface
