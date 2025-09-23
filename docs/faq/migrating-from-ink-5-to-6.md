@@ -31,7 +31,8 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## Compatibility
 
-For the latest compatibility requirements, see the [setup instructions](/docs/v6/getting-started/setup).
+- **`polkadot-sdk`**: [this branch](https://github.com/use-ink/polkadot-sdk/tree/pallet-revive-with-system-and-storage-precompiles)
+- For the latest compatibility requirements of Rust, `cargo-contract` and the `ink-node`, see the [setup instructions](/docs/v6/getting-started/setup).
 
 ### How do I find out if a chain is compatible with ink! 6.0?
 
