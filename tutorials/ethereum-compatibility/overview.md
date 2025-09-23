@@ -18,18 +18,8 @@ This section provides step-by-step guides for:
 3. **[Hardhat Deployment](./hardhat-deployment.md)**: Deploy and interact with ink! contracts using Hardhat
 4. **[Wagmi Integration](./wagmi-integration.md)**: Build frontend dApps using Wagmi and React
 
-## Important Considerations
-
 :::caution Known Limitations
 The Rust/ink! to Solidity ABI type mapping is still a work in progress. Some limitations are known.
 
-To ensure compatibility with the latest updates:
-- Install the latest `cargo-contract` from GitHub:
-```bash
-cargo install --force --tag v6.0.0-alpha.2 --git https://github.com/use-ink/cargo-contract
-```
-- Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
-```toml
-ink = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
-```
+To ensure compatibility with the latest updates, follow the [setup instructions](/docs/v6/getting-started/setup) to install the required tools and dependencies.
 :::
