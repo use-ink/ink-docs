@@ -2413,7 +2413,7 @@ Supporting the Solidity metadata format allows developers to use Solidity tools
 [Solidity ABI compatible ink! contracts][sol-compat].
 
 So developers have a choice which metadata they want to generate for a contract.
-They can decide when using the `--metadata` flag with `ink` or `solidity.
+They can decide when using the `--metadata` flag with `ink` or `solidity`.
 
 Generating Solidity metadata is only possible if all constructor and message 
 argument and return types, and event argument types can be mapped to 
