@@ -9,7 +9,9 @@ sidebar_position: 1
 
 In this tutorial, you'll learn how to build a frontend interface that interacts with an ERC20 smart contract written in ink! on a Substrate-based chain. You'll start from the [Inkathon](https://github.com/scio-labs/inkathon) boilerplate, remove the default Flipper contract, and integrate a new ERC20 contract. 
 
-ink!athon is a starter kit for full-stack dApp development with ink! smart contracts and a React-based frontend in one place. Under the hood, it leverages the power of the [PAPI ink-sdk](https://papi.how/sdks/ink-sdk), [ReactiveDOT](https://reactivedot.dev/react/guides/smart-contract), and other developer tools to simplify contract interaction.
+ink!athon is a starter kit for full-stack dApp development with ink! smart contracts and a React-based frontend in one place. Under the hood, it leverages the power of the [PAPI ink-sdk](https://papi.how/sdks/ink-sdk), [ReactiveDOT](https://reactivedot.dev/react/smart-contract/ink), and other developer tools to simplify contract interaction.
+
+
 
 ### Prerequisites
 
