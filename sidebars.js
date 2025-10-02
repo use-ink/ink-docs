@@ -76,9 +76,11 @@ module.exports = {
       "macros-attributes/anonymous",
       "macros-attributes/constructor",
       "macros-attributes/default",
+      "macros-attributes/error",
       "macros-attributes/event",
       "macros-attributes/implementation",
       "macros-attributes/message",
+      "macros-attributes/name",
       "macros-attributes/namespace",
       "macros-attributes/payable",
       "macros-attributes/selector",
@@ -118,19 +120,12 @@ module.exports = {
         ]
       },
       "integrations-and-sdks/other-languages",
-      {
-        "type": "category",
-        "label": "Ethereum Compatibility",
-        "items": [
-          "integrations-and-sdks/ethereum-compatibility/overview",
-        ]
-      }
+      "integrations-and-sdks/ethereum-compatibility",
     ],
     "Technical Background": [
       "background/polkadot-sdk",
       "background/why-rust",
       "background/why-riscv",
-      "background/solidity-metamask-compat",
       "background/ink-vs-solidity",
       "background/ink-vs-cosmwasm",
       "background/contracts-vs-parachains",

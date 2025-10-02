@@ -9,19 +9,7 @@ To make your ink! contract compatible with Ethereum tooling, you need to configu
 
 ## Prerequisites
 
-Before starting, ensure you have the latest tools installed:
-
-:::caution Latest Tools Required
-To ensure compatibility with the latest updates:
-- Install the latest `cargo-contract` from GitHub:
-```bash
-cargo install --force --tag v6.0.0-alpha.2 --git https://github.com/use-ink/cargo-contract
-```
-- Import `ink!` from the latest GitHub branch in your `Cargo.toml`:
-```toml
-ink = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-alpha.1", default-features = false, features = ["unstable-hostfn"] }
-```
-:::
+Before starting, ensure you have the latest tools installed by following the [setup instructions](/docs/v6/getting-started/setup).
 
 ## Create and Configure Your Contract
 

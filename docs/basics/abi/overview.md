@@ -60,4 +60,4 @@ Your contract sizes will get larger if you support both the ink! and Solidity AB
 
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
 [ethers-js]: https://docs.ethers.org/
-[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+[sol-type-mapping]: ../../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping

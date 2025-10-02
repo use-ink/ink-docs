@@ -29,23 +29,10 @@ If you have an existing contract on-chain you might not be able to just
 upgrade the code on-chain, you possibly also have to migrate your storage data.
 :::
 
-## How to upgrade
-
-- Change the dependency versions of `ink` and `ink_e2e` in your contracts `Cargo.toml` to `6.0.0-alpha`.
-- Update your local `cargo-contract` installation to v6.0.0-alpha.
-- Use [`ink-node`](https://github.com/use-ink/ink-node) for local development instead of `substrate-contracts-node`.
-- Read through this page.
-
 ## Compatibility
 
-- **Rust**: >= 1.88
-- **cargo-contract**: >= v6.0.0-alpha.3
- 
-  ```bash
-  cargo install --force --locked --git https://github.com/use-ink/cargo-contract --tag v6.0.0-alpha.3
-  ```
 - **`polkadot-sdk`**: [this branch](https://github.com/use-ink/polkadot-sdk/tree/pallet-revive-with-system-and-storage-precompiles)
-- **ink-node**: >= v0.45.1
+- For the latest compatibility requirements of Rust, `cargo-contract` and the `ink-node`, see the [setup instructions](/docs/v6/getting-started/setup).
 
 ### How do I find out if a chain is compatible with ink! 6.0?
 
@@ -303,7 +290,7 @@ will get larger. You can learn more about [supported ABI modes here][abi-declara
 
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
 [abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
-[sol-type-mapping]: ../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+[sol-type-mapping]: ../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping
 
 ### Cross-contract calling Solidity contracts
 `CallBuilder` now allows you to call contracts that are Solidity ABI encoded.

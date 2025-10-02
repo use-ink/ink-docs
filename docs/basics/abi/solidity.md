@@ -44,4 +44,4 @@ _Using the Solidity ABI does not imply switching to a different storage layout!_
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
 [selector-attribute]: ../../macros-attributes/selector.md
 [sol-abi-codec]: https://docs.soliditylang.org/en/latest/abi-spec.html#formal-specification-of-the-encoding
-[sol-type-mapping]: ../../background/solidity-metamask-compat.md#rustink-to-solidity-abi-type-mapping
+[sol-type-mapping]: ../../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping

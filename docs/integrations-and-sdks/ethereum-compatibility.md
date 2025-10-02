@@ -1,5 +1,5 @@
 ---
-title: Solidity & MetaMask Compatibility
+title: Ethereum Compatibility
 hide_title: true
 slug: /background/solidity-metamask-compatibility
 ---
@@ -18,7 +18,7 @@ slug: /background/solidity-metamask-compatibility
 
 ![Metadata Title Picture](/img/title/solidity.svg)
 
-# Solidity & MetaMask Compatibility
+First, read our blogpost [ink! speaks Solidity on PolkaVM](https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3).
 
 With ink! v6, we have introduced an `abi` field in a custom `ink-lang` table 
 in the [`package.metadata` table][package-metadata] of a contract's manifest
@@ -159,13 +159,13 @@ all fields (if any) implement `SolEncode` and `SolDecode`.
 For convenience, the [`#[ink::error]`][ink-error] attribute macro is also provided for automatically deriving the following traits:
 - [`SolErrorEncode`][sol-error-encode]: for encoding a custom type as revert error data
 - [`SolErrorDecode`][sol-error-decode]: for decoding revert error data into a custom type
-- `SolErrorMetadata`: for generating [Solidity ABI metadata][sol-abi-json]
+- `SolErrorMetadata`: for generating [Solidity ABI metadata][sol-abi-json] (gated behind the `std` feature)
 
 [sol-error-encode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorEncode.html
 [sol-error-decode]: https://use-ink.github.io/ink/ink/sol/trait.SolErrorDecode.html
 [sol-revert]: https://docs.soliditylang.org/en/latest/control-structures.html#revert
 [sol-custom-error]: https://soliditylang.org/blog/2021/04/21/custom-errors/
-[ink-error]: https://use-ink.github.io/ink/ink/attr.error.html
+[ink-error]: ../macros-attributes/error.md
 [sol-abi-json]: https://docs.soliditylang.org/en/latest/abi-spec.html#json
 
 ```rust
@@ -290,38 +290,8 @@ traits for local types.
 
 [rust-coherence]: https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence
 
-## MetaMask
-
-You can use [MetaMask](https://metamask.io/) to interact with your `ink!` smart contract via the Solidity ABI.
-
-To set up your wallet and connect to the appropriate network, follow this quick start guide: [Connect MetaMask to Polkadot Hub Testnet](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/wallets/#metamask)
-
-:::info Network Details – Polkadot Hub Testnet
-*Network name:* Polkadot Hub TestNet
-
-*Currency symbol:* PAS
-
-*Chain ID:* 420420422
-
-*RPC URL:* https://testnet-passet-hub-eth-rpc.polkadot.io
-
-*Block explorer URL:* https://blockscout-passet-hub.parity-testnet.parity.io/
-:::
-
-For step-by-step manual configuration instructions, see this guide: [Connect MetaMask to Polkadot Hub Testnet](https://docs.polkadot.com/develop/smart-contracts/wallets/#metamask).
-
 ## Solidity Tooling
 
 You can deploy and interact with `ink!` smart contracts using popular Solidity tools like Hardhat and Foundry thanks to the Solidity-compatible ABI output.
 
-Full Tutorial: [Use Solidity Tooling with ink! Contracts](../integrations-and-sdks/ethereum-compatibility/overview.md)
-
-This guide walks through compiling an `ink!` contract with Solidity metadata, configuring Hardhat, deploying to the Polkadot Hub Testnet, and interacting with the contract using Ethers.js.
-
-## Block explorers
-
-PolkaVM smart contracts are compatible with Ethereum-style block explorers such as [BlockScout](https://www.blockscout.com/), which is already integrated with the Polkadot Hub Testnet.
-
-- [Polkadot Hub Testnet BlockScout](https://blockscout.testnet.polkadot.io)
-
-For additional information and instructions, check out: [Polkadot Smart Contract Block Explorers](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/block-explorers/)
+Full Tutorial: [Use Solidity Tooling with ink! Contracts](/tutorials/ethereum-compatibility/overview)
