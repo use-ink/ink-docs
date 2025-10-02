@@ -91,7 +91,7 @@ mod tests {
    /// blockchain state. You can use it to deploy contracts, call their methods, and more.
     #[drink::test]
     fn deploy_and_call_a_contract(mut session: Session) -> Result<(), Box<dyn Error>> {
-        let result: bool = sesison
+        let result: bool = session
             .deploy_bundle_and(BundleProvider::local(), "new", &["true"], NO_SALT, NO_ENDOWMENT)?
             .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
             .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
