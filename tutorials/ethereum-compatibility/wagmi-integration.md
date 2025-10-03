@@ -281,4 +281,4 @@ With Wagmi integration complete, you can:
 
 Solidity ABI compatibility allows you to use a wide range of Ethereum-compatible libraries beyond Wagmi.
 
-📚 Learn more in [Explore the key libraries for interacting with smart contracts on Polkadot-based networks](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/libraries/)
+📚 Learn more in [Explore the key libraries for interacting with smart contracts on Polkadot-based networks](https://docs.polkadot.com/develop/smart-contracts/libraries/)
