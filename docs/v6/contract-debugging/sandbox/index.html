@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.dc7a1013.css">
-<script src="/assets/js/runtime~main.f7842806.js" defer="defer"></script>
-<script src="/assets/js/main.827664ad.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.6529609a.js" defer="defer"></script>
+<script src="/assets/js/main.121c3bc4.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -29,7 +29,7 @@ The End-to-End tests spawn a local node process in the backend
 and submit transactions against it, returning the output to you.</p>
 </li>
 <li>
-<p><code>#[ink_e2e::test(backend(runtime_only))]</code>
+<p><code>#[ink_sandbox::test(backend(runtime_only(sandbox = sandbox_runtime::ContractCallerSandbox,client  = ink_sandbox::SandboxClient)))]</code>
 With these settings, the End-to-End tests will be executed in
 a sandbox. The sandbox contains the <code>pallet-revive</code>, but anything
 that the node would do is mocked and can be influenced (block numbers, etc.).</p>

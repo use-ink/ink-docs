@@ -6097,7 +6097,7 @@ two means of End-to-End testing:
   The End-to-End tests spawn a local node process in the backend
   and submit transactions against it, returning the output to you.
 
-* `#[ink_e2e::test(backend(runtime_only))]` 
+* `#[ink_sandbox::test(backend(runtime_only(sandbox = sandbox_runtime::ContractCallerSandbox,client  = ink_sandbox::SandboxClient)))]` 
   With these settings, the End-to-End tests will be executed in
   a sandbox. The sandbox contains the `pallet-revive`, but anything
   that the node would do is mocked and can be influenced (block numbers, etc.).
@@ -11376,9 +11376,18 @@ You can check some helpful and verbose examples [here](https://github.com/inkdev
 ### As an alternative backend to ink!'s E2E testing framework
 
 DRink! is already integrated with the ink! framework and can be used as a drop-in replacement for the standard E2E testing environment.
-Just use corresponding argument in the test macro:
+
+Import `ink_sandbox` in your Cargo.toml:
+```toml
+ink_sandbox = { git = "https://github.com/use-ink/ink", tag = "v6.0.0-alpha.4" }
+```
+
+And just use corresponding argument in the test macro:
 ```rust
-#[ink_e2e::test(backend(runtime_only))]
+#[ink_sandbox::test(backend(runtime_only(
+    sandbox = sandbox_runtime::ContractCallerSandbox,
+    client  = ink_sandbox::SandboxClient
+)))]
 ```
 to your test function and you have just switched from E2E testcase to DRink!-based one, that doesn't use any running node in the background!
 
