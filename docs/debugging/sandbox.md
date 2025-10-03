@@ -15,7 +15,7 @@ two means of End-to-End testing:
   The End-to-End tests spawn a local node process in the backend
   and submit transactions against it, returning the output to you.
 
-* `#[ink_e2e::test(backend(runtime_only))]` 
+* `#[ink_sandbox::test(backend(runtime_only(sandbox = sandbox_runtime::ContractCallerSandbox,client  = ink_sandbox::SandboxClient)))]` 
   With these settings, the End-to-End tests will be executed in
   a sandbox. The sandbox contains the `pallet-revive`, but anything
   that the node would do is mocked and can be influenced (block numbers, etc.).
