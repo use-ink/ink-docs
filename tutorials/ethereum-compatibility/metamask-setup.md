@@ -39,7 +39,7 @@ Use these network details to configure MetaMask for Polkadot Hub Testnet:
 
 ## Detailed Setup Guide
 
-For more comprehensive configuration steps including other networks and detailed troubleshooting, see the complete guide: [Connect to Polkadot - Full Guide](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/connect-to-polkadot/)
+For more comprehensive configuration steps including other networks and detailed troubleshooting, see the complete guide: [Connect to Polkadot - Full Guide](https://docs.polkadot.com/develop/smart-contracts/connect-to-polkadot/)
 
 ## Getting Test Tokens
 
