@@ -13,6 +13,17 @@ The interface is defined using a trait, and the macro generates a native Rust ty
 (a contract reference) that implements this trait, so it can be used in any Rust
 context that expects types.
 
+:::note
+A key difference between an `#[ink::contract_ref]` and [`#[ink::trait_definition]`][trait-def]
+is that a `#[ink::contract_ref]` dynamically declares the interface of
+an on-chain/"callee" contract with a possibly different ABI from the root/"caller" contract,
+while a [`#[ink::trait_definition]`][trait-def] is an interface that defines shared behavior
+to be implemented (or reused/inherited) by the root contract, where the ABI is
+inferred from the root contract.
+:::
+
+[trait-def]: ../basics/trait-definitions.md
+
 ## Example
 
 ### Definition
