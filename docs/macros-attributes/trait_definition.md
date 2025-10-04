@@ -1,6 +1,6 @@
 ---
 title: "#[ink::trait_definition]"
-slug: /macros-attributes/trait-definition
+slug: /macros-attributes/trait_definition
 hide_title: true
 ---
 
