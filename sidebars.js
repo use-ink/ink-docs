@@ -73,6 +73,7 @@ module.exports = {
     "Macros & Attributes": [
       "macros-attributes/overview",
       "macros-attributes/contract",
+      "macros-attributes/contract_ref",
       "macros-attributes/anonymous",
       "macros-attributes/constructor",
       "macros-attributes/default",

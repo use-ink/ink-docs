@@ -255,6 +255,14 @@ and have your contract invoke either a cross-contract call or a delegate call in
 
 This is also the migration path recommended for Chain Extensions.
 
+### Renamed `ink::contract_ref!` to `ink::contract_ref_from_path!`
+
+This was necessary because we introduced a new [`#[ink::contract_ref]` attribute][contract-ref-attr].
+The PR [#2648](https://github.com/use-ink/ink/pull/2648) contains more information
+about the motivation and benefits of this change.
+
+[contract-ref-attr]: ../macros-attributes/contract_ref.md
+
 ## Interesting New Features
 
 ### Solidity ABI compatible ink! contracts
