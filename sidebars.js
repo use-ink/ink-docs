@@ -86,6 +86,7 @@ module.exports = {
       "macros-attributes/selector",
       "macros-attributes/storage",
       "macros-attributes/topic",
+      "macros-attributes/trait-definition",
     ],
     "Storage & Data Structures": [
       "datastructures/overview",
