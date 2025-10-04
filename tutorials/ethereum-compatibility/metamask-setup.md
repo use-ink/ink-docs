@@ -9,7 +9,7 @@ You can use [MetaMask](https://metamask.io/) to interact with your ink! smart co
 
 ## Quick Setup
 
-To set up your wallet and connect to the appropriate network, follow this quick start guide: [Connect MetaMask to Polkadot Hub Testnet](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/wallets/#metamask)
+To set up your wallet and connect to the appropriate network, follow this quick start guide: [Connect MetaMask to Polkadot Hub Testnet](https://docs.polkadot.com/develop/smart-contracts/wallets/#metamask)
 
 ## Network Configuration
 
@@ -39,7 +39,7 @@ Use these network details to configure MetaMask for Polkadot Hub Testnet:
 
 ## Detailed Setup Guide
 
-For more comprehensive configuration steps including other networks and detailed troubleshooting, see the complete guide: [Connect to Polkadot - Full Guide](https://papermoonio.github.io/polkadot-mkdocs/develop/smart-contracts/connect-to-polkadot/)
+For more comprehensive configuration steps including other networks and detailed troubleshooting, see the complete guide: [Connect to Polkadot - Full Guide](https://docs.polkadot.com/develop/smart-contracts/connect-to-polkadot/)
 
 ## Getting Test Tokens
 
