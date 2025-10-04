@@ -20,6 +20,20 @@ You can learn more about XCM in the [Polkadot Wiki](https://wiki.polkadot.networ
 As of ink! v5.1.0, two new functions, [`xcm_execute`](https://use-ink.github.io/ink/ink_env/fn.xcm_execute.html) and [`xcm_send`](https://use-ink.github.io/ink/ink_env/fn.xcm_send.html), have been introduced.
 These functions enable sending and executing XCM from within ink! contracts.
 
+:::note
+In ink! v6, you need to enable the `xcm` feature in your contract's `Cargo.toml` to use the XCM functions.
+
+```toml
+[dependencies]
+ink = {
+  git = "https://github.com/use-ink/ink.git",
+  tag = "v6.0.0-alpha.4",
+  default-features = false,
+  features = ["xcm", "unstable-hostfn"]
+}
+```
+:::
+
 :::info
 In versions of ink! prior to v5.1.0, the [call_runtime](https://docs.rs/ink/5.1.0/ink/struct.EnvAccess.html#method.call_runtime) host function or a custom chain extension can be used to send or execute an XCM from ink! contracts.
 :::
