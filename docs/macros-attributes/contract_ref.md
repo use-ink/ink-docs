@@ -4,7 +4,7 @@ hide_title: true
 slug: /macros-attributes/contract_ref
 ---
 
-![Text/contract Title Picture](/img/title/text/contract.svg)
+![Text/contract_ref Title Picture](/img/title/text/contract_ref.svg)
 
 Defines the interface of a "callee" contract and generates a wrapper type which can be
 used for interacting with the contract.
