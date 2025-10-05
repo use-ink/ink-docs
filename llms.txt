@@ -8685,7 +8685,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
        Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with an enhanced developer experience.
 
        ```bash
-       cargo install --git https://github.com/r0gue-io/pop-cli.git --branch v6.0.0-alpha.4 --no-default-features --locked -F polkavm-contracts,chain,telemetry
+       cargo install --git https://github.com/r0gue-io/pop-cli.git --branch  v6.0.0-alpha.4 --locked
        ```
 
        **Pop CLI advantages over `cargo-contract`:**
