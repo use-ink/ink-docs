@@ -3,6 +3,8 @@ title: 'Building a Crowdfunding dApp with ink! Smart Contracts and PAPI/Reactive
 sidebar_position: 1
 ---
 
+![Frontend Title Picture](/img/title/frontend.svg)
+
 # Building a Crowdfunding dApp with ink! Smart Contracts and PAPI/ReactiveDOT
 
 Hey there! Ready to build something awesome? In this tutorial, we'll create a decentralized crowdfunding platform from scratch using ink! smart contracts and a modern React frontend. Think of this as me and you coding together. I'll walk you through each step, explain the important decisions, and make sure you understand both the how and the why.
