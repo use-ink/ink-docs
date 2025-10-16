@@ -56,6 +56,16 @@ docs/
     migrating-from-ink-4-to-5.md
     migrating-from-ink-5-to-6.md
   getting-started/
+    assets/
+      canvas-connect-to-local.png
+      flipper-false.png
+      flipper-instantiate-01.png
+      flipper-instantiate-02.png
+      flipper-instantiate-03.png
+      flipper-instantiate-04.png
+      flipper-true.png
+      send-as-transaction.png
+      start-substrate-node.png
     calling.md
     compiling.md
     creating.md
@@ -9838,11 +9848,11 @@ inferred from the root contract.
 ```rust
 #[ink::contract_ref(abi = "sol")]
 pub trait Erc20 {
-    Returns the total supply of the ERC-20 smart contract.
+    /// Returns the total supply of the ERC-20 smart contract.
     #[ink(message)]
     fn total_supply(&self) -> ink::U256;
 
-    Transfers balance from the caller to the given address.
+    /// Transfers balance from the caller to the given address.
     #[ink(message)]
     fn transfer(&mut self, amount: ink::U256, to: ink::Address) -> bool;
 
