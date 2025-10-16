@@ -31,11 +31,11 @@ inferred from the root contract.
 ```rust
 #[ink::contract_ref(abi = "sol")]
 pub trait Erc20 {
-    Returns the total supply of the ERC-20 smart contract.
+    /// Returns the total supply of the ERC-20 smart contract.
     #[ink(message)]
     fn total_supply(&self) -> ink::U256;
 
-    Transfers balance from the caller to the given address.
+    /// Transfers balance from the caller to the given address.
     #[ink(message)]
     fn transfer(&mut self, amount: ink::U256, to: ink::Address) -> bool;
 
