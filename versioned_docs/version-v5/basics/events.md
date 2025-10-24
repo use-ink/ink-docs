@@ -191,7 +191,7 @@ See this example:
 
 ```rust
 #[ink(constructor)]
-pub fn new(initial_value: Balance) -> Self {
+pub fn new(initial_supply: Balance) -> Self {
     let caller = Self::env().caller();
     let mut balances = HashMap::new();
     balances.insert(caller, initial_supply);
