@@ -1,24 +1,24 @@
 module.exports = {
-  reference: {
-    "Welcome!": [
-      "intro/intro",
-      "intro/sub0-hackathon",
-      "intro/overview",
-      {
-        "type": "category",
-        "label": "Getting started",
-        "items": [
-          "getting-started/setup",
-          "getting-started/creating",
-          "getting-started/compiling",
-          "getting-started/deploying",
-          "getting-started/calling"
-        ]
-      },
-      "intro/tutorials-examples",
-      "intro/where-to-deploy"
-    ],
-    "Basics": [
+  reference: [
+    'intro/intro',
+    {
+      type: "category",
+      label: "Getting started",
+      items: [
+        "getting-started/setup",
+        "getting-started/creating",
+        "getting-started/compiling",
+        "getting-started/testing",
+        "getting-started/deploying",
+        "getting-started/calling",
+        "intro/tutorials-examples",
+        "intro/where-to-deploy"
+      ]
+    },
+    {
+      type: "category",
+      label: "Basics",
+      items: [
       "basics/contract-template",
       "basics/storing-values",
       "basics/reading-values",
@@ -53,15 +53,23 @@ module.exports = {
       "basics/xcm",
       "basics/precompiles",
       "basics/contract-verification"
-    ],
-    "Testing": [
+      ]
+    },
+    {
+      type: "category",
+      label: "Testing",
+      items: [
       "testing/overview",
       "testing/unit-integration",
       "testing/sandbox",
       "testing/e2e",
       // "testing/testing-with-live-state"
-    ],
-    "Debugging": [
+      ]
+    },
+    {
+      type: "category",
+      label: "Debugging",
+      items: [
       "debugging/overview",
       "debugging/events",
       "debugging/return_value",
@@ -70,8 +78,12 @@ module.exports = {
       "debugging/decoding",
       // "debugging/replays",
       "debugging/precompiles"
-    ],
-    "Macros & Attributes": [
+      ]
+    },
+    {
+      type: "category",
+      label: "Macros & Attributes",
+      items: [
       "macros-attributes/overview",
       "macros-attributes/contract",
       "macros-attributes/contract_ref",
@@ -88,17 +100,25 @@ module.exports = {
       "macros-attributes/selector",
       "macros-attributes/storage",
       "macros-attributes/topic",
-      "macros-attributes/trait_definition",
-    ],
-    "Storage & Data Structures": [
+      "macros-attributes/trait_definition"
+      ]
+    },
+    {
+      type: "category",
+      label: "Storage & Data Structures",
+      items: [
       "datastructures/overview",
       "datastructures/storagevec",
       "datastructures/mapping",
       "datastructures/storage-layout",
       "datastructures/custom",
       "datastructures/storage-in-metadata"
-    ],
-    "Linter": [
+      ]
+    },
+    {
+      type: "category",
+      label: "Linter",
+      items: [
       "linter/overview",
       {
         "type": "category",
@@ -111,8 +131,12 @@ module.exports = {
           "linter/rules/non_fallible_api"
         ]
       }
-    ],
-    "Integration & SDKs": [
+      ]
+    },
+    {
+      type: "category",
+      label: "Integration & SDKs",
+      items: [
       "integrations-and-sdks/overview",
       {
         "type": "category",
@@ -123,23 +147,31 @@ module.exports = {
         ]
       },
       "integrations-and-sdks/other-languages",
-      "integrations-and-sdks/ethereum-compatibility",
-    ],
-    "Technical Background": [
+      "integrations-and-sdks/ethereum-compatibility"
+      ]
+    },
+    {
+      type: "category",
+      label: "Technical Background",
+      items: [
       "background/polkadot-sdk",
-      "background/precompiles",
       "background/why-rust",
       "background/why-riscv",
       "background/ink-vs-solidity",
       "background/ink-vs-cosmwasm",
       "background/contracts-vs-parachains",
       "background/migrate-to-parachain"
-    ],
-    "FAQ": [
+      ]
+    },
+    {
+      type: "category",
+      label: "FAQ",
+      items: [
       "faq/faq",
       "faq/migrating-from-ink-5-to-6",
       "faq/migrating-from-ink-4-to-5",
       "faq/migrating-from-ink-3-to-4"
-    ]
-  },
+      ]
+    }
+  ],
 }

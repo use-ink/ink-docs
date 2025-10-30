@@ -9,43 +9,36 @@ import TabItem from '@theme/TabItem';
 
 ![Setup Title Picture](/img/title/setup.svg)
 
-# Setup
-
-On this page we describe the pre-requisites for working with ink!.
-
-:::tip Pro tip
- Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
-:::
-
 ## Rust & Cargo
 
 A pre-requisite for compiling smart contracts is to install a stable Rust 
-version (>= 1.88) and `cargo`. Please see [the official Rust installation guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+version and `cargo`. 
+```
+curl https://sh.rustup.rs -sSf | sh
+```
+
+## CLI tool
 
 <Tabs>
   <TabItem value="pop" label="Pop" default>
-   ## Pop CLI
       Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
 
-      Pop CLI supports ink! v6 through the polkavm-contracts feature flag:
       ```bash
       cargo install --force --locked --version 6.0.0-beta cargo-contract
-      cargo install pop-cli --no-default-features --locked -F polkavm-contracts,parachain,telemetry
+      cargo install --force --locked pop-cli
+      ```
+
+      Then set up your environment:
+      ```
+      pop install
       ```
   </TabItem>
-  <TabItem value="cargo-contract" label="cargo-contract + ink-node">
-      ## cargo-contract
+  <TabItem value="cargo-contract" label="cargo-contract">
 
-      The first tool we will be installing is [`cargo-contract`](https://github.com/use-ink/cargo-contract),
-      it is a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
+      Install [`cargo-contract`](https://github.com/use-ink/cargo-contract), a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
       ```bash
       cargo install --force --locked --tag v6.0.0-beta --git https://github.com/use-ink/cargo-contract
-      ```
-
-      Make sure you have the latest stable version of Rust installed:
-      ```bash
-      rustup update stable
       ```
 
       ## ink-node

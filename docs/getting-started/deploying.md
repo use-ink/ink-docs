@@ -10,53 +10,20 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ![Rocket Title Picture](/img/title/rocket.svg)
 
-Deploying a smart contract is the process of making your contract available on a blockchain so that it can be interacted with by others. In the Polkadot ecosystem, 
-this involves uploading your compiled contract code to a chain that supports smart contracts (i.e. `pallet-revive`), and then creating an instance of your contract.
+# Deploy Your Contract
 
-Smart contract deployment on Polkadot is a little different than on traditional smart contract blockchains. The contract deployment process is split into two steps:
-
-1. Putting your contract code on the blockchain
-2. Creating an instance of your contract
-
-With this pattern, contract code like the ERC20 standard can be put on the blockchain one single time, but instantiated any number of times. No need to continually upload the same source code over and waste space on the blockchain.
-
+Deploying a contract involves uploading your compiled contract code and creating an instance of it on a blockchain. In Polkadot, these are two separate steps: first upload the code, then instantiate it as many times as needed.
 
 <Tabs>
   <TabItem value="pop" label="Pop" default>
-  Pop CLI automatically launches a local ink-node in the background when deploying contracts.
-
-  Deploy your contract with:
+  If not specified Pop CLI automatically launches a local node for you when deploying a contract.
 
   ```bash
-  pop build
-  pop up --suri //Alice --args true
+  pop build --release
+  pop up
   ```
 
-  For more detailed information about Pop CLI deployment options, see the [Pop CLI deployment guide](https://learn.onpop.io/contracts/guides/deploy).
-
-  ### Set up a Local Polkadot Hub Environment
-
-  You can easily launch a full Polkadot Hub setup locally using the [Pop CLI](https://learn.onpop.io/contracts/guides/deploy). This includes a local relay chain and one or more system parachains, allowing for end-to-end smart contract development and testing.
-
-  To spin up the environment with the Paseo relay chain and system chains like `asset-hub` and `passet-hub`, run:
-  ```bash
-    pop up paseo -p asset-hub,passet-hub
-  ```
-  This command will launch:
-
-  - A local Paseo relay chain
-
-  - [Passet Hub](../intro/where-to-deploy.md#passet-hub) as a parachain, connected and ready to deploy smart contracts
-
-  You can also include additional system parachains in your local environment, such as `people` and `pop`, by extending the command:
-  ```bash
-    pop up paseo -p asset-hub,passet-hub,people,pop
-  ```
-
-  Need more options or configuration details? Check out the CLI help:
-  ```bash
-    pop up paseo --help 
-  ```
+  For more deployment options, see the [Pop CLI deployment guide](https://learn.onpop.io/contracts/guides/deploy).
   </TabItem>
   <TabItem value="cargo-contract" label="cargo-contract">
 
@@ -75,7 +42,7 @@ With this pattern, contract code like the ERC20 standard can be put on the block
   Once your node is running, deploy your contract:
 
   ```bash
-  cargo contract build
+  cargo contract build --release
   cargo contract instantiate --suri //Alice --args true
   ```
   </TabItem>
