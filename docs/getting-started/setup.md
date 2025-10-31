@@ -30,7 +30,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
       Install [`cargo-contract`](https://github.com/use-ink/cargo-contract), a CLI tool for setting up and managing ink! smart contracts:
 
       ```bash
-      cargo install --force --locked --tag v6.0.0-alpha.4 --git https://github.com/use-ink/cargo-contract
+      cargo install --force --locked --version 6.0.0-beta cargo-contract 
       ```
 
       Make sure you have the latest stable version of Rust installed:
@@ -82,7 +82,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
        Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with an enhanced developer experience.
 
        ```bash
-       cargo install --git https://github.com/r0gue-io/pop-cli.git --branch  v6.0.0-alpha.4 --locked
+       cargo install --git https://github.com/r0gue-io/pop-cli.git --branch v6.0.0-alpha.4 --locked
        ```
 
        **Pop CLI advantages over `cargo-contract`:**

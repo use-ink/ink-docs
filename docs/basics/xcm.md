@@ -26,16 +26,16 @@ In ink! v6, you need to enable the `xcm` feature in your contract's `Cargo.toml`
 ```toml
 [dependencies]
 ink = {
-  git = "https://github.com/use-ink/ink.git",
-  tag = "v6.0.0-alpha.4",
+  version = "6.0.0-beta",
   default-features = false,
-  features = ["xcm", "unstable-hostfn"]
+  features = ["xcm"]
 }
 ```
 :::
 
 :::info
 In versions of ink! prior to v5.1.0, the [call_runtime](https://docs.rs/ink/5.1.0/ink/struct.EnvAccess.html#method.call_runtime) host function or a custom chain extension can be used to send or execute an XCM from ink! contracts.
+
 :::
 
 ## `xcm_execute`
