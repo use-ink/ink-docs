@@ -35,7 +35,6 @@ ink = {
 
 :::info
 In versions of ink! prior to v5.1.0, the [call_runtime](https://docs.rs/ink/5.1.0/ink/struct.EnvAccess.html#method.call_runtime) host function or a custom chain extension can be used to send or execute an XCM from ink! contracts.
-
 :::
 
 ## `xcm_execute`

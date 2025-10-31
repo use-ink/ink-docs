@@ -30,7 +30,7 @@ version (>= 1.88) and `cargo`. Please see [the official Rust installation guide]
       Install [`cargo-contract`](https://github.com/use-ink/cargo-contract), a CLI tool for setting up and managing ink! smart contracts:
 
       ```bash
-      cargo install --force --locked --version 6.0.0-beta cargo-contract 
+      cargo install --force --locked --version 6.0.0-beta cargo-contract
       ```
 
       Make sure you have the latest stable version of Rust installed:
