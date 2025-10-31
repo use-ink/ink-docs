@@ -31,7 +31,7 @@ upgrade the code on-chain, you possibly also have to migrate your storage data.
 
 ## Compatibility
 
-- **`polkadot-sdk`**: [this branch](https://github.com/use-ink/polkadot-sdk/tree/pallet-revive-with-system-and-storage-precompiles)
+- **`polkadot-sdk`**: [`polkadot-sdk/cbab8ed4be1941420dd25dc81102fb79d8e2a7f0`](https://github.com/paritytech/polkadot-sdk/commit/cbab8ed4be1941420dd25dc81102fb79d8e2a7f0) (Oct 15, 2025)
 - For the latest compatibility requirements of Rust, `cargo-contract` and the `ink-node`, see the [setup instructions](/docs/v6/getting-started/setup).
 
 ### How do I find out if a chain is compatible with ink! 6.0?
@@ -160,7 +160,7 @@ if the chain that the pallet is running on has enabled the feature
 `pallet-revive/unstable-hostfn`.
 This feature is not enabled on Kusama or Westend!
 
-It is enabled for the `ink-node` version that we linked above.
+It is enabled for the `ink-node` version that we linked above, and on Paseo Passet Hub.
 
 ### New debugging workflow
 Previously `pallet-contracts` returned a `debug_message` field with contract
@@ -262,6 +262,35 @@ The PR [#2648](https://github.com/use-ink/ink/pull/2648) contains more informati
 about the motivation and benefits of this change.
 
 [contract-ref-attr]: ../macros-attributes/contract_ref.md
+
+### Sandbox was moved out of `ink_e2e`
+
+We moved the sandbox testing environment to a separate crate.
+
+It changes the current behaviour from:
+```toml
+[dev-dependencies]
+ink_e2e = { version = "…", feature = "sandbox" }
+```
+to
+
+```toml
+[dev-dependencies]
+ink_e2e = { version = "6.0.0-beta" }
+ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta" }
+```
+
+In the tests, you need to apply this change when using `sandbox`. Instead of:
+```rust
+#[ink_e2e::test(backend(runtime_only(sandbox = sandbox_runtime::ContractCallerSandbox)))]
+```
+Change to:
+```rust
+#[ink_sandbox::test(backend(runtime_only(
+    sandbox = sandbox_runtime::ContractCallerSandbox,
+    client  = ink_sandbox::SandboxClient
+)))]
+```
 
 ## Interesting New Features
 
