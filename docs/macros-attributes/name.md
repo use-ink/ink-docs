@@ -38,7 +38,7 @@ i.e. "ink" or "all" ABI mode).
 ## Examples
 
 ```rust
-#[ink(message, name = "myConstructor")]
+#[ink(constructor, name = "myConstructor")]
 fn my_constructor(&self) {}
 
 #[ink(message, name = "myMessage")]
