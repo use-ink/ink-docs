@@ -24,7 +24,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
           <div className="md:max-w-md lg:pt-6">
             <hgroup className="md:mb-10">
               <h2 className="mb-2 text-[18px] leading-[28px] font-[600] font-montserrat">
-                <span className="">ink!ubator provides access to core developers and a wealth of resources.</span>
+                <span className="">ink!ubator is a funding program, it provides access to core developers and a wealth of resources.</span>
               </h2>
               <h3 className="text-[18px] leading-[28px] font-[600] font-montserrat">
                 <p>The first cohort has successfully concluded, and applications for the next cohort are now open.</p>

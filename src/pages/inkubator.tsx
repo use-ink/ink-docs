@@ -4,7 +4,7 @@ import Head from '@docusaurus/Head'
 
 const TITLE = 'ink!ubator | Take your ink! project to new depths.'
 const DESCRIPTION =
-  'ink!ubator provides access to core developers and a wealth of resources.<br/>' +
+  'ink!ubator is a funding program, it provides access to core developers and a wealth of resources.<br/>' +
   'The first cohort has successfully concluded, and applications for the next cohort are now open.'
 
 const Inkubator = () => (
