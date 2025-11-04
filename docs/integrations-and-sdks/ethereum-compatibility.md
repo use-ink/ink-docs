@@ -18,7 +18,11 @@ slug: /background/solidity-metamask-compatibility
 
 ![Metadata Title Picture](/img/title/solidity.svg)
 
-First, read our blogpost [ink! speaks Solidity on PolkaVM](https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3).
+:::note
+For a gentle introduction, read our blogpost [ink! speaks Solidity on PolkaVM][blog-post].
+:::
+
+[blog-post]: https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3
 
 With ink! v6, we have introduced an `abi` field in a custom `ink-lang` table 
 in the [`package.metadata` table][package-metadata] of a contract's manifest
