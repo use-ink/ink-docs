@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.dc7a1013.css">
-<script src="/assets/js/runtime~main.6cd0a3ee.js" defer="defer"></script>
-<script src="/assets/js/main.0e146d8f.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9b9cb052.js" defer="defer"></script>
+<script src="/assets/js/main.c30ac9e8.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -170,7 +170,7 @@ they have to be <code>&amp;mut self</code> now.</p>
 <p>The <code>pallet-revive</code> no longer provides a host function to call into the runtime.
 Parity removed this feature as the runtime can change and changes could potentially
 break already deployed contracts.</p>
-<p>The way to go instead would be to create <a href="/docs/v6/basics/precompiles">a precompile contract</a>)
+<p>The way to go instead would be to create <a href="/docs/v6/basics/precompiles">a precompile contract</a>
 and have your contract invoke either a cross-contract call or a delegate call into that one.</p>
 <p>This is also the migration path recommended for Chain Extensions.</p>
 <h3 class="anchor anchorWithStickyNavbar_mSTA" id="renamed-inkcontract_ref-to-inkcontract_ref_from_path">Renamed <code>ink::contract_ref!</code> to <code>ink::contract_ref_from_path!</code><a href="#renamed-inkcontract_ref-to-inkcontract_ref_from_path" class="hash-link" aria-label="Direct link to renamed-inkcontract_ref-to-inkcontract_ref_from_path" title="Direct link to renamed-inkcontract_ref-to-inkcontract_ref_from_path">​</a></h3>
