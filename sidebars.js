@@ -2,6 +2,7 @@ module.exports = {
   reference: {
     "Welcome!": [
       "intro/intro",
+      "intro/sub0-hackathon",
       "intro/overview",
       {
         "type": "category",
