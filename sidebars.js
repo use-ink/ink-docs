@@ -126,6 +126,7 @@ module.exports = {
     ],
     "Technical Background": [
       "background/polkadot-sdk",
+      "background/precompiles",
       "background/why-rust",
       "background/why-riscv",
       "background/ink-vs-solidity",
