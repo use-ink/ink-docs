@@ -27,23 +27,48 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
                 <span className="">ink!ubator is a funding program, it provides access to core developers and a wealth of resources.</span>
               </h2>
               <h3 className="text-[18px] leading-[28px] font-[600] font-montserrat">
-                <p>The first cohort has successfully concluded, and applications for the next cohort are now open.</p>
                 <p>
+                  <span className="text-brand-500" >⚠️ Applications are currently closed! ⚠️</span><br/>
+                  The funded projects are working on their milestones
+                  and we are preparing a treasury proposal to refund the ink!ubator.</p>
+                <p>
+                  <p>Read our reports of prior cohors:</p>
                   <a
-                    href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}
-                    className="text-brand-500"
+                      href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}
+                      className="text-brand-500"
                   >
-                    Read the final report of the first cohort here.
+                    ink!ubator v1: Final report (Sep 2024)
+                  </a>
+                  <br/>
+                  <a
+                      href={'https://forum.polkadot.network/t/the-first-report-of-ink-ubator-v2/12566'}
+                      className="text-brand-500"
+                  >
+                    ink!ubator v2: First report (Apr 2025)
+                  </a>
+                  <br/>
+                  <a
+                      href={'https://forum.polkadot.network/t/the-second-report-of-ink-ubator-v2/13670'}
+                      className="text-brand-500"
+                  >
+                    ink!ubator v2: Second report (Jul 2025)
+                  </a>
+                  <br/>
+                  <a
+                      href={'https://forum.polkadot.network/t/the-third-report-of-ink-ubator-v2/15726'}
+                      className="text-brand-500"
+                  >
+                    ink!ubator v2: Third report (Oct 2025)
                   </a>
                 </p>
               </h3>
             </hgroup>
             {withLinkCTA && (
-              <div className="mb-10 md:mb-0">
-                <Link
-                  href="/inkubator"
-                  className={classNames(
-                    'px-6 py-4 text-center bg-brand-500 hover:bg-brand-500/90 hover:text-dark-background',
+                <div className="mb-10 md:mb-0">
+                  <Link
+                      href="/inkubator"
+                      className={classNames(
+                          'px-6 py-4 text-center bg-brand-500 hover:bg-brand-500/90 hover:text-dark-background',
                     'text-lg rounded-full transition duration-75 text-dark-background hover:no-underline',
                   )}
                 >
