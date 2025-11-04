@@ -66,7 +66,7 @@ to the corresponding Solidity ABI types as shown in the table below:
 | `bool` | `bool` ||
 | `iN` for `N ∈ {8,16,32,64,128}` | `intN` | e.g `i8` ↔ `int8` |
 | `uN` for `N ∈ {8,16,32,64,128}` | `uintN` | e.g `u8` ↔ `uint8` |
-| [`ink::U256`][ink-u256] | `uint256` ||
+| [`ink::U256`][ink-u256] | `uint256`, `uint` | `uint` is just an alias of `uint256` in Solidity |
 | `String` | `string` ||
 | `Box<str>` | `string` ||
 | [`ink::Address`][ink-address] / [`ink::H160`][ink-h160] | `address` | `ink::Address` is a type alias for the `ink::H160` type used for addresses in `pallet-revive` |
