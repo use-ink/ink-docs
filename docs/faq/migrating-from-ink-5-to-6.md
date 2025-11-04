@@ -250,7 +250,7 @@ The `pallet-revive` no longer provides a host function to call into the runtime.
 Parity removed this feature as the runtime can change and changes could potentially
 break already deployed contracts.
 
-The way to go instead would be to create [a precompile contract](../basics/precompiles.md))
+The way to go instead would be to create [a precompile contract](../basics/precompiles.md)
 and have your contract invoke either a cross-contract call or a delegate call into that one.
 
 This is also the migration path recommended for Chain Extensions.
