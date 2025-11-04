@@ -11,7 +11,7 @@ slug: /background/precompiles
     <meta property="og:description" content="Explanation of how ink! ties into Polkadot SDK and `pallet-revive`." />
 </head>
 
-![Polkadot SDK Title Picture](/img/title/polkadot.svg)
+![Polkadot SDK Precompiles Title Picture](/img/title/precompiles.svg)
 
 # Precompiles in Polkadot SDK
 
@@ -89,6 +89,8 @@ type Precompiles = (
     XcmPrecompile<Self>,
 );
 ```
+
+## Develop your own Precompile
 
 If you are looking to develop your own custom precompile, here are some starting points:
 
