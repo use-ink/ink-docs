@@ -75,6 +75,16 @@ mod erc20_caller {
 }
 ```
 
+:::caution
+A downside to manually defined contract references is that mistakes 
+in the interface definition are not caught at compile-time.
+
+It's therefore important to make sure such interfaces are properly tested
+using [end-to-end testing][e2e-test] before contracts are deployed on-chain.
+:::
+
+[e2e-test]: ../testing/e2e.md
+
 ## Header Arguments
 
 The `#[ink::contract_ref]` macro can be provided with some additional
@@ -125,6 +135,7 @@ pub struct MyEnvironment;
 
 impl ink_env::Environment for MyEnvironment {
   const NATIVE_TO_ETH_RATIO: u32 = 100_000_000;
+
   type AccountId = [u8; 16];
   type Balance = u128;
   type Hash = [u8; 32];
