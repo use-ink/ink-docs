@@ -8917,7 +8917,7 @@ to the corresponding Solidity ABI types as shown in the table below:
 | `bool` | `bool` ||
 | `iN` for `N ∈ {8,16,32,64,128}` | `intN` | e.g `i8` ↔ `int8` |
 | `uN` for `N ∈ {8,16,32,64,128}` | `uintN` | e.g `u8` ↔ `uint8` |
-| [`ink::U256`][ink-u256] | `uint256` ||
+| [`ink::U256`][ink-u256] | `uint256`, `uint` | `uint` is just an alias of `uint256` in Solidity |
 | `String` | `string` ||
 | `Box<str>` | `string` ||
 | [`ink::Address`][ink-address] / [`ink::H160`][ink-h160] | `address` | `ink::Address` is a type alias for the `ink::H160` type used for addresses in `pallet-revive` |
@@ -9064,6 +9064,7 @@ manually to match those representations.
 :::note
 Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement the
 `SolErrorEncode` and `SolErrorDecode` traits for local types.
+However, one way around this limitation is to use the [newtype pattern][new-type-pattern].
 :::
 
 ### Mappings for arbitrary custom types
@@ -9134,12 +9135,13 @@ the [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode]
 :::
 
 :::note
-Rust's [coherence/orphan rules][rust-coherence] mean that you can
-only implement the [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode]
-traits for local types.
+Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement the 
+[`SolEncode`][sol-encode] and [`SolDecode`][sol-decode] traits for local types.
+However, one way around this limitation is to use the [newtype pattern][new-type-pattern].
 :::
 
 [rust-coherence]: https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence
+[new-type-pattern]: https://doc.rust-lang.org/book/ch20-02-advanced-traits.html#using-the-newtype-pattern-to-implement-external-traits
 
 ## Solidity Tooling
 
