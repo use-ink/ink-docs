@@ -213,6 +213,7 @@ manually to match those representations.
 :::note
 Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement the
 `SolErrorEncode` and `SolErrorDecode` traits for local types.
+However, one way around this limitation is to use the [newtype pattern][new-type-pattern].
 :::
 
 ### Mappings for arbitrary custom types
@@ -283,12 +284,13 @@ the [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode]
 :::
 
 :::note
-Rust's [coherence/orphan rules][rust-coherence] mean that you can
-only implement the [`SolEncode`][sol-encode] and [`SolDecode`][sol-decode]
-traits for local types.
+Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement the 
+[`SolEncode`][sol-encode] and [`SolDecode`][sol-decode] traits for local types.
+However, one way around this limitation is to use the [newtype pattern][new-type-pattern].
 :::
 
 [rust-coherence]: https://doc.rust-lang.org/reference/items/implementations.html#trait-implementation-coherence
+[new-type-pattern]: https://doc.rust-lang.org/book/ch20-02-advanced-traits.html#using-the-newtype-pattern-to-implement-external-traits
 
 ## Solidity Tooling
 
