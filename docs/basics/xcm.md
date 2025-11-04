@@ -41,7 +41,11 @@ The following code snippet demonstrates how to use `xcm_execute` to perform a [r
 
 ```rust
 #[ink(message)]
-pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
+pub fn reserve_transfer(
+    &mut self,
+    amount: Balance,
+    fee: Balance,
+) -> Result<(), RuntimeError> {
     // The beneficiary of the transfer.
     // Here, the beneficiary is the caller's account on the relay chain.
     let caller_account_id = self.env().to_account_id(self.env().caller());
@@ -51,8 +55,6 @@ pub fn reserve_transfer(&mut self, value: Balance) -> Result<(), RuntimeError> {
     }.into();
 
     // Create an XCM message.
-    let amount = 100_000_000;
-    let fee = 100_000;
     let message: Xcm<()> = Xcm::builder_unsafe()
         // Withdraw the relay's native token derivative from the 
         // contract's account.
