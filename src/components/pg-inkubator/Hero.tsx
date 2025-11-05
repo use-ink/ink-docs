@@ -32,7 +32,7 @@ export const Hero: React.FC<InkubatorHeroProps> = ({ withLinkCTA, className }) =
                   The funded projects are working on their milestones
                   and we are preparing a treasury proposal to refund the ink!ubator.</p>
                 <p>
-                  <p>Read our reports of prior cohors:</p>
+                  <p>Read our reports of prior cohorts:</p>
                   <a
                       href={'https://forum.polkadot.network/t/final-report-of-ink-ubator/10120'}
                       className="text-brand-500"
