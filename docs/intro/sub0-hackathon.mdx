@@ -18,11 +18,24 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Welcome _sub0 Hackathon_ participants!
 
-On this page we explain how you can participate with ink! v6.
+This page contains all necessary info to participate in the [sub0 HACK](https://luma.com/sub0hack) using ink! v6.
 
-Read more about the hackathon [here](https://luma.com/sub0hack).
+## 🚑 Support
+You can find support in [our Telegram group](https://t.me/inkathon).
+If you don't use Telegram, please create a GitHub issue [here](https://github.com/use-ink/ink/issues).
 
-## Fast Track
+<a href="https://t.me/inkathon">
+    <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=Telegram&label=ink!%20Support%20on%20Telegram&labelColor=white&color=blue" />
+</a>
+
+
+## 🤖 LLMs
+We have an [`llms.txt`](https://use.ink/llms.txt) that contains
+all documentation from this website. If you copy/paste it into your
+prompt/context window, this will help the LLM a lot to provide help.
+
+
+## 🚀 Fast Track
 
 Install Rust (>= 1.88) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
@@ -34,14 +47,14 @@ Download the binary for a local development node [here](https://github.com/use-i
 # flags for blockchains. It also allows for deploying + interacting
 # with contracts.
 $ rustup component add rust-src
-$ cargo install --locked --force --git https://github.com/use-ink/cargo-contract
+$ cargo install --locked --force --version 6.0.0-beta cargo-contract
 
 # Create a simple contract.
 $ cargo contract new flipper && cd flipper
 $ cargo contract build --release
 
 # Download our local development node.
-# Find the binary here: https://github.com/use-ink/ink-node/releases/tag/v0.43.0
+# Find the binary here: https://github.com/use-ink/ink-node/releases/latest
 
 # Start your local development node in a separate shell session
 $ ink-node
@@ -66,6 +79,7 @@ documentation for a deeper introduction.
 Prior releases of ink! are not supported on Asset Hub!
 
 Your `Cargo.toml` must contain
+
 ```toml
 [dependencies]
 ink = { version = "6.0.0-beta" }
@@ -83,17 +97,8 @@ Your `cargo-contract` version must be `6.0.0-beta` too:
 cargo install --force --locked --version 6.0.0-beta cargo-contract
 ```
 
-:::info
-ink! v6 is still work in progress, there are still rough edges and possibly bugs.
 
-You can find support in [our Telegram group](https://t.me/inkathon) or open issues in our repositories.
-<a href="https://t.me/inkathon">
-    <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=Telegram&label=ink!%20Support%20on%20Telegram&labelColor=white&color=blue" />
-</a>
-:::
-
-
-## Smart Contract Examples
+## 🤔 Smart Contract Examples
 
 You can find many contract examples in
 <a href="https://github.com/use-ink/ink-examples/tree/v6.x">the v6 branch of our `ink-examples` repository</a>.
