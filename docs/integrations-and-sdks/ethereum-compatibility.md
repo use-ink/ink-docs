@@ -18,7 +18,11 @@ slug: /background/solidity-metamask-compatibility
 
 ![Metadata Title Picture](/img/title/solidity.svg)
 
-First, read our blogpost [ink! speaks Solidity on PolkaVM](https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3).
+:::note
+For a gentle introduction, read our blogpost [ink! speaks Solidity on PolkaVM][blog-post].
+:::
+
+[blog-post]: https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3
 
 With ink! v6, we have introduced an `abi` field in a custom `ink-lang` table 
 in the [`package.metadata` table][package-metadata] of a contract's manifest
@@ -83,6 +87,14 @@ to the corresponding Solidity ABI types as shown in the table below:
 [ink-h160]: https://use-ink.github.io/ink/ink/struct.H160.html
 [ink-fixed-bytes]: https://use-ink.github.io/ink/ink/sol/struct.FixedBytes.html
 [ink-dyn-bytes]: https://use-ink.github.io/ink/ink/sol/struct.DynBytes.html
+
+:::note
+In Solidity ABI encoding, `uint8[]` and `uint8[N]` are encoded differently from
+`bytes` and `bytesN`. In Rust/ink!, `Vec<u8>` and `[u8; N]` are mapped to Solidity's
+`uint8[]` and `uint8[N]` representations, so there's a need for dedicated Rust/ink! types 
+(i.e. [`ink::sol::DynBytes`][ink-fixed-bytes] and [`ink::sol::FixedBytes<N>`][ink-dyn-bytes]) 
+that map to Solidity's `bytes` and `bytesN` representations.
+:::
 
 :::note
 Rust's `Option<T>` type doesn't have a **semantically** equivalent Solidity ABI type,
