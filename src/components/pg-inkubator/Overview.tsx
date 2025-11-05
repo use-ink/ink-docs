@@ -15,7 +15,7 @@ export const Overview: React.FC = () => {
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-center text-[18px] font-[600]">
             ink!ubator is an initiative funded by the Polkadot Treasury&apos;s Bounty Program. It is designed to
-            kickstart the ink! ecosystem on Polkadot, Kusama, and other Substrate chains in the following areas
+            kickstart the ink! ecosystem on Polkadot, Kusama, and other Polkadot SDK chains in the following areas
           </p>
         </hgroup>
 

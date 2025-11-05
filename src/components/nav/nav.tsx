@@ -18,7 +18,7 @@ import { useCurrentVersion } from '@site/src/hooks/use-current-version'
 
 export function Navbar({
   className,
-  cta = 'Start Building',
+  cta = 'Documentation',
   ctaLink = '',
   children,
   childrenRight,

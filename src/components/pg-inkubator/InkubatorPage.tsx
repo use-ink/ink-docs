@@ -13,7 +13,7 @@ const InkubatorPage = () => {
     <WindowProvider>
       <UIProvider>
         <div className="font-montserrat bg-[rgb(19,15,33)] rounded-b-3xl z-10">
-          <Navbar cta="Apply Now" ctaLink="https://github.com/use-inkubator/Ecosystem-Grants" />
+          <Navbar />
           <div className="z-10 pb-4 rounded-b-3xl xl:pb-12 md:pt-40 pt-28">
             <SidebarMenu />
             <Hero className="overflow-hidden" />

@@ -23,13 +23,6 @@ export const SidebarMenu: React.FC = () => {
         </li>
 
         <li className="px-0 pt-2 mx-6 mb-2 border-t-0 border-b border-solid border-background-700/20 dark:border-background-300/20 border-x-0" />
-
-        <li className="p-0 m-0">
-          <a href={Config.grantsApplicationURL} className={linkClasses} target="_blank" rel="noreferrer">
-            <i className="mr-2 underline">Apply</i>
-            for an Ecosystem Grant
-          </a>
-        </li>
       </ul>
     </Sidebar>
   )

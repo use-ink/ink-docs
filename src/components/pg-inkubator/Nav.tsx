@@ -25,13 +25,6 @@ export const Nav: React.FC = () => {
           >
             Documentation
           </Link>
-
-          <a
-            href={Config.grantsApplicationURL}
-            className="hidden lg:block font-montserrat text-black/70 hover:text-black/90 dark:text-white/90 dark:hover:text-white"
-          >
-            Apply for an Ecosystem Grant
-          </a>
         </ul>
       </div>
     </nav>

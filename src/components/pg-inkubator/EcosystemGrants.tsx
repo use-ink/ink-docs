@@ -102,15 +102,6 @@ export const EcosystemGrants: React.FC = () => {
               </div>
             </div>
           </div>
-
-          <BigCTA
-            className="min-h-[300px] lg:mt-32 md:mt-16 mt-12"
-            title="Interested?"
-            emphasized="Apply"
-            cta="for an Ecosystem Grant"
-            url={Config.grantsApplicationURL}
-            tabIndex={0}
-          />
         </div>
       </div>
     </section>
