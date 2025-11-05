@@ -89,6 +89,14 @@ to the corresponding Solidity ABI types as shown in the table below:
 [ink-dyn-bytes]: https://use-ink.github.io/ink/ink/sol/struct.DynBytes.html
 
 :::note
+In Solidity ABI encoding, `uint8[]` and `uint8[N]` are encoded differently from
+`bytes` and `bytesN`. In Rust/ink!, `Vec<u8>` and `[u8; N]` are mapped to Solidity's
+`uint8[]` and `uint8[N]` representations, so there's a need for dedicated Rust/ink! types 
+(i.e. [`ink::sol::DynBytes`][ink-fixed-bytes] and [`ink::sol::FixedBytes<N>`][ink-dyn-bytes]) 
+that map to Solidity's `bytes` and `bytesN` representations.
+:::
+
+:::note
 Rust's `Option<T>` type doesn't have a **semantically** equivalent Solidity ABI type,
 because [Solidity enums][sol-enum] are field-less.
 
