@@ -49,7 +49,7 @@ See our [Cross-contract calling](../basics/cross-contract-calling.md) page.
 
 ### How to call other smart contracts on another rollup/parachain?
 
-See our page on [XCM](../basics/xcm.md).
+See our page on [XCM](../advanced/xcm.md).
 
 ### What is a contract's ABI or Metadata?
 
@@ -75,11 +75,11 @@ those should be explained here or on another page.
 
 ### How can my smart contract interact with the runtime?
 
-See the [Precompiles](../basics/precompiles.md) section for more information.
+See the [Precompiles](../advanced/precompiles.md) section for more information.
 
 ### How can I use ink! with a Polkadot SDK chain with a custom chain config?
 
-Please see [this section](../macros-attributes/contract.md#env-impl-environment) in our documentation.
+Please see [this section](../reference/macros-attributes/contract.md#env-impl-environment) in our documentation.
 
 Detailed documentation is found in [the Rust docs](https://use-ink.github.io/ink/ink_macro/attr.contract.html#header-arguments)
 for the `#[ink(contract)]` macro. It allows you to specify your environment a la
@@ -196,7 +196,7 @@ In the future, ink! may provide more robust checks for overflows due integer typ
 [arithmetic-operations]: https://doc.rust-lang.org/reference/expressions/operator-expr.html#arithmetic-and-logical-binary-operators
 [as-conversions]: https://doc.rust-lang.org/reference/expressions/operator-expr.html#semantics
 [overflow-rfc-as]: https://rust-lang.github.io/rfcs/0560-integer-overflow.html#making-as-be-checked
-[custom-lints]: ../linter/overview.md
+[custom-lints]: ../development/linter/overview.md
 [clippy]: https://doc.rust-lang.org/clippy/
 
 ### What is the difference between memory and storage?
@@ -213,7 +213,7 @@ therefore very efficient to use. We currently support a handful of those, you
 can view the complete list [here](https://use-ink.github.io/ink/ink_env/hash/trait.CryptoHash.html).
 
 If you have the urgent need for another crypto hash you could introduce it through
-[Precompiles](../basics/precompiles.md)
+[Precompiles](../advanced/precompiles.md)
 or make a proposal to include it into the default set of the `pallet-revive`.
 
 Using one of the built-in crypto hashes can be done as explained here:
@@ -330,7 +330,7 @@ contracts. Otherwise, undefined behavior can occur when uploading a contract
 with deviating types to a chain.
 
 Custom environment types can be specified in ink! via the `#[contract(env = MyCustomEnvironment)]`
-attribute. You can read more are about this [here](../macros-attributes/contract.md#env-impl-environment).
+attribute. You can read more are about this [here](../reference/macros-attributes/contract.md#env-impl-environment).
 
 When using `cargo-contract` to interact with a chain you might get a warning along those lines:
 

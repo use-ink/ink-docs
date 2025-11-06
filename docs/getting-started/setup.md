@@ -11,8 +11,8 @@ import TabItem from '@theme/TabItem';
 
 ## Rust & Cargo
 
-A pre-requisite for compiling smart contracts is to install a stable Rust 
-version and `cargo`. 
+A pre-requisite for compiling smart contracts is to install a stable Rust
+version and `cargo`.
 ```
 curl https://sh.rustup.rs -sSf | sh
 ```
@@ -23,8 +23,12 @@ curl https://sh.rustup.rs -sSf | sh
   <TabItem value="pop" label="Pop" default>
       Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
 
+      Via Homebrew:
       ```bash
-      cargo install --force --locked --version 6.0.0-beta cargo-contract
+      brew install r0gue-io/pop-cli/pop
+      ```
+      Or Source:
+      ```bash
       cargo install --force --locked pop-cli
       ```
 
@@ -38,47 +42,49 @@ curl https://sh.rustup.rs -sSf | sh
       Install [`cargo-contract`](https://github.com/use-ink/cargo-contract), a CLI tool for setting up and managing smart contracts written with ink!. To install `cargo-contract`, run the following command in your terminal:
 
       ```bash
-      cargo install --force --locked --tag v6.0.0-beta --git https://github.com/use-ink/cargo-contract
+      cargo install --force --locked --version 6.0.0-beta cargo-contract 
       ```
 
-      ## ink-node
+## ink-node
 
-      The [ink-node](https://github.com/use-ink/ink-node) is
-      a simple Polkadot SDK blockchain with smart contract functionality. It's a comfortable option for local development and testing.
+For Pop CLI users, Pop automatically manages the local node for you.
 
-      There are two ways of installing the node:
+For cargo-contract users, the [ink-node](https://github.com/use-ink/ink-node) is
+a simple Polkadot SDK blockchain with smart contract functionality. It's a comfortable option for local development and testing.
 
-      ### (1) Download the Binary
-      Go to the [ink-node releases page](https://github.com/use-ink/ink-node/releases). Under `Assets` of the latest release, download the appropriate binary for your platform:
-         - **Linux (ARM64)**: `ink-node-linux-arm64.tar.gz`
-         - **Linux (x86)**: `ink-node-linux.tar.gz`  
-         - **macOS**: `ink-node-mac-universal.tar.gz`
+There are two ways of installing the node:
 
-      Make the binary executable:
-         ```bash
-         chmod +x ./ink-node
-         ```
+### (1) Download the Binary
+Go to the [ink-node releases page](https://github.com/use-ink/ink-node/releases). Under `Assets` of the latest release, download the appropriate binary for your platform:
+   - **Linux (ARM64)**: `ink-node-linux-arm64.tar.gz`
+   - **Linux (x86)**: `ink-node-linux.tar.gz`
+   - **macOS**: `ink-node-mac-universal.tar.gz`
 
-      **For macOS users:**
-      When you first try to run `ink-node`, macOS may show a security warning.
+Make the binary executable:
+   ```bash
+   chmod +x ./ink-node
+   ```
 
-      To allow the binary to run:
-      1. Click the **question mark (?)** icon at the right top corner of the warning.
-      2. Follow the Apple instructions that appear.
-      3. Try running `ink-node` again and click **"Open Anyway"** when prompted.
+**For macOS users:**
+When you first try to run `ink-node`, macOS may show a security warning.
 
-      To confirm that `ink-node` is working correctly, run:
-      ```bash
-      ./ink-node --version
-      ```
-      If you see version information, your installation is successful!
+To allow the binary to run:
+1. Click the **question mark (?)** icon at the right top corner of the warning.
+2. Follow the Apple instructions that appear.
+3. Try running `ink-node` again and click **"Open Anyway"** when prompted.
 
-      ### (2) Build it yourself
+To confirm that `ink-node` is working correctly, run:
+```bash
+./ink-node --version
+```
+If you see version information, your installation is successful!
 
-      Alternatively, you can build the node by yourself.
-      This can take a while though!
+### (2) Build it yourself
 
-      The build instructions and pre-requisites can be found
-      [here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).
+Alternatively, you can build the node by yourself.
+This can take a while though!
+
+The build instructions and pre-requisites can be found
+[here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).
   </TabItem>
 </Tabs>

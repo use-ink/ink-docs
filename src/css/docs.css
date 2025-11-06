@@ -850,3 +850,37 @@ details [class^='collapsibleContent_'] {
   font-size: 14px;
   margin-right: 0.5rem;
 }
+
+/** SIDEBAR ACTIVE STATES - Enhanced highlighting for current page **/
+
+/* Active menu link styling */
+.menu__link--active {
+  background: linear-gradient(90deg, rgba(189, 130, 253, 0.25) 0%, rgba(189, 130, 253, 0.1) 100%) !important;
+  color: rgb(224, 191, 255) !important;
+  font-weight: 600 !important;
+  border-left: 3px solid var(--ifm-color-primary);
+  padding-left: 11px !important;
+}
+
+/* Active menu link hover */
+.menu__link--active:hover {
+  background: linear-gradient(90deg, rgba(189, 130, 253, 0.35) 0%, rgba(189, 130, 253, 0.15) 100%) !important;
+  color: #fff !important;
+}
+
+/* Active category with open submenu */
+.theme-doc-sidebar-item-category > div > .menu__link--active {
+  background: linear-gradient(90deg, rgba(189, 130, 253, 0.2) 0%, rgba(255, 255, 255, 0) 84.6847%) !important;
+}
+
+/* Add glow effect to active items */
+[data-theme='dark'] .menu__link--active {
+  box-shadow: 0 0 12px rgba(189, 130, 253, 0.3);
+}
+
+/* Light theme active link */
+[data-theme='light'] .menu__link--active {
+  background: linear-gradient(90deg, rgba(140, 124, 247, 0.15) 0%, rgba(140, 124, 247, 0.05) 100%) !important;
+  color: var(--ifm-color-primary-dark) !important;
+  border-left-color: var(--ifm-color-primary-dark);
+}

@@ -10,9 +10,7 @@ module.exports = {
         "getting-started/compiling",
         "getting-started/testing",
         "getting-started/deploying",
-        "getting-started/calling",
-        "intro/tutorials-examples",
-        "intro/where-to-deploy"
+        "getting-started/calling"
       ]
     },
     {
@@ -24,111 +22,149 @@ module.exports = {
       "basics/reading-values",
       "basics/mutating-values",
       "basics/events",
-      "basics/selectors",
-      "basics/trait-definitions",
       "basics/gas",
-      "basics/cross-contract-calling",
-      "basics/upgradeability",
-      "basics/env-functions",
-      "basics/environment",
+      "basics/cross-contract-calling"
+      ]
+    },
+    {
+      type: "category",
+      label: "Advanced",
+      items: [
+      "advanced/selectors",
+      "advanced/trait-definitions",
+      "advanced/upgradeability",
+      "advanced/env-functions",
+      "advanced/environment",
+      "advanced/xcm",
+      "advanced/precompiles",
+      {
+        type: "category",
+        label: "Data Structures",
+        items: [
+        "advanced/datastructures/overview",
+        "advanced/datastructures/storagevec",
+        "advanced/datastructures/mapping",
+        "advanced/datastructures/storage-layout",
+        "advanced/datastructures/custom",
+        "advanced/datastructures/storage-in-metadata"
+        ]
+      }
+      ]
+    },
+    {
+      type: "category",
+      label: "Development",
+      items: [
+      {
+        type: "category",
+        label: "Testing",
+        items: [
+        "development/testing/overview",
+        "development/testing/unit-integration",
+        "development/testing/sandbox",
+        "development/testing/e2e",
+        // "development/testing/testing-with-live-state"
+        ]
+      },
+      // "development/deployment",
+      "development/contract-verification",
+      {
+        type: "category",
+        label: "Debugging",
+        items: [
+        "development/debugging/overview",
+        "development/debugging/events",
+        "development/debugging/return_value",
+        "development/debugging/tracing",
+        "development/debugging/sandbox",
+        "development/debugging/decoding",
+        // "development/debugging/replays",
+        "development/debugging/precompiles"
+        ]
+      },
+      {
+        type: "category",
+        label: "Linter",
+        items: [
+        "development/linter/overview",
+        {
+          "type": "category",
+          "label": "Linting rules",
+          "items": [
+            "development/linter/rules/no_main",
+            "development/linter/rules/primitive_topic",
+            "development/linter/rules/storage_never_freed",
+            "development/linter/rules/strict_balance_equality",
+            "development/linter/rules/non_fallible_api"
+          ]
+        }
+        ]
+      }
+      ]
+    },
+    "tutorials-examples",
+    {
+      type: "category",
+      label: "Ink & Solidity",
+      items: [
+        "solidity-interop/use-ink-with-solidity-abi",
+        "solidity-interop/calling-solidity-contracts",
+        {
+          type: "category",
+          label: "Use Ethereum Tooling",
+          items: [
+            "solidity-interop/metamask-setup",
+            "solidity-interop/hardhat-deployment",
+            "solidity-interop/wagmi-integration"
+          ]
+        },
+        "solidity-interop/type-reference"
+      ]
+    },
+    {
+      type: "category",
+      label: "Reference",
+      items: [
+      {
+        type: "category",
+        label: "Macros & Attributes",
+        items: [
+        "reference/macros-attributes/overview",
+        "reference/macros-attributes/contract",
+        "reference/macros-attributes/contract_ref",
+        "reference/macros-attributes/anonymous",
+        "reference/macros-attributes/constructor",
+        "reference/macros-attributes/default",
+        "reference/macros-attributes/error",
+        "reference/macros-attributes/event",
+        "reference/macros-attributes/implementation",
+        "reference/macros-attributes/message",
+        "reference/macros-attributes/name",
+        "reference/macros-attributes/namespace",
+        "reference/macros-attributes/payable",
+        "reference/macros-attributes/selector",
+        "reference/macros-attributes/storage",
+        "reference/macros-attributes/topic",
+        "reference/macros-attributes/trait_definition"
+        ]
+      },
       {
         "type": "category",
         "label": "ABI",
         "items": [
-          "basics/abi/overview",
-          "basics/abi/ink",
-          "basics/abi/solidity",
-          "basics/abi/all"
+          "reference/abi/overview",
+          "reference/abi/ink",
+          "reference/abi/solidity",
+          "reference/abi/all"
         ]
       },
       {
         "type": "category",
         "label": "Metadata",
         "items": [
-          "basics/metadata/overview",
-          "basics/metadata/ink-format",
-          "basics/metadata/solidity-format"
-        ]
-      },
-      "basics/xcm",
-      "basics/precompiles",
-      "basics/contract-verification"
-      ]
-    },
-    {
-      type: "category",
-      label: "Testing",
-      items: [
-      "testing/overview",
-      "testing/unit-integration",
-      "testing/sandbox",
-      "testing/e2e",
-      // "testing/testing-with-live-state"
-      ]
-    },
-    {
-      type: "category",
-      label: "Debugging",
-      items: [
-      "debugging/overview",
-      "debugging/events",
-      "debugging/return_value",
-      "debugging/tracing",
-      "debugging/sandbox",
-      "debugging/decoding",
-      // "debugging/replays",
-      "debugging/precompiles"
-      ]
-    },
-    {
-      type: "category",
-      label: "Macros & Attributes",
-      items: [
-      "macros-attributes/overview",
-      "macros-attributes/contract",
-      "macros-attributes/contract_ref",
-      "macros-attributes/anonymous",
-      "macros-attributes/constructor",
-      "macros-attributes/default",
-      "macros-attributes/error",
-      "macros-attributes/event",
-      "macros-attributes/implementation",
-      "macros-attributes/message",
-      "macros-attributes/name",
-      "macros-attributes/namespace",
-      "macros-attributes/payable",
-      "macros-attributes/selector",
-      "macros-attributes/storage",
-      "macros-attributes/topic",
-      "macros-attributes/trait_definition"
-      ]
-    },
-    {
-      type: "category",
-      label: "Storage & Data Structures",
-      items: [
-      "datastructures/overview",
-      "datastructures/storagevec",
-      "datastructures/mapping",
-      "datastructures/storage-layout",
-      "datastructures/custom",
-      "datastructures/storage-in-metadata"
-      ]
-    },
-    {
-      type: "category",
-      label: "Linter",
-      items: [
-      "linter/overview",
-      {
-        "type": "category",
-        "label": "Linting rules",
-        "items": [
-          "linter/rules/no_main",
-          "linter/rules/primitive_topic",
-          "linter/rules/storage_never_freed",
-          "linter/rules/strict_balance_equality",
-          "linter/rules/non_fallible_api"
+          "reference/metadata/overview",
+          "reference/metadata/ink-format",
+          "reference/metadata/solidity-format"
         ]
       }
       ]
@@ -137,7 +173,6 @@ module.exports = {
       type: "category",
       label: "Integration & SDKs",
       items: [
-      "integrations-and-sdks/overview",
       {
         "type": "category",
         "label": "JavaScript/TypeScript",
@@ -146,8 +181,7 @@ module.exports = {
           "integrations-and-sdks/javascript-typescript/react"
         ]
       },
-      "integrations-and-sdks/other-languages",
-      "integrations-and-sdks/ethereum-compatibility"
+      "integrations-and-sdks/other-languages"
       ]
     },
     {

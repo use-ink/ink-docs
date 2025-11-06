@@ -141,7 +141,7 @@ ensure that this version is enforced, otherwise users will get an error.
 
 ### Tooling & Libraries
 
-- Stable Rust >= 1.75
+- Stable Rust >= 1.90
 - `cargo-contract` >= v4.0
 - `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
 - [`use-inkathon`](https://github.com/scio-labs/use-inkathon): upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1
@@ -391,7 +391,7 @@ With a `Vec` it's possible to e.g. introduce a security issue in your contract
 where an attacker can fill the `Vec`, making it very costly for other users to
 access it or write to it.
 
-You can find verbatim documentation on `StorageVec` [here](../datastructures/storagevec.md).
+You can find verbatim documentation on `StorageVec` [here](../advanced/datastructures/storagevec.md).
 The page explains when to use `StorageVec` and when not.
 The Rust docs can be found [here](https://docs.rs/ink/5.0.0/ink/storage/struct.StorageVec.html).
 
@@ -415,7 +415,7 @@ is 16 kB by default.
 
 We added a lint to `cargo-contract` 4.0 that will detect
 potentially unsafe uses of methods for which there are safer alternatives:
-[`non_fallible_api`](../linter/rules/non_fallible_api.md).
+[`non_fallible_api`](../development/linter/rules/non_fallible_api.md).
 
 ### Chain Extension API changed + Support for multiple chain extensions
 
@@ -624,23 +624,23 @@ Example:
 With ink! 5.0 we introduce the possibility of running your tests against the
 fork (i.e. snapshot) of a live chain.
 
-See [this page](../testing/testing-with-live-state.md) in our documentation for details.
+See [this page](../development/testing/testing-with-live-state.md) in our documentation for details.
 
 ### New lints
 
 The new lints are:
 
-- [`no_main`](../linter/rules/no_main.md): enforces `no_main` for contracts.
-- [`primitive_topic`](../linter/rules/primitive_topic.md): no number types are allowed as event topics.
-- [`storage_never_freed`](../linter/rules/storage_never_freed.md): what is written into storage can be removed again.
-- [`strict_balance_equality`](../linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
-- [`non_fallible_api`](../linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
+- [`no_main`](../development/linter/rules/no_main.md): enforces `no_main` for contracts.
+- [`primitive_topic`](../development/linter/rules/primitive_topic.md): no number types are allowed as event topics.
+- [`storage_never_freed`](../development/linter/rules/storage_never_freed.md): what is written into storage can be removed again.
+- [`strict_balance_equality`](../development/linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
+- [`non_fallible_api`](../development/linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
 
 With `cargo-contract` 4.0 we added a couple new lints for common smart contract issues
 and best practices.
 You can run the linter via `cargo contract build --lint`.
 
-Details on each lint can be found [here](../linter/overview.md).
+Details on each lint can be found [here](../development/linter/overview.md).
 
 ### New `cargo-contract` commands
 

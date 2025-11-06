@@ -103,3 +103,48 @@ Deploying a contract involves uploading your compiled contract code and creating
   </TabItem>
 </Tabs>
 
+## Deploying to Passet Hub Testnet
+
+To deploy your contract to a live testnet, you can use **Passet Hub**, Polkadot's testnet Asset Hub that supports ink! v6 smart contracts.
+
+**Prerequisites:**
+1. **Get PAS tokens**: Use the [Passet Hub Faucet](https://faucet.polkadot.io/?parachain=1111)
+2. **Polkadot account**: Create one following this [guide](https://support.polkadot.network/support/solutions/articles/65000098878-how-to-create-a-dot-account)
+
+<Tabs>
+  <TabItem value="pop" label="Pop" default>
+  Deploy your contract to Passet Hub using Pop CLI:
+
+  ```bash
+  pop up --url wss://testnet-passet-hub.polkadot.io
+  ```
+
+  Pop CLI will automatically handle the deployment to the testnet. Make sure you have PAS tokens in your account before deploying.
+
+  For more deployment options, see the [Pop CLI deployment guide](https://learn.onpop.io/contracts/guides/deploy).
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+  Connect to Passet Hub and deploy your contract:
+
+  ```bash
+  cargo contract instantiate \
+    --suri "YOUR_SEED_PHRASE" \
+    --url wss://testnet-passet-hub.polkadot.io \
+    --args true
+  ```
+
+  Replace `YOUR_SEED_PHRASE` with your actual seed phrase and `--args true` with your constructor arguments.
+  </TabItem>
+  <TabItem value="contracts-ui" label="Contracts UI">
+  Deploy to Passet Hub using the Contracts UI:
+
+  1. Go to [Contracts UI](https://ui.use.ink/)
+  2. Make sure you have ink! v6 selected in the sidebar
+  3. Click the network selector and choose **"Passet Hub"** (or "Custom Node" and enter `wss://testnet-passet-hub.polkadot.io`)
+  4. Follow the same upload and instantiate steps as described in the local deployment section above
+  5. Make sure you have PAS tokens in your selected account
+
+  You can also interact with your deployed contract using [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fpasset-hub-paseo.ibp.network#/explorer).
+  </TabItem>
+</Tabs>
+

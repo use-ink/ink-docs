@@ -14,6 +14,8 @@ hide_table_of_contents: true
 </head>
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <img src={useBaseUrl('/img/title/sub0-hackathon.svg')} title="The ink! 6.0 smart contracts toolkit release" width="800" style={{ marginBottom: 10 }} />
 
@@ -40,11 +42,31 @@ prompt/context window, this will help your AI friend a lot to provide help.
 
 ## 🚀 Fast Track
 
-Install Rust (>= 1.88) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+Install Rust (>= 1.90) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
-Download the binary for a local development node [here](https://github.com/use-ink/ink-node/releases).
+<Tabs>
+  <TabItem value="pop" label="Pop" default>
 
-```toml
+```bash
+# Install Pop CLI
+$ cargo install --locked --git https://github.com/r0gue-io/pop-cli --branch v0.5-beta pop-cli
+
+# Create a simple contract
+$ pop new contract flipper && cd flipper
+$ pop build --release
+
+# Pop CLI automatically launches a local node when deploying
+$ pop up
+
+# Interact with your contract
+$ pop call --contract 0x… --message get
+$ pop call --contract 0x… --message flip
+```
+
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+
+```bash
 # Install our cli tool: `cargo-contract`.
 # It wraps around Rust's `cargo build` to build contracts with optimal
 # flags for blockchains. It also allows for deploying + interacting
@@ -71,6 +93,9 @@ $ cargo contract call --suri //Alice --contract 0x… --message get
 # Execute a contract call, as a transaction on-chain.
 $ cargo contract call --suri //Alice --contract 0x… --message flip -x
 ```
+
+  </TabItem>
+</Tabs>
 
 <br/>
 

@@ -40,7 +40,7 @@ target
     └─ flipper.contract    <-- JSON file that combines binary + metadata
 ```
 
-Learn more about [metadata](../basics/metadata/overview.md) and the [ink! metadata format](../basics/metadata/ink-format.md) for detailed information about the structure of these files.
+Learn more about [metadata](../reference/metadata/overview.md) and the [ink! metadata format](../reference/metadata/ink-format.md) for detailed information about the structure of these files.
 
 ## Debug vs. Release Build
 

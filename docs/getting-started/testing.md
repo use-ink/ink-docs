@@ -34,7 +34,7 @@ test flipper::tests::default_works ... ok
 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
-Learn more about the [testing strategies for ink! contracts](../testing/overview.md).
+Learn more about the [testing strategies for ink! contracts](../development/testing/overview.md).
 
 
 ## Run End-to-End (E2E) tests
@@ -59,5 +59,5 @@ Run E2E tests:
   </TabItem>
 </Tabs>
 
-For more details and examples (including testing against live state snapshots), see the [E2E guide](../testing/e2e.md).
+For more details and examples (including testing against live state snapshots), see the [E2E guide](../development/testing/e2e.md).
 

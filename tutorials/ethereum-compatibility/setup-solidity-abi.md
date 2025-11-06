@@ -55,7 +55,4 @@ After building, you'll find additional files in your `target/ink/` directory:
 
 ## Next Steps
 
-With Solidity ABI configured, you can now:
-- [Set up MetaMask](./metamask-setup.md) to connect to Polkadot networks
-- [Use Hardhat](./hardhat-deployment.md) for deployment and interaction
-- [Build frontends with Wagmi](./wagmi-integration.md)
+With Solidity ABI configured, you can now use Ethereum tools with your ink! contracts. Learn more in the [Solidity Interop documentation](/solidity-interop/using-ethereum-tools).

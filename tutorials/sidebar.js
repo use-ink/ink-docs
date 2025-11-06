@@ -14,9 +14,6 @@ module.exports = {
       items: [
         'ethereum-compatibility/overview',
         'ethereum-compatibility/setup-solidity-abi',
-        'ethereum-compatibility/metamask-setup',
-        'ethereum-compatibility/hardhat-deployment',
-        'ethereum-compatibility/wagmi-integration',
       ],
     },
     {
