@@ -9590,20 +9590,22 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This page contains all necessary info to participate in the [sub0 HACK](https://luma.com/sub0hack) using ink! v6.
 
+* The hackathon takes place from Nov 14 - Nov 16, 2025.
+* $50,000 in prize money.
+* Remote participation is fine!
+
 ## 🚑 Support
-You can find support in [our Telegram group](https://t.me/inkathon).
-If you don't use Telegram, please create a GitHub issue [here](https://github.com/use-ink/ink/issues).
 
 <a href="https://t.me/inkathon">
     <img style={{height: 25}} src="https://img.shields.io/badge/click-white.svg?logo=Telegram&label=ink!%20Support%20on%20Telegram&labelColor=white&color=blue" />
 </a>
 
+If you don't use Telegram, please create a GitHub issue [here](https://github.com/use-ink/ink/issues).
 
 ## 🤖 LLMs
 We have an [`llms.txt`](https://use.ink/llms.txt) that contains
 all documentation from this website. If you copy/paste it into your
-prompt/context window, this will help the LLM a lot to provide help.
-
+prompt/context window, this will help your AI friend a lot to provide help.
 
 ## 🚀 Fast Track
 
@@ -9646,9 +9648,10 @@ documentation for a deeper introduction.
 
 ## You need to use ink! v6.0.0-beta!
 
-Prior releases of ink! are not supported on Asset Hub!
+Prior releases of ink! are not supported for the hackathon!
+You won't be able to deploy them on Passet Hub.
 
-Your `Cargo.toml` must contain
+Make sure your `Cargo.toml` contains
 
 ```toml
 [dependencies]
@@ -9667,11 +9670,24 @@ Your `cargo-contract` version must be `6.0.0-beta` too:
 cargo install --force --locked --version 6.0.0-beta cargo-contract
 ```
 
+## 🚀 Where to deploy?
+
+You can deploy locally via our local development node [`ink-node`](https://github.com/use-ink/ink-node/releases).
+
+As a testnet you need to use [Paseo Passet Hub](https://use.ink/docs/v6/where-to-deploy/#passet-hub).
+You can find the faucet [here](https://faucet.polkadot.io/?parachain=1111).
+
+## 🏰 dApp Templates
+
+We recommend using [ink!athon](https://inkathon.xyz/) to generate dApp templates that
+contain contract and frontend code.
+
+You can find a hardcoded frontend for our `flipper` example [here](https://github.com/use-ink/ink-examples/tree/main/flipper).
 
 ## 🤔 Smart Contract Examples
 
-You can find many contract examples in
-<a href="https://github.com/use-ink/ink-examples/tree/v6.x">the v6 branch of our `ink-examples` repository</a>.
+You can find many contract examples in our
+<a href="https://github.com/use-ink/ink-examples/">`ink-examples` repository</a>.
 
 <div className="row">
     <div className="col text--center">
@@ -9716,10 +9732,10 @@ You can find many contract examples in
         </p>
     </div>
     <div className="col text--center">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension"><img src={useBaseUrl('/img/icons/rand-extension.svg')} width="100" /></a>
+        <a href="https://github.com/use-ink/ink-examples/tree/main/precompile-demo"><img src={useBaseUrl('/img/icons/interop.svg')} width="100" /></a>
         <p>
-            Allow runtime access.<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension">» view example</a>
+            Calling Solidity contracts.<br/>
+            <a href="https://github.com/use-ink/ink-examples/tree/main/precompile-demo">» view example</a>
         </p>
     </div>
 </div>
