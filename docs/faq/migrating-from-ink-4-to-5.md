@@ -141,7 +141,7 @@ ensure that this version is enforced, otherwise users will get an error.
 
 ### Tooling & Libraries
 
-- Stable Rust >= 1.90
+- Stable Rust >= 1.75
 - `cargo-contract` >= v4.0
 - `polkadot-js/api` and `polkadot-js/api-contract` >= 10.12.1
 - [`use-inkathon`](https://github.com/scio-labs/use-inkathon): upgrade the `polkadot-js/api` and `polkadot-js/api-contract` dependencies in your project to >= 10.12.1

@@ -22,7 +22,7 @@ layout) changes from ink! 3.x to 4.0.
 
 ink! 4.0 is compatible with:
 
-- Stable Rust >= 1.90
+- Stable Rust >= 1.63.0
 - `scale` >=3
 - `scale-info` >= 2.3
 - `pallet-contracts` >= `polkadot-v0.9.37`
@@ -56,7 +56,7 @@ process.
 
 ink! 4.0 and `cargo-contract` use `stable` Rust now.
 This means no more `cargo +nightly contract` is required, you
-can just use a stable Rust toolchain now (>= Rust 1.90).
+can just use a stable Rust toolchain now (>= Rust 1.63).
 
 ## New entrance `ink` crate
 

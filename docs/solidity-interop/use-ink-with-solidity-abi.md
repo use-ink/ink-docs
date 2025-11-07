@@ -4,6 +4,9 @@ hide_title: true
 slug: /solidity-interop/use-ink-with-solidity-abi
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ![Use Solidity tooling](/img/title/solidity.svg)
 
 # Use ink! with Solidity ABI
@@ -23,10 +26,20 @@ By enabling Solidity ABI compatibility, you can:
 
 ### 1. Create Your Contract
 
-```bash
-cargo contract new my_contract
-cd my_contract
-```
+<Tabs>
+  <TabItem value="pop" label="Pop" default>
+    ```bash
+    pop new contract my_contract -t standard
+    cd my_contract
+    ```
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+    ```bash
+    cargo contract new my_contract
+    cd my_contract
+    ```
+  </TabItem>
+</Tabs>
 
 ### 2. Enable Solidity ABI
 
@@ -39,9 +52,18 @@ abi = "sol"
 
 ### 3. Build with Solidity Metadata
 
-```bash
-cargo contract build --release --metadata solidity
-```
+<Tabs>
+  <TabItem value="pop" label="Pop" default>
+    ```bash
+    pop build --release --metadata solidity
+    ```
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+    ```bash
+    cargo contract build --release --metadata solidity
+    ```
+  </TabItem>
+</Tabs>
 
 This generates Solidity-compatible artifacts in `target/ink/`:
 - `*.abi` - Solidity ABI file for contract interaction

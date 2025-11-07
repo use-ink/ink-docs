@@ -10,14 +10,6 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Ethereum Compatibility',
-      items: [
-        'ethereum-compatibility/overview',
-        'ethereum-compatibility/setup-solidity-abi',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Contribute',
       items: [
         'guide',

@@ -8,7 +8,7 @@ slug: /solidity-interop/calling-solidity-contracts
 
 # Calling Solidity Contracts
 
-ink! v6 contracts can call Solidity ABI-encoded contracts, enabling seamless interoperability between ink!, Solidity, and other Solidity ABI-compatible contracts. This allows you to integrate with existing Ethereum-compatible smart contracts deployed on Polkadot networks.
+ink! v6 contracts can call Solidity ABI-encoded contracts, enabling seamless interoperability between ink!, Solidity, and other Solidity ABI-compatible contracts. This allows you to integrate with existing Ethereum-compatible smart contracts deployed on Polkadot.
 
 There are two main approaches to calling Solidity contracts from ink!:
 1. **Contract References** (`ContractRef`) - High-level, type-safe interfaces
