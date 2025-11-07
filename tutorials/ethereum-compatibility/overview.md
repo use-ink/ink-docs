@@ -15,7 +15,7 @@ This section provides guides for:
 
 1. **[Setting up Solidity ABI](./setup-solidity-abi.md)**: Configure your ink! contract to generate Solidity-compatible ABI
 
-For detailed guides on using Ethereum tools like MetaMask, Hardhat, and Wagmi with ink! contracts, see the [Solidity Interop documentation](/solidity-interop/using-ethereum-tools).
+For detailed guides on using Ethereum tools like MetaMask, Hardhat, and Wagmi with ink! contracts, see the [Solidity Interop documentation](/docs/v6/solidity-interop/use-ink-with-solidity-abi).
 
 :::caution Known Limitations
 The Rust/ink! to Solidity ABI type mapping is still a work in progress. Some limitations are known.

@@ -50,7 +50,7 @@ Run E2E tests:
   ```
   </TabItem>
   <TabItem value="cargo-contract" label="cargo-contract">
-  First, install the `ink-node` [here](/getting-started/setup?tabs=cargo-contract#ink-node).
+  First, install the `ink-node` [here](/docs/v6/getting-started/setup?tabs=cargo-contract#ink-node).
 
   Then run:
   ```bash
@@ -60,4 +60,3 @@ Run E2E tests:
 </Tabs>
 
 For more details and examples (including testing against live state snapshots), see the [E2E guide](../development/testing/e2e.md).
-

@@ -55,4 +55,4 @@ After building, you'll find additional files in your `target/ink/` directory:
 
 ## Next Steps
 
-With Solidity ABI configured, you can now use Ethereum tools with your ink! contracts. Learn more in the [Solidity Interop documentation](/solidity-interop/using-ethereum-tools).
+With Solidity ABI configured, you can now use Ethereum tools with your ink! contracts. Learn more in the [Solidity Interop documentation](/docs/v6/solidity-interop/use-ink-with-solidity-abi).
