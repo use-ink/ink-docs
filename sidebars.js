@@ -1,6 +1,7 @@
 module.exports = {
   reference: [
     'intro/intro',
+    'intro/sub0-hackathon',
     {
       type: "category",
       label: "Getting started",
@@ -67,7 +68,6 @@ module.exports = {
         ]
       },
       // "development/deployment",
-      "development/contract-verification",
       {
         type: "category",
         label: "Debugging",
@@ -82,6 +82,7 @@ module.exports = {
         "development/debugging/precompiles"
         ]
       },
+      "development/contract-verification",
       {
         type: "category",
         label: "Linter",

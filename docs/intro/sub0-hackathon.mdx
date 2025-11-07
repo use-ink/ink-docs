@@ -48,19 +48,23 @@ Install Rust (>= 1.90) and `cargo`: [Installation Guide](https://doc.rust-lang.o
   <TabItem value="pop" label="Pop" default>
 
 ```bash
-# Install Pop CLI
-$ cargo install --locked --git https://github.com/r0gue-io/pop-cli --branch v0.5-beta pop-cli
+# Install Pop CLI via brew
+$ brew install r0gue-io/pop-cli/pop
+
+# From source
+$ cargo install --force --locked pop-cli
 
 # Create a simple contract
-$ pop new contract flipper && cd flipper
+$ pop new 
+
+# Build your contract
 $ pop build --release
 
 # Pop CLI automatically launches a local node when deploying
 $ pop up
 
 # Interact with your contract
-$ pop call --contract 0x… --message get
-$ pop call --contract 0x… --message flip
+$ pop call
 ```
 
   </TabItem>
@@ -102,7 +106,7 @@ $ cargo contract call --suri //Alice --contract 0x… --message flip -x
 Please see the chapter [Getting started](../getting-started/setup.md) of this
 documentation for a deeper introduction.
 
-## You need to use ink! v6.0.0-beta!
+## Use ink! v6.0.0-beta!
 
 Prior releases of ink! are not supported for the hackathon!
 You won't be able to deploy them on Passet Hub.
@@ -119,11 +123,6 @@ ink_e2e = { version = "6.0.0-beta" }
 # we moved the sandbox testing environment to a separate crate
 # this one cannot be published to crates.io yet
 ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta" }
-```
-
-Your `cargo-contract` version must be `6.0.0-beta` too:
-```bash
-cargo install --force --locked --version 6.0.0-beta cargo-contract
 ```
 
 ## 🚀 Where to deploy?
