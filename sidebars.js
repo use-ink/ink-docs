@@ -108,8 +108,8 @@ module.exports = {
       type: "category",
       label: "Ink & Solidity",
       items: [
-        "solidity-interop/use-ink-with-solidity-abi",
         "solidity-interop/calling-solidity-contracts",
+        "solidity-interop/use-ink-with-solidity-abi",
         {
           type: "category",
           label: "Use Ethereum Tooling",
