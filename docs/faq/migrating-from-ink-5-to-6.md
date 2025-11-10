@@ -82,7 +82,7 @@ The field `source.wasm` was renamed to `source.contract_binary`.
 
 ### Types
 
-#### Contract Balance: `U256`
+#### **Contract Balance: `U256`**
 For the type of a contract's balance, `pallet-revive` uses depending on the context
 * either the configured `pallet_revive::Config::Currency` type (which corresponds
   to the `ink::Environment::Balance` type.
@@ -91,7 +91,7 @@ For the type of a contract's balance, `pallet-revive` uses depending on the cont
   In an upcoming beta release this could be simplified to reduce UX friction by just
   using one type everywhere and converting to the `pallet-revive` one.
 
-#### Contract Address: `Address` / `H160`
+#### **Contract Address: `Address` / `H160`**
 For a contract's account, `pallet-revive` is using either the configured `AccountId` type
 of the `polkadot-sdk` runtime, or `H160`.
 
@@ -114,7 +114,7 @@ Besides the publicly exposed crate functions, we've introduced a new subcommand
 `cargo contract account` that allows resolving the `H160` contract address to the
 Polkadot SDK `AccountId` which it is mapped to.
 
-#### Contract Hash: `H256`
+#### **Contract Hash: `H256`**
 For a contract's hash value, `pallet-revive` uses a fixed `H256`, Previously,
 the `ink::Environment::Hash` type referenced the hash type being used for the
 contract's hash. Now it's just a fixed `H256`.
@@ -177,7 +177,7 @@ We have implemented barebones support for this tracing API in the 6.0.0-alpha
 versions of ink! + `cargo-contract`. But it's really barebones and should
 certainly be improved before a production release.
 
-We've updated [the Debugging chapter](../debugging/overview.md) of this documentation
+We've updated [the Debugging chapter](../development/debugging/overview.md) of this documentation
 to reflect the new workflow.
 We've also added a contract example to illustrate these new debugging strategies:
 [`debugging-strategies`](https://github.com/use-ink/ink/tree/master/integration-tests/public/debugging-strategies).
@@ -250,7 +250,7 @@ The `pallet-revive` no longer provides a host function to call into the runtime.
 Parity removed this feature as the runtime can change and changes could potentially
 break already deployed contracts.
 
-The way to go instead would be to create [a precompile contract](../basics/precompiles.md)
+The way to go instead would be to create [a precompile contract](../advanced/precompiles.md)
 and have your contract invoke either a cross-contract call or a delegate call into that one.
 
 This is also the migration path recommended for Chain Extensions.
@@ -261,7 +261,7 @@ This was necessary because we introduced a new [`#[ink::contract_ref]` attribute
 The PR [#2648](https://github.com/use-ink/ink/pull/2648) contains more information
 about the motivation and benefits of this change.
 
-[contract-ref-attr]: ../macros-attributes/contract_ref.md
+[contract-ref-attr]: ../reference/macros-attributes/contract_ref.md
 
 ### Sandbox was moved out of `ink_e2e`
 
@@ -326,8 +326,8 @@ will support both the ink! and Solidity ABI, however, the contract size
 will get larger. You can learn more about [supported ABI modes here][abi-declaration].
 
 [package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
-[abi-declaration]: ../basics/abi/overview.md#declaring-the-abi
-[sol-type-mapping]: ../integrations-and-sdks/ethereum-compatibility.md#rustink-to-solidity-abi-type-mapping
+[abi-declaration]: ../reference/abi/overview.md#declaring-the-abi
+[sol-type-mapping]: ../solidity-interop/type-reference.md#rustink-to-solidity-abi-type-mapping
 
 ### Cross-contract calling Solidity contracts
 `CallBuilder` now allows you to call contracts that are Solidity ABI encoded.
@@ -341,7 +341,7 @@ We added a new subcommand:
 cargo contract build ---metadata <ink|solidity>
 ```
 
-You can learn more [here](../basics/metadata/solidity-format.md).
+You can learn more [here](../reference/metadata/solidity-format.md).
 
 ### Ability to build contract with features during E2E tests
 We've added the possibility to set a feature to build a contract with during e2e tests:
@@ -355,6 +355,6 @@ you can then check for in testing.
 Please see our [`debugging-strategies`](https://github.com/use-ink/ink/tree/master/integration-tests/public/debugging-strategies)
 example for a complete explainer.
 
-We've added a page [Debugging » Events](../debugging/events.md) to this documentation.
+We've added a page [Debugging » Events](../development/debugging/events.md) to this documentation.
 We've also added a contract example that illustrates the usage:
 [`debugging-strategies`](https://github.com/use-ink/ink/tree/master/integration-tests/public/debugging-strategies).

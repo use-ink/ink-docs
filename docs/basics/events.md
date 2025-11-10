@@ -256,7 +256,7 @@ in "all" ABI mode:
 - `emit_event_sol`: emits a single Solidity ABI encoded event.
 :::
 
-[abi-all]: ./abi/all.md
+[abi-all]: ../reference/abi/all.md
 
 ## Cost of using Events
 

@@ -253,7 +253,7 @@ This is a breaking change for any client code which uses topics to filter events
 Please see [#1827](https://github.com/use-ink/ink/pull/1827) for details.
 :::
 
-#### Custom signature topics
+#### **Custom signature topics**
 
 In [#2031](https://github.com/use-ink/ink/pull/2031) we introduced an
 optional attribute `signature_topic` to the `#[ink::event]` and `#[ink(event)]` macros.
@@ -301,7 +301,7 @@ We introduced this change in [#1897](https://github.com/use-ink/ink/pull/1897).
 
 ### [ink_e2e] API Changes
 
-#### Builder API
+#### **Builder API**
 
 In [#1917](https://github.com/use-ink/ink/pull/1917) we reworked the E2E API with
 a builder API.
@@ -322,7 +322,7 @@ let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await;
 assert!(matches!(get_res.return_value(), false));
 ```
 
-#### Extra gas margin
+#### **Extra gas margin**
 
 As part of [#1917](https://github.com/use-ink/ink/pull/1917) we added the possibility
 to specify a gas margin (in percentage) as part of the on-chain call.
@@ -337,7 +337,7 @@ The method `.extra_gas_portion(margin: u64)` method is part of the builder API:
 - [`ink_e2e::InstantiateBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.InstantiateBuilder.html#method.extra_gas_portion)
 - [`ink_e2e::CallBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.CallBuilder.html#method.extra_gas_portion)
 
-#### Improved `call()` API
+#### **Improved `call()` API**
 
 We removed the `build_message()` function with its unhandy callback.
 
@@ -353,14 +353,14 @@ let first_insert = ink_e2e::build_message::<MappingsRef>(contract_id)
 
 See [#1782](https://github.com/use-ink/ink/pull/1782) for more details.
 
-#### Removed `additional_contracts` parameter
+#### **Removed `additional_contracts` parameter**
 
 `additional_contracts` parameter which is part of `#[ink_e2e:test]` has been removed in [#2098](https://github.com/use-ink/ink/pull/2098).
 This information is now implied from the contract's manifest.
 Simply, add the other contract as dependency with the `ink-as-a-dependency` feature enabled.
 The test will detect the contract and build it as part of the test.
 
-####
+#### **New `remove_code()` API**
 
 In [#2076](https://github.com/use-ink/ink/pull/2076), we've added a new
 [`remove_code`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/trait.ContractsBackend.html#method.remove_code)
@@ -391,7 +391,7 @@ With a `Vec` it's possible to e.g. introduce a security issue in your contract
 where an attacker can fill the `Vec`, making it very costly for other users to
 access it or write to it.
 
-You can find verbatim documentation on `StorageVec` [here](../datastructures/storagevec.md).
+You can find verbatim documentation on `StorageVec` [here](../advanced/datastructures/storagevec.md).
 The page explains when to use `StorageVec` and when not.
 The Rust docs can be found [here](https://docs.rs/ink/5.0.0/ink/storage/struct.StorageVec.html).
 
@@ -415,7 +415,7 @@ is 16 kB by default.
 
 We added a lint to `cargo-contract` 4.0 that will detect
 potentially unsafe uses of methods for which there are safer alternatives:
-[`non_fallible_api`](../linter/rules/non_fallible_api.md).
+[`non_fallible_api`](../development/linter/rules/non_fallible_api.md).
 
 ### Chain Extension API changed + Support for multiple chain extensions
 
@@ -519,7 +519,7 @@ erc20_builder.total_supply().call_v1().invoke()
 
 ### Metadata Changes
 
-#### Events 2.0
+#### **Events 2.0**
 
 See [#1827](https://github.com/use-ink/ink/pull/1827) for the full details.
 Two fields werere added to the objects in the `events` array:
@@ -561,7 +561,7 @@ ink! 5.0:
   ]
 ```
 
-#### New field: `staticBufferSize`
+#### **New field: `staticBufferSize`**
 
 With [#1880](https://github.com/use-ink/ink/pull/1880) we added a `"staticBufferSize"` field to
 the metadata file. The unit is bytes.
@@ -577,7 +577,7 @@ Example:
       "timestamp": { ... }
 ```
 
-#### Metadata storage keys encoding change
+#### **Metadata storage keys encoding change**
 
 Storage keys used to access storage data are SCALE encoded. Previously,
 the contract metadata used big endian encoding to represent storage keys.
@@ -624,23 +624,23 @@ Example:
 With ink! 5.0 we introduce the possibility of running your tests against the
 fork (i.e. snapshot) of a live chain.
 
-See [this page](../testing/testing-with-live-state.md) in our documentation for details.
+See [this page](../development/testing/testing-with-live-state.md) in our documentation for details.
 
 ### New lints
 
 The new lints are:
 
-- [`no_main`](../linter/rules/no_main.md): enforces `no_main` for contracts.
-- [`primitive_topic`](../linter/rules/primitive_topic.md): no number types are allowed as event topics.
-- [`storage_never_freed`](../linter/rules/storage_never_freed.md): what is written into storage can be removed again.
-- [`strict_balance_equality`](../linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
-- [`non_fallible_api`](../linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
+- [`no_main`](../development/linter/rules/no_main.md): enforces `no_main` for contracts.
+- [`primitive_topic`](../development/linter/rules/primitive_topic.md): no number types are allowed as event topics.
+- [`storage_never_freed`](../development/linter/rules/storage_never_freed.md): what is written into storage can be removed again.
+- [`strict_balance_equality`](../development/linter/rules/strict_balance_equality.md): detects usage of strict balance equality checks, a common smart contract vulnerability.
+- [`non_fallible_api`](../development/linter/rules/non_fallible_api.md): detects the usage of potentially unsafe methods for which there are safer alternatives.
 
 With `cargo-contract` 4.0 we added a couple new lints for common smart contract issues
 and best practices.
 You can run the linter via `cargo contract build --lint`.
 
-Details on each lint can be found [here](../linter/overview.md).
+Details on each lint can be found [here](../development/linter/overview.md).
 
 ### New `cargo-contract` commands
 

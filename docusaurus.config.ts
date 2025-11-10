@@ -149,6 +149,10 @@ module.exports = {
             to: '/docs/v6/background/smart-contracts-vs-parachains',
             from: '/docs/v6/background/smart-contracts-vs-rollups',
           },
+          {
+            to: '/docs/v6/solidity-interop/use-ink-with-solidity-abi',
+            from: '/docs/v6/background/solidity-metamask-compatibility',
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/docs/v6/')) {

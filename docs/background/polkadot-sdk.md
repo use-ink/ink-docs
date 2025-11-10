@@ -48,15 +48,14 @@ We think this design is more future-proof than some architectures found in compe
 There are a couple use cases for including smart contract functionality on a parachain. We distinguish three big ones.
 
 ### Use Case 1: Smart Contracts as "first-class citizens"
-The most obvious use case is a parachain which provides smart contracts as a “first-class citizen”, meaning smart contracts are the central value proposition of the chain.
+The most obvious use case is a parachain which provides smart contracts as a "first-class citizen", meaning smart contracts are the central value proposition of the chain.
 
 Those chains typically take the off-the-shelf `pallet-revive` and create additional innovation on top of it.
-An example for this is [Pop Network](https://onpop.io/).
 
 ### Use Case 2: Smart Contracts as "second-class citizens"
 There is another not so obvious use case for `pallet-revive`: smart contracts as “second-class citizens” on an existing chain. By this we mean that the central value proposition of the chain has nothing to do with smart contracts, but it still includes them as an add-on.
 
-The `pallet-revive` provides a [Precompile API](../basics/precompiles.md) with which a parachain can expose certain parts of its business logic to smart contract developers. Through this, smart contract developers can utilize the business logic primitives of the chain to build a new application on top of it. Think for example of a decentralized exchange blockchain. This chain would in its simplest form have an order book to place bids and asks ‒ there is no need for taking untrusted, Turing-complete, programs from the outside. The parachain could decide to expose the order book into smart contracts though, giving external developers the option of building new applications that utilize the order book. For example, to upload trading algorithms as smart contracts to the chain.
+The `pallet-revive` provides a [Precompile API](../advanced/precompiles.md) with which a parachain can expose certain parts of its business logic to smart contract developers. Through this, smart contract developers can utilize the business logic primitives of the chain to build a new application on top of it. Think for example of a decentralized exchange blockchain. This chain would in its simplest form have an order book to place bids and asks ‒ there is no need for taking untrusted, Turing-complete, programs from the outside. The parachain could decide to expose the order book into smart contracts though, giving external developers the option of building new applications that utilize the order book. For example, to upload trading algorithms as smart contracts to the chain.
 
 Smart contracts here are an opportunity to up the user engagement and drive usage of the chain's native token. And the billing for utilizing the chain comes already built-in with the pallet ‒ users have to pay gas fees for the execution of their smart contract.
 

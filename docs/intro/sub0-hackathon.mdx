@@ -1,5 +1,5 @@
 ---
-title: sub0 Hackathon 2025
+title: Sub0 Hackathon 2025
 hide_title: true
 slug: /sub0-hackathon-2025
 hide_table_of_contents: true
@@ -14,6 +14,8 @@ hide_table_of_contents: true
 </head>
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <img src={useBaseUrl('/img/title/sub0-hackathon.svg')} title="The ink! 6.0 smart contracts toolkit release" width="800" style={{ marginBottom: 10 }} />
 
@@ -40,11 +42,35 @@ prompt/context window, this will help your AI friend a lot to provide help.
 
 ## 🚀 Fast Track
 
-Install Rust (>= 1.88) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+Install Rust (>= 1.90) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
 
-Download the binary for a local development node [here](https://github.com/use-ink/ink-node/releases).
+<Tabs>
+  <TabItem value="pop" label="Pop" default>
 
-```toml
+```bash
+# Install Pop CLI via brew
+$ brew install r0gue-io/pop-cli/pop
+
+# From source
+$ cargo install --force --locked pop-cli
+
+# Create a simple contract
+$ pop new 
+
+# Build your contract
+$ pop build --release
+
+# Pop CLI automatically launches a local node when deploying
+$ pop up
+
+# Interact with your contract
+$ pop call
+```
+
+  </TabItem>
+  <TabItem value="cargo-contract" label="cargo-contract">
+
+```bash
 # Install our cli tool: `cargo-contract`.
 # It wraps around Rust's `cargo build` to build contracts with optimal
 # flags for blockchains. It also allows for deploying + interacting
@@ -72,12 +98,15 @@ $ cargo contract call --suri //Alice --contract 0x… --message get
 $ cargo contract call --suri //Alice --contract 0x… --message flip -x
 ```
 
+  </TabItem>
+</Tabs>
+
 <br/>
 
 Please see the chapter [Getting started](../getting-started/setup.md) of this
 documentation for a deeper introduction.
 
-## You need to use ink! v6.0.0-beta!
+## Use ink! v6.0.0-beta!
 
 Prior releases of ink! are not supported for the hackathon!
 You won't be able to deploy them on Passet Hub.
@@ -94,11 +123,6 @@ ink_e2e = { version = "6.0.0-beta" }
 # we moved the sandbox testing environment to a separate crate
 # this one cannot be published to crates.io yet
 ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta" }
-```
-
-Your `cargo-contract` version must be `6.0.0-beta` too:
-```bash
-cargo install --force --locked --version 6.0.0-beta cargo-contract
 ```
 
 ## 🚀 Where to deploy?

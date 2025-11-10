@@ -171,7 +171,7 @@ No code migration is required then for this constructor.
 
 ### Messages
 
-#### Mutable
+#### **Mutable**
 
 There are 3 mutable messages (that can change the state of the contract): `register`, `set_address` and `transfer`. This guide will demonstrate `register`, and the other two can follow a similar pattern. The message is defined as so, with added numerical comments to show the translation to the equivalent `FRAME` code.
 
@@ -232,12 +232,12 @@ Compare the numbered annotations from the ink! contract message and the `FRAME` 
 
 For `4.`, in `FRAME` we need to generate the topic list manually which is done automatically in ink! via the annotations.
 
-#### Weights
+#### **Weights**
 
 The `pallet::weight` attribute defines the `weight` of the dispatchable i.e. the amount of onchain resources it is estimated to consume. Because we are now writing trusted code, we can define this up front (no runtime gas metering). The number in the `weight` is typically generated via a benchmarking process. It is important to integrate this process and set a non-arbitrary value here before deploying to a production chain. 
 You can read more [here](https://docs.polkadot.com/polkadot-protocol/basics/blocks-transactions-fees/fees/).
 
-#### Immutable (read only) messages
+#### **Immutable (read only) messages**
 
 `ink!` messages can return a value, which when executed as an RPC "dry-run" (not via a transaction), are used to read the state of contracts. Dispatchables in `FRAME` cannot return values directly. There are two ways to read the state from a FRAME pallet:
 
@@ -284,7 +284,7 @@ let result = api
 
 Data migration can be done at either genesis time or once the custom parachain is up and running. 
 
-#### Retrieving the data from the contract
+#### **Retrieving the data from the contract**
 
 In both cases the first steps are to first download the current state of the contract at a fixed point in time, and then ensuring that no changes can be made to the contract after that. 
 
@@ -292,7 +292,7 @@ This could be done by using `set_code_hash` to update the source code of the con
 
 An alternative would be querying the contract storage directly, but currently there are no good tools for this, and it would require some key calculation for retrieving the data at all storage locations. Additionally the contract would still need to be "frozen" somehow to ensure no changes can be made to the contract state.
 
-#### Initializing the pallet 
+#### **Initializing the pallet**
 
 Once the data has been downloaded and serialized, it can be used to initialize the state of the custom parachain runtime. This can be hardcoded in a `#[pallet::genesis_build]` impl block. See [here](https://docs.polkadot.com/develop/parachains/deployment/generate-chain-specs/) for more info.
 

@@ -20,13 +20,13 @@ These are the foundational libraries for interacting with ink! contracts from Ja
 
 ### General Polkadot SDK Libraries
 
-#### papi
+#### **papi**
 - **[`polkadot-api`](https://papi.how/getting-started)** **(currently recommended)**
 - Fully-typed TypeScript API supporting general interaction with Polkadot-SDK based blockchains
 - Modern, lightweight alternative to `@polkadot/api`
 - Excellent TypeScript support and developer experience
 
-#### @polkadot/api
+#### **@polkadot/api**
 - **[`@polkadot/api`](https://polkadot.js.org/docs/api)** **(not recommended for new projects)**
 - Allows for most general interaction with Polkadot-SDK based blockchains from JavaScript
 - To interact with smart contracts, use the `pallet-revive` runtime calls
