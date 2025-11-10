@@ -253,7 +253,7 @@ This is a breaking change for any client code which uses topics to filter events
 Please see [#1827](https://github.com/use-ink/ink/pull/1827) for details.
 :::
 
-#### Custom signature topics
+#### **Custom signature topics**
 
 In [#2031](https://github.com/use-ink/ink/pull/2031) we introduced an
 optional attribute `signature_topic` to the `#[ink::event]` and `#[ink(event)]` macros.
@@ -301,7 +301,7 @@ We introduced this change in [#1897](https://github.com/use-ink/ink/pull/1897).
 
 ### [ink_e2e] API Changes
 
-#### Builder API
+#### **Builder API**
 
 In [#1917](https://github.com/use-ink/ink/pull/1917) we reworked the E2E API with
 a builder API.
@@ -322,7 +322,7 @@ let get_res = client.call(&ink_e2e::bob(), &get).dry_run().await;
 assert!(matches!(get_res.return_value(), false));
 ```
 
-#### Extra gas margin
+#### **Extra gas margin**
 
 As part of [#1917](https://github.com/use-ink/ink/pull/1917) we added the possibility
 to specify a gas margin (in percentage) as part of the on-chain call.
@@ -337,7 +337,7 @@ The method `.extra_gas_portion(margin: u64)` method is part of the builder API:
 - [`ink_e2e::InstantiateBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.InstantiateBuilder.html#method.extra_gas_portion)
 - [`ink_e2e::CallBuilder::extra_gas_portion`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/struct.CallBuilder.html#method.extra_gas_portion)
 
-#### Improved `call()` API
+#### **Improved `call()` API**
 
 We removed the `build_message()` function with its unhandy callback.
 
@@ -353,14 +353,14 @@ let first_insert = ink_e2e::build_message::<MappingsRef>(contract_id)
 
 See [#1782](https://github.com/use-ink/ink/pull/1782) for more details.
 
-#### Removed `additional_contracts` parameter
+#### **Removed `additional_contracts` parameter**
 
 `additional_contracts` parameter which is part of `#[ink_e2e:test]` has been removed in [#2098](https://github.com/use-ink/ink/pull/2098).
 This information is now implied from the contract's manifest.
 Simply, add the other contract as dependency with the `ink-as-a-dependency` feature enabled.
 The test will detect the contract and build it as part of the test.
 
-####
+#### **New `remove_code()` API**
 
 In [#2076](https://github.com/use-ink/ink/pull/2076), we've added a new
 [`remove_code`](https://docs.rs/ink_e2e/5.0.0/ink_e2e/trait.ContractsBackend.html#method.remove_code)
@@ -519,7 +519,7 @@ erc20_builder.total_supply().call_v1().invoke()
 
 ### Metadata Changes
 
-#### Events 2.0
+#### **Events 2.0**
 
 See [#1827](https://github.com/use-ink/ink/pull/1827) for the full details.
 Two fields werere added to the objects in the `events` array:
@@ -561,7 +561,7 @@ ink! 5.0:
   ]
 ```
 
-#### New field: `staticBufferSize`
+#### **New field: `staticBufferSize`**
 
 With [#1880](https://github.com/use-ink/ink/pull/1880) we added a `"staticBufferSize"` field to
 the metadata file. The unit is bytes.
@@ -577,7 +577,7 @@ Example:
       "timestamp": { ... }
 ```
 
-#### Metadata storage keys encoding change
+#### **Metadata storage keys encoding change**
 
 Storage keys used to access storage data are SCALE encoded. Previously,
 the contract metadata used big endian encoding to represent storage keys.

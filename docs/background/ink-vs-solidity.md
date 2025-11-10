@@ -484,11 +484,11 @@ Solidity has several error handling mechanisms: `assert`, `require`, `revert`, a
 
 ink! uses a `Result` enum (`Ok(T)`, `Err(E)`), `assert!` and `panic!`. [This Stack Exchange](https://substrate.stackexchange.com/questions/2391/panic-in-ink-smart-contracts) answer and [GitHub discussion](https://github.com/use-ink/ink/issues/641) provide more details on these.
 
-#### `throw`
+#### **`throw`**
 
 Throw is deprecated in Solidity and would throw an invalid opcode error (no details) and revert the state. As an alternative to the `if...{throw;}` pattern in Solidity, a `Result::Err` should be returned for expected errors, and an `assert!` should be used for errors that should not occur.
 
-#### `assert`
+#### **`assert`**
 
 In Solidity, `assert` is used as internal guards against errors in the _code_. In general, properly functioning code should never hit a failing assert. `assert` in Solidity does not have error strings. In ink!, use `assert!`. `assert!` will `panic!` if it evaluates to _false_. The state will be reverted, and a `CalleeTrapped` will be returned. The (optional) error string will be printed to the debug buffer.
 
@@ -497,7 +497,7 @@ In Solidity, `assert` is used as internal guards against errors in the _code_. I
 assert!(caller == owner, "caller is not owner")
 ```
 
-#### `require and revert`
+#### **`require and revert`**
 
 In Solidity, `require` is used for general (normal) errors -- such as errors that occur based on user input. `require` does have the option for an error string. `revert` is very similar to `require` except that `revert` will be called in `if ... else` chains. Both `require` and `revert` will revert the chain state. In ink!, `if ... { return Err(Error::SomeError) }` should be used for `require` or `revert`. When a `Result::Err` is returned in ink!, then all state is reverted.
 

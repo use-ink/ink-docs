@@ -82,7 +82,7 @@ The field `source.wasm` was renamed to `source.contract_binary`.
 
 ### Types
 
-#### Contract Balance: `U256`
+#### **Contract Balance: `U256`**
 For the type of a contract's balance, `pallet-revive` uses depending on the context
 * either the configured `pallet_revive::Config::Currency` type (which corresponds
   to the `ink::Environment::Balance` type.
@@ -91,7 +91,7 @@ For the type of a contract's balance, `pallet-revive` uses depending on the cont
   In an upcoming beta release this could be simplified to reduce UX friction by just
   using one type everywhere and converting to the `pallet-revive` one.
 
-#### Contract Address: `Address` / `H160`
+#### **Contract Address: `Address` / `H160`**
 For a contract's account, `pallet-revive` is using either the configured `AccountId` type
 of the `polkadot-sdk` runtime, or `H160`.
 
@@ -114,7 +114,7 @@ Besides the publicly exposed crate functions, we've introduced a new subcommand
 `cargo contract account` that allows resolving the `H160` contract address to the
 Polkadot SDK `AccountId` which it is mapped to.
 
-#### Contract Hash: `H256`
+#### **Contract Hash: `H256`**
 For a contract's hash value, `pallet-revive` uses a fixed `H256`, Previously,
 the `ink::Environment::Hash` type referenced the hash type being used for the
 contract's hash. Now it's just a fixed `H256`.

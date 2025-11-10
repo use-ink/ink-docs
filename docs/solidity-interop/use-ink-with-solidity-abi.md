@@ -43,12 +43,14 @@ By enabling Solidity ABI compatibility, you can:
 
 ### 2. Enable Solidity ABI
 
-Open `Cargo.toml` and configure the ABI mode:
+Open `Cargo.toml`, add the `ink-lang` table under `[package.metadata]`, and configure the ABI mode:
 
 ```toml
 [package.metadata.ink-lang]
 abi = "sol"
 ```
+
+Setting `abi = "sol"` puts the contract into Solidity ABI compatibility mode, so all constructor, message, and event types must translate to Solidity ABI types. See the [Type Reference](./type-reference.md) for supported mappings.
 
 ### 3. Build with Solidity Metadata
 

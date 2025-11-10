@@ -54,6 +54,25 @@ and event argument types can be mapped to equivalent Solidity ABI types
 ([more details here][sol-type-mapping]).
 :::
 
+### Solidity ABI Mode
+
+In ["all" ABI mode](../reference/abi/all.md), contract references are generated for both ink!/native and Solidity ABI calling conventions. The Solidity ABI specific contract reference is named with an additional `Sol` suffix (e.g. `ContractRefSol` for a contract named `Contract`).
+
+```rust
+// Example: Using the Solidity ABI contract reference
+use other_contract::OtherContractRefSol;
+
+#[ink(storage)]
+pub struct MyContract {
+    other_contract: OtherContractRefSol,
+}
+```
+
+:::info
+In ["sol" ABI mode](../reference/abi/solidity.md), the `Sol` suffix is not necessary. For a contract named `Contract`, `ContractRef` will use the Solidity ABI calling conventions directly.
+:::
+
+
 [scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 [sol-abi-selector]: https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector
 [selector-attribute]: ../macros-attributes/selector.md

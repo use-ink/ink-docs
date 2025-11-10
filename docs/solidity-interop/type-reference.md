@@ -18,37 +18,6 @@ slug: /solidity-interop/type-reference
 
 ![Metadata Title Picture](/img/title/solidity.svg)
 
-# Type Reference
-
-:::note
-For a gentle introduction, read our blogpost [ink! speaks Solidity on PolkaVM][blog-post].
-:::
-
-[blog-post]: https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3
-
-With ink! v6, we have introduced an `abi` field in a custom `ink-lang` table 
-in the [`package.metadata` table][package-metadata] of a contract's manifest
-file (i.e. the `Cargo.toml` file) - [more details here][abi-declaration].
-It allows building your contract in Solidity ABI compatibility mode 
-when declared as follows:
-
-```toml
-[package.metadata.ink-lang]
-abi = "sol"
-```
-
-The implication of supporting Solidity ABI encoding is that all types used as 
-constructor/message argument and return types, and event argument types must 
-define a mapping to an equivalent Solidity ABI type.
-
-:::note
-This is similar to the requirement to implement [`scale::Encode` and `scale::Decode`][scale-codec]
-for Rust types used in the public interfaces of ink!/"native" ABI encoded contracts.
-:::
-
-[package-metadata]: https://doc.rust-lang.org/cargo/reference/manifest.html#the-metadata-table
-[abi-declaration]: ../reference/abi/overview.md#declaring-the-abi
-[scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 
 ## Rust/ink! to Solidity ABI type mapping
 
@@ -60,6 +29,7 @@ An error about a missing trait implementation for this type will be thrown.
 
 [sol-encode]: https://use-ink.github.io/ink/ink/trait.SolEncode.html
 [sol-decode]: https://use-ink.github.io/ink/ink/trait.SolDecode.html
+[scale-codec]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec
 
 ### Default/provided mappings
 
@@ -229,6 +199,8 @@ Rust's [coherence/orphan rules][rust-coherence] mean that you can only implement
 `SolErrorEncode` and `SolErrorDecode` traits for local types.
 However, one way around this limitation is to use the [newtype pattern][new-type-pattern].
 :::
+
+[abi-declaration]: ../reference/abi/overview.md#declaring-the-abi
 
 ### Mappings for arbitrary custom types
 

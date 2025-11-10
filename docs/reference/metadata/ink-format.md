@@ -148,7 +148,7 @@ see [here](https://github.com/use-ink/ink/blob/master/crates/metadata/src/lib.rs
 
 :::
 
-#### `spec`
+#### **`spec`**
 The contract `spec` consists of the following **required** keys:
 - `constructors`: The set of constructors of the contract.
     - `label`: The label of the constructor. In case of a trait provided constructor the
@@ -241,7 +241,7 @@ variant (see the [`LangError`](https://use-ink.github.io/ink/ink/enum.LangError.
 }
 ```
 
-#### `storage`
+#### **`storage`**
 This key describes the storage layout of an ink! contract. It tracks some of the
 different structures which can be placed in storage.
 
@@ -295,7 +295,7 @@ by the contract):
 }
 ```
 
-#### `types`
+#### **`types`**
 This object contains the type registry for the smart contract. It consists of an array of
 type objects, each of which is defined as follows:
 - `id`: Numerical ID for referencing the type.
@@ -329,7 +329,7 @@ not dig into them here. If you are interested in learning more take a look at th
 Other parts of the metadata, such as the `storage` object, will reference individual
 types from this type registry using the `id` key.
 
-#### `version`
+#### **`version`**
 This indicates the version of the ABI format the generated metadata conforms to. This is
 distinct from any concept of Rust's crate versioning.
 

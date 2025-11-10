@@ -55,15 +55,13 @@ you want to call as a dependency of your own contract.
 
 This means that this approach cannot be used if you want to interact with a contract
 that is either built in another language (e.g. Solidity), or has no publicly available package/crate.
-For calling Solidity contracts, see [Calling Solidity Contracts](../solidity-interop/calling-solidity-contracts.md).
-For other cases, you will need to use either [manually defined contract references](#manually-defined-contract-references)
+For [calling Solidity Contracts](../solidity-interop/calling-solidity-contracts.md) you will need to use either [manually defined contract references](#manually-defined-contract-references)
 using the [`#[ink::contract_ref]` attribute][contract-ref-attr] (recommended),
 or the [`Builders`](#builders) approach instead.
 
-#### `BasicContractRef` walkthrough
+#### **BasicContractRef walkthrough**
 
-We will walk through the [`cross-contract-calls`][example] example in order 
-to demonstrate how cross-contract calls using contract references work.
+This walkthrough uses the [`cross-contract-calls`][example] example to illustrate how contract references enable cross-contract calls.
 
 The general workflow will be:
 1. Prepare `OtherContract` to be imported to other contracts
@@ -74,7 +72,7 @@ The general workflow will be:
 
 [example]: https://github.com/use-ink/ink-examples/tree/master/cross-contract-calls
 
-#### Prepping `OtherContract`
+#### **Prepping `OtherContract`**
 
 We need to make sure that the ink! generated contract ref for `OtherContract` is
 available to other pieces of code.
@@ -89,7 +87,7 @@ pub use self::other_contract::OtherContractRef;
 We intend to automatically generate this re-export in future releases of ink! v6.
 :::
 
-#### Importing `OtherContract`
+#### **Importing `OtherContract`**
 
 Next, we need to import `OtherContract` to our `BasicContractRef` contract.
 
@@ -117,7 +115,7 @@ Two things to note here:
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
    our contract's metadata.
 
-#### Wiring `BasicContractRef`
+#### **Wiring `BasicContractRef`**
 
 First, we will import the contract reference of `OtherContract`, and declare the
 reference to be part of our storage struct.
@@ -167,7 +165,7 @@ pub fn flip_and_get(&mut self) -> bool {
 }
 ```
 
-#### Uploading `OtherContract`
+#### **Uploading `OtherContract`**
 
 You will need the [`ink-node`](https://github.com/use-ink/ink-node)
 running in the background for the next steps.
@@ -188,7 +186,7 @@ Code hash "0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa"
 
 We can then use this `code_hash` to instantiate our `BasicContractRef` contract.
 
-#### Instantiating `OtherContract` through `BasicContractRef`
+#### **Instantiating `OtherContract` through `BasicContractRef`**
 
 We will first need to instantiate `BasicContractRef`.
 
@@ -207,7 +205,7 @@ If successful, this will output in a contract address for `BasicContractRef` sim
 Contract 5CWz6Xnivp9PSoZq6qPRP8xVAShZgtNVGTCLCsq3qzqPV7Rq
 ```
 
-#### Calling with `OtherContract` through `BasicContractRef`
+#### **Calling with `OtherContract` through `BasicContractRef`**
 
 Finally, we can call the `OtherContract` methods through `BasicContractRef` as follows:
 
@@ -296,7 +294,7 @@ The `CallBuilder` gives you a couple of ways to call messages from other contrac
 are two main approaches to this: `Call`s and `DelegateCall`s. We will briefly cover both
 here.
 
-#### CallBuilder: Call
+#### **CallBuilder: Call**
 When using `Call`s the `CallBuilder` requires an already instantiated contract.
 
 We saw an example of how to use the `CreateBuilder` to instantiate contracts in the
@@ -343,7 +341,7 @@ with [end-to-end testing][e2e-test] before contracts are deployed on-chain.
 To call Solidity ABI-encoded contracts, see [Calling Solidity Contracts](../solidity-interop/calling-solidity-contracts.md).
 :::
 
-#### CallBuilder: Delegate Call
+#### **CallBuilder: Delegate Call**
 You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics.
 If you need a refresher on what delegate calls are,
 [see this article](https://medium.com/coinmonks/delegatecall-calling-another-contract-function-in-solidity-b579f804178c).

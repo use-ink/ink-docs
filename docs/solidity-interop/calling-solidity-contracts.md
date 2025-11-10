@@ -8,7 +8,9 @@ slug: /solidity-interop/calling-solidity-contracts
 
 # Calling Solidity Contracts
 
-ink! v6 contracts can call Solidity ABI-encoded contracts, enabling seamless interoperability between ink!, Solidity, and other Solidity ABI-compatible contracts. This allows you to integrate with existing Ethereum-compatible smart contracts deployed on Polkadot.
+[ink! v6 contracts can call Solidity ABI-encoded contracts][blog-post], enabling seamless interoperability between ink!, Solidity, and other Solidity ABI-compatible contracts. This allows you to integrate with existing Ethereum-compatible smart contracts deployed on Polkadot.
+
+[blog-post]: https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3
 
 There are two main approaches to calling Solidity contracts from ink!:
 1. **Contract References** (`ContractRef`) - High-level, type-safe interfaces
@@ -17,28 +19,6 @@ There are two main approaches to calling Solidity contracts from ink!:
 ## Using Contract References
 
 Contract references provide a high-level type-safe interface for interacting with on-chain contracts. When working with Solidity ABI contracts, you can use manually defined contract references with the [`#[ink::contract_ref]` attribute](../reference/macros-attributes/contract_ref.md).
-
-:::note
-This approach cannot be used if you want to interact with a contract built in another language (e.g. Solidity), or has no publicly available package/crate. For those cases, you'll need to manually define the interface using the [`#[ink::contract_ref]` attribute](../reference/macros-attributes/contract_ref.md).
-:::
-
-### Solidity ABI Mode
-
-In ["all" ABI mode](../reference/abi/all.md), contract references are generated for both ink!/native and Solidity ABI calling conventions. The Solidity ABI specific contract reference is named with an additional `Sol` suffix (e.g. `ContractRefSol` for a contract named `Contract`).
-
-```rust
-// Example: Using the Solidity ABI contract reference
-use other_contract::OtherContractRefSol;
-
-#[ink(storage)]
-pub struct MyContract {
-    other_contract: OtherContractRefSol,
-}
-```
-
-:::info
-In ["sol" ABI mode](../reference/abi/solidity.md), the `Sol` suffix is not necessary. For a contract named `Contract`, `ContractRef` will use the Solidity ABI calling conventions directly.
-:::
 
 ## Using CreateBuilder with Solidity ABI
 
