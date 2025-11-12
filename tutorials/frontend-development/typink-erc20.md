@@ -72,7 +72,6 @@ pop new contract
 
 When prompted:
 
-* **Template type:** `ERC`
 * **Select contract:** `erc20`
 * **Project name:** `erc20`
 
