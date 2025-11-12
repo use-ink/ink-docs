@@ -6,6 +6,7 @@ module.exports = {
       label: 'Frontend Development',
       items: [
         'frontend-development/inkathon-erc20',
+        'frontend-development/typink-erc20',
       ],
     },
     {
