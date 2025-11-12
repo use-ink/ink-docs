@@ -84,8 +84,6 @@ Navigate to the contract directory and build it:
 ```bash
 cd erc20
 pop build
-# or
-cargo contract build --release
 ```
 
 After successful compilation, you'll find the artifacts in `target/ink/`:
