@@ -106,7 +106,7 @@ export const projects: Project[] = [
           </li>
           <li>
             <em>Completions:</em> inline code suggestions for ink! attribute macros, arguments and items
-            for defining and configuring your ink! smart contract's storage, constructors, messages,
+            for defining and configuring your ink! smart contract&apos;s storage, constructors, messages,
             events, errors, tests and much more!
           </li>
           <li>
@@ -128,8 +128,7 @@ export const projects: Project[] = [
           </li>
         </ul>
         <p>
-          Because of ink! analyzer's modular architecture and LSP support, its individual components
-          (i.e. the
+          Because of ink! analyzer&apos;s modular architecture and LSP support, its individual components (i.e. the
           {' '}
           <a href="https://github.com/ink-analyzer/ink-analyzer/tree/master/crates/analyzer"
              target="_blank"
