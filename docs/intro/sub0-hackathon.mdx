@@ -76,7 +76,7 @@ $ pop call
 # flags for blockchains. It also allows for deploying + interacting
 # with contracts.
 $ rustup component add rust-src
-$ cargo install --locked --force --version 6.0.0-beta cargo-contract
+$ cargo install --locked --force --version 6.0.0-beta.1 cargo-contract
 
 # Create a simple contract.
 $ cargo contract new flipper && cd flipper
@@ -106,7 +106,7 @@ $ cargo contract call --suri //Alice --contract 0x… --message flip -x
 Please see the chapter [Getting started](../getting-started/setup.md) of this
 documentation for a deeper introduction.
 
-## Use ink! v6.0.0-beta!
+## Use ink! v6.0.0-beta.1!
 
 Prior releases of ink! are not supported for the hackathon!
 You won't be able to deploy them on Passet Hub.
@@ -115,14 +115,14 @@ Make sure your `Cargo.toml` contains
 
 ```toml
 [dependencies]
-ink = { version = "6.0.0-beta" }
+ink = { version = "6.0.0-beta.1" }
 
 [dev-dependencies]
-ink_e2e = { version = "6.0.0-beta" }
+ink_e2e = { version = "6.0.0-beta.1" }
 
 # we moved the sandbox testing environment to a separate crate
 # this one cannot be published to crates.io yet
-ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta" }
+ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta.1" }
 ```
 
 ## 🚀 Where to deploy?

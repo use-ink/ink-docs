@@ -110,7 +110,7 @@ DRink! is already integrated with the ink! framework and can be used as a drop-i
 
 Import `ink_sandbox` in your Cargo.toml:
 ```toml
-ink_sandbox = { git = "https://github.com/use-ink/ink", branch = "6.0.0-beta" }
+ink_sandbox = { git = "https://github.com/use-ink/ink", branch = "6.0.0-beta.1" }
 ```
 
 And just use corresponding argument in the test macro:

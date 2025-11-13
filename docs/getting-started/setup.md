@@ -43,7 +43,7 @@ curl https://sh.rustup.rs -sSf | sh
 
       ```bash
       rustup component add rust-src
-      cargo install --force --locked --version 6.0.0-beta cargo-contract 
+      cargo install --force --locked --version 6.0.0-beta.1 cargo-contract 
       ```
 
       In addition to Rust, installation requires a C++ compiler that supports C++17.

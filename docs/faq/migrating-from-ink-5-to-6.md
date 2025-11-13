@@ -276,8 +276,8 @@ to
 
 ```toml
 [dev-dependencies]
-ink_e2e = { version = "6.0.0-beta" }
-ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta" }
+ink_e2e = { version = "6.0.0-beta.1" }
+ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta.1" }
 ```
 
 In the tests, you need to apply this change when using `sandbox`. Instead of:
