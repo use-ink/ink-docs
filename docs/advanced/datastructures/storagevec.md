@@ -74,18 +74,22 @@ mod mycontract {
 
 ## Difference between `StorageVec` and Rusts `Vec` type
 
-Any Rust `Vec<T>` will exhibit `Packed` storage layout; where
-`StorageVec` stores each value under it's own storage key.
+Any Rust `Vec<T>` will exhibit `Packed` storage layout 
+(i.e. all values are stored in a single storage cell); 
+whereas `StorageVec` stores each value under its own storage key.
 
 Hence, any read or write from or to a `Vec` on storage will load
 or store _all_ of its elements.
 
-This can be undesirable:
-The cost of reading or writing a _single_ element grows linearly
-corresponding to the number of elements in the vector (its length).
-Additionally, the maximum capacity of the _whole_ vector is limited by
-the size of [ink!'s static buffer](https://github.com/use-ink/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet)
-used during ABI encoding and decoding (default 16 KiB).
+This can be undesirable because:
+- The cost of reading or writing a _single_ element grows linearly
+  corresponding to the number of elements in the vector (i.e. its length).
+- Additionally, the maximum capacity of the _whole_ vector is limited by
+  [`pallet-revive's` storage limit for a single cell][pallet-revive-limits] 
+  (currently `416 bytes`).
+- Lastly, the maximum capacity of the _whole_ vector is also limited by
+  the size of [ink!'s static buffer][static-buffer] used during ABI encoding 
+  and decoding (current default is `16 KiB`).
 
 `StorageVec` on the other hand allows to access each element individually.
 Thus, it can theoretically grow to infinite size.
@@ -93,10 +97,13 @@ However, we currently limit the length at 2 ^ 32 elements. In practice,
 even if the vector elements are single bytes, it'll allow to store
 more than 4 GB data in blockchain storage.
 
+[pallet-revive-limits]: https://docs.polkadot.com/polkadot-protocol/smart-contract-basics/evm-vs-polkavm/#current-memory-limits
+[static-buffer]: https://github.com/use-ink/ink/blob/master/ARCHITECTURE.md#communication-with-the-pallet
+
 ### Caveats
 
 Iterators are not provided. `StorageVec` is expected to be used to
-store a lot elements, where iterating through the elements would be
+store a lot of elements, where iterating through the elements would be
 rather inefficient. Manually iterating over the elements using a loop
 is possible but considered an anti-pattern for most cases.
 
@@ -118,7 +125,7 @@ storage read.
 
 ### Storage Layout
 
-At given `StorageKey` `K`, the length of the `StorageVec` is hold.
+At given `StorageKey` `K`, the length of the `StorageVec` is held.
 Each element `E` is then stored under a combination of the `StorageVec`
 key `K` and the elements index.
 
