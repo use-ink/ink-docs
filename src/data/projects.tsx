@@ -66,44 +66,92 @@ export const projects: Project[] = [
   },
   {
     link: 'https://analyze.ink/',
-    logo: 'img/projects/inkanalyzer-logo.avif',
-    title: 'VSCode extension designed to help you develop smart contracts in ink!',
+    logo: 'img/projects/ink-analyzer-logo.svg',
+    title: 'A collection of modular and reusable libraries and tools for improving of ink! language support in IDEs/editors.',
     about: (
       <>
         <p>
-          Created by{' '}
-          <a href="https://github.com/davidsemakula" target="_blank" rel="noopener noreferrer">
-            David Semakula
+          For VS Code users, ink! analyzer ships a
+          {' '}
+          <a href="https://marketplace.visualstudio.com/items?itemName=ink-analyzer.ink-analyzer"
+             target="_blank"
+             rel="noopener noreferrer">
+            VS Code extension
+          </a>.
+        </p>
+        <p>
+          For other IDEs/editors with
+          {' '}
+          <a href="https://microsoft.github.io/language-server-protocol/"
+             target="_blank"
+             rel="noopener noreferrer">
+            LSP (Language Server Protocol)
           </a>
-          , this VS extension comes with many nifty features, including but not limited to:
+          {' '}support, ink! analyzer provides
+          {' '}
+          <a href="https://github.com/ink-analyzer/ink-analyzer/releases"
+             target="_blank"
+             rel="noopener noreferrer">
+            prebuilt language server binaries for Windows, Linux and macOS
+          </a>.
+        </p>
+        <p>
+          <a href="https://analyze.ink/" target="_blank" rel="noopener noreferrer">ink! analyzer</a> provides many nifty
+          features, including but not limited to:
         </p>
         <ul className="pl-4 space-y-4 list-disc">
           <li>
-            <em>Diagnostics:</em> The extension analyzes if your code follows the semantic rules of ink!.
+            <em>Diagnostics and quickfixes :</em> errors and warnings based on ink! semantic rules,
+            and suggested edits/code actions for fixing these errors and warnings.
           </li>
           <li>
-            <em>Quick Fixes:</em> It displays warnings, errors, and gives you suggestions about what might be wrong with
-            your code.
+            <em>Completions:</em> inline code suggestions for ink! attribute macros, arguments and items
+            for defining and configuring your ink! smart contract's storage, constructors, messages,
+            events, errors, tests and much more!
           </li>
           <li>
-            <em>Completions:</em> Inline info about which attributes and arguments are available for further configuring
-            your smart contract&apos;s storage, events, messages, and more.
+            <em>Code/intent actions:</em> contextual assists for:
+            adding relevant ink! attribute macros, arguments and items;
+            migrating ink! projects to newer versions of ink!;
+            extracting ink! items (e.g. ink! events) into standalone packages, and much more!
           </li>
           <li>
-            <em>Inline Documentation:</em> just hover over an ink! attribute or argument to read the documentation for
-            it.
+            <em>Inlay hints:</em> inline type and format information for ink! attribute arguments value
+            (e.g. `u32 | _ | @` for ink! message selectors).
+          </li>
+          <li>
+            <em>Signature help:</em> popup information for valid ink! attribute arguments for the current context/cursor
+            position.
+          </li>
+          <li>
+            <em>Hover docs:</em> just hover over an ink! attribute or argument to read the documentation for it.
           </li>
         </ul>
-
         <p>
+          Because of ink! analyzer's modular architecture and LSP support, its individual components
+          (i.e. the
           {' '}
-          Under the hood, ink! Analyzer is a collection of modular libraries and tools for the semantic analysis of ink!
-          smart contract code. This means the individual components can be reused to create things beyond a VSCode
-          extension! 🙌
+          <a href="https://github.com/ink-analyzer/ink-analyzer/tree/master/crates/analyzer"
+             target="_blank"
+             rel="noopener noreferrer">
+            semantic analyzer
+          </a>
+          {' '}and
+          {' '}
+          <a href="https://github.com/ink-analyzer/ink-analyzer/tree/master/crates/lsp-server"
+             target="_blank"
+             rel="noopener noreferrer">
+            language server
+          </a>
+          ) can be reused to create other tools beyond a VS Code extension! 🙌
         </p>
-
         <p>
-          David maintains a blog about the extension at{' '}
+          <a href="https://github.com/davidsemakula"
+             target="_blank"
+             rel="noopener noreferrer">
+            David Semakula
+          </a> (the creator of ink! analyzer) maintains a blog about the project at
+          {' '}
           <a href="https://analyze.ink" target="_blank" rel="noopener noreferrer">
             https://analyze.ink
           </a>
@@ -111,7 +159,7 @@ export const projects: Project[] = [
         </p>
       </>
     ),
-    image: 'img/projects/inkanalyzer.avif',
+    image: 'img/projects/ink-analyzer-poster.svg',
   },
   {
     link: 'https://github.com/use-ink/drink',
