@@ -43,8 +43,8 @@ module.exports = {
         label: "Data Structures",
         items: [
         "advanced/datastructures/overview",
-        "advanced/datastructures/storagevec",
         "advanced/datastructures/mapping",
+        "advanced/datastructures/storagevec",
         "advanced/datastructures/storage-layout",
         "advanced/datastructures/custom",
         "advanced/datastructures/storage-in-metadata"
