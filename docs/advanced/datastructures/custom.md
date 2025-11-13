@@ -20,7 +20,7 @@ trait, so it can be SCALE
 and
 [`decoded`](https://docs.rs/parity-scale-codec/latest/parity_scale_codec/trait.Decode.html).
 Additionally, the traits
-[`StorageLayout`](https://use-ink.github.io/ink/ink_storage_traits//trait.StorageLayout.html)
+[`StorageLayout`](https://use-ink.github.io/ink/ink_storage_traits/trait.StorageLayout.html)
 and [`TypeInfo`](https://docs.rs/scale-info/latest/scale_info/trait.TypeInfo.html)
 are required as well. But don't worry, usually these traits can just be derived:
 
@@ -65,10 +65,10 @@ the relevant trait documentations for more information.
 :::note
 
 The `#[ink::storage_item]` macro is responsible for storage key calculation of 
-non-[`Packed`](https://use-ink.github.io/ink/ink_storage_traits//trait.Packed.html) 
+non-[`Packed`](https://use-ink.github.io/ink/ink_storage_traits/trait.Packed.html) 
 types. Without it, the key for non-`Packed` fields will be zero. Using this macro is 
 necessary if you don't plan to use a
-[`ManualKey`](https://use-ink.github.io/ink/ink_storage_traits//struct.ManualKey.html) 
+[`ManualKey`](https://use-ink.github.io/ink/ink_storage_traits/struct.ManualKey.html) 
 on a non-`Packed` type.
 
 Types with custom implementations of the ink! storage traits can still use this macro only 
