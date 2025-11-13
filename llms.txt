@@ -9170,6 +9170,20 @@ curl https://sh.rustup.rs -sSf | sh
       [here](https://github.com/use-ink/ink-node?tab=readme-ov-file#build-locally).
   </TabItem>
 </Tabs>
+
+## IDE/Editor support
+
+For VS Code users, we recommend using the [ink! analyzer extension][ink-analyzer-extension] (alongside [rust-analyzer][rust-analyzer]) for the best editor experience.
+
+For other IDEs/editors with [LSP (Language Server Protocol)][lsp-server] support (e.g. [Vim/Neovim, Emacs, Helix, Zed e.t.c][lsp-tools]),
+[ink! analyzer][ink-analyzer] provides [prebuilt language server binaries for Windows, Linux and macOS][ink-analyzer-releases].
+
+[ink-analyzer]: https://analyze.ink/
+[ink-analyzer-extension]: https://marketplace.visualstudio.com/items?itemName=ink-analyzer.ink-analyzer
+[ink-analyzer-releases]: https://github.com/ink-analyzer/ink-analyzer/releases
+[rust-analyzer]: https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer
+[lsp-server]: https://microsoft.github.io/language-server-protocol/
+[lsp-tools]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 ````
 
 ## File: docs/getting-started/testing.md
@@ -9622,6 +9636,20 @@ We recommend the following tools to help you quickly scaffold dApp projects:
 
 - A fully type-safe React hooks library with a [CLI](https://docs.dedot.dev/typink/create-typink-cli) for instant project scaffolding.
 - Learn more in the [docs](https://docs.dedot.dev/typink), [tutorial](https://use.ink/tutorials/frontend-development/typink-erc20), and a [LLM.txt](https://docs.dedot.dev/llms-full.txt) file for your AI-assisted development workflow.
+
+## 👩‍💻 IDE/Editor support
+
+For VS Code users, we recommend using the [ink! analyzer extension][ink-analyzer-extension] (alongside [rust-analyzer][rust-analyzer]) for the best editor experience.
+
+For other IDEs/editors with [LSP (Language Server Protocol)][lsp-server] support (e.g. [Vim/Neovim, Emacs, Helix, Zed e.t.c][lsp-tools]),
+[ink! analyzer][ink-analyzer] provides [prebuilt language server binaries for Windows, Linux and macOS][ink-analyzer-releases].
+
+[ink-analyzer]: https://analyze.ink/
+[ink-analyzer-extension]: https://marketplace.visualstudio.com/items?itemName=ink-analyzer.ink-analyzer
+[ink-analyzer-releases]: https://github.com/ink-analyzer/ink-analyzer/releases
+[rust-analyzer]: https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer
+[lsp-server]: https://microsoft.github.io/language-server-protocol/
+[lsp-tools]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
 ## 🤔 Smart Contract Examples
 
