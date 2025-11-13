@@ -96,11 +96,11 @@ edition = "2021"
 # `ink::env` is the `ink_env` crate that contains functions
 # to interact with a contract's environment (querying information
 # about a caller, the current block number, etc.).
-ink = { version = "6.0.0-beta", default-features = false }
+ink = { version = "6.0.0-beta.1", default-features = false }
 
 [dev-dependencies]
 # This developer dependency is for the End-to-End testing framework.
-ink_e2e = { version = "6.0.0-beta", default-features = false }
+ink_e2e = { version = "6.0.0-beta.1", default-features = false }
 
 [lib]
 name = "foobar"
