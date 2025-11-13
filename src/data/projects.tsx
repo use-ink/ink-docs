@@ -67,7 +67,7 @@ export const projects: Project[] = [
   {
     link: 'https://analyze.ink/',
     logo: 'img/projects/ink-analyzer-logo.svg',
-    title: 'A collection of modular and reusable libraries and tools for improving of ink! language support in IDEs/editors.',
+    title: 'A collection of modular and reusable libraries and tools for improving ink! language support in IDEs/editors.',
     about: (
       <>
         <p>
