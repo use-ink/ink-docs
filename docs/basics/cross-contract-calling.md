@@ -53,43 +53,31 @@ using [end-to-end testing][e2e-test] before contracts are deployed on-chain.
 To use statically generated contract references, you need to import the contract
 you want to call as a dependency of your own contract.
 
+:::note
 This means that this approach cannot be used if you want to interact with a contract
 that is either built in another language (e.g. Solidity), or has no publicly available package/crate.
-For [calling Solidity Contracts](../solidity-interop/calling-solidity-contracts.md) you will need to use either [manually defined contract references](#manually-defined-contract-references)
-using the [`#[ink::contract_ref]` attribute][contract-ref-attr] (recommended),
+
+For [calling Solidity Contracts][call-sol] you will need to use either [manually defined contract references][manual-contract-ref] using the [`#[ink::contract_ref]` attribute][contract-ref-attr] (recommended),
 or the [`Builders`](#builders) approach instead.
+:::
+
+[call-sol]: ../solidity-interop/calling-solidity-contracts.md
+[manual-contract-ref]: #manually-defined-contract-references
 
 #### **BasicContractRef walkthrough**
 
-This walkthrough uses the [`cross-contract-calls`][example] example to illustrate how contract references enable cross-contract calls.
+This walkthrough uses the [`cross-contract-calls`][example] example to illustrate 
+how contract references enable cross-contract calls.
 
 The general workflow will be:
-1. Prepare `OtherContract` to be imported to other contracts
-2. Import `OtherContract` into `BasicContractRef`
-3. Upload `OtherContract` on-chain
-4. Instantiate `OtherContract` using `BasicContractRef`
-5. Call `OtherContract` using `BasicContractRef`
+1. Import `OtherContract` into `BasicContractRef`
+2. Call `OtherContract` using `BasicContractRef`
 
 [example]: https://github.com/use-ink/ink-examples/tree/master/cross-contract-calls
 
-#### **Prepping `OtherContract`**
-
-We need to make sure that the ink! generated contract ref for `OtherContract` is
-available to other pieces of code.
-
-We do this by re-exporting the contract reference as follows:
-
-```rust
-pub use self::other_contract::OtherContractRef;
-```
-
-:::info
-We intend to automatically generate this re-export in future releases of ink! v6.
-:::
-
 #### **Importing `OtherContract`**
 
-Next, we need to import `OtherContract` to our `BasicContractRef` contract.
+We need to import `OtherContract` to our `BasicContractRef` contract.
 
 First, we add the following lines to our `Cargo.toml` file:
 
@@ -131,28 +119,20 @@ pub struct BasicContractRef {
 }
 ```
 
-Next, we to add a way to instantiate `OtherContract`. We do this from the constructor of our
-of contract.
+Next, we will store the address of an instance of `OtherContract`. 
+We do this from the constructor of our of contract.
 
 ```rust
 // In `basic_contract_ref/lib.rs`
 
 #[ink(constructor)]
-pub fn new(other_contract_code_hash: Hash) -> Self {
-    let other_contract = OtherContractRef::new(true)
-        .code_hash(other_contract_code_hash)
-        .endowment(0)
-        .salt_bytes([0xDE, 0xAD, 0xBE, 0xEF])
-        .instantiate();
-
+pub fn new(other_contract_address: ink::Address) -> Self {
+    let other_contract = OtherContractRef::from(other_contract_address);
     Self { other_contract }
 }
 ```
 
-Note that for instantiating a contract we need access to the uploaded on-chain
-`code_hash`. We will get back to this later.
-
-Once we have an instantiated reference to `OtherContract` we can call its messages just
+Once we have a contract reference to `OtherContract` we can call its messages just
 like normal Rust methods!
 
 ```rust
@@ -165,61 +145,53 @@ pub fn flip_and_get(&mut self) -> bool {
 }
 ```
 
-#### **Uploading `OtherContract`**
-
-You will need the [`ink-node`](https://github.com/use-ink/ink-node)
-running in the background for the next steps.
-
-We can upload `OtherContract` using `cargo-contract` as follows:
-
-```
-# In the `basic_contract_ref` directory
-cargo contract build --manifest-path other_contract/Cargo.toml
-cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice -x
-```
-
-If successful, this will output in a `code_hash` similar to:
-
-```
-Code hash "0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa"
-```
-
-We can then use this `code_hash` to instantiate our `BasicContractRef` contract.
-
-#### **Instantiating `OtherContract` through `BasicContractRef`**
+#### **Instantiating `BasicContractRef` with an address for `OtherContract`**
 
 We will first need to instantiate `BasicContractRef`.
+We will need an address to an instance of `OtherContract` that is already on-chain
+(i.e. a `20` bytes [`pallet-revive` address][address] like `0xd051d56ffc5077e006d1fdb14a2311276873aa86`).
+
+[address]: https://use-ink.github.io/ink/ink/type.Address.html
+
+:::note
+For the next steps, you will either need the [`ink-node`][ink-node] running in the background, 
+otherwise you'll need to provide the url of your target node.
+For the latter, see the instructions for [deploying to `Passet Hub Testnet`][passet-hub-deploy] as an example.
+:::
+
+[ink-node]: https://github.com/use-ink/ink-node
+[passet-hub-deploy]: ../getting-started/deploying.md#deploying-to-passet-hub-testnet
 
 ```
 # In the `basic_contract_ref` directory
-cargo contract build
+cargo contract build --release
 cargo contract instantiate \
     --constructor new \
-    --args 0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa \
-    --suri //Alice --salt $(date +%s)
+    --args 0xd051d56ffc5077e006d1fdb14a2311276873aa86 \
+    --suri //Alice --salt $(date +%s) \
+    -x
 ```
 
 If successful, this will output in a contract address for `BasicContractRef` similar to:
 
 ```
-Contract 5CWz6Xnivp9PSoZq6qPRP8xVAShZgtNVGTCLCsq3qzqPV7Rq
+Contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3
 ```
 
-#### **Calling with `OtherContract` through `BasicContractRef`**
+#### **Calling `OtherContract` through `BasicContractRef`**
 
 Finally, we can call the `OtherContract` methods through `BasicContractRef` as follows:
 
 ```
-cargo contract call --contract 5CWz6Xnivp9PSoZq6qPRP8xVAShZgtNVGTCLCsq3qzqPV7Rq \
+cargo contract call --contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3 \
     --message flip_and_get --suri //Alice --dry-run
 ```
 
 Which will result in something like:
 
 ```
-Result Success!
+Result Ok(true)
 Reverted false
-Data Ok(true)
 ```
 
 ## Builders
