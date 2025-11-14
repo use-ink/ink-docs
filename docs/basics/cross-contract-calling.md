@@ -105,7 +105,7 @@ pub struct CrossContractCalls {
 ```
 
 Next, we will store the address of an instance of `OtherContract`. 
-We do this from the constructor of our of contract.
+We do this from the constructor of our contract.
 
 ```rust
 // In `cross-contract-calls/lib.rs`
