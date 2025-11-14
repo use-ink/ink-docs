@@ -13,16 +13,16 @@ manipulate the contract's storage. However, contract authors should know that th
 also create their own custom data structures.
 
 ## Using custom types on storage
-Any custom type wanting to be compatible with ink! storage must implement the
-[`Storable`](https://use-ink.github.io/ink/ink_storage_traits/trait.Storable.html)
-trait, so it can be SCALE
-[`encoded`](https://docs.rs/parity-scale-codec/latest/parity_scale_codec/trait.Encode.html)
-and
-[`decoded`](https://docs.rs/parity-scale-codec/latest/parity_scale_codec/trait.Decode.html).
-Additionally, the traits
-[`StorageLayout`](https://use-ink.github.io/ink/ink_storage_traits//trait.StorageLayout.html)
-and [`TypeInfo`](https://docs.rs/scale-info/latest/scale_info/trait.TypeInfo.html)
+Any custom type wanting to be compatible with ink! storage must implement the [`Storable`][Storable] trait, 
+so it can be SCALE [`encoded`][scale-encode] and [`decoded`][scale-decode].
+Additionally, the traits [`StorageLayout`][StorageLayout] and [`TypeInfo`][TypeInfo]
 are required as well. But don't worry, usually these traits can just be derived:
+
+[Storable]: https://use-ink.github.io/ink/ink_storage_traits/trait.Storable.html
+[scale-encode]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec/trait.Encode.html
+[scale-decode]: https://docs.rs/parity-scale-codec/latest/parity_scale_codec/trait.Decode.html
+[StorageLayout]: https://use-ink.github.io/ink/ink_storage_traits/trait.StorageLayout.html
+[TypeInfo]: https://docs.rs/scale-info/latest/scale_info/trait.TypeInfo.html
 
 ```rust
 /// A custom type that we can use in our contract storage
@@ -41,10 +41,11 @@ pub struct ContractStorage {
 }
 ```
 
-Even better: there is a macro
-[`#[ink::storage_item]`](https://use-ink.github.io/ink/ink_macro/attr.storage_item.html),
+Even better: there is a macro [`#[ink::storage_item]`][storage_item],
 which derives all necessary traits for you. If there is no need to implement any special
 behavior, the above code example can be simplified further as follows:
+
+[storage_item]: https://use-ink.github.io/ink/ink_macro/attr.storage_item.html
 
 ```rust
 /// A custom type that we can use in our contract storage
@@ -65,16 +66,42 @@ the relevant trait documentations for more information.
 :::note
 
 The `#[ink::storage_item]` macro is responsible for storage key calculation of 
-non-[`Packed`](https://use-ink.github.io/ink/ink_storage_traits//trait.Packed.html) 
+non-[`Packed`](https://use-ink.github.io/ink/ink_storage_traits/trait.Packed.html) 
 types. Without it, the key for non-`Packed` fields will be zero. Using this macro is 
 necessary if you don't plan to use a
-[`ManualKey`](https://use-ink.github.io/ink/ink_storage_traits//struct.ManualKey.html) 
+[`ManualKey`](https://use-ink.github.io/ink/ink_storage_traits/struct.ManualKey.html) 
 on a non-`Packed` type.
 
 Types with custom implementations of the ink! storage traits can still use this macro only 
 for key calculation by disabling the derives: `#[ink::storage_item(derive = false)]`.
 
 :::
+
+:::note
+The `#[ink::storage_item]` macro defaults to deriving a "non-Packed" layout
+(i.e. the derived storage type doesn't implement the [`Packed`][Packed] trait by default).
+So if the intention is to use the custom storage type in a position that expects
+a packed storage type (e.g. as `V` in `Mapping<K, V: Packed>` or `T` in `Vec<T: Packed>`),
+you can use the `packed` argument/flag to derive an implementation of the `Packed` trait
+e.g.
+
+```rust
+/// A `Packed` custom storage type that can be used as a `T: Packed` type
+/// (e.g. as `V` in `Mapping<K, V: Packed>` or `T` in `Vec<T: Packed>`).
+#[ink::storage_item(packed)]
+pub struct Inner {
+    value: bool,
+}
+
+#[ink(storage)]
+pub struct ContractStorage {
+    inner: Mapping<AccountId, Inner>,
+}
+
+```
+:::
+
+[Packed]: https://use-ink.github.io/ink/ink_storage_traits/trait.Packed.html
 
 ## Generic storage fields
 
