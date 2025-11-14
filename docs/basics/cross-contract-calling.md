@@ -31,70 +31,43 @@ or they can be manually defined as dynamic interfaces using the [`#[ink::contrac
 
 [contract-ref-attr]: ../reference/macros-attributes/contract_ref.md
 
-### Manually defined contract references 
-
-See our section on using the [`#[ink::contract_ref]` attribute][contract-ref-attr] 
-for a detailed description and examples of how to manually define the dynamic interface 
-for an on-chain/"callee" contract, and use the generated contract reference 
-for calling the on-chain/"callee" contract in a type-safe manner.
-
-:::caution
-A downside to manually defined contract references is that mistakes 
-in the interface definition are not caught at compile-time.
-
-It's therefore important to make sure such interfaces are properly tested 
-using [end-to-end testing][e2e-test] before contracts are deployed on-chain.
-:::
-
-[e2e-test]: ../development/testing/e2e.md
-
 ### Statically generated contract references
 
 To use statically generated contract references, you need to import the contract
 you want to call as a dependency of your own contract.
 
+:::note
 This means that this approach cannot be used if you want to interact with a contract
 that is either built in another language (e.g. Solidity), or has no publicly available package/crate.
-For [calling Solidity Contracts](../solidity-interop/calling-solidity-contracts.md) you will need to use either [manually defined contract references](#manually-defined-contract-references)
-using the [`#[ink::contract_ref]` attribute][contract-ref-attr] (recommended),
+
+For [calling Solidity Contracts][call-sol] you will need to use either 
+[manually defined contract references][manual-contract-ref] 
+using the [`#[ink::contract_ref]` attribute][contract-ref-attr] (recommended), 
 or the [`Builders`](#builders) approach instead.
+:::
 
-#### **BasicContractRef walkthrough**
+[call-sol]: ../solidity-interop/calling-solidity-contracts.md
+[manual-contract-ref]: #manually-defined-contract-references
 
-This walkthrough uses the [`cross-contract-calls`][example] example to illustrate how contract references enable cross-contract calls.
+#### **CrossContractCalls walkthrough**
+
+This walkthrough uses the [`cross-contract-calls`][example] example to illustrate 
+how contract references enable cross-contract calls.
 
 The general workflow will be:
-1. Prepare `OtherContract` to be imported to other contracts
-2. Import `OtherContract` into `BasicContractRef`
-3. Upload `OtherContract` on-chain
-4. Instantiate `OtherContract` using `BasicContractRef`
-5. Call `OtherContract` using `BasicContractRef`
+1. Import `OtherContract` into `CrossContractCalls`
+2. Call `OtherContract` using `CrossContractCalls`
 
 [example]: https://github.com/use-ink/ink-examples/tree/master/cross-contract-calls
 
-#### **Prepping `OtherContract`**
-
-We need to make sure that the ink! generated contract ref for `OtherContract` is
-available to other pieces of code.
-
-We do this by re-exporting the contract reference as follows:
-
-```rust
-pub use self::other_contract::OtherContractRef;
-```
-
-:::info
-We intend to automatically generate this re-export in future releases of ink! v6.
-:::
-
 #### **Importing `OtherContract`**
 
-Next, we need to import `OtherContract` to our `BasicContractRef` contract.
+We need to import `OtherContract` to our `CrossContractCalls` contract.
 
 First, we add the following lines to our `Cargo.toml` file:
 
 ```toml
-# In `basic_contract_ref/Cargo.toml`
+# In `cross-contract-calls/Cargo.toml`
 
 other_contract = { path = "other_contract", default-features = false, features = ["ink-as-dependency"] }
 
@@ -115,48 +88,40 @@ Two things to note here:
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
    our contract's metadata.
 
-#### **Wiring `BasicContractRef`**
+#### **Wiring `CrossContractCalls`**
 
-First, we will import the contract reference of `OtherContract`, and declare the
-reference to be part of our storage struct.
+First, we will import the contract reference of `OtherContract`, 
+and declare the reference to be part of our storage struct.
 
 ```rust
-// In `basic_contract_ref/lib.rs`
+// In `cross-contract-calls/lib.rs`
 
 use other_contract::OtherContractRef;
 
 #[ink(storage)]
-pub struct BasicContractRef {
+pub struct CrossContractCalls {
     other_contract: OtherContractRef,
 }
 ```
 
-Next, we to add a way to instantiate `OtherContract`. We do this from the constructor of our
-of contract.
+Next, we will store the address of an instance of `OtherContract`. 
+We do this from the constructor of our contract.
 
 ```rust
-// In `basic_contract_ref/lib.rs`
+// In `cross-contract-calls/lib.rs`
 
 #[ink(constructor)]
-pub fn new(other_contract_code_hash: Hash) -> Self {
-    let other_contract = OtherContractRef::new(true)
-        .code_hash(other_contract_code_hash)
-        .endowment(0)
-        .salt_bytes([0xDE, 0xAD, 0xBE, 0xEF])
-        .instantiate();
-
+pub fn new(other_contract_address: ink::Address) -> Self {
+    let other_contract = ink::env::call::FromAddr::from_addr(other_contract_address);
     Self { other_contract }
 }
 ```
 
-Note that for instantiating a contract we need access to the uploaded on-chain
-`code_hash`. We will get back to this later.
-
-Once we have an instantiated reference to `OtherContract` we can call its messages just
+Once we have a contract reference to `OtherContract` we can call its messages just
 like normal Rust methods!
 
 ```rust
-// In `basic_contract_ref/lib.rs`
+// In `cross-contract-calls/lib.rs`
 
 #[ink(message)]
 pub fn flip_and_get(&mut self) -> bool {
@@ -165,62 +130,73 @@ pub fn flip_and_get(&mut self) -> bool {
 }
 ```
 
-#### **Uploading `OtherContract`**
+#### **Instantiating `CrossContractCalls` with an address for `OtherContract`**
 
-You will need the [`ink-node`](https://github.com/use-ink/ink-node)
-running in the background for the next steps.
+We will first need to instantiate `CrossContractCalls`.
 
-We can upload `OtherContract` using `cargo-contract` as follows:
+We will need an address of an instance of `OtherContract` that is already on-chain
+(i.e. a `20` bytes [`pallet-revive` address][address] like `0xd051d56ffc5077e006d1fdb14a2311276873aa86`).
 
-```
-# In the `basic_contract_ref` directory
-cargo contract build --manifest-path other_contract/Cargo.toml
-cargo contract upload --manifest-path other_contract/Cargo.toml --suri //Alice -x
-```
+[address]: https://use-ink.github.io/ink/ink/type.Address.html
 
-If successful, this will output in a `code_hash` similar to:
+:::note
+For the next steps, you will either need the [`ink-node`][ink-node] running in the background, 
+or you'll need to provide the url of your target node.
 
-```
-Code hash "0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa"
-```
+For the latter, see the instructions for [deploying to `Passet Hub Testnet`][passet-hub-deploy] as an example.
+:::
 
-We can then use this `code_hash` to instantiate our `BasicContractRef` contract.
-
-#### **Instantiating `OtherContract` through `BasicContractRef`**
-
-We will first need to instantiate `BasicContractRef`.
+[ink-node]: https://github.com/use-ink/ink-node
+[passet-hub-deploy]: ../getting-started/deploying.md#deploying-to-passet-hub-testnet
 
 ```
-# In the `basic_contract_ref` directory
-cargo contract build
+# In the `cross-contract-calls` directory
+cargo contract build --release
 cargo contract instantiate \
     --constructor new \
-    --args 0x74a610235df4ff0161f0247e4c9d73934b70c1520d24ef843f9df9fcc3e63caa \
-    --suri //Alice --salt $(date +%s)
+    --args 0xd051d56ffc5077e006d1fdb14a2311276873aa86 \
+    --suri //Alice --salt $(date +%s) \
+    -x
 ```
 
-If successful, this will output in a contract address for `BasicContractRef` similar to:
+If successful, this will output in a contract address for `CrossContractCalls` similar to:
 
 ```
-Contract 5CWz6Xnivp9PSoZq6qPRP8xVAShZgtNVGTCLCsq3qzqPV7Rq
+Contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3
 ```
 
-#### **Calling with `OtherContract` through `BasicContractRef`**
+#### **Calling `OtherContract` through `CrossContractCalls`**
 
-Finally, we can call the `OtherContract` methods through `BasicContractRef` as follows:
+Finally, we can call the `OtherContract` methods through `CrossContractCalls` as follows:
 
 ```
-cargo contract call --contract 5CWz6Xnivp9PSoZq6qPRP8xVAShZgtNVGTCLCsq3qzqPV7Rq \
+cargo contract call --contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3 \
     --message flip_and_get --suri //Alice --dry-run
 ```
 
 Which will result in something like:
 
 ```
-Result Success!
+Result Ok(true)
 Reverted false
-Data Ok(true)
 ```
+
+### Manually defined contract references
+
+See our section on using the [`#[ink::contract_ref]` attribute][contract-ref-attr]
+for a detailed description and examples of how to manually define the dynamic interface
+for an on-chain/"callee" contract, and use the generated contract reference
+for calling the on-chain/"callee" contract in a type-safe manner.
+
+:::caution
+A downside to manually defined contract references is that mistakes
+in the interface definition are not caught at compile-time.
+
+It's therefore important to make sure such interfaces are properly tested
+using [end-to-end testing][e2e-test] before contracts are deployed on-chain.
+:::
+
+[e2e-test]: ../development/testing/e2e.md
 
 ## Builders
 The [`CreateBuilder`][create-builder] and [`CallBuilder`][call-builder]
