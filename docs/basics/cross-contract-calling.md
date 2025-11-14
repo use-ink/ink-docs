@@ -110,7 +110,7 @@ We do this from the constructor of our of contract.
 
 #[ink(constructor)]
 pub fn new(other_contract_address: ink::Address) -> Self {
-    let other_contract = OtherContractRef::from(other_contract_address);
+    let other_contract = ink::env::call::FromAddr::from_addr(other_contract_address);
     Self { other_contract }
 }
 ```
