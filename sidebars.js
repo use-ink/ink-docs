@@ -62,8 +62,8 @@ module.exports = {
         items: [
         "development/testing/overview",
         "development/testing/unit-integration",
-        "development/testing/sandbox",
         "development/testing/e2e",
+        "development/testing/sandbox",
         // "development/testing/testing-with-live-state"
         ]
       },
