@@ -133,14 +133,16 @@ pub fn flip_and_get(&mut self) -> bool {
 #### **Instantiating `CrossContractCalls` with an address for `OtherContract`**
 
 We will first need to instantiate `CrossContractCalls`.
-We will need an address to an instance of `OtherContract` that is already on-chain
+
+We will need an address of an instance of `OtherContract` that is already on-chain
 (i.e. a `20` bytes [`pallet-revive` address][address] like `0xd051d56ffc5077e006d1fdb14a2311276873aa86`).
 
 [address]: https://use-ink.github.io/ink/ink/type.Address.html
 
 :::note
 For the next steps, you will either need the [`ink-node`][ink-node] running in the background, 
-otherwise you'll need to provide the url of your target node.
+or you'll need to provide the url of your target node.
+
 For the latter, see the instructions for [deploying to `Passet Hub Testnet`][passet-hub-deploy] as an example.
 :::
 
