@@ -40,32 +40,34 @@ you want to call as a dependency of your own contract.
 This means that this approach cannot be used if you want to interact with a contract
 that is either built in another language (e.g. Solidity), or has no publicly available package/crate.
 
-For [calling Solidity Contracts][call-sol] you will need to use either [manually defined contract references][manual-contract-ref] using the [`#[ink::contract_ref]` attribute][contract-ref-attr] (recommended),
+For [calling Solidity Contracts][call-sol] you will need to use either 
+[manually defined contract references][manual-contract-ref] 
+using the [`#[ink::contract_ref]` attribute][contract-ref-attr] (recommended), 
 or the [`Builders`](#builders) approach instead.
 :::
 
 [call-sol]: ../solidity-interop/calling-solidity-contracts.md
 [manual-contract-ref]: #manually-defined-contract-references
 
-#### **BasicContractRef walkthrough**
+#### **CrossContractCalls walkthrough**
 
 This walkthrough uses the [`cross-contract-calls`][example] example to illustrate 
 how contract references enable cross-contract calls.
 
 The general workflow will be:
-1. Import `OtherContract` into `BasicContractRef`
-2. Call `OtherContract` using `BasicContractRef`
+1. Import `OtherContract` into `CrossContractCalls`
+2. Call `OtherContract` using `CrossContractCalls`
 
 [example]: https://github.com/use-ink/ink-examples/tree/master/cross-contract-calls
 
 #### **Importing `OtherContract`**
 
-We need to import `OtherContract` to our `BasicContractRef` contract.
+We need to import `OtherContract` to our `CrossContractCalls` contract.
 
 First, we add the following lines to our `Cargo.toml` file:
 
 ```toml
-# In `basic_contract_ref/Cargo.toml`
+# In `cross-contract-calls/Cargo.toml`
 
 other_contract = { path = "other_contract", default-features = false, features = ["ink-as-dependency"] }
 
@@ -86,18 +88,18 @@ Two things to note here:
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
    our contract's metadata.
 
-#### **Wiring `BasicContractRef`**
+#### **Wiring `CrossContractCalls`**
 
-First, we will import the contract reference of `OtherContract`, and declare the
-reference to be part of our storage struct.
+First, we will import the contract reference of `OtherContract`, 
+and declare the reference to be part of our storage struct.
 
 ```rust
-// In `basic_contract_ref/lib.rs`
+// In `cross-contract-calls/lib.rs`
 
 use other_contract::OtherContractRef;
 
 #[ink(storage)]
-pub struct BasicContractRef {
+pub struct CrossContractCalls {
     other_contract: OtherContractRef,
 }
 ```
@@ -106,7 +108,7 @@ Next, we will store the address of an instance of `OtherContract`.
 We do this from the constructor of our of contract.
 
 ```rust
-// In `basic_contract_ref/lib.rs`
+// In `cross-contract-calls/lib.rs`
 
 #[ink(constructor)]
 pub fn new(other_contract_address: ink::Address) -> Self {
@@ -119,7 +121,7 @@ Once we have a contract reference to `OtherContract` we can call its messages ju
 like normal Rust methods!
 
 ```rust
-// In `basic_contract_ref/lib.rs`
+// In `cross-contract-calls/lib.rs`
 
 #[ink(message)]
 pub fn flip_and_get(&mut self) -> bool {
@@ -128,9 +130,9 @@ pub fn flip_and_get(&mut self) -> bool {
 }
 ```
 
-#### **Instantiating `BasicContractRef` with an address for `OtherContract`**
+#### **Instantiating `CrossContractCalls` with an address for `OtherContract`**
 
-We will first need to instantiate `BasicContractRef`.
+We will first need to instantiate `CrossContractCalls`.
 We will need an address to an instance of `OtherContract` that is already on-chain
 (i.e. a `20` bytes [`pallet-revive` address][address] like `0xd051d56ffc5077e006d1fdb14a2311276873aa86`).
 
@@ -146,7 +148,7 @@ For the latter, see the instructions for [deploying to `Passet Hub Testnet`][pas
 [passet-hub-deploy]: ../getting-started/deploying.md#deploying-to-passet-hub-testnet
 
 ```
-# In the `basic_contract_ref` directory
+# In the `cross-contract-calls` directory
 cargo contract build --release
 cargo contract instantiate \
     --constructor new \
@@ -155,15 +157,15 @@ cargo contract instantiate \
     -x
 ```
 
-If successful, this will output in a contract address for `BasicContractRef` similar to:
+If successful, this will output in a contract address for `CrossContractCalls` similar to:
 
 ```
 Contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3
 ```
 
-#### **Calling `OtherContract` through `BasicContractRef`**
+#### **Calling `OtherContract` through `CrossContractCalls`**
 
-Finally, we can call the `OtherContract` methods through `BasicContractRef` as follows:
+Finally, we can call the `OtherContract` methods through `CrossContractCalls` as follows:
 
 ```
 cargo contract call --contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3 \
