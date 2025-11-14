@@ -1,0 +1,2463 @@
+# ink! v6.0 Smart Contracts Documentation
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Sub0 Hackathon 2025](#sub0-hackathon-2025)
+3. [Getting Started](#getting-started)
+   - [Setup](#setup)
+   - [Creating a New Project](#create-a-new-project)
+   - [Compiling Your Contract](#compile-your-contract)
+   - [Testing Your Contract](#test-your-contract)
+   - [Deploying Your Contract](#deploy-your-contract)
+   - [Calling Your Contract](#call-your-contract)
+4. [Basics](#basics)
+   - [Contract Template](#contract-template)
+   - [Storing Values](#storing-values)
+   - [Reading Values from Storage](#reading-values-from-storage)
+   - [Mutating Storage Values](#mutating-storage-values)
+   - [Events](#events)
+   - [Gas](#gas)
+   - [Cross-Contract Calls](#cross-contract-calls)
+5. [Advanced](#advanced)
+   - [Selectors](#selectors)
+   - [Trait Definitions](#trait-definitions)
+   - [Upgradeable Contracts](#upgradeable-contracts)
+   - [Environment Functions](#environment-functions)
+   - [Chain Environment Types](#chain-environment-types)
+   - [Cross-Consensus Messaging (XCM)](#cross-consensus-messaging-xcm)
+   - [Data Structures](#data-structures)
+6. [Development](#development)
+   - [Testing](#testing)
+   - [Debugging](#debugging)
+   - [Contract Verification](#contract-verification)
+   - [Linter](#linter)
+7. [Tutorials and Examples](#tutorials-and-examples)
+8. [Solidity Interoperability](#solidity-interoperability)
+   - [Calling Solidity Contracts](#calling-solidity-contracts)
+   - [Use ink! with Solidity ABI](#use-ink-with-solidity-abi)
+   - [Type Reference](#type-reference)
+   - [MetaMask Setup](#metamask-setup)
+   - [Hardhat Deployment](#hardhat-deployment)
+   - [Wagmi Integration](#wagmi-integration)
+9. [Reference](#reference)
+   - [Macros & Attributes](#macros--attributes)
+   - [ABI](#abi-reference)
+   - [Metadata](#metadata)
+10. [Integration & SDKs](#integrations--sdks)
+11. [Technical Background](#technical-background)
+12. [FAQ](#frequently-asked-questions)
+
+---
+
+# Introduction
+
+## What is ink!?
+
+ink! is a programming language for writing smart contracts that combines the power and safety of Rust with blockchain development.
+
+Here's what makes ink! special:
+
+**Built on Rust**: ink! takes the popular Rust programming language and adds everything you need for smart contract development. You get all of Rust's safety features like memory safety and type safety, plus access to the vast Rust ecosystem.
+
+**Smart Contract Ready**: While ink! uses Rust as its foundation, it's specifically designed for smart contracts. This means:
+- Special annotations and macros are provided for smart contract needs
+- Built-in support for storage, events, and contract interactions
+
+**Simple but Powerful**: ink! uses special `#[ink(…)]` attribute macros to turn your Rust code into smart contracts. These macros tell ink! what the different parts of your code represent; like storage, functions that can be called, or events that can be emitted.
+
+**Compile to RISC-V**: Your ink! contracts compile to RISC-V bytecode that runs efficiently on blockchains, giving you both performance and compatibility.
+
+## What can you do with it?
+
+ink! opens up a world of possibilities for blockchain development across the Polkadot ecosystem:
+
+### Build Smart Contracts for Polkadot Blockchains
+
+With ink!, you can write smart contracts that run on any blockchain built with the Polkadot SDK that includes the `pallet-revive` module. This includes many parachains and standalone chains in the Polkadot ecosystem.
+
+- **DeFi Applications**: Build decentralized exchanges, lending protocols, and other financial applications
+
+- **NFT Platforms**: Create marketplaces, games, and digital collectible platforms
+
+- **Cross-Chain Applications**: Take advantage of Polkadot's interoperability to build applications that work across multiple blockchains
+
+- **Utility Contracts**: From simple storage contracts to complex business logic, ink! can handle it all
+
+### Flexible Development Paths
+
+ink! provides different approaches depending on your needs:
+
+- **Prototype Quickly**: Start with a smart contract to test your idea and get user feedback
+- **Enhanced Chain Features**: Use precompiles to access special blockchain functionality beyond basic smart contracts
+- **Scale to Parachains**: Later migrate successful contracts to dedicated parachains for better performance and lower costs
+
+### Composability
+
+One of ink!'s unique advantages is its compatibility with Solidity. This means:
+- Solidity developers can call ink! contracts seamlessly
+- You can use existing Ethereum tools and frameworks
+- Easy migration between different blockchain ecosystems
+
+---
+
+# Sub0 Hackathon 2025
+
+## Welcome sub0 Hackathon participants!
+
+This page contains all necessary info to participate in the [sub0 HACK](https://luma.com/sub0hack) using ink! v6.
+
+* The hackathon takes place from Nov 14 - Nov 16, 2025.
+* $50,000 in prize money.
+* Remote participation is fine!
+
+## Support
+
+If you don't use Telegram, please create a GitHub issue [here](https://github.com/use-ink/ink/issues).
+
+## LLMs
+We have an [`llms.txt`](https://use.ink/llms.txt) that contains
+all documentation from this website. If you copy/paste it into your
+prompt/context window, this will help your AI friend a lot to provide help.
+
+## Fast Track
+
+Install Rust (>= 1.90) and `cargo`: [Installation Guide](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+
+### Using Pop CLI
+
+```bash
+# Install Pop CLI via brew
+$ brew install r0gue-io/pop-cli/pop
+
+# From source
+$ cargo install --force --locked pop-cli
+
+# Setup environment
+$ pop install
+
+# Create a simple contract
+$ pop new
+
+# Build your contract
+$ pop build --release
+
+# Pop CLI automatically launches a local node when deploying
+$ pop up
+
+# Interact with your contract
+$ pop call
+
+# If you get an error saying your account is not mapped:
+$ pop call chain --pallet Revive --function map_account --url wss://passet-hub-paseo.ibp.network/ --use-wallet
+```
+
+Please see the chapter [Getting started](../getting-started/setup.md) of this
+documentation for a deeper introduction.
+
+## Use ink! v6.0.0-beta.1!
+
+Prior releases of ink! are not supported for the hackathon!
+You won't be able to deploy them on Passet Hub.
+
+Make sure your `Cargo.toml` contains
+
+```toml
+[dependencies]
+ink = { version = "6.0.0-beta.1" }
+
+[dev-dependencies]
+ink_e2e = { version = "6.0.0-beta.1" }
+
+# we moved the sandbox testing environment to a separate crate
+# this one cannot be published to crates.io yet
+ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta.1" }
+```
+
+## Where to deploy?
+
+You can deploy locally via our local development node [`ink-node`](https://github.com/use-ink/ink-node/releases). The Pop CLI handles this for you (just run `pop up`). If you prefer `cargo-contract`, install `ink-node` manually (see [deploy your contract](../getting-started/deploying.md)).
+
+As a testnet you need to use [Paseo Passet Hub](https://use.ink/docs/v6/where-to-deploy/#passet-hub).
+You can find the faucet [here](https://faucet.polkadot.io/?parachain=1111).
+
+## dApp Templates
+
+We recommend the following tools to help you quickly scaffold dApp projects:
+
+### 1. [Typink](https://typink.dev)
+
+- A fully type-safe React hooks library with a [CLI](https://docs.dedot.dev/typink/create-typink-cli) for instant project scaffolding.
+- Learn more in the [docs](https://docs.dedot.dev/typink), [tutorial](https://use.ink/tutorials/frontend-development/typink-erc20), and a [LLM.txt](https://docs.dedot.dev/llms-full.txt) file for your AI-assisted development workflow.
+
+### 2. [ink!athon](https://inkathon.xyz/)
+
+- Provides ready-to-use dApp templates combining ink! smart contracts and frontend integration.
+- You can find a hardcoded frontend for our `flipper` example [here](https://github.com/use-ink/ink-examples/tree/main/flipper).
+
+## Smart Contract Examples
+
+You can find many contract examples in our [ink-examples repository](https://github.com/use-ink/ink-examples/). We also have XCM-focused examples [here](https://github.com/r0gue-io/symbiosis-contract-examples), an assets precompile demo with full E2E tests [here](https://github.com/use-ink/ink-examples/tree/main/assets-precompile), and [this how-to](https://github.com/r0gue-io/symbiosis-contract-examples/blob/main/how_to_call_any_function_in_passet_hub_runtime.md) explaining how to call any function in Passet Hub's runtime without relying on precompiles.
+
+---
+
+# Getting Started
+
+## Setup
+
+### Rust & Cargo
+
+A pre-requisite for compiling smart contracts is to install a stable Rust
+version and `cargo`.
+```
+curl https://sh.rustup.rs -sSf | sh
+```
+
+## Pop CLI
+
+Use the [Pop CLI](https://learn.onpop.io/contracts/welcome/install-pop-cli) for ink! smart contract development with the greatest developer experience.
+
+Via Homebrew:
+```bash
+brew install r0gue-io/pop-cli/pop
+```
+Or Source:
+```bash
+cargo install --force --locked pop-cli
+```
+
+Then set up your environment:
+```
+pop install
+```
+
+Pop CLI automatically manages the local node for you, so you don't need to install or configure a separate blockchain node.
+
+## Create a new project
+
+```bash
+pop new contract flipper -t standard
+```
+This command will create a new project folder named `flipper` with:
+
+```
+flipper
+  └─ lib.rs         <-- Contract Source Code
+  └─ Cargo.toml     <-- Rust Dependencies and ink! Configuration
+  └─ .gitignore
+```
+
+You can find the flipper code [here](https://github.com/use-ink/ink-examples/blob/main/flipper/lib.rs).
+
+To see other available templates:
+```bash
+pop new contract
+```
+
+## Compile Your Contract
+
+Run the following command in your `flipper` directory to compile your smart contract:
+
+```bash
+pop build
+```
+
+This command will build the following for your contract:
+a binary (`.polkavm`), a metadata file (`.json`), and a `.contract` file which bundles both.
+
+If all goes well, you should see a `target` folder that contains these files:
+
+```
+target
+  └─ ink
+    └─ flipper.polkavm     <-- Raw contract binary
+    └─ flipper.json        <-- Metadata for the contract
+    └─ flipper.contract    <-- JSON file that combines binary + metadata
+```
+
+### Debug vs. Release Build
+
+By default, contracts are built in debug mode, which includes debugging information and
+increases the contract's size. For production deployments, you should always build with the
+`--release` flag:
+
+```bash
+pop build --release
+```
+
+This will ensure that nothing unnecessary is compiled into the binary blob, making
+your contract faster and cheaper to deploy and execute.
+
+## Test Your Contract
+
+If you created a new project using a template, you can find at the bottom of the `lib.rs` simple test cases which verify the functionality of the contract. We can quickly test this code is functioning as expected:
+
+```bash
+pop test
+```
+
+To which you should see a successful test completion:
+
+```bash
+running 2 tests
+test flipper::tests::it_works ... ok
+test flipper::tests::default_works ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+```
+
+Learn more about the [testing strategies for ink! contracts](../development/testing/overview.md).
+
+### Run End-to-End (E2E) tests
+
+E2E tests compile and deploy your contract to a running node.
+
+```bash
+pop test --e2e
+```
+
+For more details and examples (including testing against live state snapshots), see the [E2E guide](../development/testing/e2e.md).
+
+## Deploy Your Contract
+
+Deploying a contract involves uploading your compiled contract code and creating an instance of it on a blockchain. In Polkadot, these are two separate steps: first upload the code, then instantiate it as many times as needed.
+
+### Local Deployment
+
+If not specified, Pop CLI automatically launches a local node for you when deploying a contract.
+
+```bash
+pop build --release
+pop up
+```
+
+For more deployment options, see the [Pop CLI deployment guide](https://learn.onpop.io/contracts/guides/deploy).
+
+### Deploying to Passet Hub Testnet
+
+To deploy your contract to a live testnet, you can use **Passet Hub**, Polkadot's testnet Asset Hub that supports ink! v6 smart contracts.
+
+**Prerequisites:**
+1. **Get PAS tokens**: Use the [Passet Hub Faucet](https://faucet.polkadot.io/?parachain=1111)
+2. **Polkadot account**: Create one following this [guide](https://support.polkadot.network/support/solutions/articles/65000098878-how-to-create-a-dot-account)
+
+Deploy your contract to Passet Hub using Pop CLI:
+
+```bash
+pop up --url wss://testnet-passet-hub.polkadot.io
+```
+
+## Call Your Contract
+
+Now that your contract has been fully deployed, we can start interacting with it! Flipper only has
+two functions: `flip()` and `get()`. We will show you what it's like to play with both of them.
+
+When you deployed your contract you received the contract address. Use this to interact with the contract.
+```bash
+Contract Address: 0x4172ec94a05289f9ec332867a3b93ae31d18c593
+```
+
+Choose your preferred method to call your contract:
+
+### Pop CLI
+
+Pop CLI provides a simple way to interact with your deployed contracts.
+
+#### Interactive
+```bash
+pop call contract
+```
+
+#### Manual: read contract state (`get()` function)
+
+```bash
+pop call contract
+  --contract <insert-contract-address>
+  --message get
+  --suri //Alice
+```
+
+#### Manual: modify contract state (`flip()` function)
+
+```bash
+pop call contract
+  --contract <insert-contract-address>
+  --message flip
+  --execute
+  --suri //Alice
+```
+
+For more detailed information about Pop CLI contract interaction, see the [Pop CLI call guide](https://learn.onpop.io/contracts/guides/call-your-contract).
+
+### cargo-contract
+
+#### Read contract state (`get()` function)
+
+```bash
+cargo contract call 
+  --contract <insert-contract-address> 
+  --message get 
+  --suri //Alice
+```
+
+#### Modify contract state (`flip()` function)
+
+```bash
+cargo contract call 
+  --contract <insert-contract-address>
+  --message flip
+  --execute
+  --suri //Alice
+```
+
+### Contracts UI
+
+Go to https://ui.use.ink/
+
+#### Read contract state (`get()` function)
+
+We set the initial value of the Flipper contract `value` to `false` when we instantiated the contract. Let's check that this is the case.
+
+In the **Message to Send** section, select the "**get(): bool**" message and accept the default values for the other options.
+
+Press **Read** and confirm that it returns the value `false`.
+
+#### Modify contract state (`flip()` function)
+
+Switch the **Message to Send** section to the `flip()` message, accept the defaults, and click **Call contract**. Once the transaction is successful, run `get()` again to confirm the storage update.
+
+## RPC calls vs. Transactions
+
+There are two ways of calling a contract:
+
+### Dry-run via RPC
+
+Remote procedure calls, or RPC methods, are a way for an external program – for example, a browser
+or front-end application – to communicate with a Polkadot SDK node.
+
+If a user interface displays the value of a contract (e.g. the balance of an account in
+an ERC-20 contract), then this is typically done via RPC. Specifically it is done by
+executing a synchronous dry-run of the contract method and returning its result.
+
+RPC calls don't require any tokens, they just require a connection to a node in the
+network. It's important to note that the execution won't result in any state mutations
+on the blockchain, it really just is a dry-run.
+
+### State mutating via submitting a Transaction
+
+The other method of executing a call to a contract is by submitting a transaction
+on-chain. This requires tokens of the network to pay for the cost of the transaction.
+The transaction will be put in a transaction pool and asynchronously processed.
+The important implication here is that during submission of the transaction no result
+is available. This is different from an RPC call.
+
+The typical pattern for how a client can recognize the result of the contract call is
+to have the contract emit an event and have the client actively listen for such an
+event. Typically libraries (like `polkadot-js/api`) provide API functions to do just that.
+The important take-away is that contract developers have to make sure that events
+are emitted if they want clients to be able to pick up on them.
+
+---
+
+# Basics
+
+## Contract Template
+
+On this page we'll go over the elements of a basic contract.
+
+### Creating a template
+
+Change into your working directory and run:
+
+```bash
+pop new contract foobar
+```
+
+This will create a new project folder named `foobar`.
+
+```bash
+cd foobar/
+```
+
+In the `lib.rs` file you find initial scaffolded code, which you can use as a starting point.
+
+Quickly check that it compiles, and the trivial tests pass with:
+
+```bash
+pop test
+```
+
+Also check that you can build the contract by running:
+
+```bash
+pop build
+```
+
+The test command builds the contract for `std`, while the build command compiles for an on-chain deployment (`no_std` with a RISC-V target).
+
+If everything looks good, then we are ready to start programming!
+
+### Template Content
+
+The template contains scaffolded code that provides a starting point
+for writing an ink! contract.
+
+#### `Cargo.toml`
+
+```toml
+[package]
+name = "foobar"
+version = "0.1.0"
+authors = ["[your_name] <[your_email]>"]
+edition = "2021"
+
+[dependencies]
+# The `ink` crate contains the ink! eDSL and re-exports
+# a number of other ink! specific crates.
+ink = { version = "6.0.0-beta", default-features = false }
+
+[dev-dependencies]
+# This developer dependency is for the End-to-End testing framework.
+ink_e2e = { version = "6.0.0-beta", default-features = false }
+
+[lib]
+name = "foobar"
+path = "lib.rs"
+
+[features]
+default = ["std"]
+std = [
+    "ink/std",
+]
+ink-as-dependency = []
+
+# This feature is just a convention, so that the end-to-end tests
+# are only executed when explicitly requested.
+e2e-tests = []
+```
+
+#### `lib.rs`
+
+Every ink! contract is required to contain:
+
+* Exactly one `#[ink(storage)]` struct.
+* At least one `#[ink(constructor)]` function.
+* At least one `#[ink(message)]` function.
+
+The scaffolded code will look similar to the following:
+
+```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+
+#[ink::contract]
+pub mod flipper {
+    /// This is the contract's storage.
+    #[ink(storage)]
+    pub struct Flipper {
+        value: bool,
+    }
+
+    impl Flipper {
+        /// A constructor that the contract can be initialized with.
+        #[ink(constructor)]
+        pub fn new(init_value: bool) -> Self {
+            /* --snip-- */
+        }
+
+        /// An alternative constructor that the contract can be
+        /// initialized with.
+        #[ink(constructor)]
+        pub fn new_default() -> Self {
+            /* --snip-- */
+        }
+
+        /// A state-mutating function that the contract exposes to the
+        /// outside world.
+        #[ink(message)]
+        pub fn flip(&mut self) {
+            /* --snip-- */
+        }
+
+        /// A public contract function that has no side-effects.
+        #[ink(message)]
+        pub fn get(&self) -> bool {
+            /* --snip-- */
+        }
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[ink::test]
+        fn default_works() {
+            /* --snip-- */
+        }
+    }
+
+    #[cfg(all(test, feature = "e2e-tests"))]
+    mod e2e_tests {
+        use super::*;
+        use ink_e2e::build_message;
+
+        type E2EResult<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+        #[ink_e2e::test]
+        async fn it_works(mut client: ink_e2e::Client<C, E>) -> E2EResult<()> {
+            /* --snip-- */
+        }
+    }
+}
+```
+
+## Storing Values
+
+Here is how you store simple values in storage:
+
+```rust
+#[ink(storage)]
+pub struct MyContract {
+    // Store a bool
+    my_bool: bool,
+    // Store some number
+    my_number: u32,
+}
+```
+
+### Supported Types
+
+ink! contracts may store types that are encodable and decodable with the
+[Parity SCALE Codec](https://github.com/paritytech/parity-scale-codec) which includes most Rust common data
+types such as `bool`, `u{8,16,32,64,128}`, `i{8,16,32,64,128}`, `String`, tuples, and arrays.
+
+Furthermore, ink! provides [Polkadot SDK](https://polkadot.com/platform/sdk) specific types like `AccountId`, `Balance`, and `Hash` to smart contracts as if
+they were primitive types.
+
+### String, Vector and More
+
+The [`ink_prelude`](https://use-ink.github.io/ink/ink_prelude/) crate provides an efficient approach to import commonly used Rust types such as `String` and `Vec`.
+
+You can use the prelude definitions like this:
+
+```rust
+#[ink::contract]
+mod MyContractWithStringsAndArrays {
+    use ink::prelude::string::String;
+    use ink::prelude::vec::Vec;
+
+    #[ink(storage)]
+    pub struct MyContract {
+        // Store some String
+        my_string: String,
+        // Store some u32 in a vec
+        my_vector: Vec<u32>,
+    }
+}
+```
+
+### Mapping
+
+ink! also provides a `Mapping` storage type. You can read more about it [here](../advanced/datastructures/mapping.md).
+
+### Polkadot SDK Types
+
+Here is an example of how you would store substrate types `AccountId`, `Balance` and `Hash`:
+
+```rust
+#[ink::contract]
+mod MyContract {
+
+    // Our struct will use those default ink! types
+    #[ink(storage)]
+    pub struct MyContract {
+        // Store some AccountId
+        my_account: AccountId,
+        // Store some Balance
+        my_balance: Balance,
+        // Store some Hash
+        my_hash: Hash,
+    }
+}
+```
+
+### Enum
+
+Enum can be used as a datatype as well.
+
+```rust
+pub enum Status {
+    /// An auction has not started yet.
+    NotStarted,
+    /// We are in the starting period of the auction, collecting initial bids.
+    OpeningPeriod,
+    /// We are in the ending period of the auction.
+}
+```
+
+### Struct
+
+You can even combine all the above mentioned types in a custom `struct` which you can then store in the contract's storage.
+
+```rust
+mod MyContract {
+    use ink::prelude::string::String;
+    use ink::prelude::vec::Vec;
+
+    pub struct Auction {
+        /// Branded name of the auction event.
+        name: String,
+        /// Some hash identifying the auction subject.
+        subject: Hash,
+        /// Auction status.
+        status: Status,
+        /// Candle auction can have no winner.
+        finalized: bool,
+        /// vector
+        vector: Vec<u8>,
+    }
+
+    #[ink(storage)]
+    pub struct MyContract {
+        // Store Auctions in a vec
+        auctions: Vec<Auction>,
+    }
+}
+```
+
+### Initializing Storage in Constructors
+
+Constructors are how values get initialized.
+Every ink! smart contract must have a constructor which is run once when a contract is created. ink! smart contracts can have multiple constructors:
+
+```rust
+#[ink::contract]
+mod mycontract {
+
+    #[ink(storage)]
+    pub struct MyContract {
+        number: u32,
+    }
+
+    impl MyContract {
+        /// Constructor that initializes the `u32` value to the given `init_value`.
+        #[ink(constructor)]
+        pub fn new(init_value: u32) -> Self {
+            Self {
+                number: init_value,
+            }
+        }
+
+        /// Constructor that initializes the `u32` value to the `u32` default.
+        #[ink(constructor)]
+        pub fn default() -> Self {
+            Self {
+                number: Default::default(),
+            }
+        }
+    }
+}
+```
+
+## Reading Values from Storage
+
+Reading from storage is where the fun begins!
+
+### Contract Functions
+
+As you can see in the contract template, all of your contract functions are part of your contract module.
+
+```rust
+impl MyContract {
+    // Public and Private functions can go here
+}
+```
+
+### Public and Private Functions
+
+In Rust, you can make as many implementations as you want. As a stylistic choice, we recommend
+breaking up your implementation definitions for your private and public functions:
+
+```rust
+impl MyContract {
+    /// Public function
+    #[ink(message)]
+    pub fn my_public_function(&self) {
+        /* --snip-- */
+    }
+
+    /// Private function
+    fn my_private_function(&self) {
+        /* --snip-- */
+    }
+}
+```
+
+Note that all public functions must use the `#[ink(message)]` attribute.
+
+### Getting a Value
+
+We already showed you how to initialize a storage value in the chapter [Storing Values](./storing-values.md).
+Getting the value is just as simple:
+
+```rust
+impl MyContract {
+    #[ink(message)]
+    pub fn my_getter(&self) -> u32 {
+        self.number
+    }
+}
+```
+
+In Rust, if the last expression in a function does not have a semicolon it will be the return value.
+
+## Mutating Storage Values
+
+It's time to modify some storage!
+
+### Mutable and Immutable Functions
+
+You may have noticed that the function template included `self` as the first parameter of the
+contract functions. It is through `self` that you gain access to all your contract functions and
+storage items.
+
+If you are simply _reading_ from the contract storage, you only need to pass `&self`. But
+if you want to _modify_ storage items, you will need to explicitly mark it as mutable,
+`&mut self`.
+
+```rust
+impl MyContract {
+    #[ink(message)]
+    pub fn my_getter(&self) -> u32 {
+        self.my_number
+    }
+
+    #[ink(message)]
+    pub fn my_setter(&mut self, new_value: u32) {
+        self.my_number = new_value;
+    }
+}
+```
+
+## Events
+
+An ink! smart contract may define events that it can emit during contract execution.
+Emitting events can be used by third party tools to query information about a contract's
+execution and state.
+
+### Example
+
+The following example ink! contract shows how an event `Transferred` is defined and
+emitted in the `#[ink(constructor)]`.
+
+```rust
+#[ink::contract]
+mod erc20 {
+    /// Defines an event that is emitted
+    /// every time value is transferred.
+    #[ink(event)]
+    pub struct Transferred {
+        from: Option<AccountId>,
+        to: Option<AccountId>,
+        value: Balance,
+    }
+
+    #[ink(storage)]
+    pub struct Erc20 {
+        total_supply: Balance,
+        // more fields ...
+    }
+
+    impl Erc20 {
+        #[ink(constructor)]
+        pub fn new(initial_supply: Balance) -> Self {
+            let caller = Self::env().caller();
+            Self::env().emit_event(Transferred {
+                from: None,
+                to: Some(caller),
+                value: initial_supply,
+            });
+            Self { total_supply: initial_supply }
+        }
+
+        #[ink(message)]
+        pub fn total_supply(&self) -> Balance {
+            self.total_supply
+        }
+    }
+}
+```
+
+### Event Definition
+
+Since ink! version 5.0, events can be defined independently of the contract which emits them.
+Events can now be defined once and shared across multiple contracts.
+
+This is how an event definition looks:
+
+```rust
+use ink::primitives::AccountId;
+
+#[ink::event]
+pub struct Transferred {
+    #[ink(topic)]
+    from: Option<AccountId>,
+    #[ink(topic)]
+    to: Option<AccountId>,
+    amount: u128,
+}
+```
+
+### Topics
+
+When an event is emitted, up to 4 topics (including the signature topic, if any) can be associated with it.
+The event is then indexed together with other events with the same topic value.
+
+An event's fields can be annotated with `#[ink(topic)]`, which will result in a
+topic derived from the value of that field being emitted together with the event.
+
+Topics are a 32 byte array (`[u8; 32]`), and the topic value is encoded as follows:
+
+- If the SCALE encoded bytes of a field value are `<= 32`,
+  then the encoded bytes are used directly as the topic value.
+- If the size of the SCALE encoded bytes of the field value exceeds 32,
+  then the encoded bytes are hashed using the `Blake2x256` hash function.
+
+### Signature Topic
+
+By default all events have a signature topic.
+This allows indexing of all events of the same type, emitted by different contracts.
+The `#[ink::event]` macro generates a signature topic at compile time by
+hashing the name of the event concatenated with the *names of the types* of all the fields:
+```
+blake2b("Event(field1_type,field2_type)")
+```
+
+### Anonymous Events
+
+Events annotated with `anonymous` will not have a signature topic generated and published with the
+event.
+
+For inline events, this can be done by marking the event with the `anonymous` attribute:
+
+```rust
+#[ink(event, anonymous)]
+pub struct Event { .. }
+```
+
+For events defined using the `#[ink::event]` macro, the `anonymous` flag needs to be added as an
+argument:
+
+```rust
+#[ink::event(anonymous)]
+pub struct Event { .. }
+```
+
+### Emitting Events in a Constructor
+
+In a constructor events are emitted via `Self::env().emit_event()`.
+
+```rust
+#[ink(constructor)]
+pub fn new(initial_value: Balance) -> Self {
+    let caller = Self::env().caller();
+    let mut balances = HashMap::new();
+    balances.insert(caller, initial_supply);
+
+    Self::env().emit_event(Transferred {
+        from: None,
+        to: Some(caller),
+        amount: initial_supply
+    });
+
+    Self { total_supply: initial_supply, balances }
+}
+```
+
+### Emitting Events from Messages
+
+In a message events are emitted via `self.env().emit_event()`:
+
+```rust
+#[ink(message)]
+pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
+    let from = self.env().caller();
+    // implementation hidden
+    self.env().emit_event(Transferred {
+        from: Some(from),
+        to: Some(to),
+        amount
+    });
+    Ok(())
+}
+```
+
+## Gas
+
+### What is "Gas" in ink!?
+
+For ink!, the term Gas refers to the resources used by a contract call.
+It's important for smart contracts that the caller has to pay for any utilized resource.
+
+Those resources can be either storage space (for storing data in the contract's storage)
+or computational time (for executing the contract and its logic). The term Gas encompasses both
+of these resources: `Gas = (refTime, proofSize)`.
+
+The terms hereby refer to:
+
+`refTime`: The amount of computational time that can be used for execution, in picoseconds.
+
+`proofSize`: The amount of storage in bytes that a transaction is allowed to read.
+
+The term `refTime` comes from "reference time", referring to the Polkadot SDK Weights system, where
+computation time is benchmarked on reference hardware.
+
+The term `proofSize` is only relevant for parachains on the [Polkadot](https://polkadot.network/)
+or [Kusama](https://kusama.network/) networks.
+On a high level, `proofSize` is the size of the proof that individual parachains send to
+the Polkadot or Kusama relay chain to allow re-executing their block for validation.
+
+## Cross-Contract Calls
+
+In ink! contracts it is possible to call messages and constructors of other
+on-chain contracts.
+
+There are a few approaches to performing these cross-contract calls in ink!:
+1. Contract references (i.e `ContractRef`)
+2. Builders (i.e `CreateBuilder` and `CallBuilder`)
+
+Contract references should be preferred for most situations because they provide
+high-level, type-safe interfaces. Builders are best reserved for cases where you need
+to manipulate low-level call parameters manually.
+
+### Contract References
+
+Contract references are wrapper types that can be used for interacting with an on-chain/"callee" contract
+using a high-level type-safe interface.
+
+They are either statically generated by the ink! code generation (for contract dependencies),
+or they can be manually defined as dynamic interfaces using the [`#[ink::contract_ref]` attribute][contract-ref-attr].
+
+### Statically generated contract references
+
+To use statically generated contract references, you need to import the contract
+you want to call as a dependency of your own contract.
+
+This approach cannot be used if you want to interact with a contract
+that is either built in another language (e.g. Solidity), or has no publicly available package/crate.
+For [calling Solidity contracts][call-sol], prefer [manually defined contract references][manual-contract-ref]
+or the [`Builders`](#builders) approach.
+
+#### `CrossContractCalls` walkthrough
+
+We will walk through the [`cross-contract-calls`][example] example in order
+to demonstrate how cross-contract calls using contract references work.
+
+The general workflow will be:
+1. Import `OtherContract` into `CrossContractCalls`
+2. Call `OtherContract` using `CrossContractCalls`
+
+##### Importing `OtherContract`
+
+We need to import `OtherContract` to our `CrossContractCalls` contract.
+
+First, we add the following lines to our `Cargo.toml` file:
+
+```toml
+# In `cross-contract-calls/Cargo.toml`
+
+other_contract = { path = "other_contract", default-features = false, features = ["ink-as-dependency"] }
+
+# -- snip --
+
+[features]
+default = ["std"]
+std = [
+    "ink/std",
+    # -- snip --
+    "other_contract/std",
+]
+```
+
+Two important details:
+1. Without `ink-as-dependency` the compilation will fail with linker errors.
+2. Without enabling the dependency's `std` feature you cannot generate metadata during `std` builds.
+
+##### Wiring `CrossContractCalls`
+
+First, we will import the contract reference of `OtherContract`, 
+and declare the reference to be part of our storage struct.
+
+```rust
+// In `cross-contract-calls/lib.rs`
+
+use other_contract::OtherContractRef;
+
+#[ink(storage)]
+pub struct CrossContractCalls {
+    other_contract: OtherContractRef,
+}
+```
+
+Next, we store the address of an on-chain instance of `OtherContract` in the constructor:
+
+```rust
+// In `cross-contract-calls/lib.rs`
+
+#[ink(constructor)]
+pub fn new(other_contract_address: ink::Address) -> Self {
+    let other_contract = ink::env::call::FromAddr::from_addr(other_contract_address);
+    Self { other_contract }
+}
+```
+
+Once we have a contract reference to `OtherContract`, we can call its messages just like normal Rust methods:
+
+```rust
+// In `cross-contract-calls/lib.rs`
+
+#[ink(message)]
+pub fn flip_and_get(&mut self) -> bool {
+    self.other_contract.flip();
+    self.other_contract.get()
+}
+```
+
+##### Instantiating `CrossContractCalls` with an address for `OtherContract`
+
+We first need an on-chain instance of `OtherContract` whose `20` bytes [`pallet-revive` address][address]
+we will pass into the `CrossContractCalls::new` constructor (e.g. `0xd051d56ffc5077e006d1fdb14a2311276873aa86`).
+
+You will either need [`ink-node`][ink-node] running locally or the URL of the target node
+(see [deploying to Passet Hub Testnet][passet-hub-deploy] for a remote example).
+
+```
+# In the `cross-contract-calls` directory
+cargo contract build --release
+cargo contract instantiate \
+    --constructor new \
+    --args 0xd051d56ffc5077e006d1fdb14a2311276873aa86 \
+    --suri //Alice --salt $(date +%s) \
+    -x
+```
+
+If successful, this outputs a contract address for `CrossContractCalls` similar to:
+
+```
+Contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3
+```
+
+##### Calling `OtherContract` through `CrossContractCalls`
+
+Finally, we can call the `OtherContract` methods through `CrossContractCalls` with:
+
+```
+cargo contract call --contract 0x427b4c31ce5cdc19ec19bc9d2fb0e22ba69c84c3 \
+    --message flip_and_get --suri //Alice --dry-run
+```
+
+Which results in output similar to:
+
+```
+Result Ok(true)
+Reverted false
+```
+
+### Manually defined contract references
+
+See our section on using the [`#[ink::contract_ref]` attribute][contract-ref-attr]
+for a detailed description and examples of how to manually define the dynamic interface
+for an on-chain/"callee" contract, and use the generated contract reference
+for calling the on-chain/"callee" contract in a type-safe manner.
+
+A downside to manually defined contract references is that mistakes
+in the interface definition are not caught at compile-time.
+Make sure to cover them with thorough [end-to-end tests][e2e-test]
+before deploying the contracts on-chain.
+
+[contract-ref-attr]: ../reference/macros-attributes/contract_ref.md
+[call-sol]: ../solidity-interop/calling-solidity-contracts.md
+[manual-contract-ref]: #manually-defined-contract-references
+[example]: https://github.com/use-ink/ink-examples/tree/master/cross-contract-calls
+[address]: https://use-ink.github.io/ink/ink/type.Address.html
+[ink-node]: https://github.com/use-ink/ink-node
+[passet-hub-deploy]: ../getting-started/deploying.md#deploying-to-passet-hub-testnet
+[e2e-test]: ../development/testing/e2e.md
+
+## Builders
+The [`CreateBuilder`][create-builder] and [`CallBuilder`][call-builder]
+offer low-level, flexible interfaces for performing cross-contract calls. 
+The `CreateBuilder` allows you to instantiate already uploaded contracts, 
+and the `CallBuilder` allows you to call messages on instantiated contracts.
+
+**Caution:** low-level builders will not catch mistakes such as wrong selectors, argument order, or types at compile time. Always add [end-to-end tests][e2e-test] for builder-driven calls before you deploy.
+
+### CreateBuilder
+The `CreateBuilder` offers an easy way for you to **instantiate** a contract. 
+Note that you'll still need this contract to have been previously uploaded.
+
+*Note:* If you need a refresher on the difference between `upload` and `instantiate`, see [Deploying your contract](../getting-started/deploying.md).
+
+Below is an example of how to instantiate a contract using the `CreateBuilder`. We will:
+- instantiate the uploaded contract with a `code_hash` of `0x4242...`
+- with no gas limit specified (`0` means unlimited)
+- sending `10` units of transferred value to the contract instance
+- instantiating with the `new` constructor
+- with the following arguments: `u8` = `42`, `bool` = `true`, `[u8; 32]` = `0x10`
+- generate the address using the specified `salt_bytes`
+- and expect a `MyContractRef` in return
+
+```rust
+use contract::MyContractRef;
+let my_contract: MyContractRef = build_create::<MyContractRef>()
+    .code_hash(Hash::from([0x42; 32]))
+    .ref_time_limit(0)
+    .endowment(10)
+    .exec_input(
+        ExecutionInput::new(Selector::new(ink::selector_bytes!("new")))
+            .push_arg(42)
+            .push_arg(true)
+            .push_arg(&[0x10u8; 32])
+    )
+    .salt_bytes(&[0xDE, 0xAD, 0xBE, 0xEF])
+    .returns::<MyContractRef>()
+    .instantiate();
+```
+
+Since `CreateBuilder::instantiate()` returns a contract reference, we can use that reference just like the statically generated ones shown earlier.
+
+*Note:* To instantiate a Solidity ABI contract, see [Calling Solidity Contracts](../solidity-interop/calling-solidity-contracts.md).
+
+### CallBuilder
+The `CallBuilder` gives you a couple of ways to call messages from other contracts. There
+are two main approaches to this: `Call`s and `DelegateCall`s. `Call`s expect an instantiated contract, while `DelegateCall`s operate on uploaded code by `code_hash`.
+
+#### CallBuilder: Call
+When using `Call`s the `CallBuilder` requires an already instantiated contract.
+
+Below is an example of how to call a contract using the `CallBuilder`. We will:
+- make a regular `Call`
+- to a contract at the address `0x4242...`
+- with no gas limit specified (`0` means unlimited)
+- sending `10` units of transferred value to the contract instance
+- calling the `flip` message with arguments `42u8`, `true`, and `[0x10u8; 32]`
+- and expect a `bool` in return
+
+```rust
+let my_return_value = build_call::<DefaultEnvironment>()
+    .call(H160::from([0x42; 20]))
+    .ref_time_limit(0)
+    .transferred_value(10)
+    .exec_input(
+        ExecutionInput::new(Selector::new(ink::selector_bytes!("flip")))
+            .push_arg(42u8)
+            .push_arg(true)
+            .push_arg(&[0x10u8; 32])
+    )
+    .returns::<bool>()
+    .invoke();
+```
+
+**Caution:** message arguments are encoded in the order you push them to the builder. Make sure they match the callee signature or your call will fail at runtime. Cover these paths with [end-to-end tests][e2e-test].
+
+*Note:* To call Solidity ABI-encoded contracts, see [Calling Solidity Contracts](../solidity-interop/calling-solidity-contracts.md).
+
+#### CallBuilder: Delegate Call
+You can also use the `CallBuilder` to craft calls using `DelegateCall` mechanics.
+In the case of `DelegateCall`s, we don't require an already instantiated contract.
+We only need the `code_hash` of an uploaded contract.
+
+```rust
+let my_return_value = build_call::<DefaultEnvironment>()
+    .delegate(H160::from([0x42; 20]))
+    .exec_input(
+        ExecutionInput::new(Selector::new(ink::selector_bytes!("flip")))
+            .push_arg(42u8)
+            .push_arg(true)
+            .push_arg(&[0x10u8; 32])
+    )
+    .returns::<i32>()
+    .invoke();
+```
+
+### Builder Error Handling
+The `CreateBuilder` and the `CallBuilder` both offer error handling with the
+`try_instantiate()` and `try_invoke()` methods respectively. These allow you to differentiate:
+1. Errors from the execution environment (e.g. the Contracts pallet)
+2. Language-level errors (e.g. `ink::LangError`)
+
+See [`try_instantiate`](https://use-ink.github.io/ink/ink_env/call/struct.CreateBuilder.html#method.try_instantiate),
+[`try_invoke`](https://use-ink.github.io/ink/ink_env/call/struct.CallBuilder.html#method.try_invoke-2),
+[`ink::env::Error`](https://use-ink.github.io/ink/ink_env/enum.Error.html),
+and [`ink::LangError`](https://use-ink.github.io/ink/ink/enum.LangError.html) for full details.
+
+---
+
+# Advanced
+
+## Data Structures
+
+### Storage Primitives
+
+The `ink_storage` crate acts as the standard storage library for ink! smart contracts and provides three core primitives:
+
+- [`Mapping`](https://use-ink.github.io/ink/ink_storage/struct.Mapping.html): a gas-efficient key/value map that stores each entry under its own key. It behaves similarly to Solidity's `mapping` and is ideal for large or sparse collections.
+- [`Lazy`](https://use-ink.github.io/ink/ink/struct.Lazy.html): a wrapper that forces a field to occupy its own storage cell so you can load and store it on demand instead of eagerly decoding the entire storage struct.
+- [`StorageVec`](https://use-ink.github.io/ink/ink_storage/struct.StorageVec.html): an append-only vector where each element is stored in its own cell, enabling much larger collections (up to `u32::MAX` elements) with per-element reads and writes.
+
+Use `Mapping` when you need random access maps, `Lazy` when you want to avoid eagerly loading heavyweight fields, and `StorageVec` when you need array-like semantics without the size/gas limitations of `Vec<T>`.
+
+### Storage Layout
+
+ink! defaults to a [`Packed`](https://use-ink.github.io/ink/ink_storage_traits/trait.Packed.html) layout where every storage field lives under the same key. This keeps code size small but can become prohibitive when one field (e.g. a `Vec<T>`) grows very large because every message has to load and decode the entire struct. Wrapping heavy fields in `Lazy` or moving them into `Mapping`/`StorageVec` produces a non-packed layout where those fields occupy their own keys and are only loaded when used.
+
+If a packed field grows beyond the execution buffer (≈16 KiB by default), decoding it will trap your contract. Err on the side of using lazy storage for unbounded collections. When you need deterministic keys—for example in upgradable contracts—use [`ManualKey`](https://use-ink.github.io/ink/ink_storage_traits/struct.ManualKey.html) instead of the default [`AutoKey`](https://use-ink.github.io/ink/ink_storage_traits/struct.AutoKey.html).
+
+### StorageVec vs `Vec<T>`
+
+Rust's standard `Vec<T>` always stores all elements in a single storage cell, so every read or write touches the entire collection and the overall size is bounded by pallet-revive's per-cell limit (≈416 bytes) as well as ink!'s encoding buffer. `StorageVec` stores the length under one key and each element under its own key, so reading or writing a single element only touches that element. The trade-off is that iterating or reordering elements requires repeated storage accesses and there are no built-in iterators. Choose between `Vec<T>` and `StorageVec` based on how large the collection can get, its element size, and how frequently you iterate over it.
+
+### Custom Storage Items
+
+Custom types that live in storage must implement `Storable`, `StorageLayout`, and `TypeInfo`. In most cases you can derive these via `#[ink::scale_derive]` or simply mark the type with `#[ink::storage_item]` to auto-derive everything (including deterministic key calculation for non-`Packed` types). The macro now accepts a `packed` flag so you can opt-in to deriving [`Packed`](https://use-ink.github.io/ink/ink_storage_traits/trait.Packed.html) when the type must satisfy `T: Packed` bounds (for example when used as the value type of a `Mapping`). If you roll your own trait impls but still want the key-calculation helper, use `#[ink::storage_item(derive = false)]`.
+
+### Storage Metadata
+
+ink! embeds the full storage layout in the contract metadata so tooling (and humans) can reason about runtime storage. Each field is represented as a tree of `root`, `struct`, and `leaf` nodes with their associated storage keys. Non-packed types expose their `root_key`, which is the base used for calculating per-item keys (e.g. for `Mapping` or `StorageVec`). Understanding this metadata is essential if you need to read or write contract storage off-chain using APIs such as `contractsApi_getStorage`.
+
+## Selectors
+
+Selectors in ink! are a language agnostic way of identifying constructors and messages.
+They are four-byte hexadecimal strings which look something like: `0x633aa551`.
+
+You can find the selector of an ink! constructor or message in your
+[contract metadata](../reference/metadata/overview.md) by looking for the `selector` field of the dispatchable
+you're interested in.
+
+### Selector Calculation
+
+If you do not have access to a contract's metadata, you can also calculate it yourself.
+
+The algorithm ink! uses is fairly straightforward:
+1. Get _just_ the name of the constructor or message
+2. Compute the `BLAKE2` hash of the name
+3. Take the first four bytes of the hash as the selector
+
+Let's walk through a short example of what this looks like in practice. Consider the
+following message:
+
+```rust
+#[ink(message)]
+fn frobinate(&mut self, fro: bool, bi: u32, nate: AccountId) -> bool {
+    unimplemented!()
+}
+```
+
+To calculate the selector we:
+1. Grab the name of the message, `frobinate`
+2. Compute `BLAKE2("frobinate") = 0x8e39d7f22ef4f9f1404fe5200768179a8b4f2b67799082d7b39f6a8ca82da8f1`
+3. Grab the first four bytes, `0x8e39d7f2`
+
+### Selector Calculation: ink! Traits
+
+These rules change a bit if you define any messages using the `[ink::trait_definition]`
+[macro](./trait-definitions.md). For our first step, instead of taking _just_ the
+message name, we now also add the _trait name_ to the selector calculation.
+
+Let's see what this would look like in practice. Consider the following trait:
+
+```rust
+#[ink::trait_definition]
+pub trait Frobinate {
+    fn frobinate(&mut self, fro: bool, bi: u32, nate: AccountId) -> bool;
+}
+
+impl Frobinate for Contract {
+    #[ink(message)]
+    fn frobinate(&mut self, fro: bool, bi: u32, nate: AccountId) -> bool {
+        unimplemented!()
+    }
+}
+```
+
+To calculate the selector we:
+1. Grab the name of the trait **and** the name of the message, `Frobinate::frobinate`
+2. Compute `BLAKE2("Frobinate::frobinate") = 0x8915412ad772b2a116917cf75df4ba461b5808556a73f729bce582fb79200c5b`
+3. Grab the first four bytes, `0x8915412a`
+
+## Trait Definitions
+
+Through the `#[ink::trait_definition]` proc. macro it is now possible to define your very own trait definitions that are then implementable by ink! smart contracts.
+
+This allows to define shared smart contract interfaces to different concrete implementations.
+Note that this ink! trait definition can be defined anywhere, even in another crate!
+
+### Example
+
+#### Definition
+
+Defined in the `base_erc20.rs` module.
+
+```rust
+#[ink::trait_definition]
+pub trait BaseErc20 {
+    /// Returns the total supply.
+    #[ink(message)]
+    fn total_supply(&self) -> Balance;
+
+    /// Transfers `amount` from caller to `to`.
+    #[ink(message, payable)]
+    fn transfer(&mut self, to: AccountId, amount: Balance);
+}
+```
+
+#### Implementation
+
+An ink! smart contract definition can then implement this trait definition as follows:
+
+```rust
+#[ink::contract]
+mod erc20 {
+    use base_erc20::BaseErc20;
+
+    #[ink(storage)]
+    pub struct Erc20 {
+        total_supply: Balance,
+        // more fields ...
+    }
+
+    impl Erc20 {
+        /// Creates a new ERC-20 contract and initializes it with the initial supply for the instantiator.
+        #[ink(constructor)]
+        fn new(initial_supply: Balance) -> Self {
+            // implementation ...
+        }
+    }
+
+    impl BaseErc20 for Erc20 {
+        #[ink(message)]
+        fn total_supply(&self) -> Balance {
+            // implementation ...
+        }
+
+        #[ink(message, payable)]
+        fn transfer(&mut self, to: AccountId, amount: Balance) {
+            // implementation ...
+        }
+    }
+}
+```
+
+#### Usage
+
+Calling the above `Erc20` explicitly through its trait implementation can be done just as if it was normal Rust code:
+
+```rust
+let mut erc20 = Erc20::new(1000);
+assert_eq!(erc20.total_supply(), 1000);
+```
+
+### Limitations
+
+There are still many limitations to ink! trait definitions and trait implementations.
+For example, it is not possible to define associated constants or types or have default implemented methods.
+
+## Upgradeable Contracts
+
+Even though smart contracts are intended to be immutable by design,
+it is often necessary to perform an upgrade of a smart contract.
+
+The developer may need to fix a critical bug or introduce a new feature.
+ink! supports different upgrade strategies.
+
+### Proxy Forwarding
+
+This method relies on the ability of contracts to proxy calls to other contracts.
+
+#### Properties
+
+- Forwards any call that does not match a selector of itself to another contract.
+- The other contract needs to be deployed on-chain.
+- State is stored in the storage of the contract to which calls are forwarded.
+
+#### Example
+
+Our proxy contract will have these 2 storage fields:
+
+```rust
+#[ink(storage)]
+pub struct Proxy {
+    /// The `AccountId` of a contract where any call that does not match a
+    /// selector of this contract is forwarded to.
+    forward_to: AccountId,
+    /// The `AccountId` of a privileged account that can update the
+    /// forwarding address.
+    admin: AccountId,
+}
+```
+
+We then need a way to change the address of a contract to which we forward calls to
+and the actual message selector to proxy the call:
+
+```rust
+impl Proxy {
+    /// Changes the `AccountId` of the contract where any call that does
+    /// not match a selector of this contract is forwarded to.
+    #[ink(message, selector = @)]
+    pub fn change_forward_address(&mut self, new_address: AccountId) {
+        assert_eq!(
+            self.env().caller(),
+            self.admin,
+            "caller {:?} does not have sufficient permissions",
+            self.env().caller(),
+        );
+        self.forward_to = new_address;
+    }
+
+    /// Fallback message for a contract call that doesn't match any
+    /// of the other message selectors.
+    #[ink(message, payable, selector = _)]
+    pub fn forward(&mut self) -> u32 {
+        ink::env::call::build_call::<ink::env::DefaultEnvironment>()
+            .call(self.forward_to)
+            .transferred_value(self.env().transferred_value())
+            .call_flags(
+                ink::env::CallFlags::default()
+                    .set_forward_input(true)
+                    .set_tail_call(true),
+            )
+            .invoke()
+            .unwrap_or_else(|err| {
+                panic!(
+                    "cross-contract call to {:?} failed due to {:?}",
+                    self.forward_to, err
+                )
+            });
+        unreachable!(
+            "the forwarded call will never return since `tail_call` was set"
+        );
+    }
+}
+```
+
+### Delegating execution to foreign Contract Code with `delegate_call`
+
+Similar to proxy-forwarding we can delegate execution to another code hash uploaded on-chain.
+
+#### Properties
+
+- Delegates any call that does not match a selector of itself to another contract.
+- Code is required to be uploaded on-chain, but is not required to be instantiated.
+- State is stored in the storage of the original contract which submits the call.
+- Storage layout must be identical between both contract codes.
+
+### Replacing Contract Code with `set_code_hash()`
+
+Following [Polkadot SDK's runtime upgradeability](https://docs.polkadot.com/develop/parachains/maintenance/runtime-upgrades/)
+philosophy, ink! also supports an easy way to update your contract code via the special function
+[`set_code_hash()`](https://use-ink.github.io/ink/ink_env/fn.set_code_hash.html).
+
+#### Properties
+
+- Updates the contract code using `set_code_hash()`.
+- The other contract needs to be deployed on-chain.
+- State is stored in the storage of the originally instantiated contract.
+
+#### Example
+
+Just add the following function to the contract you want to upgrade in the future.
+
+```rust
+/// Modifies the code which is used to execute calls to this contract address.
+#[ink(message)]
+pub fn set_code(&mut self, code_hash: [u8; 32]) {
+    ink::env::set_code_hash(&code_hash).unwrap_or_else(|err| {
+        panic!(
+            "Failed to `set_code_hash` to {:?} due to {:?}",
+            code_hash, err
+        )
+    });
+    ink::env::debug_println!("Switched code hash to {:?}.", code_hash);
+}
+```
+
+#### Storage Compatibility
+
+It is the developer's responsibility to ensure
+that the new contract's storage is compatible with the storage of the contract that is replaced.
+
+You should not change the order in which the contract state variables are declared, nor their type!
+
+## Environment Functions
+
+ink! exposes a number of handy environment functions. A full overview [is found here](https://use-ink.github.io/ink/ink_env/#functions).
+
+In an `#[ink(constructor)]` use `Self::env()` to access those, in an `#[ink(message)]` use `self.env()`. So `Self::env().caller()` or `self.env().caller()`.
+
+Some handy functions include:
+
+* [`caller()`](https://use-ink.github.io/ink/ink_env/fn.caller.html): Returns the address of the caller of the executed contract.
+* [`address()`](https://use-ink.github.io/ink/ink_env/fn.address.html): Returns the address of the executed contract.
+* [`balance()`](https://use-ink.github.io/ink/ink_env/fn.balance.html): Returns the balance of the executed contract.
+* [`block_number()`](https://use-ink.github.io/ink/ink_env/fn.block_number.html): Returns the current block number.
+* [`emit_event(…)`](https://use-ink.github.io/ink/ink_env/fn.emit_event.html): Emits an event with the given event data.
+* [`transfer(…)`](https://use-ink.github.io/ink/ink_env/fn.transfer.html): Transfers value from the contract to the destination account ID.
+* [`hash_bytes(…)`](https://use-ink.github.io/ink/ink_env/fn.hash_bytes.html): Conducts the crypto hash of the given input and stores the result in output.
+* […and many more](https://use-ink.github.io/ink/ink_env/#functions).
+
+## Chain Environment Types
+
+ink! defines a trait [`Environment`](https://use-ink.github.io/ink/ink_env/trait.Environment.html) and also a default implementation of that trait ‒ [`DefaultEnvironment`](https://use-ink.github.io/ink/ink_env/enum.DefaultEnvironment.html).
+
+These are the types that ink! uses, if no explicit steps are taken:
+
+```rust
+/// The fundamental types of the default configuration.
+#[derive(Debug, Clone, PartialEq, Eq)]
+#[cfg_attr(feature = "std", derive(TypeInfo))]
+pub enum DefaultEnvironment {}
+
+impl Environment for DefaultEnvironment {
+    const MAX_EVENT_TOPICS: usize = 4;
+
+    type AccountId = AccountId;
+    type Balance = Balance;
+    type Hash = Hash;
+    type Timestamp = Timestamp;
+    type BlockNumber = BlockNumber;
+    type ChainExtension = NoChainExtension;
+    type EventRecord = EventRecord;
+}
+```
+
+The context here is that you can use ink! on any blockchain that was built with the [Polkadot SDK](https://polkadot.com/platform/sdk) and includes the [`pallet-revive`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/revive) module.
+
+Chains built with the Polkadot SDK can decide on their own which types they want to use for e.g. the chain's block number or account id's. For example, chains that intend to be compatible to Ethereum typically use the same type as Ethereum for their `AccountId`.
+
+Most Polkadot SDK chains stay with the default types though and ink! just uses those by default as well. It is possible to configure a different environment in the contract macro ([documentation here](https://use-ink.github.io/ink/ink/attr.contract.html#header-arguments)) though:
+
+```rust
+#[ink::contract(env = MyCustomTypes)]
+```
+
+:::caution
+If you write a contract for a chain that deviates from our default types (`DefaultEnvironment`), you have to make sure to configure that chain's `Environment` for your contract!
+:::
+
+## Cross-Consensus Messaging (XCM)
+
+XCM allows for cross-chain communication, enabling ink! smart contract to interact with other chains. You can learn more about XCM in the [Polkadot Wiki](https://wiki.polkadot.network/docs/learn/xcm).
+
+We have an example contract that demonstrates how to use XCM from ink!: [`contract-xcm`](https://github.com/use-ink/ink-examples/tree/main/contract-xcm).
+
+The documentation of the relevant functions can be found here:
+
+* [`xcm_send`](https://use-ink.github.io/ink/ink_env/fn.xcm_send.html)
+* [`xcm_weigh`](https://use-ink.github.io/ink/ink_env/fn.xcm_weigh.html)
+* [`xcm_execute`](https://use-ink.github.io/ink/ink_env/fn.xcm_execute.html)
+
+:::note
+In ink! v6, you need to enable the `xcm` feature in your contract's `Cargo.toml` to use the XCM functions.
+
+```toml
+[dependencies]
+ink = {
+  version = "6.0.0-beta",
+  default-features = false,
+  features = ["xcm"]
+}
+```
+:::
+
+### `xcm_execute`
+
+The [`xcm_execute`](https://use-ink.github.io/ink/ink/struct.EnvAccess.html#method.xcm_execute) function executes the XCM locally. It first checks the message to ensure that no barriers or filters will block the execution, and then executes it locally, using the contract's account as the origin.
+
+The following code snippet demonstrates how to use `xcm_execute` to perform a [reserve-backed transfer](https://wiki.polkadot.network/docs/learn/xcm/journey/transfers-reserve#1-initiatereservewithdraw):
+
+```rust
+#[ink(message)]
+pub fn reserve_transfer(
+    &mut self,
+    amount: Balance,
+    fee: Balance,
+) -> Result<(), RuntimeError> {
+    // The beneficiary of the transfer.
+    // Here, the beneficiary is the caller's account on the relay chain.
+    let caller_account_id = self.env().to_account_id(self.env().caller());
+    let beneficiary: Location = AccountId32 {
+        network: None,
+        id: caller_account_id.0,
+    }.into();
+
+    // Create an XCM message.
+    let message: Xcm<()> = Xcm::builder_unsafe()
+        // Withdraw the relay's native token derivative from the
+        // contract's account.
+        .withdraw_asset((Parent, amount))
+
+        // The `initiate_reserve_withdraw` instruction takes the
+        // derivative token from the holding register and burns it.
+        // It then sends the nested XCM to the reserve in this
+        // example, the relay chain.
+        // Upon receiving the XCM, the reserve will withdraw the
+        // asset from our chain's sovereign account, and deposit
+        // on the caller's account.
+        .initiate_reserve_withdraw(
+            All,
+            Parent,
+            Xcm::builder_unsafe()
+                .buy_execution((Here, fee), Unlimited)
+                .deposit_asset(All, beneficiary)
+                .build(),
+        )
+        .build();
+
+    let msg = VersionedXcm::V5(message);
+    let weight = self.env().xcm_weigh(&msg).expect("`xcm_weigh` failed");
+    self.env()
+        .xcm_execute(&msg, weight)
+        .map_err(|_| RuntimeError::XcmExecuteFailed)
+}
+```
+
+### `xcm_send`
+
+The [`xcm_send`](https://use-ink.github.io/ink/ink_env/fn.xcm_send.html) function enables sending XCM to be executed by another chain. Messages sent originate from the contract's account. Consequently, the receiving chain will process the message using the contract's sovereign account as the origin.
+
+The following example demonstrates how to use `xcm_send`. In this example, we send an XCM to the relay chain. This XCM will execute using the contract's sovereign account as the origin of the call. It will then transfer, some `value` from this account to the caller's account on the relay chain.
+
+```rust
+#[ink(message)]
+pub fn send_funds(
+    &mut self,
+    value: Balance,
+    fee: Balance,
+) -> Result<(), RuntimeError> {
+    // The destination of the XCM message. Assuming we run the contract
+    // on a parachain, the parent will be the relay chain.
+    let destination: ink::xcm::v5::Location = ink::xcm::v5::Parent.into();
+
+    // The asset to be sent, since we are sending the XCM to the relay chain,
+    // this represents `value` amount of the relay chain's native asset.
+    let asset: Asset = (Here, value).into();
+
+    // The beneficiary of the asset.
+    // Here, the beneficiary is the caller's account on the relay chain.
+    let caller_account_id = self.env().to_account_id(self.env().caller());
+    let beneficiary = AccountId32 {
+        network: None,
+        id: caller_account_id.0,
+    };
+
+    // Create an XCM message
+    let message: Xcm<()> = Xcm::builder()
+        // Withdraw the asset from the origin (the sovereign account of the
+        // contract on the relay chain)
+        .withdraw_asset(asset.clone())
+
+        // Buy execution to pay the fee on the relay chain
+        .buy_execution((Here, fee), WeightLimit::Unlimited)
+
+        // Deposit the asset to the caller's account on the relay chain
+        .deposit_asset(asset, beneficiary)
+        .build();
+
+    // Send the constructed XCM message to the relay chain.
+    self.env()
+        .xcm_send(
+            &VersionedLocation::V5(destination),
+            &VersionedXcm::V5(message),
+        )
+        .map_err(|_| RuntimeError::XcmSendFailed)
+}
+```
+
+---
+
+# Development
+
+## Testing
+
+### DRink! sandboxed E2E
+
+Beyond the core `ink::test` unit framework and full end-to-end tests, ink! provides the [DRink!](https://github.com/use-ink/drink) sandbox. DRink! keeps an in-memory Polkadot SDK runtime (including `pallet-revive`, `pallet-balances`, etc.) so you can interact with multiple contracts in a realistic blockchain state without spawning a separate node.
+
+**Trade-offs**
+- **Fast execution, slow compilation:** tests run in-process with no node startup or block production delays, but every build must compile the Polkadot SDK pallets (and their REVM-only dependencies), so compile times exceed even E2E tests.
+- **Full control, artificial environment:** you can edit block numbers, timestamps, balances, and mock contracts or calls, but you still lack the node layer (RPCs, networking, consensus), so always validate critical paths with E2E tests before deploying.
+- **Stringly typed today:** arguments are currently string encoded. Typed APIs are coming via an integration effort with `ink-wrapper`.
+
+Use DRink! when you need rich orchestration (multiple contracts, custom runtimes), advanced debugging/call tracing, or long-running simulations that would be slow on a live node. Treat it as a development acceleration tool rather than a replacement for CI/CD E2E runs.
+
+### Using DRink!
+
+**1. As a library**
+
+Add the crate and use the provided macros to supply contract bundles and sessions:
+
+```toml
+drink = { version = "0.8" }
+```
+
+```rust
+#[cfg(test)]
+mod tests {
+    #[drink::contract_bundle_provider]
+    enum BundleProvider {}
+
+    #[drink::test]
+    fn deploy_and_call(mut session: Session) -> Result<(), Box<dyn Error>> {
+        let result: bool = session
+            .deploy_bundle_and(BundleProvider::local(), "new", &["true"], NO_SALT, NO_ENDOWMENT)?
+            .call_and("flip", NO_ARGS, NO_ENDOWMENT)?
+            .call("get", NO_ARGS, NO_ENDOWMENT)??;
+        assert!(!result);
+        Ok(())
+    }
+}
+```
+
+**2. As an ink! sandbox backend**
+
+Import the sandbox support crate and swap the backend in `#[ink_sandbox::test]`:
+
+```toml
+ink_sandbox = { git = "https://github.com/use-ink/ink", branch = "6.0.0-beta.1" }
+```
+
+```rust
+#[ink_sandbox::test(backend(runtime_only(
+    sandbox = sandbox_runtime::ContractCallerSandbox,
+    client  = ink_sandbox::SandboxClient
+)))]
+```
+
+This lets you run your existing E2E-style tests without starting `ink-node`.
+
+**3. Via CLI**
+
+Install the TUI helper if you prefer a guided workflow:
+
+```bash
+cargo install drink-cli
+```
+
+See the [drink-cli README](https://github.com/inkdevhub/drink/blob/main/drink-cli/README.md) for details.
+
+## Contract Verification
+
+Contract verification is the process of matching a deployed ink! contract with the source code and metadata generated when it was built.
+
+The verification process for Rust-based smart contract languages is more complex than EVM-based languages such as Solidity due to the Rust compiler not providing deterministic builds of contracts.
+
+In order to verify an ink! smart contract, the verification process must recompile the contract in an identical host environment to which it was originally built. The simplest way to do this is using a Docker container.
+
+### Verifiable build
+
+As mentioned earlier, due to the non-deterministic nature of Rust compilation, smart contract developers are advised to build their project inside a Docker container we provide. Luckily, `cargo contract build` provides the `--verifiable` flag for this purpose.
+
+The steps for the verifiable build production are:
+
+1. [Install Docker Engine](https://docs.docker.com/engine/install/)
+2. (Linux users) Make sure you complete the [post-installation step](https://docs.docker.com/engine/install/linux-postinstall/). This is required for the correct operation of the command.
+3. Ensure Docker Engine is up and running, and the socket is accessible.
+4. Simply run `cargo contract build --verifiable`.
+
+This will pull the image with the version that corresponds to your `cargo-contract` crate version, perform a build, and write artifacts in the standard output directory.
+
+If everything is correct, you can verify the image version in the metadata file. It should contain a key-value `image` after the `contract` information:
+
+```json
+  "contract": {
+    "name": "flipper",
+    "version": "6.0.0",
+    "authors": [
+      "Use Ink <ink@use.ink>"
+    ]
+  },
+  "image": "use-ink/contracts-verifiable:6.0.0",
+```
+
+You are now ready to deploy your contract to a production chain.
+
+:::note
+The image is `amd64` based. Therefore, the build times can be significantly slower on Apple Silicon machines. To overcome the issue enable _Rosetta for x86/amd64 emulation_ in _Settings_ → _Features in development_ tab in Docker Desktop App.
+:::
+
+### Verifying contracts
+
+Similar to Etherscan, you want to ensure that the given contract bundle is indeed a copy of some well-known contract code.
+
+`cargo contract verify` allows you to verify the given cargo project against a reference contract bundle.
+
+Simply run `cargo contract verify <path>` in your contract's directory.
+
+If the reference contract was not built inside a Docker container, the command will compare the build info from the reference contract with the current environment to ensure a match in environment.
+
+:::warning
+If you are not using standardized verifiable builds. It is your responsibility to ensure deterministic environment both for build and verification of smart contracts.
+:::
+
+If the build info from the `.contract` file matches the environment and a Docker `image` is present in metadata, `cargo contract` will build the project inside the specified `image` Docker container. Otherwise, a local build is carried out.
+
+Upon completion, the built contract bundle is compared to the reference one and the result is returned.
+
+### Advanced usage
+
+If you would like to carry out other operations inside a deterministic environment you can use our Docker image. It is available on [Docker Hub](https://hub.docker.com/repository/docker/useink/contracts-verifiable/general). The entry point is set to `cargo contract` allowing you to specify other commands to be executed.
+
+:::tip
+If you are building a multi-contract project, make sure you are executing the build in the parent directory in order to mount the directory of all contracts to be visible. Specify a relative manifest path to the root contract:
+
+```bash
+cargo contract build
+    --verifiable
+    --manifest-path ink-project-a/Cargo.toml
+```
+:::
+
+You can find a Dockerfile and further documentation on image usage in [the `cargo-contract` repository](https://github.com/use-ink/cargo-contract/tree/master/build-image)
+
+## Linter
+
+### Overview
+
+ink! includes the linter — a security tool designed to identify typical security issues in smart contracts. The linter is meant to seamlessly fit into the smart contracts development process, ensuring that contracts are thoroughly checked during the build phase before they are deployed to the blockchain.
+
+#### Installation
+Our linter requires two crates and a fixed Rust toolchain version. You can use these commands to install the required dependencies:
+
+```bash
+export TOOLCHAIN_VERSION=nightly-2025-05-14
+rustup install $TOOLCHAIN_VERSION
+rustup component add rust-src --toolchain $TOOLCHAIN_VERSION
+rustup run $TOOLCHAIN_VERSION cargo install cargo-dylint dylint-link
+```
+
+Note that the linter requires this specific version of the toolchain, since it uses the internal Rust compiler API. That's also why we require nightly for the linter, these internal crates are not accessible on stable.
+
+#### Usage
+The linter operates via `cargo-contract`.
+
+To perform a build with extra code analysis (i.e. the ink! linting rules), run the following command within the contract directory:
+
+```bash
+cargo contract build --lint
+```
+
+This command compiles the contract and applies all linting checks. You can find the complete list of lints along with their descriptions in this documentation.
+
+#### Suppressing linter warnings
+To suppress linter warnings in your ink! smart-contract, you can use `allow` attributes. You can apply these attributes either to a particular piece of code or globally.
+
+Here's how to suppress the specific linter warnings:
+
+```rust
+// Suppressing the `primitive_topic` lint globally
+#[cfg_attr(dylint_lib = "ink_linting", allow(primitive_topic))]
+
+#[ink(message)]
+pub fn test(&mut self) {
+    // Suppressing the `strict_balance_equality` lint in a specific place
+    #[cfg_attr(dylint_lib = "ink_linting", allow(strict_balance_equality))]
+    if self.env().balance() == 10 { /* ... */ }
+}
+```
+
+### Linter Rules
+
+#### no_main
+
+**What it does**
+Checks if a contract is annotated with the `no_main` inner attribute.
+
+**Why is this necessary?**
+Contracts must be annotated with `no_main` inner attribute when compiled for on-chain execution.
+
+**Example**
+
+```rust
+// Bad: Contract does not contain the `no_main` attribute,
+// so it cannot be compiled to PolkaVM
+#![cfg_attr(not(feature = "std"), no_std)]
+#[ink::contract]
+mod my_contract { /* ... */ }
+```
+
+Use instead:
+
+```rust
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
+#[ink::contract]
+mod my_contract { /* ... */ }
+```
+
+#### non_fallible_api
+
+**What it does**
+
+The lint detects potentially unsafe uses of methods for which there are safer alternatives.
+
+**Why is this bad?**
+
+In some standard collections in ink!, there are two types of implementations: non-fallible (e.g. `get`) and fallible (e.g. `try_get`). Fallible alternatives are considered safer, as they perform additional checks for incorrect input parameters and return `Result::Err` when they are used improperly. On the other hand, non-fallible methods do not provide these checks and will panic on incorrect input, placing the responsibility on the user to implement these checks.
+
+For more context, see: [ink#1910](https://github.com/use-ink/ink/pull/1910).
+
+**Example**
+
+Consider the contract that has the following `Mapping` field:
+
+```rust
+#[ink(storage)]
+pub struct Example { map: Mapping<String, AccountId> }
+```
+
+The following usage of the non-fallible API is unsafe:
+
+```rust
+// Bad: can panic if `input_string` doesn't fit into the static buffer
+self.map.insert(input_string, &self.sender);
+```
+
+It could be replaced with the fallible version of `Mapping::insert`:
+
+```rust
+// Good: returns Result::Err on incorrect input
+self.map.try_insert(input_string, &self.sender);
+```
+
+Otherwise, the user could explicitly check the encoded size of the argument in their code:
+
+```rust
+// Good: explicitly checked encoded size of the input
+if String::encoded_size(&input_string) < ink_env::BUFFER_SIZE {
+  self.map.insert(input_string, &self.sender);
+}
+```
+
+#### primitive_topic
+
+**What it does**
+Checks for ink! contracts that use the [`#[ink(topic)]`](../reference/macros-attributes/topic.md) annotation with primitive number types. Topics are discrete events for which it makes sense to filter. Typical examples of fields that should be filtered are `AccountId`, `bool` or `enum` variants.
+
+**Why is this bad?**
+It typically doesn't make sense to annotate types like `u32` or `i32` as a topic, if those fields can take continuous values that could be anywhere between `::MIN` and `::MAX`. An example of a case where it doesn't make sense at all to have a topic on the storage field is something like `value: Balance` in the examle below.
+
+**Example**
+```rust
+// Bad
+// It typically makes no sense to filter `Balance`, since its value may varies from `::MAX`
+// to `::MIN`.
+#[ink(event)]
+pub struct Transaction {
+    #[ink(topic)]
+    src: Option<AccountId>,
+    #[ink(topic)]
+    dst: Option<AccountId>,
+    #[ink(topic)]
+    value: Balance,
+}
+```
+
+Use instead:
+
+```rust
+// Good
+// Filtering transactions based on source and destination addresses.
+#[ink(event)]
+pub struct Transaction {
+    #[ink(topic)]
+    src: Option<AccountId>,
+    #[ink(topic)]
+    dst: Option<AccountId>,
+    value: Balance,
+}
+```
+
+#### storage_never_freed
+
+**What it does**
+This lint ensures that for every storage field with a collection type, when there is an operation to insert new elements, there's also an operation for removing elements.
+
+**Why is this bad?**
+When a user executes a contract function that writes to storage, they have to put a deposit down for the amount of storage space used. Whoever frees up that storage at some later point gets the deposit back. Therefore, it is always a good idea to make it possible for users to free up their storage space.
+
+**Example**
+In the following example there is a storage field with the `Mapping` type that has an function that inserts new elements:
+
+```rust
+#[ink(storage)]
+pub struct Transaction {
+    values: Mapping<AccountId, AccountId>,
+}
+
+fn add_value(&mut self, k: &AccountId, v: &AccountId) {
+    // ...
+    self.values.insert(k, v);
+    // ...
+}
+```
+
+But, ideally, there also should be a function that allows the user to remove elements from the Mapping freeing storage space:
+
+```rust
+fn del_value(&mut self, k: &AccountId) {
+    // ...
+    self.values.remove(k);
+    // ...
+}
+```
+
+#### strict_balance_equality
+
+**What it does**
+Looks for strict equalities with balance in ink! contracts.
+
+**Why is this bad?**
+The problem with strict balance equality is that it is always possible to forcibly send tokens to a contract. For example, using [`terminate_contract`](https://use-ink.github.io/ink/ink_env/fn.terminate_contract.html). In such a case, the condition involving the contract balance will work incorrectly, what may lead to security issues, including DoS attacks and draining contract's gas.
+
+**Known problems**
+There are many ways to implement balance comparison in ink! contracts. This lint is not trying to be exhaustive. Instead, it addresses the most common cases that may occur in real-world contracts and focuses on precision and lack of false positives.
+
+**Example**
+Assume, there is an attacker contract that sends all its funds to the target contract when terminated:
+
+```rust
+#[ink::contract]
+pub mod attacker {
+  // ...
+  #[ink(message)]
+  pub fn attack(&mut self, target: &AccountId) {
+      self.env().terminate_contract(target);
+  }
+}
+```
+
+If the target contains a condition with strict balance equality, this may be manipulated by the attacker:
+
+```rust
+#[ink::contract]
+pub mod target {
+  // ...
+  #[ink(message)]
+  pub fn do_something(&mut self) {
+      if self.env().balance() != 100 { // Bad: Strict balance equality
+          // ... some logic
+      }
+  }
+}
+```
+
+This could be mitigated using non-strict equality operators in the condition with the balance:
+
+```rust
+#[ink::contract]
+pub mod target {
+  // ...
+  #[ink(message)]
+  pub fn do_something(&mut self) {
+      if self.env().balance() < 100 { // Good: Non-strict equality
+          // ... some logic
+      }
+  }
+}
+```
+
+---
+
+# Tutorials and Examples
+
+Ready to dive deeper into ink! development? Check out our [tutorials](/tutorials/overview) that will guide you through building real-world decentralised applications step by step.
+
+## Contribute a Tutorial
+
+Have you built something awesome with ink!? We'd love to feature your tutorial!
+
+**Help the community learn by contributing your own tutorial.** Whether it's a unique use case, an innovative pattern, or a step-by-step guide for beginners, your contribution makes a difference.
+
+[Learn how to contribute tutorials →](/tutorials/guide)
+
+## Smart Contract Examples
+
+Explore ready-to-use [smart contract examples](https://github.com/use-ink/ink-examples) to understand different patterns and use cases.
+
+---
+
+# Solidity Interoperability
+
+## Use ink! with Solidity ABI
+
+ink! v6 contracts can be configured to use Solidity ABI encoding, enabling seamless compatibility with Ethereum tools like MetaMask, Hardhat, Wagmi, and ethers.js. This allows you to leverage the Ethereum ecosystem while building on Polkadot networks.
+
+### Why Use Solidity ABI?
+
+By enabling Solidity ABI compatibility, you can:
+- **Use Ethereum wallets** like MetaMask to interact with your ink! contracts
+- **Deploy with Hardhat** and other familiar Ethereum development tools
+- **Build frontends** using ethers.js, Wagmi, and React hooks
+- **Call Solidity contracts** from ink! and vice versa
+- **Share contracts** easily with Ethereum developers
+
+### Quick Start
+
+#### 1. Create Your Contract
+
+```bash
+pop new contract my_contract -t standard
+cd my_contract
+```
+
+#### 2. Enable Solidity ABI
+
+Open `Cargo.toml`, add the `ink-lang` table under `[package.metadata]`, and configure the ABI mode:
+
+```toml
+[package.metadata.ink-lang]
+abi = "sol"
+```
+
+Setting `abi = "sol"` puts the contract into Solidity ABI compatibility mode, so all constructor, message, and event types must translate to Solidity ABI types. See the [Type Reference](./type-reference.md) for supported mappings.
+
+#### 3. Build with Solidity Metadata
+
+```bash
+pop build --release --metadata solidity
+```
+
+This generates Solidity-compatible artifacts in `target/ink/`:
+- `*.abi` - Solidity ABI file for contract interaction
+- `*.json` - Metadata compatible with Ethereum tooling
+
+### How It Works
+
+When you specify `abi = "sol"`, the ink! code generator follows the [Solidity ABI specification](https://docs.soliditylang.org/en/latest/abi-spec.html):
+
+**Function Selectors**
+- Message selectors use **keccak256** hashing (Ethereum standard)
+- First 4 bytes of `keccak256("functionName(type1,type2,...)")`
+- Manual selector overrides via `#[ink(selector = ...)]` are ignored
+
+**Encoding/Decoding**
+- Uses [Solidity ABI encoding](https://docs.soliditylang.org/en/latest/abi-spec.html#formal-specification-of-the-encoding) for inputs/outputs
+- Events and errors follow Solidity format
+- Internal storage still uses SCALE codec (no storage changes!)
+
+**Constraints**
+- **Only one constructor** can be defined
+- All types must map to Solidity ABI types (see [Type Reference](./type-reference.md))
+- Call builders are generated for Solidity calling conventions
+
+:::info Storage Format
+The contract ABI only affects external interactions. **Your contract's internal storage remains SCALE-encoded!** Using Solidity ABI does not change your storage layout.
+:::
+
+### Dual ABI Mode ("all")
+
+You can support **both** ink! and Solidity ABIs simultaneously:
+
+```toml
+[package.metadata.ink-lang]
+ abi = "all"
+```
+
+**Benefits**
+- Contracts callable by both ink! and Solidity tools
+- Each message has two entry points (ink! selector + Solidity selector)
+- Flexibility for cross-ecosystem interoperability
+
+**Tradeoffs**
+- **Larger contract size** (both entry points compiled in)
+- Must designate a `#[ink(constructor, default)]` for Solidity instantiation
+- All types must be Solidity-compatible
+
+```rust
+#[ink(constructor, default)]
+pub fn new(initial_value: bool) -> Self {
+    Self { value: initial_value }
+}
+```
+
+## Type Reference
+
+With ink! v6, we have introduced an `abi` field in a custom `ink-lang` table in the [`package.metadata` table][package-metadata] of a contract's manifest file (i.e. the `Cargo.toml` file).
+
+It allows building your contract in Solidity ABI compatibility mode when declared as follows:
+
+```toml
+[package.metadata.ink-lang]
+ abi = "sol"
+```
+
+The implication of supporting Solidity ABI encoding is that all types used as constructor/message argument and return types, and event argument types must define a mapping to an equivalent Solidity ABI type.
+
+(This section contains extensive type mapping information - the complete content is too long to include here but covers primitive types, arrays, strings, custom types, and error handling for Solidity ABI compatibility)
+
+## Calling Solidity Contracts
+
+[ink! v6 contracts can call Solidity ABI-encoded contracts](https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3), enabling seamless interoperability between ink!, Solidity, and other Solidity ABI-compatible contracts. This allows you to integrate with existing Ethereum-compatible smart contracts deployed on Polkadot.
+
+There are two main approaches to calling Solidity contracts from ink!:
+1. **Contract References** (`ContractRef`) - High-level, type-safe interfaces
+2. **Builders** (`CreateBuilder` and `CallBuilder`) - Low-level control over call parameters
+
+### Using Contract References
+
+Contract references provide a high-level type-safe interface for interacting with on-chain contracts. When working with Solidity ABI contracts, you can use manually defined contract references with the [`#[ink::contract_ref]` attribute](../reference/macros-attributes/contract_ref.md).
+
+For detailed examples and complete implementation guides, see the [Cross-Contract Calling](../basics/cross-contract-calling.md) documentation.
+
+## MetaMask Setup
+
+You can use [MetaMask](https://metamask.io/) to interact with your ink! smart contracts via the Solidity ABI. This guide shows you how to configure MetaMask to connect to Polkadot networks.
+
+### Quick Setup
+
+To set up your wallet and connect to the appropriate network, follow this quick start guide: [Connect MetaMask to Polkadot Hub Testnet](https://docs.polkadot.com/develop/smart-contracts/wallets/#metamask)
+
+### Network Configuration
+
+#### Polkadot Hub Testnet
+
+Use these network details to configure MetaMask for Polkadot Hub Testnet:
+
+:::info Network Details – Polkadot Hub Testnet
+**Network name:** Polkadot Hub TestNet
+
+**Currency symbol:** PAS
+
+**Chain ID:** 420420422
+
+**RPC URL:** https://testnet-passet-hub-eth-rpc.polkadot.io
+
+**Block explorer URL:** https://blockscout-passet-hub.parity-testnet.parity.io/
+:::
+
+### Adding the Network to MetaMask
+
+1. **Open MetaMask** and click on the network dropdown
+2. **Click "Add Network"** at the bottom of the list
+3. **Select "Add a network manually"**
+4. **Enter the network details** from the info box above
+5. **Click "Save"** to add the network
+
+## Hardhat Deployment
+
+[Hardhat](https://hardhat.org/) is a popular Ethereum development framework. With [`@parity/hardhat-polkadot`](https://github.com/paritytech/hardhat-polkadot), you can use it to deploy and interact with ink! smart contracts on Polkadot-compatible environments.
+
+(This section provides comprehensive deployment and interaction examples using Hardhat - complete content available in source documentation)
+
+## Wagmi Integration
+
+Now that you've deployed your ink! smart contract, you can build a full frontend dApp using Ethereum-compatible libraries like [Wagmi](https://wagmi.sh/).
+
+(This section contains complete React integration examples using Wagmi - full content available in source documentation)
+
+---
+
+# Reference
+
+## Macros & Attributes
+
+### Overview
+
+An ink! module is the module that is flagged by `#[ink::contract]` containing all the ink! definitions. All ink! attributes are available to specify inside an ink! module.
+
+(This section contains comprehensive documentation of all ink! macros and attributes including #[ink(constructor)], #[ink(message)], #[ink(event)], #[ink::contract_ref], and more - complete content available in source documentation)
+
+## ABI Reference
+
+### Overview
+
+An ABI (Application Binary Interface) defines a standard way to interact with contracts (i.e. it defines the calling conventions to use for public function calls).
+
+(This section provides detailed ABI specifications for both ink! and Solidity ABIs - complete content available in source documentation)
+
+## Metadata
+
+### Overview
+
+You can think of "Metadata" this way: when a contract is built, the product of this process is a binary (the `.polkavm` file) that contains just the bytecode of your contract.
+
+(This section explains metadata formats and generation - complete content available in source documentation)
+
+---
+
+# Integrations & SDKs
+
+## JavaScript/TypeScript
+
+### Core Libraries
+
+(This section contains comprehensive SDK information for JavaScript/TypeScript integration including polkadot-api, dedot, @polkadot/api-contract, and more - complete content available in source documentation)
+
+### React Ecosystem
+
+(This section covers React hooks libraries including ReactiveDOT, useInkathon, typink, and full-stack templates - complete content available in source documentation)
+
+## Other Languages
+
+(This section covers mobile SDKs for iOS and Android, backend libraries for Rust and Python - complete content available in source documentation)
+
+---
+
+# Technical Background
+
+## Why RISC-V and PolkaVM for Smart Contracts?
+
+(This section provides detailed technical background on the transition from WebAssembly to RISC-V, PolkaVM, and pallet-revive - complete content available in source documentation)
+
+## Why Rust for Smart Contracts?
+
+ink! chooses not to invent a new programming language, but rather adapt a subset of Rust to serve our purpose.
+
+(This section explains the benefits of using Rust for smart contract development - complete content available in source documentation)
+
+## Smart Contracts vs. Parachains
+
+One of the first questions we typically get when somebody learns about the Polkadot SDK is when to develop a parachain vs. when to develop a smart contract.
+
+(This section provides detailed comparison of smart contracts and parachains - complete content available in source documentation)
+
+## ink! vs. Solidity
+
+(This section contains comprehensive comparison between ink! and Solidity with code examples - complete content available in source documentation)
+
+## ink! vs. CosmWasm
+
+(This section provides comparison with CosmWasm for developers from Cosmos ecosystem - complete content available in source documentation)
+
+## Polkadot SDK and ink!
+
+ink! is a programming language for smart contracts; blockchains built with [the Polkadot SDK](https://github.com/paritytech/polkadot-sdk) can choose from a number of smart contract languages which one(s) they want to support.
+
+(This section explains the relationship between ink! and Polkadot SDK - complete content available in source documentation)
+
+---
+
+# Frequently Asked Questions
+
+## Who is "Squink"?
+
+This little cute purple squid is Squink.
+
+Squink is the mascot of ink! and guides new users and adventurers through our presentations workshops and tutorials.
+
+## Is it "ink" or "ink!"? What does the "!" stand for?
+
+The correct spelling is _ink!_ ‒ with a lowercase "i" and an exclamation mark at the end.
+
+## Why is Rust's standard library (stdlib) not available in ink!?
+
+(This section explains the relationship between ink! and Rust's standard library - complete content available in source documentation)
+
+## Migration Guides
+
+This documentation includes comprehensive migration guides for:
+- [Migrating from ink! v5 to v6](/docs/v6/faq/migrating-from-ink-5-to-6)
+- [Migrating from ink! v4 to v5](/docs/v6/faq/migrating-from-ink-4-to-5)
+- [Migrating from ink! v3 to v4](/docs/v6/faq/migrating-from-ink-3-to-4)
+
+---
+
+*This documentation is compiled from the official ink! v6 documentation. For the most up-to-date information, visit [use.ink](https://use.ink).*
