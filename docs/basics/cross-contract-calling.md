@@ -31,23 +31,6 @@ or they can be manually defined as dynamic interfaces using the [`#[ink::contrac
 
 [contract-ref-attr]: ../reference/macros-attributes/contract_ref.md
 
-### Manually defined contract references 
-
-See our section on using the [`#[ink::contract_ref]` attribute][contract-ref-attr] 
-for a detailed description and examples of how to manually define the dynamic interface 
-for an on-chain/"callee" contract, and use the generated contract reference 
-for calling the on-chain/"callee" contract in a type-safe manner.
-
-:::caution
-A downside to manually defined contract references is that mistakes 
-in the interface definition are not caught at compile-time.
-
-It's therefore important to make sure such interfaces are properly tested 
-using [end-to-end testing][e2e-test] before contracts are deployed on-chain.
-:::
-
-[e2e-test]: ../development/testing/e2e.md
-
 ### Statically generated contract references
 
 To use statically generated contract references, you need to import the contract
@@ -193,6 +176,23 @@ Which will result in something like:
 Result Ok(true)
 Reverted false
 ```
+
+### Manually defined contract references
+
+See our section on using the [`#[ink::contract_ref]` attribute][contract-ref-attr]
+for a detailed description and examples of how to manually define the dynamic interface
+for an on-chain/"callee" contract, and use the generated contract reference
+for calling the on-chain/"callee" contract in a type-safe manner.
+
+:::caution
+A downside to manually defined contract references is that mistakes
+in the interface definition are not caught at compile-time.
+
+It's therefore important to make sure such interfaces are properly tested
+using [end-to-end testing][e2e-test] before contracts are deployed on-chain.
+:::
+
+[e2e-test]: ../development/testing/e2e.md
 
 ## Builders
 The [`CreateBuilder`][create-builder] and [`CallBuilder`][call-builder]
