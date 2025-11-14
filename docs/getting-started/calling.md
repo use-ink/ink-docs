@@ -16,7 +16,7 @@ two functions: `flip()` and `get()`. We will show you what it's like to play wit
 
 When you deployed your contract you received the contract address. Use this to interact with the contract.
 ```bash
-Contract Address: 5DXR2MxThkyZvG3s4ubu9yRdNiifchZ9eNV8i6ErGx6u1sea
+Contract Address: 0x4172ec94a05289f9ec332867a3b93ae31d18c593
 ```
 
 Choose your preferred method to call your contract:
