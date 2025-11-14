@@ -9597,6 +9597,9 @@ $ brew install r0gue-io/pop-cli/pop
 # From source
 $ cargo install --force --locked pop-cli
 
+# Setup environment
+$ pop install
+
 # Create a simple contract
 $ pop new 
 
@@ -9608,6 +9611,9 @@ $ pop up
 
 # Interact with your contract
 $ pop call
+
+# If you get an error saying your account is not mapped:
+$ pop call chain --pallet Revive --function map_account --url wss://passet-hub-paseo.ibp.network/ --use-wallet
 ```
 
   </TabItem>
@@ -9670,7 +9676,7 @@ ink_sandbox = { git = "https://github.com/use-ink/ink.git", branch = "6.0.0-beta
 
 ## 🚀 Where to deploy?
 
-You can deploy locally via our local development node [`ink-node`](https://github.com/use-ink/ink-node/releases).
+You can deploy locally via our local development node [`ink-node`](https://github.com/use-ink/ink-node/releases). The Pop CLI handles all of this for you (just do `pop up`), with `cargo-contract` you would need to install the `ink-node` (see [deploy you contract](../getting-started/deploying.md)).
 
 As a testnet you need to use [Paseo Passet Hub](https://use.ink/docs/v6/where-to-deploy/#passet-hub).
 You can find the faucet [here](https://faucet.polkadot.io/?parachain=1111).
@@ -9679,15 +9685,15 @@ You can find the faucet [here](https://faucet.polkadot.io/?parachain=1111).
 
 We recommend the following tools to help you quickly scaffold dApp projects:
 
-### 1. [ink!athon](https://inkathon.xyz/)
-
-- Provides ready-to-use dApp templates combining ink! smart contracts and frontend integration.
-- You can find a hardcoded frontend for our `flipper` example [here](https://github.com/use-ink/ink-examples/tree/main/flipper).
-
-### 2. [Typink](https://typink.dev)
+### 1. [Typink](https://typink.dev)
 
 - A fully type-safe React hooks library with a [CLI](https://docs.dedot.dev/typink/create-typink-cli) for instant project scaffolding.
 - Learn more in the [docs](https://docs.dedot.dev/typink), [tutorial](https://use.ink/tutorials/frontend-development/typink-erc20), and a [LLM.txt](https://docs.dedot.dev/llms-full.txt) file for your AI-assisted development workflow.
+
+### 2. [ink!athon](https://inkathon.xyz/)
+
+- Provides ready-to-use dApp templates combining ink! smart contracts and frontend integration.
+- You can find a hardcoded frontend for our `flipper` example [here](https://github.com/use-ink/ink-examples/tree/main/flipper).
 
 ## 👩‍💻 IDE/Editor support
 
@@ -9707,6 +9713,8 @@ For other IDEs/editors with [LSP (Language Server Protocol)][lsp-server] support
 
 You can find many contract examples in our
 <a href="https://github.com/use-ink/ink-examples/">`ink-examples` repository</a>.
+
+We also have some xcm examples available [here](https://github.com/r0gue-io/symbiosis-contract-examples), and a contract using the assets precompile with full end to end tests [here](https://github.com/use-ink/ink-examples/tree/main/assets-precompile): 
 
 <div className="row">
     <div className="col text--center">
