@@ -9714,7 +9714,7 @@ For other IDEs/editors with [LSP (Language Server Protocol)][lsp-server] support
 You can find many contract examples in our
 <a href="https://github.com/use-ink/ink-examples/">`ink-examples` repository</a>.
 
-We also have some xcm examples available [here](https://github.com/r0gue-io/symbiosis-contract-examples), and a contract using the assets precompile with full end to end tests [here](https://github.com/use-ink/ink-examples/tree/main/assets-precompile): 
+We also have some xcm examples available [here](https://github.com/r0gue-io/symbiosis-contract-examples), and a contract using the assets precompile with full end to end tests [here](https://github.com/use-ink/ink-examples/tree/main/assets-precompile). Or check out [this information](https://github.com/r0gue-io/symbiosis-contract-examples/blob/main/how_to_call_any_function_in_passet_hub_runtime.md) on how to call any function in Passet Hub's runtime without having to use precompiles.
 
 <div className="row">
     <div className="col text--center">
