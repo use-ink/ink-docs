@@ -82,11 +82,13 @@ std = [
 ]
 ```
 
-Two things to note here:
+:::note
+There are two important things to emphasize here:
 1. If we don't specify the `ink-as-dependency` feature we will end up with linking
    errors.
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
    our contract's metadata.
+:::
 
 #### **Wiring `CrossContractCalls`**
 
