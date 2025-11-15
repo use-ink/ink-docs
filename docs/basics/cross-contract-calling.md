@@ -69,7 +69,7 @@ First, we add the following lines to our `Cargo.toml` file:
 ```toml
 # In `cross-contract-calls/Cargo.toml`
 
-other_contract = { path = "other_contract", default-features = false, features = ["ink-as-dependency"] }
+other-contract = { path = "other-contract", default-features = false, features = ["ink-as-dependency"] }
 
 # -- snip --
 
@@ -78,15 +78,17 @@ default = ["std"]
 std = [
     "ink/std",
     # -- snip --
-    "other_contract/std",
+    "other-contract/std",
 ]
 ```
 
-Two things to note here:
+:::note
+There are two important things to emphasize here:
 1. If we don't specify the `ink-as-dependency` feature we will end up with linking
    errors.
 2. If we don't enable the `std` feature for `std` builds we will not be able to generate
    our contract's metadata.
+:::
 
 #### **Wiring `CrossContractCalls`**
 
