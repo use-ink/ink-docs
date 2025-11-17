@@ -8,7 +8,8 @@ slug: /solidity-interop/calling-solidity-contracts
 
 # Calling Solidity Contracts
 
-[ink! v6 contracts can call Solidity ABI-encoded contracts][blog-post], enabling seamless interoperability between ink!, Solidity, and other Solidity ABI-compatible contracts. This allows you to integrate with existing Ethereum-compatible smart contracts deployed on Polkadot.
+[ink! v6 contracts can call Solidity ABI-encoded contracts][blog-post], enabling seamless interoperability between ink!, Solidity, and other Solidity ABI-compatible contracts. 
+This allows you to integrate with existing Ethereum-compatible smart contracts deployed on Polkadot.
 
 [blog-post]: https://medium.com/coinsbench/ink-solidity-abi-on-polkavm-c675c854efd3
 
@@ -18,7 +19,10 @@ There are two main approaches to calling Solidity contracts from ink!:
 
 ## Using Contract References
 
-Contract references provide a high-level type-safe interface for interacting with on-chain contracts. When working with Solidity ABI contracts, you can use manually defined contract references with the [`#[ink::contract_ref]` attribute](../reference/macros-attributes/contract_ref.md).
+Contract references provide a high-level type-safe interface for interacting with on-chain contracts. 
+When working with Solidity ABI-encoded contracts, you can use manually defined contract references with the [`#[ink::contract_ref]` attribute][contract-ref-attr].
+
+[contract-ref-attr]: ../reference/macros-attributes/contract_ref.md
 
 ## Using CreateBuilder with Solidity ABI
 
@@ -32,7 +36,8 @@ let my_contract: MyContractRefSol = build_create_sol::<MyContractRefSol>()
     .ref_time_limit(0)
     .endowment(10)
     .exec_input(
-        ExecutionInput::new(Selector::new(ink::selector_bytes!("new")))
+        // Note: Solidity constructors don't have selectors.
+        ExecutionInput::no_selector()
             .push_arg(42)
             .push_arg(true)
     )
@@ -40,6 +45,10 @@ let my_contract: MyContractRefSol = build_create_sol::<MyContractRefSol>()
     .returns::<MyContractRefSol>()
     .instantiate();
 ```
+
+:::note
+One important difference with ink! ABI instantiation is that Solidity constructors don't have selectors.
+:::
 
 ## Using CallBuilder with Solidity ABI
 

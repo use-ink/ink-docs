@@ -11,16 +11,18 @@ import TabItem from '@theme/TabItem';
 
 # Use ink! with Solidity ABI
 
-ink! v6 contracts can be configured to use Solidity ABI encoding, enabling seamless compatibility with Ethereum tools like MetaMask, Hardhat, Wagmi, and ethers.js. This allows you to leverage the Ethereum ecosystem while building on Polkadot networks.
+ink! v6 contracts can be configured to use Solidity ABI encoding, 
+enabling seamless compatibility with Ethereum tools like MetaMask, Hardhat, Wagmi, and ethers.js. 
+This allows you to leverage the Ethereum ecosystem while building on Polkadot networks.
 
 ## Why Use Solidity ABI?
 
 By enabling Solidity ABI compatibility, you can:
 - **Use Ethereum wallets** like MetaMask to interact with your ink! contracts
 - **Deploy with Hardhat** and other familiar Ethereum development tools
-- **Build frontends** using ethers.js, Wagmi, and React hooks
-- **Call Solidity contracts** from ink! and vice versa
-- **Share contracts** easily with Ethereum developers
+- **Build frontends** using ethers.js, Wagmi, and other Ethereum frontend libraries
+- **Share contracts** easily with Solidity developers 
+  (Solidity contracts can call your ink! contract as if it was a Solidity contract)
 
 ## Quick Start
 
@@ -35,7 +37,7 @@ By enabling Solidity ABI compatibility, you can:
   </TabItem>
   <TabItem value="cargo-contract" label="cargo-contract">
     ```bash
-    cargo contract new my_contract
+    cargo contract new --abi sol my_contract
     cd my_contract
     ```
   </TabItem>
@@ -50,7 +52,9 @@ Open `Cargo.toml`, add the `ink-lang` table under `[package.metadata]`, and conf
 abi = "sol"
 ```
 
-Setting `abi = "sol"` puts the contract into Solidity ABI compatibility mode, so all constructor, message, and event types must translate to Solidity ABI types. See the [Type Reference](./type-reference.md) for supported mappings.
+Setting `abi = "sol"` puts the contract into Solidity ABI compatibility mode, 
+so all constructor, message, event and error types must mappable to Solidity ABI types. 
+See the [Type Reference](./type-reference.md) for details.
 
 ### 3. Build with Solidity Metadata
 
@@ -76,18 +80,21 @@ This generates Solidity-compatible artifacts in `target/ink/`:
 When you specify `abi = "sol"`, the ink! code generator follows the [Solidity ABI specification](https://docs.soliditylang.org/en/latest/abi-spec.html):
 
 ### Function Selectors
+
 - Message selectors use **keccak256** hashing (Ethereum standard)
 - First 4 bytes of `keccak256("functionName(type1,type2,...)")`
 - Manual selector overrides via `#[ink(selector = ...)]` are ignored
 
 ### Encoding/Decoding
+
 - Uses [Solidity ABI encoding](https://docs.soliditylang.org/en/latest/abi-spec.html#formal-specification-of-the-encoding) for inputs/outputs
 - Events and errors follow Solidity format
 - Internal storage still uses SCALE codec (no storage changes!)
 
 ### Constraints
+
 - **Only one constructor** can be defined
-- All types must map to Solidity ABI types (see [Type Reference](./type-reference.md))
+- All constructor, message, event and error types must map to Solidity ABI types (see [Type Reference](./type-reference.md))
 - Call builders are generated for Solidity calling conventions
 
 :::info Storage Format
@@ -104,14 +111,15 @@ abi = "all"
 ```
 
 ### Benefits
+
 - Contracts callable by both ink! and Solidity tools
 - Each message has two entry points (ink! selector + Solidity selector)
 - Flexibility for cross-ecosystem interoperability
 
-### Tradeoffs
-- **Larger contract size** (both entry points compiled in)
-- Must designate a `#[ink(constructor, default)]` for Solidity instantiation
-- All types must be Solidity-compatible
+### Constraints
+
+- All constructor, message, event and error types must map to Solidity ABI types (see [Type Reference](./type-reference.md))
+- Must designate a `#[ink(constructor, default)]` for Solidity instantiation (if more than one constructor is defined)
 
 ```rust
 #[ink(constructor, default)]
@@ -120,13 +128,13 @@ pub fn new(initial_value: bool) -> Self {
 }
 ```
 
-:::note Type Requirements
-The "all" ABI mode requires all message arguments, return types, and event arguments to be mappable to Solidity ABI types. See the [Type Reference](./type-reference.md) for details.
-:::
+### Tradeoffs
+
+- **Larger contract size** (entry points for both ink! and Solidity ABI selectors compiled in)
 
 ## Next Steps
 
-Now that your contract uses Solidity ABI:
+Now that your contract is Solidity ABI compatible:
 - [Call Solidity Contracts](./calling-solidity-contracts.md) from ink!
 - [Set up MetaMask](./metamask-setup.md) and other Ethereum tools
 - Check [Type Reference](./type-reference.md) for advanced type mappings
