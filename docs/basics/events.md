@@ -26,8 +26,8 @@ mod erc20 {
     /// every time value is transferred.
     #[ink(event)]
     pub struct Transferred {
-        from: Option<AccountId>,
-        to: Option<AccountId>,
+        from: Option<H160>,
+        to: Option<H160>,
         value: Balance,
     }
 
@@ -76,9 +76,9 @@ use ink::primitives::AccountId;
 #[ink::event]
 pub struct Transferred {
     #[ink(topic)]
-    from: Option<AccountId>,
+    from: Option<H160>,
     #[ink(topic)]
-    to: Option<AccountId>,
+    to: Option<H160>,
     amount: u128,
 }
 ```
@@ -148,7 +148,7 @@ blake2b("Event(field1_type,field2_type)")`
 ```
 So for our `Transferred` example it will be: 
 ```
-blake2b("Transferred(Option<AccountId>,Option<AccountId>,u128)")`
+blake2b("Transferred(Option<H160>,Option<H160>,u128)")`
 ```
 
 :::note
@@ -234,7 +234,7 @@ In a message events are emitted via `self.env().emit_event()`:
 
 ```rust
 #[ink(message)]
-pub fn transfer(&mut self, to: AccountId, amount: Balance) -> Result {
+pub fn transfer(&mut self, to: H160, amount: Balance) -> Result {
     let from = self.env().caller();
     // implementation hidden
     self.env().emit_event(Transferred {
