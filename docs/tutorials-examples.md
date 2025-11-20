@@ -8,8 +8,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ![Heart Title Picture](/img/title/heart.svg)
 
-# Tutorials and Examples
-
 ## Tutorials
 
 Ready to dive deeper into ink! development? Check out our [tutorials](/tutorials/overview) that will guide you through building real-world decentralised applications step by step.
@@ -64,10 +62,10 @@ Explore ready-to-use [smart contract examples](https://github.com/use-ink/ink-ex
         </p>
     </div>
     <div class="bubble-box [&_p]:!mb-0">
-        <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension"><img src={useBaseUrl('/img/icons/rand-extension.svg')} width="100" /></a>
+        <a href="https://github.com/use-ink/ink-examples/tree/main/precompile-demo"><img src={useBaseUrl('/img/icons/interop.svg')} width="100" /></a>
         <p class="text-center">
-            Allow runtime access.<br/>
-            <a href="https://github.com/use-ink/ink-examples/tree/main/rand-extension">» view example</a>
+            Calling Solidity contracts.<br/>
+            <a href="https://github.com/use-ink/ink-examples/tree/main/precompile-demo">» view example</a>
         </p>
     </div>
 </div>
