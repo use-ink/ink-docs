@@ -45,3 +45,11 @@ While JavaScript and TypeScript dominate web development, smart contract fronten
   - Backend automation scripts
   - Integration with existing Python ecosystems
   - Rapid prototyping and testing
+ 
+### Golang
+- **[wetee-dao/ink.go](https://github.com/wetee-dao/ink.go)**
+- Golang library for ink!
+- **Perfect for**:
+  - Data analysis and blockchain monitoring
+  - Backend services that interact with ink!
+  - Integration with existing Golang ecosystems
