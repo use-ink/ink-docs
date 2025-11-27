@@ -26,8 +26,8 @@ mod erc20 {
     /// every time value is transferred.
     #[ink(event)]
     pub struct Transferred {
-        from: Option<H160>,
-        to: Option<H160>,
+        from: Option<Address>,
+        to: Option<Address>,
         value: Balance,
     }
 
@@ -71,21 +71,21 @@ contract indexers/explorers are now able to group all e.g. `Transferred` events.
 This is how an event definition looks:
 
 ```rust
-use ink::primitives::H160;
+
 
 #[ink::event]
 pub struct Transferred {
     #[ink(topic)]
-    from: Option<H160>,
+    from: Option<Address>,
     #[ink(topic)]
-    to: Option<H160>,
+    to: Option<Address>,
     amount: u128,
 }
 ```
 
 :::note
 Generics are [not currently supported](https://github.com/use-ink/ink/issues/2044),
-so the concrete types of `Environment` specific types such as `H160`
+so the concrete types of `Environment` specific types such as `Address`
 must match up with the types used in the contract.
 :::
 
@@ -112,7 +112,7 @@ Topics are a 32 byte array (`[u8; 32]`), and the topic value is encoded as follo
 - If the SCALE encoded bytes of a field value are `<= 32`,
   then the encoded bytes are used directly as the topic value.
   If necessary, the topic value is padded on the right side with zero-bytes such that its length is 32 bytes.
-  - For example, in the common case of indexing a field of type `H160`, where `H160` 
+  - For example, in the common case of indexing a field of type `Address`, where `Address` 
     is 20 bytes in length, the encoded bytes are padded with 12 zero-bytes on the right 
     to reach 32 bytes, which is then used as the topic value. This makes it easy to 
     filter for all events which have a topic of a specific address.
@@ -149,7 +149,7 @@ blake2b("Event(field1_type,field2_type)")`
 ```
 So for our `Transferred` example it will be: 
 ```
-blake2b("Transferred(Option<H160>,Option<H160>,u128)")`
+blake2b("Transferred(Option<Address>,Option<Address>,u128)")`
 ```
 
 :::note
@@ -235,7 +235,7 @@ In a message events are emitted via `self.env().emit_event()`:
 
 ```rust
 #[ink(message)]
-pub fn transfer(&mut self, to: H160, amount: Balance) -> Result {
+pub fn transfer(&mut self, to: Address, amount: Balance) -> Result {
     let from = self.env().caller();
     // implementation hidden
     self.env().emit_event(Transferred {
