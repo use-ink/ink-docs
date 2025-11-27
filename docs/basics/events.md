@@ -71,7 +71,7 @@ contract indexers/explorers are now able to group all e.g. `Transferred` events.
 This is how an event definition looks:
 
 ```rust
-use ink::primitives::AccountId;
+use ink::primitives::H160;
 
 #[ink::event]
 pub struct Transferred {
@@ -85,7 +85,7 @@ pub struct Transferred {
 
 :::note
 Generics are [not currently supported](https://github.com/use-ink/ink/issues/2044),
-so the concrete types of `Environment` specific types such as `AccountId`
+so the concrete types of `Environment` specific types such as `H160`
 must match up with the types used in the contract.
 :::
 
@@ -112,9 +112,10 @@ Topics are a 32 byte array (`[u8; 32]`), and the topic value is encoded as follo
 - If the SCALE encoded bytes of a field value are `<= 32`,
   then the encoded bytes are used directly as the topic value.
   If necessary, the topic value is padded on the right side with zero-bytes such that its length is 32 bytes.
-  - For example, in the common case of indexing a field of type `AccountId`, where the default
-    `AccountId` type is 32 bytes in length, the topic value will be the encoded account id itself.
-    This makes it easy to filter for all events which have a topic of a specific `AccountId`.
+  - For example, in the common case of indexing a field of type `H160`, where `H160` 
+    is 20 bytes in length, the encoded bytes are padded with 12 zero-bytes on the right 
+    to reach 32 bytes, which is then used as the topic value. This makes it easy to 
+    filter for all events which have a topic of a specific address.
 - If the size of the SCALE encoded bytes of the field value exceeds 32,
   then the encoded bytes are hashed using the `Blake2x256` hash function.
 
