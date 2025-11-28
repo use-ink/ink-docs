@@ -3257,7 +3257,7 @@ you to build the logic for calling the contract by yourself.
 
 ### Types
 
-We've baked the classic Polkadot SDK types for `Balance`, `AccountId`, etc. into ink!.
+We've baked the classic Polkadot SDK types for `Balance`, `AccountId`, etc. into ink!
 ([see here for how](../advanced/environment.md)).
 For developers coming from parachain development, ink! will feel natural and they'll
 recognize the same guiding principles.
