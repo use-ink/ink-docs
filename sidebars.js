@@ -192,6 +192,7 @@ module.exports = {
       "background/polkadot-sdk",
       "background/why-rust",
       "background/why-riscv",
+      "background/lang-comparison",
       "background/precompiles",
       "background/ink-vs-solidity",
       "background/ink-vs-cosmwasm",
