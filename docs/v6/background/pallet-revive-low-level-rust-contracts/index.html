@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <script src="https://apisa.parity.io/latest.js" defer="defer"></script>
 <script src="https://use-ink-data.netlify.app/script.js" defer="defer" data-website-id="c97b4e05-21a3-4873-8884-4fc81c38d6f0"></script><link rel="stylesheet" href="/assets/css/styles.87841a94.css">
-<script src="/assets/js/runtime~main.e1d85563.js" defer="defer"></script>
-<script src="/assets/js/main.47c58912.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.43512a4c.js" defer="defer"></script>
+<script src="/assets/js/main.a3095870.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -68,8 +68,8 @@ you to build the logic for calling the contract by yourself.</p>
 For developers coming from parachain development, ink! will feel natural and they&#x27;ll
 recognize the same guiding principles.</p>
 <p>ink! provides a high-level type system built directly on top of Rust’s own type system.
-This means you can use enums, structs, generics, traits, associated types, iterators, <code>Result</code>,<br>
-<!-- -->pattern matching, and all other expressive features that Rust offers in a smart contract context.
+This means you can use enums, structs, generics, traits, associated types, iterators, <code>Result</code>,
+pattern matching, and all other expressive features that Rust offers in a smart contract context.
 You can use any struct, tuple, etc. that supports SCALE encoding in events, storage, as function arguments,
 as return types, etc.</p>
 <p>ink! automatically derives the logic for encoding, decoding, allocating, storing, and
@@ -93,8 +93,8 @@ complex and require multiple lines of low-level code.</p>
 <p>ink! provides high-level, contract-optimized datastructures such as
 <a href="/docs/v6/datastructures/mapping/"><code>Mapping</code></a>,
 <a href="/docs/v6/datastructures/storage-layout/#eager-loading-vs-lazy-loading"><code>Lazy</code></a>,
-<a href="/docs/v6/datastructures/storagevec/"><code>StorageVec</code></a>, and others built specifically for smart-contract workloads.<br>
-<!-- -->They automatically handle storage layout, lazy loading, SCALE encoding, hashing, and key derivation.</p>
+<a href="/docs/v6/datastructures/storagevec/"><code>StorageVec</code></a>, and others built specifically for smart-contract workloads.
+They automatically handle storage layout, lazy loading, SCALE encoding, hashing, and key derivation.</p>
 <p>These data structures expose an idiomatic Rust interface, mimicking the APIs
 found in Rust&#x27;s <code>std::collections</code>.</p>
 <p>Low-level Rust contracts provide <strong>no datastructures whatsoever</strong>.

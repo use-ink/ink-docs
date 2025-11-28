@@ -3263,7 +3263,7 @@ For developers coming from parachain development, ink! will feel natural and the
 recognize the same guiding principles.
 
 ink! provides a high-level type system built directly on top of Rust’s own type system. 
-This means you can use enums, structs, generics, traits, associated types, iterators, `Result`,  
+This means you can use enums, structs, generics, traits, associated types, iterators, `Result`, 
 pattern matching, and all other expressive features that Rust offers in a smart contract context. 
 You can use any struct, tuple, etc. that supports SCALE encoding in events, storage, as function arguments,
 as return types, etc.
@@ -3298,7 +3298,7 @@ This slows down development dramatically and increases the likelihood of bugs.
 ink! provides high-level, contract-optimized datastructures such as 
 [`Mapping`](../datastructures/mapping/), 
 [`Lazy`](../datastructures/storage-layout/#eager-loading-vs-lazy-loading), 
-[`StorageVec`](../datastructures/storagevec/), and others built specifically for smart-contract workloads.  
+[`StorageVec`](../datastructures/storagevec/), and others built specifically for smart-contract workloads. 
 They automatically handle storage layout, lazy loading, SCALE encoding, hashing, and key derivation.
 
 These data structures expose an idiomatic Rust interface, mimicking the APIs
