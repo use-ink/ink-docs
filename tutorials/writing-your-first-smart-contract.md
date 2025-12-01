@@ -3,9 +3,9 @@ title: Writing Your First Smart Contract
 sidebar_position: 2
 ---
 
----
+![First Smart Contract Title Picture](/img/title/text/contract.svg)
 
-### Overview
+# Writing Your First Smart Contract
 
 We will walk through hand-on instructions to create a
 fully functional [ink!](https://use.ink/docs/v6) smart contract.
@@ -32,7 +32,7 @@ Follow along with the companion GitHub repo [helloink](https://github.com/anatal
 ⭐️ _You will understand important concepts like storage, events and how to use them in your smart contract._
 :::
 
-### Prerequisites
+## Prerequisites
 
 _Here's what you'll need to get started:_
 
@@ -63,7 +63,7 @@ pop --version
 
 ----
 
-### Create a New Project with the Pop CLI
+## Create a New Project with the Pop CLI
 
 :::note
 **Display available Pop CLI commands:**
@@ -78,7 +78,7 @@ pop --help
 
 _First, let's create a new project using the `pop new` command:_
 
-**Create a new project:**
+### Create a new project
 
 - Pass in `contract` to the command `pop new`
 - We name the contract`helloink`
@@ -92,7 +92,7 @@ pop new contract helloink -t standard
 
 _Next, let's review the files that were generated:_
 
-**View files:**
+### View Generated Files
 
 ```bash
 cd helloink
@@ -121,11 +121,11 @@ _Import the project into your IDE and let's dig in!_
 
 ---
 
-### Reviewing the Generated Smart Contract
+## Reviewing the Generated Smart Contract
 
 _Let's review each major component of the `lib.rs` file:_
 
-**Conditional Compilation Statement**
+### Conditional Compilation Statement
 
 Configures [Conditional compilation](https://doc.rust-lang.org/reference/conditional-compilation.html) to
 ensure an optimal memory footprint and performance.
@@ -140,12 +140,12 @@ ensure an optimal memory footprint and performance.
 ```
 
 :::note
-Check out
+ℹ️ Check out
 the [FAQ](https://use.ink/docs/v6/faq/#what-does-the-cfg_attrnotfeature--std-no_std-no_main-at-the-beginning-of-each-contract-mean)
 for a more in-depth explanation.
 :::
 
-**Module Declaration**
+### Module Declaration
 
 _Next, let's take a look at the module declaration:_
 
@@ -161,7 +161,9 @@ the module declaration.
 
 ```rust
 #[ink::contract]
-mod helloink {}
+mod helloink {
+    ///...
+}
 ```
 
 Every **ink!** Smart Contract MUST have:
@@ -171,17 +173,17 @@ Every **ink!** Smart Contract MUST have:
 - AT LEAST one `#[ink(message)]` function
 
 :::note
-Learn more about the [ink! contract macro](https://use.ink/docs/v6/macros-attributes/contract)
+ℹ️ Learn more about the [ink! contract macro](https://use.ink/docs/v6/macros-attributes/contract)
 :::
 
-**Storage Declaration**
+### Storage Declaration
 
 _Let's check out the storage declaration:_
 
 Applies the `#[ink(storage)]` macro to the struct declaration.
 
 - Marks the `struct` type as the contract's storage definition.
-- There must be ONLY one **ink!** storage definition per contract.
+- There must be **ONLY** one **ink!** storage definition per contract.
 - Defines the layout of storage using a variety of built-in facilities.
 - Advanced users can provide their own implementations of storage data structures.
 
@@ -195,14 +197,24 @@ _In this case, we define a simple `bool` storage variable._
 ```
 
 :::note
-Learn more about the [ink! storage macro](https://use.ink/docs/v6/macros-attributes/storage)
+ℹ️ Learn more about the [ink! storage macro](https://use.ink/docs/v6/macros-attributes/storage)
 
-Check out the Rust docs for a deeper dive
+ℹ️ Check out the Rust docs for a deeper dive
 into the [ink_storage crate](https://docs.rs/ink_storage/latest/ink_storage/)
 
 :::
 
-**Constructor and Message Declaration**
+### Constructor Declaration
+
+_Let's take a look at the constructor declaration:_
+
+Applies the `#[ink(constructor)]` macro to the `new()` function declaration.
+
+- Marks the function as the **ink!** constructor.
+- Makes function available to the API for instantiating the contract.
+- There must be **AT LEAST** one `#[ink(constructor)]` defined function.
+- Dispatchable upon contract instantiation.
+- Multiple constructors can be defined.
 
 ```rust
     impl Helloink {
@@ -210,7 +222,33 @@ into the [ink_storage crate](https://docs.rs/ink_storage/latest/ink_storage/)
         pub fn new(init_value: bool) -> Self {
             Self { value: init_value }
         }
+        
+        ///...
+    }
+```
 
+### Message Declarations
+
+_Next, let's review the message declarations:_
+
+Applies the `#[ink(message)]` macro to the `flip()` and `get()` function declarations.
+
+- Marks function as an **ink!** public message function
+- Makes the function available for calling the contract.
+- There must be **AT LEAST** one `#[ink(message)]` defined function.
+- Dispatchable upon contract invocation
+- The set of **ink!** messages defines its external API for users to invoke
+- A message with a `&self` receiver may **ONLY** read state.
+- A message with a `&mut self` receiver may modify state.
+
+:::note
+⚠️ **ALL** public functions must use the #[ink(message)] attribute
+:::
+
+```rust
+    impl Helloink {
+        ///...
+        
         #[ink(message)]
         pub fn flip(&mut self) {
             self.value = !self.value;
@@ -224,15 +262,15 @@ into the [ink_storage crate](https://docs.rs/ink_storage/latest/ink_storage/)
 ```
 
 :::note
-Learn more about the [ink! constructor macro](https://use.ink/docs/v6/macros-attributes/constructor)
+ℹ️ Learn more about the [ink! constructor macro](https://use.ink/docs/v6/macros-attributes/constructor)
 
-Learn more about the [ink! message macro](https://use.ink/docs/v6/macros-attributes/message)
+ℹ️ Learn more about the [ink! message macro](https://use.ink/docs/v6/macros-attributes/message)
 
 :::
 
 ----
 
-### Executing Tests
+## Executing Tests
 
 **Build and run unit tests:**
 
@@ -245,11 +283,11 @@ pop test
 ```
 
 :::note
-Learn more about the [ink! testing strategies](https://use.ink/docs/v6/contract-testing/overview/)
+ℹ️ Learn more about the [ink! testing strategies](https://use.ink/docs/v6/contract-testing/overview/)
 
 :::
 
-### Deploy to Testnet
+## Deploy to Testnet
 
 Now, let's use the [Pop CLI to deploy our contract](https://learn.onpop.io/contracts/guides/deploy) to
 a [local ink node](https://github.com/use-ink/ink-node)
@@ -271,21 +309,22 @@ pop up -p ./lib.rs \
 
 ----
 
-### Customizing the Code
+## Conclusion
 
-Now that we understand each component of an **ink!** contract, let's jazz up the code to make it our own!
+_Let's recap what we've done during this tutorial:_
 
-```rust
+- Generated an **ink!** smart contract using the Pop CLI (`pop new`) with the standard template
+- Reviewed Rust conditional compilation for **ink!** contracts: `#![cfg_attr(not(feature = "std"), no_std, no_main)]`
+- Walked through various **ink!** macros:
+    - `#[ink::contract]` Mark a module as an **ink!** contract,
+    - `#[ink(storage)]` Define the SINGLE storage struct,
+    - `#[ink(constructor)]` defines instantiation logic,
+    - `#[ink(message)]` defines public callable API (read-only with `&self` vs. state‑mutating with `&mut self`).
+- Demonstrated contract storage by implementing a simple boolean field
+- Built & tested the contract using Pop CLI commands (`pop build --release`, `pop test`)
+- Deployed the contract to a local ink node using Pop CLI (`pop up`)
 
-```
-
-----
-
-### Conclusion
-
-Summarize the key takeaways from the tutorial. Suggest next steps, further reading, or related tutorials.
-
-### Author
+## Author
 
 I'm Chris Anatalio, and I'm a Web3-native software engineer, technical educator, and developer advocate. I've
 previously worked at ConsenSys, Stellar Development Foundation, and I produced a course
