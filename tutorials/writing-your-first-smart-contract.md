@@ -10,19 +10,24 @@ sidebar_position: 2
 We will walk through hand-on instructions to create a
 fully functional [ink!](https://use.ink/docs/v6) smart contract.
 
+Follow along with the companion GitHub repo [helloink](https://github.com/anataliocs/helloink).
+
 **We will break down and explain key concepts including:**
 
+- Using the Pop CLI
 - Storage: Reading, Writing & Mutating Storage
+- Constructors
 - Messages
+- Ink contract macros
 
 :::note
 **Learning Objectives:**
 
-⭐️ _By the end of this tutorial, you will be able to write, compile, build, test and deploy an ink! smart contract._
+⭐️ _By the end of this tutorial, you will be able to write, compile, build, test and deploy **ink!** contracts._
 
-⭐️ _You will be familiar with all the important components of a Rust ink! smart contract._
+⭐️ _You will be familiar with all the key components of **ink!** smart contract._
 
-⭐️ _You will understand how to use the Pop CLI to work with ink! smart contracts._
+⭐️ _You will understand how to use the Pop CLI._
 
 ⭐️ _You will understand important concepts like storage, events and how to use them in your smart contract._
 :::
@@ -33,24 +38,24 @@ _Here's what you'll need to get started:_
 
 - Install Brew: https://brew.sh/
 - Install [Rust](https://rust-lang.org/tools/install/), [Cargo](https://doc.rust-lang.org/cargo/)
-  and [Pop CLI](https://github.com/r0gue-io/pop-cli):  https://use.ink/docs/v6/getting-started/setup
-- Read up on the Pop CLI basics: https://learn.onpop.io/
+  and [Pop CLI](https://github.com/r0gue-io/pop-cli): https://use.ink/docs/v6/getting-started/setup
+- Read up on the [Pop CLI](https://learn.onpop.io/)
 
-After installing the prerequisites, verify that they are installed correctly:
+_After that, let's verify everything is installed correctly:_
 
-**Verify Rust install:**
+**Verify Rust version:**
 
 ```bash
 rustc --version
 ```
 
-**Verify Cargo install:**
+**Verify Cargo version:**
 
 ```bash
 cargo --version
 ```
 
-**Verify Pop CLI install:**
+**Verify Pop CLI version:**
 
 ```bash
 pop --version
@@ -58,7 +63,7 @@ pop --version
 
 ----
 
-### Creating a New Project
+### Create a New Project with the Pop CLI
 
 :::note
 **Display available Pop CLI commands:**
@@ -71,23 +76,21 @@ pop --help
 
 :::
 
-First, let's create a new project using the `pop new` command:
+_First, let's create a new project using the `pop new` command:_
 
 **Create a new project:**
 
 - Pass in `contract` to the command `pop new`
 - We name the contract`helloink`
-- Finally, we use the [Standard Template](https://github.com/use-ink/ink-examples/tree/main/flipper),
-  passing in
-  `-t standard`:
-- Check out
-  the [Pop CLI docs](https://learn.onpop.io/contracts/guides/create-a-new-contract) for more options
+- Lastly, we use the [Standard Template](https://github.com/use-ink/ink-examples/tree/main/flipper),
+  passing in `-t standard`
+- Check out the [Pop CLI docs](https://learn.onpop.io/contracts/guides/create-a-new-contract) for more options
 
 ```bash
 pop new contract helloink -t standard
 ```
 
-Next, let's review the files that were created:
+_Next, let's review the files that were generated:_
 
 **View files:**
 
@@ -98,30 +101,29 @@ ls -latr
 
 :::note
 
-⚠️ **This code is provided for educational purposes only.**
+⚠️ **This code is provided for educational purposes.**
 
 Contracts should **ALWAYS** be formally audited and reviewed for security vulnerabilities before being deployed to
 mainnet.
 
-Consult the source repository at https://github.com/use-ink/ink-examples/tree/main/flipper to review the
-template code.
+Review the source repository at https://github.com/use-ink/ink-examples/tree/main/flipper
 
 :::
 
-**You will see the following files:**
+**Generated files:**
 
 - `Cargo.toml` - The [cargo project manifest file](https://doc.rust-lang.org/cargo/reference/manifest.html)
 - `lib.rs` - The [main source file](https://github.com/use-ink/ink-examples/blob/main/flipper/lib.rs) for the smart
   contract written in Rust
-- `.gitignore`- A file that tells git which files and directories to ignore
+- `.gitignore`- Tells git files/directories to ignore
 
-Import the project into your IDE and let's dig in!
+_Import the project into your IDE and let's dig in!_
 
 ---
 
 ### Reviewing the Generated Smart Contract
 
-Let's review each major component of the `lib.rs` file:
+_Let's review each major component of the `lib.rs` file:_
 
 **Conditional Compilation Statement**
 
@@ -129,7 +131,7 @@ Configures [Conditional compilation](https://doc.rust-lang.org/reference/conditi
 ensure an optimal memory footprint and performance.
 
 - The `no_main` attribute is required to compile the contract for on-chain execution.
-- The `no_std` ensures the standard library is not included in the contract
+- The `no_std` ensures the standard library is not included in the contract.
     - The [Rust standard library](https://doc.rust-lang.org/std/) is OS-dependent and too heavyweight for on-chain use
     - More details on [no_std](https://docs.rust-embedded.org/book/intro/no-std.html)
 
@@ -145,12 +147,12 @@ for a more in-depth explanation.
 
 **Module Declaration**
 
-Next let's review the module declaration:
+_Next, let's take a look at the module declaration:_
 
 Applies the `#[ink::contract]` [proc macro attribute]((https://doc.rust-lang.org/reference/procedural-macros.html)) to
 the module declaration.
 
-- Marks the module as an ink! contract
+- Marks the module as an **ink!** contract
   and [checks for invalid arguments and structure](https://use.ink/docs/v6/macros-attributes/contract#analysis).
 - Uses your provided contract code to generate valid, optimized code for execution
   on-chain.
@@ -162,25 +164,43 @@ the module declaration.
 mod helloink {}
 ```
 
-**Every ink! Smart Contract MUST have:**
+Every **ink!** Smart Contract MUST have:
 
 - EXACTLY one `#[ink(storage)]` struct
 - AT LEAST one `#[ink(constructor)]` function
 - AT LEAST one `#[ink(message)]` function
 
 :::note
-Learn more about the [ink::contract macro](https://use.ink/docs/v6/macros-attributes/contract)
+Learn more about the [ink! contract macro](https://use.ink/docs/v6/macros-attributes/contract)
 :::
 
 **Storage Declaration**
 
+_Let's check out the storage declaration:_
+
+Applies the `#[ink(storage)]` macro to the struct declaration.
+
+- Marks the `struct` type as the contract's storage definition.
+- There must be ONLY one **ink!** storage definition per contract.
+- Defines the layout of storage using a variety of built-in facilities.
+- Advanced users can provide their own implementations of storage data structures.
+
+_In this case, we define a simple `bool` storage variable._
+
 ```rust
     #[ink(storage)]
     pub struct Helloink {
-        /// Stores a single `bool` value on the storage.
         value: bool,
     }
 ```
+
+:::note
+Learn more about the [ink! storage macro](https://use.ink/docs/v6/macros-attributes/storage)
+
+Check out the Rust docs for a deeper dive
+into the [ink_storage crate](https://docs.rs/ink_storage/latest/ink_storage/)
+
+:::
 
 **Constructor and Message Declaration**
 
@@ -203,27 +223,57 @@ Learn more about the [ink::contract macro](https://use.ink/docs/v6/macros-attrib
     }
 ```
 
+:::note
+Learn more about the [ink! constructor macro](https://use.ink/docs/v6/macros-attributes/constructor)
+
+Learn more about the [ink! message macro](https://use.ink/docs/v6/macros-attributes/message)
+
+:::
+
 ----
 
 ### Executing Tests
 
-**Run tests:**
+**Build and run unit tests:**
+
+Now, let's [build](https://learn.onpop.io/contracts/guides/build-your-contract)
+and [test](https://learn.onpop.io/contracts/guides/run-your-unit-tests) our contract.
 
 ```bash
-
+pop build --release
+pop test
 ```
+
+:::note
+Learn more about the [ink! testing strategies](https://use.ink/docs/v6/contract-testing/overview/)
+
+:::
 
 ### Deploy to Testnet
 
+Now, let's use the [Pop CLI to deploy our contract](https://learn.onpop.io/contracts/guides/deploy) to
+a [local ink node](https://github.com/use-ink/ink-node)
+
 **Deploy to testnet:**
 
-```bash
+- `-p` points to the contract directory
+- `--constructor` method name (defaults to `new`)
+- `--args` constructor arguments
+- `--suri` secret key URI (default to `//Alice`)
+- `--url` ink node url  (default `ws://localhost:9944`)
 
+```bash
+pop up -p ./lib.rs \
+  --constructor new \
+  --args true \
+  --suri //Alice
 ```
 
 ----
 
 ### Customizing the Code
+
+Now that we understand each component of an **ink!** contract, let's jazz up the code to make it our own!
 
 ```rust
 
@@ -237,4 +287,16 @@ Summarize the key takeaways from the tutorial. Suggest next steps, further readi
 
 ### Author
 
-Write a short bio and link to your profile, blog, or project.
+I'm Chris Anatalio, and I'm a Web3-native software engineer, technical educator, and developer advocate. I've
+previously worked at ConsenSys, Stellar Development Foundation, and I produced a course
+on [Web3 Infrastructure](https://www.pluralsight.com/courses/web3-infrastructure-development-tools) on
+Pluralsight. I also run a small [web3 consultancy](https://hella.website/)
+
+I completed Polkadot Blockchain Academy Cohort 7 in Bali(2025) and have been a community member of the Polkadot
+community since 2022.
+
+**Follow me on:**
+
+- [LinkedIn](https://www.linkedin.com/in/anataliocs/)
+- [GitHub](https://github.com/anataliocs)
+- [Twitter](https://x.com/CAnatalio)
