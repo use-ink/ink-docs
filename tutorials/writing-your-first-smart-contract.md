@@ -130,8 +130,8 @@ _Let's review each major component of the `lib.rs` file:_
 Configures [Conditional compilation](https://doc.rust-lang.org/reference/conditional-compilation.html) to
 ensure an optimal memory footprint and performance.
 
-- The `no_main` attribute is required to compile the contract for on-chain execution.
-- The `no_std` ensures the standard library is not included in the contract.
+- The `no_main` attribute is required to compile the contract for on-chain execution
+- The `no_std` ensures the standard library is not included in the contract
     - The [Rust standard library](https://doc.rust-lang.org/std/) is OS-dependent and too heavyweight for on-chain use
     - More details on [no_std](https://docs.rust-embedded.org/book/intro/no-std.html)
 
@@ -155,7 +155,7 @@ the module declaration.
 - Marks the module as an **ink!** contract
   and [checks for invalid arguments and structure](https://use.ink/docs/v6/macros-attributes/contract#analysis).
 - Uses your provided contract code to generate valid, optimized code for execution
-  on-chain.
+  on-chain
 - This allows you to simply define your contract's storage and other functionality
   without writing a bunch of complicated, boilerplate code! 😊
 
@@ -182,10 +182,10 @@ _Let's check out the storage declaration:_
 
 Applies the `#[ink(storage)]` macro to the struct declaration.
 
-- Marks the `struct` type as the contract's storage definition.
-- There must be **ONLY** one **ink!** storage definition per contract.
-- Defines the layout of storage using a variety of built-in facilities.
-- Advanced users can provide their own implementations of storage data structures.
+- Marks the `struct` type as the contract's storage definition
+- There must be **ONLY** one **ink!** storage definition per contract
+- Defines the layout of storage using a variety of built-in facilities
+- Advanced users can provide their own implementations of storage data structures
 
 _In this case, we define a simple `bool` storage variable._
 
@@ -210,11 +210,11 @@ _Let's take a look at the constructor declaration:_
 
 Applies the `#[ink(constructor)]` macro to the `new()` function declaration.
 
-- Marks the function as the **ink!** constructor.
-- Makes function available to the API for instantiating the contract.
-- There must be **AT LEAST** one `#[ink(constructor)]` defined function.
-- Dispatchable upon contract instantiation.
-- Multiple constructors can be defined.
+- Marks the function as the **ink!** constructor
+- Makes function available to the API for instantiating the contract
+- There must be **AT LEAST** one `#[ink(constructor)]` defined function
+- Dispatchable upon contract instantiation
+- Multiple constructors can be defined
 
 ```rust
     impl Helloink {
@@ -270,16 +270,59 @@ Applies the `#[ink(message)]` macro to the `flip()` and `get()` function declara
 
 ----
 
-## Executing Tests
-
-**Build and run unit tests:**
+## Build and Execute Tests
 
 Now, let's [build](https://learn.onpop.io/contracts/guides/build-your-contract)
 and [test](https://learn.onpop.io/contracts/guides/run-your-unit-tests) our contract.
 
+**Build the contract:**
+
 ```bash
 pop build --release
+```
+
+This will generate the following artifacts in `target/ink`:
+
+- `helloink.contract`: JSON with contract binary + metadata
+- `helloink.polkavm`: Contract binary
+- `helloink.json`: Contract metadata
+
+:::note
+ℹ️ Learn more about [metadata](https://use.ink/docs/v6/basics/metadata/)
+
+ℹ️ Learn more about the [ink! metadata format](https://use.ink/docs/v6/basics/metadata/ink/)
+
+:::
+
+**Run the unit tests:**
+
+```bash
 pop test
+```
+
+_Next, let's review the unit test:_
+
+Applies the `#[cfg(test)]` macro to the `tests` module declaration.
+
+Applies the `#[ink::test]` macro to the `it_works()` function declaration.
+
+- Marks function as a unit test
+- This macro is NOT strictly required to run unit tests that require ink!'s off-chain testing capabilities but
+  improves code readability.
+
+```rust
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[ink::test]
+        fn it_works() {
+            let mut helloink = Helloink::new(false);
+            assert_eq!(helloink.get(), false);
+            helloink.flip();
+            assert_eq!(helloink.get(), true);
+        }
+    }
 ```
 
 :::note
@@ -289,23 +332,105 @@ pop test
 
 ## Deploy to Testnet
 
-Now, let's use the [Pop CLI to deploy our contract](https://learn.onpop.io/contracts/guides/deploy) to
-a [local ink node](https://github.com/use-ink/ink-node)
+Now, let's use [Pop to deploy our contract](https://learn.onpop.io/contracts/guides/deploy) to
+a [local ink node](https://github.com/use-ink/ink-node).
 
 **Deploy to testnet:**
 
-- `-p` points to the contract directory
+- `--path` points to the contract directory
 - `--constructor` method name (defaults to `new`)
 - `--args` constructor arguments
 - `--suri` secret key URI (default to `//Alice`)
 - `--url` ink node url  (default `ws://localhost:9944`)
 
 ```bash
-pop up -p ./lib.rs \
+pop up --path . \
   --constructor new \
   --args true \
-  --suri //Alice
+  --suri //Alice \
+  --url ws://localhost:9944
 ```
+
+**The Pop CLI will prompt you to start a local node for the deployment:**
+
+- Select `Yes` to start the local ink node
+
+```terminaloutput
+◆  No local ink! node detected. Would you like to start it node in the background for testing?
+│  ● Yes  / ○ No 
+```
+
+**The Pop CLI will prompt you to download the local node binary(During first run):**
+
+- Select `Yes` to download the local ink node binary
+
+```terminaloutput
+▲  ⚠️ The ink-node binary is not found.
+│  
+◆  📦 Would you like to source it automatically now?
+│  ● Yes  / ○ No 
+```
+
+After the local ink node is started, you will be prompted to deploy the contract:
+
+- Select `Yes` to deploy your contract to the local ink node binary
+
+```terminaloutput
+◆  Do you want to deploy the contract? (Selecting 'No' will keep this as a dry run)
+│  ● Yes  / ○ No 
+└  
+```
+
+_Congrats! You've successfully deployed your first **ink!** smart contract!_
+
+```terminaloutput
+⚙  Contract deployed and instantiated:
+│  ● The contract address is "0x5801b439a678d9d3a68b8019da6a4abfa507de11"
+```
+
+### Invoke Deployed Contract
+
+Use the `pop call contract` command to invoke the deployed contract.
+
+```bash
+ pop call contract --path . \
+ --contract 0x5801b439a678d9d3a68b8019da6a4abfa507de11 \
+ --message flip \
+ --url ws://localhost:9944/ \
+ --suri //Alice \
+ --execute
+```
+
+You should see something similar to the following output:
+
+```terminaloutput
+⚙        Events
+│         Event Balances ➜ Withdraw
+│           who: 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+│           amount: 1.204583894mUNIT
+│         Event Balances ➜ BurnedDebt
+│           amount: 1.204583894mUNIT
+│         Event TransactionPayment ➜ TransactionFeePaid
+│           who: 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+│           actual_fee: 1.204583894mUNIT
+│           tip: 0UNIT
+│         Event System ➜ ExtrinsicSuccess
+│           dispatch_info: DispatchEventInfo { weight: Weight { ref_time: 1204645303, proof_size: 37207 }, class: Normal, pays_fee: Yes }
+```
+
+Use the `pop call contract` command to get the contract storage current value.
+
+```bash
+pop call contract --path . 
+--contract 0x5801b439a678d9d3a68b8019da6a4abfa507de11 
+--message value 
+--url ws://localhost:9944/
+```
+
+:::note
+ℹ️ Learn more about the [Pop CLI call contract command](https://learn.onpop.io/contracts/guides/call-your-contract)
+
+:::
 
 ----
 
@@ -319,7 +444,7 @@ _Let's recap what we've done during this tutorial:_
     - `#[ink::contract]` Mark a module as an **ink!** contract,
     - `#[ink(storage)]` Define the SINGLE storage struct,
     - `#[ink(constructor)]` defines instantiation logic,
-    - `#[ink(message)]` defines public callable API (read-only with `&self` vs. state‑mutating with `&mut self`).
+    - `#[ink(message)]` defines public callable API (read-only with `&self` vs. state‑mutating with `&mut self`)
 - Demonstrated contract storage by implementing a simple boolean field
 - Built & tested the contract using Pop CLI commands (`pop build --release`, `pop test`)
 - Deployed the contract to a local ink node using Pop CLI (`pop up`)
