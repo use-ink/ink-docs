@@ -451,12 +451,15 @@ You should see something similar to the following output:
 
 ### Read the Current Contract Storage Value
 
-Use the `pop call contract` command to get the contract storage current value.
+_Use the `pop call contract` command to get the contract storage current value._
+
+- Replace the hash passed into the `--contract` argument with the deployed contract address from the previous step
+- This retrieves and displays the current state of the boolean storage variable
 
 ```bash
-pop call contract --path . 
---contract 0x5801b439a678d9d3a68b8019da6a4abfa507de11 
---message value 
+pop call contract --path . \
+--contract 0x5801b439a678d9d3a68b8019da6a4abfa507de11 \
+--message value \
 --url ws://localhost:9944/
 ```
 
