@@ -160,7 +160,7 @@ for a more in-depth explanation.
 
 _Next, let's take a look at the module declaration:_
 
-Applies the `#[ink::contract]` [proc macro attribute]((https://doc.rust-lang.org/reference/procedural-macros.html)) to
+Applies the `#[ink::contract]` [proc macro attribute](https://doc.rust-lang.org/reference/procedural-macros.html) to
 the module declaration.
 
 - Marks the module as an **ink!** contract
