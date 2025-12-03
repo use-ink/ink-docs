@@ -12,6 +12,10 @@ fully functional [ink!](https://use.ink/docs/v6) smart contract.
 
 Follow along with the companion GitHub repo [helloink](https://github.com/anataliocs/helloink).
 
+This is a template repo. Click
+the [Use this Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+button to create your own repo to follow along with this tutorial.
+
 **We will break down and explain key concepts including:**
 
 - Using the Pop CLI
@@ -23,23 +27,28 @@ Follow along with the companion GitHub repo [helloink](https://github.com/anatal
 :::note
 **Learning Objectives:**
 
-⭐️ _By the end of this tutorial, you will be able to write, compile, build, test and deploy **ink!** contracts._
+⭐️ _By the end of this tutorial, you will be able to write, build, test and deploy **ink!** contracts_
 
-⭐️ _You will be familiar with all the key components of **ink!** smart contract._
+⭐️ _You will be familiar with all the key components of an **ink!** smart contract_
 
-⭐️ _You will understand how to use the Pop CLI._
+⭐️ _You will understand how to use the Pop CLI_
 
-⭐️ _You will understand important concepts like storage, events and how to use them in your smart contract._
+⭐️ _You will understand important concepts like storage, events and how to use them in your smart contract_
 :::
 
 ## Prerequisites
 
 _Here's what you'll need to get started:_
 
-- Install Brew: https://brew.sh/
+Follow the steps in the [ink! Getting Started Guide](https://use.ink/docs/v6/getting-started/setup) to:
+
+- Install [Brew](https://brew.sh/)
 - Install [Rust](https://rust-lang.org/tools/install/), [Cargo](https://doc.rust-lang.org/cargo/)
-  and [Pop CLI](https://github.com/r0gue-io/pop-cli): https://use.ink/docs/v6/getting-started/setup
-- Read up on the [Pop CLI](https://learn.onpop.io/)
+  and [Pop CLI](https://github.com/r0gue-io/pop-cli)
+
+:::note
+Read up on the [Pop CLI](https://learn.onpop.io/)
+:::
 
 _After that, let's verify everything is installed correctly:_
 
@@ -78,7 +87,7 @@ pop --help
 
 _First, let's create a new project using the `pop new` command:_
 
-### Create a new project
+### Create a New Project
 
 - Pass in `contract` to the command `pop new`
 - We name the contract`helloink`
@@ -135,6 +144,8 @@ ensure an optimal memory footprint and performance.
     - The [Rust standard library](https://doc.rust-lang.org/std/) is OS-dependent and too heavyweight for on-chain use
     - More details on [no_std](https://docs.rust-embedded.org/book/intro/no-std.html)
 
+**lib.rs** (excerpt)
+
 ```rust
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
 ```
@@ -158,6 +169,8 @@ the module declaration.
   on-chain
 - This allows you to simply define your contract's storage and other functionality
   without writing a bunch of complicated, boilerplate code! 😊
+
+**lib.rs** (excerpt)
 
 ```rust
 #[ink::contract]
@@ -189,6 +202,8 @@ Applies the `#[ink(storage)]` macro to the struct declaration.
 
 _In this case, we define a simple `bool` storage variable._
 
+**lib.rs** (excerpt)
+
 ```rust
     #[ink(storage)]
     pub struct Helloink {
@@ -216,6 +231,8 @@ Applies the `#[ink(constructor)]` macro to the `new()` function declaration.
 - Dispatchable upon contract instantiation
 - Multiple constructors can be defined
 
+**lib.rs** (excerpt)
+
 ```rust
     impl Helloink {
         #[ink(constructor)]
@@ -233,17 +250,19 @@ _Next, let's review the message declarations:_
 
 Applies the `#[ink(message)]` macro to the `flip()` and `get()` function declarations.
 
-- Marks function as an **ink!** public message function
-- Makes the function available for calling the contract.
-- There must be **AT LEAST** one `#[ink(message)]` defined function.
+- Marks functions as **ink!** public message functions
+- There must be **AT LEAST** one `#[ink(message)]` defined function in a contract
 - Dispatchable upon contract invocation
-- The set of **ink!** messages defines its external API for users to invoke
-- A message with a `&self` receiver may **ONLY** read state.
-- A message with a `&mut self` receiver may modify state.
+- The set of **ink!** messages defines its external API available for invocation
 
 :::note
 ⚠️ **ALL** public functions must use the #[ink(message)] attribute
-:::
+
+- A message with a `&self` receiver may **ONLY** read state
+- A message with a `&mut self` receiver may modify state
+  :::
+
+**lib.rs** (excerpt)
 
 ```rust
     impl Helloink {
@@ -272,10 +291,10 @@ Applies the `#[ink(message)]` macro to the `flip()` and `get()` function declara
 
 ## Build and Execute Tests
 
-Now, let's [build](https://learn.onpop.io/contracts/guides/build-your-contract)
-and [test](https://learn.onpop.io/contracts/guides/run-your-unit-tests) our contract.
+_Now, let's [build](https://learn.onpop.io/contracts/guides/build-your-contract)
+and [test](https://learn.onpop.io/contracts/guides/run-your-unit-tests) our contract._
 
-**Build the contract:**
+### Build the Contract
 
 ```bash
 pop build --release
@@ -294,21 +313,25 @@ This will generate the following artifacts in `target/ink`:
 
 :::
 
-**Run the unit tests:**
+### Run the Unit Tests
 
 ```bash
 pop test
 ```
 
-_Next, let's review the unit test:_
+### Review Unit Test Code
+
+_Next, let's review the unit test code:_
 
 Applies the `#[cfg(test)]` macro to the `tests` module declaration.
 
 Applies the `#[ink::test]` macro to the `it_works()` function declaration.
 
-- Marks function as a unit test
-- This macro is NOT strictly required to run unit tests that require ink!'s off-chain testing capabilities but
-  improves code readability.
+- Marks function as an **ink!** unit test
+- This macro is NOT strictly required to run unit tests that require **ink!** off-chain testing capabilities but
+  improves code readability
+
+**lib.rs** (excerpt)
 
 ```rust
     #[cfg(test)]
@@ -330,12 +353,12 @@ Applies the `#[ink::test]` macro to the `it_works()` function declaration.
 
 :::
 
-## Deploy to Testnet
+## Deploy to Local Ink Node
 
 Now, let's use [Pop to deploy our contract](https://learn.onpop.io/contracts/guides/deploy) to
 a [local ink node](https://github.com/use-ink/ink-node).
 
-**Deploy to testnet:**
+### Deploy to Local Node using Pop CLI
 
 - `--path` points to the contract directory
 - `--constructor` method name (defaults to `new`)
@@ -388,9 +411,17 @@ _Congrats! You've successfully deployed your first **ink!** smart contract!_
 │  ● The contract address is "0x5801b439a678d9d3a68b8019da6a4abfa507de11"
 ```
 
-### Invoke Deployed Contract
+:::note
+ℹ️ Learn more about the [ink! local node](https://github.com/use-ink/ink-node)
 
-Use the `pop call contract` command to invoke the deployed contract.
+:::
+
+## Invoke Deployed Contract
+
+_We will use the `pop call contract` command to invoke the deployed contract:_
+
+- Replace the hash passed into the `--contract` argument with the deployed contract address from the previous step
+- This command will invoke the `flip()` function mutating the state of the boolean storage variable
 
 ```bash
  pop call contract --path . \
@@ -418,6 +449,8 @@ You should see something similar to the following output:
 │           dispatch_info: DispatchEventInfo { weight: Weight { ref_time: 1204645303, proof_size: 37207 }, class: Normal, pays_fee: Yes }
 ```
 
+### Read the Current Contract Storage Value
+
 Use the `pop call contract` command to get the contract storage current value.
 
 ```bash
@@ -436,7 +469,7 @@ pop call contract --path .
 
 ## Conclusion
 
-_Let's recap what we've done during this tutorial:_
+_Let's recap what we've accomplished during this tutorial:_
 
 - Generated an **ink!** smart contract using the Pop CLI (`pop new`) with the standard template
 - Reviewed Rust conditional compilation for **ink!** contracts: `#![cfg_attr(not(feature = "std"), no_std, no_main)]`
@@ -445,9 +478,11 @@ _Let's recap what we've done during this tutorial:_
     - `#[ink(storage)]` Define the SINGLE storage struct,
     - `#[ink(constructor)]` defines instantiation logic,
     - `#[ink(message)]` defines public callable API (read-only with `&self` vs. state‑mutating with `&mut self`)
-- Demonstrated contract storage by implementing a simple boolean field
+- Demonstrated contract storage by implementing a simple boolean field and message functions to read and mutate that
+  storage variable
 - Built & tested the contract using Pop CLI commands (`pop build --release`, `pop test`)
 - Deployed the contract to a local ink node using Pop CLI (`pop up`)
+- Invoked the contract using Pop CLI (`pop call contract`)
 
 ## Author
 
