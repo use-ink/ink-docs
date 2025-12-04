@@ -12,17 +12,13 @@ fully functional [ink!](https://use.ink/docs/v6) smart contract.
 
 Follow along with the companion GitHub repo [helloink](https://github.com/anataliocs/helloink).
 
-This is a template repo. Click
-the [Use this Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
-button to create your own repo to follow along with this tutorial.
-
 **We will break down and explain key concepts including:**
 
 - Using the Pop CLI
 - Storage: Reading, Writing & Mutating Storage
 - Constructors
 - Messages
-- Ink contract macros
+- Ink Contract Macros
 
 :::note
 **Learning Objectives:**
@@ -33,12 +29,30 @@ button to create your own repo to follow along with this tutorial.
 
 ⭐️ _You will understand how to use the Pop CLI_
 
-⭐️ _You will understand important concepts like storage, events and how to use them in your smart contract_
+⭐️ _You will understand important concepts like storage and messages and how to use them in your smart contract_
 :::
 
 ## Prerequisites
 
-_Here's what you'll need to get started:_
+There are two ways to follow along with this tutorial!
+
+### GitHub Codespace
+
+_You can create your own repo to follow along with this tutorial in a Github Codespace!_
+
+The companion GitHub repo [helloink](https://github.com/anataliocs/helloink).
+
+This is a template repo. Click
+the [Use this Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+button to create your own repo to follow along with this tutorial.
+
+The included `.devcontainer` config creates a GitHub codespace pre-installed with Rust, Cargo, and the Pop CLI so you
+can hit the ground running. Learn more
+about [Devcontainers](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers).
+
+### Local Config
+
+_Or if you want to follow along on your local machine, here's what you'll need to get started!_
 
 Follow the steps in the [ink! Getting Started Guide](https://use.ink/docs/v6/getting-started/setup) to:
 
@@ -50,7 +64,9 @@ Follow the steps in the [ink! Getting Started Guide](https://use.ink/docs/v6/get
 Read up on the [Pop CLI](https://learn.onpop.io/)
 :::
 
-_After that, let's verify everything is installed correctly:_
+### Verify Installation
+
+_In both cases, let's verify everything is installed correctly:_
 
 **Verify Rust version:**
 
@@ -58,17 +74,23 @@ _After that, let's verify everything is installed correctly:_
 rustc --version
 ```
 
+rustc version 1.91.1 or higher is recommended.
+
 **Verify Cargo version:**
 
 ```bash
 cargo --version
 ```
 
+cargo version 1.91.1 or higher is recommended.
+
 **Verify Pop CLI version:**
 
 ```bash
 pop --version
 ```
+
+pop cli version 0.12.1 or higher is recommended.
 
 ----
 
@@ -394,7 +416,7 @@ pop up --path . \
 │  ● Yes  / ○ No 
 ```
 
-After the local ink node is started, you will be prompted to deploy the contract:
+**After the local ink node is started, you will be prompted to deploy the contract:**
 
 - Select `Yes` to deploy your contract to the local ink node binary
 
@@ -404,7 +426,9 @@ After the local ink node is started, you will be prompted to deploy the contract
 └  
 ```
 
-_Congrats! You've successfully deployed your first **ink!** smart contract!_
+### Successful Deployment
+
+_Congrats! You've successfully deployed your first **ink!** smart contract!_ 🎉
 
 ```terminaloutput
 ⚙  Contract deployed and instantiated:
@@ -477,11 +501,11 @@ _Let's recap what we've accomplished during this tutorial:_
 - Generated an **ink!** smart contract using the Pop CLI (`pop new`) with the standard template
 - Reviewed Rust conditional compilation for **ink!** contracts: `#![cfg_attr(not(feature = "std"), no_std, no_main)]`
 - Walked through various **ink!** macros:
-    - `#[ink::contract]` Mark a module as an **ink!** contract,
-    - `#[ink(storage)]` Define the SINGLE storage struct,
-    - `#[ink(constructor)]` defines instantiation logic,
+    - `#[ink::contract]` Mark a module as an **ink!** contract
+    - `#[ink(storage)]` Define the SINGLE storage struct
+    - `#[ink(constructor)]` defines instantiation logic
     - `#[ink(message)]` defines public callable API (read-only with `&self` vs. state‑mutating with `&mut self`)
-- Demonstrated contract storage by implementing a simple boolean field and message functions to read and mutate that
+- Demonstrated contract storage by implementing a simple boolean field and message function to read and mutate that
   storage variable
 - Built & tested the contract using Pop CLI commands (`pop build --release`, `pop test`)
 - Deployed the contract to a local ink node using Pop CLI (`pop up`)
