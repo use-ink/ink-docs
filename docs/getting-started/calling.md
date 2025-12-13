@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 Now that your contract has been fully deployed, we can start interacting with it! Flipper only has
 two functions: `flip()` and `get()`. We will show you what it's like to play with both of them.
 
-When you deployed your contract you received the contract address. Use this to interact with the contract.
+Once you deploy your contract, you will receive the contract address. Use this to interact with the contract.
 ```bash
 Contract Address: 0x4172ec94a05289f9ec332867a3b93ae31d18c593
 ```
