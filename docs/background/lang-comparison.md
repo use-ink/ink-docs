@@ -121,7 +121,7 @@ You must define your own storage layout and manually read and write byte slices 
 Bread and butter data structures (like maps) require full custom implementations, including
 all serialization concerns.
 
-### Documentation & Tooling
+### Tooling, Documentation, Support
 
 ink! comes with comprehensive documentation: 
 
@@ -130,15 +130,39 @@ ink! comes with comprehensive documentation:
 * [API references](https://docs.rs/ink_storage/6.0.0-beta.1/ink_storage/)
 * [Tutorials](/tutorials/guide)
 
-It is supported by sophisticated tooling such as `cargo-contract` and `pop-cli`, 
-the ink! analyzer, phink! (a [fuzzer by SRLabs](https://github.com/srlabs/phink)),
-type bindings for polkadot-js, PAPI, dedot, and other established libraries.
-
-For low-level Rust on `pallet-revive` there is **no dedicated documentation, guides, or tooling** beyond the raw FFI functions.
+For low-level Rust on `pallet-revive` there is **no dedicated documentation, guides, or tooling** 
+beyond the raw FFI functions.
 Developers must construct their own workflows for compilation, deployment, metadata definition,
 debugging, and verification. There is no support group for any of that, whereas for ink! there
 is [an active Telegram channel](https://t.me/inkathon) with over 370 members and 
 [Substrate Stack Exchange](https://substrate.stackexchange.com/).
+
+ink! is supported by sophisticated tooling such as `cargo-contract` and `pop-cli`,
+the ink! analyzer, phink! (a [fuzzer by SRLabs](https://github.com/srlabs/phink)),
+type bindings for polkadot-js, PAPI, dedot, and other established libraries.
+
+### Build Complexity
+
+For low-level Rust, developers must use nightly Rust (or `RUSTC_BOOTSTRAP`) and `cargo`'s 
+unstable `build-std` features to build for the custom PolkaVM target.
+There's a lot of complexity there that ink!'s `cargo-contract` takes care of, including 
+setting sensible defaults for release builds for our smart contract context.
+
+`rustc` for example defaults to silent overflows for release builds, while `cargo-contract`
+changes that behavior to panicking on overflow.
+In fact, the history of providing overflow safety in ink! is a good example of this complexity:
+
+* [https://github.com/use-ink/cargo-contract/issues/2115](https://github.com/use-ink/cargo-contract/issues/2115)
+* [https://github.com/use-ink/cargo-contract/pull/2116](https://github.com/use-ink/cargo-contract/pull/2116)
+
+### Allocator & Panic Handling
+
+When developers are not using ink! for writing Rust smart contracts on `pallet-revive`,
+they are expected to bring their own low-level components, like the panic handler and allocator.
+ink! provides sensible defaults for a smart contract context for those.
+The panic handling is tied into the way how debugging works in `pallet-revive`.
+The ink! allocator is a bump allocator that never frees up space, as that would be unnecessary
+overhead for smart contracts.
 
 ### UI Frameworks
 
