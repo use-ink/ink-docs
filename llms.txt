@@ -9710,7 +9710,7 @@ While JavaScript and TypeScript dominate web development, smart contract fronten
 ````
 
 ## File: docs/intro/intro.mdx
-````
+````markdown
 ---
 title: Welcome!
 hide_title: true
@@ -9774,7 +9774,7 @@ Ready to get started? Head to our [Getting Started](../getting-started/setup.md)
 ````
 
 ## File: docs/intro/sub0-hackathon.mdx
-````
+````markdown
 ---
 title: Sub0 Hackathon 2025
 hide_title: true
