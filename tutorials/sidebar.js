@@ -1,6 +1,7 @@
 module.exports = {
   tutorials: [
     'overview',
+    'writing-your-first-smart-contract',
     {
       type: 'category',
       label: 'Frontend Development',
