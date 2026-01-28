@@ -3203,8 +3203,7 @@ slug: /background/pallet-revive-low-level-rust-contracts
 
 # Rust contracts on `pallet-revive`
 
-`pallet-revive` supports contracts written in Rust and Solidity. 
-Solidity is supported by compiling the source code with Parity's [`revive`](https://github.com/paritytech/revive) compiler.
+`pallet-revive` supports contracts written in Rust and Solidity. For the PolkaVM (PVM) part of the pallet, Solidity is supported by compiling the source code with Parity's [`revive`](https://github.com/paritytech/revive) compiler.
 Rust is supported by providing a low-level FFI interface and compiling for [PolkaVM](https://github.com/paritytech/polkavm). 
 You can view the low-level interface [here](https://docs.rs/pallet-revive-uapi/latest/pallet_revive_uapi/).
 See [the `HostFn` trait](https://docs.rs/pallet-revive-uapi/latest/pallet_revive_uapi/trait.HostFn.html) for 
