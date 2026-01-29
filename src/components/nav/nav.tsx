@@ -79,6 +79,26 @@ export function Navbar({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeInOut' }}
       >
+        <div
+          className="relative z-10 flex flex-col items-center justify-center gap-1 px-4 py-2 text-white text-sm"
+          style={{
+            backgroundColor: '#8b0000',
+          }}
+        >
+          <p className="m-0">
+            Since January 2026, we are unfortunately unable to actively maintain or develop ink! further.
+          </p>
+          <p className="m-0">
+            We have written down the details in a{' '}
+            <a
+              href={'https://forum.polkadot.network/t/discontinuation-of-ink-rust-smart-contract-language/16849'}
+              className="text-white underline"
+            >
+              Polkadot Forum post
+            </a>
+            .
+          </p>
+        </div>
         <div className="absolute inset-0 z-0 mask"></div>
         <div className="mx-auto">
           <div className="ml-6 mr-2 md:ml-8 md:mr-8 flex items-center h-[80px] justify-between md:justify-start">
