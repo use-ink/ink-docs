@@ -61,9 +61,9 @@ module.exports = {
         label: "Testing",
         items: [
         "development/testing/overview",
-        "development/testing/unit-integration",
-        "development/testing/e2e",
-        "development/testing/sandbox",
+        "development/testing/unit-tests",
+        "development/testing/runtime-tests",
+        "development/testing/node-tests",
         // "development/testing/testing-with-live-state"
         ]
       },
